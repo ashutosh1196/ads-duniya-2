@@ -58,6 +58,8 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/delete', [JobSeekersController::class, 'deleteJobseeker'])->name('delete_jobseeker');
       Route::get('/deleted', [JobSeekersController::class, 'deletedJobseekersList'])->name('deleted_jobseekers_list');
       Route::post('/restore', [JobSeekersController::class, 'restoreJobseeker'])->name('restore_jobseeker');
+      Route::get('/add', [JobSeekersController::class, 'addJobseeker'])->name('add_jobseeker');
+      Route::post('/save', [JobSeekersController::class, 'saveJobseeker'])->name('save_jobseeker');
     });
 
     // Recruiters Routes

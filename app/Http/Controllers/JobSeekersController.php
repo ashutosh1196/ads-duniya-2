@@ -6,8 +6,35 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserSocialLogin;
 use Illuminate\Support\Facades\Gate;
+use Hash;
 
 class JobSeekersController extends Controller {
+	
+	/**
+	 * This function is used to Add Job Seeker
+	*/
+	public function addJobseeker() {
+		return view('add_jobseeker');
+	}
+
+	/**
+	 * This function is used to Add Job Seeker
+	*/
+	public function saveJobseeker(Request $request) {
+		$jobseeker = new User;
+		$jobseeker->first_name = $request->first_name;
+		$jobseeker->last_name = $request->last_name;
+		$jobseeker->email = $request->email;
+		$jobseeker->password = Hash::make($request->password);
+		if($jobseeker->save()) {
+			$jobseekersList = User::all();
+			return view('jobseekers_list', ['jobseekersList' => $jobseekersList])->with('success', 'Jobseeker Added Successfully!');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
 	/**
 	 * This function is used to Show Job Seekers Listing
 	*/
