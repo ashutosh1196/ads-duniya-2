@@ -33,7 +33,7 @@ class AdminController extends Controller
 			'jobseekersCount' => $jobseekersCount,
 			'recruitersCount' => $recruitersCount,
 			'customersCount' => $customersCount,
-			'admins' => $admins,
+			'adminsCount' => $adminsCount,
 		]);
 	}
 
