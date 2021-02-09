@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Jobseeker')
+@section('title', 'Add Recruiter')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3>Add Jobseeker</h3>
+            <h3>Add Recruiter</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -19,7 +19,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addJobseekerForm" method="post", action="save">
+            <form id="addRecruiterForm" method="post", action="{{ route('save_recruiter') }}">
               @csrf
               <div class="card-body">
                 @if ($errors->any())
@@ -31,53 +31,51 @@
                     </ul>
                   </div>
                 @endif
-                <!-- <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
-                  @if($errors->has('name'))
-                    <div class="error">{{ $errors->first('name') }}</div>
-                  @endif
-                </div> -->
                 
-                <div class="form-group">
-                  <label for="first_name">First Name</label>
-                  <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first_name">
+                <!-- Form Fields -->
+
+                <!-- <div class="form-group">
+                  <label for="first_name">First Name<span class="text-danger"> *</span></label>
+                  <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter First Name">
                   @if($errors->has('first_name'))
                     <div class="error">{{ $errors->first('first_name') }}</div>
                   @endif
                 </div>
                 
                 <div class="form-group">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last_name">
+                  <label for="last_name">Last Name<span class="text-danger"> *</span></label>
+                  <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter Last Name">
                   @if($errors->has('last_name'))
                     <div class="error">{{ $errors->last('last_name') }}</div>
                   @endif
                 </div>
                 
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
+                  <label for="email">Email<span class="text-danger"> *</span></label>
+                  <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
                   @if($errors->has('email'))
                     <div class="error">{{ $errors->last('email') }}</div>
                   @endif
-                </div>
+                </div> -->
                 
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                  <label for="password">Password<span class="text-danger"> *</span></label>
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
                   @if($errors->has('password'))
                     <div class="error">{{ $errors->last('password') }}</div>
                   @endif
                 </div>
                 
                 <div class="form-group">
-                  <label for="confirm_password">Confirm Password</label>
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
+                  <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
+                  <input type="hidden" name="email" class="form-control" id="email" value="{{ $email }}">
+                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter Confirm Password">
                   @if($errors->has('confirm_password'))
                     <div class="error">{{ $errors->last('confirm_password') }}</div>
                   @endif
                 </div>
+                
+                <!-- /Form Fields -->
 
               </div>
               <!-- /.card-body -->
@@ -104,14 +102,11 @@
 @section('js')
   <script>
     $(document).ready(function() {
-      $('#addJobseekerForm').validate({
+      $('#addRecruiterForm').validate({
         ignore: [],
         debug: false,
         rules: {
-          /* name: {
-            required: true
-          }, */
-          first_name: {
+          /* first_name: {
             required: true
           },
           last_name: {
@@ -120,7 +115,7 @@
           email: {
             required: true,
             email: true
-          },
+          }, */
           password: {
             required: true,
             minlength: 8
@@ -132,27 +127,24 @@
           },
         },
         messages: {
-          /* name: {
-            required: "Name is Required"
-          }, */
-          first_name: {
-            required: "The First Name field is required."
+          /* first_name: {
+            required: "The First field Name is required."
           },
           last_name: {
-            required: "The Last Name field is required."
+            required: "The Last field Name is required."
           },
           email: {
             required: "The Email field is required.",
-            email: "Please enter a valid email address."
-          },
+            email: "Please enter a valid Email"
+          }, */
           password: {
             required: "The Password field is required.",
-            minlength: "Please enter at least 8 characters."
+            minlength: "Minimum length should be 8"
           },
           confirm_password: {
-            required: "The password confirmation field is required.",
-            minlength: "Please enter at least 8 characters.",
-            equalTo : "The confirm password must match password."
+            required: "The Confirm Password field is required.",
+            minlength: "Minimum length should be 8",
+            equalTo : "The Confirm Password must be equal to Password."
           },
         }
       });

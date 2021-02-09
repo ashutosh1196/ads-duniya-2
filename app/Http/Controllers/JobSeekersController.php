@@ -21,14 +21,23 @@ class JobSeekersController extends Controller {
 	 * This function is used to Add Job Seeker
 	*/
 	public function saveJobseeker(Request $request) {
+		$validatedData = $request->validate([
+			'password' => 'required|min:8',
+			'email' => 'required|email|unique:users'
+		], [
+			'email.required' => 'Email is required',
+			'password.required' => 'Password is required'
+		]);
 		$jobseeker = new User;
+		$jobseeker->name = $request->first_name.$request->last_name;
 		$jobseeker->first_name = $request->first_name;
 		$jobseeker->last_name = $request->last_name;
 		$jobseeker->email = $request->email;
 		$jobseeker->password = Hash::make($request->password);
+		$jobseeker->ip_address = $_SERVER["REMOTE_ADDR"];
 		if($jobseeker->save()) {
 			$jobseekersList = User::all();
-			return view('jobseekers_list', ['jobseekersList' => $jobseekersList])->with('success', 'Jobseeker Added Successfully!');
+			return redirect()->route('jobseekers_list', ['jobseekersList' => $jobseekersList])->with('success', 'Jobseeker Added Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');

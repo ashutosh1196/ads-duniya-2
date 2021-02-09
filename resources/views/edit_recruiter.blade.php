@@ -22,14 +22,17 @@
             <form id="editRecruiterForm" method="post", action="../update">
               @csrf
               <div class="card-body">
+                
                 <input type="hidden" name="id" class="form-control" id="id" value="{{ $recruiter[0]->id }}">
-                <div class="form-group">
+                
+                <!-- <div class="form-group">
                   <label for="name">Name</label>
                   <input type="name" name="name" class="form-control" id="name" value="{{ $recruiter[0]->name }}">
                   @if($errors->has('name'))
                     <div class="error">{{ $errors->first('name') }}</div>
                   @endif
-                </div>
+                </div> -->
+
                 <div class="form-group">
                   <label for="first_name">First Name</label>
                   <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}">
@@ -37,6 +40,7 @@
                     <div class="error">{{ $errors->first('first_name') }}</div>
                   @endif
                 </div>
+
                 <div class="form-group">
                   <label for="last_name">Last Name</label>
                   <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}">
@@ -44,6 +48,7 @@
                     <div class="error">{{ $errors->first('last_name') }}</div>
                   @endif
                 </div>
+
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}">
@@ -51,10 +56,12 @@
                     <div class="error">{{ $errors->first('email') }}</div>
                   @endif
                 </div>
+
                 <div class="form-group">
                   <label for="phone_number">Phone Number</label>
                   <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number }}">
                 </div>
+
                 <div class="form-group">
                   <label for="organization_id">Organization</label>
                   <select name="organization_id" class="form-control" id="organization_id">
@@ -64,6 +71,7 @@
                     @endfor
                   </select>
                 </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
@@ -105,9 +113,9 @@
         ignore: [],
         debug: false,
         rules: {
-          name: {
-            required: true
-          },
+          // name: {
+          //   required: true
+          // },
           first_name: {
             required: true
           },
@@ -120,9 +128,9 @@
           },
         },
         messages: {
-          name: {
+          /* name: {
             required: "Name is Required"
-          },
+          }, */
           first_name: {
             required: "First Name is Required"
           },

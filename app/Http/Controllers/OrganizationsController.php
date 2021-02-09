@@ -10,6 +10,56 @@ use Mail;
 use Illuminate\Support\Facades\Gate;
 
 class OrganizationsController extends Controller {
+	
+	/**
+	 * This function is used to Show Add Job Seeker View
+	*/
+	public function addCustomer() {
+		return view('add_customer');
+	}
+
+	/**
+	 * This function is used to Save Customer
+	*/
+	public function saveCustomer(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required',
+			'email' => 'required|email|unique:organizations',
+			'contact_number' => 'required',
+			'url' => 'required',
+		], [
+			'name.required' => 'Company Name is required',
+			'email.required' => 'Company Or Consultants Email is required',
+			'email.email' => 'Company Or Consultants Email is not valid',
+			'email.unique' => 'Company Or Consultants Email must be unique',
+			'contact_number.required' => 'Contact Number is required',
+			'url.required' => 'Company Domain URL is required',
+		]);
+		$customer = new Organization;
+		$customer->name = $request->first_name.$request->name;
+		$customer->email = $request->email;
+		$customer->contact_number = $request->contact_number;
+		$customer->vat_number = $request->vat_number;
+		$customer->url = $request->url;
+		$customer->domain = parse_url($request->url)['host'];
+		if($customer->save()) {
+			$recruiter = new Recruiter;
+			$recruiter->email = $customer->email;
+			$recruiter->organization_id = $customer->id;
+			$recruiter->ip_address = $_SERVER["REMOTE_ADDR"];
+			if($recruiter->save()) {
+				$recruitersList = Recruiter::all();
+				return redirect()->route('recruiters_list', ['recruitersList' => $recruitersList])->with('success', 'Recruiter added successfully.');
+				// return view('add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
+			}
+			else {
+				return back()->with('error', 'Something went wrong! Please try again.');
+			}
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
 
 	/**
 	 * This function is used to Show Listing

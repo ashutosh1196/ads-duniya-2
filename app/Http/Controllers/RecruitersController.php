@@ -46,8 +46,16 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function updateRecruiter(Request $request) {
+		$validatedData = $request->validate([
+			'email' => 'required|email',
+			'organization_id' => 'required',
+		], [
+			'email.required' => 'Email is required.',
+			'email.email' => 'Email is not Valid.',
+			'organization_id' => 'Organization is required.',
+		]);
 		$dataToUpdate = [
-			'name' => $request->name,
+			'name' => $request->first_name.$request->last_name,
 			'first_name' => $request->first_name,
 			'last_name' => $request->last_name,
 			'email' => $request->email,

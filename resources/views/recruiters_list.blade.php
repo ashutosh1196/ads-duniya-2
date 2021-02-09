@@ -17,6 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add Recruiter</a>
             <table id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
