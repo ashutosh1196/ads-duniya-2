@@ -25,13 +25,15 @@ class AdminController extends Controller
 		$recruitersCount = count($recruiters);
 		$customers = Organization::where('is_whitelisted', 1)->get();
 		$customersCount = count($customers);
+		$admins = Admin::where('role_id', '!=', 1)->get();
+		$adminsCount = count($admins);
 		// $jobs = Job::where('deleted_at', NULL)->get();
 		// $jobsCount = count($jobs);
 		return view('dashboard', [
 			'jobseekersCount' => $jobseekersCount,
 			'recruitersCount' => $recruitersCount,
 			'customersCount' => $customersCount,
-			// 'jobsCount' => $jobsCount,
+			'admins' => $admins,
 		]);
 	}
 
