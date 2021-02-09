@@ -1,0 +1,15 @@
+
+/*Added 09-Feb-2021*/
+
+.main-sidebar {
+    background-color: #ffffff;
+    -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.07);
+    -ms-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 3px 5px 1px rgb(0 0 0 / 7%);
+}
+.main-sidebar a.brand-link img {
+    box-shadow: none !important;
+}
+.main-sidebar a.brand-link {
+    padding: 28px 0;
+}
