@@ -18,7 +18,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>{{ $customersCount }}</h3>
-                <p>Customers</p>
+                <p>Customer(s)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -32,7 +32,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
 							<h3>{{ $recruitersCount }}</h3>
-                <p>Recruiters</p>
+                <p>Recruiter(s)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -46,7 +46,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
 							<h3>{{ $adminsCount }}</h3>
-                <p>Admins</p>
+                <p>Admin(s)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -60,7 +60,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{ $jobseekersCount }}</h3>
-                <p>Jobseekers</p>
+                <p>Jobseeker(s)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -73,7 +73,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
 							<h3>{{ isset($jobsCount) ? $$jobsCount : 0 }}</h3>
-							<p>Jobs Posted</p>
+							<p>Job(s) Posted</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -88,7 +88,7 @@
             <div class="small-box bg-primary">
               <div class="inner">
                 <h3>0</h3>
-                <p>Jobs Applied</p>
+                <p>Job(s) Applied</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
