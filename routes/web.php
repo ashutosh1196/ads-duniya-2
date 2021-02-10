@@ -22,7 +22,8 @@ use App\Http\Controllers\RolesController;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  return redirect()->route('login');
+  // return view('welcome');
 });
 
 Route::middleware(['auth:admin'])->group(function () {
