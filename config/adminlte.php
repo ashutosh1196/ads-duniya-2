@@ -126,7 +126,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -243,7 +243,7 @@ return [
         ['header' => 'management'],
         [
             'text' => 'customers_management',
-            'icon' => 'fas fa-fw fa-building',
+            'icon' => 'fas fa-tasks',
             'url'  => '#',
             'submenu' => [
                 [
@@ -265,7 +265,7 @@ return [
         ],
         [
             'text' => 'users_management',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'far fa-user-circle',
             'url'  => '#',
             'submenu' => [
                 [
@@ -287,7 +287,7 @@ return [
         ],
         [
             'text' => 'recylce_bin',
-            'icon' => 'fas fa-fw fa-trash',
+            'icon' => 'far fa-trash-alt',
             'url'  => '#',
             'submenu' => [
                 [
