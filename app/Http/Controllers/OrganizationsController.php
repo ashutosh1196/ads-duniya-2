@@ -37,11 +37,13 @@ class OrganizationsController extends Controller {
 	*/
 	public function saveCustomer(Request $request) {
 		$validatedData = $request->validate([
+			'address' => 'required',
 			'name' => 'required',
 			'email' => 'required|email|unique:organizations',
 			'contact_number' => 'required',
 			'url' => 'required',
 		], [
+			'address.required' => 'Address is required',
 			'name.required' => 'Company Name is required',
 			'email.required' => 'Company Or Consultants Email is required',
 			'email.email' => 'Company Or Consultants Email is not valid',

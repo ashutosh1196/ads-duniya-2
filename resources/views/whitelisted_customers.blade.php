@@ -36,7 +36,7 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img style="width:50px;" src="{{ $whitelistedCustomersList[$i]->logo ? $whitelistedCustomersList[$i]->logo : $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
+                  <td><img style="width:50px;" src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>

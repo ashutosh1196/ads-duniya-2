@@ -41,7 +41,7 @@ class RecruitersController extends Controller {
 		}
 		else {
 			$organization = Organization::where('id', $deletedRecruiter[0]->organization_id)->get();
-			return view('view_recruiter')->with(['recruiter' => $recruiter, 'organization' => $deletedRecruiter]);
+			return view('view_recruiter')->with(['recruiter' => $deletedRecruiter, 'organization' => $deletedRecruiter]);
 		}
 	}
 
