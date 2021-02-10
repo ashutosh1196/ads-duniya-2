@@ -46,47 +46,60 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/edit/{id}', [OrganizationsController::class, 'editCustomers'])->name('edit_customers');
       Route::post('/update', [OrganizationsController::class, 'updateCustomers'])->name('update_customers');
       Route::post('/delete', [OrganizationsController::class, 'deleteCustomers'])->name('delete_customer');
-      Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
       Route::post('/restore', [OrganizationsController::class, 'restoreCustomer'])->name('restore_customer');
       Route::post('/save', [OrganizationsController::class, 'saveCustomer'])->name('save_customer');
       Route::get('/check_email', [OrganizationsController::class, 'checkEmail'])->name('check_email');
     });
 
     // User/Job Seekers Routes
-    Route::group(['prefix' => 'jobseekers'], function () {
-      Route::get('/list', [JobSeekersController::class, 'jobseekersList'])->name('jobseekers_list');
-      Route::get('/view/{id}', [JobSeekersController::class, 'viewJobseeker'])->name('view_jobseeker');
-      Route::get('/edit/{id}', [JobSeekersController::class, 'editJobseeker'])->name('edit_jobseeker');
-      Route::post('/update', [JobSeekersController::class, 'updateJobseeker'])->name('update_jobseeker');
-      Route::post('/delete', [JobSeekersController::class, 'deleteJobseeker'])->name('delete_jobseeker');
-      Route::get('/deleted', [JobSeekersController::class, 'deletedJobseekersList'])->name('deleted_jobseekers_list');
-      Route::post('/restore', [JobSeekersController::class, 'restoreJobseeker'])->name('restore_jobseeker');
-      Route::get('/add', [JobSeekersController::class, 'addJobseeker'])->name('add_jobseeker');
-      Route::post('/save', [JobSeekersController::class, 'saveJobseeker'])->name('save_jobseeker');
+    Route::group(['prefix' => 'users'], function () {
+      Route::group(['prefix' => 'jobseekers'], function () {
+        Route::get('/list', [JobSeekersController::class, 'jobseekersList'])->name('jobseekers_list');
+        Route::get('/view/{id}', [JobSeekersController::class, 'viewJobseeker'])->name('view_jobseeker');
+        Route::get('/edit/{id}', [JobSeekersController::class, 'editJobseeker'])->name('edit_jobseeker');
+        Route::post('/update', [JobSeekersController::class, 'updateJobseeker'])->name('update_jobseeker');
+        Route::post('/delete', [JobSeekersController::class, 'deleteJobseeker'])->name('delete_jobseeker');
+        Route::post('/restore', [JobSeekersController::class, 'restoreJobseeker'])->name('restore_jobseeker');
+        Route::get('/add', [JobSeekersController::class, 'addJobseeker'])->name('add_jobseeker');
+        Route::post('/save', [JobSeekersController::class, 'saveJobseeker'])->name('save_jobseeker');
+      });
+
+      // Recruiters Routes
+      Route::group(['prefix' => 'recruiters'], function () {
+        Route::get('/list', [RecruitersController::class, 'recruitersList'])->name('recruiters_list');
+        Route::get('/view/{id}', [RecruitersController::class, 'viewRecruiter'])->name('view_recruiter');
+        Route::get('/edit/{id}', [RecruitersController::class, 'editRecruiter'])->name('edit_recruiter');
+        Route::post('/update', [RecruitersController::class, 'updateRecruiter'])->name('update_recruiter');
+        Route::post('/delete', [RecruitersController::class, 'deleteRecruiter'])->name('delete_recruiter');
+        Route::post('/restore', [RecruitersController::class, 'restoreRecruiter'])->name('restore_recruiter');
+        Route::get('/add', [OrganizationsController::class, 'addCustomer'])->name('add_customer');
+      });
+
+      Route::group(['prefix' => 'admins'], function () {
+        Route::get('/list', [AdminsController::class, 'adminsList'])->name('admins_list');
+        Route::get('/view/{id}', [AdminsController::class, 'viewAdmin'])->name('view_admin');
+        Route::get('/edit/{id}', [AdminsController::class, 'editAdmin'])->name('edit_admin');
+        Route::post('/update', [AdminsController::class, 'updateAdmin'])->name('update_admin');
+        Route::post('/delete', [AdminsController::class, 'deleteAdmin'])->name('delete_admin');
+        Route::post('/restore', [AdminsController::class, 'restoreAdmin'])->name('restore_admin');
+        Route::get('/add', [AdminsController::class, 'addAdmin'])->name('add_admin');
+        Route::post('/save', [AdminsController::class, 'saveAdmin'])->name('save_admin');
+      });
     });
 
-    // Recruiters Routes
-    Route::group(['prefix' => 'recruiters'], function () {
-      Route::get('/list', [RecruitersController::class, 'recruitersList'])->name('recruiters_list');
-      Route::get('/view/{id}', [RecruitersController::class, 'viewRecruiter'])->name('view_recruiter');
-      Route::get('/edit/{id}', [RecruitersController::class, 'editRecruiter'])->name('edit_recruiter');
-      Route::post('/update', [RecruitersController::class, 'updateRecruiter'])->name('update_recruiter');
-      Route::post('/delete', [RecruitersController::class, 'deleteRecruiter'])->name('delete_recruiter');
-      Route::get('/deleted', [RecruitersController::class, 'deletedRecruitersList'])->name('deleted_recruiters_list');
-      Route::post('/restore', [RecruitersController::class, 'restoreRecruiter'])->name('restore_recruiter');
-      Route::get('/add', [OrganizationsController::class, 'addCustomer'])->name('add_customer');
-    });
-
-    Route::group(['prefix' => 'admins'], function () {
-      Route::get('/list', [AdminsController::class, 'adminsList'])->name('admins_list');
-      Route::get('/view/{id}', [AdminsController::class, 'viewAdmin'])->name('view_admin');
-      Route::get('/edit/{id}', [AdminsController::class, 'editAdmin'])->name('edit_admin');
-      Route::post('/update', [AdminsController::class, 'updateAdmin'])->name('update_admin');
-      Route::post('/delete', [AdminsController::class, 'deleteAdmin'])->name('delete_admin');
-      Route::get('/deleted', [AdminsController::class, 'deletedAdminsList'])->name('deleted_admins_list');
-      Route::post('/restore', [AdminsController::class, 'restoreAdmin'])->name('restore_admin');
-      Route::get('/add', [AdminsController::class, 'addAdmin'])->name('add_admin');
-      Route::post('/save', [AdminsController::class, 'saveAdmin'])->name('save_admin');
+    Route::group(['prefix' => 'recycle_bin'], function () {
+      Route::group(['prefix' => 'customers'], function () {
+        Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
+      });
+      Route::group(['prefix' => 'jobseekers'], function () {
+        Route::get('/deleted', [JobSeekersController::class, 'deletedJobseekersList'])->name('deleted_jobseekers_list');
+      });
+      Route::group(['prefix' => 'recruiters'], function () {
+        Route::get('/deleted', [RecruitersController::class, 'deletedRecruitersList'])->name('deleted_recruiters_list');
+      });
+      Route::group(['prefix' => 'admins'], function () {
+        Route::get('/deleted', [AdminsController::class, 'deletedAdminsList'])->name('deleted_admins_list');
+      });
     });
 
     // Recruiters Routes

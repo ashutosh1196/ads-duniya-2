@@ -93,7 +93,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="address">Address<span class="text-danger"> *</span></label>
-                      <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
+                      <input type="text" name="address" class="form-control" id="autocomplete" placeholder="Enter Address">
                       @if($errors->has('address'))
                         <div class="error">{{ $errors->first('address') }}</div>
                       @endif
@@ -104,8 +104,8 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="city">City<span class="text-danger"> *</span></label>
-                      <input type="text" name="city" class="form-control" id="locality" placeholder="Enter City">
+                      <label for="city">City</label>
+                      <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
                       @if($errors->has('city'))
                         <div class="error">{{ $errors->first('city') }}</div>
                       @endif
@@ -114,8 +114,8 @@
                     
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="state">State<span class="text-danger"> *</span></label>
-                      <input type="text" name="state" class="form-control" id="administrative_area_level_1" placeholder="Enter State">
+                      <label for="state">State</label>
+                      <input type="text" name="state" class="form-control" id="state" placeholder="Enter State">
                       @if($errors->has('state'))
                         <div class="error">{{ $errors->first('state') }}</div>
                       @endif
@@ -126,8 +126,8 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="pincode">Postal Code<span class="text-danger"> *</span></label>
-                      <input type="text" name="pincode" class="form-control" id="postal_code" placeholder="Enter Pin Code">
+                      <label for="pincode">Postal Code</label>
+                      <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
                       @if($errors->has('pincode'))
                         <div class="error">{{ $errors->first('pincode') }}</div>
                       @endif
@@ -136,10 +136,10 @@
                     
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="country">Country<span class="text-danger"> *</span></label>
-                      <input type="text" name="country" class="form-control" id="country" placeholder="Enter Country">
-                      @if($errors->has('country'))
-                        <div class="error">{{ $errors->first('country') }}</div>
+                      <label for="county">County</label>
+                      <input type="text" name="county" class="form-control" id="county" placeholder="Enter County">
+                      @if($errors->has('county'))
+                        <div class="error">{{ $errors->first('county') }}</div>
                       @endif
                     </div>
                   </div>
@@ -148,12 +148,12 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="county">County<span class="text-danger"> *</span></label>
-                      <input type="text" name="county" class="form-control" id="county" placeholder="Enter County">
-                      @if($errors->has('county'))
-                        <div class="error">{{ $errors->first('county') }}</div>
-                      @endif
-                    </div>
+                        <label for="country">Country</label>
+                        <input type="text" name="country" class="form-control" id="country" placeholder="Enter Country">
+                        @if($errors->has('country'))
+                          <div class="error">{{ $errors->first('country') }}</div>
+                        @endif
+                      </div>
                   </div>
                 </div>
                 
@@ -221,7 +221,7 @@
           address: {
             required: true
           },
-          city: {
+          /* city: {
             required: true
           },
           state: {
@@ -232,7 +232,7 @@
           },
           country: {
             required: true
-          },
+          }, */
         },
         messages: {
           name: {
@@ -250,7 +250,7 @@
           address: {
             required: "The Address field is required."
           },
-          city: {
+          /* city: {
             required: "The City field is required."
           },
           state: {
@@ -264,58 +264,53 @@
           },
           county: {
             required: "The County field is required."
-          },
+          }, */
         },
         onkeyup: false,
         onblur: true
       });
     });
   </script>
-  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHMC5v6vhu2I3uOdqKaMDUEiQJiqYhoeo&libraries=places&callback=initAutocomplete"></script>
-  <script>
-    let placeSearch;
-    let autocomplete;
-    const componentForm = {
-      locality: "long_name",
-      administrative_area_level_1: "short_name",
-      country: "long_name",
-      postal_code: "short_name",
-    };
+  <!-- <script>
+    var autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById("autocomplete")
+    );
+    autocomplete.addListener('place_changed', function(e) {
+      var place = autocomplete.getPlace();
+      var lat = place.geometry.location.lat();
+      var lng = place.geometry.location.lng();
 
-    function initAutocomplete() {
-      // Create the autocomplete object, restricting the search predictions to
-      // geographical location types.
-      autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById("autocomplete"),
-        { types: ["geocode"] }
-      );
-      // Avoid paying for data that you don't need by restricting the set of
-      // place fields that are returned to just the address components.
-      autocomplete.setFields(["address_component"]);
-      // When the user selects an address from the drop-down, populate the
-      // address fields in the form.
-      autocomplete.addListener("place_changed", fillInAddress);
-    }
-
-    function fillInAddress() {
-      // Get the place details from the autocomplete object.
-      const place = autocomplete.getPlace();
-
-      for (const component in componentForm) {
-        document.getElementById(component).value = "";
-        document.getElementById(component).disabled = false;
-      }
-
-      // Get each component of the address from the place details,
-      // and then fill-in the corresponding field on the form.
-      for (const component of place.address_components) {
-        const addressType = component.types[0];
-
-        if (componentForm[addressType]) {
-          const val = component[componentForm[addressType]];
-          document.getElementById(addressType).value = val;
+      var postal_code = '';
+      var country = '';
+      var city = '';
+      var county = '';
+      var state = '';
+      for (var i = 0; i < place.address_components.length; i++) {
+        if(place.address_components[i].types.indexOf("postal_code") != -1) {
+          postal_code = place.address_components[i].long_name;
         }
+        if(place.address_components[i].types.indexOf("country") != -1) {
+          country = place.address_components[i].long_name;
+        }
+        if(place.address_components[i].types.indexOf("locality") != -1) {
+          city = place.address_components[i].long_name;
+        }
+        if(place.address_components[i].types.indexOf("sublocality_level_1") != -1) {
+          county = place.address_components[i].long_name;
+        }
+        if(place.address_components[i].types.indexOf("administrative_area_level_1") != -1) {
+          state = place.address_components[i].long_name;
+        }
+        console.log(place.address_components[i].types);
+        console.log(place.address_components[i].long_name);
+        console.log('=========');
       }
-    }
-  </script> -->
+      document.getElementById('city').value = city;
+      document.getElementById('state').value = state;
+      document.getElementById('pincode').value = postal_code;
+      document.getElementById('county').value = county;
+      document.getElementById('country').value = country;
+    });
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKW4P7mmbMBCf48mhUTBKvpHfLDhPgP1c&libraries=places" async defer></script> -->
 @stop

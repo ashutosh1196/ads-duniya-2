@@ -37,7 +37,7 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img style="width:50px;" src="{{ $pendingCustomersList[$i]->logo ? $pendingCustomersList[$i]->logo : $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td>
+                  <td><img style="width:50px;" src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td>
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '--' }}</td>
