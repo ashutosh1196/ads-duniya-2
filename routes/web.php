@@ -47,8 +47,8 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/delete', [OrganizationsController::class, 'deleteCustomers'])->name('delete_customer');
       Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
       Route::post('/restore', [OrganizationsController::class, 'restoreCustomer'])->name('restore_customer');
-      Route::get('/add', [OrganizationsController::class, 'addCustomer'])->name('add_customer');
       Route::post('/save', [OrganizationsController::class, 'saveCustomer'])->name('save_customer');
+      Route::get('/check_email', [OrganizationsController::class, 'checkEmail'])->name('check_email');
     });
 
     // User/Job Seekers Routes
@@ -73,6 +73,7 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/delete', [RecruitersController::class, 'deleteRecruiter'])->name('delete_recruiter');
       Route::get('/deleted', [RecruitersController::class, 'deletedRecruitersList'])->name('deleted_recruiters_list');
       Route::post('/restore', [RecruitersController::class, 'restoreRecruiter'])->name('restore_recruiter');
+      Route::get('/add', [OrganizationsController::class, 'addCustomer'])->name('add_customer');
     });
 
     Route::group(['prefix' => 'admins'], function () {

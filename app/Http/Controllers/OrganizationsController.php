@@ -17,6 +17,20 @@ class OrganizationsController extends Controller {
 	public function addCustomer() {
 		return view('add_customer');
 	}
+	
+	/**
+	 * This function is used to Check if the email exists in the table
+	*/
+	public function checkEmail() {
+		$emailExists = Organization::where('email', $_GET['email'])->get();
+		if ($emailExists->isNotEmpty()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		exit;
+	}
 
 	/**
 	 * This function is used to Save Customer
@@ -42,14 +56,20 @@ class OrganizationsController extends Controller {
 		$customer->vat_number = $request->vat_number;
 		$customer->url = $request->url;
 		$customer->domain = parse_url($request->url)['host'];
+		$customer->address = $request->address;
+		$customer->city = $request->city;
+		$customer->state = $request->state;
+		$customer->pincode = $request->pincode;
+		$customer->country = $request->country;
+		$customer->county = $request->county;
 		if($customer->save()) {
 			$recruiter = new Recruiter;
 			$recruiter->email = $customer->email;
 			$recruiter->organization_id = $customer->id;
 			$recruiter->ip_address = $_SERVER["REMOTE_ADDR"];
 			if($recruiter->save()) {
-				$recruitersList = Recruiter::all();
-				return redirect()->route('recruiters_list', ['recruitersList' => $recruitersList])->with('success', 'Recruiter added successfully.');
+				$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
+				return redirect()->route('pending_customers', ['pendingCustomersList' => $pendingCustomersList])->with('success', 'Recruiter added successfully. Please approve.');
 				// return view('add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
 			}
 			else {

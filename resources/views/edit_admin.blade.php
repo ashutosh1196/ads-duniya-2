@@ -19,8 +19,9 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="updateAdminForm" method="post" action="../update">
+            <form id="updateAdminForm" method="post" action="{{ route('update_admin') }}">
               @csrf
+              <input type="hidden" name="id" value="{{ $admin[0]->id }}">
               <div class="card-body">
                 <div class="form-group">
                   <label for="name">Name</label>

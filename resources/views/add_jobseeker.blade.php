@@ -31,52 +31,61 @@
                     </ul>
                   </div>
                 @endif
-                <!-- <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
-                  @if($errors->has('name'))
-                    <div class="error">{{ $errors->first('name') }}</div>
-                  @endif
-                </div> -->
-                
-                <div class="form-group">
-                  <label for="first_name">First Name</label>
-                  <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first_name">
-                  @if($errors->has('first_name'))
-                    <div class="error">{{ $errors->first('first_name') }}</div>
-                  @endif
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="first_name">First Name</label>
+                      <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first_name">
+                      @if($errors->has('first_name'))
+                        <div class="error">{{ $errors->first('first_name') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                    
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="last_name">Last Name</label>
+                      <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last_name">
+                      @if($errors->has('last_name'))
+                        <div class="error">{{ $errors->last('last_name') }}</div>
+                      @endif
+                    </div>
+                  </div>
                 </div>
                 
-                <div class="form-group">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last_name">
-                  @if($errors->has('last_name'))
-                    <div class="error">{{ $errors->last('last_name') }}</div>
-                  @endif
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
+                      @if($errors->has('email'))
+                        <div class="error">{{ $errors->last('email') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                    
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                      @if($errors->has('password'))
+                        <div class="error">{{ $errors->last('password') }}</div>
+                      @endif
+                    </div>
+                  </div>
                 </div>
                 
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
-                  @if($errors->has('email'))
-                    <div class="error">{{ $errors->last('email') }}</div>
-                  @endif
-                </div>
-                
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
-                  @if($errors->has('password'))
-                    <div class="error">{{ $errors->last('password') }}</div>
-                  @endif
-                </div>
-                
-                <div class="form-group">
-                  <label for="confirm_password">Confirm Password</label>
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
-                  @if($errors->has('confirm_password'))
-                    <div class="error">{{ $errors->last('confirm_password') }}</div>
-                  @endif
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="confirm_password">Confirm Password</label>
+                      <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
+                      @if($errors->has('confirm_password'))
+                        <div class="error">{{ $errors->last('confirm_password') }}</div>
+                      @endif
+                    </div>
+                  </div>
                 </div>
 
               </div>

@@ -31,7 +31,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($recruitersList); $i++) {
+                <?php for ($i=0; $i < count(is_countable($recruitersList) ? $recruitersList : []); $i++) {
                   $organisation = \App\Models\Organization::where('id', $recruitersList[$i]->organization_id)->get();
                   ?>
                 <tr>

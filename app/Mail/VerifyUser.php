@@ -26,7 +26,7 @@ class VerifyUser extends Mailable {
 	 * @return $this
 	*/
 	public function build() {
-		return $this->from('no_reply@whichvocation.com', "Which Vocation")
+		return $this->from( env("FROM_EMAIL"), "Which Vocation" )
 					->subject('User Verification')
 					->view('emails.verify_user')
 					->with(['username' => $this->username, 'link' => $this->link]);

@@ -87,22 +87,17 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function updateAdmin(Request $request) {
-		try {
-			$updateAdmin = Admin::where('id', $request->id)->update([
-				'name' => $request->name,
-				'email' => $request->email,
-				'role_id' => $request->role_id,
-			]);
-			if($updateAdmin) {
-				$adminsList = Admin::where('role_id', '!=', 1)->get();
-				return redirect()->route('admins_list', ['adminsList' => $adminsList])->with('success', "Admin Updated Successfully!");
-			}
-			else {
-				return back()->with('error', "Something went wrong! Please try again.");
-			}
+		$updateAdmin = Admin::where('id', $request->id)->update([
+			'name' => $request->name,
+			'email' => $request->email,
+			'role_id' => $request->role_id,
+		]);
+		if($updateAdmin) {
+			$adminsList = Admin::where('role_id', '!=', 1)->get();
+			return redirect()->route('admins_list', ['adminsList' => $adminsList])->with('success', "Admin Updated Successfully!");
 		}
-		catch (\Throwable $error) {
-			return back(['error', $error])->with('error', "Something went wrong! Please try again.");
+		else {
+			return back()->with('error', "Something went wrong! Please try again.");
 		}
 	}
 
