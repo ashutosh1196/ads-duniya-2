@@ -303,22 +303,22 @@ return [
                 [
                     'text' => 'jobseekers',
                     'icon' => 'fas fa-fw fa-briefcase',
-                    'url'  => 'admin_panel/recycle_bin/jobseekers/deleted*',
+                    'url'  => 'admin_panel/recycle_bin/jobseekers/deleted',
                 ],
                 [
                     'text' => 'recruiters',
                     'icon' => 'fas fa-fw fa-user-tie',
-                    'url'  => 'admin_panel/recycle_bin/recruiters/deleted*',
+                    'url'  => 'admin_panel/recycle_bin/recruiters/deleted',
                 ],
                 [
                     'text' => 'admins',
                     'icon' => 'fas fa-fw fa-universal-access',
-                    'url'  => 'admin_panel/recycle_bin/admins/deleted*',
+                    'url'  => 'admin_panel/recycle_bin/admins/deleted',
                 ],
                 [
                     'text' => 'customers',
                     'icon' => 'fas fa-fw fa-building',
-                    'url'  => 'admin_panel/recycle_bin/customers/deleted*',
+                    'url'  => 'admin_panel/recycle_bin/customers/deleted',
                 ],
             ],
         ],
