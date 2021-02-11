@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header alert">
             <h3>Add Admin</h3>
           </div>
           <div class="card-body">
@@ -21,15 +21,17 @@
             @endif
             <form id="addAdminForm" method="post", action="save">
               @csrf
-              <div class="card-body">
-                
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
-                  @if($errors->has('name'))
-                    <div class="error">{{ $errors->first('name') }}</div>
-                  @endif
-                </div>
+              <div class="card-body">                
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                      @if($errors->has('name'))
+                        <div class="error">{{ $errors->first('name') }}</div>
+                      @endif
+                    </div>
+                  </div>
                 
                 <!-- <div class="form-group">
                   <label for="first_name">First Name</label>
@@ -46,43 +48,47 @@
                     <div class="error">{{ $errors->last('last_name') }}</div>
                   @endif
                 </div> -->
-                
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
-                  @if($errors->has('email'))
-                    <div class="error">{{ $errors->last('email') }}</div>
-                  @endif
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
+                    @if($errors->has('email'))
+                      <div class="error">{{ $errors->last('email') }}</div>
+                    @endif
+                  </div>
                 </div>
-                
-                <div class="form-group">
-                  <label for="role">Role</label>
-                  <select name="role" class="form-control" id="role">
-                    <?php for ($i=0; $i < count($roles); $i++) { ?> 
-                      <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
-                    <?php } ?>
-                  </select>
-                  @if($errors->has('role'))
-                    <div class="error">{{ $errors->last('role') }}</div>
-                  @endif
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="role">Role</label>
+                    <select name="role" class="form-control" id="role">
+                      <?php for ($i=0; $i < count($roles); $i++) { ?> 
+                        <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
+                      <?php } ?>
+                    </select>
+                    @if($errors->has('role'))
+                      <div class="error">{{ $errors->last('role') }}</div>
+                    @endif
+                  </div>
                 </div>
-                
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
-                  @if($errors->has('password'))
-                    <div class="error">{{ $errors->last('password') }}</div>
-                  @endif
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                    @if($errors->has('password'))
+                      <div class="error">{{ $errors->last('password') }}</div>
+                    @endif
+                  </div>
                 </div>
-                
-                <div class="form-group">
-                  <label for="confirm_password">Confirm Password</label>
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
-                  @if($errors->has('confirm_password'))
-                    <div class="error">{{ $errors->last('confirm_password') }}</div>
-                  @endif
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
+                    @if($errors->has('confirm_password'))
+                      <div class="error">{{ $errors->last('confirm_password') }}</div>
+                    @endif
+                  </div>
                 </div>
-
+               </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

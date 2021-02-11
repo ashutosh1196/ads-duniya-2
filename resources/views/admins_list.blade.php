@@ -41,7 +41,7 @@
                     <td>{{ $role[0]->name }}</td>
                     <td>Active</td>
                     <th>View</th>
-                    <td width="100"  style="text-align:center;">
+                    <td width="200"  style="text-align:center;">
                       <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                       <a style="margin-left:5px;" class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
                       <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $adminsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
