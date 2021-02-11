@@ -43,7 +43,7 @@
                   <td>
                   <a href="view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <!-- <a href="edit/{{$whitelistedCustomersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
+                    <a href="edit/{{$whitelistedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>

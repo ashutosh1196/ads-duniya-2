@@ -45,7 +45,7 @@
                   <td>
                     <a href="view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                    <!-- <a href="edit/{{$rejectedCustomersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
+                    <a href="edit/{{$rejectedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $rejectedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
