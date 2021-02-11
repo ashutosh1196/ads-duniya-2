@@ -188,7 +188,7 @@ return [
 
     'use_route_url' => false,
     'dashboard_url' => 'admin_panel/dashboard',
-    'logout_url' => 'logout',
+    'logout_url' => '/logout',
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
@@ -367,12 +367,12 @@ return [
                     'url'  => 'admin_panel/roles_list',
                 ]
             ],
-        ],
+        ], */
         [
             'text' => 'logout',
             'icon'    => 'fas fa-fw fa-sign-out-alt',
-            'url'  => '#'
-        ], */
+            'url'  => '/logout'
+        ],
     ],
 
     /*
