@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Organization;
 use App\Models\Recruiter;
+use App\Models\Country;
 use App\Mail\VerifyUser;
 use Mail;
 use Illuminate\Support\Facades\Gate;
@@ -15,7 +16,8 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Add Job Seeker View
 	*/
 	public function addCustomer() {
-		return view('add_customer');
+		$countries = Country::all();
+		return view('add_customer', ['countries' => $countries]);
 	}
 	
 	/**

@@ -39,7 +39,7 @@
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
                 <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
                 <td>Active</td>
-                <td width="100"  style="text-align:center;">
+                <td style="text-align:center;">
                   <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                   <a style="margin-left:5px;" class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
                   <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobseekersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>

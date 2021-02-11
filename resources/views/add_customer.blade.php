@@ -33,130 +33,143 @@
                 @endif
                 
                 <!-- Form Fields -->
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="name">Company Name<span class="text-danger"> *</span></label>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter Company Name">
-                      @if($errors->has('name'))
-                        <div class="error">{{ $errors->first('name') }}</div>
-                      @endif
-                    </div>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" placeholder="Enter Company Email">
-                      <div id ="email_error" class="error"></div>
-                      @if($errors->has('email'))
-                        <div class="error">{{ $errors->first('email') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
-                      <input type="text" name="contact_number" class="form-control" id="contact_number" placeholder="Enter Contact Number">
-                      @if($errors->has('contact_number'))
-                        <div class="error">{{ $errors->first('contact_number') }}</div>
-                      @endif
-                    </div>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="vat_number">VAT Number (Optional)</label>
-                      <input type="text" name="vat_number" class="form-control" id="vat_number" placeholder="Enter VAT Number">
-                      @if($errors->has('vat_number'))
-                        <div class="error">{{ $errors->first('vat_number') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="url">Company Domain URL<span class="text-danger"> *</span></label>
-                      <input type="text" name="url" class="form-control" id="url" placeholder="http://example.com">
-                      @if($errors->has('url'))
-                        <div class="error">{{ $errors->first('url') }}</div>
-                      @endif
-                    </div>
-                  </div>
-
-                  <!-- ADDRESS FIELDS -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="address">Address<span class="text-danger"> *</span></label>
-                      <input type="text" name="address" class="form-control" id="autocomplete" placeholder="Enter Address">
-                      @if($errors->has('address'))
-                        <div class="error">{{ $errors->first('address') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
                 
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="city">City</label>
-                      <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
-                      @if($errors->has('city'))
-                        <div class="error">{{ $errors->first('city') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                    
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="state">State</label>
-                      <input type="text" name="state" class="form-control" id="state" placeholder="Enter State">
-                      @if($errors->has('state'))
-                        <div class="error">{{ $errors->first('state') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="pincode">Zipcode</label>
-                      <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
-                      @if($errors->has('pincode'))
-                        <div class="error">{{ $errors->first('pincode') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                    
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="county">County</label>
-                      <input type="text" name="county" class="form-control" id="county" placeholder="Enter County">
-                      @if($errors->has('county'))
-                        <div class="error">{{ $errors->first('county') }}</div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" name="country" class="form-control" id="country" placeholder="Enter Country">
-                        @if($errors->has('country'))
-                          <div class="error">{{ $errors->first('country') }}</div>
+                <!-- INFORMATION FIELDS -->
+                <div class="information_fields">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="name">Company Name<span class="text-danger"> *</span></label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Company Name">
+                        @if($errors->has('name'))
+                          <div class="error">{{ $errors->first('name') }}</div>
                         @endif
                       </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter Company Email">
+                        <div id ="email_error" class="error"></div>
+                        @if($errors->has('email'))
+                          <div class="error">{{ $errors->first('email') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
+                        <input type="text" name="contact_number" class="form-control" id="contact_number" placeholder="Enter Contact Number">
+                        @if($errors->has('contact_number'))
+                          <div class="error">{{ $errors->first('contact_number') }}</div>
+                        @endif
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="vat_number">VAT Number (Optional)</label>
+                        <input type="text" name="vat_number" class="form-control" id="vat_number" placeholder="Enter VAT Number">
+                        @if($errors->has('vat_number'))
+                          <div class="error">{{ $errors->first('vat_number') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="url">Company Domain URL<span class="text-danger"> *</span></label>
+                        <input type="text" name="url" class="form-control" id="url" placeholder="http://example.com">
+                        @if($errors->has('url'))
+                          <div class="error">{{ $errors->first('url') }}</div>
+                        @endif
+                      </div>
+                    </div>
                   </div>
                 </div>
-                
+                <!-- /INFORMATION FIELDS -->
+                <hr/>
+                <!-- ADDRESS FIELDS -->
+                <div class="address_fields">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="address">Address<span class="text-danger"> *</span></label>
+                        <input type="text" name="address" class="form-control" id="autocomplete" placeholder="Enter Address">
+                        @if($errors->has('address'))
+                          <div class="error">{{ $errors->first('address') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
+                        @if($errors->has('city'))
+                          <div class="error">{{ $errors->first('city') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                      
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" name="state" class="form-control" id="state" placeholder="Enter State">
+                        @if($errors->has('state'))
+                          <div class="error">{{ $errors->first('state') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="pincode">Zipcode</label>
+                        <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
+                        @if($errors->has('pincode'))
+                          <div class="error">{{ $errors->first('pincode') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                      
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="county">County</label>
+                        <input type="text" name="county" class="form-control" id="county" placeholder="Enter County">
+                        @if($errors->has('county'))
+                          <div class="error">{{ $errors->first('county') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label for="country">Country</label>
+                          <select name="country" class="form-control" id="country" >
+                            <option value="" hidden>Select Country</option>
+                            <?php for($i=0; $i<count($countries); $i++) { ?>
+                              <option value="{{ $countries[0]->id }}">{{ $countries[0]->name }}</option>
+                            <?php } ?>
+                          </select>
+                          @if($errors->has('country'))
+                            <div class="error">{{ $errors->first('country') }}</div>
+                          @endif
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /ADDRESS FIELDS -->
+
                 <!-- Form Fields -->
 
               </div>
@@ -176,8 +189,10 @@
   <style>
     .error {
       color: #ff0000;
-      font-weight: 500 !important;
+      font-weight: 300 !important;
     }
+    .information_fields { margin-bottom: 30px; }
+    .address_fields { margin-top: 30px; }
   </style>
 @stop
 
