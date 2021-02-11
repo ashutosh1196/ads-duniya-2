@@ -2,10 +2,10 @@
 
 return [
 
-    'admin_url' => env('ADMIN_URL', 'http://127.0.0.1:8000/'),
+    'admin_url' => env('ADMIN_URL', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/'),
     'website_url' => env('WEBSITE_URL', 'http://192.168.1.65/which-vocation-web/public/'),
     'email_verify_url' => env('EMAIL_VERIFY_URL', 'http://192.168.1.65/which-vocation-web/public/'),
-    'default_avatar' => env('DEFAULT_AVATAR', 'http://127.0.0.1:8000/images/avatar.png'),
+    'default_avatar' => env('DEFAULT_AVATAR', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/avatar.png'),
 
     /*
     |--------------------------------------------------------------------------
