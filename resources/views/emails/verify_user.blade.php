@@ -59,7 +59,7 @@
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
                                   <div align="center" class="img-container center fixedwidth" style="padding-right: 15px;padding-left: 15px;">
                                       <div style="font-size:1px;line-height:30px"> </div>
-                                      <a href="http://server3.rvtechnologies.in/which-vocation/website/Amrik-which-vocation-web/public/" style="outline:none" tabindex="-1" target="_blank"><img align="center" alt="Your Store Logo" border="0" class="center fixedwidth" src="{{ assets('images/logo-email.png') }}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; padding: 20px 0; width: 100%; max-width: 120px; display: block;" title="Your Store Logo" width="120"/></a>
+                                      <a href="http://server3.rvtechnologies.in/which-vocation/website/Amrik-which-vocation-web/public/" style="outline:none" tabindex="-1" target="_blank"><img align="center" alt="Your Store Logo" border="0" class="center fixedwidth" src="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/logo-email.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; padding: 20px 0; width: 100%; max-width: 120px; display: block;" title="Your Store Logo" width="120"/></a>
                                       <div style="font-size:1px;line-height:30px"> </div>
                                   </div>
                                 </div>
