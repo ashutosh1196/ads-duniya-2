@@ -94,6 +94,9 @@
             $("#close_button").click(function() {
                 $(".alert").hide();
             });
+            setTimeout(() => {
+                $(".alert").hide();
+            }, 3000);
         });
     </script>
 @stop

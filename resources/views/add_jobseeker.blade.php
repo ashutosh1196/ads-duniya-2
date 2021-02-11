@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header alert">
+          <div class="card-header">
           <a class="btn btn-sm btn-info float-right" href="{{ url()->previous() }}">Back</a>
             <h3>Add Jobseeker</h3>
           </div>
