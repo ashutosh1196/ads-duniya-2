@@ -3,6 +3,7 @@
 @section('title', 'Customer Information')
 
 @section('content_header')
+  <a class="btn btn-sm btn-info float-right" href="{{ url()->previous() }}">Back</a>
   <h1>Customer Information</h1>
 @stop
 
@@ -118,13 +119,13 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Email</label>
+                  <label>Company Or Consultants Email</label>
                   <input class="form-control" placeholder="test123@gmail.com" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Phone Number</label>
+                  <label>Contact Number</label>
                   <input class="form-control" placeholder="5675675677" readonly>
                 </div>
               </div>
@@ -136,13 +137,13 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Website URL</label>
+                  <label>Company Domain URL</label>
                   <input class="form-control" placeholder="http://test123.com" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Domain</label>
+                  <label>Company Domain</label>
                   <input class="form-control" placeholder="test123.com" readonly>
                 </div>
               </div>
@@ -176,16 +177,18 @@
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Location</label>
                   <input class="form-control" placeholder="" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Whitelisted Status<a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a></label>
+                  <label>Whitelist Status
+                    <!-- <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
+                    <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a> -->
+                  </label>
                   <input class="form-control" placeholder="Pending" readonly>
                 </div>
               </div>

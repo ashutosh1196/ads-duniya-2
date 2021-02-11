@@ -3,6 +3,7 @@
 @section('title', 'Recruiter Information')
 
 @section('content_header')
+  <a class="btn btn-sm btn-info float-right" href="{{ url()->previous() }}">Back</a>
   <h1>Recruiter Information</h1>
 @stop
 
