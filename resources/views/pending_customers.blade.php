@@ -31,9 +31,9 @@
               </thead>
               <tbody>
                 <?php for ($i=0; $i < count($pendingCustomersList); $i++) {
-                  $websiteImagesPath = env("WEBSITE_URL").'companyLogos/';
-                  $adminImagesPath = env("ADMIN_URL").'images/';
-                  $logo = $pendingCustomersList[$i]->logo != null ? $websiteImagesPath.$pendingCustomersList[$i]->logo : $adminImagesPath.'avatar.png';
+                  $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
+                  $defaultImage = config('adminlte.default_avatar');
+                  $logo = $pendingCustomersList[$i]->logo != null ? $websiteImagesPath.$pendingCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>

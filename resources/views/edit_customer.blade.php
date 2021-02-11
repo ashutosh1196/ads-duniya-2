@@ -242,7 +242,7 @@
           },
           pincode: {
             required: true,
-            // max: 6
+            maxlength: 6
           },
           country: {
             required: true
@@ -275,7 +275,7 @@
           },
           pincode: {
             required: "The Zipcode field is required.",
-            // max: "The Zipcode must be of maximum 6 characters."
+            maxlength: "The Zipcode must be of maximum 6 characters."
           },
           country: {
             required: "The Country field is required."

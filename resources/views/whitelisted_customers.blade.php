@@ -30,9 +30,9 @@
               </thead>
               <tbody>
                 <?php for ($i=0; $i < count($whitelistedCustomersList); $i++) {
-                  $websiteImagesPath = env("WEBSITE_URL").'companyLogos/';
-                  $adminImagesPath = env("ADMIN_URL").'images/';
-                  $logo = $whitelistedCustomersList[$i]->logo != null ? $websiteImagesPath.$whitelistedCustomersList[$i]->logo : $adminImagesPath.'avatar.png';
+                  $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
+                  $defaultImage = config('adminlte.default_avatar');
+                  $logo = $whitelistedCustomersList[$i]->logo != null ? $websiteImagesPath.$whitelistedCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>

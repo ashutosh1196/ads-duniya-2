@@ -20,9 +20,9 @@
           <table class="table">
             <tr>
               <?php
-                $websiteImagesPath = env("WEBSITE_URL").'images/companyLogos/';
-                $adminImagesPath = env("ADMIN_URL").'images/';
-                $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $adminImagesPath.'avatar.png';
+                $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
+                $defaultImage = config('adminlte.default_avatar');
+                $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $defaultImage;
               ?>
               <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}">
             </tr>

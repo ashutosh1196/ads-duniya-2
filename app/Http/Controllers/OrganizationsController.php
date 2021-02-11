@@ -144,7 +144,7 @@ class OrganizationsController extends Controller {
 		if($whitelistCustomer) {
 			$customer = Organization::where('id', $customerId)->get();
 			$random_pass = uniqid();
-			$link = env("EMAIL_VERIFY_URL").$random_pass;
+			$link = config("adminlte.EMAIL_VERIFY_URL").$random_pass;
 			$mailSent = Mail::to($customer[0]->email)->send(new VerifyUser($customer[0]->name, $link));
 			$updateRecruiter = Recruiter::where('email', $customer[0]->email)->update(['signup_token' => $random_pass]);
 			if($updateRecruiter) {

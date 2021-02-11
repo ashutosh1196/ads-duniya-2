@@ -2,6 +2,11 @@
 
 return [
 
+    'admin_url' => env('ADMIN_URL', 'http://127.0.0.1:8000/'),
+    'website_url' => env('WEBSITE_URL', 'http://192.168.1.65/which-vocation-web/public/'),
+    'email_verify_url' => env('EMAIL_VERIFY_URL', 'http://192.168.1.65/which-vocation-web/public/'),
+    'default_avatar' => env('DEFAULT_AVATAR', 'http://127.0.0.1:8000/images/avatar.png'),
+
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -188,7 +193,7 @@ return [
 
     'use_route_url' => false,
     'dashboard_url' => 'admin_panel/dashboard',
-    'logout_url' => '/logout',
+    'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
@@ -367,12 +372,12 @@ return [
                     'url'  => 'admin_panel/roles_list',
                 ]
             ],
-        ], */
+        ],
         [
             'text' => 'logout',
             'icon'    => 'fas fa-fw fa-sign-out-alt',
-            'url'  => '/logout'
-        ],
+            'url'  => '#'
+        ], */
     ],
 
     /*

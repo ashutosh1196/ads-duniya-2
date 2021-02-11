@@ -31,13 +31,13 @@
               </thead>
               <tbody>
                 <?php for ($i=0; $i < count($rejectedCustomersList); $i++) {
-                  $websiteImagesPath = env("WEBSITE_URL").'companyLogos/';
-                  $adminImagesPath = env("ADMIN_URL").'images/';
-                  $logo = $rejectedCustomersList[$i]->logo != null ? $websiteImagesPath.$rejectedCustomersList[$i]->logo : $adminImagesPath.'avatar.png';
+                  $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
+                  $defaultImage = config('adminlte.default_avatar');
+                  $logo = $rejectedCustomersList[$i]->logo != null ? $websiteImagesPath.$rejectedCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img src="{{ $rejectedCustomersList[$i]->logo ? $rejectedCustomersList[$i]->logo : $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td>
+                  <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td>
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
                   <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '--' }}</td>
