@@ -11,6 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
+          <a class="btn btn-sm btn-info float-right" href="{{ url()->previous() }}">Back</a>
             <h3>Add Role</h3>
           </div>
           <div class="card-body">
