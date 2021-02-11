@@ -11,7 +11,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <a class="btn btn-sm btn-info float-right" href="{{ url()->previous() }}">Back</a>
+        <a class="btn btn-sm btn-success float-right" href="{{ url()->previous() }}">Back</a>
         <div class="card-header">{{ __('Profile') }}</div>
         <div class="card-body">
           @if (session('status'))
