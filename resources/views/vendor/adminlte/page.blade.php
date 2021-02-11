@@ -11,10 +11,15 @@
 @section('adminlte_css')
     @stack('css')
     @yield('css')
-    <!-- <style>
-        li.nav-item.has-treeview.menu-open:first-child .nav-treeview a.nav-link.active { background-color: rgba(113, 220, 245, 0.9) !important; }
-        li.nav-item.has-treeview.menu-open:second-child .nav-treeview a.nav-link.active { background-color: #ffffff !important; }
-    </style> -->
+    <style>
+        a.back-button {
+            position: relative;
+            top: 5px;
+            align-self: flex-end;
+            float: right;
+            width: 100px;
+        }
+    </style>
 @stop
 
 @section('classes_body', $layoutHelper->makeBodyClasses())

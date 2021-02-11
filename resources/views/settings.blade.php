@@ -3,6 +3,7 @@
 @section('title', 'Settings')
 
 @section('content_header')
+  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
   <h1>Settings</h1>
 @stop
 
@@ -11,8 +12,9 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <a class="btn btn-sm btn-success float-right" href="{{ url()->previous() }}">Back</a>
-        <div class="card-header">{{ __('Profile') }}</div>
+        <div class="card-header">
+          {{ __('Profile') }
+        }</div>
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">

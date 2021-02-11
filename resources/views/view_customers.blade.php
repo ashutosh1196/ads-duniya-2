@@ -3,7 +3,7 @@
 @section('title', 'Customer Information')
 
 @section('content_header')
-  <a class="btn btn-sm btn-success float-right" href="{{ url()->previous() }}">Back</a>
+  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
   <h1>Customer Information</h1>
 @stop
 
