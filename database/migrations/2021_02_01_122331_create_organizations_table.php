@@ -17,6 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('country_code');
             $table->string('contact_number');
             $table->string('logo')->nullable();
             $table->string('url');
