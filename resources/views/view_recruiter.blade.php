@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="container">
+<div class="">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
@@ -93,103 +93,103 @@
 
           <form class="form_wrap">
             <div class="row">
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Name</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>First Name</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Name</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email</label>
                   <input class="form-control" placeholder="test123@gmail.com" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Phone Number</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Status</label>
                   <input class="form-control" placeholder="Inactive" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Is Parent?</label>
                   <input class="form-control" placeholder="YES" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>IP Address</label>
                   <input class="form-control" placeholder="111.93.38.130" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Logged In With</label>
                   <input class="form-control" placeholder="Email" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Logged In Date & Time</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Status</label>
                   <input class="form-control" placeholder="Not Verified" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Date & Time</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>User Locked Status</label>
                   <input class="form-control" placeholder="Not Locked" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>User Locked Date & Time</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Company Name</label>
                   <input class="form-control" placeholder="test" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created Date & Time</label>
                   <input class="form-control" placeholder=" February 09, 2021 - 11:04 AM" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Updated Date & Time</label>
                   <input class="form-control" placeholder="February 11, 2021 - 06:06 AM" readonly>

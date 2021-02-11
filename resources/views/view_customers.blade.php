@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="container">
+<div class="">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
@@ -20,11 +20,11 @@
 <!--           <table class="table form">
             <tr>
               <?php
-                $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
-                $defaultImage = config('adminlte.default_avatar');
-                $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $defaultImage;
+                $websiteImagesPath = env("WEBSITE_URL").'images/companyLogos/';
+                $adminImagesPath = env("ADMIN_URL").'images/';
+                $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $adminImagesPath.'avatar.png';
               ?>
-              <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}">
+              <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" style="width:100px;">
             </tr>
             <tr>
             <tr>
@@ -80,14 +80,14 @@
               <th>Whitelisted Status</th>
               <td>
                 @if($viewCustomer[0]->is_whitelisted == 0)
-                  <span>Pending</span>
+                  <span style="margin-right:20px;">Pending</span>
                   <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
                 @elseif($viewCustomer[0]->is_whitelisted == 1)
-                  <span>Whitelisted</span>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                  <span style="margin-right:20px;">Whitelisted</span>
+                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
                 @elseif($viewCustomer[0]->is_whitelisted == 2)
-                  <span>Rejected</span>
+                  <span style="margin-right:20px;">Rejected</span>
                   <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
                 @endif
               </td>
@@ -106,102 +106,102 @@
             </tr>
           </table> -->
 
-          <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;">
-
+         <!--  <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;"> -->
+         
           <form class="form_wrap">
             <div class="row">
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Name</label>
+                  <label>Company Name</label>
                   <input class="form-control" placeholder="Test" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email</label>
                   <input class="form-control" placeholder="test123@gmail.com" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Phone Number</label>
                   <input class="form-control" placeholder="5675675677" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>VAT Number</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Website URL</label>
                   <input class="form-control" placeholder="http://test123.com" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Domain</label>
                   <input class="form-control" placeholder="test123.com" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Address</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>City</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>State</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Country</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Zip Code</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Location</label>
                   <input class="form-control" placeholder="" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Whitelisted Status<a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
                   <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a></label>
                   <input class="form-control" placeholder="Pending" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created By</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created Date</label>
                   <input class="form-control" placeholder="February 09, 2021 - 11:04 AM" readonly>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Updated Date</label>
                   <input class="form-control" placeholder="February 09, 2021 - 11:04 AM" readonly>
