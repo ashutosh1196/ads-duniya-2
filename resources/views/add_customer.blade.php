@@ -158,7 +158,7 @@
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
                             <?php for($i=0; $i<count($countries); $i++) { ?>
-                              <option value="{{ $countries[0]->name }}">{{ $countries[0]->name }}</option>
+                              <option value="{{ $countries[$i]->name }}">{{ $countries[$i]->name }}</option>
                             <?php } ?>
                           </select>
                           @if($errors->has('country'))
