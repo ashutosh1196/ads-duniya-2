@@ -33,7 +33,7 @@
                 @endif
                 
                 <!-- Form Fields -->
-                <input type="hidden" name="id" value="{{ $customer[0]->id }}">
+                <input type="hidden" name="id" id="customer_id" value="{{ $customer[0]->id }}">
                 <!-- INFORMATION FIELDS -->
                 <div class="information_fields">
                   <div class="row">
@@ -199,6 +199,24 @@
 @section('js')
   <script>
     $(document).ready(function() {
+      $("#email").blur(function() {
+        $.ajax({
+          type:"GET",
+          url:"{{ route('check_email') }}",
+          data: {
+            email: $(this).val(),
+            id: $("#customer_id").val()
+          },
+          success: function(result) {
+            if(result) {
+              $("#email_error").html("This email is already registered.");
+            }
+            else {
+              $("#email_error").html("");
+            }
+          }
+        });
+      });
       var addCustomerForm = $( "#addCustomerForm" );
       addCustomerForm.validate({
         ignore: [],

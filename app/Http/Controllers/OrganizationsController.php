@@ -13,25 +13,37 @@ use Illuminate\Support\Facades\Gate;
 class OrganizationsController extends Controller {
 	
 	/**
+	 * This function is used to Check if the email exists in the table
+	*/
+	public function checkEmail() {
+		if(isset($_GET['id'])) {
+			$emailExists = Organization::where('email', $_GET['email'])->where('id', '!=', $_GET['id'])->get();
+			if ($emailExists->isNotEmpty()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			exit;
+		}
+		else {
+			$emailExists = Organization::where('email', $_GET['email'])->get();
+			if ($emailExists->isNotEmpty()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			exit;
+		}
+	}
+	
+	/**
 	 * This function is used to Show Add Job Seeker View
 	*/
 	public function addCustomer() {
 		$countries = Country::all();
 		return view('add_customer', ['countries' => $countries]);
-	}
-	
-	/**
-	 * This function is used to Check if the email exists in the table
-	*/
-	public function checkEmail() {
-		$emailExists = Organization::where('email', $_GET['email'])->get();
-		if ($emailExists->isNotEmpty()) {
-			return true;
-		}
-		else {
-			return false;
-		}
-		exit;
 	}
 
 	/**
