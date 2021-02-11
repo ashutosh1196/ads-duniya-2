@@ -17,7 +17,7 @@
               {{ session('status') }}
             </div>
           @endif
-          <table class="table">
+<!--           <table class="table">
             <tr>
             <tr>
               <th>Name </th>
@@ -47,7 +47,48 @@
               <th>Last Updated date</th>
               <td>{{ date('F d, Y - H:i A', strtotime($viewAdmin[0]->updated_at)) }}</td>
             </tr>
-          </table>
+          </table> -->
+
+          <form class="form_wrap">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input class="form-control" placeholder=" Test Admin" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" placeholder="test_admin@gmail.com" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Email Verification Date</label>
+                  <input class="form-control" placeholder="--" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Role</label>
+                  <input class="form-control" placeholder="Admin" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Created Date</label>
+                  <input class="form-control" placeholder="February 09, 2021 - 14:35 PM" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Last Updated Date</label>
+                  <input class="form-control" placeholder="February 09, 2021 - 14:35 PM" readonly>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@
     font-weight: 600;
 }
 .sidebar-mini .wrapper .sidebar-dark-primary ul.nav-pills li.nav-item a {
-    background-color: #000000;
+    background-color: #343d49;
     color: #ffffff;
 }
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a {
@@ -349,21 +349,93 @@ section.content .small-box:hover a.small-box-footer img {
     margin-top: 15px;
 }
 .dataTables_wrapper table tbody tr td:last-child a {
-position: relative;
-top: -5px;
+	position: relative;
+	top: -5px;
 }
-
+.sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a {
+    background-color: #f6f7fb;
+}
 
 /*Customer Information*/
 
-.content-wrapper .card-body img {
+.content-wrapper .card-body img.profile {
+    margin: 40px auto;
+    display: block;
+}
+.wrapper .content .card-body form.form_wrap .form-group label,
+.content-wrapper .card-body .form-group label {
+    font-size: 14px;
+    font-weight: 600;
+}
+.wrapper .content .card-body form.form_wrap .form-group input::placeholder,
+.content-wrapper .card-body .form-group input, .content-wrapper .card-body .form-group select {
+    font-size: 13px;
+    font-weight: 400;
+    color: #343d49;
+}
+.wrapper .content .card-body form.form_wrap .form-group input {
+    background-color: #f6f7fb;
+    opacity: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+}
+.wrapper .content .alert.alert-success,
+.wrapper .content .alert-danger {
+    font-size: 14px;
+}
+body.sidebar-mini .sweet-alert h2 {
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+body.sidebar-mini .sweet-alert p {
+    font-size: 14px;
+}
+body.sidebar-mini .sweet-alert .sa-confirm-button-container button.confirm {
+    background-color: #2d8427 !important;
+    box-shadow: #2d8427 0px 0px 2px, rgb(0 0 0 / 5%) 0px 0px 0px 1px inset !important;
+    font-size: 12px;
+}
+body.sidebar-mini .sweet-alert button.cancel {
+    background-color: #dc3545;
+    font-size: 12px;
+}
+body.sidebar-mini .sweet-alert .sa-icon.sa-warning .sa-body {
+    background-color: #dc3545;
+}
+body.sidebar-mini .sweet-alert .sa-icon.sa-warning .sa-dot {
+    background-color: #dc3545;
+}
+body.sidebar-mini .sweet-alert .sa-icon.sa-warning {
+    border-color: #dc3545;
+}
+body.sidebar-mini .sa-button-container {
+    padding-bottom: 20px;
+}
+.content-wrapper .card .card-header.alert h3 {
+    font-size: 20px;
+    margin: 0;
+    padding: 15px 0;
+}
+.card-header.alert {
+    margin: 0 20px;
+    border-radius: 0;
+}
+.content-wrapper .card-footer {
+    margin-bottom: 20px;
+}
+.content-wrapper .card-body .form-group.alert {
+    margin: 0;
+    padding: 4px 0 0px 0;
+    font-size: 14px;
+}
+.content-wrapper .card-footer button {
+    background-color: #2d8427;
+    border: 1px solid #2d8427;
+    font-size: 14px;
+    padding: 8px 30px;
     margin: 0 auto;
     display: block;
 }
-/*.content-wrapper .card-body table.table th,
-.content-wrapper .card-body table.table td {
-    border: none;
-}*/
 
 /*Responsive*/
 

@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header alert">
             <h3>Edit Admin</h3>
           </div>
           <div class="card-body">
@@ -23,34 +23,39 @@
               @csrf
               <input type="hidden" name="id" value="{{ $admin[0]->id }}">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" value="{{ $admin[0]->name }}">
-                  @if($errors->has('name'))
-                    <div class="error">{{ $errors->first('name') }}</div>
-                  @endif
-                </div>
-                
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}">
-                  @if($errors->has('email'))
-                    <div class="error">{{ $errors->last('email') }}</div>
-                  @endif
-                </div>
-                
-                <div class="form-group">
-                  <label for="role_id">Role</label>
-                  <select name="role_id" class="form-control" id="role_id">
-                    <?php for ($i=0; $i < count($roles); $i++) { ?> 
-                      <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
-                    <?php } ?>
-                  </select>
-                  @if($errors->has('role_id'))
-                    <div class="error">{{ $errors->last('role_id') }}</div>
-                  @endif
-                </div>
-
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" class="form-control" id="name" value="{{ $admin[0]->name }}">
+                      @if($errors->has('name'))
+                        <div class="error">{{ $errors->first('name') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}">
+                      @if($errors->has('email'))
+                        <div class="error">{{ $errors->last('email') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-6">               
+                    <div class="form-group">
+                      <label for="role_id">Role</label>
+                      <select name="role_id" class="form-control" id="role_id">
+                        <?php for ($i=0; $i < count($roles); $i++) { ?> 
+                          <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
+                        <?php } ?>
+                      </select>
+                      @if($errors->has('role_id'))
+                        <div class="error">{{ $errors->last('role_id') }}</div>
+                      @endif
+                    </div>
+                  </div>
+               </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
