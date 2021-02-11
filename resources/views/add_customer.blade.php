@@ -126,7 +126,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="pincode">Postal Code</label>
+                      <label for="pincode">Zipcode</label>
                       <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
                       @if($errors->has('pincode'))
                         <div class="error">{{ $errors->first('pincode') }}</div>
@@ -221,16 +221,20 @@
           address: {
             required: true
           },
-          /* city: {
-            required: true
-          },
-          state: {
+          city: {
             required: true
           },
           pincode: {
-            required: true
+            required: true,
+            max: 6
           },
           country: {
+            required: true
+          },
+          /* state: {
+            required: true
+          },
+          county: {
             required: true
           }, */
         },
@@ -250,17 +254,18 @@
           address: {
             required: "The Address field is required."
           },
-          /* city: {
+          city: {
             required: "The City field is required."
           },
-          state: {
-            required: "The State field is required."
-          },
           pincode: {
-            required: "The Postal Code field is required."
+            required: "The Zipcode field is required.",
+            max: "The Zipcode must be of maximum 6 characters."
           },
           country: {
             required: "The Country field is required."
+          },
+          /* state: {
+            required: "The State field is required."
           },
           county: {
             required: "The County field is required."
