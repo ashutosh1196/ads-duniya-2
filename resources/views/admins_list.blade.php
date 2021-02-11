@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right clear" href="add">Create User</a>
+            <a class="btn btn-sm btn-success float-right clear" href="add">Add New User</a>
             <table id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -41,10 +41,10 @@
                     <td>{{ $role[0]->name }}</td>
                     <td>Active</td>
                     <th>View</th>
-                    <td width="100"  style="text-align:center;">
+                    <td>
                       <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      <a style="margin-left:5px;" class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $adminsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      <a class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $adminsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                     </td>
                   </tr>
                 <?php } ?>

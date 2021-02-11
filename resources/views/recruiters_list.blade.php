@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add Recruiter</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New User</a>
             <table id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -43,8 +43,8 @@
                     <td>Active</td>
                     <td>
                       <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
-                      <a style="margin-left:5px;" title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <?php } ?>

@@ -40,7 +40,7 @@
                     <th>View</th>
                     <td>
                       <a class="action-button" title="View" href="/admin_panel/users/admins/view/{{$deletedAdmins[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      <a style="margin-left:5px;" class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedAdmins[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
+                      <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedAdmins[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
                     </td>
                   </tr>
                 <?php } ?>

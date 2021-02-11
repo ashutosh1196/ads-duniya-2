@@ -52,19 +52,19 @@
                     @if(session()->has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ session()->get('success') }}
-                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button" style="text-decoration:none;">X</a>
+                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button">X</a>
                         </div>
                     @endif
                     @if(session()->has('error'))
                         <div class="alert alert-danger" role="alert">
                             {{ session()->get('error') }}
-                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button" style="text-decoration:none;">X</a>
+                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button">X</a>
                         </div>
                     @endif
                     @if(session()->has('warning'))
                         <div class="alert alert-warning" role="alert">
                             {{ session()->get('warning') }}
-                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button" style="text-decoration:none;">X</a>
+                            <a href="javascript:void(0)" id="close_button" class="float-right text-white close_button">X</a>
                         </div>
                     @endif
                     @yield('content')

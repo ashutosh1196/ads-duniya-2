@@ -36,15 +36,15 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img style="width:50px;" src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
+                  <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>
                   <td>
                   <a href="view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a style="margin-left:5px;" href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <!-- <a style="margin-left:5px;" href="edit/{{$whitelistedCustomersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
-                    <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                    <!-- <a href="edit/{{$whitelistedCustomersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
+                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

@@ -17,7 +17,7 @@
               {{ session('status') }}
             </div>
           @endif
-          <a class="btn btn-sm btn-success float-right" href="{{ route('add_jobseeker') }}">Add Jobseeker</a>
+          <a class="btn btn-sm btn-success float-right" href="{{ route('add_jobseeker') }}">Add New User</a>
           <table id="jobseekers-list" class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -39,10 +39,10 @@
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
                 <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
                 <td>Active</td>
-                <td style="text-align:center;">
+                <td>
                   <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                  <a style="margin-left:5px;" class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                  <a style="margin-left:5px;" class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobseekersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                  <a class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                  <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobseekersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                 </td>
               </tr>
               <?php } ?>
@@ -68,11 +68,6 @@
 
 @section('css')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-  <style>
-    /* .action-button {
-      margin-left: 5px;
-    } */
-  </style>
 @stop
 
 @section('js')

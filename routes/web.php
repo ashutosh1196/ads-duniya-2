@@ -43,8 +43,8 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/whitelist/{id}', [OrganizationsController::class, 'whitelistCustomer'])->name('whitelist_customer');
       Route::get('/reject/{id}', [OrganizationsController::class, 'rejectCustomer'])->name('reject_customer');
       Route::get('/view/{id}', [OrganizationsController::class, 'viewCustomer'])->name('view_customer');
-      Route::get('/edit/{id}', [OrganizationsController::class, 'editCustomers'])->name('edit_customers');
-      Route::post('/update', [OrganizationsController::class, 'updateCustomers'])->name('update_customers');
+      Route::get('/edit/{id}', [OrganizationsController::class, 'editCustomer'])->name('edit_customer');
+      Route::post('/update', [OrganizationsController::class, 'updateCustomer'])->name('update_customer');
       Route::post('/delete', [OrganizationsController::class, 'deleteCustomers'])->name('delete_customer');
       Route::post('/restore', [OrganizationsController::class, 'restoreCustomer'])->name('restore_customer');
       Route::post('/save', [OrganizationsController::class, 'saveCustomer'])->name('save_customer');

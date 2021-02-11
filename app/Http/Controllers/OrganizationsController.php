@@ -208,4 +208,61 @@ class OrganizationsController extends Controller {
 		}
 	}
 
+	/**
+	 * This function is used to Show Job Seekers Listing
+	*/
+	public function editCustomer($id) {
+		$countries = Country::all();
+		$customer = Organization::where('id', $id)->get();
+		return view('edit_customer', ['countries' => $countries, 'customer' => $customer]);
+	}
+
+	/**
+	 * This function is used to Show Job Seekers Listing
+	*/
+	public function updateCustomer(Request $request) {
+		$validatedData = $request->validate([
+			'address' => 'required',
+			'city' => 'required',
+			'pincode' => 'required',
+			'country' => 'required',
+			'name' => 'required',
+			'email' => 'required|email',
+			'contact_number' => 'required',
+			'url' => 'required',
+		], [
+			'address.required' => 'Address is required',
+			'city.required' => 'City is required',
+			'pincode.required' => 'Zipcode is required',
+			'country.required' => 'Country is required',
+			'name.required' => 'Company Name is required',
+			'email.required' => 'Company Or Consultants Email is required',
+			'email.email' => 'Company Or Consultants Email is not valid',
+			'contact_number.required' => 'Contact Number is required',
+			'url.required' => 'Company Domain URL is required',
+		]);
+		$dataToUpdate = [
+			'name' => $request->name,
+			'email' => $request->email,
+			'contact_number' => $request->contact_number,
+			'vat_number' => $request->vat_number,
+			'url' => $request->url,
+			'domain' => parse_url($request->url)['host'],
+			'address' => $request->address,
+			'city' => $request->city,
+			'state' => $request->state,
+			'pincode' => $request->pincode,
+			'country' => $request->country,
+			'county' => $request->county
+		];
+		$updateCustomer = Organization::where('id', $request->id)->update($dataToUpdate);
+		if($updateCustomer) {
+			$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
+			return redirect()->route('pending_customers', ['pendingCustomersList' => $pendingCustomersList])->with('success', 'Cutomer Updated Successfully!');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
 }

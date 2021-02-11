@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Recruiter')
+@section('title', 'Edit Customer')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3>Add Recruiter</h3>
+            <h3>Edit Customer</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -19,7 +19,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addCustomerForm" method="post", action="{{ route('save_customer') }}">
+            <form id="addCustomerForm" method="post", action="{{ route('update_customer') }}">
               @csrf
               <div class="card-body">
                 @if ($errors->any())
@@ -33,14 +33,14 @@
                 @endif
                 
                 <!-- Form Fields -->
-                
+                <input type="hidden" name="id" value="{{ $customer[0]->id }}">
                 <!-- INFORMATION FIELDS -->
                 <div class="information_fields">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Company Name<span class="text-danger"> *</span></label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Company Name">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ $customer[0]->name }}">
                         @if($errors->has('name'))
                           <div class="error">{{ $errors->first('name') }}</div>
                         @endif
@@ -50,7 +50,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter Company Email">
+                        <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}">
                         <div id ="email_error" class="error"></div>
                         @if($errors->has('email'))
                           <div class="error">{{ $errors->first('email') }}</div>
@@ -63,7 +63,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
-                        <input type="text" name="contact_number" class="form-control" id="contact_number" placeholder="Enter Contact Number">
+                        <input type="text" name="contact_number" class="form-control" id="contact_number" value="{{ $customer[0]->contact_number }}">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
@@ -73,7 +73,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="vat_number">VAT Number (Optional)</label>
-                        <input type="text" name="vat_number" class="form-control" id="vat_number" placeholder="Enter VAT Number">
+                        <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}">
                         @if($errors->has('vat_number'))
                           <div class="error">{{ $errors->first('vat_number') }}</div>
                         @endif
@@ -85,7 +85,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="url">Company Domain URL<span class="text-danger"> *</span></label>
-                        <input type="text" name="url" class="form-control" id="url" placeholder="http://example.com">
+                        <input type="text" name="url" class="form-control" id="url" value="{{ $customer[0]->url }}">
                         @if($errors->has('url'))
                           <div class="error">{{ $errors->first('url') }}</div>
                         @endif
@@ -101,7 +101,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="address">Address<span class="text-danger"> *</span></label>
-                        <input type="text" name="address" class="form-control" id="autocomplete" placeholder="Enter Address">
+                        <input type="text" name="address" class="form-control" id="autocomplete" value="{{ $customer[0]->address }}">
                         @if($errors->has('address'))
                           <div class="error">{{ $errors->first('address') }}</div>
                         @endif
@@ -111,7 +111,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
+                        <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -123,7 +123,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="state">State</label>
-                        <input type="text" name="state" class="form-control" id="state" placeholder="Enter State">
+                        <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
@@ -133,7 +133,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="pincode">Zipcode</label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
+                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
                         @endif
@@ -145,7 +145,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">County</label>
-                        <input type="text" name="county" class="form-control" id="county" placeholder="Enter County">
+                        <input type="text" name="county" class="form-control" id="county" value="{{ $customer[0]->county }}">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif
@@ -157,9 +157,9 @@
                           <label for="country">Country</label>
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
-                            <?php for($i=0; $i<count($countries); $i++) { ?>
-                              <option value="{{ $countries[0]->name }}">{{ $countries[0]->name }}</option>
-                            <?php } ?>
+                            @for($i=0; $i < count($countries); $i++)
+                              <option value="{{ $countries[$i]->name }}" {{ ( $countries[$i]->name == $customer[0]->country) ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
+                            @endfor
                           </select>
                           @if($errors->has('country'))
                             <div class="error">{{ $errors->first('country') }}</div>
@@ -200,23 +200,6 @@
   <script>
     $(document).ready(function() {
       var addCustomerForm = $( "#addCustomerForm" );
-      $("#email").blur(function() {
-        $.ajax({
-          type:"GET",
-          url:"{{ route('check_email') }}",
-          data: {
-            email: $(this).val()
-          },
-          success: function(result) {
-            if(result) {
-              $("#email_error").html("This email is already registered.");
-            }
-            else {
-              $("#email_error").html("");
-            }
-          }
-        });
-      });
       addCustomerForm.validate({
         ignore: [],
         debug: false,

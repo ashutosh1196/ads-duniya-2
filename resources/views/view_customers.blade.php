@@ -24,7 +24,7 @@
                 $adminImagesPath = env("ADMIN_URL").'images/';
                 $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $adminImagesPath.'avatar.png';
               ?>
-              <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" style="width:100px;">
+              <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}">
             </tr>
             <tr>
             <tr>
@@ -80,14 +80,14 @@
               <th>Whitelisted Status</th>
               <td>
                 @if($viewCustomer[0]->is_whitelisted == 0)
-                  <span style="margin-right:20px;">Pending</span>
+                  <span>Pending</span>
                   <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
+                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
                 @elseif($viewCustomer[0]->is_whitelisted == 1)
-                  <span style="margin-right:20px;">Whitelisted</span>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
+                  <span>Whitelisted</span>
+                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
                 @elseif($viewCustomer[0]->is_whitelisted == 2)
-                  <span style="margin-right:20px;">Rejected</span>
+                  <span>Rejected</span>
                   <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
                 @endif
               </td>

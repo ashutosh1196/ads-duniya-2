@@ -38,9 +38,9 @@
                 <td>{{ $deletedJobseekers[$i]->phone_number ? $deletedJobseekers[$i]->phone_number : '--' }}</td>
                 <td class="{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
                 <td>Active</td>
-                <td style="text-align:center;">
+                <td>
                   <a class="action-button" title="View" href="/admin_panel/users/jobseekers/view/{{$deletedJobseekers[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                  <a style="margin-left:5px;" class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobseekers[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
+                  <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobseekers[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
                 </td>
               </tr>
               <?php } ?>
