@@ -22,7 +22,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
@@ -37,7 +37,7 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
+                  <!-- <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>
@@ -53,7 +53,7 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>

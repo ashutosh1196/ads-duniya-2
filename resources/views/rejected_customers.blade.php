@@ -22,7 +22,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
@@ -38,7 +38,7 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td>
+                  <!-- <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
                   <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '--' }}</td>
@@ -55,7 +55,7 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
                   <th>Organization</th>
