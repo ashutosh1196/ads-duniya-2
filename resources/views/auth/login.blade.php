@@ -32,7 +32,7 @@
             </a>
             </div>
              <div class="card-header-heading">
-                <h3 class="card-title float-none text-center">Sign In</h3>
+                <h3 class="card-title float-none text-center">Admin Panel</h3>
             </div>
             <form action="{{ $login_url }}" method="post" id="loginForm">
                     {{ csrf_field() }}
@@ -80,7 +80,7 @@
                         <div class="col-12">
                             <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                                 <span class="fas fa-sign-in-alt"></span>
-                                {{ __('adminlte::adminlte.sign_in') }}
+                                {{ __('adminlte::adminlte.log_in') }}
                             </button>
                         </div>
                     </div>
