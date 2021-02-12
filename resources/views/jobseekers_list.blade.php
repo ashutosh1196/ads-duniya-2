@@ -24,9 +24,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Job Alerts</th>
-                <th>Status</th>
+                <th>Contact Number</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -37,8 +35,8 @@
                 <td>{{ $jobseekersList[$i]->name }}</td>
                 <td>{{ $jobseekersList[$i]->email }}</td>
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
-                <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
-                <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td>
+                <!-- <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td> -->
+                <!-- <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td> -->
                 <td>
                   <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                   <a class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
@@ -52,9 +50,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Job Alerts</th>
-                <th>Status</th>
+                <th>Contact Number</th>
                 <th>Actions</th>
               </tr>
             </tfoot>

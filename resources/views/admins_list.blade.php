@@ -25,8 +25,6 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -39,8 +37,6 @@
                     <td>{{ $adminsList[$i]->name }}</td>
                     <td>{{ $adminsList[$i]->email }}</td>
                     <td>{{ $role[0]->name }}</td>
-                    <td>Active</td>
-                    <th>View</th>
                     <td>
                       <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                       <a class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
@@ -55,8 +51,6 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
