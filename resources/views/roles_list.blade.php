@@ -61,12 +61,6 @@
 
 @section('css')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-  <style>
-    .error {
-      color: #ff0000 !important;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')

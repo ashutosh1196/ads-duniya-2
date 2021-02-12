@@ -73,12 +73,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -105,10 +99,10 @@
         },
         messages: {
           title: {
-            required: "Page Title is Required"
+            required: "The Page Title field is required."
           },
           content: {
-            required: "Page Content is Required",
+            required: "The Page Content field is required.",
             minlength: "Minimum Length must be 10"
           }
         }

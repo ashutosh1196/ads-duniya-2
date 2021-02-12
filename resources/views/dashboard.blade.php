@@ -82,7 +82,7 @@
                   <h3>{{ $adminsCount }}</h3>
                 </div>
               </div>
-              <a href="{{ route('recruiters_list') }}" class="small-box-footer">
+              <a href="{{ route('admins_list') }}" class="small-box-footer">
               <img src="{{ env('ADMIN_URL') }}images/next.svg" class="on-hover" alt="">
               <img src="{{ env('ADMIN_URL') }}images/next-2.svg" alt="">
               More Info</a>

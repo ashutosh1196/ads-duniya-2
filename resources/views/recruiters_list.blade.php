@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New User</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_recruiter') }}">Add New Recruiter</a>
             <table id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -36,7 +36,7 @@
                   ?>
                 <tr>
                   <td>{{ $recruitersList[$i]->id }}</td>
-                    <td>{{ $recruitersList[$i]->name }}</td>
+                    <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
                     <td>{{ $recruitersList[$i]->email }}</td>
                     <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
                     <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
@@ -92,7 +92,7 @@
         console.log("obj - ", obj);
         swal({
           title: "Are you sure?",
-          text: "Do you want to delete the Jobseeker?",
+          text: "Are you sure you want to move this Recruiter to the Recycle Bin?",
           type: "warning",
           showCancelButton: true,
         }, function(willDelete) {

@@ -78,12 +78,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000 !important;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')

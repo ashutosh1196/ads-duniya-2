@@ -96,7 +96,7 @@
         console.log("obj - ", obj);
         swal({
           title: "Are you sure?",
-          text: "Do you want to delete the Jobseeker?",
+          text: "Are you sure you want to move this Customer to the Recycle Bin?",
           type: "warning",
           showCancelButton: true,
         }, function(willDelete) {

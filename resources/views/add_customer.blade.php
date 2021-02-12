@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Recruiter')
+@section('title', 'Add Customer')
 
 @section('content_header')
 @stop
@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header">
           <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-            <h3>Add Recruiter</h3>
+            <h3>Add Customer</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -111,7 +111,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City</label>
+                        <label for="city">City<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -133,7 +133,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zipcode</label>
+                        <label for="pincode">Zipcode<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" placeholder="Enter Pin Code">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -155,7 +155,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                          <label for="country">Country</label>
+                          <label for="country">Country<span class="text-danger"> *</span></label>
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
                             <?php for($i=0; $i<count($countries); $i++) { ?>
@@ -188,10 +188,6 @@
 
 @section('css')
   <style>
-    .error {
-      color: #ff0000;
-      font-weight: 300 !important;
-    }
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
   </style>

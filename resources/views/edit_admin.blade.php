@@ -27,7 +27,7 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="name">Name</label>
+                      <label for="name">Name<span class="text-danger"> *</span></label>
                       <input type="text" name="name" class="form-control" id="name" value="{{ $admin[0]->name }}">
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
@@ -36,7 +36,7 @@
                   </div>
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="email">Email</label>
+                      <label for="email">Email<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}">
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
@@ -45,8 +45,9 @@
                   </div>
                   <div class="col-6">               
                     <div class="form-group">
-                      <label for="role_id">Role</label>
+                      <label for="role_id">Role<span class="text-danger"> *</span></label>
                       <select name="role_id" class="form-control" id="role_id">
+                          <!-- <option value="" hidden>Select Role</option> -->
                         <?php for ($i=0; $i < count($roles); $i++) { ?> 
                           <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
                         <?php } ?>
@@ -71,12 +72,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -93,14 +88,20 @@
             required: true,
             email: true
           },
+          role: {
+            required: true
+          },
         },
         messages: {
           name: {
-            required: "Name is Required"
+            required: "The Name field is required."
           },
           email: {
-            required: "Email is Required",
+            required: "The Email field is required.",
             email: "Please enter a valid Email"
+          },
+          role: {
+            required: "The Role field is required."
           },
         }
       });
