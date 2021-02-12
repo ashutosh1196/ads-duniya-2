@@ -109,7 +109,7 @@
             </tr>
           </table> -->
 
-          <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;">
+          <!-- <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;"> -->
          
           <form class="form_wrap">
             <div class="row">
