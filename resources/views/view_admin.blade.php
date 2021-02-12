@@ -3,8 +3,10 @@
 @section('title', 'Admin Information')
 
 @section('content_header')
-  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-  <h1>Admin Information</h1>
+  <div class="header_info d-flex justify-content-between align-items-center">
+    <h1>Admin Information</h1>
+    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+  </div>
 @stop
 
 @section('content')

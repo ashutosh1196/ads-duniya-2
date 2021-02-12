@@ -10,9 +10,9 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
-          <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
+          <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Add Jobseeker</h3>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
           </div>
           <div class="card-body">
             @if (session('status'))
