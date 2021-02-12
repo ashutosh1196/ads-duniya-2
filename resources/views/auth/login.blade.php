@@ -34,7 +34,7 @@
              <div class="card-header-heading">
                 <h3 class="card-title float-none text-center">Sign In</h3>
             </div>
-            <form action="{{ $login_url }}" method="post">
+            <form action="{{ $login_url }}" method="post" id="loginForm">
                     {{ csrf_field() }}
 
                     {{-- Email field --}}
