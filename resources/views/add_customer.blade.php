@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+        <div class="card-header alert d-flex justify-content-between align-items-center">
           <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
             <h3>Add Customer</h3>
           </div>
