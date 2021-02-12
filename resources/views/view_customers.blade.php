@@ -19,7 +19,7 @@
             </div>
           @endif
           <?php
-            $websiteImagesPath = env("WEBSITE_URL").'images/companyLogos/';
+            $websiteImagesPath = config("website_url").'images/companyLogos/';
             $adminImagesPath = asset('').'images/';
             $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $adminImagesPath.'avatar.png';
           ?>

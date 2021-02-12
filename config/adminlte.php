@@ -3,7 +3,7 @@
 return [
 
     'admin_url' => env('ADMIN_URL', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/'),
-    'website_url' => env('WEBSITE_URL', 'http://192.168.1.65/which-vocation-web/public/'),
+    'website_url' => env('WEBSITE_URL', 'https://server3.rvtechnologies.in/which-vocation/website/Amrik-which-vocation-web/public/'),
     'email_verify_url' => env('EMAIL_VERIFY_URL', 'http://192.168.1.65/which-vocation-web/public/'),
     'default_avatar' => env('DEFAULT_AVATAR', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/avatar.png'),
 
