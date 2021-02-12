@@ -37,7 +37,7 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}">
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}" readonly>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif

@@ -257,7 +257,7 @@ class OrganizationsController extends Controller {
 		]);
 		$dataToUpdate = [
 			'name' => $request->name,
-			'email' => $request->email,
+			// 'email' => $request->email,
 			'contact_number' => $request->contact_number,
 			'vat_number' => $request->vat_number,
 			'url' => $request->url,

@@ -51,7 +51,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
-                        <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}">
+                        <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}" readonly>
                         <div id ="email_error" class="error"></div>
                         @if($errors->has('email'))
                           <div class="error">{{ $errors->first('email') }}</div>

@@ -61,7 +61,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}">
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}" readonly>
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('email'))

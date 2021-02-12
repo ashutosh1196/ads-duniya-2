@@ -100,7 +100,7 @@ class AdminsController extends Controller {
 	public function updateAdmin(Request $request) {
 		$updateAdmin = Admin::where('id', $request->id)->update([
 			'name' => $request->name,
-			'email' => $request->email,
+			// 'email' => $request->email,
 			'role_id' => $request->role_id,
 		]);
 		if($updateAdmin) {
