@@ -79,7 +79,7 @@ class JobSeekersController extends Controller {
 	*/
 	public function updateJobseeker(Request $request) {
 		$dataToUpdate = [
-			'name' => $request->name,
+			'name' => $request->first_name.$request->last_name,
 			'first_name' => $request->first_name,
 			'last_name' => $request->last_name,
 			'email' => $request->email,

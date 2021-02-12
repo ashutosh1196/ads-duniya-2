@@ -24,44 +24,32 @@
               @csrf
               <div class="card-body">                
                 <div class="row">
+
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                      <label for="name">Name<span class="text-danger"> *</span></label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
                       @endif
                     </div>
                   </div>
-                
-                <!-- <div class="form-group">
-                  <label for="first_name">First Name</label>
-                  <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first_name">
-                  @if($errors->has('first_name'))
-                    <div class="error">{{ $errors->first('first_name') }}</div>
-                  @endif
-                </div>
-                
-                <div class="form-group">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last_name">
-                  @if($errors->has('last_name'))
-                    <div class="error">{{ $errors->last('last_name') }}</div>
-                  @endif
-                </div> -->
+
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
+                    <label for="email">Email<span class="text-danger"> *</span></label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
                     @if($errors->has('email'))
                       <div class="error">{{ $errors->last('email') }}</div>
                     @endif
                   </div>
                 </div>
+
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="role">Role</label>
+                    <label for="role">Role<span class="text-danger"> *</span></label>
                     <select name="role" class="form-control" id="role">
+                      <option value="" hidden>Select Role</option>
                       <?php for ($i=0; $i < count($roles); $i++) { ?> 
                         <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
                       <?php } ?>
@@ -71,19 +59,21 @@
                     @endif
                   </div>
                 </div>
+
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                    <label for="password">Password<span class="text-danger"> *</span></label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
                     @if($errors->has('password'))
                       <div class="error">{{ $errors->last('password') }}</div>
                     @endif
                   </div>
                 </div>
+
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
+                    <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter Confirm Password">
                     @if($errors->has('confirm_password'))
                       <div class="error">{{ $errors->last('confirm_password') }}</div>
                     @endif
@@ -104,12 +94,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -132,6 +116,9 @@
             required: true,
             email: true
           },
+          role: {
+            required: true
+          },
           password: {
             required: true,
             minlength: 8
@@ -144,26 +131,29 @@
         },
         messages: {
           name: {
-            required: "Name is Required"
+            required: "The Name field is required."
           },
           /* first_name: {
-            required: "First Name is Required"
+            required: "The First Name field is required."
           },
           last_name: {
-            required: "Last Name is Required"
+            required: "The Last Name field is required."
           }, */
           email: {
-            required: "Email is Required",
+            required: "The Email field is required.",
             email: "Please enter a valid Email"
           },
+          role: {
+            required: "The Role field is required."
+          },
           password: {
-            required: "Password is Required",
+            required: "The Password field is required.",
             minlength: "Minimum length should be 8"
           },
           confirm_password: {
-            required: "Password is Required",
+            required: "The Confirm Password field is required.",
             minlength: "Minimum length should be 8",
-            equalTo : "Passwords do not match"
+            equalTo : "The Confirm Password must be equal to Password."
           },
         }
       });

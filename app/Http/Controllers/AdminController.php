@@ -19,15 +19,24 @@ class AdminController extends Controller
 	 * This function is used to Show Admin Dashboard
 	*/
 	public function dashboard(Request $request) {
-		$jobseekers = User::where('deleted_at', NULL)->get();
+		$jobseekers = User::all();
 		$jobseekersCount = count($jobseekers);
-		$recruiters = Recruiter::where('deleted_at', NULL)->get();
-		$recruitersCount = count($recruiters);
+		$customers = Organization::where('is_whitelisted', 1)->get();
+		$recruitersList = [];
+		if($customers->isNotEmpty()) {
+			for ($i=0; $i < count($customers); $i++) {
+				$recruiter = Recruiter::where('organization_id', $customers[$i]->id)->get();
+				if($recruiter->isNotEmpty()) {
+					array_push($recruitersList, $recruiter[0]);
+				}
+			}
+		}
+		$recruitersCount = count($recruitersList);
 		$customers = Organization::where('is_whitelisted', 1)->get();
 		$customersCount = count($customers);
 		$admins = Admin::where('role_id', '!=', 1)->get();
 		$adminsCount = count($admins);
-		// $jobs = Job::where('deleted_at', NULL)->get();
+		// $jobs = Job::all();
 		// $jobsCount = count($jobs);
 		return view('dashboard', [
 			'jobseekersCount' => $jobseekersCount,

@@ -19,6 +19,14 @@
             float: right;
             width: 100px;
         }
+        .error {
+            color: #ff0000 !important;
+            font-weight: 300 !important;
+            font-size: 12px !important;
+        }
+        .form-control.error {
+            color: #000000 !important;
+        }
     </style>
 @stop
 
@@ -96,6 +104,10 @@
     @yield('js')
     <script>
         $(document).ready(function() {
+            /* $.validator.messages.required = function (param, input) {
+                var title = $(input).attr('fieldTitle');
+                return 'The ' + title + ' field is required.';
+            } */
             $("#close_button").click(function() {
                 $(".alert").hide();
             });

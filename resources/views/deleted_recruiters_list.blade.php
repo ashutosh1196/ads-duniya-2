@@ -41,7 +41,7 @@
                     <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
                     <td>Active</td>
                     <td>
-                      <a href="{{ route( 'view_recruiter', [ 'id' => $deletedRecruiters[$i]->id ] ) }}" title="View"><i class="text-info fa fa-eye"></i></a>
+                      <!-- <a href="{{ route( 'view_recruiter', [ 'id' => $deletedRecruiters[$i]->id ] ) }}" title="View"><i class="text-info fa fa-eye"></i></a> -->
                       <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $deletedRecruiters[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
                     </td>
                 </tr>
@@ -90,7 +90,7 @@
         console.log("obj - ", obj);
         swal({
           title: "Are you sure?",
-          text: "Do you want to restore the Jobseeker?",
+          text: "Are you sure you want to restore the Recruiter?",
           type: "warning",
           showCancelButton: true,
         }, function(willDelete) {

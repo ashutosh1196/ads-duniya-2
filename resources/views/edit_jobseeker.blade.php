@@ -20,25 +20,25 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="editJobseekerForm" method="post", action="../update">
+            <form id="editJobseekerForm" method="post", action="{{ route('update_jobseeker') }}">
               @csrf
               <div class="card-body">
-<!--                 <input type="hidden" name="id" class="form-control" id="id" value="{{ $jobseeker[0]->id }}"> -->
+                <input type="hidden" name="id" class="form-control" id="id" value="{{ $jobseeker[0]->id }}">
                 <div class="row">
-                  <div class="col-12">
+                  <!-- <div class="col-12">
                     <div class="form-group">
-                      <label for="name">Name</label>
+                      <label for="name">Name<span class="text-danger"> *</span></label>
                       <input type="name" name="name" class="form-control" id="name" value="{{ $jobseeker[0]->name }}">
-                      <!-- <i class="fa fa-edit editable_field text-success"></i>
-                      <i class="fa fa-times non_editable_field text-danger"></i> -->
+                      <i class="fa fa-edit editable_field text-success"></i>
+                      <i class="fa fa-times non_editable_field text-danger"></i>
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
                       @endif
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="first_name">First Name</label>
+                      <label for="first_name">First Name<span class="text-danger"> *</span></label>
                       <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $jobseeker[0]->first_name }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -49,7 +49,7 @@
                   </div>
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="last_name">Last Name</label>
+                      <label for="last_name">Last Name<span class="text-danger"> *</span></label>
                       <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $jobseeker[0]->last_name }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -60,7 +60,7 @@
                   </div>
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="email">Email</label>
+                      <label for="email">Email<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -81,8 +81,8 @@
                     </div>
                   </div>
                   <div class="col-6">
-                    <div class="form-group alert">
-                      <label for="job_alert">Job Alerts</label><br/>
+                    <div class="form-group">
+                      <label for="job_alert">Job Alerts<span class="text-danger"> *</span></label><br/>
                       <input type="radio" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="job_alert" value="0"> Disable
                       <input type="radio" class="ml-2" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="job_alert" value="1"> Enable
                       @if($errors->has('job_alert'))
@@ -106,10 +106,6 @@
 
 @section('css')
   <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
     .editable_field {
       position: relative;
       top: -25px;
@@ -160,16 +156,16 @@
         },
         messages: {
           name: {
-            required: "Name is Required"
+            required: "The Name field is required."
           },
           first_name: {
-            required: "First Name is Required"
+            required: "The First Name field is required."
           },
           last_name: {
-            required: "Last Name is Required"
+            required: "The Last Name field is required."
           },
           email: {
-            required: "Email is Required",
+            required: "The Email field is required.",
             email: "Please enter a valid email"
           },
         }

@@ -90,7 +90,7 @@
       // console.log({id});
       swal({
         title: "Are you sure?",
-        text: "Do you want to delete the Admin?",
+        text: "Are you sure you want to move this Admin to the Recycle Bin?",
         type: "warning",
         showCancelButton: true,
       }, function(willDelete) {

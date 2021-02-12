@@ -36,7 +36,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="first_name">First Name</label>
+                      <label for="first_name">First Name<span class="text-danger"> *</span></label>
                       <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter first_name">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
@@ -46,7 +46,7 @@
                     
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="last_name">Last Name</label>
+                      <label for="last_name">Last Name<span class="text-danger"> *</span></label>
                       <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter last_name">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
@@ -58,7 +58,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="email">Email</label>
+                      <label for="email">Email<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
@@ -68,7 +68,7 @@
                     
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="password">Password</label>
+                      <label for="password">Password<span class="text-danger"> *</span></label>
                       <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
                       @if($errors->has('password'))
                         <div class="error">{{ $errors->last('password') }}</div>
@@ -80,7 +80,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="confirm_password">Confirm Password</label>
+                      <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
                       <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter confirm_password">
                       @if($errors->has('confirm_password'))
                         <div class="error">{{ $errors->last('confirm_password') }}</div>
@@ -103,12 +103,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -143,7 +137,7 @@
         },
         messages: {
           /* name: {
-            required: "Name is Required"
+            required: "The Name field is required."
           }, */
           first_name: {
             required: "The First Name field is required."

@@ -55,12 +55,6 @@
 @endsection
 
 @section('css')
-  <style>
-    .error {
-      color: #ff0000;
-      font-weight: 500 !important;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -84,10 +78,10 @@
         },
         messages: {
           role_name: {
-            required: "Role Name is Required"
+            required: "The Role Name field is required."
           },
           permissions: {
-            required: "Permission is Required",
+            required: "The Permission field is required.",
           }
         }
       });
