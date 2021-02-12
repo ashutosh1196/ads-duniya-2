@@ -416,6 +416,7 @@ body.sidebar-mini .sa-button-container {
     font-size: 20px;
     margin: 0;
     font-weight: 600;
+    order: 1;
 }
 .card-header {
     margin: 0 20px;
@@ -526,7 +527,7 @@ body.login-page .login-box .login-logo-inner {
 }
 .address_fields select#country {
     font-size: 13px;
-    color: #959595;
+    color: #939ba2;
 }
 .content-wrapper .card-body .form-group label.error,
 body.login-page .login-box .invalid-feedback strong {
@@ -536,13 +537,14 @@ body.login-page .login-box .invalid-feedback strong {
 body.login-page .login-box button span {
     display: none;
 }
-.content-wrapper .card .card-header a,
-.header_info a {
+.content-wrapper .card .card-header a, .header_info a {
     background-color: #2d8427;
     border: 1px solid #2d8427;
     padding: 8px 20px;
     text-decoration: auto;
     font-size: 14px;
+    top: 0;
+    order: 2;
 }
 .header_info {
 	padding: 0 5px;
@@ -572,6 +574,26 @@ body.login-page .login-box {
 }
 .card-header.alert::after {
     content: none;
+}
+input:-ms-input-placeholder.form-control {
+    color: #939ba2;
+    opacity: 1;
+    font-size: 13px;
+}
+.wrapper .content .card-body form.form_wrap .form-group input {
+    pointer-events: none;
+}
+.form-group input.form-control {
+    font-size: 13px;
+}
+.form-group input.form-control.error, .address_fields select {
+    color: #939ba2 !important;
+}
+#organization_id {
+    font-size: 13px;
+}
+.content-wrapper .card-footer {
+    margin: 0 20px 40px 20px;
 }
 }
 
