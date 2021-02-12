@@ -20,7 +20,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addAdminForm" method="post", action="save">
+            <form id="addAdminForm" method="post", action="{{ route('save_admin') }}">
               @csrf
               <div class="card-body">                
                 <div class="row">
@@ -39,6 +39,7 @@
                   <div class="form-group">
                     <label for="email">Email<span class="text-danger"> *</span></label>
                     <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
+                    <div id ="email_error" class="error"></div>
                     @if($errors->has('email'))
                       <div class="error">{{ $errors->last('email') }}</div>
                     @endif
@@ -47,15 +48,15 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="role">Role<span class="text-danger"> *</span></label>
-                    <select name="role" class="form-control" id="role">
+                    <label for="role_id">Role<span class="text-danger"> *</span></label>
+                    <select name="role_id" class="form-control" id="role_id">
                       <option value="" hidden>Select Role</option>
                       <?php for ($i=0; $i < count($roles); $i++) { ?> 
                         <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
                       <?php } ?>
                     </select>
-                    @if($errors->has('role'))
-                      <div class="error">{{ $errors->last('role') }}</div>
+                    @if($errors->has('role_id'))
+                      <div class="error">{{ $errors->last('role_id') }}</div>
                     @endif
                   </div>
                 </div>
@@ -99,6 +100,24 @@
 @section('js')
   <script>
     $(document).ready(function() {
+      $("#email").blur(function() {
+        $.ajax({
+          type:"GET",
+          url:"{{ route('check_email') }}",
+          data: {
+            email: $(this).val(),
+            table_name: 'admins'
+          },
+          success: function(result) {
+            if(result) {
+              $("#email_error").html("This email is already registered.");
+            }
+            else {
+              $("#email_error").html("");
+            }
+          }
+        });
+      });
       $('#addAdminForm').validate({
         ignore: [],
         debug: false,
@@ -116,7 +135,7 @@
             required: true,
             email: true
           },
-          role: {
+          role_id: {
             required: true
           },
           password: {
@@ -143,7 +162,7 @@
             required: "The Email field is required.",
             email: "Please enter a valid Email"
           },
-          role: {
+          role_id: {
             required: "The Role field is required."
           },
           password: {

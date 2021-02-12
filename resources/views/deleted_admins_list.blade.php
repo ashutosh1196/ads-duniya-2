@@ -23,9 +23,8 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
+                  <!-- <th>Email Verified</th> -->
+                  <!-- <th>Permissions</th> -->
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -35,9 +34,8 @@
                     <td>{{ $deletedAdmins[$i]->id }}</td>
                     <td>{{ $deletedAdmins[$i]->name }}</td>
                     <td>{{ $deletedAdmins[$i]->email }}</td>
-                    <td>True</td>
-                    <td>Active</td>
-                    <th>View</th>
+                    <!-- <td>True</td> -->
+                    <!-- <th>View</th> -->
                     <td>
                       <!-- <a class="action-button" title="View" href="{{ route( 'view_admin', [ 'id' => $deletedAdmins[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a> -->
                       <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedAdmins[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
@@ -50,9 +48,8 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
+                  <!-- <th>Email Verified</th> -->
+                  <!-- <th>Permissions</th> -->
                   <th>Actions</th>
                 </tr>
               </tfoot>

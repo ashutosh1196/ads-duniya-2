@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Job Seekers')
+@section('title', 'Jobseekers')
 
 @section('content_header')
-  <h1>Job Seekers</h1>
+  <h1>Jobseekers</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
               {{ session('status') }}
             </div>
           @endif
-          <a class="btn btn-sm btn-success float-right" href="{{ route('add_jobseeker') }}">Add New User</a>
+          <a class="btn btn-sm btn-success float-right" href="{{ route('add_jobseeker') }}">Add New Jobseeker</a>
           <table id="jobseekers-list" class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -38,7 +38,7 @@
                 <td>{{ $jobseekersList[$i]->email }}</td>
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
                 <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
-                <td>Active</td>
+                <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td>
                 <td>
                   <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                   <a class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>

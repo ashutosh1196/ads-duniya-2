@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right clear" href="add">Add New User</a>
+            <a class="btn btn-sm btn-success float-right clear" href="add">Add New Admin</a>
             <table id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>

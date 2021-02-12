@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Deleted Job Seekers')
+@section('title', 'Deleted Jobseekers')
 
 @section('content_header')
-  <h1>Deleted Job Seekers</h1>
+  <h1>Deleted Jobseekers</h1>
 @stop
 
 @section('content')
@@ -25,7 +25,6 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Job Alerts</th>
-                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -37,7 +36,6 @@
                 <td>{{ $deletedJobseekers[$i]->email }}</td>
                 <td>{{ $deletedJobseekers[$i]->phone_number ? $deletedJobseekers[$i]->phone_number : '--' }}</td>
                 <td class="{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
-                <td>Active</td>
                 <td>
                   <!-- <a class="action-button" title="View" href="{{ route( 'view_jobseeker', [ 'id' => $deletedJobseekers[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a> -->
                   <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobseekers[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
@@ -52,7 +50,6 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Job Alerts</th>
-                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </tfoot>

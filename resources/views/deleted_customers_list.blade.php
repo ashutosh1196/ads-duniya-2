@@ -23,9 +23,7 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -35,9 +33,7 @@
                     <td>{{ $deletedCustomers[$i]->id }}</td>
                     <td>{{ $deletedCustomers[$i]->name }}</td>
                     <td>{{ $deletedCustomers[$i]->email }}</td>
-                    <td>True</td>
-                    <td>Active</td>
-                    <th>View</th>
+                    <td>{{ $deletedCustomers[$i]->contact_number }}</td>
                     <td>
                       <!-- <a class="action-button" title="View" href="{{ route( 'view_customer', [ 'id' => $deletedCustomers[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a> -->
                       <a style="margin-left:5px;" class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedCustomers[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
@@ -50,9 +46,7 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified</th>
-                  <th>Status</th>
-                  <th>Permissions</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
