@@ -86,7 +86,7 @@
                     </div>
 
                 </form>
-<!--              <div class="card-footer-inner d-flex justify-content-between">                 
+                <!-- <div class="card-footer-inner d-flex justify-content-between">                 
                 <p class="my-0">
                     <a href="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/password/reset">
                         Forgot Password?
