@@ -62,7 +62,6 @@ class AdminsController extends Controller {
 		$admin->email = $request->email;
 		$admin->role_id = $request->role_id;
 		$admin->password = Hash::make($request->password);
-		dd($admin->save());
 		if($admin->save()) {
 			return redirect()->route('admins_list', ['admin' => $admin])->with('success', 'Admin Creaed Successfully!');
 		}
