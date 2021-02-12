@@ -568,6 +568,10 @@ body.login-page .login-box button span {
 .content-wrapper .card-footer.submit {
     margin: 0 20px 40px;
 }
+.wrapper .content .card-body form.form_wrap .form-group input::placeholder,
+.content-wrapper .card-body .form-group input::placeholder {
+    color: #343d49;
+}
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
   body.login-page {
