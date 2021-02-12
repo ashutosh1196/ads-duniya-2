@@ -230,7 +230,8 @@
             required: true
           },
           url: {
-            required: true
+            required: true,
+            url: true
           },
           address: {
             required: true
@@ -263,7 +264,8 @@
             required: "The Contact Number field is required."
           },
           url: {
-            required: "The Domain URL field is required."
+            required: "The Domain URL field is required.",
+            url: "The Company Domain URL must be valid."
           },
           address: {
             required: "The Address field is required."
