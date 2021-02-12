@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a>
+            <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a> -->
             <table id="whitelisted-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
