@@ -22,7 +22,7 @@
             @endif
             <form id="addCustomerForm" method="post", action="{{ route('update_customer') }}">
               @csrf
-              <div class="card-body">
+              <div class="card-body form">
                 @if ($errors->any())
                   <div class="alert alert-warning">
                     <ul>
@@ -111,7 +111,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City</label>
+                        <label for="city">City<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -133,7 +133,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zipcode</label>
+                        <label for="pincode">Zipcode<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -155,7 +155,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                          <label for="country">Country</label>
+                          <label for="country">Country<span class="text-danger"> *</span></label>
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
                             @for($i=0; $i < count($countries); $i++)
@@ -188,10 +188,6 @@
 
 @section('css')
   <style>
-    .error {
-      color: #ff0000;
-      font-weight: 300 !important;
-    }
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
   </style>
@@ -206,7 +202,8 @@
           url:"{{ route('check_email') }}",
           data: {
             email: $(this).val(),
-            id: $("#customer_id").val()
+            id: $("#customer_id").val(),
+            table_name: 'organizations'
           },
           success: function(result) {
             if(result) {
@@ -233,7 +230,8 @@
             required: true
           },
           url: {
-            required: true
+            required: true,
+            url: true
           },
           address: {
             required: true
@@ -266,7 +264,8 @@
             required: "The Contact Number field is required."
           },
           url: {
-            required: "The Domain URL field is required."
+            required: "The Domain URL field is required.",
+            url: "The Company Domain URL must be valid."
           },
           address: {
             required: "The Address field is required."
