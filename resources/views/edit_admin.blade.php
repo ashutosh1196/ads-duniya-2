@@ -23,7 +23,7 @@
             <form id="updateAdminForm" method="post" action="{{ route('update_admin') }}">
               @csrf
               <input type="hidden" name="id" value="{{ $admin[0]->id }}">
-              <div class="card-body">
+              <div class="card-body form">
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">

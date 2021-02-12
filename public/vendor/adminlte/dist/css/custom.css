@@ -565,6 +565,9 @@ body.login-page .login-box button span {
     color: #ff0000;
     font-weight: 400 !important;
 }
+.content-wrapper .card-footer.submit {
+    margin: 0 20px 40px;
+}
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
   body.login-page {
@@ -735,5 +738,11 @@ section.content .small-box {
 }
 .sweet-alert .sa-icon.sa-warning .sa-body {
     height: 28px;
+}
+.form-group.radio {
+    font-size: 12px;
+}
+.card-body a.btn-success {
+    font-size: 12px;
 }
 }

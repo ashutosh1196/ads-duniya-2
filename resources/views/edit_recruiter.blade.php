@@ -14,7 +14,7 @@
             <h3>Edit Recruiter</h3>
             <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
           </div>
-          <div class="card-body">
+          <div class="card-body form">
             @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
@@ -96,7 +96,7 @@
               </div>
             </div>
               <!-- /.card-body -->
-              <div class="card-footer">
+              <div class="card-footer submit">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
