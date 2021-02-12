@@ -125,12 +125,6 @@
           name: {
             required: true
           },
-          /* first_name: {
-            required: true
-          },
-          last_name: {
-            required: true
-          }, */
           email: {
             required: true,
             email: true
@@ -152,12 +146,6 @@
           name: {
             required: "The Name field is required."
           },
-          /* first_name: {
-            required: "The First Name field is required."
-          },
-          last_name: {
-            required: "The Last Name field is required."
-          }, */
           email: {
             required: "The Email field is required.",
             email: "Please enter a valid Email"
