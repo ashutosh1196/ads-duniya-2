@@ -43,14 +43,26 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function saveAdmin(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required',
+			'email' => 'required|email|unique:admins',
+			'role_id' => 'required',
+			'password' => 'required',
+		], [
+			'name.required' => 'Name is required',
+			'email.required' => 'Email is required',
+			'email.email' => 'Email is not valid',
+			'email.unique' => 'Email must be unique',
+			'role_id.required' => 'Role is required',
+			'password.required' => 'Password is required',
+		]);
 		$this->validator($request->all())->validate();
 		$admin = new Admin;
 		$admin->name = $request->name;
-		$admin->role_id = $request->role;
-		// $admin->first_name = $request->first_name;
-		// $admin->last_name = $request->last_name;
 		$admin->email = $request->email;
+		$admin->role_id = $request->role_id;
 		$admin->password = Hash::make($request->password);
+		dd($admin->save());
 		if($admin->save()) {
 			return redirect()->route('admins_list', ['admin' => $admin])->with('success', 'Admin Creaed Successfully!');
 		}

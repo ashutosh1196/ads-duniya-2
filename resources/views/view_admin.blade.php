@@ -66,12 +66,12 @@
                   <input class="form-control" placeholder="{{ $viewAdmin[0]->email }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Date</label>
                   <input class="form-control" placeholder="{{ $viewAdmin[0]->email_verified_at ? $viewAdmin[0]->email_verified_at : '--' }}" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Role</label>

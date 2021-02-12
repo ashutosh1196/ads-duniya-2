@@ -202,7 +202,8 @@
           type:"GET",
           url:"{{ route('check_email') }}",
           data: {
-            email: $(this).val()
+            email: $(this).val(),
+            table_name: 'organizations'
           },
           success: function(result) {
             if(result) {

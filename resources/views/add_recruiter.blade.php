@@ -69,6 +69,7 @@
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
+                      <div id ="email_error" class="error"></div>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif
@@ -136,6 +137,24 @@
 @section('js')
   <script>
     $(document).ready(function() {
+      $("#email").blur(function() {
+        $.ajax({
+          type:"GET",
+          url:"{{ route('check_email') }}",
+          data: {
+            email: $(this).val(),
+            table_name: 'recruiters'
+          },
+          success: function(result) {
+            if(result) {
+              $("#email_error").html("This email is already registered.");
+            }
+            else {
+              $("#email_error").html("");
+            }
+          }
+        });
+      });
       $('#addRecruiterForm').validate({
         ignore: [],
         debug: false,

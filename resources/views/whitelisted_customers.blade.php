@@ -25,7 +25,7 @@
                   <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -56,7 +56,7 @@
                   <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
