@@ -6,6 +6,7 @@ return [
     'website_url' => env('WEBSITE_URL', 'https://server3.rvtechnologies.in/which-vocation/website/Amrik-which-vocation-web/public/'),
     'email_verify_url' => env('EMAIL_VERIFY_URL', 'http://192.168.1.65/which-vocation-web/public/'),
     'default_avatar' => env('DEFAULT_AVATAR', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/avatar.png'),
+    'from_email' => env('FROM_EMAIL', 'admin@whichvocation.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ return [
     | https://github.com/jeroennoten/Laravel-WhichVocation/wiki/6.-Basic-Configuration
     |
     */
+
+    'whichvocation' => 'Whichvocation',
+    'set_password' => 'Whichvocation set password',
+    'title_prefix' => '',
+    'title_postfix' => '',
 
     'title' => 'Which Vocation',
     'title_prefix' => '',
