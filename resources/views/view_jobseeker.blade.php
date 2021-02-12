@@ -18,7 +18,7 @@
               {{ session('status') }}
             </div>
           @endif
-<!--           <table class="table">
+          <!-- <table class="table">
             <tr>
               <th>Name : </th>
               <td>{{ $jobseeker[0]->name }}</td>
@@ -85,10 +85,10 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Name</label>
-                  <input class="form-control" placeholder="Ashish Kumar" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->first_name }} {{ $jobseeker[0]->last_name }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>First Name</label>
                   <input class="form-control" placeholder="Ashish" readonly>
@@ -99,71 +99,71 @@
                   <label>Last Name</label>
                   <input class="form-control" placeholder="Kumar" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email</label>
-                  <input class="form-control" placeholder="ashish111@gmail.com" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Phone Number</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->phone_number ? $jobseeker[0]->phone_number : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>IP Address</label>
-                  <input class="form-control" placeholder="111.93.38.130" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->ip_address ? $jobseeker[0]->ip_address : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Logged In With</label>
                   <input class="form-control" placeholder="Email" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Status</label>
-                  <input class="form-control" placeholder="Not Verified" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? 'Verified' : 'Not Verified' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Date</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? $jobseeker[0]->email_verified_at : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>User Locked Status</label>
-                  <input class="form-control" placeholder="Not Locked" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? 'Locked' : 'Not Locked' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>User Locked Date</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? $jobseeker[0]->user_locked_at : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Job Alerts Status</label>
-                  <input class="form-control" placeholder="Enabled" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_job_alert_enabled == 1 ? 'Enabled' : 'Disabled' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created Date</label>
-                  <input class="form-control" placeholder="February 09, 2021 - 13:51 PM" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobseeker[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Updated Date</label>
-                  <input class="form-control" placeholder="February 09, 2021 - 13:51 PM" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobseeker[0]->updated_at)) }}" readonly>
                 </div>
               </div>
             </div>
