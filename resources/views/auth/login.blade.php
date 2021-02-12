@@ -32,13 +32,13 @@
             </a>
             </div>
              <div class="card-header-heading">
-                <h3 class="card-title float-none text-center">Admin Panel</h3>
+                <h3 class="card-title float-none text-center">Sign In</h3>
             </div>
-            <form action="{{ $login_url }}" method="post" id="loginForm">
+            <form action="{{ $login_url }}" method="post">
                     {{ csrf_field() }}
 
                     {{-- Email field --}}
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
                                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
                         <div class="input-group-append">
@@ -54,7 +54,7 @@
                     </div>
 
                     {{-- Password field --}}
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                                placeholder="{{ __('adminlte::adminlte.password') }}">
                         <div class="input-group-append">
@@ -80,7 +80,7 @@
                         <div class="col-12">
                             <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                                 <span class="fas fa-sign-in-alt"></span>
-                                {{ __('adminlte::adminlte.log_in') }}
+                                {{ __('adminlte::adminlte.sign_in') }}
                             </button>
                         </div>
                     </div>

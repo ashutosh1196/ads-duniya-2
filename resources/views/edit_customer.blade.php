@@ -22,7 +22,7 @@
             @endif
             <form id="addCustomerForm" method="post", action="{{ route('update_customer') }}">
               @csrf
-              <div class="card-body">
+              <div class="card-body form">
                 @if ($errors->any())
                   <div class="alert alert-warning">
                     <ul>
