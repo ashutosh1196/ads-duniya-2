@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->enum('login_with',['email','facebook','google']);
             $table->tinyInteger('is_user_locked')->default(0);
             $table->timestamp('user_locked_at')->nullable();
+            $table->timestamp('last_logged_in_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
