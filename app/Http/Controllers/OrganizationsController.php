@@ -8,6 +8,7 @@ use App\Models\Recruiter;
 use App\Models\Country;
 use App\Mail\VerifyUser;
 use Mail;
+use DB;
 use Illuminate\Support\Facades\Gate;
 
 class OrganizationsController extends Controller {
@@ -16,8 +17,9 @@ class OrganizationsController extends Controller {
 	 * This function is used to Check if the email exists in the table
 	*/
 	public function checkEmail() {
+		$tableName = $_GET['table_name'];
 		if(isset($_GET['id'])) {
-			$emailExists = Organization::where('email', $_GET['email'])->where('id', '!=', $_GET['id'])->get();
+			$emailExists = DB::table($tableName)->where('email', $_GET['email'])->where('id', '!=', $_GET['id'])->get();
 			if ($emailExists->isNotEmpty()) {
 				return true;
 			}
@@ -27,7 +29,7 @@ class OrganizationsController extends Controller {
 			exit;
 		}
 		else {
-			$emailExists = Organization::where('email', $_GET['email'])->get();
+			$emailExists = DB::table($tableName)->where('email', $_GET['email'])->get();
 			if ($emailExists->isNotEmpty()) {
 				return true;
 			}

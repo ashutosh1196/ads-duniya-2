@@ -39,7 +39,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="first_name">First Name<span class="text-danger"> *</span></label>
-                      <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter First Name">
+                      <input type="text" name="first_name" class="form-control" id="first_name">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
                       @endif
@@ -49,7 +49,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="last_name">Last Name<span class="text-danger"> *</span></label>
-                      <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter Last Name">
+                      <input type="text" name="last_name" class="form-control" id="last_name">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
                       @endif
@@ -61,14 +61,15 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="phone_number">Contact Number</label>
-                      <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="Enter Contact Number">
+                      <input type="text" name="phone_number" class="form-control" id="phone_number">
                     </div>
                   </div>
                   
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
+                      <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com">
+                      <div id ="email_error" class="error"></div>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif
@@ -80,7 +81,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="password">Password<span class="text-danger"> *</span></label>
-                      <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+                      <input type="password" name="password" class="form-control" id="password">
                       @if($errors->has('password'))
                         <div class="error">{{ $errors->last('password') }}</div>
                       @endif
@@ -90,7 +91,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
-                      <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Enter Confirm Password">
+                      <input type="password" name="confirm_password" class="form-control" id="confirm_password">
                       @if($errors->has('confirm_password'))
                         <div class="error">{{ $errors->last('confirm_password') }}</div>
                       @endif
@@ -136,6 +137,24 @@
 @section('js')
   <script>
     $(document).ready(function() {
+      $("#email").blur(function() {
+        $.ajax({
+          type:"GET",
+          url:"{{ route('check_email') }}",
+          data: {
+            email: $(this).val(),
+            table_name: 'recruiters'
+          },
+          success: function(result) {
+            if(result) {
+              $("#email_error").html("This email is already registered.");
+            }
+            else {
+              $("#email_error").html("");
+            }
+          }
+        });
+      });
       $('#addRecruiterForm').validate({
         ignore: [],
         debug: false,

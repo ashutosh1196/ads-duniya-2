@@ -141,7 +141,7 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addRecruiter() {
-		$companies = organization::where('is_whitelisted', 1)->get();
+		$companies = organization::where('is_whitelisted', 1)->where('deleted_at', NULL)->get();
 		return view('add_recruiter', ['companies' => $companies]);
 	}
 

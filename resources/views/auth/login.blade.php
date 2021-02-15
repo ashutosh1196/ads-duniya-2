@@ -32,9 +32,9 @@
             </a>
             </div>
              <div class="card-header-heading">
-                <h3 class="card-title float-none text-center">Sign In</h3>
+                <h3 class="card-title float-none text-center">Admin Panel</h3>
             </div>
-            <form action="{{ $login_url }}" method="post">
+            <form action="{{ $login_url }}" method="post" id="loginForm">
                     {{ csrf_field() }}
 
                     {{-- Email field --}}
@@ -71,16 +71,16 @@
 
                     {{-- Login field --}}
                     <div class="row">
-                        <div class="col-12">
+<!--                         <div class="col-12">
                             <div class="icheck-primary">
                                 <input type="checkbox" name="remember" id="remember">
                                 <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-12">
                             <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                                 <span class="fas fa-sign-in-alt"></span>
-                                {{ __('adminlte::adminlte.sign_in') }}
+                                {{ __('adminlte::adminlte.log_in') }}
                             </button>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth:admin'])->group(function () {
   
-  // Admin Routes
+  // Admin Panel Routes
   Route::group(['prefix' => 'admin_panel'], function () {
     
     // Common Routes
@@ -52,7 +52,7 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/save', [OrganizationsController::class, 'saveCustomer'])->name('save_customer');
     });
 
-    // User/Job Seekers Routes
+    // Jobseekers Routes
     Route::group(['prefix' => 'users'], function () {
       Route::group(['prefix' => 'jobseekers'], function () {
         Route::get('/list', [JobSeekersController::class, 'jobseekersList'])->name('jobseekers_list');
@@ -77,6 +77,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/save', [RecruitersController::class, 'saveRecruiter'])->name('save_recruiter');
       });
 
+      // Admins Routes
       Route::group(['prefix' => 'admins'], function () {
         Route::get('/list', [AdminsController::class, 'adminsList'])->name('admins_list');
         Route::get('/view/{id}', [AdminsController::class, 'viewAdmin'])->name('view_admin');
@@ -89,6 +90,7 @@ Route::middleware(['auth:admin'])->group(function () {
       });
     });
 
+    // Recycle bin Routes
     Route::group(['prefix' => 'recycle_bin'], function () {
       Route::group(['prefix' => 'customers'], function () {
         Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
@@ -104,7 +106,7 @@ Route::middleware(['auth:admin'])->group(function () {
       });
     });
 
-    // Recruiters Routes
+    // Jobs Routes
     Route::group(['prefix' => 'jobs'], function () {
       Route::get('/bookmarked_jobs', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs');
       Route::get('/published_jobs', [JobsController::class, 'publishedJobsList'])->name('published_jobs');

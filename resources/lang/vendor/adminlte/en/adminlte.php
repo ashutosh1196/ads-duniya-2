@@ -12,6 +12,7 @@ return [
     'i_forgot_my_password'        => 'Forgot Password?',
     'i_already_have_a_membership' => 'I already have a membership',
     'sign_in'                     => 'Sign In',
+    'log_in'                      => 'Login',
     'log_out'                     => 'Log Out',
     'toggle_navigation'           => 'Toggle navigation',
     'login_message'               => 'Sign In',

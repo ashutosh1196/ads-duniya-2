@@ -17,16 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a>
+            <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a> -->
             <table id="rejected-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Status</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -38,11 +37,10 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td>
+                  <!-- <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
                   <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '--' }}</td>
-                  <td>Active</td>
                   <td>
                     <a href="view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
@@ -55,11 +53,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Organization</th>
-                  <th>Status</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>

@@ -10,9 +10,9 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
-            <a class="btn col-sm-1 btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
+          <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Edit Customer</h3>
+            <a class="btn col-sm-1 btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -202,7 +202,8 @@
           url:"{{ route('check_email') }}",
           data: {
             email: $(this).val(),
-            id: $("#customer_id").val()
+            id: $("#customer_id").val(),
+            table_name: 'organizations'
           },
           success: function(result) {
             if(result) {
@@ -229,7 +230,8 @@
             required: true
           },
           url: {
-            required: true
+            required: true,
+            url: true
           },
           address: {
             required: true
@@ -262,7 +264,8 @@
             required: "The Contact Number field is required."
           },
           url: {
-            required: "The Domain URL field is required."
+            required: "The Domain URL field is required.",
+            url: "The Company Domain URL must be valid."
           },
           address: {
             required: "The Address field is required."

@@ -11,6 +11,13 @@
 @section('adminlte_css')
     @stack('css')
     @yield('css')
+    <style>
+    .error {
+        color: #ff0000 !important;
+        font-weight: 300 !important;
+        font-size: 12px !important;
+    }
+    </style>
 @stop
 
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
@@ -58,4 +65,28 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
+    <script>
+        $('#loginForm').validate({
+            ignore: [],
+            debug: false,
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true
+                },
+            },
+            messages: {
+                email: {
+                    required: "The Email field is required.",
+                    email: "Please enter a valid Email"
+                },
+                password: {
+                    required: "The Password field is required."
+                }
+            }
+        });
+    </script>
 @stop

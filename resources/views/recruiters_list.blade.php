@@ -24,9 +24,8 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Organization</th>
-                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -40,7 +39,6 @@
                     <td>{{ $recruitersList[$i]->email }}</td>
                     <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
                     <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
-                    <td>Active</td>
                     <td>
                       <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
                       <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
@@ -54,9 +52,8 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Organization</th>
-                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>

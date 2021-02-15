@@ -3,8 +3,10 @@
 @section('title', 'Admin Information')
 
 @section('content_header')
-  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-  <h1>Admin Information</h1>
+  <div class="header_info d-flex justify-content-between align-items-center">
+    <h1>Admin Information</h1>
+    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+  </div>
 @stop
 
 @section('content')
@@ -18,7 +20,7 @@
               {{ session('status') }}
             </div>
           @endif
-<!--           <table class="table">
+          <!-- <table class="table">
             <tr>
             <tr>
               <th>Name </th>
@@ -55,37 +57,38 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Name</label>
-                  <input class="form-control" placeholder=" Test Admin" readonly>
+                  <input class="form-control" placeholder="{{ $viewAdmin[0]->name }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email</label>
-                  <input class="form-control" placeholder="test_admin@gmail.com" readonly>
+                  <input class="form-control" placeholder="{{ $viewAdmin[0]->email }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Email Verification Date</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="{{ $viewAdmin[0]->email_verified_at ? $viewAdmin[0]->email_verified_at : '--' }}" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Role</label>
-                  <input class="form-control" placeholder="Admin" readonly>
+                  <?php $role = \App\Models\Role::where('id', $viewAdmin[0]->role_id)->get(); ?>
+                  <input class="form-control" placeholder="{{ $role[0]->name }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created Date</label>
-                  <input class="form-control" placeholder="February 09, 2021 - 14:35 PM" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewAdmin[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Updated Date</label>
-                  <input class="form-control" placeholder="February 09, 2021 - 14:35 PM" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewAdmin[0]->updated_at)) }}" readonly>
                 </div>
               </div>
             </div>

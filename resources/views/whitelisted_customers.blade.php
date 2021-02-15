@@ -17,15 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a>
+            <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a> -->
             <table id="whitelisted-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -37,7 +37,7 @@
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td>
+                  <!-- <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>
@@ -53,10 +53,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Logo</th>
+                  <!-- <th>Logo</th> -->
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Contact Number</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
