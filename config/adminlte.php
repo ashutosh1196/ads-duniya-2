@@ -21,7 +21,7 @@ return [
     */
 
     'whichvocation' => 'Whichvocation',
-    'set_password' => 'Whichvocation set password',
+    'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',
     'title_postfix' => '',
 

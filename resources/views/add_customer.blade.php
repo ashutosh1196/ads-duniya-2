@@ -111,7 +111,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City<span class="text-danger"> *</span></label>
+                        <label for="city">City / Town<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -133,7 +133,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zipcode<span class="text-danger"> *</span></label>
+                        <label for="pincode">Zip / Postcode<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -158,9 +158,8 @@
                           <label for="country">Country<span class="text-danger"> *</span></label>
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
-                            <?php for($i=0; $i<count($countries); $i++) { ?>
-                              <option value="{{ $countries[$i]->name }}">{{ $countries[$i]->name }}</option>
-                            <?php } ?>
+                            <option value="United Kingdom" selected>United Kingdom</option>
+                            <option value="United States">United States</option>
                           </select>
                           @if($errors->has('country'))
                             <div class="error">{{ $errors->first('country') }}</div>
@@ -240,7 +239,7 @@
           },
           pincode: {
             required: true,
-            // max: 6
+            maxlength: 6
           },
           country: {
             required: true
@@ -270,11 +269,11 @@
             required: "The Address field is required."
           },
           city: {
-            required: "The City field is required."
+            required: "The City / Town field is required."
           },
           pincode: {
-            required: "The Zipcode field is required.",
-            // max: "The Zipcode must be of maximum 6 characters."
+            required: "The Zip / Postcode field is required.",
+            maxlength: "The Zip / Postcode must be of maximum 6 characters."
           },
           country: {
             required: "The Country field is required."
