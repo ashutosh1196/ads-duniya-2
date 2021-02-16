@@ -305,6 +305,24 @@ return [
             ],
         ],
         [
+            'text' => 'jobs_management',
+            'icon' => 'fas fa-fw fa-briefcase',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'published_jobs',
+                    'icon' => 'fas fa-fw fa-list',
+                    'url'  => 'admin_panel/jobs/list',
+                    'active' => ['admin_panel/jobs*'],
+                ],
+                /* [
+                    'text' => 'bookmarked_jobs',
+                    'icon' => 'fas fa-fw fa-map-pin',
+                    'url'  => 'admin_panel/jobseekers/bookmarked_jobs',
+                ], */
+            ],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',
@@ -331,26 +349,14 @@ return [
                     'icon' => 'fas fa-fw fa-building',
                     'url'  => 'admin_panel/recycle_bin/customers/deleted',
                 ],
+                [
+                    'text' => 'jobs',
+                    'icon' => 'fas fa-fw fa-briefcase',
+                    'url'  => 'admin_panel/recycle_bin/jobs/deleted',
+                ],
             ],
         ],
         /* [
-            'text' => 'jobs_management',
-            'icon' => 'fas fa-fw fa-briefcase',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'bookmarked_jobs',
-                    'icon' => 'fas fa-fw fa-map-pin',
-                    'url'  => 'admin_panel/jobseekers/bookmarked_jobs',
-                ],
-                [
-                    'text' => 'published_jobs',
-                    'icon' => 'fas fa-fw fa-tag',
-                    'url'  => 'admin_panel/recruiters/published_jobs',
-                ],
-            ],
-        ],
-        [
             'text' => 'content_management',
             'icon' => 'fas fa-fw fa-edit',
             'url'  => '#',

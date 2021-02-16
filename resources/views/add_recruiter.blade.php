@@ -120,7 +120,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary">Submit</button>
+                <button type="text" class="btn btn-primary">Save</button>
               </div>
               
             </form>
