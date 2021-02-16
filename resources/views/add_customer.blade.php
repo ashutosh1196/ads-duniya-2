@@ -61,13 +61,23 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
                         <input type="text" name="contact_number" class="form-control" id="contact_number">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
+                      </div>
+                    </div> -->
+                    <div class="col-md-6">
+                      <div class="form-group mb-4 pb-md-3 pr-md-2 pb-2 pr-0">
+                        <label class="required"><img src="{{asset('assets/images/contact.png')}}" alt="">Contact Number</label>
+                        <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13">
+                        @if($errors->has('contact_number'))
+                          <div class="error">{{ $errors->first('contact_number') }}</div>
+                        @endif
+                        <input type="hidden" name="country_code">
                       </div>
                     </div>
 
@@ -187,15 +197,27 @@
 @endsection
 
 @section('css')
+  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css">
+  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
+   .intl-tel-input { display: block; }
   </style>
 @stop
 
 @section('js')
+  <script type="text/javascript" src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
   <script>
     $(document).ready(function() {
+      $("#jquery-intl-phone").intlTelInput({
+        onlyCountries: ['gb'],
+        initialCountry: 'gb',
+        separateDialCode: true
+      });
+      $( "input[name=contact_number]" ).focus(function() {
+          $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
+       });
       var addCustomerForm = $( "#addCustomerForm" );
       $("#email").blur(function() {
         $.ajax({

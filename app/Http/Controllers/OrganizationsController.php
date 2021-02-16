@@ -70,6 +70,7 @@ class OrganizationsController extends Controller {
 		$customer = new Organization;
 		$customer->name = $request->first_name.$request->name;
 		$customer->email = $request->email;
+		$customer->country_code = $request->country_code;
 		$customer->contact_number = $request->contact_number;
 		$customer->vat_number = $request->vat_number;
 		$customer->url = $request->url;
@@ -258,6 +259,7 @@ class OrganizationsController extends Controller {
 		$dataToUpdate = [
 			'name' => $request->name,
 			// 'email' => $request->email,
+			'country_code' => $request->country_code,
 			'contact_number' => $request->contact_number,
 			'vat_number' => $request->vat_number,
 			'url' => $request->url,
