@@ -29,6 +29,7 @@ return [
     'bookmarked_jobs'               => 'Bookmarked Jobs',
 
     'recylce_bin'                   => 'Recylce Bin',
+    'jobs'                          => 'Jobs',
 
     'content_management'            => 'Content Management',
     'website'                       => 'Website',

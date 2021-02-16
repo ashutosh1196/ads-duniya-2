@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Deleted Jobseekers')
+@section('title', 'Deleted Jobs')
 
 @section('content_header')
-  <h1>Deleted Jobseekers</h1>
+  <h1>Deleted Jobs</h1>
 @stop
 
 @section('content')
