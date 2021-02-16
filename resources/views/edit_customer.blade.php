@@ -20,7 +20,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addCustomerForm" method="post", action="{{ route('update_customer') }}">
+            <form id="editCustomerForm" method="post", action="{{ route('update_customer') }}">
               @csrf
               <div class="card-body form">
                 @if ($errors->any())
@@ -60,24 +60,26 @@
                     </div>
                   </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group mb-4 pb-md-3 pr-md-2 pb-2 pr-0">
-                      <label class="required"><img src="{{asset('assets/images/contact.png')}}" alt="">Contact Number</label>
-                      <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13" value="{{ $customer[0]->contact_number }}">
-                      @if($errors->has('contact_number'))
-                        <div class="error">{{ $errors->first('contact_number') }}</div>
-                      @endif
-                      <input type="hidden" name="country_code" value="{{ $customer[0]->country_code }}">
-                    </div>
-                  </div>
-
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="vat_number">VAT Number (Optional)</label>
-                        <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}">
-                        @if($errors->has('vat_number'))
-                          <div class="error">{{ $errors->first('vat_number') }}</div>
+                        <label class="required">Contact Number</label>
+                        <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13" value="{{ $customer[0]->contact_number }}">
+                        @if($errors->has('contact_number'))
+                          <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
+                        <input type="hidden" name="country_code">
+                      </div>
+                    </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="vat_number">VAT Number (Optional)</label>
+                          <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}">
+                          @if($errors->has('vat_number'))
+                            <div class="error">{{ $errors->first('vat_number') }}</div>
+                          @endif
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -111,7 +113,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City<span class="text-danger"> *</span></label>
+                        <label for="city">City / Town<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -133,7 +135,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zipcode<span class="text-danger"> *</span></label>
+                        <label for="pincode">Zip / Postcode<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -192,7 +194,7 @@
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
-   .intl-tel-input { display: block; }
+    .intl-tel-input { display: block; }
   </style>
 @stop
 
@@ -201,7 +203,7 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        initialCountry: 'gb',
+        onlyCountries: ['gb'],
         separateDialCode: true
       });
       $( "input[name=contact_number]" ).focus(function() {
@@ -226,8 +228,8 @@
           }
         });
       });
-      var addCustomerForm = $( "#addCustomerForm" );
-      addCustomerForm.validate({
+      var editCustomerForm = $( "#editCustomerForm" );
+      editCustomerForm.validate({
         ignore: [],
         debug: false,
         rules: {
@@ -282,11 +284,11 @@
             required: "The Address field is required."
           },
           city: {
-            required: "The City field is required."
+            required: "The City / Town field is required."
           },
           pincode: {
-            required: "The Zipcode field is required.",
-            maxlength: "The Zipcode must be of maximum 6 characters."
+            required: "The Zip / Postcode field is required.",
+            maxlength: "The Zip / Postcode must be of maximum 6 characters."
           },
           country: {
             required: "The Country field is required."

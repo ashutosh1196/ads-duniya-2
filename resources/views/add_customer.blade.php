@@ -202,7 +202,7 @@
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
-   .intl-tel-input { display: block; }
+    .intl-tel-input { display: block; }
   </style>
 @stop
 
@@ -211,13 +211,12 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        initialCountry: 'gb',
+        onlyCountries: ['gb'],
         separateDialCode: true
       });
       $( "input[name=contact_number]" ).focus(function() {
           $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
        });
-      var addCustomerForm = $( "#addCustomerForm" );
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -236,6 +235,7 @@
           }
         });
       });
+      var addCustomerForm = $( "#addCustomerForm" );
       addCustomerForm.validate({
         ignore: [],
         debug: false,
