@@ -41,7 +41,7 @@
     </style>
     <style id="icon-media-query" type="text/css">
       @media (max-width: 620px) {
-        .icons-inner { text-align: center; }
+        .icons-inner { text-align: left; }
         .icons-inner td { margin: 0 auto; }
       }
     </style>
@@ -76,21 +76,21 @@
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:35px; padding-bottom:0px; padding-right: 10px; padding-left: 10px;">
                                   <div style="color:#1f2936;font-family:'Ubuntu', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.2; font-size: 12px; font-family: 'Ubuntu', Tahoma, Verdana, Segoe, sans-serif; color: #1f2936; mso-line-height-alt: 14px;">
-                                        <p style="font-size: 46px; line-height: 1.2; word-break: break-word; text-align: center; font-family: Ubuntu, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 55px; margin: 0;"><span style="font-size: 46px;"><strong>Hello! {{ $username }},</strong></span></p>
+                                        <p style="font-size: 46px; line-height: 1.2; word-break: break-word; text-align: left; font-family: Ubuntu, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 55px; margin: 0;"><span style="font-size: 46px;"><strong>Hello! {{ $username }},</strong></span></p>
                                       </div>
                                   </div>
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin: 0;">You have successfully registered to Which Vocation. Please click the link below to verify your account.</p>
+                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">You have successfully registered to {{ config('adminlte.title', 'Which Vocation') }}. Please click the link below to verify your account.</p>
                                       </div>
                                   </div>
                                   <div align="center" class="button-container" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-                                      <a href="{{ $link }}" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #2d8427; border-radius: 28px; -webkit-border-radius: 28px; -moz-border-radius: 28px; width: auto; width: auto; border-top: 1px solid #2d8427; border-right: 1px solid #2d8427; border-bottom: 1px solid #2d8427; border-left: 1px solid #2d8427; padding-top: 5px; padding-bottom: 5px; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:undefined;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">Verify Account</span></span></a>
+                                      <a href="{{ $link }}" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #2d8427; border-radius: 28px; -webkit-border-radius: 28px; -moz-border-radius: 28px; width: auto; width: auto; border-top: 1px solid #2d8427; border-right: 1px solid #2d8427; border-bottom: 1px solid #2d8427; border-left: 1px solid #2d8427; padding-top: 5px; padding-bottom: 5px; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; text-align: left; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:undefined;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">Verify Account</span></span></a>
                                   </div>
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:20px;padding-bottom:20px;padding-left:20px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="text-align: center; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">Thank you for using our application!</span></p>
-                                        <p style="text-align: center; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">Regards,</span><br/><span style="font-size: 14px;">Team Which Vocation</span></p>
+                                        <p style="text-align: left; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">Thank you for using our application!</span></p>
+                                        <p style="text-align: left; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">Regards,</span><br/><span style="font-size: 14px;">Team {{ config('adminlte.title', 'Which Vocation') }}</span></p>
                                       </div>
                                   </div>
                                 </div>
@@ -136,7 +136,7 @@
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;">
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:0px;padding-right:10px;padding-bottom:05px;padding-left:10px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin: 0;"><br/>If you’re having trouble clicking the "Verify Account" button, copy and paste the URL below into your web browser:</p>
+                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;"><br/>If you’re having trouble clicking the "Verify Account" button, copy and paste the URL below into your web browser:</p>
                                       </div>
                                   </div>
                                   <div style="font-size:16px;text-align:center;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif"><a href="{{ $link }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $link }}</a></div>
@@ -154,7 +154,7 @@
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:10px; padding-bottom:10px; padding-right: 0px; padding-left: 0px;">
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:0px;padding-right:10px;padding-bottom:00px;padding-left:10px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="font-size: 12px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 12px;">Copyright © 2021 whichVocation</span></p>
+                                        <p style="font-size: 12px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 18px; margin: 0;"><span style="font-size: 12px;">Copyright © 2021 whichVocation</span></p>
                                       </div>
                                   </div>
                                 </div>
