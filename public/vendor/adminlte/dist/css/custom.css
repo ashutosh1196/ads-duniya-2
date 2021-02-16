@@ -572,6 +572,11 @@ body.login-page .login-box button span {
 .content-wrapper .card-body .form-group input::placeholder {
     color: #343d49;
 }
+.sidebar-mini .wrapper .nav-sidebar .nav-link .right, 
+.sidebar-mini .wrapper .nav-sidebar .nav-link p .right {
+    right: 10px;
+    top: 14px;
+}
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
   body.login-page {
