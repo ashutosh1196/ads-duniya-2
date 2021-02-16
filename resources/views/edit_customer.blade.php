@@ -201,7 +201,6 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        onlyCountries: ['gb'],
         initialCountry: 'gb',
         separateDialCode: true
       });
