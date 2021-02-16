@@ -23,10 +23,10 @@ class RecruitersController extends Controller {
 					array_push($recruitersList, $recruiter[0]);
 				}
 			}
-			return view('recruiters_list', ['recruitersList' => $recruitersList]);
+			return view('recruiters/recruiters_list', ['recruitersList' => $recruitersList]);
 		}
 		else {
-			return view('recruiters_list', ['recruitersList' => null]);
+			return view('recruiters/recruiters_list', ['recruitersList' => null]);
 		}
 	}
 
@@ -38,11 +38,11 @@ class RecruitersController extends Controller {
 		$deletedRecruiter = Recruiter::onlyTrashed()->get();
 		if($recruiter->isNotEmpty()) {
 			$organization = Organization::where('id', $recruiter[0]->organization_id)->get();
-			return view('view_recruiter')->with(['recruiter' => $recruiter, 'organization' => $organization]);
+			return view('recruiters/view_recruiter')->with(['recruiter' => $recruiter, 'organization' => $organization]);
 		}
 		else {
 			$organization = Organization::where('id', $deletedRecruiter[0]->organization_id)->get();
-			return view('view_recruiter')->with(['recruiter' => $deletedRecruiter, 'organization' => $deletedRecruiter]);
+			return view('recruiters/view_recruiter')->with(['recruiter' => $deletedRecruiter, 'organization' => $deletedRecruiter]);
 		}
 	}
 
@@ -52,7 +52,7 @@ class RecruitersController extends Controller {
 	public function editRecruiter($id) {
 		$recruiter = Recruiter::where('id', $id)->get();
 		$organizations = Organization::all();
-		return view('edit_recruiter', )->with(["recruiter" => $recruiter, "organizations" => $organizations]);
+		return view('recruiters/edit_recruiter', )->with(["recruiter" => $recruiter, "organizations" => $organizations]);
 	}
 
 	/**
@@ -115,7 +115,7 @@ class RecruitersController extends Controller {
 	*/
 	public function deletedRecruitersList() {
 		$deletedRecruiters = Recruiter::onlyTrashed()->get();
-		return view('deleted_recruiters_list', ['deletedRecruiters' => $deletedRecruiters]);
+		return view('recruiters/deleted_recruiters_list', ['deletedRecruiters' => $deletedRecruiters]);
 	}
 
 	/**
@@ -142,7 +142,7 @@ class RecruitersController extends Controller {
 	*/
 	public function addRecruiter() {
 		$companies = organization::where('is_whitelisted', 1)->where('deleted_at', NULL)->get();
-		return view('add_recruiter', ['companies' => $companies]);
+		return view('recruiters/add_recruiter', ['companies' => $companies]);
 	}
 
 	/**
@@ -183,7 +183,7 @@ class RecruitersController extends Controller {
 				}
 			}
 			return redirect()->route('recruiters_list', ['recruitersList' => $recruitersList])->with('success', 'Recruiter added successfully.');
-			// return view('add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
+			// return view('recruiters/add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');

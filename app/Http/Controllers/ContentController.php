@@ -12,7 +12,7 @@ class ContentController extends Controller {
 	*/
 	public function websitePagesList(Request $request) {
 		$websitePagesList = Page::where('view', '1')->get();
-		return view('pages/website_pages')->with('websitePagesList', $websitePagesList);
+		return view('content/website_pages')->with('websitePagesList', $websitePagesList);
 	}
 
 	/**
@@ -20,14 +20,14 @@ class ContentController extends Controller {
 	*/
 	public function mobilePagesList(Request $request) {
 		$mobilePagesList = Page::where('view', '0')->get();
-		return view('pages/mobile_pages')->with('mobilePagesList', $mobilePagesList);
+		return view('content/mobile_pages')->with('mobilePagesList', $mobilePagesList);
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	// public function addPagesContentView(Request $request) {
-	// 	return view('add_page');
+	// 	return view('content');
 	// }
 
 	/**
@@ -63,7 +63,7 @@ class ContentController extends Controller {
 	*/
 	public function editPagesContentView($id) {
     $pageContent = Page::find($id);
-		return view('edit_content')->with("pageContent", $pageContent);
+		return view('content')->with("pageContent", $pageContent);
 	}
 
 	/**
@@ -79,10 +79,10 @@ class ContentController extends Controller {
 		if($updateContent) {
 			$pagesList = Page::all();
 			return redirect()->route('pages_list', ['pagesList' => $pagesList])->with('success', 'Page Updated successfully!');
-			// return view('pages_list')->with('success', 'Page Updated successfully!');
+			// return view('content')->with('success', 'Page Updated successfully!');
 		}
 		else {
-			return view('pages_list')->with('error', 'Something went wrong!');
+			return view('content')->with('error', 'Something went wrong!');
 		}
 	}
 

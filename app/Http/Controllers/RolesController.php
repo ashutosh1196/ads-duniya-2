@@ -11,14 +11,14 @@ class RolesController extends Controller {
 	*/
 	public function rolesList(Request $request) {
 		$roles = Role::where('id', '!=', 1)->get();
-		return view('roles_list', ['roles' => $roles]);
+		return view('roles/roles_list', ['roles' => $roles]);
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addRole(Request $request) {
-		return view('add_role');
+		return view('roles/add_role');
 	}
 
 	/**

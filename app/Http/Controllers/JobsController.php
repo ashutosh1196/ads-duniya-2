@@ -23,7 +23,7 @@ class JobsController extends Controller {
 				array_push($recruitersList, $recruiter[0]);
 			}
 		}
-		return view('add_job', ['organisationsList' => $organisationsList, 'recruitersList' => $recruitersList, 'countries' => $countries]);
+		return view('jobs/add_job', ['organisationsList' => $organisationsList, 'recruitersList' => $recruitersList, 'countries' => $countries]);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ class JobsController extends Controller {
 		$job->created_by = $request->created_by;
 		if($job->save()) {
 			$jobsList = Job::all();
-			return view('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
+			return view('jobs/jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');
@@ -89,7 +89,7 @@ class JobsController extends Controller {
 	*/
 	public function jobsList(Request $request) {
 		$jobsList = Job::all();
-		return view('jobs_list')->with('jobsList', $jobsList);
+		return view('jobs/jobs_list')->with('jobsList', $jobsList);
 	}
 	
 	/**
@@ -99,7 +99,7 @@ class JobsController extends Controller {
 		$jobDetails = Job::where('id',$id)->get();
 		$organization = Organization::where('id', $jobDetails[0]->organization_id)->get();
 		$recruiter = Recruiter::where('id', $jobDetails[0]->recruiter_id)->get();
-		return view('view_job', [
+		return view('jobs/view_job', [
 			'jobDetails' => $jobDetails,
 			'organizationName' => $organization[0]->name,
 			'recruiterName' => $recruiter[0]->name
@@ -120,7 +120,7 @@ class JobsController extends Controller {
 				array_push($recruitersList, $recruiter[0]);
 			}
 		}
-		return view('edit_job', [
+		return view('jobs/edit_job', [
 			'jobDetails' => $jobDetails,
 			'recruitersList' => $recruitersList,
 			'organisationsList' => $organisationsList,
@@ -180,7 +180,7 @@ class JobsController extends Controller {
 		$updateJob = Job::where('id', $jobId)->update($jobToUpdate);
 		if($updateJob) {
 			$jobsList = Job::all();
-			return view('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
+			return view('jobs/jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');
@@ -210,7 +210,7 @@ class JobsController extends Controller {
 	*/
 	public function deletedJobs(Request $request) {
 		$deletedJobs = Job::onlyTrashed()->get();
-		return view('deleted_jobs')->with('deletedJobs', $deletedJobs);
+		return view('jobs/deleted_jobs')->with('deletedJobs', $deletedJobs);
 	}
 
 	/**
@@ -237,6 +237,6 @@ class JobsController extends Controller {
 	*/
 	public function bookmarkedJobs(Request $request) {
 		$bookmarkedJobs = Job::all();
-		return view('bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+		return view('jobs/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
 	}
 }

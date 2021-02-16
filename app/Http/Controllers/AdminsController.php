@@ -28,7 +28,7 @@ class AdminsController extends Controller {
 	*/
 	public function adminsList(Request $request) {
 		$adminsList = Admin::where('role_id', '!=', 1)->get();
-		return view('admins_list', ['adminsList' => $adminsList]);
+		return view('admins/admins_list', ['adminsList' => $adminsList]);
 	}
 
 	/**
@@ -36,7 +36,7 @@ class AdminsController extends Controller {
 	*/
 	public function addAdmin(Request $request) {
 		$roles = Role::where('id', '!=', 1)->get();
-		return view('add_admin', ['roles' => $roles]);
+		return view('admins/add_admin', ['roles' => $roles]);
 	}
 
 	/**
@@ -68,7 +68,7 @@ class AdminsController extends Controller {
 		else {
 			return redirect()->back()->with('error', 'Something went wrong!');
 		}
-		return view('add_admin');
+		return view('admins/add_admin');
 	}
 
 	/**
@@ -78,10 +78,10 @@ class AdminsController extends Controller {
 		$viewAdmin = Admin::where('id', $id)->get();
 		$deletedAdmins = Admin::onlyTrashed()->get();
 		if($viewAdmin->isNotEmpty()) {
-			return view('view_admin', ['viewAdmin' => $viewAdmin]);
+			return view('admins/view_admin', ['viewAdmin' => $viewAdmin]);
 		}
 		else {
-			return view('view_admin', ['viewAdmin' => $deletedAdmins]);
+			return view('admins/view_admin', ['viewAdmin' => $deletedAdmins]);
 		}
 	}
 
@@ -91,7 +91,7 @@ class AdminsController extends Controller {
 	public function editAdmin($id) {
 		$roles = Role::where('id', '!=', 1)->get();
 		$admin = Admin::where('id', $id)->get();
-		return view('edit_admin', ['roles' => $roles, 'admin' => $admin]);
+		return view('admins/edit_admin', ['roles' => $roles, 'admin' => $admin]);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class AdminsController extends Controller {
 	*/
 	public function deletedAdminsList() {
 		$deletedAdmins = Admin::onlyTrashed()->get();
-		return view('deleted_admins_list', ['deletedAdmins' => $deletedAdmins]);
+		return view('admins/deleted_admins_list', ['deletedAdmins' => $deletedAdmins]);
 	}
 
 	/**

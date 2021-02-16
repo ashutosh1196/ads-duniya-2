@@ -14,7 +14,7 @@ class JobSeekersController extends Controller {
 	 * This function is used to Add Job Seeker
 	*/
 	public function addJobseeker() {
-		return view('add_jobseeker');
+		return view('jobseekers/add_jobseeker');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class JobSeekersController extends Controller {
 	*/
 	public function jobseekersList(Request $request) {
 		$jobseekersList = User::all();
-		return view('jobseekers_list')->with('jobseekersList', $jobseekersList);
+		return view('jobseekers/jobseekers_list')->with('jobseekersList', $jobseekersList);
 	}
 
 	/**
@@ -59,10 +59,10 @@ class JobSeekersController extends Controller {
 		$jobseeker = User::where('id', $id)->get();
 		$deletedJobseekers = User::onlyTrashed()->get();
 		if($jobseeker->isNotEmpty()) {
-			return view('view_jobseeker')->with('jobseeker', $jobseeker);
+			return view('jobseekers/view_jobseeker')->with('jobseeker', $jobseeker);
 		}
 		else {
-			return view('view_jobseeker')->with('jobseeker', $deletedJobseekers);
+			return view('jobseekers/view_jobseeker')->with('jobseeker', $deletedJobseekers);
 		}
 	}
 
@@ -71,7 +71,7 @@ class JobSeekersController extends Controller {
 	*/
 	public function editJobseeker($id) {
 		$jobseeker = User::where('id', $id)->get();
-		return view('edit_jobseeker')->with("jobseeker", $jobseeker);
+		return view('jobseekers/edit_jobseeker')->with("jobseeker", $jobseeker);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class JobSeekersController extends Controller {
 	*/
 	public function deletedJobseekersList() {
 		$deletedJobseekers = User::onlyTrashed()->get();
-		return view('deleted_jobseekers_list', ['deletedJobseekers' => $deletedJobseekers]);
+		return view('jobseekers/deleted_jobseekers_list', ['deletedJobseekers' => $deletedJobseekers]);
 	}
 
 	/**

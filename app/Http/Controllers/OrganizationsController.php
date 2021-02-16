@@ -45,7 +45,7 @@ class OrganizationsController extends Controller {
 	*/
 	public function addCustomer() {
 		$countries = Country::all();
-		return view('add_customer', ['countries' => $countries]);
+		return view('customers/add_customer', ['countries' => $countries]);
 	}
 
 	/**
@@ -89,7 +89,7 @@ class OrganizationsController extends Controller {
 			if($recruiter->save()) {
 				$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
 				return redirect()->route('pending_customers', ['pendingCustomersList' => $pendingCustomersList])->with('success', 'Recruiter added successfully. Please approve.');
-				// return view('add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
+				// return view('customers/add_recruiter', ['email' => $request->email, 'organization_id' => $customer->organization_id]);
 			}
 			else {
 				return back()->with('error', 'Something went wrong! Please try again.');
@@ -107,10 +107,10 @@ class OrganizationsController extends Controller {
 		$viewCustomer = Organization::where('id', $id)->get();
 		$deletedCustomers = Organization::onlyTrashed()->get();
 		if($viewCustomer->isNotEmpty()) {
-			return view('view_customers')->with('viewCustomer', $viewCustomer);
+			return view('customers/view_customers')->with('viewCustomer', $viewCustomer);
 		}
 		else {
-			return view('view_customers')->with('viewCustomer', $deletedCustomers);
+			return view('customers/view_customers')->with('viewCustomer', $deletedCustomers);
 		}
 	}
 
@@ -119,7 +119,7 @@ class OrganizationsController extends Controller {
 	*/
 	public function pendingCustomersList(Request $request) {
 		$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
-		return view('pending_customers')->with('pendingCustomersList', $pendingCustomersList);
+		return view('customers/pending_customers')->with('pendingCustomersList', $pendingCustomersList);
 	}
 
 	/**
@@ -127,7 +127,7 @@ class OrganizationsController extends Controller {
 	*/
 	public function whitelistedCustomersList(Request $request) {
 		$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->get();
-		return view('whitelisted_customers')->with('whitelistedCustomersList', $whitelistedCustomersList);
+		return view('customers/whitelisted_customers')->with('whitelistedCustomersList', $whitelistedCustomersList);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class OrganizationsController extends Controller {
 	*/
 	public function rejectedCustomersList(Request $request) {
 		$rejectedCustomersList = Organization::where('is_whitelisted', 2)->get();
-		return view('rejected_customers')->with('rejectedCustomersList', $rejectedCustomersList);
+		return view('customers/rejected_customers')->with('rejectedCustomersList', $rejectedCustomersList);
 	}
 
 	/**
@@ -201,7 +201,7 @@ class OrganizationsController extends Controller {
 	*/
 	public function deletedCustomersList() {
 		$deletedCustomers = Organization::onlyTrashed()->get();
-		return view('deleted_customers_list', ['deletedCustomers' => $deletedCustomers]);
+		return view('customers/deleted_customers_list', ['deletedCustomers' => $deletedCustomers]);
 	}
 
 	/**
@@ -229,7 +229,7 @@ class OrganizationsController extends Controller {
 	public function editCustomer($id) {
 		$countries = Country::all();
 		$customer = Organization::where('id', $id)->get();
-		return view('edit_customer', ['countries' => $countries, 'customer' => $customer]);
+		return view('customers/edit_customer', ['countries' => $countries, 'customer' => $customer]);
 	}
 
 	/**
