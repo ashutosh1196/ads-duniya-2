@@ -158,8 +158,9 @@
                           <label for="country">Country<span class="text-danger"> *</span></label>
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>Select Country</option>
-                            <option value="United Kingdom" selected>United Kingdom</option>
-                            <option value="United States">United States</option>
+                            <?php for($i=0; $i<count($countries); $i++) { ?>
+                              <option value="{{ $countries[$i]->name }}" {{ $countries[$i]->name == 'United Kingdom' ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
+                            <?php } ?>
                           </select>
                           @if($errors->has('country'))
                             <div class="error">{{ $errors->first('country') }}</div>
