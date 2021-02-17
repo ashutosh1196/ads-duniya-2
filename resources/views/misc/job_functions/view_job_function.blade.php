@@ -30,12 +30,11 @@
                   <input class="form-control" placeholder="{{ $jobFunction[0]->name }}" readonly>
                 </div>
               </div>
-
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Job Industry</label>
-                  <?php $jobIndustry = \App\Models\JobIndustry::where('id', $jobFunction[0]->job_industry_id)->get(); ?>
-                  <input class="form-control" placeholder="{{ $jobIndustry[0]->name }}" readonly>
+                  <label>Job Slug</label>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->slug }}" readonly>
                 </div>
               </div>
             </div>
@@ -43,8 +42,8 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Job Slug</label>
-                  <input class="form-control" placeholder="{{ $jobFunction[0]->slug }}" readonly>
+                  <label>Status</label>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->status ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
               
@@ -68,15 +67,6 @@
                 <div class="form-group">
                   <label>Last Updated Date</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobFunction[0]->updated_at)) }}" readonly>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
-                <div class="form-group">
-                  <label>Job Description</label>
-                  <span class="function-description">{!! $jobFunction[0]->description !!}</span>
                 </div>
               </div>
             </div>

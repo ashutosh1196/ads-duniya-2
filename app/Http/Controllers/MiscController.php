@@ -69,11 +69,9 @@ class MiscController extends Controller {
 	public function saveJobIndustry(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required|unique:job_industries',
-			'description' => 'required',
 		], [
 			'name.required' => 'The Job Industry Name is required.',
 			'name.unique' => 'The Job Industry Name must be unique.',
-			'description.required' => 'The Job Industry Description is required.',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -82,8 +80,7 @@ class MiscController extends Controller {
 		$jobIndustry = new JobIndustry;
 		$jobIndustry->name = $request->name;
 		$jobIndustry->slug = $jobSlug;
-		$jobIndustry->description = $request->description;
-		$jobIndustry->status = 1;
+		$jobIndustry->status = $request->status;
 
 		if($jobIndustry->save()) {
 			$jobIndustriesList = JobIndustry::all();
@@ -109,10 +106,8 @@ class MiscController extends Controller {
 	public function updateJobIndustry(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required',
-			'description' => 'required',
 		], [
 			'name.required' => 'Job Name is required',
-			'description.required' => 'Job Description is required',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -122,7 +117,7 @@ class MiscController extends Controller {
 		$jobIndustry = [
 			'name' => $request->name,
 			'slug' => $jobSlug,
-			'description' => $request->description
+			'status' => $request->status,
 		];
 		$jobIndustryUpdate = JobIndustry::where('id', $jobIndustryId)->update($jobIndustry);
 		if($jobIndustryUpdate) {
@@ -139,19 +134,12 @@ class MiscController extends Controller {
 	*/
 	public function deleteJobIndustry(Request $request) {
 		$industryId = $request->id;
-		$deleteJobFunction = JobFunction::where('job_industry_id', $industryId)->delete();
-		if($deleteJobFunction) {
-			$deleteJobIndustry = JobIndustry::where('id', $industryId)->delete();
-			if($deleteJobIndustry) {
-				$jobIndustriesList = JobIndustry::all();
-				$res['success'] = 1;
-				$res['data'] = $jobIndustriesList;
-				return json_encode($res);
-			}
-			else {
-				$res['success'] = 0;
-				return json_encode($res);
-			}
+		$deleteJobIndustry = JobIndustry::where('id', $industryId)->delete();
+		if($deleteJobIndustry) {
+			$jobIndustriesList = JobIndustry::all();
+			$res['success'] = 1;
+			$res['data'] = $jobIndustriesList;
+			return json_encode($res);
 		}
 		else {
 			$res['success'] = 0;
@@ -206,13 +194,7 @@ class MiscController extends Controller {
 	 * This function is used to Get Add Job Industry View
 	*/
 	public function addJobFunction() {
-		$jobIndustries = JobIndustry::all();
-		if($jobIndustries->isNotEmpty()) {
-			return view('misc/job_functions/add_job_function', [ 'jobIndustries' => $jobIndustries ]);
-		}
-		else {
-			return redirect()->route('add_job_industry')->with('error', 'Please Add Job Industry first!');
-		}
+		return view('misc/job_functions/add_job_function');
 	}
 	
 	
@@ -222,13 +204,9 @@ class MiscController extends Controller {
 	public function saveJobFunction(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required|unique:job_functions',
-			'description' => 'required',
-			'job_industry_id' => 'required',
 		], [
 			'name.required' => 'The Job Function Name is required.',
 			'name.unique' => 'The Job Function Name must be unique.',
-			'description.required' => 'The Job Function Description is required.',
-			'job_industry_id.required' => 'The Job Industry is required.',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -237,9 +215,7 @@ class MiscController extends Controller {
 		$jobFunction = new JobFunction;
 		$jobFunction->name = $request->name;
 		$jobFunction->slug = $jobFunctionSlug;
-		$jobFunction->description = $request->description;
-		$jobFunction->job_industry_id = $request->job_industry_id;
-		$jobFunction->status = 1;
+		$jobFunction->status = $request->status;
 
 		if($jobFunction->save()) {
 			$jobFunctionsList = JobFunction::all();
@@ -265,10 +241,8 @@ class MiscController extends Controller {
 	public function updateJobFunction(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required',
-			'description' => 'required',
 		], [
 			'name.required' => 'Job Name is required',
-			'description.required' => 'Job Description is required',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -278,7 +252,7 @@ class MiscController extends Controller {
 		$jobFunction = [
 			'name' => $request->name,
 			'slug' => $jobSlug,
-			'description' => $request->description
+			'status' => $request->status,
 		];
 		$jobFunctionUpdate = JobFunction::where('id', $jobFunctionId)->update($jobFunction);
 		if($jobFunctionUpdate) {
@@ -321,22 +295,13 @@ class MiscController extends Controller {
 	*/
 	public function restoreJobFunction(Request $request) {
 		$functionId = $request->id;
-		$jobFunctionDeleted = JobFunction::where('id', $functionId)->onlyTrashed()->get();
-		$jobIndustry = JobIndustry::where('id', $jobFunctionDeleted[0]->job_industry_id);
-		$restoreJobIndustry = $jobIndustry->restore();
-		if($restoreJobIndustry) {
-			$jobFunction = JobFunction::where('id', $functionId);
-			$restoreJobFunction = $jobFunction->restore();
-			if($restoreJobFunction) {
-				$jobFunctionsList = JobFunction::all();
-				$res['success'] = 1;
-				$res['data'] = $jobFunctionsList;
-				return json_encode($res);
-			}
-			else {
-				$res['success'] = 0;
-				return json_encode($res);
-			}
+		$jobFunction = JobFunction::where('id', $functionId);
+		$restoreJobFunction = $jobFunction->restore();
+		if($restoreJobFunction) {
+			$jobFunctionsList = JobFunction::all();
+			$res['success'] = 1;
+			$res['data'] = $jobFunctionsList;
+			return json_encode($res);
 		}
 		else {
 			$res['success'] = 0;
@@ -375,11 +340,9 @@ class MiscController extends Controller {
 	public function saveSkill(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required|unique:skills',
-			'description' => 'required',
 		], [
 			'name.required' => 'The Skill Name is required.',
 			'name.unique' => 'The Skill Name must be unique.',
-			'description.required' => 'The Skill Description is required.',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -388,8 +351,7 @@ class MiscController extends Controller {
 		$skill = new Skill;
 		$skill->name = $request->name;
 		$skill->slug = $slillSlug;
-		$skill->description = $request->description;
-		$skill->status = 1;
+		$skill->status = $request->status;
 
 		if($skill->save()) {
 			$skillsList = Skill::all();
@@ -415,10 +377,8 @@ class MiscController extends Controller {
 	public function updateSkill(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required',
-			'description' => 'required',
 		], [
 			'name.required' => 'Skill Name is required',
-			'description.required' => 'Skill Description is required',
 		]);
 
 		$slugTrimmed = str_replace(' ', '_', $request->name);
@@ -428,7 +388,7 @@ class MiscController extends Controller {
 		$skill = [
 			'name' => $request->name,
 			'slug' => $skillSlug,
-			'description' => $request->description
+			'status' => $request->status,
 		];
 		$skillUpdate = Skill::where('id', $skillId)->update($skill);
 		if($skillUpdate) {

@@ -46,7 +46,20 @@
                       </div>
                     </div>
                     
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="status">Status<span class="text-danger"> *</span></label>
+                        <select name="status" class="form-control" id="status">
+                          <option value="1">Active</option>
+                          <option value="0">Inactive</option>
+                        </select>
+                        @if($errors->has('status'))
+                          <div class="error">{{ $errors->first('status') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    
+                    <!-- <div class="col-sm-12">
                       <div class="form-group">
                         <label for="description">Job Industry Description<span class="text-danger"> *</span></label>
                         <textarea id="description" name="description"></textarea>
@@ -55,7 +68,7 @@
                         @endif
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
               </div>
@@ -111,21 +124,27 @@
           name: {
             required: true
           },
-          description:{
-            required: function() {
-              CKEDITOR.instances.description.updateElement();
-            },
-            minlength:10
+          status: {
+            required: true
           },
+          // description:{
+          //   required: function() {
+          //     CKEDITOR.instances.description.updateElement();
+          //   },
+          //   minlength:10
+          // },
         },
         messages: {
           name: {
             required: "The Job Industry Name field is required."
           },
-          description: {
+          status: {
+            required: "The Status field is required."
+          },
+          /* description: {
             required: "The Job Industry Description field is required.",
             minlength: "Minimum Length must be 10"
-          },
+          }, */
         }
       });
     });

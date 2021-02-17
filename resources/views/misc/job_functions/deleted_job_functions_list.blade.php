@@ -23,7 +23,6 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  <th>Industry</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -38,10 +37,6 @@
                   <td>{{ $i+1 }}</td>
                   <td>{{ $deletedJobFunctions[$i]->name }}</td>
                   <td>{{ $deletedJobFunctions[$i]->slug }}</td>
-                  <td>
-                  <?php $jobIndustry = \App\Models\JobIndustry::where('id', $deletedJobFunctions[$i]->job_industry_id)->onlyTrashed()->get(); ?>
-                    {{ $jobIndustry->isNotEmpty() ? $jobIndustry[0]->name : '--' }}
-                  </td>
                   <td>{{ $deletedJobFunctions[$i]->status ? 'Active' : 'Inactive' }}</td>
                   <td>
                     <a class="action-button restore-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobFunctions[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
@@ -54,7 +49,6 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  <th>Industry</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>

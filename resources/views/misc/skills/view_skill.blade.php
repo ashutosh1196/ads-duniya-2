@@ -24,28 +24,29 @@
           <form class="form_wrap">
 
             <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Skill Name</label>
+                  <label>Name</label>
                   <input class="form-control" placeholder="{{ $skill[0]->name }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Skill Description</label>
-                  <span class="skill-description">{!! $skill[0]->description !!}</span>
+                  <label>Slug</label>
+                  <input class="form-control" placeholder="{{ $skill[0]->slug }}" readonly>
                 </div>
               </div>
             </div>
 
             <div class="row">
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Skill Slug</label>
-                  <input class="form-control" placeholder="{{ $skill[0]->slug }}" readonly>
+                  <label>Status</label>
+                  <input class="form-control" placeholder="{{ $skill[0]->status ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
-              
+
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
                   <label>Deleted Date</label>

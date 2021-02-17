@@ -24,7 +24,6 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  <th>Industry</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -35,10 +34,6 @@
                   <td>{{ $i+1 }}</td>
                   <td>{{ $jobFunctionsList[$i]->name }}</td>
                   <td>{{ $jobFunctionsList[$i]->slug }}</td>
-                  <td>
-                  <?php $jobIndustry = \App\Models\JobIndustry::where('id', $jobFunctionsList[$i]->job_industry_id)->get(); ?>
-                    {{ $jobIndustry[0]->name }}
-                  </td>
                   <td>{{ $jobFunctionsList[$i]->status ? 'Active' : 'Inactive' }}</td>
                   <td>
                     <a class="action-button" title="View" href="view/{{$jobFunctionsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
@@ -53,7 +48,6 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  <th>Industry</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
