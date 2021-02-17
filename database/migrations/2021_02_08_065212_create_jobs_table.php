@@ -29,7 +29,7 @@ class CreateJobsTable extends Migration
             $table->string('longitude');
             $table->string('industry');
             $table->string('salary')->nullable();
-            $table->enum('status',['full_time','contract_basis','work_from_home']);
+            $table->enum('status',['open','close']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
