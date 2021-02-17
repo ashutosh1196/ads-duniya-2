@@ -211,7 +211,7 @@ class MiscController extends Controller {
 			return view('misc/job_functions/add_job_function', [ 'jobIndustries' => $jobIndustries ]);
 		}
 		else {
-			return back()->with('error', 'Please Add Job Industry first!');
+			return redirect()->route('add_job_industry')->with('error', 'Please Add Job Industry first!');
 		}
 	}
 	
