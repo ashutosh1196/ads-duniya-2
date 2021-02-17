@@ -39,4 +39,9 @@ return [
     'access_control'                => 'Access Control',
     'roles'                         => 'Roles',
     'add_content'                   => 'Add Content',
+
+    'misc_data_management'          => 'Misc Data Management',
+    'job_industries'                => 'Job Industries',
+    'job_functions'                 => 'Job Functions',
+    'skills'                        => 'Skills',
 ];
