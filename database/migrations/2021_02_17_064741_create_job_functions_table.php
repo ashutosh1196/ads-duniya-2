@@ -18,6 +18,7 @@ class CreateJobFunctionsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longtext('description');
+            $table->foreignId('job_industry_id')->constrained();
             $table->integer('status')->comment('1 => Active , 0 => Incative')->defualt(1);
             $table->timestamps();
         });
