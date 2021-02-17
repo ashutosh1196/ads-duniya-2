@@ -97,7 +97,7 @@
                   <img src="{{ asset('') }}images/job-posted-2.svg" alt="">
                 </div>
                 <div class="right">
-                  <p>Job(s) Posted</p>
+                  <p>Job(s)</p>
                   <h3>{{ isset($jobsCount) ? $jobsCount : 0 }}</h3>
                 </div>
               </div>
