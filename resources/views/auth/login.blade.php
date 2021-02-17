@@ -38,7 +38,7 @@
                     {{ csrf_field() }}
 
                     {{-- Email field --}}
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
                                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
                         <div class="input-group-append">
@@ -54,7 +54,7 @@
                     </div>
 
                     {{-- Password field --}}
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-4">
                         <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                                placeholder="{{ __('adminlte::adminlte.password') }}">
                         <div class="input-group-append">
@@ -86,7 +86,7 @@
                     </div>
 
                 </form>
-<!--              <div class="card-footer-inner d-flex justify-content-between">                 
+                <!-- <div class="card-footer-inner d-flex justify-content-between">                 
                 <p class="my-0">
                     <a href="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/password/reset">
                         Forgot Password?

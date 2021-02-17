@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Jobseeker')
+@section('title', 'Add Recruiter')
 
 @section('content_header')
 @stop
@@ -10,9 +10,9 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Add Jobseeker</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+          <div class="card-header">
+          <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
+            <h3>Add Recruiter</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -20,7 +20,8 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addJobseekerForm" method="post", action="save">
+
+            <form id="addRecruiterForm" method="post" action="{{ route('save_recruiter') }}">
               @csrf
               <div class="card-body">
                 @if ($errors->any())
@@ -33,6 +34,7 @@
                   </div>
                 @endif
 
+                <!-- Form Fields -->
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -43,7 +45,7 @@
                       @endif
                     </div>
                   </div>
-                    
+                
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="last_name">Last Name<span class="text-danger"> *</span></label>
@@ -54,8 +56,15 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="phone_number">Contact Number</label>
+                      <input type="text" name="phone_number" class="form-control" id="phone_number">
+                    </div>
+                  </div>
+                  
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
@@ -66,7 +75,9 @@
                       @endif
                     </div>
                   </div>
-                    
+                </div>
+
+                <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="password">Password<span class="text-danger"> *</span></label>
@@ -76,9 +87,7 @@
                       @endif
                     </div>
                   </div>
-                </div>
-                
-                <div class="row">
+                  
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
@@ -90,11 +99,30 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="organization_id">Company<span class="text-danger"> *</span></label>
+                      <select name="organization_id" class="form-control" id="organization_id" >
+                        <option value="" hidden>Select Company</option>
+                        <?php for($i=0; $i<count($companies); $i++) { ?>
+                          <option value="{{ $companies[$i]->id }}">{{ $companies[$i]->name }}</option>
+                        <?php } ?>
+                      </select>
+                      @if($errors->has('organization_id'))
+                        <div class="error">{{ $errors->first('organization_id') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <!-- /Form Fields -->
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary">Submit</button>
+                <button type="text" class="btn btn-primary">Save</button>
               </div>
+              
             </form>
           </div>
         </div>
@@ -115,7 +143,7 @@
           url:"{{ route('check_email') }}",
           data: {
             email: $(this).val(),
-            table_name: 'users'
+            table_name: 'recruiters'
           },
           success: function(result) {
             if(result) {
@@ -127,13 +155,10 @@
           }
         });
       });
-      $('#addJobseekerForm').validate({
+      $('#addRecruiterForm').validate({
         ignore: [],
         debug: false,
         rules: {
-          /* name: {
-            required: true
-          }, */
           first_name: {
             required: true
           },
@@ -153,30 +178,33 @@
             minlength: 8,
             equalTo : "#password"
           },
+          organization_id: {
+            required: true
+          },
         },
         messages: {
-          /* name: {
-            required: "The Name field is required."
-          }, */
           first_name: {
-            required: "The First Name field is required."
+            required: "The First Name field Name is required."
           },
           last_name: {
-            required: "The Last Name field is required."
+            required: "The Last Name field Name is required."
           },
           email: {
             required: "The Email field is required.",
-            email: "Please enter a valid email address."
+            email: "Please enter a valid Email"
           },
           password: {
             required: "The Password field is required.",
-            minlength: "Please enter at least 8 characters."
+            minlength: "Minimum length should be 8"
           },
           confirm_password: {
-            required: "The password confirmation field is required.",
-            minlength: "Please enter at least 8 characters.",
-            equalTo : "The confirm password must match password."
+            required: "The Confirm Password field is required.",
+            minlength: "Minimum length should be 8",
+            equalTo : "The Confirm Password must be equal to Password."
           },
+          organization_id: {
+            required: "The Company field is required."
+          }
         }
       });
     });

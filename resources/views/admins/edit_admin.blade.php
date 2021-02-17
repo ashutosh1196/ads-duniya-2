@@ -23,7 +23,7 @@
             <form id="updateAdminForm" method="post" action="{{ route('update_admin') }}">
               @csrf
               <input type="hidden" name="id" value="{{ $admin[0]->id }}">
-              <div class="card-body">
+              <div class="card-body form">
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
@@ -37,7 +37,7 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}">
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}" readonly>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif
@@ -61,7 +61,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary">Submit</button>
+                <button type="text" class="btn btn-primary">Update</button>
               </div>
             </form>
           </div>

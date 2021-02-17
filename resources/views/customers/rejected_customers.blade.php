@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Whitelisted Customers')
+@section('title', 'Rejected Customers')
 
 @section('content_header')
-  <h1>Whitelisted Customers</h1>
+  <h1>Rejected Customers</h1>
 @stop
 
 @section('content')
@@ -18,7 +18,7 @@
               </div>
             @endif
             <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a> -->
-            <table id="whitelisted-customers-list" class="table table-bordered table-hover">
+            <table id="rejected-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
@@ -30,22 +30,22 @@
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($whitelistedCustomersList); $i++) {
+                <?php for ($i=0; $i < count($rejectedCustomersList); $i++) {
                   $websiteImagesPath = config('adminlte.website_url').'companyLogos/';
                   $defaultImage = config('adminlte.default_avatar');
-                  $logo = $whitelistedCustomersList[$i]->logo != null ? $websiteImagesPath.$whitelistedCustomersList[$i]->logo : $defaultImage;
+                  $logo = $rejectedCustomersList[$i]->logo != null ? $websiteImagesPath.$rejectedCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
-                  <!-- <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td> -->
-                  <td>{{ $whitelistedCustomersList[$i]->name }}</td>
-                  <td>{{ $whitelistedCustomersList[$i]->email }}</td>
-                  <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>
+                  <!-- <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td> -->
+                  <td>{{ $rejectedCustomersList[$i]->name }}</td>
+                  <td>{{ $rejectedCustomersList[$i]->email }}</td>
+                  <td>(+{{ $rejectedCustomersList[0]->country_code }}) {{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '--' }}</td>
                   <td>
-                  <a href="view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <a href="edit/{{$whitelistedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    <a href="view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                    <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
+                    <a href="edit/{{$rejectedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $rejectedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
                 <?php } ?>
@@ -77,7 +77,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#whitelisted-customers-list').DataTable( {
+      $('#rejected-customers-list').DataTable( {
         columnDefs: [ {
           targets: 0,
           render: function ( data, type, row ) {

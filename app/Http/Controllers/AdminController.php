@@ -36,13 +36,14 @@ class AdminController extends Controller
 		$customersCount = count($customers);
 		$admins = Admin::where('role_id', '!=', 1)->get();
 		$adminsCount = count($admins);
-		// $jobs = Job::all();
-		// $jobsCount = count($jobs);
+		$jobs = Job::all();
+		$jobsCount = count($jobs);
 		return view('dashboard', [
 			'jobseekersCount' => $jobseekersCount,
 			'recruitersCount' => $recruitersCount,
 			'customersCount' => $customersCount,
 			'adminsCount' => $adminsCount,
+			'jobsCount' => $jobsCount,
 		]);
 	}
 

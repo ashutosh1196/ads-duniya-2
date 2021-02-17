@@ -22,7 +22,7 @@
             @endif
             <form id="editJobseekerForm" method="post", action="{{ route('update_jobseeker') }}">
               @csrf
-              <div class="card-body">
+              <div class="card-body form">
                 <input type="hidden" name="id" class="form-control" id="id" value="{{ $jobseeker[0]->id }}">
                 <div class="row">
                   <!-- <div class="col-12">
@@ -36,7 +36,7 @@
                       @endif
                     </div>
                   </div> -->
-                  <div class="col-6">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="first_name">First Name<span class="text-danger"> *</span></label>
                       <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $jobseeker[0]->first_name }}">
@@ -47,7 +47,7 @@
                       @endif
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="last_name">Last Name<span class="text-danger"> *</span></label>
                       <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $jobseeker[0]->last_name }}">
@@ -58,10 +58,10 @@
                       @endif
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}">
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}" readonly>
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('email'))
@@ -69,7 +69,7 @@
                       @endif
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="phone_number">Phone Number</label>
                       <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->phone_number }}">
@@ -80,8 +80,8 @@
                       @endif
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="form-group">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                    <div class="form-group radio">
                       <label for="job_alert">Job Alerts<span class="text-danger"> *</span></label><br/>
                       <input type="radio" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="job_alert" value="0"> Disable
                       <input type="radio" class="ml-2" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="job_alert" value="1"> Enable
@@ -94,7 +94,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Update</button>
               </div>
             </form>
           </div>

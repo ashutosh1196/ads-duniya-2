@@ -6,6 +6,7 @@ return [
     'website_url' => env('WEBSITE_URL', 'https://server3.rvtechnologies.in/which-vocation/website/Amrik-which-vocation-web/public/'),
     'email_verify_url' => env('EMAIL_VERIFY_URL', 'http://192.168.1.65/which-vocation-web/public/'),
     'default_avatar' => env('DEFAULT_AVATAR', 'http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/avatar.png'),
+    'from_email' => env('FROM_EMAIL', 'admin@whichvocation.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ return [
     | https://github.com/jeroennoten/Laravel-WhichVocation/wiki/6.-Basic-Configuration
     |
     */
+
+    'whichvocation' => 'Whichvocation',
+    'set_password' => 'Whichvocation Recruiter Approved | Set Password',
+    'title_prefix' => '',
+    'title_postfix' => '',
 
     'title' => 'Which Vocation',
     'title_prefix' => '',
@@ -299,6 +305,24 @@ return [
             ],
         ],
         [
+            'text' => 'jobs_management',
+            'icon' => 'fas fa-fw fa-briefcase',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'published_jobs',
+                    'icon' => 'fas fa-fw fa-list',
+                    'url'  => 'admin_panel/jobs/list',
+                    'active' => ['admin_panel/jobs*'],
+                ],
+                /* [
+                    'text' => 'bookmarked_jobs',
+                    'icon' => 'fas fa-fw fa-map-pin',
+                    'url'  => 'admin_panel/jobseekers/bookmarked_jobs',
+                ], */
+            ],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',
@@ -325,26 +349,14 @@ return [
                     'icon' => 'fas fa-fw fa-building',
                     'url'  => 'admin_panel/recycle_bin/customers/deleted',
                 ],
+                [
+                    'text' => 'jobs',
+                    'icon' => 'fas fa-fw fa-briefcase',
+                    'url'  => 'admin_panel/recycle_bin/jobs/deleted',
+                ],
             ],
         ],
         /* [
-            'text' => 'jobs_management',
-            'icon' => 'fas fa-fw fa-briefcase',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'bookmarked_jobs',
-                    'icon' => 'fas fa-fw fa-map-pin',
-                    'url'  => 'admin_panel/jobseekers/bookmarked_jobs',
-                ],
-                [
-                    'text' => 'published_jobs',
-                    'icon' => 'fas fa-fw fa-tag',
-                    'url'  => 'admin_panel/recruiters/published_jobs',
-                ],
-            ],
-        ],
-        [
             'text' => 'content_management',
             'icon' => 'fas fa-fw fa-edit',
             'url'  => '#',

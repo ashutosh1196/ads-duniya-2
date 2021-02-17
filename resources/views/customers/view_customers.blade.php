@@ -128,7 +128,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Contact Number</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '--' }}" readonly>
+                  <input class="form-control" placeholder="(+{{ $viewCustomer[0]->country_code }}) {{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">

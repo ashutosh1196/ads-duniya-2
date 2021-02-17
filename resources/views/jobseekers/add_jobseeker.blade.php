@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Recruiter')
+@section('title', 'Add Jobseeker')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Edit Recruiter</h3>
+            <h3>Add Jobseeker</h3>
             <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
           </div>
           <div class="card-body">
@@ -20,7 +20,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="editRecruiterForm" method="post", action="{{ route('update_recruiter') }}">
+            <form id="addJobseekerForm" method="post", action="save">
               @csrf
               <div class="card-body">
                 @if ($errors->any())
@@ -32,72 +32,68 @@
                     </ul>
                   </div>
                 @endif
-                <input type="hidden" name="id" value="{{ $recruiter[0]->id }}">
-                <!-- Form Fields -->
+
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="first_name">First Name<span class="text-danger"> *</span></label>
-                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}">
+                      <input type="text" name="first_name" class="form-control" id="first_name">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
                       @endif
                     </div>
                   </div>
-                
+                    
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="last_name">Last Name<span class="text-danger"> *</span></label>
-                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}">
+                      <input type="text" name="last_name" class="form-control" id="last_name">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
                       @endif
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="phone_number">Contact Number</label>
-                      <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number }}">
-                    </div>
-                  </div>
-                  
-                  <div class="col-sm-6">
-                    <div class="form-group">
                       <label for="email">Email<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}">
+                      <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com">
+                      <div id ="email_error" class="error"></div>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-12">
+                    
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="organization_id">Company<span class="text-danger"> *</span></label>
-                      <select name="organization_id" class="form-control" id="organization_id" >
-                        <option value="" hidden>Select Company</option>
-                        @for($i=0; $i < count($organizations); $i++)
-                          <option value="{{ $organizations[$i]->id }}" {{ ( $organizations[$i]->id == $recruiter[0]->organization_id) ? 'selected' : '' }}>{{ $organizations[$i]->name }}</option>
-                        @endfor
-                      </select>
-                      @if($errors->has('organization_id'))
-                        <div class="error">{{ $errors->first('organization_id') }}</div>
+                      <label for="password">Password<span class="text-danger"> *</span></label>
+                      <input type="password" name="password" class="form-control" id="password">
+                      @if($errors->has('password'))
+                        <div class="error">{{ $errors->last('password') }}</div>
                       @endif
                     </div>
                   </div>
                 </div>
-                <!-- /Form Fields -->
+                
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
+                      <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                      @if($errors->has('confirm_password'))
+                        <div class="error">{{ $errors->last('confirm_password') }}</div>
+                      @endif
+                    </div>
+                  </div>
+                </div>
 
               </div>
-            </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="text" class="btn btn-primary">Save</button>
               </div>
             </form>
           </div>
@@ -108,32 +104,36 @@
 @endsection
 
 @section('css')
-  <style>
-    .editable_field {
-      position: relative;
-      top: -25px;
-      right: 10px;
-      float: right;
-    }
-    .non_editable_field {
-      position: relative;
-      top: -25px;
-      right: 10px;
-      float: right;
-    }
-  </style>
 @stop
 
 @section('js')
   <script>
     $(document).ready(function() {
-      $('#editRecruiterForm').validate({
+      $("#email").blur(function() {
+        $.ajax({
+          type:"GET",
+          url:"{{ route('check_email') }}",
+          data: {
+            email: $(this).val(),
+            table_name: 'users'
+          },
+          success: function(result) {
+            if(result) {
+              $("#email_error").html("This email is already registered.");
+            }
+            else {
+              $("#email_error").html("");
+            }
+          }
+        });
+      });
+      $('#addJobseekerForm').validate({
         ignore: [],
         debug: false,
         rules: {
-          // name: {
-          //   required: true
-          // },
+          /* name: {
+            required: true
+          }, */
           first_name: {
             required: true
           },
@@ -142,7 +142,16 @@
           },
           email: {
             required: true,
-            email: true,
+            email: true
+          },
+          password: {
+            required: true,
+            minlength: 8
+          },
+          confirm_password: {
+            required: true,
+            minlength: 8,
+            equalTo : "#password"
           },
         },
         messages: {
@@ -157,7 +166,16 @@
           },
           email: {
             required: "The Email field is required.",
-            email: "Please enter a valid email"
+            email: "Please enter a valid email address."
+          },
+          password: {
+            required: "The Password field is required.",
+            minlength: "Please enter at least 8 characters."
+          },
+          confirm_password: {
+            required: "The password confirmation field is required.",
+            minlength: "Please enter at least 8 characters.",
+            equalTo : "The confirm password must match password."
           },
         }
       });

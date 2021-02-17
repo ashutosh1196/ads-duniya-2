@@ -104,12 +104,22 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'admins'], function () {
         Route::get('/deleted', [AdminsController::class, 'deletedAdminsList'])->name('deleted_admins_list');
       });
+      Route::group(['prefix' => 'jobs'], function () {
+        Route::get('/deleted', [JobsController::class, 'deletedJobs'])->name('deleted_jobs_list');
+      });
     });
 
     // Jobs Routes
     Route::group(['prefix' => 'jobs'], function () {
-      Route::get('/bookmarked_jobs', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs');
-      Route::get('/published_jobs', [JobsController::class, 'publishedJobsList'])->name('published_jobs');
+      Route::get('/list', [JobsController::class, 'jobsList'])->name('jobs_list');
+      Route::get('/add', [JobsController::class, 'addJob'])->name('add_job');
+      Route::post('/save', [JobsController::class, 'saveJob'])->name('save_job');
+      Route::post('/delete', [JobsController::class, 'deleteJob'])->name('delete_job');
+      Route::post('/restore', [JobsController::class, 'restoreJob'])->name('restore_job');
+      Route::get('/view/{id}', [JobsController::class, 'viewJob'])->name('view_job');
+      Route::get('/edit/{id}', [JobsController::class, 'editJob'])->name('edit_job');
+      Route::post('/update', [JobsController::class, 'updateJob'])->name('update_job');
+      /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
     });
 
     // Content Pages Routes

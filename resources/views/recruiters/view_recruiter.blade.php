@@ -200,13 +200,13 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Created Date & Time</label>
-                  <input class="form-control" placeholder=" February 09, 2021 - 11:04 AM" readonly>
+                  <input class="form-control" placeholder="{{ $organization[0]->created_at ? $organization[0]->created_at : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Updated Date & Time</label>
-                  <input class="form-control" placeholder="February 11, 2021 - 06:06 AM" readonly>
+                  <input class="form-control" placeholder="{{ $organization[0]->updated_at ? $organization[0]->updated_at : '--' }}" readonly>
                 </div>
               </div>
             </div>
