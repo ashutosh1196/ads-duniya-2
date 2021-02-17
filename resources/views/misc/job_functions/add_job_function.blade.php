@@ -49,6 +49,7 @@
                       <div class="form-group">
                         <label for="job_industry_id">Job Industry<span class="text-danger"> *</span></label>
                         <select name="job_industry_id" class="form-control" id="job_industry_id">
+                              <option value="" hidden>Select Industry</option>
                           <?php for ($i=0; $i < count($jobIndustries); $i++) { ?> 
                               <option value="{{ $jobIndustries[$i]->id }}">{{ $jobIndustries[$i]->name }}</option>
                           <?php } ?>
@@ -126,6 +127,9 @@
           name: {
             required: true
           },
+          job_industry_id: {
+            required: true
+          },
           description:{
             required: function() {
               CKEDITOR.instances.description.updateElement();
@@ -136,6 +140,9 @@
         messages: {
           name: {
             required: "The Job Function Name field is required."
+          },
+          job_industry_id: {
+            required: "The Job Industry field is required."
           },
           description: {
             required: "The Job Function Description field is required.",

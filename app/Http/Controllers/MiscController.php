@@ -68,7 +68,7 @@ class MiscController extends Controller {
 	*/
 	public function saveJobIndustry(Request $request) {
 		$validatedData = $request->validate([
-			'name' => 'required|unique',
+			'name' => 'required|unique:job_industries',
 			'description' => 'required',
 		], [
 			'name.required' => 'The Job Industry Name is required.',
@@ -216,7 +216,7 @@ class MiscController extends Controller {
 	*/
 	public function saveJobFunction(Request $request) {
 		$validatedData = $request->validate([
-			'name' => 'required|unique',
+			'name' => 'required|unique:job_functions',
 			'description' => 'required',
 			'job_industry_id' => 'required',
 		], [
@@ -369,7 +369,7 @@ class MiscController extends Controller {
 	*/
 	public function saveSkill(Request $request) {
 		$validatedData = $request->validate([
-			'name' => 'required|unique',
+			'name' => 'required|unique:skills',
 			'description' => 'required',
 		], [
 			'name.required' => 'The Skill Name is required.',
