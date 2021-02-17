@@ -207,7 +207,12 @@ class MiscController extends Controller {
 	*/
 	public function addJobFunction() {
 		$jobIndustries = JobIndustry::all();
-		return view('misc/job_functions/add_job_function', [ 'jobIndustries' => $jobIndustries ]);
+		if($jobIndustries->isNotEmpty()) {
+			return view('misc/job_functions/add_job_function', [ 'jobIndustries' => $jobIndustries ]);
+		}
+		else {
+			return back()->with('error', 'Please Add Job Industry first!');
+		}
 	}
 	
 	
