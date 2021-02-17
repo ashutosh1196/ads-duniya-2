@@ -77,7 +77,7 @@ class JobsController extends Controller {
 		$job->created_by = $request->created_by;
 		if($job->save()) {
 			$jobsList = Job::all();
-			return view('jobs/jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
+			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');
@@ -180,7 +180,7 @@ class JobsController extends Controller {
 		$updateJob = Job::where('id', $jobId)->update($jobToUpdate);
 		if($updateJob) {
 			$jobsList = Job::all();
-			return view('jobs/jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
+			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');
