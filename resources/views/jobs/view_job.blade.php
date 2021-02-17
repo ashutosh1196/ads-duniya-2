@@ -32,15 +32,12 @@
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <div class="form-group">
                   <label>Job Description</label>
-                  <?php
-                  $width = 50;  
-                  $break = "\n"; 
-                  $wrapDescription = wordwrap($jobDetails[0]->job_description, $width, $break);
-                  $jobDescription = $jobDetails[0]->job_description ? $wrapDescription : '--'; ?>
-                  <input class="form-control" placeholder="{{ $jobDescription }}" readonly>
+                  <span class="job-description">{!! $jobDetails[0]->job_description !!}</span>
                 </div>
               </div>
             </div>
+
+            <hr/>
 
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -189,6 +186,9 @@
 @endsection
 
 @section('css')
+  <style>
+    .job-description { font-size: 13px; }
+  </style>
 @stop
 
 @section('js')
