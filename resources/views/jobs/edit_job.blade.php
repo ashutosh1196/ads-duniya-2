@@ -74,7 +74,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="salary">Salary<span class="text-danger"> *</span></label>
+                        <label for="salary">Salary</label>
                         <input type="text" name="salary" class="form-control" id="salary" value="{{ $jobDetails[0]->salary }}">
                         @if($errors->has('salary'))
                           <div class="error">{{ $errors->first('salary') }}</div>
@@ -180,7 +180,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="county">County<span class="text-danger"> *</span></label>
+                        <label for="county">County</label>
                         <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails[0]->county }}">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
