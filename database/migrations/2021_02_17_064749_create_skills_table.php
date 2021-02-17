@@ -19,6 +19,7 @@ class CreateSkillsTable extends Migration
             $table->string('slug');
             $table->longtext('description');
             $table->integer('status')->comment('1 => Active , 0 => Incative')->defualt(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
