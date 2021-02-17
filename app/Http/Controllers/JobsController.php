@@ -7,6 +7,7 @@ use App\Models\Job;
 use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
+use Auth;
 
 class JobsController extends Controller {
 	
@@ -74,7 +75,7 @@ class JobsController extends Controller {
 		$job->status = $request->job_type;
 		$job->recruiter_id = $request->recruiter_id;
 		$job->organization_id = $request->organization_id;
-		$job->created_by = $request->created_by;
+		$job->created_by = Auth::user()->name;
 		if($job->save()) {
 			$jobsList = Job::all();
 			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
@@ -175,7 +176,6 @@ class JobsController extends Controller {
 			"status" => $request->job_type,
 			"recruiter_id" => $request->recruiter_id,
 			"organization_id" => $request->organization_id,
-			"created_by" => $request->created_by
 		];
 		$updateJob = Job::where('id', $jobId)->update($jobToUpdate);
 		if($updateJob) {
