@@ -89,7 +89,7 @@
             </div>
           </div>
 
-          <!-- <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+          <div class="col-md-3 col-lg-3 col-xl-3 col-6">
             <div class="small-box job-posted">
               <div class="inner">
                 <div class="left">
@@ -98,17 +98,17 @@
                 </div>
                 <div class="right">
                   <p>Job(s) Posted</p>
-                  <h3>{{ isset($jobsCount) ? $$jobsCount : 0 }}</h3>
+                  <h3>{{ isset($jobsCount) ? $jobsCount : 0 }}</h3>
                 </div>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{ route('jobs_list') }}" class="small-box-footer">
               <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
               <img src="{{ asset('') }}images/next-2.svg" alt="">
               More Info</a>
             </div>
           </div>
 
-          <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+          <!-- <div class="col-md-3 col-lg-3 col-xl-3 col-6">
             <div class="small-box job-applied">
               <div class="inner">
                 <div class="left">
