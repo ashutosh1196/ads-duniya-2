@@ -3,7 +3,7 @@
 @section('title', 'Bookmarked Jobs')
 
 @section('content_header')
-  <h1>Bookmarked Jobs</h1>
+  <h1>{{ __('adminlte::adminlte.bookmarked_jobs') }}</h1>
 @stop
 
 @section('content')
@@ -21,12 +21,12 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Company Name</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Experience Required</th>
-                  <th>Salary Range</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.title') }}</th>
+                  <th>{{ __('adminlte::adminlte.description') }}</th>
+                  <th>{{ __('adminlte::adminlte.experience_required') }}</th>
+                  <th>{{ __('adminlte::adminlte.salary') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,12 +45,12 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Company Name</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Experience Required</th>
-                  <th>Salary Range</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.title') }}</th>
+                  <th>{{ __('adminlte::adminlte.description') }}</th>
+                  <th>{{ __('adminlte::adminlte.experience_required') }}</th>
+                  <th>{{ __('adminlte::adminlte.salary') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

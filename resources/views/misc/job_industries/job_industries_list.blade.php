@@ -17,15 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_industry') }}">Add New Job Industry</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_industry') }}">{{ __('adminlte::adminlte.add_new_job_industry') }}</a>
             <table id="jobIndustriesList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,10 +50,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

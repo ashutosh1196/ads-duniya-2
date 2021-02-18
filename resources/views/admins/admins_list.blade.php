@@ -3,7 +3,7 @@
 @section('title', 'Admins')
 
 @section('content_header')
-  <h1>Admins</h1>
+  <h1>{{ __('adminlte::adminlte.admins') }}</h1>
 @stop
 
 @section('content')
@@ -17,15 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right clear" href="add">Add New Admin</a>
+            <a class="btn btn-sm btn-success float-right clear" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>
             <table id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.role') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,10 +48,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.role') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

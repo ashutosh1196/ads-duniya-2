@@ -3,7 +3,7 @@
 @section('title', 'Published Jobs')
 
 @section('content_header')
-  <h1>Published Jobs</h1>
+  <h1>{{ __('adminlte::adminlte.published_jobs') }}</h1>
 @stop
 
 @section('content')
@@ -17,17 +17,17 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job') }}">Add New Job</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job') }}">{{ __('adminlte::adminlte.add_new_job') }}</a>
             <table id="jobsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Job Title</th>
-                  <th>Reference Number</th>
-                  <th>Job Type</th>
-                  <th>Industry</th>
-                  <th>Company Name</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.job_title') }}</th>
+                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.job_type') }}</th>
+                  <th>{{ __('adminlte::adminlte.industry') }}</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,12 +54,12 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Job Title</th>
-                  <th>Reference Number</th>
-                  <th>Job Type</th>
-                  <th>Industry</th>
-                  <th>Company Name</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.job_title') }}</th>
+                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.job_type') }}</th>
+                  <th>{{ __('adminlte::adminlte.industry') }}</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

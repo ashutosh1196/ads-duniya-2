@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header">
           <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-            <h3>Add Role</h3>
+            <h3>{{ __('adminlte::adminlte.add_role') }}</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -24,19 +24,19 @@
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="role_name">Role Name</label>
+                  <label for="role_name">{{ __('adminlte::adminlte.name') }}</label>
                   <input type="text" name="role_name" class="form-control" id="role_name" placeholder="Enter Title">
                   @if($errors->has('role_name'))
                     <div class="error">{{ $errors->first('role_name') }}</div>
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="permissions">Permission(s)</label>
+                  <label for="permissions">{{ __('adminlte::adminlte.permissions') }}</label>
                   <br/>
-                  <input type="checkbox" name="permissions" value="list" id="permissions" > List Data<br/>
-                  <input type="checkbox" name="permissions" value="add" id="permissions" > Add Data<br/>
-                  <input type="checkbox" name="permissions" value="edit" id="permissions" > Edit Data<br/>
-                  <input type="checkbox" name="permissions" value="delete" id="permissions" > Delete Data
+                  <input type="checkbox" name="permissions" value="list" id="permissions" > {{ __('adminlte::adminlte.list_data') }}<br/>
+                  <input type="checkbox" name="permissions" value="add" id="permissions" > {{ __('adminlte::adminlte.add_data') }}<br/>
+                  <input type="checkbox" name="permissions" value="edit" id="permissions" > {{ __('adminlte::adminlte.edit_data') }}<br/>
+                  <input type="checkbox" name="permissions" value="delete" id="permissions" > {{ __('adminlte::adminlte.delete_data') }}
                   @if($errors->has('permissions'))
                     <div class="error">{{ $errors->first('permissions') }}</div>
                   @endif
@@ -44,7 +44,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{{ __('adminlte::adminlte.save') }}</button>
               </div>
             </form>
           </div>

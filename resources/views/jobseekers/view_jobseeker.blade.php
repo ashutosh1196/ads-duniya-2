@@ -4,8 +4,8 @@
 
 @section('content_header')
   <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>Job Seeker Information</h1>
-    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+    <h1>{{ __('adminlte::adminlte.jobseeker_information') }}</h1>
+    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
   </div>
 @stop
 
@@ -25,7 +25,7 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Name</label>
+                  <label>{{ __('adminlte::adminlte.name') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->first_name }} {{ $jobseeker[0]->last_name }}" readonly>
                 </div>
               </div>
@@ -43,19 +43,19 @@
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Email</label>
+                  <label>{{ __('adminlte::adminlte.email') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Phone Number</label>
+                  <label>{{ __('adminlte::adminlte.contact_number') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->phone_number ? $jobseeker[0]->phone_number : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>IP Address</label>
+                  <label>{{ __('adminlte::adminlte.ip_address') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->ip_address ? $jobseeker[0]->ip_address : '--' }}" readonly>
                 </div>
               </div>
@@ -67,43 +67,43 @@
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Email Verification Status</label>
+                  <label>{{ __('adminlte::adminlte.email_verification_status') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? 'Verified' : 'Not Verified' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Email Verification Date</label>
+                  <label>{{ __('adminlte::adminlte.email_verification_date') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? $jobseeker[0]->email_verified_at : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>User Locked Status</label>
+                  <label>{{ __('adminlte::adminlte.user_locked_status') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? 'Locked' : 'Not Locked' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>User Locked Date</label>
+                  <label>{{ __('adminlte::adminlte.user_locked_date') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? $jobseeker[0]->user_locked_at : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Job Alerts Status</label>
+                  <label>{{ __('adminlte::adminlte.job_alerts_status') }}</label>
                   <input class="form-control" placeholder="{{ $jobseeker[0]->is_job_alert_enabled == 1 ? 'Enabled' : 'Disabled' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Created Date</label>
+                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobseeker[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Last Updated Date</label>
+                  <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobseeker[0]->updated_at)) }}" readonly>
                 </div>
               </div>

@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Add Admin</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <h3>{{ __('adminlte::adminlte.add_admin') }}</h3>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -27,7 +27,7 @@
 
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="name">Name<span class="text-danger"> *</span></label>
+                      <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="name" class="form-control" id="name">
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
@@ -37,7 +37,7 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="email">Email<span class="text-danger"> *</span></label>
+                    <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
                     <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com">
                     <div id ="email_error" class="error"></div>
                     @if($errors->has('email'))
@@ -48,9 +48,9 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="role_id">Role<span class="text-danger"> *</span></label>
+                    <label for="role_id">{{ __('adminlte::adminlte.role') }}<span class="text-danger"> *</span></label>
                     <select name="role_id" class="form-control" id="role_id">
-                      <option value="" hidden>Select Role</option>
+                      <option value="" hidden>{{ __('adminlte::adminlte.select_role') }}</option>
                       <?php for ($i=0; $i < count($roles); $i++) { ?> 
                         <option value="{{ $roles[$i]->id }}">{{ $roles[$i]->name }}</option>
                       <?php } ?>
@@ -63,7 +63,7 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="password">Password<span class="text-danger"> *</span></label>
+                    <label for="password">{{ __('adminlte::adminlte.password') }}<span class="text-danger"> *</span></label>
                     <input type="password" name="password" class="form-control" id="password">
                     @if($errors->has('password'))
                       <div class="error">{{ $errors->last('password') }}</div>
@@ -73,7 +73,7 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="confirm_password">Confirm Password<span class="text-danger"> *</span></label>
+                    <label for="confirm_password">{{ __('adminlte::adminlte.confirm_password') }}<span class="text-danger"> *</span></label>
                     <input type="password" name="confirm_password" class="form-control" id="confirm_password">
                     @if($errors->has('confirm_password'))
                       <div class="error">{{ $errors->last('confirm_password') }}</div>
@@ -84,7 +84,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary">Save</button>
+                <button type="text" class="btn btn-primary">{{ __('adminlte::adminlte.save') }}</button>
               </div>
             </form>
           </div>

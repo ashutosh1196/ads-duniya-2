@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Edit Recruiter</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <h3>{{ __('adminlte::adminlte.edit_recruiter') }}</h3>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body form">
             @if (session('status'))
@@ -37,7 +37,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="first_name">First Name<span class="text-danger"> *</span></label>
+                      <label for="first_name">{{ __('adminlte::adminlte.first_name') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
@@ -47,7 +47,7 @@
                 
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="last_name">Last Name<span class="text-danger"> *</span></label>
+                      <label for="last_name">{{ __('adminlte::adminlte.last_name') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
@@ -59,14 +59,14 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="phone_number">Contact Number</label>
+                      <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
                       <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number }}">
                     </div>
                   </div>
                   
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="email">Email<span class="text-danger"> *</span></label>
+                      <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}" readonly>
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
@@ -78,9 +78,9 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
-                      <label for="organization_id">Company<span class="text-danger"> *</span></label>
+                      <label for="organization_id">{{ __('adminlte::adminlte.company') }}<span class="text-danger"> *</span></label>
                       <select name="organization_id" class="form-control" id="organization_id" >
-                        <option value="" hidden>Select Company</option>
+                        <option value="" hidden>{{ __('adminlte::adminlte.select_company') }}</option>
                         @for($i=0; $i < count($organizations); $i++)
                           <option value="{{ $organizations[$i]->id }}" {{ ( $organizations[$i]->id == $recruiter[0]->organization_id) ? 'selected' : '' }}>{{ $organizations[$i]->name }}</option>
                         @endfor
@@ -97,7 +97,7 @@
             </div>
               <!-- /.card-body -->
               <div class="card-footer submit">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>

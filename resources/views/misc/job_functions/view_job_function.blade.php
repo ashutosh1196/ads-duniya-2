@@ -4,8 +4,8 @@
 
 @section('content_header')
   <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>Job Function Information</h1>
-    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+    <h1>{{ __('adminlte::adminlte.job_function_information') }}</h1>
+    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
   </div>
 @stop
 
@@ -26,14 +26,14 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Job Name</label>
+                  <label>{{ __('adminlte::adminlte.name') }}</label>
                   <input class="form-control" placeholder="{{ $jobFunction[0]->name }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Job Slug</label>
+                  <label>{{ __('adminlte::adminlte.slug') }}</label>
                   <input class="form-control" placeholder="{{ $jobFunction[0]->slug }}" readonly>
                 </div>
               </div>
@@ -42,30 +42,31 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Status</label>
+                  <label>{{ __('adminlte::adminlte.status') }}</label>
                   <input class="form-control" placeholder="{{ $jobFunction[0]->status ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Deleted Date</label>
-                  <input class="form-control" placeholder="{{ $jobFunction[0]->deleted_at ? date('F d, Y - H:i A', strtotime($jobFunction[0]->deleted_at)) : '--' }}" readonly>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
-                <div class="form-group">
-                  <label>Created Date</label>
+                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobFunction[0]->created_at)) }}" readonly>
                 </div>
               </div>
               
+              <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                <div class="form-group">
+                  <label>Deleted Date</label>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->deleted_at ? date('F d, Y - H:i A', strtotime($jobFunction[0]->deleted_at)) : '--' }}" readonly>
+                </div>
+              </div> -->
+            </div>
+
+            <div class="row">
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Last Updated Date</label>
+                  <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobFunction[0]->updated_at)) }}" readonly>
                 </div>
               </div>

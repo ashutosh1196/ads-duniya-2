@@ -56,7 +56,7 @@ class OrganizationsController extends Controller {
 			'address' => 'required',
 			'name' => 'required',
 			'email' => 'required|email|unique:organizations',
-			'contry_code' => 'required',
+			'country_code' => 'required',
 			'contact_number' => 'required',
 			'url' => 'required',
 		], [
@@ -65,7 +65,7 @@ class OrganizationsController extends Controller {
 			'email.required' => 'Company Or Consultants Email is required',
 			'email.email' => 'Company Or Consultants Email is not valid',
 			'email.unique' => 'Company Or Consultants Email must be unique',
-			'contry_code.required' => 'Country Code is required',
+			'country_code.required' => 'Country Code is required',
 			'contact_number.required' => 'Contact Number is required',
 			'url.required' => 'Company Domain URL is required',
 		]);

@@ -3,7 +3,7 @@
 @section('title', 'Deleted Job Functions')
 
 @section('content_header')
-  <h1>Deleted Job Functions</h1>
+  <h1>{{ __('adminlte::adminlte.deleted_job_functions') }}</h1>
 @stop
 
 @section('content')
@@ -21,10 +21,10 @@
               <thead>
               <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,10 +47,10 @@
               <tfoot>
               <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

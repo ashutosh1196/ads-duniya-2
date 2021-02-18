@@ -3,7 +3,7 @@
 @section('title', 'Job Functions')
 
 @section('content_header')
-  <h1>Job Functions</h1>
+  <h1>{{ __('adminlte::adminlte.job_functions') }}</h1>
 @stop
 
 @section('content')
@@ -17,15 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_function') }}">Add New Job Function</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_function') }}">{{ __('adminlte::adminlte.add_new_job_function') }}</a>
             <table id="jobFunctionsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -46,10 +46,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

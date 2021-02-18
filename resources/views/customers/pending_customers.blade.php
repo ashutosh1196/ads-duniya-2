@@ -3,7 +3,7 @@
 @section('title', 'Pending Customers')
 
 @section('content_header')
-  <h1>Pending Customers</h1>
+  <h1>{{ __('adminlte::adminlte.pending_customers') }}</h1>
 @stop
 
 @section('content')
@@ -17,16 +17,16 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">{{ __('adminlte::adminlte.add_new_customer') }}</a>
             <table id="pending-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
                   <!-- <th>Logo</th> -->
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -55,10 +55,10 @@
                 <tr>
                   <th>#</th>
                   <!-- <th>Logo</th> -->
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

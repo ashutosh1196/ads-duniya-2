@@ -3,7 +3,7 @@
 @section('title', 'Skills')
 
 @section('content_header')
-  <h1>Skills</h1>
+  <h1>{{ __('adminlte::adminlte.skills') }}</h1>
 @stop
 
 @section('content')
@@ -17,15 +17,15 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_skill') }}">Add New Skill</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_skill') }}">{{ __('adminlte::adminlte.add_new_skill') }}</a>
             <table id="skillsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,10 +50,10 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Slug</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.slug') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

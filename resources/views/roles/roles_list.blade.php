@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3>Roles</h3>
+            <h3>{{ __('adminlte::adminlte.roles') }}</h3>
           </div>
           <div class="card-body">
             <a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>
@@ -19,9 +19,9 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Permissions</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.permissions') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -40,9 +40,9 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Permissions</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.permissions') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Edit Job Function</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <h3>{{ __('adminlte::adminlte.edit_job_function') }}</h3>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -38,7 +38,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Job Function Name<span class="text-danger"> *</span></label>
+                        <label for="name">{{ __('adminlte::adminlte.job_function_name') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="name" class="form-control" id="name" value="{{ $jobFunction[0]->name }}">
                         <div id ="function_error" class="error"></div>
                         @if($errors->has('name'))
@@ -49,10 +49,10 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="status">Status<span class="text-danger"> *</span></label>
+                        <label for="status">{{ __('adminlte::adminlte.status') }}<span class="text-danger"> *</span></label>
                         <select name="status" class="form-control" id="status">
-                          <option value="1" {{ ( $jobFunction[0]->status == 1) ? 'selected' : '' }}>Active</option>
-                          <option value="0" {{ ( $jobFunction[0]->status == 0) ? 'selected' : '' }}>Inactive</option>
+                          <option value="1" {{ ( $jobFunction[0]->status == 1) ? 'selected' : '' }}>{{ __('adminlte::adminlte.active') }}</option>
+                          <option value="0" {{ ( $jobFunction[0]->status == 0) ? 'selected' : '' }}>{{ __('adminlte::adminlte.inactive') }}</option>
                         </select>
                         @if($errors->has('status'))
                           <div class="error">{{ $errors->first('status') }}</div>
@@ -75,7 +75,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary" >Save</button>
+                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>

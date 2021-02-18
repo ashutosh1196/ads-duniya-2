@@ -21,7 +21,7 @@
                    <img src="{{ asset('') }}images/people-2.svg" alt="">
                  </div>
                  <div class="right">
-                   <p>Customer(s)</p>
+                   <p>{{ __('adminlte::adminlte.customers') }}</p>
                    <h3>{{ $customersCount }}</h3>
                  </div>
               </div>
@@ -40,7 +40,7 @@
                   <img src="{{ asset('') }}images/jobseeker-2.svg" alt="">
                 </div>
                 <div class="right">
-                  <p>Jobseeker(s)</p>
+                  <p>{{ __('adminlte::adminlte.jobseekers') }}</p>
                   <h3>{{ $jobseekersCount }}</h3>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                   <img src="{{ asset('') }}images/recruiter-2.svg" alt="">
                 </div>
                 <div class="right">
-                  <p>Recruiter(s)</p>
+                  <p>{{ __('adminlte::adminlte.recruiters') }}</p>
                   <h3>{{ $recruitersCount }}</h3>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                   <img src="{{ asset('') }}images/user-2.svg" alt="">
                 </div>
                 <div class="right">
-                  <p>Admin(s)</p>
+                  <p>{{ __('adminlte::adminlte.admins') }}</p>
                   <h3>{{ $adminsCount }}</h3>
                 </div>
               </div>
@@ -97,7 +97,7 @@
                   <img src="{{ asset('') }}images/job-posted-2.svg" alt="">
                 </div>
                 <div class="right">
-                  <p>Job(s)</p>
+                  <p>{{ __('adminlte::adminlte.jobs') }}</p>
                   <h3>{{ isset($jobsCount) ? $jobsCount : 0 }}</h3>
                 </div>
               </div>
