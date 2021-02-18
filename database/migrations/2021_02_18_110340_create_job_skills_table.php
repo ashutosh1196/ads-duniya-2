@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobSkillTable extends Migration
+class CreateJobSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateJobSkillTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_skill', function (Blueprint $table) {
+        Schema::create('job_skills', function (Blueprint $table) {
             $table->id();
             $table->foreignId('job_id')->constrained();
             $table->foreignId('skill_id')->constrained();
@@ -30,6 +30,6 @@ class CreateJobSkillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_skill');
+        Schema::dropIfExists('job_skills');
     }
 }
