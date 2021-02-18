@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\JobIndustry;
 use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
@@ -16,6 +17,7 @@ class JobsController extends Controller {
 	*/
 	public function addJob() {
 		$countries = Country::all();
+		$jobIndustries = JobIndustry::all();
 		$organisationsList = Organization::where('is_whitelisted', 1)->get();
 		$recruitersList = [];
 		for ($i=0; $i < count($organisationsList); $i++) {
@@ -24,7 +26,12 @@ class JobsController extends Controller {
 				array_push($recruitersList, $recruiter[0]);
 			}
 		}
-		return view('jobs/add_job', ['organisationsList' => $organisationsList, 'recruitersList' => $recruitersList, 'countries' => $countries]);
+		return view('jobs/add_job', [
+			'organisationsList' => $organisationsList,
+			'recruitersList' => $recruitersList,
+			'countries' => $countries,
+			'jobIndustries' => $jobIndustries
+		]);
 	}
 	
 	/**

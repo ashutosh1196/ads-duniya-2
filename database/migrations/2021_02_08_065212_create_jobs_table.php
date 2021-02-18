@@ -26,9 +26,11 @@ class CreateJobsTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->string('pincode');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('industry');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->foreignId('job_industry_id')->constrained();
+            $table->foreignId('job_function_id')->constrained();
+            $table->foreignId('job_location_id')->constrained();
             $table->bigInteger('min_monthly_salary')->nullable();
             $table->bigInteger('max_monthly_salary')->nullable();
             $table->enum('salary_currency', ['pounds', 'dollars']);

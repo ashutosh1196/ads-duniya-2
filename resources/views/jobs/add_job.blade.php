@@ -64,7 +64,11 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="industry">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="industry" class="form-control" id="industry">
+                        <select name="industry" class="form-control" id="industry">
+                          <?php for ($i=0; $i < count($jobIndustries); $i++) { ?> 
+                            <option value="{{ $jobIndustries[$i]->id }}">{{ $jobIndustries[$i]->name }}</option>
+                          <?php } ?>
+                        </select>
                         @if($errors->has('industry'))
                           <div class="error">{{ $errors->first('industry') }}</div>
                         @endif

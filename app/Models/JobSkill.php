@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Job extends Model {
+class JobSkill extends Model {
 
 	use HasFactory, SoftDeletes;
-
-	/**
-	 * The skill that belong to the jobs.
-	*/
-	public function skills() {
-		return $this->belongsToMany(JobSkill::class);
-	}
 	
+	/**
+	 * The job that belong to the skill.
+	*/
+	public function jobs() {
+		return $this->belongsToMany(Job::class);
+	}
+
 }
