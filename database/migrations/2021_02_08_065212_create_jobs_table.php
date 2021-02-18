@@ -19,6 +19,7 @@ class CreateJobsTable extends Migration
             $table->string('job_title');
             $table->text('job_description');
             $table->enum('job_type',['full_time','contract_basis','work_from_home']);
+            $table->tinyInteger('is_featured')->default(0);
             $table->string('job_address');
             $table->string('city');
             $table->string('county')->nullable();
@@ -28,7 +29,11 @@ class CreateJobsTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('industry');
-            $table->string('salary')->nullable();
+            $table->bigInteger('min_monthly_salary')->nullable();
+            $table->bigInteger('max_monthly_salary')->nullable();
+            $table->enum('salary_currency', ['pounds', 'dollars']);
+            $table->integer('min_experience')->nullable();
+            $table->integer('max_experience')->nullable();
             $table->enum('status',['full_time','contract_basis','work_from_home']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
