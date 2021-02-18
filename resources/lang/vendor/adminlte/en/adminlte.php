@@ -87,7 +87,7 @@ return [
     'company_domain_url'            => 'Company Domain URL',
     'company_domain'                => 'Company Domain',
     'deleted_customers'             => 'Deleted Customers',
-    'edit_customers'                => 'Edit Customer',
+    'edit_customer'                 => 'Edit Customer',
     'pending_customers'             => 'Pending Customers',
     'add_new_customer'              => 'Add New Customer',
     'rejected_customers'            => 'Rejected Customers',
