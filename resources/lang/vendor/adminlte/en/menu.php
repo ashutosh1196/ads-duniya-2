@@ -43,6 +43,7 @@ return [
     'misc_data_management'          => 'Misc Data Management',
     'job_industries'                => 'Job Industries',
     'job_functions'                 => 'Job Functions',
+    'job_locations'                 => 'Job Locations',
     'skills'                        => 'Skills',
 
 ];

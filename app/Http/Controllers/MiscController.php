@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobIndustry;
 use App\Models\JobFunction;
+use App\Models\JobLocation;
 use App\Models\Skill;
 use DB;
 
@@ -437,6 +438,142 @@ class MiscController extends Controller {
 			$skillsList = Skill::all();
 			$res['success'] = 1;
 			$res['data'] = $skillsList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+	
+	/**
+	 * This function is used to Get Job Function Details
+	*/
+	public function viewJobLocation($id) {
+		$jobLocation = JobLocation::where('id', $id)->get();
+		return view('misc/job_locations/view_job_location', [ 'jobLocation' => $jobLocation ]);
+	}
+	
+	
+	/**
+	 * This function is used to Get JobLocations List
+	*/
+	public function jobLocationsList() {
+		$jobLocationsList = JobLocation::all();
+		return view('misc/job_locations/job_locations_list', [ 'jobLocationsList' => $jobLocationsList ]);
+	}
+	
+	/**
+	 * This function is used to Get Add Job Industry View
+	*/
+	public function addJobLocation() {
+		return view('misc/job_locations/add_job_location');
+	}
+	
+	
+	/**
+	 * This function is used to Save Job Function
+	*/
+	public function saveJobLocation(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required|unique:job_locations',
+		], [
+			'name.required' => 'The JobLocation Name is required.',
+			'name.unique' => 'The JobLocation Name must be unique.',
+		]);
+
+		$slugTrimmed = str_replace(' ', '_', $request->name);
+		$slillSlug = strtolower($slugTrimmed);
+
+		$jobLocation = new JobLocation;
+		$jobLocation->name = $request->name;
+		$jobLocation->slug = $slillSlug;
+		$jobLocation->status = $request->status;
+
+		if($jobLocation->save()) {
+			$jobLocationsList = JobLocation::all();
+			return redirect()->route('job_locations_list', [ 'jobLocationsList' => $jobLocationsList ])->with('success', 'Job Location Added Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+	
+	/**
+	 * This function is used to Get Edit Job Functions View
+	*/
+	public function editJobLocation($id) {
+		$jobLocation = JobLocation::where('id', $id)->get();
+		return view('misc/job_locations/edit_job_location', [ 'jobLocation' => $jobLocation ]);
+	}
+	
+	
+	/**
+	 * This function is used to Update JobLocation
+	*/
+	public function updateJobLocation(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required',
+		], [
+			'name.required' => 'JobLocation Name is required',
+		]);
+
+		$slugTrimmed = str_replace(' ', '_', $request->name);
+		$jobLocationSlug = strtolower($slugTrimmed);
+
+		$jobLocationId = $request->id;
+		$jobLocation = [
+			'name' => $request->name,
+			'slug' => $jobLocationSlug,
+			'status' => $request->status,
+		];
+		$jobLocationUpdate = JobLocation::where('id', $jobLocationId)->update($jobLocation);
+		if($jobLocationUpdate) {
+			$jobLocationsList = JobLocation::all();
+			return redirect()->route('job_locations_list', [ 'jobLocationsList' => $jobLocationsList ])->with('success', 'JobLocation Updated Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
+	/**
+	 * This function is used to delete JobLocation
+	*/
+	public function deleteJobLocation(Request $request) {
+		$jobLocationId = $request->id;
+		$deleteJobLocation = JobLocation::where('id', $jobLocationId)->delete();
+		if($deleteJobLocation) {
+      $jobLocationsList = JobLocation::all();
+			$res['success'] = 1;
+			$res['data'] = $jobLocationsList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+
+	/**
+	 * This function is used to Show Deleted JobLocations Listing
+	*/
+	public function deletedJobLocations() {
+		$deletedJobLocations = JobLocation::onlyTrashed()->get();
+		return view('misc/job_locations/deleted_job_locations_list', ['deletedJobLocations' => $deletedJobLocations]);
+	}
+
+	/**
+	 * This function is used to Restore JobLocation
+	*/
+	public function restoreJobLocation(Request $request) {
+		$jobLocationId = $request->id;
+		$jobLocation = JobLocation::where('id', $jobLocationId);
+		$restoreJobLocation = $jobLocation->restore();
+		if($restoreJobLocation) {
+			$jobLocationsList = JobLocation::all();
+			$res['success'] = 1;
+			$res['data'] = $jobLocationsList;
 			return json_encode($res);
 		}
 		else {

@@ -132,7 +132,6 @@ return [
     'job_alerts_status'             => 'Job Alerts Status',
 
     'add_job_function'              => 'Add Job Function',
-    'job_function_name'             => 'Job Function Name',
     'edit_job_function'             => 'Edit Job Function',
     'deleted_job_functions'         => 'Deleted Job Functions',
     'job_functions'                 => 'Job Functions',
@@ -140,15 +139,20 @@ return [
     'job_function_information'      => 'Job Function Information',
 
     'add_job_industry'              => 'Add Job Industry',
-    'job_industry_name'             => 'Job Industry Name',
     'deleted_job_industries'        => 'Deleted Job Industries',
     'edit_job_industry'             => 'Edit Job Industry',
     'job_industries'                => 'Job Industries',
     'add_new_job_industry'          => 'Add New Job Industry',
     'job_industry_information'      => 'Job Industry Information',
 
+    'job_locations'                 => 'Job Locations',
+    'job_location_information'      => 'Job Location Information',
+    'add_job_location'              => 'Add Job Location',
+    'add_new_job_location'          => 'Add New Job Location',
+    'edit_job_location'             => 'Edit Job Location',
+    'deleted_job_locations'         => 'Deleted Job Locations',
+
     'add_skill'                     => 'Add Skill',
-    'skill_name'                    => 'Skill Name',
     'deleted_skills'                => 'Deleted Skills',
     'edit_skill'                    => 'Edit Skill',
     'skills'                        => 'Skills',

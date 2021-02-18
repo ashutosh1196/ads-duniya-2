@@ -38,7 +38,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">{{ __('adminlte::adminlte.job_function_name') }}<span class="text-danger"> *</span></label>
+                        <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="name" class="form-control" id="name" value="{{ $jobFunction[0]->name }}">
                         <div id ="function_error" class="error"></div>
                         @if($errors->has('name'))

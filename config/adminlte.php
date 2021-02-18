@@ -340,6 +340,12 @@ return [
                     'active' => ['admin_panel/misc/job_functions*'],
                 ],
                 [
+                    'text' => 'job_locations',
+                    'icon' => 'fas fa-fw fa-map-marker',
+                    'url'  => 'admin_panel/misc/job_locations/list',
+                    'active' => ['admin_panel/misc/job_locations*'],
+                ],
+                [
                     'text' => 'skills',
                     'icon' => 'fas fa-fw fa-brain',
                     'url'  => 'admin_panel/misc/skills/list',
@@ -390,8 +396,13 @@ return [
                     'url'  => 'admin_panel/recycle_bin/job_functions/deleted',
                 ],
                 [
+                    'text' => 'job_locations',
+                    'icon' => 'fas fa-fw fa-map-marker',
+                    'url'  => 'admin_panel/recycle_bin/job_locations/deleted',
+                ],
+                [
                     'text' => 'skills',
-                    'icon' => 'fas fa-fw fa-tasks',
+                    'icon' => 'fas fa-fw fa-brain',
                     'url'  => 'admin_panel/recycle_bin/skills/deleted',
                 ],
             ],
