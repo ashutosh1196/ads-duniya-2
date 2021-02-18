@@ -82,11 +82,11 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group radio">
-                      <label for="job_alert">Job Alerts<span class="text-danger"> *</span></label><br/>
-                      <input type="radio" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="job_alert" value="0"> Disable
-                      <input type="radio" class="ml-2" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="job_alert" value="1"> Enable
-                      @if($errors->has('job_alert'))
-                        <div class="error">{{ $errors->first('job_alert') }}</div>
+                      <label for="is_job_alert_enabled">Job Alerts<span class="text-danger"> *</span></label><br/>
+                      <input type="radio" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="is_job_alert_enabled" value="0"> Disable
+                      <input type="radio" class="ml-2" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="is_job_alert_enabled" value="1"> Enable
+                      @if($errors->has('is_job_alert_enabled'))
+                        <div class="error">{{ $errors->first('is_job_alert_enabled') }}</div>
                       @endif
                     </div>
                   </div>
