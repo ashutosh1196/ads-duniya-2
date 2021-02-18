@@ -3,7 +3,7 @@
 @section('title', 'Deleted Jobs')
 
 @section('content_header')
-  <h1>Deleted Jobs</h1>
+  <h1>{{ __('adminlte::adminlte.deleted_jobs') }}</h1>
 @stop
 
 @section('content')
@@ -21,12 +21,12 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Job Title</th>
-              <th>Reference Number</th>
-              <th>Job Type</th>
-              <th>Industry</th>
-              <th>Company Name</th>
-              <th>Actions</th>
+              <th>{{ __('adminlte::adminlte.job_title') }}</th>
+              <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <th>{{ __('adminlte::adminlte.industry') }}</th>
+              <th>{{ __('adminlte::adminlte.company_name') }}</th>
+              <th>{{ __('adminlte::adminlte.actions') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -51,12 +51,12 @@
           <tfoot>
             <tr>
               <th>#</th>
-              <th>Job Title</th>
-              <th>Reference Number</th>
-              <th>Job Type</th>
-              <th>Industry</th>
-              <th>Company Name</th>
-              <th>Actions</th>
+              <th>{{ __('adminlte::adminlte.job_title') }}</th>
+              <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <th>{{ __('adminlte::adminlte.industry') }}</th>
+              <th>{{ __('adminlte::adminlte.company_name') }}</th>
+              <th>{{ __('adminlte::adminlte.actions') }}</th>
             </tr>
           </tfoot>
         </table>

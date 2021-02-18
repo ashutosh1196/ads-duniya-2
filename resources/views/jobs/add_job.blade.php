@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Add Job</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <h3>{{ __('adminlte::adminlte.add_job') }}</h3>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -37,7 +37,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="job_title">Job Title<span class="text-danger"> *</span></label>
+                        <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_title" class="form-control" id="job_title">
                         @if($errors->has('job_title'))
                           <div class="error">{{ $errors->first('job_title') }}</div>
@@ -47,11 +47,11 @@
                       
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="job_type">Job Type<span class="text-danger"> *</span></label>
+                        <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                         <select name="job_type" class="form-control" id="job_type">
-                          <option value="full_time">Full Time</option>
-                          <option value="contract_basis">Contract Basis</option>
-                          <option value="work_from_home">Work From Home</option>
+                          <option value="full_time">{{ __('adminlte::adminlte.full_time') }}</option>
+                          <option value="contract_basis">{{ __('adminlte::adminlte.contract_basis') }}</option>
+                          <option value="work_from_home">{{ __('adminlte::adminlte.work_from_home') }}</option>
                         </select>
                         @if($errors->has('job_type'))
                           <div class="error">{{ $errors->last('job_type') }}</div>
@@ -63,7 +63,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="industry">Industry<span class="text-danger"> *</span></label>
+                        <label for="industry">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="industry" class="form-control" id="industry">
                         @if($errors->has('industry'))
                           <div class="error">{{ $errors->first('industry') }}</div>
@@ -73,7 +73,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="salary">Salary</label>
+                        <label for="salary">{{ __('adminlte::adminlte.salary') }}</label>
                         <input type="text" name="salary" class="form-control" id="salary">
                         @if($errors->has('salary'))
                           <div class="error">{{ $errors->first('salary') }}</div>
@@ -85,7 +85,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="organization_id">Company<span class="text-danger"> *</span></label>
+                        <label for="organization_id">{{ __('adminlte::adminlte.company') }}<span class="text-danger"> *</span></label>
                         <select name="organization_id" class="form-control" id="organization_id">
                           <?php for($i=0; $i<count($organisationsList); $i++) { ?>
                             <option value="{{ $organisationsList[$i]->id }}">{{ $organisationsList[$i]->name }}</option>
@@ -99,7 +99,7 @@
                       
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="recruiter_id">Recruiter<span class="text-danger"> *</span></label>
+                        <label for="recruiter_id">{{ __('adminlte::adminlte.recruiter') }}<span class="text-danger"> *</span></label>
                         <select name="recruiter_id" class="form-control" id="recruiter_id">
                           <?php for($i=0; $i<count($recruitersList); $i++) { ?>
                             <option value="{{ $recruitersList[$i]->id }}">{{ $recruitersList[$i]->name }}</option>
@@ -116,7 +116,7 @@
                     
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label for="job_description">Job Description<span class="text-danger"> *</span></label>
+                        <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
                         <textarea id="job_description" name="job_description"></textarea>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
@@ -135,7 +135,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="job_address">Job Address<span class="text-danger"> *</span></label>
+                        <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_address" class="form-control" id="job_address">
                         @if($errors->has('job_address'))
                           <div class="error">{{ $errors->first('job_address') }}</div>
@@ -145,7 +145,7 @@
                       
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City / Town<span class="text-danger"> *</span></label>
+                        <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -157,7 +157,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="state">State<span class="text-danger"> *</span></label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="state" class="form-control" id="state">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
@@ -167,7 +167,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zip / Postcode<span class="text-danger"> *</span></label>
+                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -179,7 +179,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="county">County</label>
+                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
                         <input type="text" name="county" class="form-control" id="county">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
@@ -189,7 +189,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="country">Country<span class="text-danger"> *</span></label>
+                        <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
                         <select name="country" class="form-control" id="country">
                             <?php for($i=0; $i<count($countries); $i++) { ?>
                               <option value="{{ $countries[$i]->name }}" {{ $countries[$i]->name == 'United Kingdom' ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
@@ -207,7 +207,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary" >Save</button>
+                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.save') }}</button>
               </div>
             </form>
           </div>

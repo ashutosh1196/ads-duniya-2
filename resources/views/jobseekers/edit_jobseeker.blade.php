@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Edit Jobseeker</h3>
+            <h3>{{ __('adminlte::adminlte.edit_jobseeker') }}</h3>
             <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
           </div>
           <div class="card-body">
@@ -38,7 +38,7 @@
                   </div> -->
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
-                      <label for="first_name">First Name<span class="text-danger"> *</span></label>
+                      <label for="first_name">{{ __('adminlte::adminlte.first_name') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $jobseeker[0]->first_name }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -49,7 +49,7 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
-                      <label for="last_name">Last Name<span class="text-danger"> *</span></label>
+                      <label for="last_name">{{ __('adminlte::adminlte.last_name') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $jobseeker[0]->last_name }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -60,7 +60,7 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
-                      <label for="email">Email<span class="text-danger"> *</span></label>
+                      <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
                       <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}" readonly>
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -71,7 +71,7 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
-                      <label for="phone_number">Phone Number</label>
+                      <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
                       <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->phone_number }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
@@ -82,11 +82,11 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group radio">
-                      <label for="job_alert">Job Alerts<span class="text-danger"> *</span></label><br/>
-                      <input type="radio" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="job_alert" value="0"> Disable
-                      <input type="radio" class="ml-2" name="job_alert" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="job_alert" value="1"> Enable
-                      @if($errors->has('job_alert'))
-                        <div class="error">{{ $errors->first('job_alert') }}</div>
+                      <label for="is_job_alert_enabled">{{ __('adminlte::adminlte.job_alerts') }}<span class="text-danger"> *</span></label><br/>
+                      <input type="radio" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="is_job_alert_enabled" value="0"> Disable
+                      <input type="radio" class="ml-2" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="is_job_alert_enabled" value="1"> Enable
+                      @if($errors->has('is_job_alert_enabled'))
+                        <div class="error">{{ $errors->first('is_job_alert_enabled') }}</div>
                       @endif
                     </div>
                   </div>
@@ -94,7 +94,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>

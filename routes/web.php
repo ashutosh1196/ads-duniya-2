@@ -9,6 +9,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\MiscController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,18 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'jobs'], function () {
         Route::get('/deleted', [JobsController::class, 'deletedJobs'])->name('deleted_jobs_list');
       });
+      Route::group(['prefix' => 'job_industries'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobIndustries'])->name('deleted_job_industries');
+      });
+      Route::group(['prefix' => 'job_functions'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobFunctions'])->name('deleted_job_functions');
+      });
+      Route::group(['prefix' => 'job_locations'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobLocations'])->name('deleted_job_locations');
+      });
+      Route::group(['prefix' => 'skills'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedskills'])->name('deleted_skills');
+      });
     });
 
     // Jobs Routes
@@ -120,6 +133,51 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/edit/{id}', [JobsController::class, 'editJob'])->name('edit_job');
       Route::post('/update', [JobsController::class, 'updateJob'])->name('update_job');
       /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
+    });
+
+    // Recycle bin Routes
+    Route::group(['prefix' => 'misc'], function () {
+      Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
+      Route::group(['prefix' => 'job_industries'], function () {
+        Route::get('/list', [MiscController::class, 'jobIndustriesList'])->name('job_industries_list');
+        Route::get('/add', [MiscController::class, 'addJobIndustry'])->name('add_job_industry');
+        Route::post('/save', [MiscController::class, 'saveJobIndustry'])->name('save_job_industry');
+        Route::get('/view/{id}', [MiscController::class, 'viewJobIndustry'])->name('view_job_industry');
+        Route::get('/edit/{id}', [MiscController::class, 'editJobIndustry'])->name('edit_job_industry');
+        Route::post('/update', [MiscController::class, 'updateJobIndustry'])->name('update_job_industry');
+        Route::post('/delete', [MiscController::class, 'deleteJobIndustry'])->name('delete_job_industry');
+        Route::post('/restore', [MiscController::class, 'restoreJobIndustry'])->name('restore_job_industry');
+      });
+      Route::group(['prefix' => 'job_functions'], function () {
+        Route::get('/list', [MiscController::class, 'jobFunctionsList'])->name('job_functions_list');
+        Route::get('/add', [MiscController::class, 'addJobFunction'])->name('add_job_function');
+        Route::post('/save', [MiscController::class, 'saveJobFunction'])->name('save_job_function');
+        Route::get('/view/{id}', [MiscController::class, 'viewJobFunction'])->name('view_job_function');
+        Route::get('/edit/{id}', [MiscController::class, 'editJobFunction'])->name('edit_job_function');
+        Route::post('/update', [MiscController::class, 'updateJobFunction'])->name('update_job_function');
+        Route::post('/delete', [MiscController::class, 'deleteJobFunction'])->name('delete_job_function');
+        Route::post('/restore', [MiscController::class, 'restoreJobFunction'])->name('restore_job_function');
+      });
+      Route::group(['prefix' => 'skills'], function () {
+        Route::get('/list', [MiscController::class, 'skillsList'])->name('skills_list');
+        Route::get('/add', [MiscController::class, 'addSkill'])->name('add_skill');
+        Route::post('/save', [MiscController::class, 'saveSkill'])->name('save_skill');
+        Route::get('/view/{id}', [MiscController::class, 'viewSkill'])->name('view_skill');
+        Route::get('/edit/{id}', [MiscController::class, 'editSkill'])->name('edit_skill');
+        Route::post('/update', [MiscController::class, 'updateSkill'])->name('update_skill');
+        Route::post('/delete', [MiscController::class, 'deleteSkill'])->name('delete_skill');
+        Route::post('/restore', [MiscController::class, 'restoreSkill'])->name('restore_skill');
+      });
+      Route::group(['prefix' => 'job_locations'], function () {
+        Route::get('/list', [MiscController::class, 'jobLocationsList'])->name('job_locations_list');
+        Route::get('/add', [MiscController::class, 'addJobLocation'])->name('add_job_location');
+        Route::post('/save', [MiscController::class, 'saveJobLocation'])->name('save_job_location');
+        Route::get('/view/{id}', [MiscController::class, 'viewJobLocation'])->name('view_job_location');
+        Route::get('/edit/{id}', [MiscController::class, 'editJobLocation'])->name('edit_job_location');
+        Route::post('/update', [MiscController::class, 'updateJobLocation'])->name('update_job_location');
+        Route::post('/delete', [MiscController::class, 'deleteJobLocation'])->name('delete_job_location');
+        Route::post('/restore', [MiscController::class, 'restoreJobLocation'])->name('restore_job_location');
+      });
     });
 
     // Content Pages Routes

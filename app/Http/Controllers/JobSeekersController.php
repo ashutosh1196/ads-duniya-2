@@ -78,13 +78,25 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function updateJobseeker(Request $request) {
+		$validatedData = $request->validate([
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'email' => 'required|email',
+			'is_job_alert_enabled' => 'required',
+		], [
+			'first_name.required' => 'First Name is required',
+			'last_name.required' => 'Last Name is required',
+			'email.required' => 'Email is required',
+			'email.email' => 'Email is not valid',
+			'is_job_alert_enabled.required' => 'Job Alert Status is required',
+		]);
 		$dataToUpdate = [
 			'name' => $request->first_name.$request->last_name,
 			'first_name' => $request->first_name,
 			'last_name' => $request->last_name,
 			// 'email' => $request->email,
 			'phone_number' => $request->phone_number,
-			'is_job_alert_enabled' => $request->job_alert,
+			'is_job_alert_enabled' => $request->is_job_alert_enabled,
 		];
 		$updateUser = User::where('id', $request->id)->update($dataToUpdate);
 		if($updateUser) {

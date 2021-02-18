@@ -3,7 +3,7 @@
 @section('title', 'Rejected Customers')
 
 @section('content_header')
-  <h1>Rejected Customers</h1>
+  <h1>{{ __('adminlte::adminlte.rejected_customers') }}</h1>
 @stop
 
 @section('content')
@@ -23,10 +23,10 @@
                 <tr>
                   <th>#</th>
                   <!-- <th>Logo</th> -->
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,10 +54,10 @@
                 <tr>
                   <th>#</th>
                   <!-- <th>Logo</th> -->
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

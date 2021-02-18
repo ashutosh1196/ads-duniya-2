@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Edit Customer</h3>
-            <a class="btn col-sm-1 btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <h3>{{ __('adminlte::adminlte.edit_customer') }}</h3>
+            <a class="btn col-sm-1 btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -40,7 +40,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="name">Company Name<span class="text-danger"> *</span></label>
+                        <label for="name">{{ __('adminlte::adminlte.company_name') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="name" class="form-control" id="name" value="{{ $customer[0]->name }}">
                         @if($errors->has('name'))
                           <div class="error">{{ $errors->first('name') }}</div>
@@ -50,7 +50,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
+                        <label for="email">{{ __('adminlte::adminlte.company_or_consultants_email') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}" readonly>
                         <div id ="email_error" class="error"></div>
                         @if($errors->has('email'))
@@ -63,18 +63,18 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label class="required">Contact Number</label>
+                        <label class="required">{{ __('adminlte::adminlte.contact_number') }}</label>
                         <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13" value="{{ $customer[0]->contact_number }}">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
-                        <input type="hidden" name="country_code">
+                        <input type="hidden" name="country_code" value="{{ $customer[0]->country_code }}">
                       </div>
                     </div>
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="vat_number">VAT Number (Optional)</label>
+                          <label for="vat_number">{{ __('adminlte::adminlte.vat_number') }} ({{ __('adminlte::adminlte.optional') }})</label>
                           <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}">
                           @if($errors->has('vat_number'))
                             <div class="error">{{ $errors->first('vat_number') }}</div>
@@ -87,7 +87,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label for="url">Company Domain URL<span class="text-danger"> *</span></label>
+                        <label for="url">{{ __('adminlte::adminlte.company_domain_url') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="url" class="form-control" id="url" value="{{ $customer[0]->url }}">
                         @if($errors->has('url'))
                           <div class="error">{{ $errors->first('url') }}</div>
@@ -103,7 +103,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="address">Address<span class="text-danger"> *</span></label>
+                        <label for="address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="address" class="form-control" id="autocomplete" value="{{ $customer[0]->address }}">
                         @if($errors->has('address'))
                           <div class="error">{{ $errors->first('address') }}</div>
@@ -113,7 +113,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="city">City / Town<span class="text-danger"> *</span></label>
+                        <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
@@ -125,7 +125,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="state">State</label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
                         <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
@@ -135,7 +135,7 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="pincode">Zip / Postcode<span class="text-danger"> *</span></label>
+                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
@@ -147,7 +147,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="county">County</label>
+                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
                         <input type="text" name="county" class="form-control" id="county" value="{{ $customer[0]->county }}">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
@@ -157,9 +157,9 @@
                   
                     <div class="col-sm-6">
                       <div class="form-group">
-                          <label for="country">Country<span class="text-danger"> *</span></label>
+                          <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
                           <select name="country" class="form-control" id="country" >
-                            <option value="" hidden>Select Country</option>
+                            <option value="" hidden>{{ __('adminlte::adminlte.select_country') }}</option>
                             @for($i=0; $i < count($countries); $i++)
                               <option value="{{ $countries[$i]->name }}" {{ ( $countries[$i]->name == $customer[0]->country) ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
                             @endfor
@@ -178,7 +178,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button id="submitButton" class="btn btn-primary">Update</button>
+                <button id="submitButton" class="btn btn-primary">{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>

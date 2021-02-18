@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Roles Management')
+@section('title', 'Roles')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3>Roles Management</h3>
+            <h3>{{ __('adminlte::adminlte.roles') }}</h3>
           </div>
           <div class="card-body">
             <a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>
@@ -19,11 +19,9 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Permissions</th>
-                  <th>Created Date</th>
-                  <th>Last Updated</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.permissions') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,8 +30,6 @@
                     <td>{{ $i+1 }}</td>
                     <td>{{ $roles[$i]->name }}</td>
                     <td>{{ $roles[$i]->permissions }}</td>
-                    <td>{{ date('F d, Y', strtotime($roles[$i]->created_at)) }}</td>
-                    <td>{{ date('F d, Y - H:i A', strtotime($roles[$i]->updated_at)) }}</td>
                     <td>
                       <a class="btn btn-sm btn-success text-white" href="#">Edit</a>
                       <a class="btn btn-sm btn-danger text-white" title="Delete Role" href="javascript:void(0)" id="delete-button" data-id="{{ $roles[$i]->id}}">Delete</a> 
@@ -44,11 +40,9 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Permissions</th>
-                  <th>Created Date</th>
-                  <th>Last Updated</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.permissions') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

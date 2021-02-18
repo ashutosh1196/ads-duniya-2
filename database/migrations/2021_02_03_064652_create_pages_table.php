@@ -17,8 +17,8 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('section');
-            $table->integer('status')->comment('1 => Active , 0 => Incative')->defualt(1);
-            $table->string('view')->comment('1 => Web , 0 => Mobile')->defualt(1);
+            $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
+            $table->string('view')->comment('1 => Web , 0 => Mobile')->default(1);
             $table->longText('content');
             $table->timestamps();
         });

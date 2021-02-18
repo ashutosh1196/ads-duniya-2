@@ -43,7 +43,7 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function saveAdmin(Request $request) {
-		/* $validatedData = $request->validate([
+		$validatedData = $request->validate([
 			'name' => 'required',
 			'email' => 'required|email|unique:admins',
 			'role_id' => 'required',
@@ -55,8 +55,7 @@ class AdminsController extends Controller {
 			'email.unique' => 'Email must be unique',
 			'role_id.required' => 'Role is required',
 			'password.required' => 'Password is required',
-		]); */
-		// $this->validator($request->all())->validate();
+		]);
 		$admin = new Admin;
 		$admin->name = $request->name;
 		$admin->email = $request->email;
@@ -98,6 +97,16 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function updateAdmin(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required',
+			'email' => 'required|email',
+			'role_id' => 'required',
+		], [
+			'name.required' => 'Name is required',
+			'email.required' => 'Email is required',
+			'email.email' => 'Email is not valid',
+			'role_id.required' => 'Role is required',
+		]);
 		$updateAdmin = Admin::where('id', $request->id)->update([
 			'name' => $request->name,
 			// 'email' => $request->email,

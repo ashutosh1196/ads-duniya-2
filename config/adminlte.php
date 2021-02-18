@@ -323,6 +323,37 @@ return [
             ],
         ],
         [
+            'text' => 'misc_data_management',
+            'icon' => 'fas fa-fw fa-cogs',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'job_industries',
+                    'icon' => 'fas fa-fw fa-industry',
+                    'url'  => 'admin_panel/misc/job_industries/list',
+                    'active' => ['admin_panel/misc/job_industries*'],
+                ],
+                [
+                    'text' => 'job_functions',
+                    'icon' => 'fas fa-fw fa-tasks',
+                    'url'  => 'admin_panel/misc/job_functions/list',
+                    'active' => ['admin_panel/misc/job_functions*'],
+                ],
+                [
+                    'text' => 'job_locations',
+                    'icon' => 'fas fa-fw fa-map-marker',
+                    'url'  => 'admin_panel/misc/job_locations/list',
+                    'active' => ['admin_panel/misc/job_locations*'],
+                ],
+                [
+                    'text' => 'skills',
+                    'icon' => 'fas fa-fw fa-brain',
+                    'url'  => 'admin_panel/misc/skills/list',
+                    'active' => ['admin_panel/misc/skills*'],
+                ],
+            ],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',
@@ -353,6 +384,26 @@ return [
                     'text' => 'jobs',
                     'icon' => 'fas fa-fw fa-briefcase',
                     'url'  => 'admin_panel/recycle_bin/jobs/deleted',
+                ],
+                [
+                    'text' => 'job_industries',
+                    'icon' => 'fas fa-fw fa-industry',
+                    'url'  => 'admin_panel/recycle_bin/job_industries/deleted',
+                ],
+                [
+                    'text' => 'job_functions',
+                    'icon' => 'fas fa-fw fa-tasks',
+                    'url'  => 'admin_panel/recycle_bin/job_functions/deleted',
+                ],
+                [
+                    'text' => 'job_locations',
+                    'icon' => 'fas fa-fw fa-map-marker',
+                    'url'  => 'admin_panel/recycle_bin/job_locations/deleted',
+                ],
+                [
+                    'text' => 'skills',
+                    'icon' => 'fas fa-fw fa-brain',
+                    'url'  => 'admin_panel/recycle_bin/skills/deleted',
                 ],
             ],
         ],

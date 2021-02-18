@@ -4,7 +4,7 @@
 
 @section('content_header')
   <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>Customer Information</h1>
+    <h1>{{ __('adminlte::adminlte.customer_information') }}</h1>
     <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
   </div>
 @stop
@@ -25,89 +25,6 @@
             $adminImagesPath = asset('').'images/';
             $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : $adminImagesPath.'avatar.png';
           ?>
-          <!-- <table class="table form">
-            <tr>
-              <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" style="width:100px;">
-            </tr>
-            <tr>
-            <tr>
-              <th>Name </th>
-              <td>{{ $viewCustomer[0]->name }}</td>
-            </tr>
-            <tr>
-            <tr>
-              <th>Email</th>
-              <td>{{ $viewCustomer[0]->email }}</td>
-            </tr>
-            <tr>
-              <th>Phone Number</th>
-              <td>{{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '--' }}</td>
-            </tr>
-            <tr>
-              <th>VAT Number</th>
-              <td>{{ $viewCustomer[0]->vat_number ? $viewCustomer[0]->vat_number : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Website URL</th>
-              <td>{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Domain</th>
-              <td>{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Address</th>
-              <td>{{ $viewCustomer[0]->address ? $viewCustomer[0]->address : '--' }}</td>
-            </tr>
-            <tr>
-              <th>City</th>
-              <td>{{ $viewCustomer[0]->city ? $viewCustomer[0]->city : '--' }}</td>
-            </tr>
-            <tr>
-              <th>State</th>
-              <td>{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Country</th>
-              <td>{{ $viewCustomer[0]->country ? $viewCustomer[0]->country : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Zip Code</th>
-              <td>{{ $viewCustomer[0]->pincode ? $viewCustomer[0]->pincode : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Location</th>
-              <td>{{ $viewCustomer[0]->latitude }}<br/>{{ $viewCustomer[0]->longitude }}</td>
-            </tr>
-            <tr>
-              <th>Whitelisted Status</th>
-              <td>
-                @if($viewCustomer[0]->is_whitelisted == 0)
-                  <span style="margin-right:20px;">Pending</span>
-                  <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
-                @elseif($viewCustomer[0]->is_whitelisted == 1)
-                  <span style="margin-right:20px;">Whitelisted</span>
-                  <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a>
-                @elseif($viewCustomer[0]->is_whitelisted == 2)
-                  <span style="margin-right:20px;">Rejected</span>
-                  <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                @endif
-              </td>
-            </tr>
-            <tr>
-              <th>Created By</th>
-              <td>{{ $viewCustomer[0]->created_by ? $viewCustomer[0]->created_by : '--' }}</td>
-            </tr>
-            <tr>
-              <th>Created Date</th>
-              <td>{{ date('F d, Y - H:i A', strtotime($viewCustomer[0]->created_at)) }}</td>
-            </tr>
-            <tr>
-              <th>Last Updated date</th>
-              <td>{{ date('F d, Y - H:i A', strtotime($viewCustomer[0]->updated_at)) }}</td>
-            </tr>
-          </table> -->
 
           <!-- <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;"> -->
          
@@ -115,67 +32,67 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Company Name</label>
+                  <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->name }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Company Or Consultants Email</label>
+                  <label>{{ __('adminlte::adminlte.company_or_consultants_email') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Contact Number</label>
+                  <label>{{ __('adminlte::adminlte.contact_number') }}</label>
                   <input class="form-control" placeholder="(+{{ $viewCustomer[0]->country_code }}) {{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>VAT Number</label>
+                  <label>{{ __('adminlte::adminlte.vat_number') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->vat_number ? $viewCustomer[0]->vat_number : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Company Domain URL</label>
+                  <label>{{ __('adminlte::adminlte.company_domain_url') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Company Domain</label>
+                  <label>{{ __('adminlte::adminlte.company_domain') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>{{ __('adminlte::adminlte.address') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->address ? $viewCustomer[0]->address : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>City</label>
+                  <label>{{ __('adminlte::adminlte.city') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->city ? $viewCustomer[0]->city : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>State</label>
+                  <label>{{ __('adminlte::adminlte.state') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Country</label>
+                  <label>{{ __('adminlte::adminlte.country') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->country ? $viewCustomer[0]->country : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Zip Code</label>
+                  <label>{{ __('adminlte::adminlte.zip') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->pincode ? $viewCustomer[0]->pincode : '--' }}" readonly>
                 </div>
               </div>
@@ -187,7 +104,7 @@
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Whitelist Status
+                  <label>{{ __('adminlte::adminlte.whitelist_status') }}
                     <!-- <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
                     <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a> -->
                   </label>
@@ -206,19 +123,19 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Created By</label>
+                  <label>{{ __('adminlte::adminlte.created_by') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->created_by ? $viewCustomer[0]->created_by : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Created Date</label>
+                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewCustomer[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Last Updated Date</label>
+                  <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewCustomer[0]->updated_at)) }}" readonly>
                 </div>
               </div>

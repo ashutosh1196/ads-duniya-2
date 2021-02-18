@@ -71,6 +71,13 @@ class ContentController extends Controller {
 	*/
 	public function updateContent(Request $request) {
 		// dd($request);
+		$validatedData = $request->validate([
+			'title' => 'required',
+			'content' => 'required',
+		], [
+			'title.required' => 'Title is required',
+			'content.required' => 'Content is required',
+		]);
 		$updateContent = Page::where("id", $request->id)
 										->update([
 											'title' => $request->title,

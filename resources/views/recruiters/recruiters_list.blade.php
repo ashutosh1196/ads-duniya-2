@@ -3,7 +3,7 @@
 @section('title', 'Recruiters')
 
 @section('content_header')
-  <h1>Recruiters</h1>
+  <h1>{{ __('adminlte::adminlte.recruiters') }}</h1>
 @stop
 
 @section('content')
@@ -17,16 +17,16 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_recruiter') }}">Add New Recruiter</a>
+            <a class="btn btn-sm btn-success float-right" href="{{ route('add_recruiter') }}">{{ __('adminlte::adminlte.add_new_recruiter') }}</a>
             <table id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Organization</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,11 +50,11 @@
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Organization</th>
-                  <th>Actions</th>
+                  <th>{{ __('adminlte::adminlte.name') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
             </table>

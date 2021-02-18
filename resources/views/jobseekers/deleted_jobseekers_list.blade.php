@@ -3,7 +3,7 @@
 @section('title', 'Deleted Jobseekers')
 
 @section('content_header')
-  <h1>Deleted Jobseekers</h1>
+  <h1>{{ __('adminlte::adminlte.deleted_jobseekers') }}</h1>
 @stop
 
 @section('content')
@@ -21,11 +21,11 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Job Alerts</th>
-                <th>Actions</th>
+                <th>{{ __('adminlte::adminlte.name') }}</th>
+                <th>{{ __('adminlte::adminlte.email') }}</th>
+                <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                <th>{{ __('adminlte::adminlte.job_alerts') }}</th>
+                <th>{{ __('adminlte::adminlte.actions') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -46,11 +46,11 @@
             <tfoot>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Job Alerts</th>
-                <th>Actions</th>
+                <th>{{ __('adminlte::adminlte.name') }}</th>
+                <th>{{ __('adminlte::adminlte.email') }}</th>
+                <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                <th>{{ __('adminlte::adminlte.job_alerts') }}</th>
+                <th>{{ __('adminlte::adminlte.actions') }}</th>
               </tr>
             </tfoot>
           </table>
