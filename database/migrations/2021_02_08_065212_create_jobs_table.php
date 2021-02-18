@@ -25,8 +25,8 @@ class CreateJobsTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->string('pincode');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('industry');
             $table->string('salary')->nullable();
             $table->enum('status',['open','close']);
