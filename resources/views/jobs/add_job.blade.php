@@ -11,8 +11,8 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
+            <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
             <h3>{{ __('adminlte::adminlte.add_job') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -59,28 +59,33 @@
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="industry">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
-                        <select name="industry" class="form-control" id="industry">
+                        <label for="job_industry_id">{{ __('adminlte::adminlte.job_industry') }}<span class="text-danger"> *</span></label>
+                        <select name="job_industry_id" class="form-control" id="job_industry_id">
                           <?php for ($i=0; $i < count($jobIndustries); $i++) { ?> 
                             <option value="{{ $jobIndustries[$i]->id }}">{{ $jobIndustries[$i]->name }}</option>
                           <?php } ?>
                         </select>
-                        @if($errors->has('industry'))
-                          <div class="error">{{ $errors->first('industry') }}</div>
+                        @if($errors->has('job_industry_id'))
+                          <div class="error">{{ $errors->first('job_industry_id') }}</div>
                         @endif
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="salary">{{ __('adminlte::adminlte.salary') }}</label>
-                        <input type="text" name="salary" class="form-control" id="salary">
-                        @if($errors->has('salary'))
-                          <div class="error">{{ $errors->first('salary') }}</div>
+                        <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
+                        <input type="hidden" name="job_location_id" value="1">
+                        <select name="job_function_id" class="form-control" id="job_function_id">
+                          <?php for ($i=0; $i < count($jobFunctions); $i++) { ?> 
+                            <option value="{{ $jobFunctions[$i]->id }}">{{ $jobFunctions[$i]->name }}</option>
+                          <?php } ?>
+                        </select>
+                        @if($errors->has('job_function_id'))
+                          <div class="error">{{ $errors->first('job_function_id') }}</div>
                         @endif
                       </div>
                     </div>
@@ -115,9 +120,37 @@
                       </div>
                     </div>
                   </div>
-
+                  
                   <div class="row">
-                    
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="job_skills">{{ __('adminlte::adminlte.required_skills') }}</label>
+                        <select multiple="multiple" name="job_skills[]" class="form-control" id="job_skills">
+                          <?php for ($i=0; $i < count($JobSkills); $i++) { ?> 
+                            <option value="{{ $JobSkills[$i]->id }}">{{ $JobSkills[$i]->name }}</option>
+                          <?php } ?>
+                        </select>
+                        @if($errors->has('job_skills'))
+                          <div class="error">{{ $errors->first('job_skills') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                   
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
+                        <select name="is_featured" class="form-control" id="is_featured">
+                          <option value="0">No</option>
+                          <option value="1">Yes</option>
+                        </select>
+                        @if($errors->has('is_featured'))
+                          <div class="error">{{ $errors->first('is_featured') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">  
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
@@ -132,10 +165,73 @@
 
                 <hr/>
 
-                <div class="address_fields">
-                  <input type="hidden" name="latitude" value="30.6774506">
-                  <input type="hidden" name="longitude" value="76.74058339">
+                <div class="financial_fields">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="min_monthly_salary">{{ __('adminlte::adminlte.min_salary') }}</label>
+                        <input type="text" name="min_monthly_salary" class="form-control" id="min_monthly_salary">
+                        @if($errors->has('min_monthly_salary'))
+                          <div class="error">{{ $errors->first('min_monthly_salary') }}</div>
+                        @endif
+                      </div>
+                    </div>
 
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="max_monthly_salary">{{ __('adminlte::adminlte.max_salary') }}</label>
+                        <input type="text" name="max_monthly_salary" class="form-control" id="max_monthly_salary">
+                        @if($errors->has('max_monthly_salary'))
+                          <div class="error">{{ $errors->first('max_monthly_salary') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="min_experience">{{ __('adminlte::adminlte.min_experience') }}</label>
+                        <input type="text" name="min_experience" class="form-control" id="min_experience">
+                        @if($errors->has('min_experience'))
+                          <div class="error">{{ $errors->first('min_experience') }}</div>
+                        @endif
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="max_experience">{{ __('adminlte::adminlte.max_experience') }}</label>
+                        <input type="text" name="max_experience" class="form-control" id="max_experience">
+                        @if($errors->has('max_experience'))
+                          <div class="error">{{ $errors->first('max_experience') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr/>
+
+                <div class="address_fields">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="job_location_id">{{ __('adminlte::adminlte.location') }}<span class="text-danger"> *</span></label>
+                        <select name="job_skills" class="form-control" id="job_skills">
+                          <?php for ($i=0; $i < count($jobLocations); $i++) { ?> 
+                            <option value="{{ $jobLocations[$i]->id }}">{{ $jobLocations[$i]->name }}</option>
+                          <?php } ?>
+                        </select>
+                        @if($errors->has('job_location_id'))
+                          <div class="error">{{ $errors->first('job_location_id') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="address_fields">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -222,8 +318,10 @@
 @endsection
 
 @section('css')
+  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
   <style>
     .information_fields { margin-bottom: 30px; }
+    .financial_fields { margin-top: 30px; margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
     .intl-tel-input { display: block; }
   </style>
@@ -236,24 +334,6 @@
         customConfig : 'config.js',
         toolbar : 'simple'
       })
-      $("#email").blur(function() {
-        $.ajax({
-          type:"GET",
-          url:"{{ route('check_email') }}",
-          data: {
-            email: $(this).val(),
-            table_name: 'users'
-          },
-          success: function(result) {
-            if(result) {
-              $("#email_error").html("This email is already registered.");
-            }
-            else {
-              $("#email_error").html("");
-            }
-          }
-        });
-      });
       $('#addJobForm').validate({
         ignore: [],
         debug: false,
@@ -264,13 +344,22 @@
           job_type: {
             required: true
           },
-          industry: {
+          job_industry_id: {
+            required: true
+          },
+          job_function_id: {
+            required: true
+          },
+          job_location_id: {
+            required: true
+          },
+          organization_id: {
             required: true
           },
           recruiter_id: {
             required: true
           },
-          organization_id: {
+          is_featured: {
             required: true
           },
           job_description:{
@@ -278,6 +367,18 @@
               CKEDITOR.instances.job_description.updateElement();
             },
             minlength:10
+          },
+          min_monthly_salary: {
+            number: true
+          },
+          max_monthly_salary: {
+            number: true
+          },
+          min_experience: {
+            number: true
+          },
+          max_experience: {
+            number: true
           },
           job_address: {
             required: true
@@ -302,18 +403,39 @@
           job_type: {
             required: "The Job Type field is required."
           },
-          industry: {
-            required: "The Industry field is required."
+          job_industry_id: {
+            required: "The Job Industry field is required."
           },
-          recruiter_id: {
-            required: "The Recruiter field is required."
+          job_function_id: {
+            required: "The Job Function field is required."
+          },
+          job_location_id: {
+            required: "The Job Region field is required."
           },
           organization_id: {
             required: "The Company field is required."
           },
+          recruiter_id: {
+            required: "The Recruiter field is required."
+          },
+          is_featured: {
+            required: "The Is Featured field is required."
+          },
           job_description: {
             required: "The Job Description field is required.",
             minlength: "Minimum Length must be 10"
+          },
+          min_monthly_salary: {
+            required: "The Minimum Monthly Salary must be in numbers only."
+          },
+          max_monthly_salary: {
+            required: "The Maximum Monthly Salary must be in numbers only."
+          },
+          min_experience: {
+            required: "The Minimum Experience must be in numbers only."
+          },
+          max_experience: {
+            required: "The Maximum Experience must be in numbers only."
           },
           job_address: {
             required: "The Job Address field is required."

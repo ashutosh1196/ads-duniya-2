@@ -45,6 +45,7 @@ return [
     'status'                        => 'Status',
     'active'                        => 'Active',
     'inactive'                      => 'Inactive',
+    'location'                      => 'Job Region',
     'address'                       => 'Address',
     'city'                          => 'City / Town',
     'state'                         => 'State',
@@ -104,7 +105,12 @@ return [
     'work_from_home'                => 'Work From Home',
     'industry'                      => 'Industry',
     'salary'                        => 'Salary',
+    'min_salary'                    => 'Package From (Yearly)',
+    'max_salary'                    => 'Package To (Yearly)',
+    'min_experience'                => 'Minimum Experience',
+    'max_experience'                => 'Maximum Experience',
     'company'                       => 'Company',
+    'is_featured'                   => 'Is Featured?',
     'recruiter'                     => 'Recruiter',
     'job_description'               => 'Job Description',
     'bookmarked_jobs'               => 'Bookmarked Jobs',
@@ -131,6 +137,7 @@ return [
     'ip_address'                    => 'IP Address',
     'job_alerts_status'             => 'Job Alerts Status',
 
+    'job_function'                  => 'Job Function',
     'add_job_function'              => 'Add Job Function',
     'edit_job_function'             => 'Edit Job Function',
     'deleted_job_functions'         => 'Deleted Job Functions',
@@ -138,6 +145,7 @@ return [
     'add_new_job_function'          => 'Add New Job Function',
     'job_function_information'      => 'Job Function Information',
 
+    'job_industry'                  => 'Job Industry',
     'add_job_industry'              => 'Add Job Industry',
     'deleted_job_industries'        => 'Deleted Job Industries',
     'edit_job_industry'             => 'Edit Job Industry',
@@ -145,6 +153,7 @@ return [
     'add_new_job_industry'          => 'Add New Job Industry',
     'job_industry_information'      => 'Job Industry Information',
 
+    'job_location'                  => 'Job Location',
     'job_locations'                 => 'Job Locations',
     'job_location_information'      => 'Job Location Information',
     'add_job_location'              => 'Add Job Location',
@@ -152,6 +161,7 @@ return [
     'edit_job_location'             => 'Edit Job Location',
     'deleted_job_locations'         => 'Deleted Job Locations',
 
+    'required_skills'               => 'Required Skill(s)',
     'add_skill'                     => 'Add Skill',
     'deleted_skills'                => 'Deleted Skills',
     'edit_skill'                    => 'Edit Skill',

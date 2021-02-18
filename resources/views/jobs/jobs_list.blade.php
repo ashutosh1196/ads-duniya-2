@@ -45,7 +45,7 @@
                   <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
                   <td>
                     <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                    <!-- <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
