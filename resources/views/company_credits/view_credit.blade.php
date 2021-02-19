@@ -24,6 +24,7 @@
           <form class="form_wrap">
 
             <div class="row">
+            
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
@@ -45,21 +46,21 @@
                   <input class="form-control" placeholder="{{ $companyCreditDetails[0]->status ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
-            </div>
-
-            <div class="row">
+            
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyCreditDetails[0]->created_at)) }}" readonly>
                 </div>
               </div>
+
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyCreditDetails[0]->updated_at)) }}" readonly>
                 </div>
               </div>
+
             </div>
 
           </form>
