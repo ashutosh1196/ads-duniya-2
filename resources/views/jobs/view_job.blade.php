@@ -25,7 +25,7 @@
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Job Title{{ __('adminlte::adminlte.job_title') }}</label>
+                  <label>{{ __('adminlte::adminlte.job_title') }}</label>
                   <input class="form-control" placeholder="{{ $jobDetails[0]->job_title ? $jobDetails[0]->job_title : '--' }}" readonly>
                 </div>
               </div>
