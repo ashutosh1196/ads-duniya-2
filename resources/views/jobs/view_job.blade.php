@@ -180,7 +180,7 @@
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_description') }}</label><br/>
-                  <span class="job-description">{!! $jobDetails[0]->job_description !!}</span>
+                  <div class="job-description">{!! $jobDetails[0]->job_description !!}</div>
                 </div>
               </div>
             </div>
