@@ -208,7 +208,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.update') }}</button>
+                <button type="text" class="btn btn-primary" disabled>{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>

@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\JobIndustry;
+use App\Models\JobFunction;
+use App\Models\JobLocation;
+use App\Models\Skill;
+use App\Models\JobSkill;
 use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
@@ -15,7 +20,12 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function addJob() {
-		$countries = Country::all();
+		$countries     = Country::all();
+		$jobIndustries = JobIndustry::all();
+		$jobFunctions  = JobFunction::all();
+		$jobLocations  = JobLocation::all();
+		$JobSkills     = Skill::all();
+
 		$organisationsList = Organization::where('is_whitelisted', 1)->get();
 		$recruitersList = [];
 		for ($i=0; $i < count($organisationsList); $i++) {
@@ -24,7 +34,15 @@ class JobsController extends Controller {
 				array_push($recruitersList, $recruiter[0]);
 			}
 		}
-		return view('jobs/add_job', ['organisationsList' => $organisationsList, 'recruitersList' => $recruitersList, 'countries' => $countries]);
+		return view('jobs/add_job', [
+			'organisationsList' => $organisationsList,
+			'recruitersList' => $recruitersList,
+			'countries' => $countries,
+			'jobIndustries' => $jobIndustries,
+			'jobFunctions' => $jobFunctions,
+			'jobLocations' => $jobLocations,
+			'JobSkills' => $JobSkills
+		]);
 	}
 	
 	/**
@@ -33,31 +51,39 @@ class JobsController extends Controller {
 	public function saveJob(Request $request) {
 		$validatedData = $request->validate([
 			'job_title' => 'required',
-			'job_description' => 'required',
 			'job_type' => 'required',
+			'job_industry_id' => 'required',
+			'job_function_id' => 'required',
+			'job_location_id' => 'required',
+			'organization_id' => 'required',
+			'recruiter_id' => 'required',
+			'job_description' => 'required',
+			'is_featured' => 'required',
 			'job_address' => 'required',
 			'city' => 'required',
 			'state' => 'required',
 			'country' => 'required',
 			'pincode' => 'required',
-			'industry' => 'required',
-			'recruiter_id' => 'required',
-			'organization_id' => 'required',
 		], [
 			'job_title.required' => 'The Job Title field is required.',
-			'job_description.required' => 'The Job Description field is required.',
 			'job_type.required' => 'The Job Type field is required.',
+			'job_industry_id.required' => 'The Job Industry field is required.',
+			'job_function_id.required' => 'The Job Function field is required.',
+			'job_location_id.required' => 'The Job Region field is required.',
+			'organization_id.required' => 'The Company field is required.',
+			'recruiter_id.required' => 'The Recruiter field is required.',
+			'job_description.required' => 'The Job Description field is required.',
+			'is_featured.required' => 'The Is Featured field is required.',
 			'job_address.required' => 'The Job Address field is required.',
 			'city.required' => 'The City field is required.',
 			'state.required' => 'The State field is required.',
 			'country.required' => 'The Country field is required.',
 			'pincode.required' => 'The Zip / Postcode field is required.',
-			'industry.required' => 'The Industry field is required.',
-			'recruiter_id.required' => 'The Recruiter Name field is required.',
-			'organization_id.required' => 'The Company Name field is required.',
 		]);
 		$job = new Job;
 		$jobRefNumber = uniqid();
+		$jobSkills = $request->input('job_skills');
+		// dd($jobSkills);
 		$job->job_ref_number = $jobRefNumber;
 		$job->job_title = $request->job_title;
 		$job->job_description = $request->job_description;
@@ -68,10 +94,14 @@ class JobsController extends Controller {
 		$job->state = $request->state;
 		$job->country = $request->country;
 		$job->pincode = $request->pincode;
-		$job->latitude = $request->latitude;
-		$job->longitude = $request->longitude;
-		$job->industry = $request->industry;
-		$job->salary = $request->salary;
+		$job->job_industry_id = $request->job_industry_id;
+		$job->job_function_id = $request->job_function_id;
+		$job->job_location_id = $request->job_location_id;
+		$job->is_featured = $request->is_featured;
+		$job->min_monthly_salary = $request->min_monthly_salary;
+		$job->max_monthly_salary = $request->max_monthly_salary;
+		$job->min_experience = $request->min_experience;
+		$job->max_experience = $request->max_experience;
 		$job->status = $request->job_type;
 		$job->recruiter_id = $request->recruiter_id;
 		$job->organization_id = $request->organization_id;
@@ -98,12 +128,18 @@ class JobsController extends Controller {
 	*/
 	public function viewJob($id) {
 		$jobDetails = Job::where('id',$id)->get();
+		$jobIndustry = jobIndustry::where('id', $jobDetails[0]->job_industry_id)->get();
+		$jobFunction = jobFunction::where('id', $jobDetails[0]->job_function_id)->get();
+		$jobLocation = jobLocation::where('id', $jobDetails[0]->job_location_id)->get();
 		$organization = Organization::where('id', $jobDetails[0]->organization_id)->get();
 		$recruiter = Recruiter::where('id', $jobDetails[0]->recruiter_id)->get();
 		return view('jobs/view_job', [
 			'jobDetails' => $jobDetails,
 			'organizationName' => $organization[0]->name,
-			'recruiterName' => $recruiter[0]->name
+			'recruiterName' => $recruiter[0]->name,
+			'jobIndustry' => $jobIndustry[0]->name,
+			'jobFunction' => $jobFunction[0]->name,
+			'jobLocation' => $jobLocation[0]->name,
 		]);
 	}
 	
@@ -169,8 +205,6 @@ class JobsController extends Controller {
 			"state" => $request->state,
 			"country" => $request->country,
 			"pincode" => $request->pincode,
-			"latitude" => $request->latitude,
-			"longitude" => $request->longitude,
 			"industry" => $request->industry,
 			"salary" => $request->salary,
 			"status" => $request->job_type,
