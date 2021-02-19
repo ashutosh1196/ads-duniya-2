@@ -70,8 +70,16 @@
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.salary') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->min_monthly_salary ? $jobDetails[0]->min_monthly_salary.' - '.$jobDetails[0]->max_monthly_salary : '--' }}" readonly>
+                  <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
+                  <?php $currency = $jobDetails[0]->salary_currency == 'pounds' ? '$' : '£' ?>
+                  <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails[0]->min_monthly_salary ? $jobDetails[0]->min_monthly_salary.' - '.$currency.$jobDetails[0]->max_monthly_salary : '--' }}" readonly>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.experience_required') }}</label>
+                  <input class="form-control" placeholder="{{ $jobDetails[0]->min_experience ? $jobDetails[0]->min_experience.' - '.$jobDetails[0]->max_experience.' Years' : '--' }}" readonly>
                 </div>
               </div>
 
@@ -96,6 +104,13 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
                   <input class="form-control" placeholder="{{ $recruiterName ? $recruiterName : '--' }}" readonly>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.location') }}</label>
+                  <input class="form-control" placeholder="{{ $jobLocation ? $jobLocation : '--' }}" readonly>
                 </div>
               </div>
 
