@@ -12,6 +12,13 @@
     @stack('css')
     @yield('css')
     <style>
+        li.has-treeview li.nav-item {
+            margin-left: 15px;
+        }
+        li.has-treeview li.nav-item p {
+            font-weight: 400 !important;
+            font-size: 12px !important;
+        }
         a.back-button {
             position: relative;
             top: 5px;
