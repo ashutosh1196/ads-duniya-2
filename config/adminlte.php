@@ -323,6 +323,19 @@ return [
             ],
         ],
         [
+            'text' => 'credit_management',
+            'icon' => 'fas fa-fw fa-credit-card',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'company_credits',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                    'url'  => 'admin_panel/credits/list',
+                    'active' => ['admin_panel/credits_list*'],
+                ],
+            ],
+        ],
+        [
             'text' => 'misc_data_management',
             'icon' => 'fas fa-fw fa-cogs',
             'url'  => '#',

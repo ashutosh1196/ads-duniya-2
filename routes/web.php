@@ -10,6 +10,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\MiscController;
+use App\Http\Controllers\CreditsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,6 +179,14 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/delete', [MiscController::class, 'deleteJobLocation'])->name('delete_job_location');
         Route::post('/restore', [MiscController::class, 'restoreJobLocation'])->name('restore_job_location');
       });
+    });
+
+    // Credit Management Pages Routes
+    Route::group(['prefix' => 'credits'], function () {
+      Route::get('/list', [CreditsController::class, 'companyCreditsList'])->name('company_credits_list');
+      Route::get('/view/{id}', [CreditsController::class, 'viewCompanyCredit'])->name('view_company_credit');
+      Route::get('/add/{id}', [CreditsController::class, 'addCompanyCredit'])->name('add_company_credit');
+      Route::post('/save', [CreditsController::class, 'saveCompanyCredit'])->name('save_company_credit');
     });
 
     // Content Pages Routes

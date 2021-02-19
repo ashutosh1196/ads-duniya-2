@@ -195,4 +195,12 @@ return [
     'more_info'                     => 'More Info',
 
     'settings'                      => 'Settings',
+
+    'company_credits'               => 'Company Credits',
+    'add_new_company_credit'        => 'Add New Company Credit',
+    'add_company_credit'            => 'Add Company Credit',
+    'amount'                        => 'Amount',
+    'credits_available'             => 'Credits Available',
+    'credit_information'            => 'Credit Information',
+    'credit_amount'                 => 'Credit Amount',
 ];
