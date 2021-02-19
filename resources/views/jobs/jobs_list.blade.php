@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job') }}">{{ __('adminlte::adminlte.add_new_job') }}</a>
+            <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_job') }}">{{ __('adminlte::adminlte.add_new_job') }}</a> -->
             <table id="jobsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
