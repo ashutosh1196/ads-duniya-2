@@ -178,7 +178,7 @@
               </div>
 
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
-                <div class="form-group">
+                <div class="form-group description">
                   <label>{{ __('adminlte::adminlte.job_description') }}</label><br/>
                   <div class="job-description">{!! $jobDetails[0]->job_description !!}</div>
                 </div>

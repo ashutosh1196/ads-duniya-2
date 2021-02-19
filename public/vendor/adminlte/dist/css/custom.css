@@ -577,6 +577,11 @@ body.login-page .login-box button span {
     right: 10px;
     top: 14px;
 }
+.form-group.description {
+    background-color: #f6f7fb;
+    padding: 20px 20px;
+    margin-top: 20px;
+}
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
   body.login-page {
@@ -630,11 +635,26 @@ input:-ms-input-placeholder.form-control {
 @media only screen and (max-width: 1400px) {
   section.content .small-box .inner img {
     width: 40px;
- }
+}
  .login_wrap .left img {
     width: 100%;
     height: 500px;
     object-fit: cover;
+}
+.wrapper .content .card-body form.form_wrap .form-group input {
+    background-color: #efefef;
+    border: 1px solid #efefef;
+}
+.sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a {
+    background-color: #efefef;
+}
+.sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link~ul li a:hover, 
+.sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link~ul li a:hover p, 
+.sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link~ul li a:hover i {
+    background-color: #efefef;
+}
+.form-group.description {
+    background-color: #efefef;
 }
 }
 @media only screen and (max-width: 1199px) {
