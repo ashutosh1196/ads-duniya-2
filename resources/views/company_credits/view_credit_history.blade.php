@@ -34,7 +34,7 @@
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.credits_available') }}</label>
+                  <label>{{ __('adminlte::adminlte.amount') }}</label>
                   <input class="form-control" placeholder="${{ $viewCreditHistory[0]->credits ? $viewCreditHistory[0]->credits : '0.00' }}" readonly>
                 </div>
               </div>
