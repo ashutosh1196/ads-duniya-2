@@ -42,7 +42,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.amount') }}</label>
-                  <input class="form-control" placeholder="${{ $paymentTransaction[0]->credits ? $paymentTransaction[0]->credits : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="${{ $paymentTransaction[0]->amount ? $paymentTransaction[0]->amount : '0.00' }}" readonly>
                 </div>
               </div>
               
