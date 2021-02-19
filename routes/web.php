@@ -197,9 +197,9 @@ Route::middleware(['auth:admin'])->group(function () {
     });
 
     // Payments History Pages Routes
-    Route::group(['prefix' => 'payments'], function () {
-      Route::get('/list', [PaymentsController::class, 'paymentsHistory'])->name('payments_history');
-      Route::get('/view/{id}', [PaymentsController::class, 'viewPayment'])->name('view_payment_history');
+    Route::group(['prefix' => 'payment_transactions'], function () {
+      Route::get('/list', [PaymentsController::class, 'paymentTransactionsList'])->name('payment_transactions_list');
+      Route::get('/view/{id}', [PaymentsController::class, 'viewPaymentTransaction'])->name('view_payment_transaction');
     });
 
     // Content Pages Routes

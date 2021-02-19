@@ -340,10 +340,10 @@ return [
                     'active' => ['admin_panel/credits_history*'],
                 ],
                 [
-                    'text' => 'payment_history',
+                    'text' => 'payment_transactions',
                     'icon' => 'fab fa-fw fa-cc-stripe',
-                    'url'  => 'admin_panel/payments/list',
-                    'active' => ['admin_panel/payments*'],
+                    'url'  => 'admin_panel/payment_transactions/list',
+                    'active' => ['admin_panel/payment_transactions*'],
                 ],
             ],
         ],

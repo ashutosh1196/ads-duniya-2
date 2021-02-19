@@ -3,7 +3,7 @@
 @section('title', 'Payments Transactions')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.payments_history') }}</h1>
+  <h1>{{ __('adminlte::adminlte.payments_transactions') }}</h1>
 @stop
 
 @section('content')
@@ -17,24 +17,28 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="paymentsHistory" class="table table-bordered table-hover">
+            <table id="paymentTransactionsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.amount') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
-                @for ($i=0; $i < count($paymentsHistory); $i++)
+                @for ($i=0; $i < count($paymentTransactionsList); $i++)
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::where('id', $paymentsHistory[$i]->organization_id)->get(); ?>
+                    <?php $company = \App\Models\Organization::where('id', $paymentTransactionsList[$i]->organization_id)->get(); ?>
                     {{ $company[0]->name }}
                   </td>
+                  <td>${{ $paymentTransactionsList[$i]->amount }}</td>
+                  <td class="{{ $paymentTransactionsList[$i]->status == 'success' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{ route( 'view_payment_history', [ 'id' => $paymentsHistory[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{ route( 'view_payment_transaction', [ 'id' => $paymentTransactionsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 @endfor
@@ -43,6 +47,8 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.amount') }}</th>
+                  <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
@@ -61,7 +67,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#paymentsHistory').DataTable( {
+      $('#paymentTransactionsList').DataTable( {
         columnDefs: [ {
           targets: 0,
           render: function ( data, type, row ) {
