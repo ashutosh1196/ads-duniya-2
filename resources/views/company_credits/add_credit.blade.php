@@ -63,20 +63,6 @@
                   </div>
                 
                   <div class="row">
-                    <!-- <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="txn_type">{{ __('adminlte::adminlte.transaction_type') }}<span class="text-danger"> *</span></label>
-                        <select name="txn_type" class="form-control" id="txn_type">
-                          <option value="" hidden>{{ __('adminlte::adminlte.select_transaction_type') }}</option>
-                          <option value="credit">Credit</option>
-                          <option value="debit">Debit</option>
-                        </select>
-                        @if($errors->has('txn_type'))
-                          <div class="error">{{ $errors->first('txn_type') }}</div>
-                        @endif
-                      </div>
-                    </div> -->
-                    
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="credit_type">{{ __('adminlte::adminlte.credit_type') }}<span class="text-danger"> *</span></label>
@@ -108,12 +94,6 @@
 @endsection
 
 @section('css')
-  <style>
-    label.button-label {
-      position: relative;
-      left: -20px;
-    }
-  </style>
 @stop
 
 @section('js')
@@ -127,9 +107,6 @@
             required: true,
             number: true
           },
-          /* txn_type: {
-            required: true
-          }, */
           credit_type: {
             required: true
           },
@@ -142,9 +119,6 @@
             required: "The Credit total_credits field is required.",
             number: "The Credit total_credits must be in numbers only."
           },
-          /* txn_type: {
-            required: "The Transaction Type field is required."
-          }, */
           credit_type: {
             required: "The Credit Type field is required."
           },
