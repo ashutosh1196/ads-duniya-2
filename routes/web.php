@@ -11,6 +11,7 @@ use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\MiscController;
 use App\Http\Controllers\CreditsController;
+use App\Http\Controllers\PaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,10 +190,16 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/save', [CreditsController::class, 'saveCompanyCredit'])->name('save_company_credit');
     });
 
+    // Credits History Pages Routes
+    Route::group(['prefix' => 'credits_history'], function () {
+      Route::get('/list', [CreditsController::class, 'creditsHistory'])->name('credits_history');
+      Route::get('/view/{id}', [CreditsController::class, 'viewCreditHistory'])->name('view_credit_history');
+    });
+
     // Payments History Pages Routes
     Route::group(['prefix' => 'payments'], function () {
-      Route::get('/list', [CreditsController::class, 'companyPaymentsList'])->name('company_payments_list');
-      Route::get('/view/{id}', [CreditsController::class, 'viewCompanyPayment'])->name('view_company_payment');
+      Route::get('/list', [PaymentsController::class, 'paymentsHistory'])->name('payments_history');
+      Route::get('/view/{id}', [PaymentsController::class, 'viewPayment'])->name('view_payment_history');
     });
 
     // Content Pages Routes

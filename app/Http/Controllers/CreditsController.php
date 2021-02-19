@@ -52,13 +52,13 @@ class CreditsController extends Controller {
 			]);
 			if($creditUpdate) {
 				$updatedCredit = OrganizationCredit::where('organization_id', $organizationId)->get();
-				$paymentDetail = new OrganizationCreditDetail;
-				$paymentDetail->txn_type = $request->txn_type;
-				$paymentDetail->credits = $request->total_credits;
-				$paymentDetail->credit_type = $request->credit_type;
-				$paymentDetail->organization_id = $organizationId;
-				$paymentDetail->organization_credit_id = $updatedCredit[0]->id;
-				if($paymentDetail->save()) {
+				$creditDetail = new OrganizationCreditDetail;
+				$creditDetail->txn_type = $request->txn_type;
+				$creditDetail->credits = $request->total_credits;
+				$creditDetail->credit_type = $request->credit_type;
+				$creditDetail->organization_id = $organizationId;
+				$creditDetail->organization_credit_id = $updatedCredit[0]->id;
+				if($creditDetail->save()) {
 					$companyCreditsList = Organization::all();
 					return redirect()->route('company_credits_list', [ 'companyCreditsList' => $companyCreditsList ])->with('success', 'Company Credits Added Successfully!');
 				}
@@ -76,13 +76,13 @@ class CreditsController extends Controller {
 			$credit->organization_id = $organizationId;
 			$credit->recruiter_id = $recruiterId;
 			if($credit->save()) {
-				$paymentDetail = new OrganizationCreditDetail;
-				$paymentDetail->txn_type = $request->txn_type;
-				$paymentDetail->credits = $request->total_credits;
-				$paymentDetail->credit_type = $request->credit_type;
-				$paymentDetail->organization_id = $organizationId;
-				$paymentDetail->organization_credit_id = $credit->id;
-				if($paymentDetail->save()) {
+				$creditDetail = new OrganizationCreditDetail;
+				$creditDetail->txn_type = $request->txn_type;
+				$creditDetail->credits = $request->total_credits;
+				$creditDetail->credit_type = $request->credit_type;
+				$creditDetail->organization_id = $organizationId;
+				$creditDetail->organization_credit_id = $credit->id;
+				if($creditDetail->save()) {
 					$companyCreditsList = Organization::all();
 					return redirect()->route('company_credits_list', [ 'companyCreditsList' => $companyCreditsList ])->with('success', 'Company Credits Added Successfully!');
 				}
@@ -106,20 +106,20 @@ class CreditsController extends Controller {
 	}
 
 	/**
-	 * This function is used to Show Company Payments List
+	 * This function is used to Show Credits history
 	*/
-	public function companyPaymentsList(Request $request) {
-		$companyPaymentsList = OrganizationCreditDetail::all();
-		return view('company_payments/payments_list', [ 'companyPaymentsList' => $companyPaymentsList ]);
+	public function creditsHistory(Request $request) {
+		$creditsHistory = OrganizationCreditDetail::all();
+		return view('company_credits/credits_history', [ 'creditsHistory' => $creditsHistory ]);
 	}
 	
 	/**
-	 * This function is used to View Company Payment
+	 * This function is used to View Credit History
 	*/
-	public function viewCompanyPayment($id) {
-		$companyPaymentDetails = OrganizationCreditDetail::where('id', $id)->get();
-		$companyName = Organization::where('id', $companyPaymentDetails[0]->id)->get();
-		return view('company_payments/view_payment', [ 'companyPaymentDetails' => $companyPaymentDetails, 'companyName' => $companyName ]);
+	public function viewCreditHistory($id) {
+		$viewCreditHistory = OrganizationCreditDetail::where('id', $id)->get();
+		$companyName = Organization::where('id', $viewCreditHistory[0]->id)->get();
+		return view('company_credits/view_credit_history', [ 'viewCreditHistory' => $viewCreditHistory, 'companyName' => $companyName ]);
 	}
 
 }

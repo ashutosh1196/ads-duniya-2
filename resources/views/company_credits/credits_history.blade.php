@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Payment History')
+@section('title', 'Credits History')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.payment_history') }}</h1>
+  <h1>{{ __('adminlte::adminlte.credits_history') }}</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="companyPaymentsList" class="table table-bordered table-hover">
+            <table id="creditsHistory" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
@@ -28,17 +28,17 @@
                 </tr>
               </thead>
               <tbody>
-                @for ($i=0; $i < count($companyPaymentsList); $i++)
+                @for ($i=0; $i < count($creditsHistory); $i++)
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::where('id', $companyPaymentsList[$i]->organization_id)->get(); ?>
+                    <?php $company = \App\Models\Organization::where('id', $creditsHistory[$i]->organization_id)->get(); ?>
                     {{ $company[0]->name }}
                   </td>
-                  <td>${{ $companyPaymentsList[$i]->credits }}</td>
-                  <td class="{{ $companyPaymentsList[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($companyPaymentsList[$i]->txn_type) }}</td>
+                  <td>${{ $creditsHistory[$i]->credits }}</td>
+                  <td class="{{ $creditsHistory[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($creditsHistory[$i]->txn_type) }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{ route( 'view_company_payment', [ 'id' => $companyPaymentsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{ route( 'view_credit_history', [ 'id' => $creditsHistory[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 @endfor
@@ -67,7 +67,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#companyPaymentsList').DataTable( {
+      $('#creditsHistory').DataTable( {
         columnDefs: [ {
           targets: 0,
           render: function ( data, type, row ) {
