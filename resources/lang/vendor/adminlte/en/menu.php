@@ -49,6 +49,6 @@ return [
     'credit_management'             => 'Credits Management',
     'company_credits'               => 'Company Credits',
     'credits_history'               => 'Credits History',
-    'payment_history'               => 'Payment History',
+    'payment_history'               => 'Payment Transactions',
 
 ];
