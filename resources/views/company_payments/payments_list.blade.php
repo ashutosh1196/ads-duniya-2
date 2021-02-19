@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Company Credits')
+@section('title', 'Payment History')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.company_credits') }}</h1>
+  <h1>{{ __('adminlte::adminlte.payment_history') }}</h1>
 @stop
 
 @section('content')
@@ -17,8 +17,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_company_credit') }}">{{ __('adminlte::adminlte.add_company_credit') }}</a>
-            <table id="companyCreditsList" class="table table-bordered table-hover">
+            <table id="companyPaymentsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
@@ -28,16 +27,16 @@
                 </tr>
               </thead>
               <tbody>
-                @for ($i=0; $i < count($companyCreditsList); $i++)
+                @for ($i=0; $i < count($companyPaymentsList); $i++)
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::where('id', $companyCreditsList[$i]->organization_id)->get(); ?>
+                    <?php $company = \App\Models\Organization::where('id', $companyPaymentsList[$i]->organization_id)->get(); ?>
                     {{ $company[0]->name }}
                   </td>
-                  <td>${{ $companyCreditsList[$i]->total_credits }}</td>
+                  <td>${{ $companyPaymentsList[$i]->credits }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{ route( 'view_company_payment', [ 'id' => $companyPaymentsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                     <!-- <a class="action-button" title="Add Credits" href="{{ route( 'add_company_credit', [ 'id' => 1 ] ) }}"><i class="text-success fa fa-hand-holding-usd"></i></a> -->
                     <!-- <a class="action-button" title="Edit" href="edit/1"><i class="text-warning fa fa-edit"></i></a> -->
                     <!-- <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="1"><i class="text-danger fa fa-trash-alt"></i></a> -->
@@ -68,7 +67,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#companyCreditsList').DataTable( {
+      $('#companyPaymentsList').DataTable( {
         columnDefs: [ {
           targets: 0,
           render: function ( data, type, row ) {

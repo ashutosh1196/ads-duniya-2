@@ -203,4 +203,8 @@ return [
     'credits_available'             => 'Credits Available',
     'credit_information'            => 'Credit Information',
     'credit_amount'                 => 'Credit Amount',
+    'payment_history'               => 'Payment History',
+    'payment_information'           => 'Payment Information',
+    'transaction_type'              => 'Transaction Type',
+    'credit_type'                   => 'Credit Type',
 ];

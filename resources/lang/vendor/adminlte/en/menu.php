@@ -46,7 +46,8 @@ return [
     'job_locations'                 => 'Job Locations',
     'skills'                        => 'Skills',
 
-    'credit_management'             => 'Credit Management',
+    'credit_management'             => 'Credits Management',
     'company_credits'               => 'Company Credits',
+    'payment_history'               => 'Payment History',
 
 ];

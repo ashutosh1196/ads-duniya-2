@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Credit Information')
+@section('title', 'Payment Information')
 
 @section('content_header')
   <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>{{ __('adminlte::adminlte.credit_information') }}</h1>
+    <h1>{{ __('adminlte::adminlte.payment_information') }}</h1>
     <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
   </div>
 @stop
@@ -27,7 +27,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
-                  <?php $company = \App\Models\Organization::where('id', $companyCreditDetails[0]->organization_id)->get(); ?>
+                  <?php $company = \App\Models\Organization::where('id', $companyPaymentDetails[0]->organization_id)->get(); ?>
                   <input class="form-control" placeholder="{{ $company[0]->name }}" readonly>
                 </div>
               </div>
@@ -35,29 +35,41 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.credits_available') }}</label>
-                  <input class="form-control" placeholder="${{ $companyCreditDetails[0]->total_credits ? $companyCreditDetails[0]->total_credits : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="${{ $companyPaymentDetails[0]->credits ? $companyPaymentDetails[0]->credits : '0.00' }}" readonly>
+                </div>
+              </div>
+              
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.credit_type') }}</label>
+                  <input class="form-control" placeholder="{{ $companyPaymentDetails[0]->credit_type ? ucfirst($companyPaymentDetails[0]->credit_type) : '0.00' }}" readonly>
+                </div>
+              </div>
+              
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.transaction_type') }}</label>
+                  <input class="form-control" placeholder="{{ $companyPaymentDetails[0]->txn_type ? ucfirst($companyPaymentDetails[0]->txn_type) : '0.00' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
-                  <input class="form-control" placeholder="{{ $companyCreditDetails[0]->status ? 'Active' : 'Inactive' }}" readonly>
+                  <input class="form-control" placeholder="{{ $companyPaymentDetails[0]->status ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
-            </div>
-
-            <div class="row">
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyCreditDetails[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyPaymentDetails[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyCreditDetails[0]->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyPaymentDetails[0]->updated_at)) }}" readonly>
                 </div>
               </div>
             </div>

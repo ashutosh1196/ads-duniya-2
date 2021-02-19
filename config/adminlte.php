@@ -329,9 +329,15 @@ return [
             'submenu' => [
                 [
                     'text' => 'company_credits',
-                    'icon' => 'fas fa-fw fa-credit-card',
+                    'icon' => 'fas fa-fw fa-coins',
                     'url'  => 'admin_panel/credits/list',
-                    'active' => ['admin_panel/credits_list*'],
+                    'active' => ['admin_panel/credits*'],
+                ],
+                [
+                    'text' => 'payment_history',
+                    'icon' => 'fas fa-fw fa-money-check-alt',
+                    'url'  => 'admin_panel/payments/list',
+                    'active' => ['admin_panel/payments*'],
                 ],
             ],
         ],

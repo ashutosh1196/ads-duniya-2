@@ -33,21 +33,20 @@
                   </div>
                 @endif
 
-                <div class="information_fields">
-                  <input type="hidden" name="company_id" class="form-control" id="company_id" value="{{ $company_id }}">
+                <!-- <div class="information_fields"> -->
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="amount">{{ __('adminlte::adminlte.amount') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="amount" class="form-control" id="amount">
+                        <label for="total_credits">{{ __('adminlte::adminlte.credit_amount') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="total_credits" class="form-control" id="total_credits">
                         <div id ="function_error" class="error"></div>
-                        @if($errors->has('amount'))
-                          <div class="error">{{ $errors->first('amount') }}</div>
+                        @if($errors->has('total_credits'))
+                          <div class="error">{{ $errors->first('total_credits') }}</div>
                         @endif
                       </div>
                     </div>
                     
-                    <!-- <div class="col-sm-6">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label for="organization_id">{{ __('adminlte::adminlte.company') }}<span class="text-danger"> *</span></label>
                         <select name="organization_id" class="form-control" id="organization_id">
@@ -63,7 +62,7 @@
                     </div>
                   </div>
                     
-                  <div class="row"> -->
+                  <!-- <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="status">{{ __('adminlte::adminlte.status') }}<span class="text-danger"> *</span></label>
@@ -75,10 +74,10 @@
                           <div class="error">{{ $errors->first('status') }}</div>
                         @endif
                       </div>
-                    </div>
+                    </div> -->
 
-                  </div>
-                </div>
+                  <!-- </div> -->
+                <!-- </div> -->
 
               </div>
               <!-- /.card-body -->
@@ -94,6 +93,12 @@
 @endsection
 
 @section('css')
+  <style>
+    label.button-label {
+      position: relative;
+      left: -20px;
+    }
+  </style>
 @stop
 
 @section('js')
@@ -103,28 +108,16 @@
         ignore: [],
         debug: false,
         rules: {
-          organization_id: {
-            required: true,
-          },
-          amount: {
+          total_credits: {
             required: true,
             number: true
-          },
-          status: {
-            required: true
-          },
+          }
         },
         messages: {
-          organization_id: {
-            required: "The Organization field is required."
-          },
-          amount: {
-            required: "The Credit Amount field is required.",
-            number: "The Credit Amount must be in numbers only."
-          },
-          status: {
-            required: "The Status field is required."
-          },
+          total_credits: {
+            required: "The Credit total_credits field is required.",
+            number: "The Credit total_credits must be in numbers only."
+          }
         }
       });
     });

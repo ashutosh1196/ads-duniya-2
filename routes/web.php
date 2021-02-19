@@ -185,8 +185,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::group(['prefix' => 'credits'], function () {
       Route::get('/list', [CreditsController::class, 'companyCreditsList'])->name('company_credits_list');
       Route::get('/view/{id}', [CreditsController::class, 'viewCompanyCredit'])->name('view_company_credit');
-      Route::get('/add/{id}', [CreditsController::class, 'addCompanyCredit'])->name('add_company_credit');
+      Route::get('/add', [CreditsController::class, 'addCompanyCredit'])->name('add_company_credit');
       Route::post('/save', [CreditsController::class, 'saveCompanyCredit'])->name('save_company_credit');
+    });
+
+    // Payments History Pages Routes
+    Route::group(['prefix' => 'payments'], function () {
+      Route::get('/list', [CreditsController::class, 'companyPaymentsList'])->name('company_payments_list');
+      Route::get('/view/{id}', [CreditsController::class, 'viewCompanyPayment'])->name('view_company_payment');
     });
 
     // Content Pages Routes
