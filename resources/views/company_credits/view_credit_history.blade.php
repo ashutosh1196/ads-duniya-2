@@ -41,15 +41,15 @@
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.credit_type') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->credit_type ? ucfirst($viewCreditHistory[0]->credit_type) : '0.00' }}" readonly>
+                  <label>{{ __('adminlte::adminlte.transaction_type') }}</label>
+                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->txn_type ? ucfirst($viewCreditHistory[0]->txn_type) : '0.00' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.transaction_type') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->txn_type ? ucfirst($viewCreditHistory[0]->txn_type) : '0.00' }}" readonly>
+                  <label>{{ __('adminlte::adminlte.credit_type') }}</label>
+                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->credit_type ? ucfirst($viewCreditHistory[0]->credit_type) : '0.00' }}" readonly>
                 </div>
               </div>
               
