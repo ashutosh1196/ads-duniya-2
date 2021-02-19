@@ -55,24 +55,10 @@
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.status') }}</label>
-                  <input class="form-control" placeholder="{{ $companyPaymentDetails[0]->status ? 'Active' : 'Inactive' }}" readonly>
-                </div>
-              </div>
-              
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
+                  <label>{{ __('adminlte::adminlte.added_on') }}</label>
                   <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyPaymentDetails[0]->created_at)) }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($companyPaymentDetails[0]->updated_at)) }}" readonly>
-                </div>
-              </div>
-            </div>
 
           </form>
         </div>

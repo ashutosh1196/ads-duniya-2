@@ -23,6 +23,8 @@
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
+                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.credit_type') }}</th> -->
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -35,6 +37,8 @@
                     {{ $company[0]->name }}
                   </td>
                   <td>${{ $companyPaymentsList[$i]->credits }}</td>
+                  <td class="{{ $companyPaymentsList[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($companyPaymentsList[$i]->txn_type) }}</td>
+                  <!-- <td>{{ ucfirst($companyPaymentsList[$i]->credit_type) }}</td> -->
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_company_payment', [ 'id' => $companyPaymentsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                     <!-- <a class="action-button" title="Add Credits" href="{{ route( 'add_company_credit', [ 'id' => 1 ] ) }}"><i class="text-success fa fa-hand-holding-usd"></i></a> -->
@@ -49,6 +53,8 @@
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
+                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.credit_type') }}</th> -->
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>

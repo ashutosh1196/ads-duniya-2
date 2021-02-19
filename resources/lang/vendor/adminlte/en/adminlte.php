@@ -207,4 +207,7 @@ return [
     'payment_information'           => 'Payment Information',
     'transaction_type'              => 'Transaction Type',
     'credit_type'                   => 'Credit Type',
+    'select_transaction_type'       => 'Select Transaction Type',
+    'select_credit_type'            => 'Select Credit Type',
+    'added_on'                      => 'Added On',
 ];

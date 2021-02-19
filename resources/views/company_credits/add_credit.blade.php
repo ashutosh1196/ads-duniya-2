@@ -50,6 +50,7 @@
                       <div class="form-group">
                         <label for="organization_id">{{ __('adminlte::adminlte.company') }}<span class="text-danger"> *</span></label>
                         <select name="organization_id" class="form-control" id="organization_id">
+                          <option value="" hidden>{{ __('adminlte::adminlte.select_company') }}</option>
                           @for ($i=0; $i < count($organizations); $i++) {  ?>
                             <option value="{{ $organizations[$i]->id }}">{{ $organizations[$i]->name }}</option>
                           @endfor
@@ -57,6 +58,37 @@
                         <div id ="function_error" class="error"></div>
                         @if($errors->has('organization_id'))
                           <div class="error">{{ $errors->first('organization_id') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="txn_type">{{ __('adminlte::adminlte.transaction_type') }}<span class="text-danger"> *</span></label>
+                        <select name="txn_type" class="form-control" id="txn_type">
+                          <option value="" hidden>{{ __('adminlte::adminlte.select_transaction_type') }}</option>
+                          <option value="credit">Credit</option>
+                          <option value="debit">Debit</option>
+                        </select>
+                        @if($errors->has('txn_type'))
+                          <div class="error">{{ $errors->first('txn_type') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="credit_type">{{ __('adminlte::adminlte.credit_type') }}<span class="text-danger"> *</span></label>
+                        <select name="credit_type" class="form-control" id="credit_type">
+                          <option value="" hidden>{{ __('adminlte::adminlte.select_credit_type') }}</option>
+                          <option value="free">Free</option>
+                          <option value="paid">Paid</option>
+                        </select>
+                        <div id ="function_error" class="error"></div>
+                        @if($errors->has('credit_type'))
+                          <div class="error">{{ $errors->first('credit_type') }}</div>
                         @endif
                       </div>
                     </div>
@@ -111,13 +143,31 @@
           total_credits: {
             required: true,
             number: true
-          }
+          },
+          txn_type: {
+            required: true
+          },
+          credit_type: {
+            required: true
+          },
+          organization_id: {
+            required: true
+          },
         },
         messages: {
           total_credits: {
             required: "The Credit total_credits field is required.",
             number: "The Credit total_credits must be in numbers only."
-          }
+          },
+          txn_type: {
+            required: "The Transaction Type field is required."
+          },
+          credit_type: {
+            required: "The Credit Type field is required."
+          },
+          organization_id: {
+            required: "The Company field is required."
+          },
         }
       });
     });
