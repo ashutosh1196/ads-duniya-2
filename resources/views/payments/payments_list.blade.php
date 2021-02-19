@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Payments History')
+@section('title', 'Payments Transactions')
 
 @section('content_header')
   <h1>{{ __('adminlte::adminlte.payments_history') }}</h1>

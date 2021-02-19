@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'payment History Information')
+@section('title', 'Payment Transactions Information')
 
 @section('content_header')
   <div class="header_info d-flex justify-content-between align-items-center">
