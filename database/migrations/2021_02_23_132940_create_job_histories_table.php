@@ -15,6 +15,7 @@ class CreateJobHistoriesTable extends Migration
     {
         Schema::create('job_histories', function (Blueprint $table) {
             $table->id();
+            $table->string('job_ref_number');
             $table->string('job_title');
             $table->text('job_description');
             $table->enum('job_type',['full_time','contract_basis','work_from_home']);
@@ -27,6 +28,7 @@ class CreateJobHistoriesTable extends Migration
             $table->string('pincode');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('job_url');
             $table->foreignId('job_industry_id')->constrained();
             $table->foreignId('job_function_id')->constrained();
             $table->foreignId('job_location_id')->constrained();

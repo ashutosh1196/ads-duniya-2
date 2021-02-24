@@ -28,6 +28,7 @@ class CreateJobsTable extends Migration
             $table->string('pincode');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('job_url');
             $table->foreignId('job_industry_id')->constrained();
             $table->foreignId('job_function_id')->constrained();
             $table->foreignId('job_location_id')->constrained();
@@ -40,7 +41,7 @@ class CreateJobsTable extends Migration
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
-            $table->timestamp('expiring_at');
+            $table->dateTime('expiring_at');
             $table->softDeletes();
             $table->timestamps();
         });
