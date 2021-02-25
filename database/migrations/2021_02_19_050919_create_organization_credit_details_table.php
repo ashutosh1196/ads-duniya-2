@@ -21,6 +21,7 @@ class CreateOrganizationCreditDetailsTable extends Migration
             $table->tinyInteger('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->foreignId('organization_id')->constrained();
             $table->foreignId('organization_credit_id')->constrained();
+            $table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
             $table->timestamps();
         });
     }

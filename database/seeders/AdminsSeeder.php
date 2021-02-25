@@ -24,5 +24,42 @@ class AdminsSeeder extends Seeder
         ];
 
 		\DB::table('admins')->insert($admins);
+
+
+        \DB::table('skills')->delete();
+
+        \DB::table('skills')->insert([
+            'name' => 'HTML',
+            'slug' => 'html',
+            'description' => 'desc',
+            'status' => 1
+        ]);
+
+        \DB::table('job_functions')->delete();
+
+        \DB::table('job_functions')->insert([
+            'name' => 'HR',
+            'slug' => 'hr',
+            'description' => 'desc',
+            'status' => 1
+        ]);
+
+        \DB::table('job_locations')->delete();
+
+        \DB::table('job_locations')->insert([
+            'name' => 'East London',
+            'slug' => 'EL',
+            'description' => 'desc',
+            'status' => 1
+        ]);
+
+        \DB::table('job_industries')->delete();
+
+        \DB::table('job_industries')->insert([
+            'name' => 'IT',
+            'slug' => 'it',
+            'description' => 'desc',
+            'status' => 1
+        ]);
     }
 }

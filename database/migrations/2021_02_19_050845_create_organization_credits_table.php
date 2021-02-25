@@ -15,10 +15,10 @@ class CreateOrganizationCreditsTable extends Migration
     {
         Schema::create('organization_credits', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('total_credits')->default(0);
+            $table->bigInteger('total_paid_credits')->default(0);
+            $table->bigInteger('trial_credits')->default(0);
             $table->tinyInteger('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->foreignId('organization_id')->constrained();
-            $table->foreignId('recruiter_id')->constrained();
             $table->timestamps();
         });
     }
