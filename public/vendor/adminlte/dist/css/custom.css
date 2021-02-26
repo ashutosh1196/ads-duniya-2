@@ -677,6 +677,18 @@ body.login-page .login-box button span {
 .message_reply .upload-file:after {
     content: "Update File";
 }
+.message_reply .upload-file input[type="file"]{
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: 0;
+}
 /*--Contact Admin--*/
 
 
