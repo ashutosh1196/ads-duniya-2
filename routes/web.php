@@ -209,6 +209,7 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/view/{id}', [TicketsController::class, 'viewTicket'])->name('view_ticket');
       Route::post('/close', [TicketsController::class, 'closeTicket'])->name('close_ticket');
       Route::post('/open', [TicketsController::class, 'openTicket'])->name('open_ticket');
+      Route::post('/reply', [TicketsController::class, 'replyOnTicket'])->name('reply_on_ticket');
     });
 
     // Content Pages Routes
