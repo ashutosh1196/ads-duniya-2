@@ -52,5 +52,6 @@ return [
     'payment_transactions'          => 'Payment Transactions',
     
     'tickets_management'          => 'Tickets Management',
+    'tickets'                     => 'Tickets',
 
 ];

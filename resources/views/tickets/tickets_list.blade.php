@@ -108,6 +108,8 @@
               },
               success: function(response) {
                 window.location.reload();
+                /* console.log("response", response);
+                obj.parent().parent().remove(); */
               }
             });
           } 
@@ -136,6 +138,8 @@
               },
               success: function(response) {
                 window.location.reload();
+                /* console.log("response", response);
+                obj.parent().parent().remove(); */
               }
             });
           } 
