@@ -61,7 +61,8 @@
                             </div>
                           </div>
                         </div>
-                        <hr>
+                      </div>
+                      <hr>
                       <?php } ?>
                       <form action="{{ route('reply_on_ticket') }}" method="post" id="replyForm" enctype="multipart/form-data">
                         <div class="message_reply">
