@@ -38,13 +38,14 @@
                             <div class="user_img">
                               <?php
                                 $publicPath = config('adminlte.website_url');
-                                $logoPath = $publicPath.'/images/companyLogos/';
+                                $logoPath = $publicPath.'images/companyLogos/';
                                 $defauktProfileImage = $publicPath.'images/profile/default-profile-image.svg';
                               ?>
                               <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defauktProfileImage }}" alt="">
                             </div>
                             <div class="user_detail">
-                              <label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin[0]->name : $recruiter[0]->name }}</label>
+                              <?php $recruiterName = $recruiter[0]->name ? $recruiter[0]->name : 'Anonymous'; ?>
+                              <label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin[0]->name : $recruiterName }}</label>
                               <label class="time_date">{{ date('F d, Y - H:i A', strtotime($ticketMessages[$i]->created_at)) }}</label>
                             </div>
                           </div>
