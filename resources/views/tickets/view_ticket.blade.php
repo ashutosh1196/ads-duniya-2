@@ -68,7 +68,7 @@
                       <div class="message_reply">
                         <div class="form-group">
                           <textarea id="message_text" name="message_text" class="form-control"></textarea>
-                          <div class="upload-file">
+                          <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket[0]->id }}">
                             <input type="file" name="attachment_file" id="attachment_file">
                           </div>
@@ -93,6 +93,9 @@
 
 @section('js')
   <script>
+    $('body').on('change','input[name=attachment_file]',function(){
+      $(this).parent().attr('file-name', $(this)[0].files[0].name);
+    });
     $(document).ready(function() {
       $('#replyForm').validate({
         ignore: [],
