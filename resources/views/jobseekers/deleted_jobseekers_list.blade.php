@@ -108,8 +108,9 @@
               success: function(response) {
                 console.log("Response", response);
                 if(response.success == 1) {
-                console.log("TRUE");
-                  obj.parent().parent().remove();
+                  window.location.reload();
+                  /* console.log("response", response);
+                  obj.parent().parent().remove(); */
                 }
                 else {
                   console.log("FALSE");

@@ -583,6 +583,115 @@ body.login-page .login-box button span {
     margin-top: 20px;
 }
 
+/*--Contact Admin--*/
+
+.message_box {
+    padding: 0;
+}
+.message_box .request_id label {
+    font-size: 16px;
+    font-weight: 600;
+}
+.message_box .subject label {
+    font-size: 22px;
+}
+.message_box .profile {
+    display: flex;
+    padding: 20px 0;
+}
+.message_box .profile .user_img img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 100px;
+    padding: 1px;
+}
+.message_box .profile .user_detail label {
+    display: block;
+    font-size: 13px;
+}
+.message_box .profile .user_detail {
+    padding: 0 10px 0;
+}
+.message p {
+    line-height: 30px;
+    font-size: 14px;
+}
+.message_box .profile .user_detail label.name {
+    font-weight: 600;
+}
+.form_wrap.message_wraper {
+    padding: 25px;
+}
+.message_reply {
+    padding: 20px 0 0;
+}
+.message_reply textarea {
+    height: 100px;
+    padding: 10px 20px;
+    font-size: 15px;
+}
+.message_reply button {
+    cursor: pointer;
+    margin: 15px 0 0;
+    padding: 10px 30px;
+    font-size: 13px;
+}
+.message_reply .upload-file {
+    background-color: #f6f7fb;
+    padding: 15px 20px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 0;
+    position: relative;
+    border-radius: 5px;
+}
+.attachment_show .box_wrap img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #343d49;
+    padding: 3px;
+    border-radius: 3px;
+}
+.message_reply .upload-file:before {
+    content: "\f03e";
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font: normal normal normal 20px/1 FontAwesome;
+    color: #2d8427;
+}
+.message_reply .upload-file:after{
+    content: attr(file-name);
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 500;
+}
+.message_reply .upload-file:after {
+    content: "Update File";
+}
+.message_reply .upload-file input[type="file"]{
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: 0;
+}
+/*--Contact Admin--*/
+
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
   body.login-page {
   	min-height: 0px !important;

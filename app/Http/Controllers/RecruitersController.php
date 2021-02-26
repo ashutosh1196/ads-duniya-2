@@ -68,7 +68,7 @@ class RecruitersController extends Controller {
 			'organization_id' => 'Organization is required.',
 		]);
 		$dataToUpdate = [
-			'name' => $request->first_name.$request->last_name,
+			'name' => $request->first_name.' '.$request->last_name,
 			'first_name' => $request->first_name,
 			'last_name' => $request->last_name,
 			'email' => $request->email,
@@ -163,7 +163,7 @@ class RecruitersController extends Controller {
 			'password.required' => 'password is required',
 		]);
 		$recruiter = new Recruiter;
-		$recruiter->name = $request->first_name.$request->last_name;
+		$recruiter->name = $request->first_name.' '.$request->last_name;
 		$recruiter->first_name = $request->first_name;
 		$recruiter->last_name = $request->last_name;
 		$recruiter->phone_number = $request->phone_number;

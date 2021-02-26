@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/ticket_images
 /storage/*
 /storage/*.key
 /vendor

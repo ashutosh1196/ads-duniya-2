@@ -105,8 +105,9 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               success: function(response) {
-                console.log("response", response);
-                obj.parent().parent().remove();
+                window.location.reload();
+                /* console.log("response", response);
+                obj.parent().parent().remove(); */
               }
             });
           } 

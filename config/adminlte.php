@@ -379,6 +379,17 @@ return [
             ],
         ],
         [
+            'text' => 'tickets_management',
+            'icon' => 'fas fa-ticket-alt',
+            'url'  => '#',
+            'active' => ['admin_panel/tickets*'],
+            'submenu' => [[
+                'text' => 'tickets',
+                'icon' => 'fas fa-ticket-alt',
+                'url'  => 'admin_panel/tickets/list',
+            ]]
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',

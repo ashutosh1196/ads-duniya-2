@@ -50,5 +50,8 @@ return [
     'company_credits'               => 'Company Credits',
     'credits_history'               => 'Credits History',
     'payment_transactions'          => 'Payment Transactions',
+    
+    'tickets_management'          => 'Tickets Management',
+    'tickets'                     => 'Tickets',
 
 ];
