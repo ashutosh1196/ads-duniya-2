@@ -44,7 +44,7 @@
                             <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defauktProfileImage }}" alt="">
                           </div>
                           <div class="user_detail">
-                            <?php $recruiterName = $recruiter[0]->name ? $recruiter[0]->name : 'Anonymous'; ?>
+                            <?php $recruiterName = $recruiter[0]->first_name ? $recruiter[0]->first_name.' '.$recruiter[0]->last_name : 'Anonymous'; ?>
                             <label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin[0]->name : $recruiterName }}</label>
                             <label class="time_date">{{ date('F d, Y - H:i A', strtotime($ticketMessages[$i]->created_at)) }}</label>
                           </div>
