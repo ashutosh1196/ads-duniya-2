@@ -30,6 +30,7 @@ return [
 
     'recylce_bin'                   => 'Recylce Bin',
     'jobs'                          => 'Jobs',
+    'jobs_history'                  => 'Jobs History',
 
     'content_management'            => 'Content Management',
     'website'                       => 'Website',

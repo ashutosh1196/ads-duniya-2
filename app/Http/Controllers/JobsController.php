@@ -12,6 +12,7 @@ use App\Models\JobSkill;
 use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
+use App\Models\JobHistory;
 use Auth;
 
 class JobsController extends Controller {
@@ -272,5 +273,33 @@ class JobsController extends Controller {
 	public function bookmarkedJobs(Request $request) {
 		$bookmarkedJobs = Job::all();
 		return view('jobs/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+	}
+
+	/**
+	 * This function is used to Show Jobs History
+	*/
+	public function jobsHistory(Request $request) {
+		$JobHistory = JobHistory::all();
+		return view('jobs/jobs_history')->with('JobHistory', $JobHistory);
+	}
+
+	/**
+	 * This function is used to Show Jobs History
+	*/
+	public function viewJobHistory($id) {
+		$JobHistory = JobHistory::where('id', $id)->get();
+		$jobIndustry = jobIndustry::where('id', $JobHistory[0]->job_industry_id)->get();
+		$jobFunction = jobFunction::where('id', $JobHistory[0]->job_function_id)->get();
+		$jobLocation = jobLocation::where('id', $JobHistory[0]->job_location_id)->get();
+		$organization = Organization::where('id', $JobHistory[0]->organization_id)->get();
+		$recruiter = Recruiter::where('id', $JobHistory[0]->recruiter_id)->get();
+		return view('jobs/view_job_history', [
+			'JobHistory' => $JobHistory,
+			'organizationName' => $organization[0]->name,
+			'recruiterName' => $recruiter[0]->name,
+			'jobIndustry' => $jobIndustry[0]->name,
+			'jobFunction' => $jobFunction[0]->name,
+			'jobLocation' => $jobLocation[0]->name,
+		]);
 	}
 }
