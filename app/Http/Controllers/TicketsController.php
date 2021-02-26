@@ -38,12 +38,14 @@ class TicketsController extends Controller {
 		], [
 			'message_text.required' => 'Message is required',
 		]);
-
-		$attachment_file = $request->file('attachment_file');
-		// $destinationPath = config('adminlte.website_url').'ticket_images';
-		$destinationPath = base_path().'website/Amrik-which-vocation-web/public/ticket_images';
-		$fileName = uniqid().'.'.$attachment_file->extension();
-		$attachment_file->move($destinationPath, $fileName);
+		$fileName = "";
+		if($request->file('attachment_file')) {
+			$attachment_file = $request->file('attachment_file');
+			// $destinationPath = config('adminlte.website_url').'ticket_images';
+			$destinationPath = base_path().'website/Amrik-which-vocation-web/public/ticket_images';
+			$fileName = uniqid().'.'.$attachment_file->extension();
+			$attachment_file->move($destinationPath, $fileName);
+		}
 
 		$reply = new TicketMessage;
 		$reply->message_text = $request->message_text;
