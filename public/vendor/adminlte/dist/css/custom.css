@@ -656,6 +656,24 @@ body.login-page .login-box button span {
     padding: 3px;
     border-radius: 3px;
 }
+.message_reply .upload-file:before {
+    content: "\f03e";
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font: normal normal normal 20px/1 FontAwesome;
+    color: #2d8427;
+}
+.message_reply .upload-file:after{
+    content: attr(file-name);
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 500;
+}
 .message_reply .upload-file:after {
     content: "Update File";
 }
