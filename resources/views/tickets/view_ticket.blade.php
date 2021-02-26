@@ -26,10 +26,10 @@
                 <div class="row">           
                   <div class="col-12">
                     <div class="request_id">
-                      <label>Request#41412</label>
+                      <label>Request#{{ $ticket[0]->id }}</label>
                     </div>
                     <div class="subject">
-                      <label>Question Regarding Credits</label>
+                      <label>{{ $ticket[0]->subject }}</label>
                     </div>
                     <?php  for ($i=0; $i < count($ticketMessages); $i++) {  ?>
                       <div class="form_wrap mb-md-5 mb-4 message_wraper">
