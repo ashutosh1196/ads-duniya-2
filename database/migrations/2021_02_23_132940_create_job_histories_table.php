@@ -23,7 +23,7 @@ class CreateJobHistoriesTable extends Migration
             $table->string('job_address');
             $table->string('city');
             $table->string('county')->nullable();
-            $table->string('state');
+            $table->string('state')->nullable();
             $table->string('country');
             $table->string('pincode');
             $table->string('latitude')->nullable();
