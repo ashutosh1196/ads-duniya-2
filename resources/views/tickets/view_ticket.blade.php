@@ -91,6 +91,11 @@
 @endsection
 
 @section('css')
+<style>
+  .message_reply .upload-file:after {
+    content: attr(file-name);
+  }
+</style>
 @stop
 
 @section('js')
