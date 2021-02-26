@@ -12,6 +12,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\MiscController;
 use App\Http\Controllers\CreditsController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,6 +201,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::group(['prefix' => 'payment_transactions'], function () {
       Route::get('/list', [PaymentsController::class, 'paymentTransactionsList'])->name('payment_transactions_list');
       Route::get('/view/{id}', [PaymentsController::class, 'viewPaymentTransaction'])->name('view_payment_transaction');
+    });
+
+    // Tickets Pages Routes
+    Route::group(['prefix' => 'tickets'], function () {
+      Route::get('/list', [TicketsController::class, 'ticketsList'])->name('tickets_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewTicket'])->name('view_ticket');
+      Route::post('/close', [TicketsController::class, 'closeTicket'])->name('close_ticket');
+      Route::post('/open', [TicketsController::class, 'openTicket'])->name('open_ticket');
     });
 
     // Content Pages Routes

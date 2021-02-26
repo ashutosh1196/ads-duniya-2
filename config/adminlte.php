@@ -379,6 +379,12 @@ return [
             ],
         ],
         [
+            'text' => 'tickets_management',
+            'icon' => 'fas fa-fw fa-cogs',
+            'url'  => 'admin_panel/tickets/list',
+            'active' => ['admin_panel/tickets*'],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',

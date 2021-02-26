@@ -215,4 +215,8 @@ return [
     'select_credit_type'                => 'Select Credit Type',
     'added_on'                          => 'Added On',
     'transaction_id'                    => 'Transaction ID',
+    
+    'tickets'                           => 'Tickets',
+    'subject'                           => 'Subject',
+    'ticket_messages'                   => 'Ticket Messages',
 ];
