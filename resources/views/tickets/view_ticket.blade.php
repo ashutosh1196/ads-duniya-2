@@ -22,16 +22,18 @@
           @endif
 
             <div id="form_wrap_main" class="">
-              <div class="container">
+              <div class="">
                 <div class="row">           
                   <div class="col-12">
-                    <div class="request_id">
-                      <label>Request#{{ $ticket[0]->id }}</label>
+                    <div class="subject_wraper">
+                      <div class="request_id">
+                        <label>Request#{{ $ticket[0]->id }}</label>
+                      </div>
+                      <div class="subject">
+                        <label>{{ $ticket[0]->subject }}</label>
+                      </div>                      
                     </div>
-                    <div class="subject">
-                      <label>{{ $ticket[0]->subject }}</label>
-                    </div>
-                    <div class="form_wrap mb-md-5 mb-4 message_wraper">
+                    <div class="form_wrap message_wraper">
                       <?php  for ($i=0; $i < count($ticketMessages); $i++) {  ?>
                       <div class="message_box">
                         <div class="profile">
@@ -67,7 +69,7 @@
                       <form action="{{ route('reply_on_ticket') }}" method="post" id="replyForm" enctype="multipart/form-data">
                       <div class="message_reply">
                         <div class="form-group">
-                          <textarea id="message_text" name="message_text" class="form-control"></textarea>
+                          <textarea id="message_text" name="message_text" class="form-control" placeholder="Add Reply"></textarea>
                           <div class="upload-file">
                             <input type="hidden" name="ticket_id" value="{{ $ticket[0]->id }}">
                             <input type="file" name="attachment_file" id="attachment_file">
