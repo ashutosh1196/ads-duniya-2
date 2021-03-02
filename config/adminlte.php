@@ -245,13 +245,13 @@ return [
             'url'  => 'admin_panel/dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
-        ['header' => 'profile'],
+        /* ['header' => 'profile'],
         [
             'text' => 'profile',
             'url'  => 'admin_panel/admin_profile',
             'icon' => 'fas fa-fw fa-user',
             'active' => ['admin_panel/admin_profile*'],
-        ],
+        ], */
         ['header' => 'management'],
         [
             'key' => 'admin_customers_management',

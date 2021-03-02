@@ -59,12 +59,12 @@
                   <input class="form-control" placeholder="{{ $jobseeker[0]->ip_address ? $jobseeker[0]->ip_address : '--' }}" readonly>
                 </div>
               </div>
-              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Logged In With</label>
-                  <input class="form-control" placeholder="Email" readonly>
+                  <label>Signup Via</label>
+                  <input class="form-control" placeholder="{{ ucfirst($jobseeker[0]->signup_via) }}" readonly>
                 </div>
-              </div> -->
+              </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email_verification_status') }}</label>

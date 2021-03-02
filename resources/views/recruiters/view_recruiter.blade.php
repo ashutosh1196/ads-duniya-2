@@ -66,6 +66,12 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
+                  <label>Signup Via</label>
+                  <input class="form-control" placeholder="{{ ucfirst($recruiter[0]->signup_via) }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->status == 1 ? 'Active' : 'Inactive' }}" readonly>
                 </div>
