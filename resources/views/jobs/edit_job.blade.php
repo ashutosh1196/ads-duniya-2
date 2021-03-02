@@ -192,7 +192,7 @@
                       <div class="form-group">
                         <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
                         <select name="country" class="form-control" id="country">
-                            <?php for($i=0; $i<count($countries); $i++) { ?>
+                            <?php for($i=0; $i<count($countries); $i++) { rsort($countries); ?>
                               <option value="{{ $countries[$i]->name }}" {{ $countries[$i]->name == 'United Kingdom' ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
                             <?php } ?>
                         </select>

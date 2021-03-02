@@ -161,7 +161,8 @@
                           <select name="country" class="form-control" id="country" >
                             <option value="" hidden>{{ __('adminlte::adminlte.select_country') }}</option>
                             @for($i=0; $i < count($countries); $i++)
-                              <option value="{{ $countries[$i]->name }}" {{ ( $countries[$i]->name == $customer[0]->country) ? 'selected' : '' }}>{{ $countries[$i]->name }}</option>
+                            <?php rsort($countries); ?>
+                              <option value="{{ $countries[$i]['name'] }}" {{ ( $countries[$i]['name'] == $customer[0]->country) ? 'selected' : '' }}>{{ $countries[$i]['name'] }}</option>
                             @endfor
                           </select>
                           @if($errors->has('country'))

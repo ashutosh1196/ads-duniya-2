@@ -21,7 +21,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function addJob() {
-		$countries     = Country::all();
+		$countries     = Country::all()->toArray();
 		$jobIndustries = JobIndustry::all();
 		$jobFunctions  = JobFunction::all();
 		$jobLocations  = JobLocation::all();
@@ -148,7 +148,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function editJob($id) {
-		$countries = Country::all();
+		$countries = Country::all()->toArray();
 		$jobDetails = Job::where('id', $id)->get();
 		$organisationsList = Organization::where('is_whitelisted', 1)->get();
 		$recruitersList = [];

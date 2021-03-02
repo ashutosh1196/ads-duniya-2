@@ -44,7 +44,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Add Job Seeker View
 	*/
 	public function addCustomer() {
-		$countries = Country::all();
+		$countries = Country::all()->toArray();
 		return view('customers/add_customer', ['countries' => $countries]);
 	}
 
@@ -229,7 +229,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function editCustomer($id) {
-		$countries = Country::all();
+		$countries = Country::all()->toArray();
 		$customer = Organization::where('id', $id)->get();
 		return view('customers/edit_customer', ['countries' => $countries, 'customer' => $customer]);
 	}
