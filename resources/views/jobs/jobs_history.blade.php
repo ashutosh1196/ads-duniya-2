@@ -26,13 +26,15 @@
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <?php for ($i=0; $i < count($JobHistory); $i++) { 
-                  $organisation = \App\Models\Organization::where('id', $JobHistory[$i]->organization_id)->get();
+                  $organisation = \App\Models\Organization::find($JobHistory[$i]->organization_id);
+                  $recruiter = \App\Models\Recruiter::find($JobHistory[$i]->recruiter_id);
                   $jobTypeTrimmed = str_replace('_', ' ', $JobHistory[$i]->job_type);
                   $jobType = ucwords($jobTypeTrimmed);
                 ?>
@@ -42,7 +44,8 @@
                   <td>{{ $JobHistory[$i]->job_ref_number }}</td>
                   <td>{{ $jobType }}</td>
                   <td>{{ $JobHistory[$i]->industry }}</td>
-                  <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+                  <td>{{ $organisation ? $organisation->name : '--' }}</td>
+                  <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
                   <td>
                     <a class="action-button" title="View" href="view_job_history/{{ $JobHistory[$i]->job_id}} "><i class="text-info fa fa-eye"></i></a>
                   </td>
@@ -56,7 +59,8 @@
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
