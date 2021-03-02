@@ -47,7 +47,11 @@
                           </div>
                           <div class="user_detail">
                             <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
-                            <a href="{{ $ticketMessages[$i]->sent_by == 'admin' ? route('dashboard') : route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin[0]->name : $recruiterName }}</label></a>
+                            @if($ticketMessages[$i]->sent_by == 'admin')
+                              <label class="name">{{ $superAdmin[0]->name }}</label>
+                            @else
+                              <a href="{{ route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $recruiterName }}</label></a>
+                            @endif
                             <label class="time_date">{{ date('F d, Y - H:i A', strtotime($ticketMessages[$i]->created_at)) }}</label>
                           </div>
                         </div>
