@@ -885,6 +885,9 @@ input:-ms-input-placeholder.form-control {
 .form-group.description {
     background-color: #efefef;
 }
+.card-primary.card-tabs .card-header ul li a {
+    background-color: #e9ecef;
+}
 }
 @media only screen and (max-width: 1199px) {
 section.content .small-box .inner .right {
