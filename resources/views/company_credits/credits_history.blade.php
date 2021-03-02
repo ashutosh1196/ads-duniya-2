@@ -22,6 +22,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -32,8 +33,19 @@
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::where('id', $creditsHistory[$i]->organization_id)->get(); ?>
-                    {{ $company[0]->name }}
+                    <?php
+                      $company = \App\Models\Organization::find($creditsHistory[$i]->organization_id);
+                      $creditDetails = \App\Models\OrganizationCreditDetail::find($creditsHistory[$i]->id);
+                      $recruiter = \App\Models\Recruiter::find($creditDetails->recruiter_id);
+                    ?>
+                    {{ $company->name }}
+                  </td>
+                  <td>
+                    @if($recruiter != null)
+                      <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
+                    @else
+                      Null
+                    @endif
                   </td>
                   <td>${{ $creditsHistory[$i]->credits }}</td>
                   <td class="{{ $creditsHistory[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($creditsHistory[$i]->txn_type) }}</td>
@@ -47,6 +59,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
