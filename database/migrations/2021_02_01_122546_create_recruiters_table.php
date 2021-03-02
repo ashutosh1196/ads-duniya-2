@@ -25,6 +25,7 @@ class CreateRecruitersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->rememberToken();
             $table->enum('login_with',['email','facebook','google']);
+            $table->enum('signup_via',['mobile','web'])->default('mobile');
             $table->tinyInteger('is_parent')->default(1);
             $table->enum('status',['active','inactive']);
             $table->ipAddress('ip_address');
