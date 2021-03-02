@@ -710,6 +710,42 @@ body.login-page .login-box button span {
 .subject_wraper label {
     margin: 0;
 }
+a.paginate_button.next {
+    background-color: lightgrey;
+    padding: 5px 9px;
+    position: relative;
+    top: -5px;
+}
+
+a.paginate_button.next.disabled {
+    background-color: #a7a5a5;
+    padding: 5px 9px;
+    position: relative;
+    top: -5px;
+}
+a.paginate_button.previous {
+    background-color: lightgrey;
+    padding: 5px 9px;
+    position: relative;
+    top: -5px;
+}
+
+a.paginate_button.previous.disabled {
+    background-color: #a7a5a5;
+    padding: 5px 9px;
+    position: relative;
+    top: -5px;
+}
+a.paginate_button {
+    padding: 4px 12px;
+    background-color: lightgrey;
+    margin-left: 5px;
+}
+a.paginate_button.current {
+    padding: 4px 12px;
+    background-color: #a7a5a5;
+    margin-left: 5px;
+}
 /*--Contact Admin--*/
 
 
