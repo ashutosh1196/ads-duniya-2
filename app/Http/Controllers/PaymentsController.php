@@ -22,9 +22,9 @@ class PaymentsController extends Controller {
 	 * This function is used to View Payment Transaction
 	*/
 	public function viewPaymentTransaction($id) {
-		$paymentTransaction = PaymentLog::where('id', $id)->get();
-		$organization = Organization::where('id', $paymentTransaction[0]->organization_id)->get();
-		$recruiter = Recruiter::where('id', $paymentTransaction[0]->recruiter_id)->get();
+		$paymentTransaction = PaymentLog::find($id);
+		$organization = Organization::where('id', $paymentTransaction->organization_id)->get();
+		$recruiter = Recruiter::where('id', $paymentTransaction->recruiter_id)->get();
 		return view('payments/view_payment_transaction', [
 			'paymentTransaction' => $paymentTransaction,
 			'organization' => $organization,

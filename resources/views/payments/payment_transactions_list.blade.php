@@ -32,8 +32,8 @@
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::where('id', $paymentTransactionsList[$i]->organization_id)->get(); ?>
-                    {{ $company[0]->name }}
+                    <?php $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id); dd($company); ?>
+                    {{ $company != null ? $company->name : '--' }}
                   </td>
                   <td>${{ $paymentTransactionsList[$i]->amount }}</td>
                   <td class="{{ $paymentTransactionsList[$i]->status == 'success' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
