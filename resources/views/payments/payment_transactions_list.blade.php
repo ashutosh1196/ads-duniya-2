@@ -32,7 +32,7 @@
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id); dd($company); ?>
+                    <?php $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id); ?>
                     {{ $company != null ? $company->name : '--' }}
                   </td>
                   <td>${{ $paymentTransactionsList[$i]->amount }}</td>
