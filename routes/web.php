@@ -37,7 +37,10 @@ Route::middleware(['auth:admin'])->group(function () {
     
     // Common Routes
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
+    Route::get('/admin_profile', [AdminController::class, 'adminProfile'])->name('admin_profile');
+    Route::post('/update_profile', [AdminController::class, 'updateProfile'])->name('update_profile');
+    Route::post('/check_password', [AdminController::class, 'checkPassword'])->name('check_password');
+    Route::post('/change_password', [AdminController::class, 'changePassword'])->name('change_password');
 
     // Customers Routes
     Route::group(['prefix' => 'customers'], function () {

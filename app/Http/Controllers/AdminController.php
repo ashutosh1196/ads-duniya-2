@@ -12,6 +12,7 @@ use App\Models\Organization;
 use App\Models\UserSocialLogin;
 use App\Models\Job;
 use Auth;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -49,10 +50,62 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * This function is used to Show Settings/User Profile Page
+	 * This function is used to Show Admin Profile
 	*/
-	public function settings(Request $request) {
+	public function adminProfile(Request $request) {
 		$userDetails = User::where('id', Auth::id())->get();
-		return view('settings')->with('userDetails', $userDetails );
+		return view('admin_profile')->with('userDetails', $userDetails );
+	}
+
+	/**
+	 * This function is used to Update Admin Profile
+	*/
+	public function updateProfile(Request $request) {
+		$validatedData = $request->validate([
+			'name' => 'required',
+		], [
+			'name.required' => 'Name is required',
+		]);
+		$updateProfile = Admin::where('id', $request->id)->update(['name' => $request->name]);
+		if($updateProfile) {
+			return back()->with('success', 'Profile Updated Successfully!');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again later.');
+		}
+	}
+
+	public function checkPassword(Request $request) {
+		$passwordType = $request['password_type'];
+		$admin = Admin::find(Auth::id());
+		if($passwordType == 'old') {
+			if(Hash::check($request->password, $admin->password) == false) {
+				return true;
+			}
+			else if(Hash::check($request->password, $admin->password) == true) {
+				return false;
+			}
+		}
+		else if($passwordType == 'new') {
+			if(Hash::check($request->password, $admin->password) == false) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		} 
+	}
+
+	/**
+	 * This function is used to Change Admin Password
+	*/
+	public function changePassword(Request $request) {
+		$changePassword = Admin::where('id', Auth::id())->update(['password' => Hash::make($request->password)]);
+		if($changePassword) {
+			return back()->with('success', 'Password Updated Successfully!');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again later.');
+		}
 	}
 }

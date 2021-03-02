@@ -6,7 +6,7 @@ return [
     'blog'                          => 'Blog',
     'pages'                         => 'Pages',
     'logout'                        => 'Logout',
-    'account_settings'              => 'ACCOUNT SETTINGS',
+    'change_password'               => 'Change Password',
     'management'                    => 'MANAGE DATA',
     'profile'                       => 'Profile',
     'change_password'               => 'Change Password',

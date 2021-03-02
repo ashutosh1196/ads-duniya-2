@@ -220,4 +220,7 @@ return [
     'tickets'                           => 'Tickets',
     'subject'                           => 'Subject',
     'ticket_messages'                   => 'Ticket Messages',
+
+    'old_password'                      => 'Old Password',
+    'new_password'                      => 'New Password',
 ];
