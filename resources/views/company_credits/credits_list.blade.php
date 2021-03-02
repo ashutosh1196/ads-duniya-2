@@ -37,20 +37,22 @@
                       $company = \App\Models\Organization::where('id', $companyCreditsList[$i]->organization_id)->get();
                       $creditDetails = \App\Models\OrganizationCreditDetail::where('organization_credit_id', $companyCreditsList[$i]->id)->get();
                       $recruiter = \App\Models\Recruiter::find($creditDetails[0]->recruiter_id);
+                      $superAdmin = \App\Models\Admin::find(\Auth::id());
                     ?>
                     {{ $company[0]->name }}
                   </td>
                   <td>
                     @if($recruiter != null)
                       <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
+                    @else
+                      {{ $superAdmin->name }}
                     @endif
                   </td>
-                  <td>${{ $companyCreditsList[$i]->total_credits }}</td>
+                  <td>${{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
                   <td>
                     <?php
                       $creditDeails = \App\Models\OrganizationCreditDetail::where('organization_credit_id', $companyCreditsList[$i]->id)->get();
                       $recruiter = \App\Models\Recruiter::find($creditDeails[0]->recruiter_id);
-                      $superAdmin = \App\Models\Admin::find(\Auth::id());
                     ?>
                     @if($recruiter != null)
                       <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>

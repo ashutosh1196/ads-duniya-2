@@ -37,12 +37,15 @@
                       $company = \App\Models\Organization::find($creditsHistory[$i]->organization_id);
                       $creditDetails = \App\Models\OrganizationCreditDetail::find($creditsHistory[$i]->id);
                       $recruiter = \App\Models\Recruiter::find($creditDetails->recruiter_id);
+                      $superAdmin = \App\Models\Admin::find(\Auth::id());
                     ?>
                     {{ $company->name }}
                   </td>
                   <td>
                     @if($recruiter != null)
                       <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
+                    @else
+                      {{ $superAdmin->name }}
                     @endif
                   </td>
                   <td>${{ $creditsHistory[$i]->credits }}</td>
