@@ -27,7 +27,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
-                  <?php $company = \App\Models\Organization::where('id', $viewCreditHistory[0]->organization_id)->get(); ?>
+                  <?php $company = \App\Models\Organization::where('id', $viewCreditHistory->organization_id)->get(); ?>
                   <input class="form-control" placeholder="{{ $company[0]->name }}" readonly>
                 </div>
               </div>
@@ -35,28 +35,39 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.amount') }}</label>
-                  <input class="form-control" placeholder="${{ $viewCreditHistory[0]->credits ? $viewCreditHistory[0]->credits : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="${{ $viewCreditHistory->credits ? $viewCreditHistory->credits : '0.00' }}" readonly>
+                </div>
+              </div>
+              
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
+                  @if($recruiter != null)
+                    <a class="recruiter-view-link" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}"><input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" disabled></a>
+                  @else
+                    <input class="form-control" placeholder="" readonly>
+                  @endif
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.transaction_type') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->txn_type ? ucfirst($viewCreditHistory[0]->txn_type) : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCreditHistory->txn_type ? ucfirst($viewCreditHistory->txn_type) : '0.00' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.credit_type') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCreditHistory[0]->credit_type ? ucfirst($viewCreditHistory[0]->credit_type) : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCreditHistory->credit_type ? ucfirst($viewCreditHistory->credit_type) : '0.00' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.added_on') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewCreditHistory[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($viewCreditHistory->created_at)) }}" readonly>
                 </div>
               </div>
 

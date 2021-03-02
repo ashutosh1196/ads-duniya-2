@@ -12,6 +12,9 @@
     @stack('css')
     @yield('css')
     <style>
+        .recruiter-view-link input:hover {
+            cursor: pointer;
+        }
         li.has-treeview li.nav-item {
             margin-left: 15px;
         }

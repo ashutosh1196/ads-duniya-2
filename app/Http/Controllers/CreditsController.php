@@ -100,9 +100,15 @@ class CreditsController extends Controller {
 	 * This function is used to View Company Credit
 	*/
 	public function viewCompanyCredit($id) {
-		$companyCreditDetails = OrganizationCredit::where('id', $id)->get();
-		$companyName = Organization::where('id', $companyCreditDetails[0]->id)->get();
-		return view('company_credits/view_credit', [ 'companyCreditDetails' => $companyCreditDetails, 'companyName' => $companyName ]);
+		$companyCredits = OrganizationCredit::find($id);
+		$companyCreditDetails = OrganizationCreditDetail::where('organization_id', $companyCredits->organization_id)->get();
+		$company = Organization::where('id', $companyCredits->id)->get();
+		$recruiter = Recruiter::find($companyCreditDetails[0]->recruiter_id);
+		return view('company_credits/view_credit', [
+			'companyCredits' => $companyCredits,
+			'company' => $company,
+			'recruiter' => $recruiter
+		]);
 	}
 
 	/**
@@ -117,9 +123,14 @@ class CreditsController extends Controller {
 	 * This function is used to View Credit History
 	*/
 	public function viewCreditHistory($id) {
-		$viewCreditHistory = OrganizationCreditDetail::where('id', $id)->get();
-		$companyName = Organization::where('id', $viewCreditHistory[0]->id)->get();
-		return view('company_credits/view_credit_history', [ 'viewCreditHistory' => $viewCreditHistory, 'companyName' => $companyName ]);
+		$viewCreditHistory = OrganizationCreditDetail::find($id);
+		$companyName = Organization::where('id', $viewCreditHistory->id)->get();
+		$recruiter = Recruiter::find($viewCreditHistory->recruiter_id);
+		return view('company_credits/view_credit_history', [
+			'viewCreditHistory' => $viewCreditHistory,
+			'companyName' => $companyName,
+			'recruiter' => $recruiter
+		]);
 	}
 
 }
