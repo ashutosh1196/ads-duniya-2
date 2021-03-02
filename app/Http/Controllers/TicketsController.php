@@ -19,7 +19,7 @@ class TicketsController extends Controller {
 	public function viewTicket($id) {
 		$ticket = Ticket::find($id);
 		$ticketId = $ticket->id;
-		$ticketMessages = TicketMessage::find($ticketId);
+		$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
 		$superAdmin = Admin::where('role_id', 1)->get();
 		$recruiter = Recruiter::find($ticket->recruiter_id);
 		$organization = Organization::find($recruiter->organization_id);
