@@ -26,31 +26,31 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_title') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->job_title ? $jobDetails[0]->job_title : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->job_title ? $jobDetails->job_title : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.is_featured') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->is_featured ? 'Yes' : 'No' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->is_featured ? 'Yes' : 'No' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_type') }}</label>
-                  <?php $jobTypeTrimmed = str_replace('_', ' ', $jobDetails[0]->job_type);
+                  <?php $jobTypeTrimmed = str_replace('_', ' ', $jobDetails->job_type);
                     $jobType = ucwords($jobTypeTrimmed);
                   ?>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->job_type ? $jobType : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->job_type ? $jobType : '--' }}" readonly>
                 </div>
               </div>
             
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->job_ref_number ? $jobDetails[0]->job_ref_number : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->job_ref_number ? $jobDetails->job_ref_number : '--' }}" readonly>
                 </div>
               </div>
 
@@ -71,25 +71,25 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
-                  <?php $currency = $jobDetails[0]->salary_currency == 'pounds' ? '$' : '£' ?>
-                  <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails[0]->min_monthly_salary ? $jobDetails[0]->min_monthly_salary.' - '.$currency.$jobDetails[0]->max_monthly_salary : '--' }}" readonly>
+                  <?php $currency = $jobDetails->salary_currency == 'pounds' ? '$' : '£' ?>
+                  <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails->min_monthly_salary ? $jobDetails->min_monthly_salary.' - '.$currency.$jobDetails->max_monthly_salary : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->min_experience ? $jobDetails[0]->min_experience.' - '.$jobDetails[0]->max_experience.' Years' : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->min_experience ? $jobDetails->min_experience.' - '.$jobDetails->max_experience.' Years' : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
-                  <?php $statusTrimmed = str_replace('_', ' ', $jobDetails[0]->status);
+                  <?php $statusTrimmed = str_replace('_', ' ', $jobDetails->status);
                     $status = ucwords($statusTrimmed);
                   ?>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->status ? $status : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->status ? $status : '--' }}" readonly>
                 </div>
               </div>
 
@@ -103,7 +103,11 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiterName ? $recruiterName : '--' }}" readonly>
+                  @if($recruiter != null)
+                    <a class="recruiter-view-link" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}"><input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" disabled></a>
+                  @else
+                    <input class="form-control" placeholder="" readonly>
+                  @endif
                 </div>
               </div>
 
@@ -117,70 +121,70 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.address') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->job_address ? $jobDetails[0]->job_address : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->job_address ? $jobDetails->job_address : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.city') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->city ? $jobDetails[0]->city : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->city ? $jobDetails->city : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.county') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->county ? $jobDetails[0]->county : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->county ? $jobDetails->county : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.state') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->state ? $jobDetails[0]->state : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->state ? $jobDetails->state : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.country') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->country ? $jobDetails[0]->country : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->country ? $jobDetails->country : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.zip') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->pincode ? $jobDetails[0]->pincode : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->pincode ? $jobDetails->pincode : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                  <input class="form-control" placeholder="{{ $jobDetails[0]->created_by ? $jobDetails[0]->created_by : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobDetails->created_by ? $jobDetails->created_by : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobDetails[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobDetails->created_at)) }}" readonly>
                 </div>
               </div>
             
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobDetails[0]->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($jobDetails->updated_at)) }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <div class="form-group description">
                   <label>{{ __('adminlte::adminlte.job_description') }}</label><br/>
-                  <div class="job-description">{!! $jobDetails[0]->job_description !!}</div>
+                  <div class="job-description">{!! $jobDetails->job_description !!}</div>
                 </div>
               </div>
             </div>

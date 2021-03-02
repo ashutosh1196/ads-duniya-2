@@ -128,19 +128,19 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function viewJob($id) {
-		$jobDetails = Job::where('id',$id)->get();
-		$jobIndustry = jobIndustry::where('id', $jobDetails[0]->job_industry_id)->get();
-		$jobFunction = jobFunction::where('id', $jobDetails[0]->job_function_id)->get();
-		$jobLocation = jobLocation::where('id', $jobDetails[0]->job_location_id)->get();
-		$organization = Organization::where('id', $jobDetails[0]->organization_id)->get();
-		$recruiter = Recruiter::where('id', $jobDetails[0]->recruiter_id)->get();
+		$jobDetails = Job::find($id);
+		$jobIndustry = jobIndustry::find( $jobDetails->job_industry_id);
+		$jobFunction = jobFunction::find( $jobDetails->job_function_id);
+		$jobLocation = jobLocation::find( $jobDetails->job_location_id);
+		$organization = Organization::find( $jobDetails->organization_id);
+		$recruiter = Recruiter::find( $jobDetails->recruiter_id);
 		return view('jobs/view_job', [
 			'jobDetails' => $jobDetails,
-			'organizationName' => $organization[0]->name,
-			'recruiterName' => $recruiter[0]->name,
-			'jobIndustry' => $jobIndustry[0]->name,
-			'jobFunction' => $jobFunction[0]->name,
-			'jobLocation' => $jobLocation[0]->name,
+			'organizationName' => $organization->name,
+			'recruiter' => $recruiter,
+			'jobIndustry' => $jobIndustry->name,
+			'jobFunction' => $jobFunction->name,
+			'jobLocation' => $jobLocation->name,
 		]);
 	}
 	
@@ -287,19 +287,19 @@ class JobsController extends Controller {
 	 * This function is used to Show Jobs History
 	*/
 	public function viewJobHistory($id) {
-		$JobHistory = JobHistory::where('id', $id)->get();
-		$jobIndustry = jobIndustry::where('id', $JobHistory[0]->job_industry_id)->get();
-		$jobFunction = jobFunction::where('id', $JobHistory[0]->job_function_id)->get();
-		$jobLocation = jobLocation::where('id', $JobHistory[0]->job_location_id)->get();
-		$organization = Organization::where('id', $JobHistory[0]->organization_id)->get();
-		$recruiter = Recruiter::where('id', $JobHistory[0]->recruiter_id)->get();
+		$JobHistory = JobHistory::find($id);
+		$jobIndustry = jobIndustry::find($JobHistory->job_industry_id);
+		$jobFunction = jobFunction::find($JobHistory->job_function_id);
+		$jobLocation = jobLocation::find($JobHistory->job_location_id);
+		$organization = Organization::find($JobHistory->organization_id);
+		$recruiter = Recruiter::find($JobHistory->recruiter_id);
 		return view('jobs/view_job_history', [
 			'JobHistory' => $JobHistory,
-			'organizationName' => $organization[0]->name,
-			'recruiterName' => $recruiter[0]->name,
-			'jobIndustry' => $jobIndustry[0]->name,
-			'jobFunction' => $jobFunction[0]->name,
-			'jobLocation' => $jobLocation[0]->name,
+			'organizationName' => $organization->name,
+			'recruiter' => $recruiter,
+			'jobIndustry' => $jobIndustry->name,
+			'jobFunction' => $jobFunction->name,
+			'jobLocation' => $jobLocation->name,
 		]);
 	}
 }

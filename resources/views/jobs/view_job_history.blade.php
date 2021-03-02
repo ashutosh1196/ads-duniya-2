@@ -26,31 +26,31 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_title') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->job_title ? $JobHistory[0]->job_title : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->job_title ? $JobHistory->job_title : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.is_featured') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->is_featured ? 'Yes' : 'No' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->is_featured ? 'Yes' : 'No' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_type') }}</label>
-                  <?php $jobTypeTrimmed = str_replace('_', ' ', $JobHistory[0]->job_type);
+                  <?php $jobTypeTrimmed = str_replace('_', ' ', $JobHistory->job_type);
                     $jobType = ucwords($jobTypeTrimmed);
                   ?>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->job_type ? $jobType : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->job_type ? $jobType : '--' }}" readonly>
                 </div>
               </div>
             
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->job_ref_number ? $JobHistory[0]->job_ref_number : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->job_ref_number ? $JobHistory->job_ref_number : '--' }}" readonly>
                 </div>
               </div>
 
@@ -71,25 +71,25 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
-                  <?php $currency = $JobHistory[0]->salary_currency == 'pounds' ? '$' : '£' ?>
-                  <input class="form-control" placeholder="{{ $currency }}{{ $JobHistory[0]->min_monthly_salary ? $JobHistory[0]->min_monthly_salary.' - '.$currency.$JobHistory[0]->max_monthly_salary : '--' }}" readonly>
+                  <?php $currency = $JobHistory->salary_currency == 'pounds' ? '$' : '£' ?>
+                  <input class="form-control" placeholder="{{ $currency }}{{ $JobHistory->min_monthly_salary ? $JobHistory->min_monthly_salary.' - '.$currency.$JobHistory->max_monthly_salary : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->min_experience ? $JobHistory[0]->min_experience.' - '.$JobHistory[0]->max_experience.' Years' : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->min_experience ? $JobHistory->min_experience.' - '.$JobHistory->max_experience.' Years' : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
-                  <?php $statusTrimmed = str_replace('_', ' ', $JobHistory[0]->status);
+                  <?php $statusTrimmed = str_replace('_', ' ', $JobHistory->status);
                     $status = ucwords($statusTrimmed);
                   ?>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->status ? $status : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->status ? $status : '--' }}" readonly>
                 </div>
               </div>
 
@@ -103,7 +103,11 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiterName ? $recruiterName : '--' }}" readonly>
+                  @if($recruiter != null)
+                    <a class="recruiter-view-link" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}"><input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" disabled></a>
+                  @else
+                    <input class="form-control" placeholder="" readonly>
+                  @endif
                 </div>
               </div>
 
@@ -117,70 +121,70 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.address') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->job_address ? $JobHistory[0]->job_address : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->job_address ? $JobHistory->job_address : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.city') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->city ? $JobHistory[0]->city : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->city ? $JobHistory->city : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.county') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->county ? $JobHistory[0]->county : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->county ? $JobHistory->county : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.state') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->state ? $JobHistory[0]->state : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->state ? $JobHistory->state : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.country') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->country ? $JobHistory[0]->country : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->country ? $JobHistory->country : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.zip') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->pincode ? $JobHistory[0]->pincode : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->pincode ? $JobHistory->pincode : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory[0]->created_by ? $JobHistory[0]->created_by : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->created_by ? $JobHistory->created_by : '--' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($JobHistory[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($JobHistory->created_at)) }}" readonly>
                 </div>
               </div>
             
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($JobHistory[0]->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($JobHistory->updated_at)) }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <div class="form-group description">
                   <label>{{ __('adminlte::adminlte.job_description') }}</label><br/>
-                  <div class="job-description">{!! $JobHistory[0]->job_description !!}</div>
+                  <div class="job-description">{!! $JobHistory->job_description !!}</div>
                 </div>
               </div>
             </div>
