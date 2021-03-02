@@ -710,6 +710,9 @@ body.login-page .login-box button span {
 .subject_wraper label {
     margin: 0;
 }
+a.paginate_button {
+    cursor: pointer;
+}
 a.paginate_button.next {
     background-color: lightgrey;
     padding: 5px 9px;
