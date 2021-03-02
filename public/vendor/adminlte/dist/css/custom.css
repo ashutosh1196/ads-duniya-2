@@ -726,7 +726,6 @@ a.paginate_button.next.disabled {
     padding: 5px 9px;
     position: relative;
     top: -5px;
-    color: #ffffff;
 }
 a.paginate_button.previous {
     background-color: #343d49;
@@ -741,7 +740,6 @@ a.paginate_button.previous.disabled {
     padding: 5px 9px;
     position: relative;
     top: -5px;
-    color: #ffffff;
 }
 a.paginate_button {
     padding: 4px 12px;
