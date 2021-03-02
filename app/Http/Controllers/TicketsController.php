@@ -28,7 +28,7 @@ class TicketsController extends Controller {
 			'ticketMessages' => $ticketMessages,
 			'superAdmin' => $superAdmin,
 			'recruiter' => $recruiter,
-			'organizationLogo' => $organization[0]->logo
+			'organizationLogo' => $organization->logo
 		]);
 	}
 
