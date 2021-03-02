@@ -20,14 +20,14 @@
               {{ session('status') }}
             </div>
           @endif
-          <div class="card card-primary card-tabs">
+          <div class="card-primary card-tabs">
               <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Job Detail</a>
+                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true"><i class="fas fa-fw fa-cogs "></i>Job Detail</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Jobseekers applied for this job</a>
+                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false"><i class="fas fa-user-circle"></i>Jobseekers applied for this job</a>
                   </li>
                 </ul>
               </div>
@@ -217,7 +217,7 @@
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>Test Jobseeker</td>
+                        <td><a href="#">Test Jobseeker</a></td>
                         <td>test_jobseeker@mailinator.com</td>
                         <td>+449785758697</td>
                         <td>

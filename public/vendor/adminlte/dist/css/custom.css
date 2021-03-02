@@ -714,40 +714,42 @@ a.paginate_button {
     cursor: pointer;
 }
 a.paginate_button.next {
-    background-color: lightgrey;
+    background-color: #343d49;
     padding: 5px 9px;
     position: relative;
     top: -5px;
+    color: #ffffff;
 }
 
 a.paginate_button.next.disabled {
-    background-color: #a7a5a5;
+    background-color: #343d49;
     padding: 5px 9px;
     position: relative;
     top: -5px;
 }
 a.paginate_button.previous {
-    background-color: lightgrey;
+    background-color: rgba(0,0,0,.075);
     padding: 5px 9px;
     position: relative;
     top: -5px;
 }
 
 a.paginate_button.previous.disabled {
-    background-color: #a7a5a5;
     padding: 5px 9px;
     position: relative;
     top: -5px;
+    background-color: rgba(0,0,0,.075);
 }
 a.paginate_button {
     padding: 4px 12px;
-    background-color: lightgrey;
+    background-color: rgba(0,0,0,.075);
     margin-left: 5px;
 }
 a.paginate_button.current {
     padding: 4px 12px;
-    background-color: #a7a5a5;
+    background-color: #343d49;
     margin-left: 5px;
+    color: #ffffff;
 }
 /*--Contact Admin--*/
 
@@ -793,6 +795,61 @@ input:-ms-input-placeholder.form-control {
 }
 }
 
+/*Added 02-March-2021*/
+
+.card-primary.card-tabs .card-header {
+    background-color: transparent;
+    border: none;
+}
+.card-primary.card-tabs .card-header ul {
+    border: none;
+}
+.card-primary.card-tabs .card-header ul li {
+    width: 50%;
+}
+.card-primary.card-tabs .card-header ul li a.active {
+    background-color: #343d49;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 12px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+}
+.card-primary.card-tabs .card-header ul li a {
+    background-color: #f6f7fb;
+    color: #343d49;
+    border: none;
+    border-radius: 0;
+    padding: 12px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 600;
+}
+.card-primary.card-tabs .card-header ul li a:hover {
+    background-color: #d0ebd8;
+}
+.card-primary.card-tabs .card-header ul li a.active:hover {
+    background-color: #343d49;
+}
+.card-primary.card-tabs .card-header ul li:first-child a {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+.card-primary.card-tabs .card-header ul li:nth-child(2) a {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+.card-primary.card-tabs .card-header ul li:first-child a i {
+    font-size: 16px;
+    margin-right: 10px;
+}
+.card-primary.card-tabs .card-header ul li:nth-child(2) a i {
+    font-size: 18px;
+    margin-right: 10px;
+}
 
 /*Responsive*/
 
