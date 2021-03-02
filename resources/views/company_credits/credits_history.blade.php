@@ -22,7 +22,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
+                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -57,7 +57,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
+                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

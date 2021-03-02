@@ -23,7 +23,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
+                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
@@ -47,7 +47,16 @@
                   </td>
                   <td>${{ $companyCreditsList[$i]->total_credits }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    <?php
+                      $creditDeails = \App\Models\OrganizationCreditDetail::where('organization_credit_id', $companyCreditsList[$i]->id)->get();
+                      $recruiter = \App\Models\Recruiter::find($creditDeails[0]->recruiter_id);
+                      $superAdmin = \App\Models\Admin::find(\Auth::id());
+                    ?>
+                    @if($recruiter != null)
+                      <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    @else
+                      {{ $superAdmin->name }}
+                    @endif
                   </td>
                 </tr>
                 @endfor
@@ -56,7 +65,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
+                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
