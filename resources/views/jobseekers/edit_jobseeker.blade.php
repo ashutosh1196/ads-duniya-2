@@ -72,7 +72,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
-                      <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->phone_number }}">
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->country_code.$jobseeker[0]->phone_number }}">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('phone_number'))
@@ -105,6 +105,7 @@
 @endsection
 
 @section('css')
+  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css">
   <style>
     .editable_field {
       position: relative;
@@ -118,12 +119,18 @@
       right: 10px;
       float: right;
     }
+    .intl-tel-input { display: block; }
   </style>
 @stop
 
 @section('js')
+  <script type="text/javascript" src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
   <script>
     $(document).ready(function() {
+      $("#jquery-intl-phone").intlTelInput({
+        onlyCountries: ['gb'],
+        separateDialCode: true
+      });
       /* $(".non_editable_field").hide();
       $('input').prop('disabled', true);
       $(".editable_field").click(function() {

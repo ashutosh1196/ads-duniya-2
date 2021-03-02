@@ -77,7 +77,7 @@
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
-                        <input type="hidden" name="country_code" value="+44">
+                        <input type="hidden" name="country_code" value="44">
                       </div>
                     </div>
 

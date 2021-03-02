@@ -62,7 +62,7 @@
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
                       <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number">
-                        <input type="hidden" name="country_code" value="+44">
+                        <input type="hidden" name="country_code" value="44">
                     </div>
                   </div>
                   
