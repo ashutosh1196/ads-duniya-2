@@ -43,8 +43,6 @@
                   <td>
                     @if($recruiter != null)
                       <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
-                    @else
-                      Null
                     @endif
                   </td>
                   <td>${{ $companyCreditsList[$i]->total_credits }}</td>
