@@ -729,7 +729,7 @@ a.paginate_button.next.disabled {
     color: #ffffff;
 }
 a.paginate_button.previous {
-    background-color: rgba(0,0,0,.075);
+    background-color: #343d49;
     padding: 5px 9px;
     position: relative;
     top: -5px;
