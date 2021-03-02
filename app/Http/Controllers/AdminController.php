@@ -53,7 +53,7 @@ class AdminController extends Controller
 	 * This function is used to Show Admin Profile
 	*/
 	public function adminProfile(Request $request) {
-		$userDetails = User::where('id', Auth::id())->get();
+		$userDetails = Admin::findOrFail(Auth::id());
 		return view('admin_profile')->with('userDetails', $userDetails );
 	}
 

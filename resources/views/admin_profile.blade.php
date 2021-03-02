@@ -37,8 +37,8 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
-                  <input type="hidden" name="id" value="{{ $userDetails[0]->id }}">
-                  <input type="text" name="name" class="form-control" id="name" value="{{ $userDetails[0]->name }}">
+                  <input type="hidden" name="id" value="{{ $userDetails->id }}">
+                  <input type="text" name="name" class="form-control" id="name" value="{{ $userDetails->name }}">
                   @if($errors->has('name'))
                     <div class="error">{{ $errors->first('name') }}</div>
                   @endif
@@ -66,7 +66,7 @@
 
           <form id="changePasswordForm" method="post" action="{{ route('change_password') }}">
             @csrf
-            <input type="hidden" name="id" value="{{ $userDetails[0]->id }}">
+            <input type="hidden" name="id" value="{{ $userDetails->id }}">
             <div class="card-body">
               @if ($errors->any())
                 <div class="alert alert-warning">
