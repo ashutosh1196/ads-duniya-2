@@ -60,7 +60,8 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
-                      <input type="text" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number }}">
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number }}">
+                        <input type="hidden" name="country_code" value="{{ $recruiter[0]->country_code }}">
                     </div>
                   </div>
                   
@@ -108,6 +109,7 @@
 @endsection
 
 @section('css')
+  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css">
   <style>
     .editable_field {
       position: relative;
@@ -121,12 +123,18 @@
       right: 10px;
       float: right;
     }
+    .intl-tel-input { display: block; }
   </style>
 @stop
 
 @section('js')
+  <script type="text/javascript" src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
   <script>
     $(document).ready(function() {
+      $("#jquery-intl-phone").intlTelInput({
+        onlyCountries: ['gb'],
+        separateDialCode: true
+      });
       $('#editRecruiterForm').validate({
         ignore: [],
         debug: false,
