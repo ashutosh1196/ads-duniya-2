@@ -27,10 +27,10 @@
                   <div class="col-12">
                     <div class="subject_wraper">
                       <div class="request_id">
-                        <label>Request#{{ $ticket[0]->id }}</label>
+                        <label>Request#{{ $ticket->id }}</label>
                       </div>
                       <div class="subject">
-                        <label>{{ $ticket[0]->subject }}</label>
+                        <label>{{ $ticket->subject }}</label>
                       </div>                      
                     </div>
                     <div class="form_wrap message_wraper">
@@ -46,8 +46,8 @@
                             <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defauktProfileImage }}" alt="">
                           </div>
                           <div class="user_detail">
-                            <?php $recruiterName = $recruiter[0]->first_name ? $recruiter[0]->first_name.' '.$recruiter[0]->last_name : 'Anonymous'; ?>
-                            <label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin[0]->name : $recruiterName }}</label>
+                            <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
+                            <a href="{{ $ticketMessages[$i]->sent_by == 'admin' ? route('dashboard') : route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $ticketMessages[$i]->sent_by == 'admin' ? $superAdmin->name : $recruiterName }}</label></a>
                             <label class="time_date">{{ date('F d, Y - H:i A', strtotime($ticketMessages[$i]->created_at)) }}</label>
                           </div>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="form-group">
                           <textarea id="message_text" name="message_text" class="form-control"></textarea>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
-                            <input type="hidden" name="ticket_id" value="{{ $ticket[0]->id }}">
+                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
                             <input type="file" name="attachment_file" id="attachment_file">
                           </div>
                           <button type="submit">Reply</button>                              

@@ -28,7 +28,7 @@ use App\Http\Controllers\TicketsController;
 Route::get('/', function () {
   return redirect()->route('login');
   // return view('welcome');
-});
+})->name('admin_home');
 
 Route::middleware(['auth:admin'])->group(function () {
   

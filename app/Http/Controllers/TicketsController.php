@@ -17,12 +17,12 @@ class TicketsController extends Controller {
 	}
 
 	public function viewTicket($id) {
-		$ticket = Ticket::where('id', $id)->get();
-		$ticketId = $ticket[0]->id;
-		$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
+		$ticket = Ticket::find($id);
+		$ticketId = $ticket->id;
+		$ticketMessages = TicketMessage::find($ticketId);
 		$superAdmin = Admin::where('role_id', 1)->get();
-		$recruiter = Recruiter::where('id', $ticket[0]->recruiter_id)->get();
-		$organization = Organization::where('id', $recruiter[0]->organization_id)->get();
+		$recruiter = Recruiter::find($ticket->recruiter_id);
+		$organization = Organization::find($recruiter->organization_id);
 		return view('tickets/view_ticket', [
 			'ticket' => $ticket,
 			'ticketMessages' => $ticketMessages,
