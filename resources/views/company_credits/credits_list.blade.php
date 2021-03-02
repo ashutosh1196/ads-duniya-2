@@ -50,15 +50,7 @@
                   </td>
                   <td>${{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
                   <td>
-                    <?php
-                      $creditDeails = \App\Models\OrganizationCreditDetail::where('organization_credit_id', $companyCreditsList[$i]->id)->get();
-                      $recruiter = \App\Models\Recruiter::find($creditDeails[0]->recruiter_id);
-                    ?>
-                    @if($recruiter != null)
-                      <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
-                    @else
-                      {{ $superAdmin->name }}
-                    @endif
+                    <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 @endfor
