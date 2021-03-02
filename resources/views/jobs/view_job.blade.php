@@ -217,13 +217,11 @@
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td><a href="#">Test Jobseeker</a></td>
+                        <td>Test Jobseeker</td>
                         <td>test_jobseeker@mailinator.com</td>
                         <td>+449785758697</td>
                         <td>
                           <a class="action-button" title="View" href="javascript:void(0)"><i class="text-info fa fa-eye"></i></a>
-                          <a class="action-button" title="Edit" href="javascript:void(0)"><i class="text-warning fa fa-edit"></i></a>
-                          <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="0"><i class="text-danger fa fa-trash-alt"></i></a>
                         </td>
                       </tr>
                     </tbody>
