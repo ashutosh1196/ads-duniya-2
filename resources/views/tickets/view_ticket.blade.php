@@ -58,7 +58,7 @@
                           <div class="box_wrap">
                             <?php if($ticketMessages[$i]->attachment_file) {
                               $destinationPath = config('adminlte.website_url').'ticket_images/'; ?>
-                              <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt="">
+                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}"><img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt=""></a>
                             <?php } ?>
                           </div>
                         </div>
