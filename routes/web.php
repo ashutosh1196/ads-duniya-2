@@ -135,6 +135,8 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/view/{id}', [JobsController::class, 'viewJob'])->name('view_job');
       Route::get('/edit/{id}', [JobsController::class, 'editJob'])->name('edit_job');
       Route::post('/update', [JobsController::class, 'updateJob'])->name('update_job');
+      Route::get('/history', [JobsController::class, 'jobsHistory'])->name('jobs_history');
+      Route::get('/view_job_history/{id}', [JobsController::class, 'viewJobHistory'])->name('view_job_history');
       /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
     });
 

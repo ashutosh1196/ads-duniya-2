@@ -23,11 +23,12 @@ class AdminController extends Controller
 		$jobseekersCount = count($jobseekers);
 		$customers = Organization::where('is_whitelisted', 1)->get();
 		$recruitersList = [];
-		if($customers->isNotEmpty()) {
-			for ($i=0; $i < count($customers); $i++) {
-				$recruiter = Recruiter::where('organization_id', $customers[$i]->id)->get();
-				if($recruiter->isNotEmpty()) {
-					array_push($recruitersList, $recruiter[0]);
+		$allRecruiters = Recruiter::all();
+		$allCustomers = Organization::all();
+		for ($i=0; $i < count($allRecruiters); $i++) {
+			for ($j=0; $j < count($allCustomers); $j++) {
+				if($allCustomers[$j]->is_whitelisted == '1') {
+					array_push($recruitersList, $allRecruiters[$i]);
 				}
 			}
 		}

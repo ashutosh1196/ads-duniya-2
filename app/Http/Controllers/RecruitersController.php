@@ -14,20 +14,17 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Recruiters Listing
 	*/
 	public function recruitersList(Request $request) {
-		$customers = Organization::where('is_whitelisted', 1)->get();
+		$recruiter = Recruiter::all();
+		$customers = Organization::all();
 		$recruitersList = [];
-		if($customers->isNotEmpty()) {
-			for ($i=0; $i < count($customers); $i++) {
-				$recruiter = Recruiter::where('organization_id', $customers[$i]->id)->get();
-				if($recruiter->isNotEmpty()) {
-					array_push($recruitersList, $recruiter[0]);
+		for ($i=0; $i < count($recruiter); $i++) {
+			for ($j=0; $j < count($customers); $j++) {
+				if($customers[$j]->is_whitelisted == '1') {
+					array_push($recruitersList, $recruiter[$i]);
 				}
 			}
-			return view('recruiters/recruiters_list', ['recruitersList' => $recruitersList]);
 		}
-		else {
-			return view('recruiters/recruiters_list', ['recruitersList' => null]);
-		}
+		return view('recruiters/recruiters_list', ['recruitersList' => $recruitersList]);
 	}
 
 	/**

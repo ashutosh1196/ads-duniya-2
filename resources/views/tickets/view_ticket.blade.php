@@ -22,16 +22,18 @@
           @endif
 
             <div id="form_wrap_main" class="">
-              <div class="container">
+              <div class="">
                 <div class="row">           
                   <div class="col-12">
-                    <div class="request_id">
-                      <label>Request#{{ $ticket[0]->id }}</label>
+                    <div class="subject_wraper">
+                      <div class="request_id">
+                        <label>Request#{{ $ticket[0]->id }}</label>
+                      </div>
+                      <div class="subject">
+                        <label>{{ $ticket[0]->subject }}</label>
+                      </div>                      
                     </div>
-                    <div class="subject">
-                      <label>{{ $ticket[0]->subject }}</label>
-                    </div>
-                    <div class="form_wrap mb-md-5 mb-4 message_wraper">
+                    <div class="form_wrap message_wraper">
                       <?php  for ($i=0; $i < count($ticketMessages); $i++) {  ?>
                       <div class="message_box">
                         <div class="profile">
@@ -68,7 +70,7 @@
                       <div class="message_reply">
                         <div class="form-group">
                           <textarea id="message_text" name="message_text" class="form-control"></textarea>
-                          <div class="upload-file">
+                          <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket[0]->id }}">
                             <input type="file" name="attachment_file" id="attachment_file">
                           </div>
@@ -89,10 +91,18 @@
 @endsection
 
 @section('css')
+<style>
+  .message_reply .upload-file:after {
+    content: attr(file-name);
+  }
+</style>
 @stop
 
 @section('js')
   <script>
+    $('body').on('change','input[name=attachment_file]',function(){
+      $(this).parent().attr('file-name', $(this)[0].files[0].name);
+    });
     $(document).ready(function() {
       $('#replyForm').validate({
         ignore: [],

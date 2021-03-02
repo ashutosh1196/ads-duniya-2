@@ -97,6 +97,7 @@ return [
     'whitelist_status'              => 'Whitelist Status',
     'created_by'                    => 'Created By',
 
+    'jobs_history'                  => 'Jobs History',
     'add_job'                       => 'Add Job',
     'job_title'                     => 'Job Title',
     'job_type'                      => 'Job Type',

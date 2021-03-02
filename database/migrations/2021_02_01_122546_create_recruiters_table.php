@@ -22,6 +22,7 @@ class CreateRecruitersTable extends Migration
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->tinyInteger('is_email_verified')->default(0);
+            $table->string('country_code')->nullable();
             $table->string('phone_number')->nullable();
             $table->rememberToken();
             $table->enum('login_with',['email','facebook','google']);

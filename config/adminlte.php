@@ -313,13 +313,14 @@ return [
                     'text' => 'published_jobs',
                     'icon' => 'fas fa-fw fa-list',
                     'url'  => 'admin_panel/jobs/list',
-                    'active' => ['admin_panel/jobs*'],
+                    'active' => ['admin_panel/jobs/list/*', 'admin_panel/jobs/view/*'],
                 ],
-                /* [
-                    'text' => 'bookmarked_jobs',
+                [
+                    'text' => 'jobs_history',
                     'icon' => 'fas fa-fw fa-map-pin',
-                    'url'  => 'admin_panel/jobseekers/bookmarked_jobs',
-                ], */
+                    'url'  => 'admin_panel/jobs/history',
+                    'active' => ['admin_panel/jobs/history/*', 'admin_panel/jobs/view_job_history/*'],
+                ],
             ],
         ],
         [

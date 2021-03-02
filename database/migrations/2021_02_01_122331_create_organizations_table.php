@@ -28,7 +28,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('county')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
-            $table->integer('pincode')->nullable();
+            $table->string('pincode')->nullable();
             $table->double('latitude', 10, 7)->nullable();
             $table->double('longitude', 10, 7)->nullable();
             $table->tinyInteger('is_whitelisted')->default(0);
