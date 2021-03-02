@@ -28,7 +28,11 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
-                  <input class="form-control" placeholder="{{ $organization['name'] ? $organization['name'] : '--' }}" readonly>
+                  @if($organization != null)
+                    <input class="form-control" placeholder="{{ $organization->name ? $organization->name : '--' }}" readonly>
+                  @else
+                    <input class="form-control" placeholder="--" readonly>
+                  @endif
                 </div>
               </div>
               
