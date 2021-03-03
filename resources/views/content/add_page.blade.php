@@ -25,7 +25,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="page_title">Title</label>
-                  <input type="title" name="title" class="form-control" id="page_title" placeholder="Enter Title">
+                  <input type="title" name="title" class="form-control" id="page_title">
                   @if($errors->has('title'))
                     <div class="error">{{ $errors->first('title') }}</div>
                   @endif

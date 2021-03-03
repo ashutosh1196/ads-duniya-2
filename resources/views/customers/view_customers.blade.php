@@ -99,7 +99,7 @@
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Location</label>
-                  <input class="form-control" placeholder="" readonly>
+                  <input class="form-control" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">

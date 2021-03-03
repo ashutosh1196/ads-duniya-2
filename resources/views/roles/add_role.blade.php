@@ -25,7 +25,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="role_name">{{ __('adminlte::adminlte.name') }}</label>
-                  <input type="text" name="role_name" class="form-control" id="role_name" placeholder="Enter Title">
+                  <input type="text" name="role_name" class="form-control" id="role_name">
                   @if($errors->has('role_name'))
                     <div class="error">{{ $errors->first('role_name') }}</div>
                   @endif

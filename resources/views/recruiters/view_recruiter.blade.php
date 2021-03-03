@@ -91,7 +91,7 @@
               <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Logged In With</label>
-                  <input class="form-control" placeholder="Email" readonly>
+                  <input class="form-control" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">

@@ -32,13 +32,13 @@
               <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input class="form-control" placeholder="Ashish" readonly>
+                  <input class="form-control" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input class="form-control" placeholder="Kumar" readonly>
+                  <input class="form-control" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">

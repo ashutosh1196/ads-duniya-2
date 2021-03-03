@@ -119,7 +119,7 @@
                           @if($recruiter != null)
                             <!-- <a class="recruiter-view-link" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}"> --><input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" disabled><!-- </a> -->
                           @else
-                            <input class="form-control" placeholder="" readonly>
+                            <input class="form-control" readonly>
                           @endif
                         </div>
                       </div>
@@ -327,7 +327,7 @@
                   @if($recruiter != null)
                     <a class="recruiter-view-link" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}"><input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" disabled></a>
                   @else
-                    <input class="form-control" placeholder="" readonly>
+                    <input class="form-control" readonly>
                   @endif
                 </div>
               </div>
