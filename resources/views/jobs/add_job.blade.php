@@ -318,12 +318,10 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
   <style>
     .information_fields { margin-bottom: 30px; }
     .financial_fields { margin-top: 30px; margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
-    .intl-tel-input { display: block; }
   </style>
 @stop
 

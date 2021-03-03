@@ -37,6 +37,7 @@
         .form-control.error {
             color: #000000 !important;
         }
+        .intl-tel-input { display: block !important; }
     </style>
 @stop
 
@@ -114,6 +115,10 @@
     @yield('js')
     <script>
         $(document).ready(function() {
+            $("#jquery-intl-phone").intlTelInput({
+                onlyCountries: ['gb', 'us'],
+                separateDialCode: false
+            });
             /* $.validator.messages.required = function (param, input) {
                 var title = $(input).attr('fieldTitle');
                 return 'The ' + title + ' field is required.';

@@ -71,6 +71,8 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
+    <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
 
 </head>
 
@@ -95,6 +97,7 @@
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif
+    <script type="text/javascript" src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
 
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))

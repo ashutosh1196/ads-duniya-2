@@ -66,7 +66,17 @@
                       @endif
                     </div>
                   </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="+44" maxlength="13">
+                        <input type="hidden" name="country_code" value="+44">
+                    </div>
+                  </div>
+                </div>
                     
+                <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="password">{{ __('adminlte::adminlte.password') }}<span class="text-danger"> *</span></label>
@@ -76,9 +86,7 @@
                       @endif
                     </div>
                   </div>
-                </div>
-                
-                <div class="row">
+                  
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="confirm_password">{{ __('adminlte::adminlte.confirm_password') }}<span class="text-danger"> *</span></label>

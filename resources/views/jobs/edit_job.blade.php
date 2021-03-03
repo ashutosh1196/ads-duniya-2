@@ -222,7 +222,6 @@
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
-    .intl-tel-input { display: block; }
   </style>
 @stop
 

@@ -133,20 +133,11 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css">
-  <style>
-    .intl-tel-input { display: block; }
-  </style>
 @stop
 
 @section('js')
-  <script type="text/javascript" src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
   <script>
     $(document).ready(function() {
-      $("#jquery-intl-phone").intlTelInput({
-        onlyCountries: ['gb', 'us'],
-        separateDialCode: false
-      });
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
