@@ -72,7 +72,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
-                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->country_code.$jobseeker[0]->phone_number }}">
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $jobseeker[0]->phone_number }}" maxlength="13">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('phone_number'))
@@ -128,8 +128,8 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        onlyCountries: ['gb'],
-        separateDialCode: true
+        onlyCountries: ['gb', 'us'],
+        separateDialCode: false
       });
       /* $(".non_editable_field").hide();
       $('input').prop('disabled', true);

@@ -73,7 +73,7 @@
                     <div class="col-md-6">
                       <div class="form-group mb-4 pb-md-3 pr-md-2 pb-2 pr-0">
                         <label class="required"><img src="{{asset('assets/images/contact.png')}}" alt="">{{ __('adminlte::adminlte.contact_number') }}</label>
-                        <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13">
+                        <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" value="+44" maxlength="13">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
@@ -211,8 +211,8 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        onlyCountries: ['gb'],
-        separateDialCode: true
+        onlyCountries: ['gb', 'us'],
+        separateDialCode: false
       });
       $( "input[name=contact_number]" ).focus(function() {
           $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));

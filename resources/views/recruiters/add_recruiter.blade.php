@@ -61,7 +61,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
-                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number">
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="+44" maxlength="13">
                         <input type="hidden" name="country_code" value="44">
                     </div>
                   </div>
@@ -144,8 +144,8 @@
   <script>
     $(document).ready(function() {
       $("#jquery-intl-phone").intlTelInput({
-        onlyCountries: ['gb'],
-        separateDialCode: true
+        onlyCountries: ['gb', 'us'],
+        separateDialCode: false
       });
       $("#email").blur(function() {
         $.ajax({

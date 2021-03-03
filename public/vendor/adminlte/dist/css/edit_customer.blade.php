@@ -64,7 +64,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
-                        <input type="text" name="contact_number" class="form-control" id="contact_number" value="{{ $customer[0]->contact_number }}">
+                        <input type="text" name="contact_number" class="form-control" id="contact_number" value="{{ $customer[0]->contact_number }}" maxlength="13">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif

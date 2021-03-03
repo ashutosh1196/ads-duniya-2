@@ -49,7 +49,7 @@ return [
     'address'                       => 'Address',
     'city'                          => 'City / Town',
     'state'                         => 'State',
-    'zip'                => 'Zip / Postcode',
+    'zip'                           => 'Zip / Postcode',
     'county'                        => 'County',
     'country'                       => 'Country',
     'select_country'                => 'Select Country',
