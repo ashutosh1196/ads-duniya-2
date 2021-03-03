@@ -22,7 +22,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>Added By</th>
+                  <th>{{ __('adminlte::adminlte.added_by') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -36,16 +36,24 @@
                     <?php
                       $company = \App\Models\Organization::find($creditsHistory[$i]->organization_id);
                       $creditDetails = \App\Models\OrganizationCreditDetail::find($creditsHistory[$i]->id);
-                      $recruiter = \App\Models\Recruiter::find($creditDetails->recruiter_id);
-                      $superAdmin = \App\Models\Admin::find(\Auth::id());
+                      $recruiter = null;
+                      $admin = null;
+                      if($creditDetails->recruiter_id != null) {
+                        $recruiter = \App\Models\Recruiter::find($creditDetails->recruiter_id);
+                      }
+                      else if($creditDetails->admin_id != null) {
+                        $admin = \App\Models\Admin::find(\Auth::id());
+                      }
                     ?>
                     {{ $company->name }}
                   </td>
                   <td>
                     @if($recruiter != null)
                       <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
+                    @elseif($admin != null)
+                      {{ $admin->name }}
                     @else
-                      {{ $superAdmin->name }}
+                      Free Credits
                     @endif
                   </td>
                   <td>${{ $creditsHistory[$i]->credits }}</td>
@@ -60,7 +68,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>Added By</th>
+                  <th>{{ __('adminlte::adminlte.added_by') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

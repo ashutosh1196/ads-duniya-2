@@ -23,7 +23,6 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
@@ -34,19 +33,9 @@
                   <td>{{ $i+1 }}</td>
                   <td>
                     <?php
-                      $company = \App\Models\Organization::where('id', $companyCreditsList[$i]->organization_id)->get();
-                      $creditDetails = \App\Models\OrganizationCreditDetail::where('organization_credit_id', $companyCreditsList[$i]->id)->get();
-                      $recruiter = \App\Models\Recruiter::find($creditDetails[0]->recruiter_id);
-                      $superAdmin = \App\Models\Admin::find(\Auth::id());
+                      $company = \App\Models\Organization::find($companyCreditsList[$i]->organization_id);
                     ?>
-                    {{ $company[0]->name }}
-                  </td>
-                  <td>
-                    @if($recruiter != null)
-                      <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
-                    @else
-                      {{ $superAdmin->name }}
-                    @endif
+                    {{ $company->name }}
                   </td>
                   <td>${{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
                   <td>
@@ -59,7 +48,6 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>Added By</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>

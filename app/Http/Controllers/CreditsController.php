@@ -7,6 +7,7 @@ use App\Models\Organization;
 use App\Models\OrganizationCredit;
 use App\Models\OrganizationCreditDetail;
 use App\Models\Recruiter;
+use App\Models\Admin;
 
 class CreditsController extends Controller {
 	
@@ -126,10 +127,12 @@ class CreditsController extends Controller {
 		$viewCreditHistory = OrganizationCreditDetail::find($id);
 		$companyName = Organization::where('id', $viewCreditHistory->id)->get();
 		$recruiter = Recruiter::find($viewCreditHistory->recruiter_id);
+		$admin = Admin::find($viewCreditHistory->admin_id);
 		return view('company_credits/view_credit_history', [
 			'viewCreditHistory' => $viewCreditHistory,
 			'companyName' => $companyName,
-			'recruiter' => $recruiter
+			'recruiter' => $recruiter,
+			'admin' => $admin
 		]);
 	}
 

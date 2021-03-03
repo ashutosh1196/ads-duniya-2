@@ -223,4 +223,6 @@ return [
 
     'old_password'                      => 'Old Password',
     'new_password'                      => 'New Password',
+    
+    'added_by'                          => 'Added By',
 ];
