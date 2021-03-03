@@ -51,8 +51,8 @@
                       <?php $contentDB = strip_tags($websitePagesList[$i]->content);
                       echo \Illuminate\Support\Str::limit($contentDB, 20)?>
                     </td> -->
-                    <td>{{ date('F d, Y', strtotime($websitePagesList[$i]->created_at)) }}</td>
-                    <td>{{ date('F d, Y - H:i A', strtotime($websitePagesList[$i]->updated_at)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($websitePagesList[$i]->created_at)) }}</td>
+                    <td>{{ date('d/m/Y - H:i A', strtotime($websitePagesList[$i]->updated_at)) }}</td>
                     <td><a class="btn btn-sm btn-success text-white" href="edit_content/<?php echo $websitePagesList[$i]->id; ?>">Edit</a></td>
                   </tr>
                 <?php } ?>

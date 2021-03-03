@@ -67,7 +67,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.payment_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('F d, Y - H:i A', strtotime($paymentTransaction->payment_date)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('d/m/Y - H:i A', strtotime($paymentTransaction->payment_date)) }}" readonly>
                 </div>
               </div>
 

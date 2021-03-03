@@ -32,12 +32,12 @@ class CreditsController extends Controller {
 	public function saveCompanyCredit(Request $request) {
 		$organizationId = $request->organization_id;
 		$validatedData = $request->validate([
-			'total_credits' => 'required',
+			'total_paid_credits' => 'required',
 			// 'txn_type' => 'required',
 			'credit_type' => 'required',
 			'organization_id' => 'required'
 		], [
-			'total_credits.required' => 'Credit Amount is required',
+			'total_paid_credits.required' => 'Credit Amount is required',
 			// 'txn_type.required' => 'Transaction Type is required',
 			'credit_type.required' => 'Credit Type is required',
 			'organization_id.required' => 'Company is required'
@@ -46,15 +46,15 @@ class CreditsController extends Controller {
 		$recruiterId = $recruiter[0]->id;
 		$creditsAvailable = OrganizationCredit::where('organization_id', $organizationId)->get();
 		if($creditsAvailable->isNotEmpty()) {
-			$newcredits = $creditsAvailable[0]->total_credits+$request->total_credits;
+			$newcredits = $creditsAvailable[0]->total_paid_credits+$request->total_paid_credits;
 			$creditUpdate = OrganizationCredit::where('organization_id', $organizationId)->update([
-				'total_credits' => $newcredits
+				'total_paid_credits' => $newcredits
 			]);
 			if($creditUpdate) {
 				$updatedCredit = OrganizationCredit::where('organization_id', $organizationId)->get();
 				$creditDetail = new OrganizationCreditDetail;
 				$creditDetail->txn_type = $request->txn_type;
-				$creditDetail->credits = $request->total_credits;
+				$creditDetail->credits = $request->total_paid_credits;
 				$creditDetail->credit_type = $request->credit_type;
 				$creditDetail->organization_id = $organizationId;
 				$creditDetail->organization_credit_id = $updatedCredit[0]->id;
@@ -72,13 +72,13 @@ class CreditsController extends Controller {
 		}
 		else {
 			$credit = new OrganizationCredit;
-			$credit->total_credits = $request->total_credits;
+			$credit->total_paid_credits = $request->total_paid_credits;
 			$credit->organization_id = $organizationId;
 			$credit->recruiter_id = $recruiterId;
 			if($credit->save()) {
 				$creditDetail = new OrganizationCreditDetail;
 				$creditDetail->txn_type = $request->txn_type;
-				$creditDetail->credits = $request->total_credits;
+				$creditDetail->credits = $request->total_paid_credits;
 				$creditDetail->credit_type = $request->credit_type;
 				$creditDetail->organization_id = $organizationId;
 				$creditDetail->organization_credit_id = $credit->id;

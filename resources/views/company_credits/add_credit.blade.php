@@ -36,11 +36,11 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="total_credits">{{ __('adminlte::adminlte.credit_amount') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="total_credits" class="form-control" id="total_credits">
+                        <label for="total_paid_credits">{{ __('adminlte::adminlte.credit_amount') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="total_paid_credits" class="form-control" id="total_paid_credits">
                         <div id ="function_error" class="error"></div>
-                        @if($errors->has('total_credits'))
-                          <div class="error">{{ $errors->first('total_credits') }}</div>
+                        @if($errors->has('total_paid_credits'))
+                          <div class="error">{{ $errors->first('total_paid_credits') }}</div>
                         @endif
                       </div>
                     </div>
@@ -103,7 +103,7 @@
         ignore: [],
         debug: false,
         rules: {
-          total_credits: {
+          total_paid_credits: {
             required: true,
             number: true
           },
@@ -115,9 +115,9 @@
           },
         },
         messages: {
-          total_credits: {
-            required: "The Credit total_credits field is required.",
-            number: "The Credit total_credits must be in numbers only."
+          total_paid_credits: {
+            required: "The Credit total_paid_credits field is required.",
+            number: "The Credit total_paid_credits must be in numbers only."
           },
           credit_type: {
             required: "The Credit Type field is required."
