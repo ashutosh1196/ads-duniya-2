@@ -52,8 +52,6 @@
                       <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</a>
                     @elseif($admin != null)
                       {{ $admin->name }}
-                    @else
-                      Free Credits
                     @endif
                   </td>
                   <td>${{ $creditsHistory[$i]->credits }}</td>

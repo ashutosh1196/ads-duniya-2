@@ -47,7 +47,7 @@
                     @elseif($admin != null)
                       <input class="form-control" placeholder="{{ $admin->name ? $admin->name : $admin->email }}" disabled>
                     @else
-                    <input class="form-control" placeholder="Free Credits" readonly>
+                    <input class="form-control" readonly>
                   @endif
                 </div>
               </div>
