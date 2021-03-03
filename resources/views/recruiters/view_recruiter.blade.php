@@ -97,7 +97,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_logged_in_date_time') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiter[0]->last_logged_in_at ? $recruiter[0]->last_logged_in_at : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $recruiter[0]->last_logged_in_at ? date('d/m/Y', strtotime($recruiter[0]->last_logged_in_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -109,7 +109,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email_verification_date') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiter[0]->email_verified_at ? $recruiter[0]->email_verified_at : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $recruiter[0]->email_verified_at ? date('d/m/Y', strtotime($recruiter[0]->email_verified_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -121,7 +121,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.user_locked_date') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiter[0]->user_locked_at ? $recruiter[0]->user_locked_at : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $recruiter[0]->user_locked_at ? date('d/m/Y', strtotime($recruiter[0]->user_locked_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -133,13 +133,13 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ $organization[0]->created_at ? $organization[0]->created_at : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $organization[0]->created_at ? date('d/m/Y', strtotime($organization[0]->created_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>Last {{ __('adminlte::adminlte.updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ $organization[0]->updated_at ? $organization[0]->updated_at : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $organization[0]->updated_at ? date('d/m/Y', strtotime($organization[0]->updated_at)) : '--' }}" readonly>
                 </div>
               </div>
             </div>

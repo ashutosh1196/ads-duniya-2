@@ -41,7 +41,7 @@ return [
     'actions'                       => 'Actions',
     'created_date'                  => 'Created Date',
     'last_updated_date'             => 'Last Updated Date',
-    'last_logged_in_date_time'      => 'Last Logged In Date & Time',
+    'last_logged_in_date_time'      => 'Last Logged In Date',
     'status'                        => 'Status',
     'active'                        => 'Active',
     'inactive'                      => 'Inactive',
