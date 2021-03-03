@@ -22,11 +22,19 @@ class JobSeekersController extends Controller {
 	*/
 	public function saveJobseeker(Request $request) {
 		$validatedData = $request->validate([
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'email' => 'required|email|unique:users',
 			'password' => 'required|min:8',
-			'email' => 'required|email|unique:users'
+			'confirm_password' => 'required|min:8',
 		], [
+			'first_name.required' => 'First Name is required',
+			'last_name.required' => 'Last Name is required',
 			'email.required' => 'Email is required',
-			'password.required' => 'Password is required'
+			'email.email' => 'Email is not valid',
+			'email.unique' => 'This Email is already taken',
+			'password.required' => 'Password is required',
+			'confirm_password.required' => 'Confirm Password is required'
 		]);
 		$jobseeker = new User;
 		$jobseeker->name = $request->first_name.$request->last_name;
