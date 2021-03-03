@@ -52,7 +52,7 @@
                       echo \Illuminate\Support\Str::limit($contentDB, 20)?>
                     </td> -->
                     <td>{{ date('d/m/Y', strtotime($mobilePagesList[$i]->created_at)) }}</td>
-                    <td>{{ date('d/m/Y - H:i A', strtotime($mobilePagesList[$i]->updated_at)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($mobilePagesList[$i]->updated_at)) }}</td>
                     <td><a class="btn btn-sm btn-success text-white" href="edit_content/<?php echo $mobilePagesList[$i]->id; ?>">Edit</a></td>
                   </tr>
                 <?php } ?>
