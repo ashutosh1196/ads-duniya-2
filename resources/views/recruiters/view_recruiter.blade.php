@@ -138,7 +138,7 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
-                  <label>Last {{ __('adminlte::adminlte.updated_date') }}</label>
+                  <label>Last {{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ $organization[0]->updated_at ? date('d/m/Y', strtotime($organization[0]->updated_at)) : '--' }}" readonly>
                 </div>
               </div>
