@@ -116,8 +116,8 @@
         },
         messages: {
           total_paid_credits: {
-            required: "The Credit total_paid_credits field is required.",
-            number: "The Credit total_paid_credits must be in numbers only."
+            required: "The Credit Amount field is required.",
+            number: "The Credit Amount must be in numbers only."
           },
           credit_type: {
             required: "The Credit Type field is required."

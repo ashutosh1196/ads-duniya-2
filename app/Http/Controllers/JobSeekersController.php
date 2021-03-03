@@ -33,6 +33,7 @@ class JobSeekersController extends Controller {
 		$jobseeker->first_name = $request->first_name;
 		$jobseeker->last_name = $request->last_name;
 		$jobseeker->email = $request->email;
+		$jobseeker->phone_number = $request->phone_number;
 		$jobseeker->password = Hash::make($request->password);
 		$jobseeker->ip_address = $_SERVER["REMOTE_ADDR"];
 		if($jobseeker->save()) {
