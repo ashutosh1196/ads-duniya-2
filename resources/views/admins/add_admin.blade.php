@@ -28,7 +28,7 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="name" class="form-control" id="name">
+                      <input type="text" name="name" class="form-control" id="name" maxlength="100">
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
                       @endif
@@ -38,7 +38,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
-                    <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com">
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com" maxlength="100">
                     <div id ="email_error" class="error"></div>
                     @if($errors->has('email'))
                       <div class="error">{{ $errors->last('email') }}</div>
@@ -64,7 +64,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="password">{{ __('adminlte::adminlte.password') }}<span class="text-danger"> *</span></label>
-                    <input type="password" name="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password" maxlength="100">
                     @if($errors->has('password'))
                       <div class="error">{{ $errors->last('password') }}</div>
                     @endif
@@ -74,7 +74,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="confirm_password">{{ __('adminlte::adminlte.confirm_password') }}<span class="text-danger"> *</span></label>
-                    <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" maxlength="100">
                     @if($errors->has('confirm_password'))
                       <div class="error">{{ $errors->last('confirm_password') }}</div>
                     @endif

@@ -25,7 +25,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="page_title">Title</label>
-                  <input type="title" name="title" class="form-control" id="page_title">
+                  <input type="title" name="title" class="form-control" id="page_title" maxlength="100">
                   @if($errors->has('title'))
                     <div class="error">{{ $errors->first('title') }}</div>
                   @endif
@@ -61,10 +61,10 @@
                     <div class="error">{{ $errors->first('view') }}</div>
                   @endif
                 </div>
-                <textarea id="content" name="content"></textarea>
+                <textarea id="content" name="content" maxlength="1000"></textarea>
                 <div class="form-group mb-0">
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="content" class="custom-control-input" id="exampleCheck1">
+                    <input type="checkbox" name="content" class="custom-control-input" id="exampleCheck1" maxlength="100">
                   @if($errors->has('content'))
                     <div class="error">{{ $errors->first('content') }}</div>
                   @endif

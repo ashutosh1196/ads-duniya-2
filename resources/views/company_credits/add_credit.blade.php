@@ -37,7 +37,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="total_paid_credits">{{ __('adminlte::adminlte.credit_amount') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="total_paid_credits" class="form-control" id="total_paid_credits">
+                        <input type="text" name="total_paid_credits" class="form-control" id="total_paid_credits" maxlength="100">
                         <div id ="function_error" class="error"></div>
                         @if($errors->has('total_paid_credits'))
                           <div class="error">{{ $errors->first('total_paid_credits') }}</div>

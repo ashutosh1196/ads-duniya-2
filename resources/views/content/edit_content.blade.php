@@ -26,7 +26,7 @@
                 <input type="hidden" name="id" class="form-control" id="id" value="{{ $pageContent->id }}">
                 <div class="form-group">
                   <label for="page_title">Title</label>
-                  <input type="title" name="title" class="form-control" id="page_title" value="{{ $pageContent->title }}">
+                  <input type="title" name="title" class="form-control" id="page_title" value="{{ $pageContent->title }}" maxlength="100">
                   @if($errors->has('title'))
                     <div class="error">{{ $errors->first('title') }}</div>
                   @endif
@@ -44,17 +44,17 @@
                     $sectionName = "About Us";
                   }
                   ?>
-                  <input type="text" name="section" class="form-control" id="section" value="{{ $sectionName }}" readonly>
+                  <input type="text" name="section" class="form-control" id="section" value="{{ $sectionName }}" readonly maxlength="100">
                 </div>
                 <!-- <div class="form-group">
                   <label for="status">Status</label>
-                  <input type="text" name="status" class="form-control" id="status" value="{{ $pageContent->status == 1 ? 'Active' : 'Inactive' }}" readonly>
+                  <input type="text" name="status" class="form-control" id="status" value="{{ $pageContent->status == 1 ? 'Active' : 'Inactive' }}" readonly maxlength="100">
                 </div> -->
                 <div class="form-group">
                   <label for="view">View</label>
-                  <input type="text" name="view" class="form-control" id="view" value="{{ $pageContent->view == 1 ? 'Website' : 'Mobile' }}" readonly>
+                  <input type="text" name="view" class="form-control" id="view" value="{{ $pageContent->view == 1 ? 'Website' : 'Mobile' }}" readonly maxlength="100">
                 </div>
-                <textarea id="content" name="content">{{ $pageContent->content }}</textarea>
+                <textarea id="content" name="content" maxlength="1000">{{ $pageContent->content }}</textarea>
                 @if($errors->has('content'))
                   <div class="error">{{ $errors->first('content') }}</div>
                 @endif

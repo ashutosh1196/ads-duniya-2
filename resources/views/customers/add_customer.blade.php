@@ -41,7 +41,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">{{ __('adminlte::adminlte.company_name') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" maxlength="100">
                         @if($errors->has('name'))
                           <div class="error">{{ $errors->first('name') }}</div>
                         @endif
@@ -51,7 +51,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="email">{{ __('adminlte::adminlte.company_or_consultants_email') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com">
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Ex: emaple@whichvocation.com" maxlength="100">
                         <div id ="email_error" class="error"></div>
                         @if($errors->has('email'))
                           <div class="error">{{ $errors->first('email') }}</div>
@@ -64,7 +64,7 @@
                     <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label for="contact_number">Contact Number<span class="text-danger"> *</span></label>
-                        <input type="text" name="contact_number" class="form-control" id="contact_number">
+                        <input type="text" name="contact_number" class="form-control" id="contact_number" maxlength="100">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
@@ -84,7 +84,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="vat_number">{{ __('adminlte::adminlte.vat_number') }} ({{ __('adminlte::adminlte.optional') }})</label>
-                        <input type="text" name="vat_number" class="form-control" id="vat_number">
+                        <input type="text" name="vat_number" class="form-control" id="vat_number" maxlength="100">
                         @if($errors->has('vat_number'))
                           <div class="error">{{ $errors->first('vat_number') }}</div>
                         @endif
@@ -96,7 +96,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="url">{{ __('adminlte::adminlte.company_domain_url') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="url" class="form-control" id="url" placeholder="Ex: http(s)://whichvocation.com OR http(s)://www.whichvocation.com">
+                        <input type="text" name="url" class="form-control" id="url" placeholder="Ex: http(s)://whichvocation.com OR http(s)://www.whichvocation.com" maxlength="100">
                         @if($errors->has('url'))
                           <div class="error">{{ $errors->first('url') }}</div>
                         @endif
@@ -112,7 +112,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="address" class="form-control" id="autocomplete">
+                        <input type="text" name="address" class="form-control" id="autocomplete" maxlength="100">
                         @if($errors->has('address'))
                           <div class="error">{{ $errors->first('address') }}</div>
                         @endif
@@ -122,7 +122,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city">
+                        <input type="text" name="city" class="form-control" id="city" maxlength="100">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -134,7 +134,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="state">{{ __('adminlte::adminlte.state') }}</label>
-                        <input type="text" name="state" class="form-control" id="state">
+                        <input type="text" name="state" class="form-control" id="state" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
@@ -156,7 +156,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.country') }}</label>
-                        <input type="text" name="county" class="form-control" id="county">
+                        <input type="text" name="county" class="form-control" id="county" maxlength="100">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif

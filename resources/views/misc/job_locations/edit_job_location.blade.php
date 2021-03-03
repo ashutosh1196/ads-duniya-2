@@ -39,7 +39,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{ $jobLocation[0]->name }}">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ $jobLocation[0]->name }}" maxlength="100">
                         <div id ="location_error" class="error"></div>
                         @if($errors->has('name'))
                           <div class="error">{{ $errors->first('name') }}</div>

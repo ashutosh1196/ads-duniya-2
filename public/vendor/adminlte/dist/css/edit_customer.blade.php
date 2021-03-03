@@ -41,7 +41,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Company Name<span class="text-danger"> *</span></label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{ $customer[0]->name }}">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ $customer[0]->name }}" maxlength="100">
                         @if($errors->has('name'))
                           <div class="error">{{ $errors->first('name') }}</div>
                         @endif
@@ -51,7 +51,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="email">Company Or Consultants Email<span class="text-danger"> *</span></label>
-                        <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}">
+                        <input type="text" name="email" class="form-control" id="email" value="{{ $customer[0]->email }}" maxlength="100">
                         <div id ="email_error" class="error"></div>
                         @if($errors->has('email'))
                           <div class="error">{{ $errors->first('email') }}</div>
@@ -74,7 +74,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="vat_number">VAT Number (Optional)</label>
-                        <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}">
+                        <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}" maxlength="100">
                         @if($errors->has('vat_number'))
                           <div class="error">{{ $errors->first('vat_number') }}</div>
                         @endif
@@ -86,7 +86,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="url">Company Domain URL<span class="text-danger"> *</span></label>
-                        <input type="text" name="url" class="form-control" id="url" value="{{ $customer[0]->url }}">
+                        <input type="text" name="url" class="form-control" id="url" value="{{ $customer[0]->url }}" maxlength="100">
                         @if($errors->has('url'))
                           <div class="error">{{ $errors->first('url') }}</div>
                         @endif
@@ -102,7 +102,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="address">Address<span class="text-danger"> *</span></label>
-                        <input type="text" name="address" class="form-control" id="autocomplete" value="{{ $customer[0]->address }}">
+                        <input type="text" name="address" class="form-control" id="autocomplete" value="{{ $customer[0]->address }}" maxlength="100">
                         @if($errors->has('address'))
                           <div class="error">{{ $errors->first('address') }}</div>
                         @endif
@@ -112,7 +112,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">City<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}">
+                        <input type="text" name="city" class="form-control" id="city" value="{{ $customer[0]->city }}" maxlength="100">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -124,7 +124,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="state">State</label>
-                        <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}">
+                        <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
@@ -146,7 +146,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">County</label>
-                        <input type="text" name="county" class="form-control" id="county" value="{{ $customer[0]->county }}">
+                        <input type="text" name="county" class="form-control" id="county" value="{{ $customer[0]->county }}" maxlength="100">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif

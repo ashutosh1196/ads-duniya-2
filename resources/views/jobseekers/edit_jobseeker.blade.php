@@ -28,7 +28,7 @@
                   <!-- <div class="col-12">
                     <div class="form-group">
                       <label for="name">Name<span class="text-danger"> *</span></label>
-                      <input type="name" name="name" class="form-control" id="name" value="{{ $jobseeker[0]->name }}">
+                      <input type="name" name="name" class="form-control" id="name" value="{{ $jobseeker[0]->name }}" maxlength="100">
                       <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i>
                       @if($errors->has('name'))
@@ -39,7 +39,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="first_name">{{ __('adminlte::adminlte.first_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $jobseeker[0]->first_name }}">
+                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $jobseeker[0]->first_name }}" maxlength="100">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('first_name'))
@@ -50,7 +50,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="last_name">{{ __('adminlte::adminlte.last_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $jobseeker[0]->last_name }}">
+                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $jobseeker[0]->last_name }}" maxlength="100">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('last_name'))
@@ -61,7 +61,7 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group">
                       <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}" readonly>
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $jobseeker[0]->email }}" readonly maxlength="100">
                       <!-- <i class="fa fa-edit editable_field text-success"></i>
                       <i class="fa fa-times non_editable_field text-danger"></i> -->
                       @if($errors->has('email'))

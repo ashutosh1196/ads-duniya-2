@@ -38,7 +38,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="first_name">{{ __('adminlte::adminlte.first_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}">
+                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}" maxlength="100">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
                       @endif
@@ -48,7 +48,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="last_name">{{ __('adminlte::adminlte.last_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}">
+                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}" maxlength="100">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
                       @endif
@@ -68,7 +68,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}" readonly>
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}" readonly maxlength="100">
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif

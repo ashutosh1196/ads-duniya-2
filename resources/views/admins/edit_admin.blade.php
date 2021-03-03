@@ -28,7 +28,7 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="name" class="form-control" id="name" value="{{ $admin[0]->name }}">
+                      <input type="text" name="name" class="form-control" id="name" value="{{ $admin[0]->name }}" maxlength="100">
                       @if($errors->has('name'))
                         <div class="error">{{ $errors->first('name') }}</div>
                       @endif
@@ -37,7 +37,7 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}" readonly>
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $admin[0]->email }}" readonly maxlength="100">
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif

@@ -38,7 +38,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_title" class="form-control" id="job_title">
+                        <input type="text" name="job_title" class="form-control" id="job_title" maxlength="100">
                         @if($errors->has('job_title'))
                           <div class="error">{{ $errors->first('job_title') }}</div>
                         @endif
@@ -78,7 +78,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
-                        <input type="hidden" name="job_location_id" value="1">
+                        <input type="hidden" name="job_location_id" value="1" maxlength="100">
                         <select name="job_function_id" class="form-control" id="job_function_id">
                           <?php for ($i=0; $i < count($jobFunctions); $i++) { ?> 
                             <option value="{{ $jobFunctions[$i]->id }}">{{ $jobFunctions[$i]->name }}</option>
@@ -154,7 +154,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
-                        <textarea id="job_description" name="job_description"></textarea>
+                        <textarea id="job_description" name="job_description" maxlength="1000"></textarea>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
                         @endif
@@ -170,7 +170,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="min_monthly_salary">{{ __('adminlte::adminlte.min_salary') }}</label>
-                        <input type="text" name="min_monthly_salary" class="form-control" id="min_monthly_salary">
+                        <input type="text" name="min_monthly_salary" class="form-control" id="min_monthly_salary" maxlength="100">
                         @if($errors->has('min_monthly_salary'))
                           <div class="error">{{ $errors->first('min_monthly_salary') }}</div>
                         @endif
@@ -180,7 +180,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="max_monthly_salary">{{ __('adminlte::adminlte.max_salary') }}</label>
-                        <input type="text" name="max_monthly_salary" class="form-control" id="max_monthly_salary">
+                        <input type="text" name="max_monthly_salary" class="form-control" id="max_monthly_salary" maxlength="100">
                         @if($errors->has('max_monthly_salary'))
                           <div class="error">{{ $errors->first('max_monthly_salary') }}</div>
                         @endif
@@ -193,7 +193,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="min_experience">{{ __('adminlte::adminlte.min_experience') }}</label>
-                        <input type="text" name="min_experience" class="form-control" id="min_experience">
+                        <input type="text" name="min_experience" class="form-control" id="min_experience" maxlength="100">
                         @if($errors->has('min_experience'))
                           <div class="error">{{ $errors->first('min_experience') }}</div>
                         @endif
@@ -203,7 +203,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="max_experience">{{ __('adminlte::adminlte.max_experience') }}</label>
-                        <input type="text" name="max_experience" class="form-control" id="max_experience">
+                        <input type="text" name="max_experience" class="form-control" id="max_experience" maxlength="100">
                         @if($errors->has('max_experience'))
                           <div class="error">{{ $errors->first('max_experience') }}</div>
                         @endif
@@ -236,7 +236,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_address" class="form-control" id="job_address">
+                        <input type="text" name="job_address" class="form-control" id="job_address" maxlength="100">
                         @if($errors->has('job_address'))
                           <div class="error">{{ $errors->first('job_address') }}</div>
                         @endif
@@ -246,7 +246,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city">
+                        <input type="text" name="city" class="form-control" id="city" maxlength="100">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -258,7 +258,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="state" class="form-control" id="state">
+                        <input type="text" name="state" class="form-control" id="state" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
@@ -280,7 +280,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}</label>
-                        <input type="text" name="county" class="form-control" id="county">
+                        <input type="text" name="county" class="form-control" id="county" maxlength="100">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif

@@ -22,7 +22,7 @@
             @endif
             <form id="editJobForm" method="post" action="{{ route('update_job') }}">
               @csrf
-              <input type="hidden" name="id" value="{{ $jobDetails[0]->id}}">
+              <input type="hidden" name="id" value="{{ $jobDetails[0]->id}}" maxlength="100">
               <div class="card-body">
                 @if ($errors->any())
                   <div class="alert alert-warning">
@@ -39,7 +39,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails[0]->job_title }}">
+                        <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails[0]->job_title }}" maxlength="100">
                         @if($errors->has('job_title'))
                           <div class="error">{{ $errors->first('job_title') }}</div>
                         @endif
@@ -65,7 +65,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="industry">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="industry" class="form-control" id="industry" value="{{ $jobDetails[0]->industry }}">
+                        <input type="text" name="industry" class="form-control" id="industry" value="{{ $jobDetails[0]->industry }}" maxlength="100">
                         @if($errors->has('industry'))
                           <div class="error">{{ $errors->first('industry') }}</div>
                         @endif
@@ -75,7 +75,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="salary">{{ __('adminlte::adminlte.salary') }}</label>
-                        <input type="text" name="salary" class="form-control" id="salary" value="{{ $jobDetails[0]->salary }}">
+                        <input type="text" name="salary" class="form-control" id="salary" value="{{ $jobDetails[0]->salary }}" maxlength="100">
                         @if($errors->has('salary'))
                           <div class="error">{{ $errors->first('salary') }}</div>
                         @endif
@@ -118,7 +118,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
-                        <textarea id="job_description" name="job_description">{{ $jobDetails[0]->job_description }}</textarea>
+                        <textarea id="job_description" name="job_description" maxlength="1000">{{ $jobDetails[0]->job_description }}</textarea>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
                         @endif
@@ -130,14 +130,11 @@
                 <hr/>
 
                 <div class="address_fields">
-                  <input type="hidden" name="latitude" value="30.6774506">
-                  <input type="hidden" name="longitude" value="76.74058339">
-
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails[0]->job_address }}">
+                        <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails[0]->job_address }}" maxlength="100">
                         @if($errors->has('job_address'))
                           <div class="error">{{ $errors->first('job_address') }}</div>
                         @endif
@@ -147,7 +144,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails[0]->city }}">
+                        <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails[0]->city }}" maxlength="100">
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -159,7 +156,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails[0]->state }}">
+                        <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails[0]->state }}" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
@@ -181,7 +178,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}</label>
-                        <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails[0]->county }}">
+                        <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails[0]->county }}" maxlength="100">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif

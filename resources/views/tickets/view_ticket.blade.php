@@ -73,7 +73,7 @@
                       <form action="{{ route('reply_on_ticket') }}" method="post" id="replyForm" enctype="multipart/form-data">
                       <div class="message_reply">
                         <div class="form-group">
-                          <textarea id="message_text" name="message_text" class="form-control"></textarea>
+                          <textarea id="message_text" name="message_text" class="form-control" maxlength="1000"></textarea>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
                             <input type="file" name="attachment_file" id="attachment_file">

@@ -28,7 +28,7 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   <?php $company = \App\Models\Organization::where('id', $viewCreditHistory->organization_id)->get(); ?>
-                  <input class="form-control" placeholder="{{ $company[0]->name }}" readonly>
+                  <input class="form-control" placeholder="{{ $company[0]->name }}" readonly maxlength="100">
                 </div>
               </div>
               

@@ -38,7 +38,7 @@
                 <div class="form-group">
                   <label for="name">{{ __('adminlte::adminlte.name') }}<span class="text-danger"> *</span></label>
                   <input type="hidden" name="id" value="{{ $userDetails->id }}">
-                  <input type="text" name="name" class="form-control" id="name" value="{{ $userDetails->name }}">
+                  <input type="text" name="name" class="form-control" id="name" value="{{ $userDetails->name }}" maxlength="100">
                   @if($errors->has('name'))
                     <div class="error">{{ $errors->first('name') }}</div>
                   @endif
@@ -83,7 +83,7 @@
 
                 <div class="form-group">
                   <label for="old_password">{{ __('adminlte::adminlte.old_password') }}<span class="text-danger"> *</span></label>
-                  <input type="password" name="old_password" class="form-control" id="old_password">
+                  <input type="password" name="old_password" class="form-control" id="old_password" maxlength="100">
                   @if($errors->has('old_password'))
                     <div class="error">{{ $errors->first('old_password') }}</div>
                   @endif
@@ -92,7 +92,7 @@
 
                 <div class="form-group">
                   <label for="password">{{ __('adminlte::adminlte.new_password') }}<span class="text-danger"> *</span></label>
-                  <input type="password" name="password" class="form-control" id="password">
+                  <input type="password" name="password" class="form-control" id="password" maxlength="100">
                   @if($errors->has('password'))
                     <div class="error">{{ $errors->first('password') }}</div>
                   @endif
@@ -101,7 +101,7 @@
 
                 <div class="form-group">
                   <label for="confirm_password">{{ __('adminlte::adminlte.confirm_password') }}<span class="text-danger"> *</span></label>
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" maxlength="100">
                   @if($errors->has('confirm_password'))
                     <div class="error">{{ $errors->first('confirm_password') }}</div>
                   @endif
