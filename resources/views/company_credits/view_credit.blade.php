@@ -36,7 +36,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.credits_available') }}</label>
-                  <input class="form-control" placeholder="${{ $companyCredits->total_paid_credits || $companyCredits->trial_credits ? $companyCredits->total_paid_credits+$companyCredits->trial_credits : '0.00' }}" readonly>
+                  <input class="form-control" placeholder="${{ $companyCredits->total_paid_credits+$companyCredits->trial_credits }}" readonly>
                 </div>
               </div>
               
