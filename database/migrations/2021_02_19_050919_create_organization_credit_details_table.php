@@ -22,6 +22,7 @@ class CreateOrganizationCreditDetailsTable extends Migration
             $table->foreignId('organization_id')->constrained();
             $table->foreignId('organization_credit_id')->constrained();
             $table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
+            $table->foreignId('admin_id')->nullable()->constrained()->default(null);
             $table->timestamps();
         });
     }
