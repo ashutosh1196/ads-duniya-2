@@ -44,6 +44,7 @@ class JobSeekersController extends Controller {
 		$jobseeker->phone_number = $request->phone_number;
 		$jobseeker->password = Hash::make($request->password);
 		$jobseeker->ip_address = $_SERVER["REMOTE_ADDR"];
+		$jobseeker->signup_via = 'web';
 		if($jobseeker->save()) {
 			$jobseekersList = User::all();
 			return redirect()->route('jobseekers_list', ['jobseekersList' => $jobseekersList])->with('success', 'Jobseeker Added Successfully!');
