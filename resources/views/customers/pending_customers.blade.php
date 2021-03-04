@@ -42,10 +42,10 @@
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '--' }}</td>
                   <td>
-                    <a href="view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                    <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
                     <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <a href="edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                    <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>

@@ -35,6 +35,7 @@
                 
                 <!-- Form Fields -->
                 <input type="hidden" name="id" id="customer_id" value="{{ $customer[0]->id }}">
+                <input type="hidden" name="from_page" id="from_page" value="{{ $from_page }}">
                 <!-- INFORMATION FIELDS -->
                 <div class="information_fields">
                   <div class="row">
