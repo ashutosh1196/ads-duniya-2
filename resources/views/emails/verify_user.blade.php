@@ -52,9 +52,9 @@
           <tr style="vertical-align: top;" valign="">
               <td style="word-break: break-word; vertical-align: middle;" valign="top">
                 <div style="background-color:transparent;">
-                    <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #fbfbfb;">
+                    <div class="block-grid" style="min-width: 320px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #fbfbfb;">
                       <div style="border-collapse: collapse;display: table;width: 100%;background-color:#fbfbfb;">
-                          <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+                          <div class="col num12" style="min-width: 320px; display: table-cell; vertical-align: top; width: 600px;">
                             <div class="col_cont" style="width:100% !important;">
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
                                   <div align="left" class="img-container fixedwidth" style="padding-right: 15px;padding-left: 15px;">
@@ -69,9 +69,9 @@
                     </div>
                 </div>
                 <div style="background-color:transparent;">
-                    <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                    <div class="block-grid" style="min-width: 320px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                       <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
-                          <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+                          <div class="col num12" style="min-width: 320px; display: table-cell; vertical-align: top; width: 600px;">
                             <div class="col_cont" style="width:100% !important;">
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:35px; padding-bottom:0px; padding-right: 10px; padding-left: 10px;">
                                   <div style="color:#1f2936;font-family:'Ubuntu', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
@@ -103,9 +103,9 @@
                     </div>
                 </div>
                 <div style="background-color:transparent;">
-                    <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                    <div class="block-grid" style="min-width: 320px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                       <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
-                          <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+                          <div class="col num12" style="min-width: 320px; display: table-cell; vertical-align: top; width: 600px;">
                             <div class="col_cont" style="width:100% !important;">
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
                                   <div class="mobile_hide">
@@ -132,9 +132,9 @@
                     </div>
                 </div>
                 <div style="background-color:transparent;">
-                    <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                    <div class="block-grid" style="min-width: 320px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                       <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
-                          <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+                          <div class="col num12" style="min-width: 320px; display: table-cell; vertical-align: top; width: 600px;">
                             <div class="col_cont" style="width:100% !important;">
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;">
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:0px;padding-right:10px;padding-bottom:05px;padding-left:10px;">
@@ -150,9 +150,9 @@
                     </div>
                 </div>
                 <div style="background-color:transparent;">
-                    <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #fbfbfb;">
+                    <div class="block-grid" style="min-width: 320px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #fbfbfb;">
                       <div style="border-collapse: collapse;display: table;width: 100%;background-color:#fbfbfb;">
-                          <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+                          <div class="col num12" style="min-width: 320px; display: table-cell; vertical-align: top; width: 600px;">
                             <div class="col_cont" style="width:100% !important;">
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:10px; padding-bottom:10px; padding-right: 0px; padding-left: 0px;">
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:0px;padding-right:10px;padding-bottom:00px;padding-left:10px;">
