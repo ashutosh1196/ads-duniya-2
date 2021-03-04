@@ -71,15 +71,15 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
-                  <?php $currency = $JobHistory->salary_currency == 'pounds' ? '$' : '£' ?>
-                  <input class="form-control" placeholder="{{ $currency }}{{ $JobHistory->min_monthly_salary ? $JobHistory->min_monthly_salary.' - '.$currency.$JobHistory->max_monthly_salary : '--' }}" readonly>
+                  <?php $currency = $JobHistory->salary_currency == 'pounds' ? '£' : '$' ?>
+                  <input class="form-control" placeholder="{{ $currency }}{{ $JobHistory->package_range_from ? $JobHistory->package_range_from.' - '.$currency.$JobHistory->package_range_to : '--' }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                  <input class="form-control" placeholder="{{ $JobHistory->min_experience ? $JobHistory->min_experience.' - '.$JobHistory->max_experience.' Years' : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $JobHistory->experience_range_min ? $JobHistory->experience_range_min.' - '.$JobHistory->experience_range_max.' Years' : '--' }}" readonly>
                 </div>
               </div>
 
@@ -97,6 +97,13 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   <input class="form-control" placeholder="{{ $organizationName }}" readonly>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.job_url') }}</label>
+                  <input class="form-control" placeholder="{{ $JobHistory->job_url }}" readonly>
                 </div>
               </div>
 
@@ -164,6 +171,13 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
                   <input class="form-control" placeholder="{{ $JobHistory->created_by ? $JobHistory->created_by : '--' }}" readonly>
+                </div>
+              </div>
+                      
+              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.expiring_at') }}</label>
+                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($JobHistory->expiring_at)) }}" readonly>
                 </div>
               </div>
               
