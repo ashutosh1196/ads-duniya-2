@@ -319,10 +319,10 @@
                   
                   <div class="row">
                     <div class="col-sm-6">
-                      <div class="form-group">
+                      <div class="form-group is_featured_group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}<span class="text-danger"> *</span></label>
                         <label class="switch">
-                          <input type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
+                          <input class="is_featured" type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider round"></span>
                         </label>
                         @if($errors->has('is_featured'))
@@ -331,9 +331,9 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <div class="form-group">
+                      <div class="form-group is_complete_update_group">
                         <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}<span class="text-danger"> *</span></label>
-                        <input type="checkbox" name="is_complete_update">
+                        <input class="is_complete_update" type="checkbox" name="is_complete_update">
                         @if($errors->has('is_complete_update'))
                           <div class="error">{{ $errors->last('is_complete_update') }}</div>
                         @endif
