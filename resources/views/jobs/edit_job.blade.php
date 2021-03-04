@@ -322,7 +322,7 @@
                       <div class="form-group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}<span class="text-danger"> *</span></label>
                         <label class="switch">
-                          <input type="checkbox" checked="" name="is_featured" disabled="">
+                          <input type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider round"></span>
                         </label>
                         @if($errors->has('is_featured'))
