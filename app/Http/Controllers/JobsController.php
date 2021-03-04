@@ -153,7 +153,7 @@ class JobsController extends Controller {
 		$jobIndustries = JobIndustry::all();
 		$jobFunctions  = JobFunction::all();
 		$jobLocations  = JobLocation::all();
-		$JobSkills     = JobSkill::all();
+		$JobSkills     = \DB::table('job_skill')->get();
 		$skills = Skill::all();
 		$organisation = Organization::find($jobDetails->organization_id);
 		$recruiter = Organization::find($jobDetails->recruiter_id);
@@ -174,6 +174,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function updateJob(Request $request) {
+		$job = Job::find($request->id);
 		$validatedData = $request->validate([
 			'job_title' => 'required',
 			'job_description' => 'required',
@@ -199,7 +200,6 @@ class JobsController extends Controller {
 			'job_function_id.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Location field is required.',
 		]);
-		$jobId = $request->id;
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
@@ -220,10 +220,14 @@ class JobsController extends Controller {
 			"job_url" => $request->job_url,
 			"job_location_id" => $request->job_location_id,
 			"salary" => $request->salary,
-			"status" => $request->job_type,
+			"job_type" => $request->job_type,
 		];
-		$updateJob = Job::where('id', $jobId)->update($jobToUpdate);
+		if($request->is_complete_update == "on") {
+			$job->jobHistories()->create($job->toArray());
+		}
+		$updateJob = $job->update($jobToUpdate);
 		if($updateJob) {
+    	$job->skills()->sync($request->skills);
 			$jobsList = Job::all();
 			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
 		}

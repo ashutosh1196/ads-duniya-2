@@ -235,4 +235,5 @@ return [
     'is_featured'                       => 'Is this a featured job?',
     'advert_days'                       => 'Advert Days',
     'currency'                          => 'Currency',
+    'is_complete_update'                => 'Complete job update?',
 ];

@@ -9,4 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Skill extends Model
 {
     use HasFactory, SoftDeletes;
+
+    /**
+     * The users that belong to the role.
+     */
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

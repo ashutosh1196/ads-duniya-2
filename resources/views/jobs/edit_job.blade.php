@@ -127,8 +127,29 @@
                         <label for="skills">{{ __('adminlte::adminlte.skills') }}<span class="text-danger"> *</span></label>
                         <select class="form-control" id="skills" multiple="multiple" name="skills[]">
                         @foreach($skills as $skill)
-                          <option value="{{$skill->id}}">{{$skill->name}}</option>
-                        @endforeach
+                          @php
+                            if (old('skills')) {
+                              if (in_array($skill->id, old('skills'))) {
+                                $selected = "selected";
+                              }
+                              else{
+                                $selected = "";
+                              }
+                            }
+                            elseif($jobDetails->skills){
+                              if (in_array($skill->id, $jobDetails->skills->pluck('id')->toArray())) {
+                                $selected = "selected";
+                              }
+                              else{
+                                $selected = "";
+                              }
+                            }
+                            else{
+                              $selected = "";
+                            }    
+                          @endphp
+                          <option {{$selected}} value="{{$skill->id}}">{{$skill->name}}</option>
+                          @endforeach
                         <!--  -->
                         </select>
                         <!-- <input type="text" name="skills" class="form-control" id="skills" maxlength="100"> -->
@@ -179,16 +200,6 @@
                         @endif
                       </div>
                     </div>
-                      
-                    <!-- <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="recruiter_id">{{ __('adminlte::adminlte.recruiter') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="recruiter_id" class="form-control" id="recruiter_id" value="{{ $recruiter->name }}" disabled>
-                        @if($errors->has('recruiter_id'))
-                          <div class="error">{{ $errors->last('recruiter_id') }}</div>
-                        @endif
-                      </div>
-                    </div> -->
                   </div>
 
                   <div class="row">
@@ -316,6 +327,15 @@
                         @endif
                       </div>
                     </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}<span class="text-danger"> *</span></label>
+                        <input type="checkbox" name="is_complete_update">
+                        @if($errors->has('is_complete_update'))
+                          <div class="error">{{ $errors->last('is_complete_update') }}</div>
+                        @endif
+                      </div>
+                    </div>
                   </div>
 
                 </div>
@@ -323,7 +343,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary" disabled>{{ __('adminlte::adminlte.update') }}</button>
+                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.update') }}</button>
               </div>
             </form>
           </div>
