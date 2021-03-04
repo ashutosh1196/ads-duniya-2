@@ -579,8 +579,8 @@ body.login-page .login-box button span {
 }
 .job-description {
     background-color: #f6f7fb;
-    padding: 20px 20px;
-    margin-top: 20px;
+    padding: 12px 10px;
+    margin-top: 0;
 }
 
 /*--Contact Admin--*/
@@ -958,6 +958,9 @@ span.selection .select2-selection--multiple {
 }
 .form-group.radio label {
     padding-right: 10px;
+}
+.job-description p {
+    margin: 0;
 }
 
 
