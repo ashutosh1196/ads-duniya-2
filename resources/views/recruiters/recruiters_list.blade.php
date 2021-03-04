@@ -34,16 +34,16 @@
                   $organisation = \App\Models\Organization::where('id', $recruitersList[$i]->organization_id)->get();
                   ?>
                 <tr>
-                  <td>{{ $recruitersList[$i]->id }}</td>
-                    <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
-                    <td>{{ $recruitersList[$i]->email }}</td>
-                    <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
-                    <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
-                    <td>
-                      <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
-                      <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                    </td>
+                  <td>{{ $i+1 }}</td>
+                  <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
+                  <td>{{ $recruitersList[$i]->email }}</td>
+                  <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
+                  <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+                  <td>
+                    <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
+                    <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
