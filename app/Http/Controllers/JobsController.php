@@ -129,10 +129,10 @@ class JobsController extends Controller {
 	*/
 	public function viewJob($id) {
 		$jobDetails = Job::find($id);
-		$jobIndustry = jobIndustry::find( $jobDetails->job_industry_id);
-		$jobFunction = jobFunction::find( $jobDetails->job_function_id);
-		$jobLocation = jobLocation::find( $jobDetails->job_location_id);
-		$organization = Organization::find( $jobDetails->organization_id);
+		$jobIndustry = jobIndustry::find($jobDetails['job_industry_id']);
+		$jobFunction = jobFunction::find($jobDetails['job_function_id']);
+		$jobLocation = jobLocation::find($jobDetails['job_location_id']);
+		$organization = Organization::find($jobDetails['organization_id']);
 		$recruiter = Recruiter::find( $jobDetails->recruiter_id);
 		return view('jobs/view_job', [
 			'jobDetails' => $jobDetails,
