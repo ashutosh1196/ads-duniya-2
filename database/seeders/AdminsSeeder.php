@@ -71,7 +71,13 @@ class AdminsSeeder extends Seeder
             'contact_number' => '+918968519881',
             'url' => 'https://rvtechnologies.com/',
             'domain' => 'rvtechnologies.com',
-            'is_whitelisted' => 1
+            'is_whitelisted' => 1,
+            'address' => 'C127, Ground Floor',
+            'city' => 'Mohali',
+            'county' => 'Phase 8 Industrial Area',
+            'state' => 'Punjab',
+            'country' => 'United Kingdom',
+            'pincode' => '132654'
         ]);    
 
         \DB::table('recruiters')->delete();

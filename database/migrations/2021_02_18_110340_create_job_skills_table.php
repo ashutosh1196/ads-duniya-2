@@ -13,7 +13,7 @@ class CreateJobSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_skills', function (Blueprint $table) {
+        Schema::create('job_skill', function (Blueprint $table) {
             $table->id();
             $table->foreignId('job_id')->constrained();
             $table->foreignId('skill_id')->constrained();
