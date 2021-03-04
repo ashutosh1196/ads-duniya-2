@@ -116,7 +116,10 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
-                        <input type="text" name="salary_currency" class="form-control" id="salary_currency" value="{{ $jobDetails->salary_currency }}" maxlength="100">
+                        <select name="salary_currency" class="form-control" id="salary_currency">
+                          <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>Pound</option>
+                          <option value="dollars" {{ $jobDetails->salary_currency == 'dollars' ? 'selected' : '' }}>USD</option>
+                        </select>
                         @if($errors->has('salary_currency'))
                           <div class="error">{{ $errors->first('salary_currency') }}</div>
                         @endif
