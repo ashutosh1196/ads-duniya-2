@@ -940,6 +940,14 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     transform: translateX(26px);
     left: -1px;
 }
+.tab-content form .form-group input {
+    background-color: #f6f7fb;
+    border: 1px solid #f6f7fb;
+}
+span.selection .select2-selection--multiple {
+    border: 1px solid #cccccc;
+    padding: .375rem .75rem;
+}
 
 /*Responsive*/
 
@@ -974,6 +982,13 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
 }
 .card-primary.card-tabs .card-header ul li a {
     background-color: #e9ecef;
+}
+span.selection .select2-selection--multiple {
+    width: 100%;
+}
+.wrapper .content .card-body form.form_wrap .form-group input {
+    background-color: #eaeaea;
+    border: 1px solid #eaeaea;
 }
 }
 @media only screen and (max-width: 1199px) {
