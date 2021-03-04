@@ -236,5 +236,5 @@ return [
     'advert_days'                       => 'Advert Days',
     'currency'                          => 'Currency',
     'is_complete_update'                => 'Complete job update?',
-    'expiring_at'                       => 'Expiring At',
+    'expiring_at'                       => 'Expiry Date',
 ];
