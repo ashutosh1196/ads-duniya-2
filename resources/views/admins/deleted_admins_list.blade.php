@@ -31,7 +31,7 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedAdmins)?$deletedAdmins:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $deletedAdmins[$i]->id }}</td>
+                    <td>{{ $i+1 }}</td>
                     <td>{{ $deletedAdmins[$i]->name }}</td>
                     <td>{{ $deletedAdmins[$i]->email }}</td>
                     <!-- <td>True</td> -->

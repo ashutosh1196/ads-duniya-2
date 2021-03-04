@@ -33,7 +33,7 @@
                   $role = \App\Models\Role::where('id', $adminsList[$i]->role_id)->get();
                   ?>
                   <tr>
-                    <td>{{ $adminsList[$i]->id }}</td>
+                    <td>{{ $i+1 }}</td>
                     <td>{{ $adminsList[$i]->name }}</td>
                     <td>{{ $adminsList[$i]->email }}</td>
                     <td>{{ $role[0]->name }}</td>

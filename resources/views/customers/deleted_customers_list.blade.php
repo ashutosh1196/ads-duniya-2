@@ -30,7 +30,7 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedCustomers)?$deletedCustomers:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $deletedCustomers[$i]->id }}</td>
+                    <td>{{ $i+1 }}</td>
                     <td>{{ $deletedCustomers[$i]->name }}</td>
                     <td>{{ $deletedCustomers[$i]->email }}</td>
                     <td>{{ $deletedCustomers[$i]->contact_number }}</td>
