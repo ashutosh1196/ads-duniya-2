@@ -133,6 +133,16 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
+                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
+                        <input type="text" name="county" class="form-control" id="county" maxlength="100">
+                        @if($errors->has('county'))
+                          <div class="error">{{ $errors->first('county') }}</div>
+                        @endif
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
                         <label for="state">{{ __('adminlte::adminlte.state') }}</label>
                         <input type="text" name="state" class="form-control" id="state" maxlength="100">
                         @if($errors->has('state'))
@@ -140,28 +150,9 @@
                         @endif
                       </div>
                     </div>
-                  
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" maxlength="6">
-                        @if($errors->has('pincode'))
-                          <div class="error">{{ $errors->first('pincode') }}</div>
-                        @endif
-                      </div>
-                    </div>
                   </div>
                       
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="county">{{ __('adminlte::adminlte.country') }}</label>
-                        <input type="text" name="county" class="form-control" id="county" maxlength="100">
-                        @if($errors->has('county'))
-                          <div class="error">{{ $errors->first('county') }}</div>
-                        @endif
-                      </div>
-                    </div>
                   
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -176,6 +167,15 @@
                             <div class="error">{{ $errors->first('country') }}</div>
                           @endif
                         </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="pincode" class="form-control" id="pincode" maxlength="6">
+                        @if($errors->has('pincode'))
+                          <div class="error">{{ $errors->first('pincode') }}</div>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -126,28 +126,6 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
-                        <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}" maxlength="100">
-                        @if($errors->has('state'))
-                          <div class="error">{{ $errors->first('state') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}" maxlength="6">
-                        @if($errors->has('pincode'))
-                          <div class="error">{{ $errors->first('pincode') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                      
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}</label>
                         <input type="text" name="county" class="form-control" id="county" value="{{ $customer[0]->county }}" maxlength="100">
                         @if($errors->has('county'))
@@ -155,7 +133,18 @@
                         @endif
                       </div>
                     </div>
-                  
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
+                        <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}" maxlength="100">
+                        @if($errors->has('state'))
+                          <div class="error">{{ $errors->first('state') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                      
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                           <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
@@ -170,6 +159,15 @@
                             <div class="error">{{ $errors->first('country') }}</div>
                           @endif
                         </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}" maxlength="6">
+                        @if($errors->has('pincode'))
+                          <div class="error">{{ $errors->first('pincode') }}</div>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>
