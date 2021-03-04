@@ -23,7 +23,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.reference_number') }}</th> -->
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
@@ -41,14 +41,14 @@
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>{{ $jobsList[$i]->job_title }}</td>
-                  <td>{{ $jobsList[$i]->job_ref_number }}</td>
+                  <!-- <td>{{ $jobsList[$i]->job_ref_number }}</td> -->
                   <td>{{ $jobType }}</td>
                   <td>{{ $jobsList[$i]->industry }}</td>
                   <td>{{ $organisation ? $organisation->name : '--' }}</td>
                   <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
                   <td>
                     <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <!-- <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
+                    <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
@@ -58,7 +58,7 @@
                 <tr>
                   <th>#</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.reference_number') }}</th> -->
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>

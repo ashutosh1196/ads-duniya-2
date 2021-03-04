@@ -148,21 +148,25 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function editJob($id) {
-		$countries = Country::all()->toArray();
-		$jobDetails = Job::where('id', $id)->get();
-		$organisationsList = Organization::where('is_whitelisted', 1)->get();
-		$recruitersList = [];
-		for ($i=0; $i < count($organisationsList); $i++) {
-			$recruiter = Recruiter::where('organization_id', $organisationsList[$i]->id)->get();
-			if($recruiter->isNotEmpty()) {
-				array_push($recruitersList, $recruiter[0]);
-			}
-		}
+		$jobDetails = Job::find($id);
+		$countries     = Country::all()->toArray();
+		$jobIndustries = JobIndustry::all();
+		$jobFunctions  = JobFunction::all();
+		$jobLocations  = JobLocation::all();
+		$JobSkills     = JobSkill::all();
+		$skills = Skill::all();
+		$organisation = Organization::find($jobDetails->organization_id);
+		$recruiter = Organization::find($jobDetails->recruiter_id);
 		return view('jobs/edit_job', [
+			'organisation' => $organisation,
+			'recruiter' => $recruiter,
+			'countries' => $countries,
+			'jobIndustries' => $jobIndustries,
+			'jobFunctions' => $jobFunctions,
+			'jobLocations' => $jobLocations,
+			'JobSkills' => $JobSkills,
 			'jobDetails' => $jobDetails,
-			'recruitersList' => $recruitersList,
-			'organisationsList' => $organisationsList,
-			'countries' => $countries
+			'skills' => $skills,
 		]);
 	}
 	
@@ -176,41 +180,47 @@ class JobsController extends Controller {
 			'job_type' => 'required',
 			'job_address' => 'required',
 			'city' => 'required',
-			'state' => 'required',
 			'country' => 'required',
 			'pincode' => 'required',
-			'industry' => 'required',
-			'recruiter_id' => 'required',
-			'organization_id' => 'required',
+			'job_url' => 'required',
+			'job_industry_id' => 'required',
+			'job_function_id' => 'required',
+			'job_location_id' => 'required',
 		], [
 			'job_title.required' => 'The Job Title field is required.',
 			'job_description.required' => 'The Job Description field is required.',
 			'job_type.required' => 'The Job Type field is required.',
 			'job_address.required' => 'The Job Address field is required.',
 			'city.required' => 'The City field is required.',
-			'state.required' => 'The State field is required.',
 			'country.required' => 'The Country field is required.',
 			'pincode.required' => 'The Zip / Postcode field is required.',
-			'industry.required' => 'The Industry field is required.',
-			'recruiter_id.required' => 'The Recruiter Name field is required.',
-			'organization_id.required' => 'The Company Name field is required.',
+			'job_url.required' => 'The Job URL field is required.',
+			'job_industry_id.required' => 'The Job Industry field is required.',
+			'job_function_id.required' => 'The Job Function field is required.',
+			'job_location_id.required' => 'The Job Location field is required.',
 		]);
 		$jobId = $request->id;
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
-			"job_description" => $request->job_description,
 			"job_type" => $request->job_type,
+			"job_industry_id" => $request->job_industry_id,
+			"job_function_id" => $request->job_function_id,
+			"package_range_from" => $request->package_range_from,
+			"package_range_to" => $request->package_range_to,
+			"salary_currency" => $request->salary_currency,
+			"experience_range_min" => $request->experience_range_min,
+			"experience_range_max" => $request->experience_range_max,
+			"job_description" => $request->job_description,
 			"job_address" => $request->job_address,
 			"city" => $request->city,
 			"county" => $request->county,
 			"state" => $request->state,
 			"country" => $request->country,
 			"pincode" => $request->pincode,
-			"industry" => $request->industry,
+			"job_url" => $request->job_url,
+			"job_location_id" => $request->job_location_id,
 			"salary" => $request->salary,
 			"status" => $request->job_type,
-			"recruiter_id" => $request->recruiter_id,
-			"organization_id" => $request->organization_id,
 		];
 		$updateJob = Job::where('id', $jobId)->update($jobToUpdate);
 		if($updateJob) {

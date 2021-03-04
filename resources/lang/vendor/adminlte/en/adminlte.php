@@ -225,4 +225,14 @@ return [
     'new_password'                      => 'New Password',
     
     'added_by'                          => 'Added By',
+
+    'minimum_package_amount'            => 'Minimum Package Amount',
+    'maximum_package_amount'            => 'Maximum Package Amount',
+    'minimum_experience_required'       => 'Minimum Experience Required',
+    'maximum_experience_required'       => 'Maximum Experience Required',
+    'job_url'                           => 'Company Website URL',
+    'region'                            => 'Region',
+    'is_featured'                       => 'Is this a featured job?',
+    'advert_days'                       => 'Advert Days',
+    'currency'                          => 'Currency',
 ];
