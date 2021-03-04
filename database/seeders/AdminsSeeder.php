@@ -38,8 +38,8 @@ class AdminsSeeder extends Seeder
         \DB::table('job_functions')->delete();
 
         \DB::table('job_functions')->insert([
-            'name' => 'HR',
-            'slug' => 'hr',
+            'name' => 'Designer',
+            'slug' => 'designer',
             'description' => 'desc',
             'status' => 1
         ]);
@@ -133,5 +133,38 @@ class AdminsSeeder extends Seeder
             'organization_id' => 1,
             'organization_credit_id' => 1
         ]);    
+
+        \DB::table('jobs')->insert([
+            'job_ref_number' => '6574495099900',
+            'job_title' => 'Designer',
+            'job_description' => 'Designer Job',
+            'job_type' => 'full_time',
+            'is_featured' => 0,
+            'job_address' => 'RV Technologies',
+            'city' => 'Mohali',
+            'county' => 'Phase 8',
+            'state' => 'Punjab',
+            'country' => 'United Kingdom',
+            'pincode' => '125687',
+            'job_url' => 'http://rvtechnologies.com',
+            'job_industry_id' => 1,
+            'job_function_id' => 1,
+            'job_location_id' => 1,
+            'package_range_from' => 120000,
+            'package_range_to' => 150000,
+            'salary_currency' => 'dollars',
+            'experience_range_min' => 1.5,
+            'experience_range_max' => 2.5,
+            'status' => 'open',
+            'recruiter_id' => 1,
+            'organization_id' => 1,
+            'expiring_at' => '2022-06-04 11:59:59'
+        ]);
+
+        \DB::table('job_skill')->insert([
+            'job_id' => 1,
+            'skill_id' => 1,
+            'status' => 1
+        ]);
     }
 }
