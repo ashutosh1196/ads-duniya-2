@@ -60,12 +60,12 @@
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_domain') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '--' }}" readonly>
                 </div>
-              </div>
+              </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.address') }}</label>
@@ -82,6 +82,12 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.state') }}</label>
                   <input class="form-control" placeholder="{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '--' }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.county') }}</label>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->county ? $viewCustomer[0]->county : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
