@@ -52,7 +52,7 @@
                             @else
                               <a href="{{ route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $recruiterName }}</label></a>
                             @endif
-                            <label class="time_date">{{ date('d/m/Y', strtotime($ticketMessages[$i]->created_at)) }}</label>
+                            <label class="time_date">{{ date('d/m/y', strtotime($ticketMessages[$i]->created_at)) }}</label>
                           </div>
                         </div>
                         <div class="message">

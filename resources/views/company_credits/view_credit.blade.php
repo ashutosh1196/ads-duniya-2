@@ -50,14 +50,14 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/Y', strtotime($companyCredits->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($companyCredits->created_at)) }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/Y', strtotime($companyCredits->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($companyCredits->updated_at)) }}" readonly>
                 </div>
               </div>
 

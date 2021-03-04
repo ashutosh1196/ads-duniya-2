@@ -74,7 +74,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email_verification_date') }}</label>
-                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? date('d/m/Y', strtotime($jobseeker[0]->email_verified_at)) : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_email_verified == 1 ? date('d/m/y', strtotime($jobseeker[0]->email_verified_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -86,7 +86,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.user_locked_date') }}</label>
-                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? date('d/m/Y', strtotime($jobseeker[0]->user_locked_at)) : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobseeker[0]->is_user_locked == 1 ? date('d/m/y', strtotime($jobseeker[0]->user_locked_at)) : '--' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
@@ -98,13 +98,13 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/Y', strtotime($jobseeker[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($jobseeker[0]->created_at)) }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/Y', strtotime($jobseeker[0]->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($jobseeker[0]->updated_at)) }}" readonly>
                 </div>
               </div>
             </div>
