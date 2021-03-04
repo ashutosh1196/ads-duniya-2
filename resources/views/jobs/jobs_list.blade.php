@@ -37,13 +37,14 @@
                   $recruiter = \App\Models\Recruiter::find($jobsList[$i]->recruiter_id);
                   $jobTypeTrimmed = str_replace('_', ' ', $jobsList[$i]->job_type);
                   $jobType = ucwords($jobTypeTrimmed);
+                  $jobIndustry = \App\Models\JobIndustry::find($jobsList[$i]->job_industry_id);
                 ?>
                 <tr>
                   <td>{{ $i+1 }}</td>
                   <td>{{ $jobsList[$i]->job_title }}</td>
                   <!-- <td>{{ $jobsList[$i]->job_ref_number }}</td> -->
                   <td>{{ $jobType }}</td>
-                  <td>{{ $jobsList[$i]->industry }}</td>
+                  <td>{{ $jobIndustry->name }}</td>
                   <td>{{ $organisation ? $organisation->name : '--' }}</td>
                   <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
                   <td>

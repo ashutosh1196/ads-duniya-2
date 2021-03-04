@@ -70,7 +70,10 @@
                       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_industry') }}</label>
-                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry : '--' }}" readonly>
+                          <?php 
+                            $jobIndustry = \App\Models\JobIndustry::find($jobDetails->job_industry_id);
+                          ?>
+                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry->name : '--' }}" readonly>
                         </div>
                       </div>
 
@@ -84,15 +87,15 @@
                       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
-                          <?php $currency = $jobDetails->salary_currency == 'pounds' ? '$' : '£' ?>
-                          <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails->min_monthly_salary ? $jobDetails->min_monthly_salary.' - '.$currency.$jobDetails->max_monthly_salary : '--' }}" readonly>
+                          <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
+                          <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails->package_range_from ? $jobDetails->package_range_from.' - '.$currency.$jobDetails->package_range_to : '--' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->min_experience ? $jobDetails->min_experience.' - '.$jobDetails->max_experience.' Years' : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' - '.$jobDetails->experience_range_max.' Years' : '--' }}" readonly>
                         </div>
                       </div>
 
@@ -110,6 +113,13 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.company_name') }}</label>
                           <input class="form-control" placeholder="{{ $organizationName }}" readonly>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.job_url') }}</label>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_url }}" readonly>
                         </div>
                       </div>
 
@@ -177,6 +187,13 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.created_by') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->created_by ? $jobDetails->created_by : '--' }}" readonly>
+                        </div>
+                      </div>
+                      
+                      <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.expiring_at') }}</label>
+                          <input class="form-control" placeholder="{{ date('d/m/y', strtotime($jobDetails->expiring_at)) }}" readonly>
                         </div>
                       </div>
                       
@@ -292,7 +309,7 @@
               <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
-                  <?php $currency = $jobDetails->salary_currency == 'pounds' ? '$' : '£' ?>
+                  <?php //$currency = $jobDetails->salary_currency == 'pounds' ? '$' : '£' ?>
                   <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails->min_monthly_salary ? $jobDetails->min_monthly_salary.' - '.$currency.$jobDetails->max_monthly_salary : '--' }}" readonly>
                 </div>
               </div>
