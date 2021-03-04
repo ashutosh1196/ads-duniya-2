@@ -577,7 +577,7 @@ body.login-page .login-box button span {
     right: 10px;
     top: 14px;
 }
-.form-group.description {
+.job-description {
     background-color: #f6f7fb;
     padding: 20px 20px;
     margin-top: 20px;
@@ -948,6 +948,18 @@ span.selection .select2-selection--multiple {
     border: 1px solid #cccccc;
     padding: .375rem .75rem;
 }
+.form-group.radio {
+    display: flex;
+}
+.form-group.radio input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.form-group.radio label {
+    padding-right: 10px;
+}
+
 
 /*Responsive*/
 
@@ -977,8 +989,8 @@ span.selection .select2-selection--multiple {
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link~ul li a:hover i {
     background-color: #efefef;
 }
-.form-group.description {
-    background-color: #efefef;
+.job-description {
+background-color: #efefef;
 }
 .card-primary.card-tabs .card-header ul li a {
     background-color: #e9ecef;
@@ -986,9 +998,9 @@ span.selection .select2-selection--multiple {
 span.selection .select2-selection--multiple {
     width: 100%;
 }
-.wrapper .content .card-body form.form_wrap .form-group input {
-    background-color: #eaeaea;
-    border: 1px solid #eaeaea;
+.tab-content form .form-group input {
+    background-color: #efefef;
+    border: 1px solid #efefef;
 }
 }
 @media only screen and (max-width: 1199px) {
