@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="deletedJobIndustries" class="table table-bordered table-hover">
+            <table style="width:100%" id="deletedJobIndustries" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
@@ -34,7 +34,7 @@
                   $jobType = ucwords($jobTypeTrimmed);
                 ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <td>{{ $deletedJobIndustries[$i]->name }}</td>
                   <td>{{ $deletedJobIndustries[$i]->slug }}</td>
                   <td>{{ $deletedJobIndustries[$i]->status ? 'Active' : 'Inactive' }}</td>
@@ -46,7 +46,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>

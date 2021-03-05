@@ -15,10 +15,10 @@
           </div>
           <div class="card-body">
             <a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>
-            <table id="roles-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="roles-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.permissions') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -27,7 +27,7 @@
               <tbody>
                 <?php for ($i=0; $i < count($roles); $i++) { ?>
                   <tr>
-                    <!-- <td>{{ $i+1 }}</td> -->
+                    <th class="display-none"></th>
                     <td>{{ $roles[$i]->name }}</td>
                     <td>{{ $roles[$i]->permissions }}</td>
                     <td>
@@ -39,7 +39,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.permissions') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

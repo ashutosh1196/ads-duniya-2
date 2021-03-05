@@ -9,6 +9,9 @@
 
 /*sidebar*/
 
+.display-none { 
+    display: none !important;
+}
 .main-sidebar {
     background-color: #ffffff;
     border-right: 1px solid #dee2e6;
@@ -460,7 +463,7 @@ body.login-page .login-box button {
     border: 1px solid #2d8427;
     border-radius: 5px;
     font-size: 14px;
-    padding: 6px 20px;
+    padding: 10px 20px;
 }
 body.login-page .login-box button.btn-primary:active {
     background-color: #2d8427;
@@ -468,7 +471,6 @@ body.login-page .login-box button.btn-primary:active {
 }
 body.login-page {
     background-color: #f6f7fb;
-    overflow-x: hidden;
 }
 .login_wrap .left img {
     width: 100%;
@@ -962,15 +964,6 @@ span.selection .select2-selection--multiple {
 }
 .job-description p {
     margin: 0;
-}
-
-/*Added 05-March-2021*/
-
-span.select2-container--default {
-    width: 100% !important;
-}
-span.select2 span.selection .select2-selection--multiple li  {
-     margin: 3px 3px 2px; 
 }
 
 

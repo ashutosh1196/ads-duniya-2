@@ -18,10 +18,10 @@
               </div>
             @endif
             <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">Add New Customer</a> -->
-            <table id="rejected-customers-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="rejected-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
@@ -36,7 +36,7 @@
                   $logo = $rejectedCustomersList[$i]->logo != null ? $websiteImagesPath.$rejectedCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <!-- <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
@@ -52,7 +52,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
