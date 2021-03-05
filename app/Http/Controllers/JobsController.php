@@ -188,6 +188,11 @@ class JobsController extends Controller {
 			'job_industry_id' => 'required',
 			'job_function_id' => 'required',
 			'job_location_id' => 'required',
+			'package_range_from' => 'required',
+			'package_range_to' => 'required',
+			'salary_currency' => 'required',
+			'experience_range_min' => 'required',
+			'experience_range_max' => 'required',
 		], [
 			'job_title.required' => 'The Job Title field is required.',
 			'job_description.required' => 'The Job Description field is required.',
@@ -201,6 +206,11 @@ class JobsController extends Controller {
 			'job_industry_id.required' => 'The Job Industry field is required.',
 			'job_function_id.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Location field is required.',
+			'package_range_from' => 'Minimum Package Amount is required',
+			'package_range_to' => 'Maximum Package Amount is required',
+			'salary_currency' => 'Currency is required',
+			'experience_range_min' => 'Minimum Experience is required',
+			'experience_range_max' => 'Maximum Experience is required',
 		]);
 		$jobToUpdate = [
 			"job_title" => $request->job_title,

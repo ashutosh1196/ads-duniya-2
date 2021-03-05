@@ -267,7 +267,7 @@ class OrganizationsController extends Controller {
 			'url.required' => 'Company Domain URL is required',
 		]);
 		$dataToUpdate = [
-			'name' => $request->name,
+			// 'name' => $request->name,
 			// 'email' => $request->email,
 			'country_code' => $request->country_code,
 			'contact_number' => $request->contact_number,

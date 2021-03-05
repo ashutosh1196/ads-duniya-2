@@ -21,9 +21,11 @@
               <thead>
                 <tr>
                   <th style="display:none">#</th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.transaction_id') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.description') }}</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -31,14 +33,16 @@
                 @for ($i=0; $i < count($paymentTransactionsList); $i++)
                 <tr>
                   <td style="display:none">{{ $i+1 }}</td>
+                  <td>{{ $paymentTransactionsList[$i]->txn_id }}</td>
+                  <td>${{ $paymentTransactionsList[$i]->amount }}</td>
+                  <td class="{{ $paymentTransactionsList[$i]->status == 'succeeded' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
+                  <td >{{ $paymentTransactionsList[$i]->description }}</td>
                   <td>
                     <?php
                       $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id);
                     ?>
                     {{ $company != null ? $company->name : '--' }}
                   </td>
-                  <td>${{ $paymentTransactionsList[$i]->amount }}</td>
-                  <td class="{{ $paymentTransactionsList[$i]->status == 'succeeded' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_payment_transaction', [ 'id' => $paymentTransactionsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
@@ -48,9 +52,11 @@
               <tfoot>
                 <tr>
                   <th style="display:none">#</th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.transaction_id') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.description') }}</th>
+                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>

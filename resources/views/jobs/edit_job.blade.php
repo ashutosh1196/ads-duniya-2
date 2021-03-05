@@ -173,7 +173,7 @@
                   <div class="row">
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
+                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
                         @if($errors->has('package_range_from'))
                           <div class="error">{{ $errors->first('package_range_from') }}</div>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
+                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
                         @if($errors->has('package_range_to'))
                           <div class="error">{{ $errors->first('package_range_to') }}</div>
@@ -191,7 +191,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
+                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}<span class="text-danger"> *</span></label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
                           <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>Pound</option>
                           <option value="dollars" {{ $jobDetails->salary_currency == 'dollars' ? 'selected' : '' }}>USD</option>
@@ -206,7 +206,7 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
                         @if($errors->has('experience_range_min'))
                           <div class="error">{{ $errors->first('experience_range_min') }}</div>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
+                        <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="experience_range_max" class="form-control" id="experience_range_max" value="{{ $jobDetails->experience_range_max }}" maxlength="100">
                         @if($errors->has('experience_range_max'))
                           <div class="error">{{ $errors->first('experience_range_max') }}</div>
@@ -332,7 +332,7 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group is_featured_group">
-                        <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}<span class="text-danger"> *</span></label>
+                        <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
                         <label class="switch">
                           <input class="is_featured" type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider round"></span>
@@ -344,7 +344,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group is_complete_update_group">
-                        <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}<span class="text-danger"> *</span></label>
+                        <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}</label>
                         <input class="is_complete_update" type="checkbox" name="is_complete_update">
                         @if($errors->has('is_complete_update'))
                           <div class="error">{{ $errors->last('is_complete_update') }}</div>
@@ -387,6 +387,10 @@
         customConfig : 'config.js',
         toolbar : 'simple'
       }) */
+      $.validator.addMethod("greaterThan", function (value, element, param) {
+        var $otherElement = $(param);
+        return parseInt(value, 10) > parseInt($otherElement.val(), 10);
+      });
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -455,6 +459,23 @@
           country: {
             required: true
           },
+          package_range_from: {
+            required: true
+          },
+          package_range_to: {
+            required: true
+            greaterThan: '#package_range_from'
+          },
+          salary_currency: {
+            required: true
+          },
+          experience_range_min: {
+            required: true
+          },
+          experience_range_max: {
+            required: true,
+            greaterThan: '#experience_range_min'
+          },
         },
         messages: {
           job_title: {
@@ -499,6 +520,21 @@
           },
           country: {
             required: "The Country field is required."
+          },
+          package_range_from: {
+            required: "The Minimum Package Amount field is required."
+          },
+          package_range_to: {
+            required: "The Maximum Package Amount field is required."
+          },
+          salary_currency: {
+            required: "The Currency field is required."
+          },
+          experience_range_min: {
+            required: "The Minimum Experience Required field is required."
+          },
+          experience_range_max: {
+            required: "The Maximum Experience Required field is required."
           },
         }
       });

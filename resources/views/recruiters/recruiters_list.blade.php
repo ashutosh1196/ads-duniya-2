@@ -22,10 +22,10 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.email') }}</th>
-                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.last_login_at') }}</th>
+                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -35,10 +35,10 @@
                   ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
-                  <td>{{ $recruitersList[$i]->email }}</td>
-                  <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
                   <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+                  <td>{{ $recruitersList[$i]->email }}</td>
+                  <td>{{ date('d/m/y', strtotime($recruitersList[$i]->last_logged_in_at)) }}</td>
+                  <td>{{ date('d/m/y', strtotime($recruitersList[$i]->created_at)) }}</td>
                   <td>
                     <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
                     <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
@@ -50,10 +50,10 @@
               <tfoot>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.email') }}</th>
-                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.email') }}</th>
+                  <th>{{ __('adminlte::adminlte.last_login_at') }}</th>
+                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>

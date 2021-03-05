@@ -40,6 +40,7 @@ return [
     'confirm_password'              => 'Confirm Password',
     'actions'                       => 'Actions',
     'created_date'                  => 'Created Date',
+    'created_at'                    => 'Created At',
     'last_updated_date'             => 'Last Updated Date',
     'last_logged_in_date_time'      => 'Last Logged In Date',
     'status'                        => 'Status',
@@ -199,6 +200,9 @@ return [
 
     'settings'                      => 'Settings',
 
+    'expired_on'                        => 'Expired On',
+    'ticket_id'                         => 'Ticket ID',
+    'credits'                           => 'Credits',
     'company_credits'                   => 'Company Credits',
     'add_new_company_credit'            => 'Add New Company Credit',
     'add_company_credit'                => 'Add Company Credit',
@@ -239,4 +243,5 @@ return [
     'currency'                          => 'Currency',
     'is_complete_update'                => 'Complete job update?',
     'expiring_at'                       => 'Expiry Date',
+    'last_login_at'                     => 'Last Login At',
 ];

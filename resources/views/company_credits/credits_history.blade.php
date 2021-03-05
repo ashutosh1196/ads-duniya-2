@@ -21,10 +21,11 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
+                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
+                  <th>{{ __('adminlte::adminlte.credits') }}</th>
+                  <th>{{ __('adminlte::adminlte.credit_type') }}</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.added_by') }}</th>
-                  <th>{{ __('adminlte::adminlte.credits_available') }}</th>
-                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -32,6 +33,9 @@
                 @for ($i=0; $i < count($creditsHistory); $i++)
                 <tr>
                   <th class="display-none"></th>
+                  <td class="{{ $creditsHistory[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($creditsHistory[$i]->txn_type) }}</td>
+                  <td>${{ $creditsHistory[$i]->credits }}</td>
+                  <td>{{ ucfirst($creditsHistory[$i]->credit_type) }}</td>
                   <td>
                     <?php
                       $company = \App\Models\Organization::find($creditsHistory[$i]->organization_id);
@@ -54,8 +58,6 @@
                       {{ $admin->name }}
                     @endif
                   </td>
-                  <td>${{ $creditsHistory[$i]->credits }}</td>
-                  <td class="{{ $creditsHistory[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($creditsHistory[$i]->txn_type) }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_credit_history', [ 'id' => $creditsHistory[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
@@ -65,10 +67,11 @@
               <tfoot>
                 <tr>
                   <th class="display-none"></th>
+                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
+                  <th>{{ __('adminlte::adminlte.credits') }}</th>
+                  <th>{{ __('adminlte::adminlte.credit_type') }}</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.added_by') }}</th>
-                  <th>{{ __('adminlte::adminlte.credits_available') }}</th>
-                  <th>{{ __('adminlte::adminlte.transaction_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>
