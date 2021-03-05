@@ -45,7 +45,7 @@
                   <td>{{ date('d/m/y', strtotime($ticketsList[$i]->created_at)) }}</td>
                   <td>
                     <a href="view/{{$ticketsList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
-                    <a href="{{ route('reply_on_ticket', [$ticketsList[$i]->id]) }}" title="reply"><i class="text-info fa fa-undo"></i></a>
+                    <a href="{{ route('reply_on_ticket') }}" title="reply"><i class="text-info fa fa-undo"></i></a>
                     <?php if($ticketsList[$i]->status == 'open') { ?>
                     <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
                     <?php } else { ?>
