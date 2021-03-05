@@ -133,7 +133,7 @@
 
                 <div class="requirements_fields"> 
                   <div class="row">
-                    <div class="col-12">
+                    <div class="col-xl-12 col-lg-12 col-sm-12 col-12">
                       <div class="form-group">
                         <label for="skills">{{ __('adminlte::adminlte.skills') }}<span class="text-danger"> *</span></label>
                         <select class="form-control" id="skills" multiple="multiple" name="skills[]">
@@ -171,8 +171,8 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-4">
-                      <div class="form-group">
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
                         <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                         <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
                         @if($errors->has('package_range_from'))
@@ -180,8 +180,8 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-4">
-                      <div class="form-group">
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
                         <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
                         <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
                         @if($errors->has('package_range_to'))
@@ -189,8 +189,8 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-4">
-                      <div class="form-group">
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
                         <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
                           <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>Pound</option>

@@ -946,7 +946,7 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     border: 1px solid #f6f7fb;
 }
 span.selection .select2-selection--multiple {
-    border: 1px solid #ced4da;
+    border: 1px solid #ced4da !important;
     padding: 5px 5px;
 }
 .form-group.radio {
@@ -1044,10 +1044,16 @@ section.content .small-box a.small-box-footer {
     margin: 0 15px;
     font-size: 14px;
 }
+.form-group.amount label {
+    height: 40px;
+}
 }
 @media only screen and (max-width: 991px) {
 body.login-page .login-box {
     width: 700px;
+}
+.form-group.amount label {
+    height: 40px;
 }
 }
 @media only screen and (max-width: 767px) {
@@ -1132,5 +1138,10 @@ section.content .small-box {
 }
 .card-body a.btn-success {
     font-size: 12px;
+}
+}
+@media only screen and (max-width: 576px) {
+.form-group.amount label {
+    height: auto;
 }
 }
