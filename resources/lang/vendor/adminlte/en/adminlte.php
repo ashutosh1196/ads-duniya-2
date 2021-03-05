@@ -237,7 +237,7 @@ return [
     'minimum_experience_required'       => 'Minimum Experience Required',
     'maximum_experience_required'       => 'Maximum Experience Required',
     'job_url'                           => 'Company Website URL',
-    'region'                            => 'Region',
+    'region'                            => 'Job Region',
     'is_featured'                       => 'Is this a featured job?',
     'advert_days'                       => 'Advert Days',
     'currency'                          => 'Currency',
