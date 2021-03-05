@@ -23,8 +23,8 @@
                 <tr>
                   <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.job_type') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.reference_number') }}</th> -->
+                  <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter') }}</th>
@@ -42,8 +42,8 @@
                 <tr>
                   <!-- <td>{{ $i+1 }}</td> -->
                   <td>{{ $JobHistory[$i]->job_title }}</td>
-                  <td>{{ $JobHistory[$i]->job_ref_number }}</td>
-                  <td>{{ $jobType }}</td>
+                  <!-- <td>{{ $JobHistory[$i]->job_ref_number }}</td> -->
+                  <!-- <td>{{ $jobType }}</td> -->
                   <td>{{ $jobIndustry->name }}</td>
                   <td>{{ $organisation ? $organisation->name : '--' }}</td>
                   <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
@@ -57,8 +57,8 @@
                 <tr>
                   <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.job_type') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.reference_number') }}</th> -->
+                  <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
                   <th>{{ __('adminlte::adminlte.industry') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter') }}</th>

@@ -23,7 +23,7 @@
               <!-- <th>#</th> -->
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
               <th>{{ __('adminlte::adminlte.industry') }}</th>
               <th>{{ __('adminlte::adminlte.company_name') }}</th>
               <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -39,7 +39,7 @@
               <!-- <td>{{ $i+1 }}</td> -->
               <td>{{ $deletedJobs[$i]->job_title }}</td>
               <td>{{ $deletedJobs[$i]->job_ref_number }}</td>
-              <td>{{ $jobType }}</td>
+              <!-- <td>{{ $jobType }}</td> -->
               <td>{{ $deletedJobs[$i]->industry }}</td>
               <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
               <td>
@@ -53,7 +53,7 @@
               <!-- <th>#</th> -->
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
               <th>{{ __('adminlte::adminlte.industry') }}</th>
               <th>{{ __('adminlte::adminlte.company_name') }}</th>
               <th>{{ __('adminlte::adminlte.actions') }}</th>
