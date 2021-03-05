@@ -21,10 +21,12 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.ticket_id') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -35,10 +37,12 @@
                   ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $organisation[0]->name }}</td>
-                  <td>{{ $recruiter[0]->name }}</td>
+                  <td>{{ $ticketsList[$i]->id }}</td>
                   <td>{{ $ticketsList[$i]->subject }}</td>
                   <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
+                  <td>{{ $organisation[0]->name }}</td>
+                  <td>{{ $recruiter[0]->name }}</td>
+                  <td>{{ date('d/m/y', strtotime($ticketsList[$i]->created_at)) }}</td>
                   <td>
                     <a href="view/{{$ticketsList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
                     <?php if($ticketsList[$i]->status == 'open') { ?>
@@ -53,10 +57,12 @@
               <tfoot>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.ticket_id') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
+                  <th>{{ __('adminlte::adminlte.company') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </tfoot>

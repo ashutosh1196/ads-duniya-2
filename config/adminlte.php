@@ -350,6 +350,17 @@ return [
             ],
         ],
         [
+            'text' => 'tickets_management',
+            'icon' => 'fas fa-ticket-alt',
+            'url'  => '#',
+            'active' => ['admin_panel/tickets*'],
+            'submenu' => [[
+                'text' => 'tickets',
+                'icon' => 'fas fa-ticket-alt',
+                'url'  => 'admin_panel/tickets/list',
+            ]]
+        ],
+        [
             'text' => 'misc_data_management',
             'icon' => 'fas fa-fw fa-cogs',
             'url'  => '#',
@@ -379,17 +390,6 @@ return [
                     'active' => ['admin_panel/misc/skills*'],
                 ],
             ],
-        ],
-        [
-            'text' => 'tickets_management',
-            'icon' => 'fas fa-ticket-alt',
-            'url'  => '#',
-            'active' => ['admin_panel/tickets*'],
-            'submenu' => [[
-                'text' => 'tickets',
-                'icon' => 'fas fa-ticket-alt',
-                'url'  => 'admin_panel/tickets/list',
-            ]]
         ],
         [
             'key' => 'admin_recylce_bin',

@@ -21,7 +21,7 @@
             <table style="width:100%" id="pending-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>

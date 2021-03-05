@@ -95,18 +95,41 @@
                   </div>
                 </div>
 
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
                   <div class="form-group">
-                    <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
+                    <label>{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                     <?php $currency = $JobHistory->salary_currency == 'pounds' ? '£' : '$' ?>
-                    <input class="form-control" placeholder="{{ $currency }}{{ $JobHistory->package_range_from ? $JobHistory->package_range_from.' - '.$currency.$JobHistory->package_range_to : '--' }}" readonly>
+                    <input class="form-control" placeholder="{{ $JobHistory->package_range_from ? $JobHistory->package_range_from : '--' }}" readonly>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                  <div class="form-group">
+                    <label>{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
+                    <?php $currency = $JobHistory->salary_currency == 'pounds' ? '£' : '$' ?>
+                    <input class="form-control" placeholder="{{ $JobHistory->package_range_to ? $JobHistory->package_range_to : '--' }}" readonly>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                  <div class="form-group">
+                    <label>{{ __('adminlte::adminlte.currency') }}</label>
+                    <?php $currency = $JobHistory->salary_currency == 'pounds' ? '£' : '$' ?>
+                    <input class="form-control" placeholder="{{ $JobHistory->currency == 'pounds' ? 'Pounds' : 'USD' }}" readonly>
                   </div>
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                   <div class="form-group">
-                    <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                    <input class="form-control" placeholder="{{ $JobHistory->experience_range_min ? $JobHistory->experience_range_min.' - '.$JobHistory->experience_range_max.' Years' : '--' }}" readonly>
+                    <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                    <input class="form-control" placeholder="{{ $JobHistory->experience_range_min ? $JobHistory->experience_range_min.' Years' : '--' }}" readonly>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                  <div class="form-group">
+                    <label>{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
+                    <input class="form-control" placeholder="{{ $JobHistory->experience_range_max ? $JobHistory->experience_range_max.' Years' : '--' }}" readonly>
                   </div>
                 </div>
 
@@ -122,6 +145,17 @@
 
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                   <div class="form-group">
+                    <label>{{ __('adminlte::adminlte.recruiter') }}</label>
+                    @if($recruiter != null)
+                      <input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" readonly>
+                    @else
+                      <input class="form-control" readonly>
+                    @endif
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                  <div class="form-group">
                     <label>{{ __('adminlte::adminlte.company_name') }}</label>
                     <input class="form-control" placeholder="{{ $organizationName }}" readonly>
                   </div>
@@ -131,17 +165,6 @@
                   <div class="form-group">
                     <label>{{ __('adminlte::adminlte.job_url') }}</label>
                     <input class="form-control" placeholder="{{ $JobHistory->job_url }}" readonly>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                  <div class="form-group">
-                    <label>{{ __('adminlte::adminlte.recruiter') }}</label>
-                    @if($recruiter != null)
-                      <input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" readonly>
-                    @else
-                      <input class="form-control" readonly>
-                    @endif
                   </div>
                 </div>
 
@@ -217,7 +240,7 @@
                     <input class="form-control" placeholder="{{ date('d/m/y', strtotime($JobHistory->updated_at)) }}" readonly>
                   </div>
                 </div>
-              </div>
+              
             </div>
           </form>
         </div>
