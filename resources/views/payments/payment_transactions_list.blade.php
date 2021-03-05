@@ -33,13 +33,12 @@
                   <td style="display:none">{{ $i+1 }}</td>
                   <td>
                     <?php
-                      $recruiter = \App\Models\Recruiter::find($paymentTransactionsList[$i]->recruiter_id);
-                      $company = \App\Models\Organization::find($recruiter->organization_id);
+                      $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id);
                     ?>
                     {{ $company != null ? $company->name : '--' }}
                   </td>
                   <td>${{ $paymentTransactionsList[$i]->amount }}</td>
-                  <td class="{{ $paymentTransactionsList[$i]->status == 'success' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
+                  <td class="{{ $paymentTransactionsList[$i]->status == 'succeeded' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_payment_transaction', [ 'id' => $paymentTransactionsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
