@@ -337,7 +337,7 @@ section.content .small-box:hover a.small-box-footer img {
 }
 .table-bordered tr td a {
     /*background-color: #f6f7fb;*/
-    padding: 4px 8px;
+    padding: 4px 3px;
     /*border-radius: 2px;*/
 }
 .card-body a.btn-success {
@@ -797,8 +797,6 @@ input:-ms-input-placeholder.form-control {
 .content-wrapper .card-footer {
     margin: 0 20px 40px 20px;
 }
-select::-ms-expand { display: none; }
-}
 }
 
 /*Added 02-March-2021*/
@@ -980,6 +978,30 @@ span.select2 span.selection .select2-selection--multiple li  {
 .display-none {
     display: none;
 }
+.card-body select::-ms-expand { 
+    display: none;
+}
+.card-body select {
+   cursor: pointer;
+   background-image: url(http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/down-arrow.png);
+   background-size: 24px;
+   background-repeat: no-repeat;
+   background-position: center right;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;    
+}
+html body {
+    margin: 0;
+}
+.content .container {
+    width: 100%;
+    max-width: none;
+}
+.dataTables_wrapper table thead tr th:last-child {
+    min-width: 100px;
+}
+
 
 
 /*Responsive*/
