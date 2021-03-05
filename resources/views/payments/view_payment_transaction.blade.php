@@ -39,7 +39,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
-                  <input class="form-control" placeholder="{{ $recruiter->name ? $recruiter->name : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $recruiter->name ? $recruiter->name : '$recruiter->email' }}" readonly>
                 </div>
               </div>
               
