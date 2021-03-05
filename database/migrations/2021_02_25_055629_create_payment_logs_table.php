@@ -22,6 +22,7 @@ class CreatePaymentLogsTable extends Migration
             $table->text('request');
             $table->text('response');
             $table->foreignId('recruiter_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->timestamps();
         });
     }
