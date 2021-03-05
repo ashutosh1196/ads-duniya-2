@@ -37,7 +37,7 @@
                 <input type="hidden" name="id" id="customer_id" value="{{ $customer[0]->id }}">
                 <input type="hidden" name="from_page" id="from_page" value="{{ $from_page }}">
                 <!-- INFORMATION FIELDS -->
-                <div class="information_fields">
+                <div class="">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -64,7 +64,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label class="required">{{ __('adminlte::adminlte.contact_number') }}</label>
+                        <label for="contact_number">{{ __('adminlte::adminlte.contact_number') }}<span class="text-danger"> *</span></label>
                         <input id="jquery-intl-phone" type="tel" class="form-control" name="contact_number" maxlength="13" value="{{ $customer[0]->contact_number }}">
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
@@ -75,7 +75,7 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="vat_number">{{ __('adminlte::adminlte.vat_number') }} ({{ __('adminlte::adminlte.optional') }})</label>
+                          <label for="vat_number">{{ __('adminlte::adminlte.vat_number') }}</label>
                           <input type="text" name="vat_number" class="form-control" id="vat_number" value="{{ $customer[0]->vat_number }}" maxlength="100">
                           @if($errors->has('vat_number'))
                             <div class="error">{{ $errors->first('vat_number') }}</div>
@@ -86,7 +86,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label for="url">{{ __('adminlte::adminlte.company_domain_url') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="url" class="form-control" id="url" value="{{ $customer[0]->url }}" maxlength="100">
@@ -95,13 +95,6 @@
                         @endif
                       </div>
                     </div>
-                  </div>
-                </div>
-                <!-- /INFORMATION FIELDS -->
-                <hr/>
-                <!-- ADDRESS FIELDS -->
-                <div class="address_fields">
-                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
@@ -111,7 +104,9 @@
                         @endif
                       </div>
                     </div>
+                  </div>
                   
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
@@ -121,9 +116,6 @@
                         @endif
                       </div>
                     </div>
-                  </div>
-                      
-                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}</label>
@@ -133,18 +125,18 @@
                         @endif
                       </div>
                     </div>
+                  </div>
+                      
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="state" class="form-control" id="state" value="{{ $customer[0]->state }}" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
                       </div>
                     </div>
-                  </div>
-                      
-                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                           <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
@@ -160,10 +152,13 @@
                           @endif
                         </div>
                     </div>
+                  </div>
+                      
+                  <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}" maxlength="6">
+                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $customer[0]->pincode }}" maxlength="7">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
                         @endif
@@ -246,15 +241,15 @@
           },
           pincode: {
             required: true,
-            maxlength: 6
+            maxlength: 7
           },
           country: {
             required: true
           },
-          /* state: {
+          state: {
             required: true
           },
-          county: {
+          /* county: {
             required: true
           }, */
         },
@@ -279,16 +274,15 @@
             required: "The City / Town field is required."
           },
           pincode: {
-            required: "The Zip / Postcode field is required.",
-            maxlength: "The Zip / Postcode must be of maximum 6 characters."
+            required: "The Zip / Postcode field is required."
           },
           country: {
             required: "The Country field is required."
           },
-          /* state: {
+          state: {
             required: "The State field is required."
           },
-          county: {
+          /* county: {
             required: "The County field is required."
           }, */
         },

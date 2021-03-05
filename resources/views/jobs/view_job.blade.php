@@ -34,6 +34,7 @@
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
                   <form class="form_wrap">
                     <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
@@ -109,18 +110,41 @@
                           </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
                           <div class="form-group">
-                            <label>{{ __('adminlte::adminlte.salary') }} (Per Annum)</label>
+                            <label>{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                             <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
-                            <input class="form-control" placeholder="{{ $currency }}{{ $jobDetails->package_range_from ? $jobDetails->package_range_from.' - '.$currency.$jobDetails->package_range_to : '--' }}" readonly>
+                            <input class="form-control" placeholder="{{ $jobDetails->package_range_from ? $jobDetails->package_range_from : '--' }}" readonly>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                          <div class="form-group">
+                            <label>{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
+                            <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
+                            <input class="form-control" placeholder="{{ $jobDetails->package_range_to ? $jobDetails->package_range_to : '--' }}" readonly>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                          <div class="form-group">
+                            <label>{{ __('adminlte::adminlte.currency') }}</label>
+                            <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
+                            <input class="form-control" placeholder="{{ $jobDetails->currency == 'pounds' ? 'Pounds' : 'USD' }}" readonly>
                           </div>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                           <div class="form-group">
-                            <label>{{ __('adminlte::adminlte.experience_required') }}</label>
-                            <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' - '.$jobDetails->experience_range_max.' Years' : '--' }}" readonly>
+                            <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                            <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '--' }}" readonly>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                          <div class="form-group">
+                            <label>{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
+                            <input class="form-control" placeholder="{{ $jobDetails->experience_range_max ? $jobDetails->experience_range_max.' Years' : '--' }}" readonly>
                           </div>
                         </div>
 
@@ -136,6 +160,17 @@
 
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                           <div class="form-group">
+                            <label>{{ __('adminlte::adminlte.recruiter') }}</label>
+                            @if($recruiter != null)
+                              <input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" readonly>
+                            @else
+                              <input class="form-control" readonly>
+                            @endif
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                          <div class="form-group">
                             <label>{{ __('adminlte::adminlte.company_name') }}</label>
                             <input class="form-control" placeholder="{{ $organizationName }}" readonly>
                           </div>
@@ -145,17 +180,6 @@
                           <div class="form-group">
                             <label>{{ __('adminlte::adminlte.job_url') }}</label>
                             <input class="form-control" placeholder="{{ $jobDetails->job_url }}" readonly>
-                          </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                          <div class="form-group">
-                            <label>{{ __('adminlte::adminlte.recruiter') }}</label>
-                            @if($recruiter != null)
-                              <input class="form-control" placeholder="{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}" readonly>
-                            @else
-                              <input class="form-control" readonly>
-                            @endif
                           </div>
                         </div>
 
@@ -234,6 +258,7 @@
                       
                     </div>
                   </form>
+                  
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                   <table id="applicators-list" class="table table-bordered table-hover">

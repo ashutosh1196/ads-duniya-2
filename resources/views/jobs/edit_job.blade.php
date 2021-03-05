@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails->state }}" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
@@ -277,7 +277,7 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="job_industry_id">{{ __('adminlte::adminlte.job_industry') }}<span class="text-danger"> *</span></label>
+                        <label for="job_industry_id">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
                         <select name="job_industry_id" class="form-control" id="job_industry_id">
                           <?php for($i=0; $i<count($jobIndustries); $i++) { ?>
                             <option value="{{ $jobIndustries[$i]->id }}" {{ ( $jobIndustries[$i]->id == $jobDetails->job_industry_id) ? 'selected' : '' }}>{{ $jobIndustries[$i]->name }}</option>
@@ -291,7 +291,7 @@
 
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
+                        <label for="job_function_id">{{ __('adminlte::adminlte.function') }}<span class="text-danger"> *</span></label>
                         <select name="job_function_id" class="form-control" id="job_function_id">
                           <?php for($i=0; $i<count($jobFunctions); $i++) { ?>
                             <option value="{{ $jobFunctions[$i]->id }}" {{ ( $jobFunctions[$i]->id == $jobDetails->job_function_id) ? 'selected' : '' }}>{{ $jobFunctions[$i]->name }}</option>
@@ -446,9 +446,9 @@
           city: {
             required: true
           },
-          /* state: {
+          state: {
             required: true
-          }, */
+          },
           pincode: {
             required: true
           },
@@ -491,9 +491,9 @@
           city: {
             required: "The City / Town field is required."
           },
-          /* state: {
+          state: {
             required: "The State field is required."
-          }, */
+          },
           pincode: {
             required: "The Zip / Postcode field is required."
           },

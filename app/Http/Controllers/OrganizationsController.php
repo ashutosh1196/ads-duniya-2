@@ -57,6 +57,8 @@ class OrganizationsController extends Controller {
 			'name' => 'required',
 			'email' => 'required|email|unique:organizations',
 			'country_code' => 'required',
+			'state' => 'required',
+			'pincode' => 'required',
 			'contact_number' => 'required',
 			'url' => 'required',
 		], [
@@ -66,6 +68,8 @@ class OrganizationsController extends Controller {
 			'email.email' => 'Company Or Consultants Email is not valid',
 			'email.unique' => 'Company Or Consultants Email must be unique',
 			'country_code.required' => 'Country Code is required',
+			'state.required' => 'State is required',
+			'pincode.required' => 'Zip / Postcode is required',
 			'contact_number.required' => 'Contact Number is required',
 			'url.required' => 'Company Domain URL is required',
 		]);
@@ -242,6 +246,7 @@ class OrganizationsController extends Controller {
 			'address' => 'required',
 			'city' => 'required',
 			'pincode' => 'required',
+			'state' => 'required',
 			'country' => 'required',
 			'name' => 'required',
 			'email' => 'required|email',
@@ -252,6 +257,7 @@ class OrganizationsController extends Controller {
 			'address.required' => 'Address is required',
 			'city.required' => 'City is required',
 			'pincode.required' => 'Zipcode is required',
+			'state.required' => 'State is required',
 			'country.required' => 'Country is required',
 			'name.required' => 'Company Name is required',
 			'email.required' => 'Company Or Consultants Email is required',

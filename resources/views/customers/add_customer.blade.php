@@ -143,7 +143,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="state" class="form-control" id="state" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
@@ -258,10 +258,10 @@
           country: {
             required: true
           },
-          /* state: {
+          state: {
             required: true
           },
-          county: {
+          /* county: {
             required: true
           }, */
         },
@@ -292,10 +292,10 @@
           country: {
             required: "The Country field is required."
           },
-          /* state: {
+          state: {
             required: "The State field is required."
           },
-          county: {
+          /* county: {
             required: "The County field is required."
           }, */
         },
