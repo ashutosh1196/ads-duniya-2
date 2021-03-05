@@ -975,6 +975,9 @@ span.select2 span.selection .select2-selection--multiple li  {
 .card-body.form {
     padding: 0;
 }
+.display-none {
+    display: none;
+}
 
 
 /*Responsive*/
