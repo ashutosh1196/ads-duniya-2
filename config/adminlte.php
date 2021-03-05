@@ -314,7 +314,7 @@ return [
                     'text' => 'published_jobs',
                     'icon' => 'fas fa-fw fa-list',
                     'url'  => 'admin_panel/jobs/list',
-                    'active' => ['admin_panel/jobs/list/*', 'admin_panel/jobs/view/*'],
+                    'active' => ['admin_panel/jobs/list/*', 'admin_panel/jobs/view/*', 'admin_panel/jobs/edit/*'],
                 ],
                 [
                     'text' => 'jobs_history',
