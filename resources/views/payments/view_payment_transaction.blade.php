@@ -53,7 +53,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.transaction_id') }}</label>
-                  <input class="form-control" placeholder="{{ $paymentTransaction->transaction_id ? $paymentTransaction->transaction_id : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $paymentTransaction->txn_id ? $paymentTransaction->txn_id : '--' }}" readonly>
                 </div>
               </div>
               
