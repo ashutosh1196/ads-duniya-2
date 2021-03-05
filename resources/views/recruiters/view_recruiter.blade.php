@@ -34,7 +34,7 @@
                       $name = $recruiter[0]->name;
                     }
                     else {
-                      $name = "--";
+                      $name = "";
                     }
                   ?>
                   <input class="form-control" placeholder="{{ $name }}" readonly>
@@ -43,13 +43,13 @@
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input class="form-control" placeholder="--" readonly>
+                  <input class="form-control" placeholder="" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
