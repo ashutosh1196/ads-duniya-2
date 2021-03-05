@@ -36,7 +36,7 @@
 
                 <div class="information_fields">
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-12">
                       <div class="form-group">
                         <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails->job_title }}" maxlength="100">
@@ -45,7 +45,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-12">
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
                         <textarea class="form-control" id="job_description" name="job_description" maxlength="1000" style="font-size: 13px;">{{ $jobDetails->job_description }}</textarea>
@@ -61,7 +61,7 @@
 
                 <div class="address_fields">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails->job_address }}" maxlength="100">
@@ -71,7 +71,7 @@
                       </div>
                     </div>
                       
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails->city }}" maxlength="100">
@@ -83,7 +83,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}</label>
                         <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails->county }}" maxlength="100">
@@ -92,7 +92,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="state">{{ __('adminlte::adminlte.state') }}</label>
                         <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails->state }}" maxlength="100">
@@ -104,7 +104,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
                         <select name="country" class="form-control" id="country">
@@ -117,7 +117,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $jobDetails->pincode }}" maxlength="6">
@@ -133,35 +133,34 @@
 
                 <div class="requirements_fields"> 
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-12">
                       <div class="form-group">
                         <label for="skills">{{ __('adminlte::adminlte.skills') }}<span class="text-danger"> *</span></label>
                         <select class="form-control" id="skills" multiple="multiple" name="skills[]">
-                        @foreach($skills as $skill)
-                          @php
-                            if (old('skills')) {
-                              if (in_array($skill->id, old('skills'))) {
-                                $selected = "selected";
+                          @foreach($skills as $skill)
+                            @php
+                              if (old('skills')) {
+                                if (in_array($skill->id, old('skills'))) {
+                                  $selected = "selected";
+                                }
+                                else{
+                                  $selected = "";
+                                }
+                              }
+                              elseif($jobDetails->skills){
+                                if (in_array($skill->id, $jobDetails->skills->pluck('id')->toArray())) {
+                                  $selected = "selected";
+                                }
+                                else{
+                                  $selected = "";
+                                }
                               }
                               else{
                                 $selected = "";
-                              }
-                            }
-                            elseif($jobDetails->skills){
-                              if (in_array($skill->id, $jobDetails->skills->pluck('id')->toArray())) {
-                                $selected = "selected";
-                              }
-                              else{
-                                $selected = "";
-                              }
-                            }
-                            else{
-                              $selected = "";
-                            }    
-                          @endphp
-                          <option {{$selected}} value="{{$skill->id}}">{{$skill->name}}</option>
-                          @endforeach
-                        <!--  -->
+                              }    
+                            @endphp
+                            <option {{$selected}} value="{{$skill->id}}">{{$skill->name}}</option>
+                            @endforeach
                         </select>
                         <!-- <input type="text" name="skills" class="form-control" id="skills" maxlength="100"> -->
                         @if($errors->has('skills'))
@@ -172,7 +171,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-4">
                       <div class="form-group">
                         <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                         <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
@@ -181,7 +180,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-4">
                       <div class="form-group">
                         <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
                         <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
@@ -190,7 +189,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-4">
                       <div class="form-group">
                         <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
@@ -205,7 +204,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
                         <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
@@ -214,7 +213,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
                         <input type="text" name="experience_range_max" class="form-control" id="experience_range_max" value="{{ $jobDetails->experience_range_max }}" maxlength="100">
@@ -231,7 +230,7 @@
 
                 <div class="type_fields"> 
                   <div class="row">  
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                         <select name="job_type" class="form-control" id="job_type">
@@ -251,7 +250,7 @@
 
                 <div class="about_fields"> 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="organization_id">{{ __('adminlte::adminlte.company_name') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="organization_id" class="form-control" id="organization_id" value="{{ $organisation->name }}" disabled>
@@ -260,7 +259,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100">
@@ -276,7 +275,7 @@
 
                 <div class="other_fields"> 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_industry_id">{{ __('adminlte::adminlte.job_industry') }}<span class="text-danger"> *</span></label>
                         <select name="job_industry_id" class="form-control" id="job_industry_id">
@@ -290,7 +289,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
                         <select name="job_function_id" class="form-control" id="job_function_id">
@@ -306,7 +305,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_location_id">{{ __('adminlte::adminlte.region') }}<span class="text-danger"> *</span></label>
                         <select name="job_location_id" class="form-control" id="job_location_id">
@@ -319,7 +318,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="advert_days">{{ __('adminlte::adminlte.advert_days') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="advert_days" class="form-control" id="advert_days" value="90 Days" disabled>
@@ -331,7 +330,7 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group is_featured_group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}<span class="text-danger"> *</span></label>
                         <label class="switch">
@@ -343,7 +342,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group is_complete_update_group">
                         <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}<span class="text-danger"> *</span></label>
                         <input class="is_complete_update" type="checkbox" name="is_complete_update">
