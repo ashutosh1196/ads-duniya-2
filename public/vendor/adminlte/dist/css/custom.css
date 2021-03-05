@@ -797,6 +797,8 @@ input:-ms-input-placeholder.form-control {
 .content-wrapper .card-footer {
     margin: 0 20px 40px 20px;
 }
+select::-ms-expand { display: none; }
+}
 }
 
 /*Added 02-March-2021*/
