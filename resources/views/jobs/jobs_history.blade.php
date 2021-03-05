@@ -21,7 +21,7 @@
             <table id="JobHistory" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
@@ -40,7 +40,7 @@
                   $jobIndustry = \App\Models\JobIndustry::find($JobHistory[$i]->job_industry_id);
                 ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>{{ $JobHistory[$i]->job_title }}</td>
                   <td>{{ $JobHistory[$i]->job_ref_number }}</td>
                   <td>{{ $jobType }}</td>
@@ -55,7 +55,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_type') }}</th>
