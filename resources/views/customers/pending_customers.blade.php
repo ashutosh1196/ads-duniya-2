@@ -18,7 +18,7 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">{{ __('adminlte::adminlte.add_new_customer') }}</a>
-            <table id="pending-customers-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="pending-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <!-- <th>#</th> -->
@@ -36,7 +36,7 @@
                   $logo = $pendingCustomersList[$i]->logo != null ? $websiteImagesPath.$pendingCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <!-- <td><img src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td> -->
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
@@ -53,7 +53,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>

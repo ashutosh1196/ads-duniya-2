@@ -18,10 +18,10 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_location') }}">{{ __('adminlte::adminlte.add_new_job_location') }}</a>
-            <table id="jobLocationsList" class="table table-bordered table-hover">
+            <table style="width:100%" id="jobLocationsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
@@ -31,7 +31,7 @@
               <tbody>
                 <?php for ($i=0; $i < count($jobLocationsList); $i++) { ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <td>{{ $jobLocationsList[$i]->name }}</td>
                   <td>{{ $jobLocationsList[$i]->slug }}</td>
                   <td>{{ $jobLocationsList[$i]->status ? 'Active' : 'Inactive' }}</td>
@@ -45,7 +45,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>

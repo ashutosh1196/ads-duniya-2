@@ -18,10 +18,10 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right" href="{{ route('add_recruiter') }}">{{ __('adminlte::adminlte.add_new_recruiter') }}</a>
-            <table id="recruiters-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -34,7 +34,7 @@
                   $organisation = \App\Models\Organization::where('id', $recruitersList[$i]->organization_id)->get();
                   ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
                   <td>{{ $recruitersList[$i]->email }}</td>
                   <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
@@ -49,7 +49,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

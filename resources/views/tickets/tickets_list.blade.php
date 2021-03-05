@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="tickets-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="tickets-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
@@ -34,7 +34,7 @@
                   $organisation = \App\Models\Organization::where('id', $recruiter[0]->organization_id)->get();
                   ?>
                 <tr>
-                  <!-- <td>{{ $i+1 }}</td> -->
+                  <th class="display-none"></th>
                   <td>{{ $organisation[0]->name }}</td>
                   <td>{{ $recruiter[0]->name }}</td>
                   <td>{{ $ticketsList[$i]->subject }}</td>
@@ -52,7 +52,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <!-- <th>#</th> -->
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>

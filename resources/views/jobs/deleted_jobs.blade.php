@@ -17,10 +17,10 @@
             {{ session('status') }}
           </div>
         @endif
-        <table id="deletedJobsList" class="table table-bordered table-hover">
+        <table style="width:100%" id="deletedJobsList" class="table table-bordered table-hover">
           <thead>
             <tr>
-              <!-- <th>#</th> -->
+              <th class="display-none"></th>
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
               <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
@@ -37,7 +37,7 @@
               $jobIndustry = \App\Models\JobIndustry::find($deletedJobs[$i]->job_industry_id);
             ?>
             <tr>
-              <!-- <td>{{ $i+1 }}</td> -->
+              <th class="display-none"></th>
               <td>{{ $deletedJobs[$i]->job_title }}</td>
               <td>{{ $deletedJobs[$i]->job_ref_number }}</td>
               <!-- <td>{{ $jobType }}</td> -->
@@ -51,7 +51,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <!-- <th>#</th> -->
+              <th class="display-none"></th>
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
               <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->

@@ -9,6 +9,12 @@
 
 /*sidebar*/
 
+.display-none { 
+    display: none !important;
+}
+.table { 
+    width: 1005 !important;
+}
 .main-sidebar {
     background-color: #ffffff;
     border-right: 1px solid #dee2e6;
