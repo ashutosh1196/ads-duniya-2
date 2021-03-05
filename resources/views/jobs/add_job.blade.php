@@ -268,7 +268,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" maxlength="6">
+                        <input type="text" name="pincode" class="form-control" id="pincode" maxlength="7">
                         @if($errors->has('pincode'))
                           <div class="error">{{ $errors->first('pincode') }}</div>
                         @endif
