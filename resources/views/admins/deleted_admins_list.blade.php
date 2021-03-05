@@ -20,7 +20,7 @@
             <table id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <!-- <th>Email Verified</th> -->
@@ -31,7 +31,7 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedAdmins)?$deletedAdmins:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $i+1 }}</td>
+                    <!-- <td>{{ $i+1 }}</td> -->
                     <td>{{ $deletedAdmins[$i]->name }}</td>
                     <td>{{ $deletedAdmins[$i]->email }}</td>
                     <!-- <td>True</td> -->
@@ -45,7 +45,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <!-- <th>Email Verified</th> -->

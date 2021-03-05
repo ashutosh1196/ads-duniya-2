@@ -21,7 +21,7 @@
           <table id="jobseekers-list" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>#</th>
+                <!-- <th>#</th> -->
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -31,7 +31,7 @@
             <tbody>
               <?php for ($i=0; $i < count($jobseekersList); $i++) { ?>
               <tr>
-                <td>{{ $i+1 }}</td>
+                <!-- <td>{{ $i+1 }}</td> -->
                 <td>{{ $jobseekersList[$i]->name }}</td>
                 <td>{{ $jobseekersList[$i]->email }}</td>
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
@@ -47,7 +47,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>#</th>
+                <!-- <th>#</th> -->
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>

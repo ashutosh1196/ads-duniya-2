@@ -20,7 +20,7 @@
             <table id="deleted-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -30,7 +30,7 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedCustomers)?$deletedCustomers:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $i+1 }}</td>
+                    <!-- <td>{{ $i+1 }}</td> -->
                     <td>{{ $deletedCustomers[$i]->name }}</td>
                     <td>{{ $deletedCustomers[$i]->email }}</td>
                     <td>{{ $deletedCustomers[$i]->contact_number }}</td>
@@ -42,7 +42,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

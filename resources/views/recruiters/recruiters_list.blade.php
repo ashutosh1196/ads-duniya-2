@@ -21,7 +21,7 @@
             <table id="recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -34,7 +34,7 @@
                   $organisation = \App\Models\Organization::where('id', $recruitersList[$i]->organization_id)->get();
                   ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>{{ $recruitersList[$i]->first_name }} {{ $recruitersList[$i]->last_name }}</td>
                   <td>{{ $recruitersList[$i]->email }}</td>
                   <td>{{ $recruitersList[$i]->phone_number ? $recruitersList[$i]->phone_number : '--' }}</td>
@@ -49,7 +49,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

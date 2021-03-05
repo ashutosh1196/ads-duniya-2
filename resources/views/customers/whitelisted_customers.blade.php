@@ -21,7 +21,7 @@
             <table id="whitelisted-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
@@ -36,7 +36,7 @@
                   $logo = $whitelistedCustomersList[$i]->logo != null ? $websiteImagesPath.$whitelistedCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <!-- <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
@@ -52,7 +52,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>

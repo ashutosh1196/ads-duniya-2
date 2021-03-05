@@ -18,7 +18,7 @@
             <table id="roles-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.permissions') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -27,7 +27,7 @@
               <tbody>
                 <?php for ($i=0; $i < count($roles); $i++) { ?>
                   <tr>
-                    <td>{{ $i+1 }}</td>
+                    <!-- <td>{{ $i+1 }}</td> -->
                     <td>{{ $roles[$i]->name }}</td>
                     <td>{{ $roles[$i]->permissions }}</td>
                     <td>
@@ -39,7 +39,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.permissions') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

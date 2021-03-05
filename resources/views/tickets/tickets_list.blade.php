@@ -20,7 +20,7 @@
             <table id="tickets-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
@@ -34,7 +34,7 @@
                   $organisation = \App\Models\Organization::where('id', $recruiter[0]->organization_id)->get();
                   ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>{{ $organisation[0]->name }}</td>
                   <td>{{ $recruiter[0]->name }}</td>
                   <td>{{ $ticketsList[$i]->subject }}</td>
@@ -52,7 +52,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>

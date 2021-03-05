@@ -20,7 +20,7 @@
             <table id="paymentTransactionsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
@@ -30,7 +30,7 @@
               <tbody>
                 @for ($i=0; $i < count($paymentTransactionsList); $i++)
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>
                     <?php $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id); ?>
                     {{ $company != null ? $company->name : '--' }}
@@ -45,7 +45,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>

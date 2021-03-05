@@ -21,7 +21,7 @@
             <table id="companyCreditsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -30,7 +30,7 @@
               <tbody>
                 @for ($i=0; $i < count($companyCreditsList); $i++)
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>
                     <?php
                       $company = \App\Models\Organization::find($companyCreditsList[$i]->organization_id);
@@ -46,7 +46,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

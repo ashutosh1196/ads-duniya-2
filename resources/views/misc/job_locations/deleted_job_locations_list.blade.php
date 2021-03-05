@@ -20,7 +20,7 @@
             <table id="deletedJobLocations" class="table table-bordered table-hover">
               <thead>
               <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
@@ -34,7 +34,7 @@
                   $jobType = ucwords($jobTypeTrimmed);
                 ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <td>{{ $deletedJobLocations[$i]->name }}</td>
                   <td>{{ $deletedJobLocations[$i]->slug }}</td>
                   <td>{{ $deletedJobLocations[$i]->status ? 'Active' : 'Inactive' }}</td>
@@ -46,7 +46,7 @@
               </tbody>
               <tfoot>
               <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>

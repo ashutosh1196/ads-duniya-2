@@ -21,7 +21,7 @@
             <table id="pending-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
@@ -36,7 +36,7 @@
                   $logo = $pendingCustomersList[$i]->logo != null ? $websiteImagesPath.$pendingCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <!-- <td>{{ $i+1 }}</td> -->
                   <!-- <td><img src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td> -->
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
@@ -53,7 +53,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>

@@ -20,7 +20,7 @@
           <table id="deleted-jobseekers-list" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>#</th>
+                <!-- <th>#</th> -->
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -31,7 +31,7 @@
             <tbody>
               <?php for ($i=0; $i < count(is_countable($deletedJobseekers)?$deletedJobseekers:[]); $i++) { ?>
               <tr>
-                <td>{{ $i+1 }}</td>
+                <!-- <td>{{ $i+1 }}</td> -->
                 <td>{{ $deletedJobseekers[$i]->name }}</td>
                 <td>{{ $deletedJobseekers[$i]->email }}</td>
                 <td>{{ $deletedJobseekers[$i]->phone_number ? $deletedJobseekers[$i]->phone_number : '--' }}</td>
@@ -45,7 +45,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>#</th>
+                <!-- <th>#</th> -->
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>
