@@ -41,9 +41,13 @@
                             <?php
                               $publicPath = config('adminlte.website_url');
                               $logoPath = $publicPath.'images/companyLogos/';
-                              $defauktProfileImage = $publicPath.'images/profile/default-profile-image.svg';
+                              $defaultProfileImage = $publicPath.'images/profile/default-profile-image.svg';
                             ?>
-                            <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defauktProfileImage }}" alt="">
+                            @if($ticketMessages[$i]->sent_by == 'admin')
+                              <img src="{{ $defaultProfileImage }}" alt="">
+                            @else
+                              <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defaultProfileImage }}" alt="">
+                            @endif
                           </div>
                           <div class="user_detail">
                             <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
