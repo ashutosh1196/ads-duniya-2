@@ -18,10 +18,10 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right" href="{{ route('add_customer') }}">{{ __('adminlte::adminlte.add_new_customer') }}</a>
-            <table id="pending-customers-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="pending-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <!-- <th>#</th> -->
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
@@ -36,16 +36,16 @@
                   $logo = $pendingCustomersList[$i]->logo != null ? $websiteImagesPath.$pendingCustomersList[$i]->logo : $defaultImage;
                   ?>
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <th class="display-none"></th>
                   <!-- <td><img src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td> -->
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '--' }}</td>
                   <td>
-                    <a href="view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                    <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
                     <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <a href="edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                    <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                     <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                   </td>
                 </tr>
@@ -53,7 +53,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>

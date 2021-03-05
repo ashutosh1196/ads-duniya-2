@@ -17,13 +17,13 @@
             {{ session('status') }}
           </div>
         @endif
-        <table id="deletedJobsList" class="table table-bordered table-hover">
+        <table style="width:100%" id="deletedJobsList" class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th>#</th>
+              <th class="display-none"></th>
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
               <th>{{ __('adminlte::adminlte.industry') }}</th>
               <th>{{ __('adminlte::adminlte.company_name') }}</th>
               <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -34,13 +34,14 @@
               $organisation = \App\Models\Organization::where('id', $deletedJobs[$i]->organization_id)->get();
               $jobTypeTrimmed = str_replace('_', ' ', $deletedJobs[$i]->job_type);
               $jobType = ucwords($jobTypeTrimmed);
+              $jobIndustry = \App\Models\JobIndustry::find($deletedJobs[$i]->job_industry_id);
             ?>
             <tr>
-              <td>{{ $i+1 }}</td>
+              <th class="display-none"></th>
               <td>{{ $deletedJobs[$i]->job_title }}</td>
               <td>{{ $deletedJobs[$i]->job_ref_number }}</td>
-              <td>{{ $jobType }}</td>
-              <td>{{ $deletedJobs[$i]->industry }}</td>
+              <!-- <td>{{ $jobType }}</td> -->
+              <td>{{ $jobIndustry->name }}</td>
               <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
               <td>
                 <a class="action-button restore-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobs[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
@@ -50,10 +51,10 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>#</th>
+              <th class="display-none"></th>
               <th>{{ __('adminlte::adminlte.job_title') }}</th>
               <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-              <th>{{ __('adminlte::adminlte.job_type') }}</th>
+              <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th> -->
               <th>{{ __('adminlte::adminlte.industry') }}</th>
               <th>{{ __('adminlte::adminlte.company_name') }}</th>
               <th>{{ __('adminlte::adminlte.actions') }}</th>

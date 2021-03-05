@@ -56,8 +56,8 @@ class AdminsSeeder extends Seeder
         \DB::table('job_industries')->delete();
 
         \DB::table('job_industries')->insert([
-            'name' => 'IT',
-            'slug' => 'it',
+            'name' => 'Information Technology',
+            'slug' => 'information_technology',
             'description' => 'desc',
             'status' => 1
         ]);

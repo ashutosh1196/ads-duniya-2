@@ -36,7 +36,7 @@
 
                 <div class="information_fields">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-12">
                       <div class="form-group">
                         <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails->job_title }}" maxlength="100">
@@ -45,8 +45,192 @@
                         @endif
                       </div>
                     </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
+                        <textarea class="form-control" id="job_description" name="job_description" maxlength="1000" style="font-size: 13px;">{{ $jobDetails->job_description }}</textarea>
+                        @if($errors->has('job_description'))
+                          <div class="error">{{ $errors->last('job_description') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr/>
+
+                <div class="address_fields">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails->job_address }}" maxlength="100">
+                        @if($errors->has('job_address'))
+                          <div class="error">{{ $errors->first('job_address') }}</div>
+                        @endif
+                      </div>
+                    </div>
                       
-                    <div class="col-sm-6">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails->city }}" maxlength="100">
+                        @if($errors->has('city'))
+                          <div class="error">{{ $errors->first('city') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
+                        <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails->county }}" maxlength="100">
+                        @if($errors->has('county'))
+                          <div class="error">{{ $errors->first('county') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
+                        <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails->state }}" maxlength="100">
+                        @if($errors->has('state'))
+                          <div class="error">{{ $errors->first('state') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
+                        <select name="country" class="form-control" id="country">
+                            <?php for($i=0; $i<count($countries); $i++) { rsort($countries); ?>
+                              <option value="{{ $countries[$i]['name'] }}" {{ $countries[$i]['name'] == 'United Kingdom' ? 'selected' : '' }}>{{ $countries[$i]['name'] }}</option>
+                            <?php } ?>
+                        </select>
+                        @if($errors->has('country'))
+                          <div class="error">{{ $errors->last('country') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $jobDetails->pincode }}" maxlength="6">
+                        @if($errors->has('pincode'))
+                          <div class="error">{{ $errors->first('pincode') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr/>
+
+                <div class="requirements_fields"> 
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12 col-12">
+                      <div class="form-group">
+                        <label for="skills">{{ __('adminlte::adminlte.skills') }}<span class="text-danger"> *</span></label>
+                        <select class="form-control" id="skills" multiple="multiple" name="skills[]">
+                          @foreach($skills as $skill)
+                            @php
+                              if (old('skills')) {
+                                if (in_array($skill->id, old('skills'))) {
+                                  $selected = "selected";
+                                }
+                                else{
+                                  $selected = "";
+                                }
+                              }
+                              elseif($jobDetails->skills){
+                                if (in_array($skill->id, $jobDetails->skills->pluck('id')->toArray())) {
+                                  $selected = "selected";
+                                }
+                                else{
+                                  $selected = "";
+                                }
+                              }
+                              else{
+                                $selected = "";
+                              }    
+                            @endphp
+                            <option {{$selected}} value="{{$skill->id}}">{{$skill->name}}</option>
+                            @endforeach
+                        </select>
+                        <!-- <input type="text" name="skills" class="form-control" id="skills" maxlength="100"> -->
+                        @if($errors->has('skills'))
+                          <div class="error">{{ $errors->first('skills') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
+                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
+                        <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
+                        @if($errors->has('package_range_from'))
+                          <div class="error">{{ $errors->first('package_range_from') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
+                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
+                        <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
+                        @if($errors->has('package_range_to'))
+                          <div class="error">{{ $errors->first('package_range_to') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
+                      <div class="form-group amount">
+                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
+                        <select name="salary_currency" class="form-control" id="salary_currency">
+                          <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>Pound</option>
+                          <option value="dollars" {{ $jobDetails->salary_currency == 'dollars' ? 'selected' : '' }}>USD</option>
+                        </select>
+                        @if($errors->has('salary_currency'))
+                          <div class="error">{{ $errors->first('salary_currency') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                        <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
+                        @if($errors->has('experience_range_min'))
+                          <div class="error">{{ $errors->first('experience_range_min') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
+                        <input type="text" name="experience_range_max" class="form-control" id="experience_range_max" value="{{ $jobDetails->experience_range_max }}" maxlength="100">
+                        @if($errors->has('experience_range_max'))
+                          <div class="error">{{ $errors->first('experience_range_max') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <hr/>
+
+                <div class="type_fields"> 
+                  <div class="row">  
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                         <select name="job_type" class="form-control" id="job_type">
@@ -60,9 +244,38 @@
                       </div>
                     </div>
                   </div>
-                  
+                </div>
+
+                <hr/>
+
+                <div class="about_fields"> 
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="organization_id">{{ __('adminlte::adminlte.company_name') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="organization_id" class="form-control" id="organization_id" value="{{ $organisation->name }}" disabled>
+                        @if($errors->has('organization_id'))
+                          <div class="error">{{ $errors->last('organization_id') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100">
+                        @if($errors->has('job_url'))
+                          <div class="error">{{ $errors->first('job_url') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr/>
+
+                <div class="other_fields"> 
+                  <div class="row">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_industry_id">{{ __('adminlte::adminlte.job_industry') }}<span class="text-danger"> *</span></label>
                         <select name="job_industry_id" class="form-control" id="job_industry_id">
@@ -76,7 +289,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
                         <select name="job_function_id" class="form-control" id="job_function_id">
@@ -92,205 +305,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
-                        <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
-                        @if($errors->has('package_range_from'))
-                          <div class="error">{{ $errors->first('package_range_from') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
-                        <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
-                        @if($errors->has('package_range_to'))
-                          <div class="error">{{ $errors->first('package_range_to') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
-                        <input type="text" name="salary_currency" class="form-control" id="salary_currency" value="{{ $jobDetails->salary_currency }}" maxlength="100">
-                        @if($errors->has('salary_currency'))
-                          <div class="error">{{ $errors->first('salary_currency') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="skills">{{ __('adminlte::adminlte.skills') }}<span class="text-danger"> *</span></label>
-                        <select class="form-control" id="skills" multiple="multiple" name="skills[]">
-                        @foreach($skills as $skill)
-                          @php
-                            if (old('skills')) {
-                              if (in_array($skill->id, old('skills'))) {
-                                $selected = "selected";
-                              }
-                              else{
-                                $selected = "";
-                              }
-                            }
-                            elseif($jobDetails->skills){
-                              if (in_array($skill->id, $jobDetails->skills->pluck('id')->toArray())) {
-                                $selected = "selected";
-                              }
-                              else{
-                                $selected = "";
-                              }
-                            }
-                            else{
-                              $selected = "";
-                            }    
-                          @endphp
-                          <option {{$selected}} value="{{$skill->id}}">{{$skill->name}}</option>
-                          @endforeach
-                        <!--  -->
-                        </select>
-                        <!-- <input type="text" name="skills" class="form-control" id="skills" maxlength="100"> -->
-                        @if($errors->has('skills'))
-                          <div class="error">{{ $errors->first('skills') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
-                        <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
-                        @if($errors->has('experience_range_min'))
-                          <div class="error">{{ $errors->first('experience_range_min') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
-                        <input type="text" name="experience_range_max" class="form-control" id="experience_range_max" value="{{ $jobDetails->experience_range_max }}" maxlength="100">
-                        @if($errors->has('experience_range_max'))
-                          <div class="error">{{ $errors->first('experience_range_max') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="organization_id">{{ __('adminlte::adminlte.company_name') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="organization_id" class="form-control" id="organization_id" value="{{ $organisation->name }}" disabled>
-                        @if($errors->has('organization_id'))
-                          <div class="error">{{ $errors->last('organization_id') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100">
-                        @if($errors->has('job_url'))
-                          <div class="error">{{ $errors->first('job_url') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
-                        <textarea id="job_description" name="job_description" maxlength="1000">{{ $jobDetails->job_description }}</textarea>
-                        @if($errors->has('job_description'))
-                          <div class="error">{{ $errors->last('job_description') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <hr/>
-
-                <div class="address_fields">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails->job_address }}" maxlength="100">
-                        @if($errors->has('job_address'))
-                          <div class="error">{{ $errors->first('job_address') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                      
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails->city }}" maxlength="100">
-                        @if($errors->has('city'))
-                          <div class="error">{{ $errors->first('city') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
-                        <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails->state }}" maxlength="100">
-                        @if($errors->has('state'))
-                          <div class="error">{{ $errors->first('state') }}</div>
-                        @endif
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $jobDetails->pincode }}" maxlength="6">
-                        @if($errors->has('pincode'))
-                          <div class="error">{{ $errors->first('pincode') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                      
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
-                        <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails->county }}" maxlength="100">
-                        @if($errors->has('county'))
-                          <div class="error">{{ $errors->first('county') }}</div>
-                        @endif
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
-                        <select name="country" class="form-control" id="country">
-                            <?php for($i=0; $i<count($countries); $i++) { rsort($countries); ?>
-                              <option value="{{ $countries[$i]['name'] }}" {{ $countries[$i]['name'] == 'United Kingdom' ? 'selected' : '' }}>{{ $countries[$i]['name'] }}</option>
-                            <?php } ?>
-                        </select>
-                        @if($errors->has('country'))
-                          <div class="error">{{ $errors->last('country') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="job_location_id">{{ __('adminlte::adminlte.region') }}<span class="text-danger"> *</span></label>
                         <select name="job_location_id" class="form-control" id="job_location_id">
@@ -303,7 +318,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6">
                       <div class="form-group">
                         <label for="advert_days">{{ __('adminlte::adminlte.advert_days') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="advert_days" class="form-control" id="advert_days" value="90 Days" disabled>
@@ -315,11 +330,11 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
+                    <div class="col-6">
+                      <div class="form-group is_featured_group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}<span class="text-danger"> *</span></label>
                         <label class="switch">
-                          <input type="checkbox" checked="" name="is_featured" disabled="">
+                          <input class="is_featured" type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider round"></span>
                         </label>
                         @if($errors->has('is_featured'))
@@ -327,17 +342,16 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
+                    <div class="col-6">
+                      <div class="form-group is_complete_update_group">
                         <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}<span class="text-danger"> *</span></label>
-                        <input type="checkbox" name="is_complete_update">
+                        <input class="is_complete_update" type="checkbox" name="is_complete_update">
                         @if($errors->has('is_complete_update'))
                           <div class="error">{{ $errors->last('is_complete_update') }}</div>
                         @endif
                       </div>
                     </div>
                   </div>
-
                 </div>
 
               </div>
@@ -369,10 +383,10 @@
         tags: true,
         tokenSeparators: [',', ' ']
       })
-      CKEDITOR.replace( 'job_description', {
+      /* CKEDITOR.replace( 'job_description', {
         customConfig : 'config.js',
         toolbar : 'simple'
-      })
+      }) */
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -420,10 +434,11 @@
             required: true
           },
           job_description:{
-            required: function() {
+            /* required: function() {
               CKEDITOR.instances.job_description.updateElement();
-            },
-            minlength:10
+            }, */
+            required: true,
+            maxlength: 1000
           },
           job_address: {
             required: true
@@ -468,7 +483,7 @@
           },
           job_description: {
             required: "The Job Description field is required.",
-            minlength: "Minimum Length must be 10"
+            maxlength: "Enter no more than 1000 characters"
           },
           job_address: {
             required: "The Job Address field is required."

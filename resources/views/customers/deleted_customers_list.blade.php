@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="deleted-customers-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="deleted-customers-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -30,12 +30,11 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedCustomers)?$deletedCustomers:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $deletedCustomers[$i]->id }}</td>
+                  <th class="display-none"></th>
                     <td>{{ $deletedCustomers[$i]->name }}</td>
                     <td>{{ $deletedCustomers[$i]->email }}</td>
                     <td>{{ $deletedCustomers[$i]->contact_number }}</td>
                     <td>
-                      <!-- <a class="action-button" title="View" href="{{ route( 'view_customer', [ 'id' => $deletedCustomers[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a> -->
                       <a style="margin-left:5px;" class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedCustomers[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
                     </td>
                   </tr>
@@ -43,7 +42,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

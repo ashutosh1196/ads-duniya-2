@@ -23,7 +23,7 @@
 
           <form class="form_wrap">
             <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.name') }}</label>
                   <?php $name;
@@ -40,103 +40,103 @@
                   <input class="form-control" placeholder="{{ $name }}" readonly>
                 </div>
               </div>
-              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>First Name</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>Last Name</label>
                   <input class="form-control" placeholder="--" readonly>
                 </div>
               </div> -->
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->email ? $recruiter[0]->email : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.contact_number') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->phone_number ? $recruiter[0]->phone_number : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>Signup Via</label>
                   <input class="form-control" placeholder="{{ ucfirst($recruiter[0]->signup_via) }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->status == 1 ? 'Active' : 'Inactive' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.is_parent') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->is_parent ? 'Yes' : 'No' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.ip_address') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->ip_address }}" readonly>
                 </div>
               </div>
-              <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>Logged In With</label>
                   <input class="form-control" readonly>
                 </div>
               </div> -->
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_logged_in_date_time') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->last_logged_in_at ? date('d/m/y', strtotime($recruiter[0]->last_logged_in_at)) : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email_verification_status') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->is_email_verified ? $recruiter[0]->is_email_verified : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.email_verification_date') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->email_verified_at ? date('d/m/y', strtotime($recruiter[0]->email_verified_at)) : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.user_locked_status') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->is_user_locked ? 'Locked' : 'Not Locked' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.user_locked_date') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter[0]->user_locked_at ? date('d/m/y', strtotime($recruiter[0]->user_locked_at)) : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   <input class="form-control" placeholder="{{ $organization[0]->name ? $organization[0]->name : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ $organization[0]->created_at ? date('d/m/y', strtotime($organization[0]->created_at)) : '--' }}" readonly>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ $organization[0]->updated_at ? date('d/m/y', strtotime($organization[0]->updated_at)) : '--' }}" readonly>

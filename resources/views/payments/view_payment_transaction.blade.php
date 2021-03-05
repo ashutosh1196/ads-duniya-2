@@ -25,7 +25,7 @@
 
             <div class="row">
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   @if($organization != null)
@@ -36,35 +36,35 @@
                 </div>
               </div>
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.recruiter_name') }}</label>
                   <input class="form-control" placeholder="{{ $recruiter->name ? $recruiter->name : '--' }}" readonly>
                 </div>
               </div>
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.amount') }}</label>
                   <input class="form-control" placeholder="${{ $paymentTransaction->amount ? $paymentTransaction->amount : '0.00' }}" readonly>
                 </div>
               </div>
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.transaction_id') }}</label>
                   <input class="form-control" placeholder="{{ $paymentTransaction->transaction_id ? $paymentTransaction->transaction_id : '--' }}" readonly>
                 </div>
               </div>
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
                   <input class="form-control" placeholder="{{ $paymentTransaction->status ? ucfirst($paymentTransaction->status) : '--' }}" readonly>
                 </div>
               </div>
               
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-12">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.payment_date') }}</label>
                   <input class="form-control" placeholder="{{ date('d/m/y', strtotime($paymentTransaction->payment_date)) }}" readonly>

@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="deleted-recruiters-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="deleted-recruiters-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -33,21 +33,21 @@
                   $organisation = \App\Models\Organization::where('id', $deletedRecruiters[$i]->organization_id)->get();
                   ?>
                 <tr>
-                  <td>{{ $deletedRecruiters[$i]->id }}</td>
-                    <td>{{ $deletedRecruiters[$i]->name }}</td>
-                    <td>{{ $deletedRecruiters[$i]->email }}</td>
-                    <td>{{ $deletedRecruiters[$i]->phone_number ? $deletedRecruiters[$i]->phone_number : '--' }}</td>
-                    <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
-                    <td>
-                      <!-- <a href="{{ route( 'view_recruiter', [ 'id' => $deletedRecruiters[$i]->id ] ) }}" title="View"><i class="text-info fa fa-eye"></i></a> -->
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $deletedRecruiters[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
-                    </td>
+                  <th class="display-none"></th>
+                  <td>{{ $deletedRecruiters[$i]->name }}</td>
+                  <td>{{ $deletedRecruiters[$i]->email }}</td>
+                  <td>{{ $deletedRecruiters[$i]->phone_number ? $deletedRecruiters[$i]->phone_number : '--' }}</td>
+                  <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+                  <td>
+                    <!-- <a href="{{ route( 'view_recruiter', [ 'id' => $deletedRecruiters[$i]->id ] ) }}" title="View"><i class="text-info fa fa-eye"></i></a> -->
+                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $deletedRecruiters[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

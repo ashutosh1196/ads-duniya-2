@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="admins-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <!-- <th>Email Verified</th> -->
@@ -31,7 +31,7 @@
               <tbody>
                 <?php for ($i=0; $i < count((is_countable($deletedAdmins)?$deletedAdmins:[])); $i++) { ?>
                   <tr>
-                    <td>{{ $deletedAdmins[$i]->id }}</td>
+                  <th class="display-none"></th>
                     <td>{{ $deletedAdmins[$i]->name }}</td>
                     <td>{{ $deletedAdmins[$i]->email }}</td>
                     <!-- <td>True</td> -->
@@ -45,7 +45,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <!-- <th>Email Verified</th> -->

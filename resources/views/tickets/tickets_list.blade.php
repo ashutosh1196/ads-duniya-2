@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="tickets-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="tickets-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
@@ -34,25 +34,25 @@
                   $organisation = \App\Models\Organization::where('id', $recruiter[0]->organization_id)->get();
                   ?>
                 <tr>
-                  <td>{{ $ticketsList[$i]->id }}</td>
-                    <td>{{ $organisation[0]->name }}</td>
-                    <td>{{ $recruiter[0]->name }}</td>
-                    <td>{{ $ticketsList[$i]->subject }}</td>
-                    <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
-                    <td>
-                      <a href="view/{{$ticketsList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
-                      <?php if($ticketsList[$i]->status == 'open') { ?>
-                      <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
-                      <?php } else { ?>
-                      <a class="action-button open-ticket-button" title="Open" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-danger fas fa-door-open"></i></a>
-                      <?php } ?>
-                    </td>
+                  <th class="display-none"></th>
+                  <td>{{ $organisation[0]->name }}</td>
+                  <td>{{ $recruiter[0]->name }}</td>
+                  <td>{{ $ticketsList[$i]->subject }}</td>
+                  <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
+                  <td>
+                    <a href="view/{{$ticketsList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
+                    <?php if($ticketsList[$i]->status == 'open') { ?>
+                    <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
+                    <?php } else { ?>
+                    <a class="action-button open-ticket-button" title="Open" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-danger fas fa-door-open"></i></a>
+                    <?php } ?>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
                   <th>{{ __('adminlte::adminlte.subject') }}</th>

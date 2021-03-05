@@ -18,7 +18,7 @@ class CreateJobHistoriesTable extends Migration
             $table->string('job_ref_number');
             $table->string('job_title');
             $table->text('job_description');
-            $table->enum('job_type',['full_time','contract_basis','work_from_home']);
+            $table->enum('job_type', ['full_time', 'contract_basis', 'work_from_home']);
             $table->tinyInteger('is_featured')->default(0);
             $table->string('job_address');
             $table->string('city');
@@ -32,12 +32,12 @@ class CreateJobHistoriesTable extends Migration
             $table->foreignId('job_industry_id')->constrained();
             $table->foreignId('job_function_id')->constrained();
             $table->foreignId('job_location_id')->constrained();
-            $table->bigInteger('package_range_from')->nullable();
-            $table->bigInteger('package_range_to')->nullable();
-            $table->enum('salary_currency', ['pounds','dollars']);
-            $table->integer('experience_range_min')->nullable();
-            $table->integer('experience_range_max')->nullable();
-            $table->enum('status',['open','close']);
+            $table->double('package_range_from', 15, 8)->nullable();
+            $table->double('package_range_to', 15, 8)->nullable();
+            $table->enum('salary_currency', ['pounds', 'dollars']);
+            $table->float('experience_range_min')->nullable();
+            $table->float('experience_range_max')->nullable();
+            $table->enum('status', ['open','close']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();

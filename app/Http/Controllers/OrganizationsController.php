@@ -105,7 +105,7 @@ class OrganizationsController extends Controller {
 	/**
 	 * This function is used to Show Listing
 	*/
-	public function viewCustomer($id) {
+	public function viewCustomer($from_page, $id) {
 		$viewCustomer = Organization::where('id', $id)->get();
 		$deletedCustomers = Organization::onlyTrashed()->get();
 		if($viewCustomer->isNotEmpty()) {
@@ -228,10 +228,10 @@ class OrganizationsController extends Controller {
 	/**
 	 * This function is used to Show Job Seekers Listing
 	*/
-	public function editCustomer($id) {
+	public function editCustomer($from_page, $id) {
 		$countries = Country::all()->toArray();
 		$customer = Organization::where('id', $id)->get();
-		return view('customers/edit_customer', ['countries' => $countries, 'customer' => $customer]);
+		return view('customers/edit_customer', ['countries' => $countries, 'customer' => $customer, 'from_page' => $from_page ]);
 	}
 
 	/**
@@ -277,8 +277,17 @@ class OrganizationsController extends Controller {
 		];
 		$updateCustomer = Organization::where('id', $request->id)->update($dataToUpdate);
 		if($updateCustomer) {
+			if($request->from_page == 'whitelisted') {
+				$redirectTo = 'whitelisted_customers';
+			}
+			else if($request->from_page == 'rejected') {
+				$redirectTo = 'rejected_customers';
+			}
+			else {
+				$redirectTo = 'pending_customers';
+			}
 			$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
-			return redirect()->route('pending_customers', ['pendingCustomersList' => $pendingCustomersList])->with('success', 'Cutomer Updated Successfully!');
+			return redirect()->route($redirectTo, ['pendingCustomersList' => $pendingCustomersList])->with('success', 'Cutomer Updated Successfully!');
 		}
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');

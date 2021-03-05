@@ -18,10 +18,10 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right clear" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>
-            <table id="admins-list" class="table table-bordered table-hover">
+            <table style="width:100%" id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.role') }}</th>
@@ -33,7 +33,7 @@
                   $role = \App\Models\Role::where('id', $adminsList[$i]->role_id)->get();
                   ?>
                   <tr>
-                    <td>{{ $adminsList[$i]->id }}</td>
+                  <th></th>
                     <td>{{ $adminsList[$i]->name }}</td>
                     <td>{{ $adminsList[$i]->email }}</td>
                     <td>{{ $role[0]->name }}</td>
@@ -47,7 +47,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.role') }}</th>

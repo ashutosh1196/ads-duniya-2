@@ -17,10 +17,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="paymentTransactionsList" class="table table-bordered table-hover">
+            <table style="width:100%" id="paymentTransactionsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th style="display:none">#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
@@ -30,9 +30,12 @@
               <tbody>
                 @for ($i=0; $i < count($paymentTransactionsList); $i++)
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <td style="display:none">{{ $i+1 }}</td>
                   <td>
-                    <?php $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id); ?>
+                    <?php
+                      $recruiter = \App\Models\Recruiter::find($paymentTransactionsList[$i]->recruiter_id);
+                      $company = \App\Models\Organization::find($recruiter->organization_id);
+                    ?>
                     {{ $company != null ? $company->name : '--' }}
                   </td>
                   <td>${{ $paymentTransactionsList[$i]->amount }}</td>
@@ -45,7 +48,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th style="display:none">#</th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>

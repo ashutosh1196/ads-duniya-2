@@ -263,7 +263,7 @@ return [
                     'text' => 'pending',
                     'icon' => 'fas fa-fw fa-exclamation-circle',
                     'url'  => 'admin_panel/customers/pending',
-                    'active' => ['admin_panel/customers/pending*', 'admin_panel/customers/add*', 'admin_panel/customers/view*', 'admin_panel/customers/edit*'],
+                    'active' => ['admin_panel/customers/pending*', 'admin_panel/customers/add*'],
                 ],
                 [
                     'text' => 'Whitelisted',

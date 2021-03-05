@@ -18,10 +18,10 @@
               </div>
             @endif
             <a class="btn btn-sm btn-success float-right" href="{{ route('add_company_credit') }}">{{ __('adminlte::adminlte.add_company_credit') }}</a>
-            <table id="companyCreditsList" class="table table-bordered table-hover">
+            <table style="width:100%" id="companyCreditsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -30,7 +30,7 @@
               <tbody>
                 @for ($i=0; $i < count($companyCreditsList); $i++)
                 <tr>
-                  <td>{{ $i+1 }}</td>
+                  <th class="display-none"></th>
                   <td>
                     <?php
                       $company = \App\Models\Organization::find($companyCreditsList[$i]->organization_id);
@@ -46,7 +46,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>

@@ -32,11 +32,11 @@ class CreateJobsTable extends Migration
             $table->foreignId('job_industry_id')->constrained();
             $table->foreignId('job_function_id')->constrained();
             $table->foreignId('job_location_id')->constrained();
-            $table->bigInteger('package_range_from')->nullable();
-            $table->bigInteger('package_range_to')->nullable();
+            $table->double('package_range_from')->nullable();
+            $table->double('package_range_to')->nullable();
             $table->enum('salary_currency', ['pounds','dollars']);
-            $table->integer('experience_range_min')->nullable();
-            $table->integer('experience_range_max')->nullable();
+            $table->float('experience_range_min')->nullable();
+            $table->float('experience_range_max')->nullable();
             $table->enum('status',['open','close']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
