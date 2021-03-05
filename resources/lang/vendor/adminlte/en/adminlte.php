@@ -147,8 +147,8 @@ return [
     'add_new_job_function'          => 'Add New Job Function',
     'job_function_information'      => 'Job Function Information',
 
-    'industry'                      => 'Industry',
-    'function'                      => 'Function',
+    'industry'                      => 'Job Industry',
+    'function'                      => 'Job Function',
     'job_industry'                  => 'Job Industry',
     'add_job_industry'              => 'Add Job Industry',
     'deleted_job_industries'        => 'Deleted Job Industries',
