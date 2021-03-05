@@ -40,14 +40,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->job_ref_number ? $jobDetails->job_ref_number : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_ref_number ? $jobDetails->job_ref_number : '' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_title') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->job_title ? $jobDetails->job_title : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_title ? $jobDetails->job_title : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -67,14 +67,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.address') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->job_address ? $jobDetails->job_address : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_address ? $jobDetails->job_address : '' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.city') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->city ? $jobDetails->city : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->city ? $jobDetails->city : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -83,14 +83,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.county') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->county ? $jobDetails->county : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->county ? $jobDetails->county : '' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.state') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->state ? $jobDetails->state : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->state ? $jobDetails->state : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -99,14 +99,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.country') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->country ? $jobDetails->country : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->country ? $jobDetails->country : '' }}" readonly>
                         </div>
                       </div>
                       
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.zip') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->pincode ? $jobDetails->pincode : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->pincode ? $jobDetails->pincode : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -130,7 +130,7 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                           <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->package_range_from ? $jobDetails->package_range_from : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->package_range_from ? $jobDetails->package_range_from : '' }}" readonly>
                         </div>
                       </div>
 
@@ -138,7 +138,7 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
                           <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->package_range_to ? $jobDetails->package_range_to : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->package_range_to ? $jobDetails->package_range_to : '' }}" readonly>
                         </div>
                       </div>
 
@@ -155,14 +155,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_max ? $jobDetails->experience_range_max.' Years' : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_max ? $jobDetails->experience_range_max.' Years' : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -176,7 +176,7 @@
                           <?php $jobTypeTrimmed = str_replace('_', ' ', $jobDetails->job_type);
                             $jobType = ucwords($jobTypeTrimmed);
                           ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->job_type ? $jobType : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_type ? $jobType : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -218,14 +218,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_industry') }}</label>
-                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry : '' }}" readonly>
                         </div>
                       </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_function') }}</label>
-                          <input class="form-control" placeholder="{{ $jobFunction ? $jobFunction : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobFunction ? $jobFunction : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -234,7 +234,7 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.region') }}</label>
-                          <input class="form-control" placeholder="{{ $jobLocation ? $jobLocation : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobLocation ? $jobLocation : '' }}" readonly>
                         </div>
                       </div>
 
@@ -260,7 +260,7 @@
                           <?php $statusTrimmed = str_replace('_', ' ', $jobDetails->status);
                             $status = ucwords($statusTrimmed);
                           ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->status ? $status : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->status ? $status : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -271,14 +271,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->created_by ? $jobDetails->created_by : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->created_by ? $jobDetails->created_by : '' }}" readonly>
                         </div>
                       </div>
                               
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.expiring_at') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->expiring_at ? date('d/m/y', strtotime($jobDetails->expiring_at)) : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->expiring_at ? date('d/m/y', strtotime($jobDetails->expiring_at)) : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -287,14 +287,14 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->created_at ? date('d/m/y', strtotime($jobDetails->created_at)) : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->created_at ? date('d/m/y', strtotime($jobDetails->created_at)) : '' }}" readonly>
                         </div>
                       </div>
                     
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->updated_at ? date('d/m/y', strtotime($jobDetails->updated_at)) : '--' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->updated_at ? date('d/m/y', strtotime($jobDetails->updated_at)) : '' }}" readonly>
                         </div>
                       </div>
                     </div>

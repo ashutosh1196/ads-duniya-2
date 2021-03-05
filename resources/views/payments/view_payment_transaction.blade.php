@@ -29,7 +29,7 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
                   @if($organization != null)
-                    <input class="form-control" placeholder="{{ $organization->name ? $organization->name : '--' }}" readonly>
+                    <input class="form-control" placeholder="{{ $organization->name ? $organization->name : '' }}" readonly>
                   @else
                     <input class="form-control" placeholder="--" readonly>
                   @endif
@@ -53,21 +53,21 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.transaction_id') }}</label>
-                  <input class="form-control" placeholder="{{ $paymentTransaction->txn_id ? $paymentTransaction->txn_id : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $paymentTransaction->txn_id ? $paymentTransaction->txn_id : '' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.status') }}</label>
-                  <input class="form-control" placeholder="{{ $paymentTransaction->status ? ucfirst($paymentTransaction->status) : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $paymentTransaction->status ? ucfirst($paymentTransaction->status) : '' }}" readonly>
                 </div>
               </div>
               
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.payment_date') }}</label>
-                  <input class="form-control" placeholder="{{ $paymentTransaction->created_at ? date('d/m/y', strtotime($paymentTransaction->created_at)) : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $paymentTransaction->created_at ? date('d/m/y', strtotime($paymentTransaction->created_at)) : '' }}" readonly>
                 </div>
               </div>
 
