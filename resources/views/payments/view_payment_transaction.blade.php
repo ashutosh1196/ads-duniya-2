@@ -31,7 +31,7 @@
                   @if($organization != null)
                     <input class="form-control" placeholder="{{ $organization->name ? $organization->name : '' }}" readonly>
                   @else
-                    <input class="form-control" placeholder="--" readonly>
+                    <input class="form-control" placeholder="" readonly>
                   @endif
                 </div>
               </div>
