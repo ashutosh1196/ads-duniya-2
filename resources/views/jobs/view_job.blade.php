@@ -58,6 +58,8 @@
                           </div>
                         </div>
 
+                        <hr>
+
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                           <div class="form-group">
                             <label>{{ __('adminlte::adminlte.address') }}</label>
@@ -99,6 +101,8 @@
                             <input class="form-control" placeholder="{{ $jobDetails->pincode ? $jobDetails->pincode : '--' }}" readonly>
                           </div>
                         </div>
+
+                        <hr>
 
                         <div class="col-sm-12">
                           <div class="form-group">
@@ -147,6 +151,8 @@
                             <input class="form-control" placeholder="{{ $jobDetails->experience_range_max ? $jobDetails->experience_range_max.' Years' : '--' }}" readonly>
                           </div>
                         </div>
+
+                        <hr>
 
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                           <div class="form-group">

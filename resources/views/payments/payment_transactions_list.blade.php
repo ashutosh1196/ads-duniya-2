@@ -34,7 +34,7 @@
                 <tr>
                   <td style="display:none">{{ $i+1 }}</td>
                   <td>{{ $paymentTransactionsList[$i]->txn_id }}</td>
-                  <td>${{ $paymentTransactionsList[$i]->amount }}</td>
+                  <td>£{{ $paymentTransactionsList[$i]->amount }}</td>
                   <td class="{{ $paymentTransactionsList[$i]->status == 'succeeded' ? 'text-success' : 'text-danger' }}">{{ ucfirst($paymentTransactionsList[$i]->status) }}</td>
                   <td >{{ $paymentTransactionsList[$i]->description }}</td>
                   <td>

@@ -34,7 +34,7 @@
                 <tr>
                   <th class="display-none"></th>
                   <td class="{{ $creditsHistory[$i]->txn_type == 'debit' ? 'text-danger' : 'text-success'}}">{{ ucfirst($creditsHistory[$i]->txn_type) }}</td>
-                  <td>${{ $creditsHistory[$i]->credits }}</td>
+                  <td>{{ $creditsHistory[$i]->credits }}</td>
                   <td>{{ ucfirst($creditsHistory[$i]->credit_type) }}</td>
                   <td>
                     <?php

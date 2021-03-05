@@ -37,7 +37,7 @@
                     ?>
                     {{ $company->name }}
                   </td>
-                  <td>${{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
+                  <td>{{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
                   </td>
