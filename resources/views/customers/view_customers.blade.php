@@ -45,61 +45,61 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.contact_number') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.vat_number') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->vat_number ? $viewCustomer[0]->vat_number : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->vat_number ? $viewCustomer[0]->vat_number : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_domain_url') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '' }}" readonly>
                 </div>
               </div>
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_domain') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '' }}" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.address') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->address ? $viewCustomer[0]->address : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->address ? $viewCustomer[0]->address : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.city') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->city ? $viewCustomer[0]->city : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->city ? $viewCustomer[0]->city : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.county') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->county ? $viewCustomer[0]->county : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->county ? $viewCustomer[0]->county : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.state') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.country') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->country ? $viewCustomer[0]->country : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->country ? $viewCustomer[0]->country : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.zip') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->pincode ? $viewCustomer[0]->pincode : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->pincode ? $viewCustomer[0]->pincode : '' }}" readonly>
                 </div>
               </div>
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -130,19 +130,19 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->created_by ? $viewCustomer[0]->created_by : '--' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->created_by ? $viewCustomer[0]->created_by : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($viewCustomer[0]->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->created_at ? date('d/m/y', strtotime($viewCustomer[0]->created_at)) : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($viewCustomer[0]->updated_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer[0]->updated_at ? date('d/m/y', strtotime($viewCustomer[0]->updated_at)) : '' }}" readonly>
                 </div>
               </div>
             </div>

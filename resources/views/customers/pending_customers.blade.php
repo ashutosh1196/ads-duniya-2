@@ -40,7 +40,7 @@
                   <!-- <td><img src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td> -->
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
-                  <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '--' }}</td>
+                  <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '' }}</td>
                   <td>
                     <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>

@@ -34,7 +34,7 @@
                   <th class="display-none"></th>
                 <td>{{ $deletedJobseekers[$i]->name }}</td>
                 <td>{{ $deletedJobseekers[$i]->email }}</td>
-                <td>{{ $deletedJobseekers[$i]->phone_number ? $deletedJobseekers[$i]->phone_number : '--' }}</td>
+                <td>{{ $deletedJobseekers[$i]->phone_number ? $deletedJobseekers[$i]->phone_number : '' }}</td>
                 <td class="{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $deletedJobseekers[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td>
                 <td>
                   <!-- <a class="action-button" title="View" href="{{ route( 'view_jobseeker', [ 'id' => $deletedJobseekers[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a> -->

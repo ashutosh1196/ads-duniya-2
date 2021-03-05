@@ -69,7 +69,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.added_on') }}</label>
-                  <input class="form-control" placeholder="{{ date('d/m/y', strtotime($viewCreditHistory->created_at)) }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCreditHistory->created_at ? date('d/m/y', strtotime($viewCreditHistory->created_at)) : '' }}" readonly>
                 </div>
               </div>
 

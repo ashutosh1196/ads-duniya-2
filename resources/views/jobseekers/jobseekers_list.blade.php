@@ -34,7 +34,7 @@
                   <th class="display-none"></th>
                 <td>{{ $jobseekersList[$i]->name }}</td>
                 <td>{{ $jobseekersList[$i]->email }}</td>
-                <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '--' }}</td>
+                <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '' }}</td>
                 <!-- <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td> -->
                 <!-- <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td> -->
                 <td>

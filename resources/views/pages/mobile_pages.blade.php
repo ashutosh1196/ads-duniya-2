@@ -51,8 +51,8 @@
                       <?php $contentDB = strip_tags($mobilePagesList[$i]->content);
                       echo \Illuminate\Support\Str::limit($contentDB, 20)?>
                     </td> -->
-                    <td>{{ date('d/m/y', strtotime($mobilePagesList[$i]->created_at)) }}</td>
-                    <td>{{ date('d/m/y', strtotime($mobilePagesList[$i]->updated_at)) }}</td>
+                    <td>{{ $mobilePagesList[$i]->created_at ? date('d/m/y', strtotime($mobilePagesList[$i]->created_at)) : '' }}</td>
+                    <td>{{ $mobilePagesList[$i]->updated_at ? date('d/m/y', strtotime($mobilePagesList[$i]->updated_at)) : '' }}</td>
                     <td><a class="btn btn-sm btn-success text-white" href="edit_content/<?php echo $mobilePagesList[$i]->id; ?>">Edit</a></td>
                   </tr>
                 <?php } ?>

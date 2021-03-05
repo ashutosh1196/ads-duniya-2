@@ -41,9 +41,9 @@
                   <td>{{ $jobsList[$i]->job_ref_number }}</td>
                   <td>{{ $jobsList[$i]->job_title }}</td>
                   <td class="{{ $jobsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $jobsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
-                  <td>{{ $organisation ? $organisation->name : '--' }}</td>
+                  <td>{{ $organisation ? $organisation->name : '' }}</td>
                   <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
-                  <td>{{ date('d/m/y', strtotime($jobsList[$i]->expired_on)) }}</td>
+                  <td>{{ $jobsList[$i]->expired_on ? date('d/m/y', strtotime($jobsList[$i]->expired_on)) : '' }}</td>
                   <td>
                     <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>

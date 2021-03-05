@@ -35,10 +35,10 @@
                   ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+                  <td>{{ count($organisation) > 0 ? $organisation[0]->name : '' }}</td>
                   <td>{{ $recruitersList[$i]->email }}</td>
-                  <td>{{ date('d/m/y', strtotime($recruitersList[$i]->last_logged_in_at)) }}</td>
-                  <td>{{ date('d/m/y', strtotime($recruitersList[$i]->created_at)) }}</td>
+                  <td>{{ $recruitersList[$i]->last_logged_in_at ? date('d/m/y', strtotime($recruitersList[$i]->last_logged_in_at)) : '' }}</td>
+                  <td>{{ $recruitersList[$i]->created_at ? date('d/m/y', strtotime($recruitersList[$i]->created_at)) : '' }}</td>
                   <td>
                     <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
                     <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>

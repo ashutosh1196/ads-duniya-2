@@ -40,7 +40,7 @@
                   <!-- <td><img src="{{ $logo }}" alt="{{ $rejectedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
-                  <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '--' }}</td>
+                  <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '' }}</td>
                   <td>
                     <a href="rejected/view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>

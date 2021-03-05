@@ -42,7 +42,7 @@
               <td>{{ $deletedJobs[$i]->job_ref_number }}</td>
               <!-- <td>{{ $jobType }}</td> -->
               <td>{{ $jobIndustry->name }}</td>
-              <td>{{ count($organisation) > 0 ? $organisation[0]->name : '--' }}</td>
+              <td>{{ count($organisation) > 0 ? $organisation[0]->name : '' }}</td>
               <td>
                 <a class="action-button restore-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedJobs[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
               </td>

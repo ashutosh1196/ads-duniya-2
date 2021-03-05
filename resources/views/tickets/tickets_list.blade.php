@@ -42,7 +42,7 @@
                   <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
                   <td>{{ $organisation[0]->name }}</td>
                   <td>{{ $recruiter[0]->name }}</td>
-                  <td>{{ date('d/m/y', strtotime($ticketsList[$i]->created_at)) }}</td>
+                  <td>{{ $ticketsList[$i]->created_at ? date('d/m/y', strtotime($ticketsList[$i]->created_at)) : '' }}</td>
                   <td>
                     <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-undo"></i></a>
                     <?php if($ticketsList[$i]->status == 'open') { ?>

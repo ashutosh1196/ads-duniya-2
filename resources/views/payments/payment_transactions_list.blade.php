@@ -41,7 +41,7 @@
                     <?php
                       $company = \App\Models\Organization::find($paymentTransactionsList[$i]->organization_id);
                     ?>
-                    {{ $company != null ? $company->name : '--' }}
+                    {{ $company != null ? $company->name : '' }}
                   </td>
                   <td>
                     <a class="action-button" title="View" href="{{ route( 'view_payment_transaction', [ 'id' => $paymentTransactionsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>

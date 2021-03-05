@@ -40,7 +40,7 @@
                   <!-- <td><img src="{{ $logo }}" alt="{{ $whitelistedCustomersList[$i]->name }}"></td> -->
                   <td>{{ $whitelistedCustomersList[$i]->name }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
-                  <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '--' }}</td>
+                  <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '' }}</td>
                   <td>
                   <a href="whitelisted/view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
