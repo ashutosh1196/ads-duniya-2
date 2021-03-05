@@ -946,8 +946,8 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     border: 1px solid #f6f7fb;
 }
 span.selection .select2-selection--multiple {
-    border: 1px solid #cccccc;
-    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    padding: 5px 5px;
 }
 .form-group.radio {
     display: flex;
@@ -967,8 +967,12 @@ span.selection .select2-selection--multiple {
 /*Added 05-March-2021*/
 
 span.select2-container--default {
-    display: initial;
+    width: 100% !important;
 }
+span.select2 span.selection .select2-selection--multiple li  {
+     margin: 3px 3px 2px; 
+}
+
 
 /*Responsive*/
 
