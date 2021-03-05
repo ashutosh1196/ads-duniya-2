@@ -271,11 +271,11 @@ section.content .small-box:hover a.small-box-footer img {
     font-size: 13px;
     font-weight: 500;
 }
-.dataTables_wrapper .dataTables_filter label input,
-.dataTables_wrapper .dataTables_length label select {
+.dataTables_wrapper .dataTables_filter label input, .dataTables_wrapper .dataTables_length label select {
     border: 1px solid #dee2e6;
     border-radius: 3px;
     padding: 5px 5px;
+    background-color: #ffffff;
 }
 .dataTables_wrapper .dataTables_filter label input:focus,
 .dataTables_wrapper .dataTables_length label select:focus {
