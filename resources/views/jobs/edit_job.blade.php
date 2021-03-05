@@ -48,7 +48,8 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
-                        <textarea id="job_description" name="job_description" maxlength="1000">{{ $jobDetails->job_description }}</textarea>
+                        <textarea class="form-control" id="job_description" name="job_description" maxlength="1000" style="font-size: 13px;">{{ $jobDetails->job_description }}</textarea>
+                        <div class="words-text">Maximum 1000</div>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
                         @endif
@@ -384,10 +385,10 @@
         tags: true,
         tokenSeparators: [',', ' ']
       })
-      CKEDITOR.replace( 'job_description', {
+      /* CKEDITOR.replace( 'job_description', {
         customConfig : 'config.js',
         toolbar : 'simple'
-      })
+      }) */
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -435,10 +436,11 @@
             required: true
           },
           job_description:{
-            required: function() {
+            /* required: function() {
               CKEDITOR.instances.job_description.updateElement();
-            },
-            minlength:10
+            }, */
+            required: true
+            maxlength: 1000
           },
           job_address: {
             required: true
@@ -483,7 +485,7 @@
           },
           job_description: {
             required: "The Job Description field is required.",
-            minlength: "Minimum Length must be 10"
+            maxlength: "Enter no more than 1000 characters"
           },
           job_address: {
             required: "The Job Address field is required."
