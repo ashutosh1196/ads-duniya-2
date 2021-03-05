@@ -50,14 +50,14 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ $jobFunction[0]->created_at ? date('d/m/y', strtotime($jobFunction[0]->created_at)) : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->created_at ? date('d/m/y', strtotime($jobFunction[0]->created_at)) : '--' }}" readonly>
                 </div>
               </div>
               
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
                   <label>Deleted Date</label>
-                  <input class="form-control" placeholder="{{ $jobFunction[0]->deleted_at ? date('d/m/y', strtotime($jobFunction[0]->deleted_at)) : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->deleted_at ? date('d/m/y', strtotime($jobFunction[0]->deleted_at)) : '--' }}" readonly>
                 </div>
               </div> -->
             </div>
@@ -67,7 +67,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ $jobFunction[0]->updated_at ? date('d/m/y', strtotime($jobFunction[0]->updated_at)) : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobFunction[0]->updated_at ? date('d/m/y', strtotime($jobFunction[0]->updated_at)) : '--' }}" readonly>
                 </div>
               </div>
             </div>
