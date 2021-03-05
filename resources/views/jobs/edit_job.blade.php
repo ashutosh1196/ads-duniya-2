@@ -49,7 +49,6 @@
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
                         <textarea class="form-control" id="job_description" name="job_description" maxlength="1000" style="font-size: 13px;">{{ $jobDetails->job_description }}</textarea>
-                        <div class="words-text">Maximum 1000</div>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
                         @endif
@@ -439,7 +438,7 @@
             /* required: function() {
               CKEDITOR.instances.job_description.updateElement();
             }, */
-            required: true
+            required: true,
             maxlength: 1000
           },
           job_address: {
