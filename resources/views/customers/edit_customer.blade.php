@@ -69,7 +69,7 @@
                         @if($errors->has('contact_number'))
                           <div class="error">{{ $errors->first('contact_number') }}</div>
                         @endif
-                        <input type="hidden" name="country_code" value="{{ $customer[0]->country_code }}">
+                        <input type="hidden" name="country_code" value="{{ $customer[0]->country_code ? $customer[0]->country_code : '+44' }}">
                       </div>
                     </div>
 
@@ -187,15 +187,20 @@
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
+    li.country { display: none; }
+    li.divider { display: none; }
+    li.country.preferred { display: block; }
   </style>
 @stop
 
 @section('js')
   <script>
     $(document).ready(function() {
+      if($('.country-list .country').data('dial-code') == );
       $( "input[name=contact_number]" ).focus(function() {
-          $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
-       });
+        alert($('.country-list .country.active').data('dial-code'));
+        $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
+      });
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
