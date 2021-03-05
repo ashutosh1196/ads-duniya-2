@@ -387,10 +387,6 @@
         customConfig : 'config.js',
         toolbar : 'simple'
       }) */
-      $.validator.addMethod("greaterThan", function (value, element, param) {
-        var $otherElement = $(param);
-        return parseInt(value, 10) > parseInt($otherElement.val(), 10);
-      });
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -408,6 +404,10 @@
             }
           }
         });
+      });
+      $.validator.addMethod("greaterThan", function (value, element, param) {
+        var $otherElement = $(param);
+        return parseFloat(value, 10) >= parseFloat($otherElement.val(), 10);
       });
       $('#editJobForm').validate({
         ignore: [],
@@ -460,17 +460,19 @@
             required: true
           },
           package_range_from: {
-            required: true
+            required: true,
+            maxlength: 10
           },
           package_range_to: {
-            required: true
+            required: true,
+            maxlength: 10,
             greaterThan: '#package_range_from'
           },
           salary_currency: {
-            required: true
+            required: true,
           },
           experience_range_min: {
-            required: true
+            required: true,
           },
           experience_range_max: {
             required: true,
@@ -522,19 +524,23 @@
             required: "The Country field is required."
           },
           package_range_from: {
-            required: "The Minimum Package Amount field is required."
+            required: 'The Minimum Package Amount is required.',
+            pattern: 'The Minimum Package Amount must be valid.'
           },
           package_range_to: {
-            required: "The Maximum Package Amount field is required."
+            required: 'The Maximum Package Amount is required.',
+            pattern: 'The Maximum Package Amount must be valid.',
+            greaterThan: 'The Maximum Package Amount must be greater than or equal to Minimum Package Amount.'
           },
           salary_currency: {
-            required: "The Currency field is required."
+            required: 'The Currency is required.',
           },
           experience_range_min: {
-            required: "The Minimum Experience Required field is required."
+            required: 'The Minimum Experience Required is required.',
           },
           experience_range_max: {
-            required: "The Maximum Experience Required field is required."
+            required: 'The Miximum Experience Required is required.',
+            greaterThan: 'The Miximum Experience must be greater than or equal to Minimum Experience.'
           },
         }
       });
