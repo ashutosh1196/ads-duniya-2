@@ -74,7 +74,12 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="city" class="form-control" id="city" value="{{ $jobDetails->city }}" maxlength="100">
+                        <input class="form-control" list="cities" name="city" id="city" value="{{ $jobDetails->city }}">
+                        <datalist id="cities">
+                          <?php for($i=0; $i<count($cities); $i++) { ?>
+                            <option value="{{ $cities[$i]->city }}" {{ $cities[$i]->city == 'United Kingdom' ? 'selected' : '' }}>{{ $cities[$i]->city }}</option>
+                          <?php } ?>
+                        </datalist>
                         @if($errors->has('city'))
                           <div class="error">{{ $errors->first('city') }}</div>
                         @endif
@@ -83,7 +88,12 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails->county }}" maxlength="100">
+                        <input class="form-control" list="counties" name="county" id="county" value="{{ $jobDetails->county }}">
+                        <datalist id="counties">
+                          <?php for($i=0; $i<count($counties); $i++) { ?>
+                            <option value="{{ $counties[$i]->county }}" {{ $counties[$i]->county == 'United Kingdom' ? 'selected' : '' }}>{{ $counties[$i]->county }}</option>
+                          <?php } ?>
+                        </datalist>
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif

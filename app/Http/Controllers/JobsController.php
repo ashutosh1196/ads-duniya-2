@@ -154,6 +154,8 @@ class JobsController extends Controller {
 		$jobFunctions  = JobFunction::all();
 		$jobLocations  = JobLocation::all();
 		$JobSkills     = \DB::table('job_skill')->get();
+		$counties     = \DB::table('counties')->get();
+		$cities     = \DB::table('cities')->get();
 		$skills = Skill::all();
 		$organisation = Organization::find($jobDetails->organization_id);
 		$recruiter = Organization::find($jobDetails->recruiter_id);
@@ -161,6 +163,8 @@ class JobsController extends Controller {
 			'organisation' => $organisation,
 			'recruiter' => $recruiter,
 			'countries' => $countries,
+			'counties' => $counties,
+			'cities' => $cities,
 			'jobIndustries' => $jobIndustries,
 			'jobFunctions' => $jobFunctions,
 			'jobLocations' => $jobLocations,
