@@ -129,9 +129,9 @@ class JobsController extends Controller {
 	*/
 	public function viewJob($id) {
 		$jobDetails = Job::find($id);
-		$jobIndustry = jobIndustry::find($jobDetails->job_industry_id);
-		$jobFunction = jobFunction::find($jobDetails->job_function_id);
-		$jobLocation = jobLocation::find($jobDetails->job_location_id);
+		$jobIndustry = JobIndustry::find($jobDetails->job_industry_id);
+		$jobFunction = JobFunction::find($jobDetails->job_function_id);
+		$jobLocation = JobLocation::find($jobDetails->job_location_id);
 		$organization = Organization::find($jobDetails->organization_id);
 		$recruiter = Recruiter::find( $jobDetails->recruiter_id);
 		return view('jobs/view_job', [
@@ -314,9 +314,9 @@ class JobsController extends Controller {
 	*/
 	public function viewJobHistory($id) {
 		$JobHistory = JobHistory::find($id);
-		$jobIndustry = jobIndustry::find($JobHistory->job_industry_id);
-		$jobFunction = jobFunction::find($JobHistory->job_function_id);
-		$jobLocation = jobLocation::find($JobHistory->job_location_id);
+		$jobIndustry = JobIndustry::find($JobHistory->job_industry_id);
+		$jobFunction = JobFunction::find($JobHistory->job_function_id);
+		$jobLocation = JobLocation::find($JobHistory->job_location_id);
 		$organization = Organization::find($JobHistory->organization_id);
 		$recruiter = Recruiter::find($JobHistory->recruiter_id);
 		return view('jobs/view_job_history', [
