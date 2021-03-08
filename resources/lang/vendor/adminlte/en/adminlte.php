@@ -103,7 +103,10 @@ return [
     'job_title'                     => 'Job Title',
     'job_type'                      => 'Job Type',
     'full_time'                     => 'Full Time',
+    'part_time'                     => 'Part Time',
     'contract_basis'                => 'Contract Basis',
+    'graduate'                      => 'Graduate',
+    'public_sector'                 => 'Public Sector',
     'work_from_home'                => 'Work From Home',
     'industry'                      => 'Industry',
     'salary'                        => 'Salary',
@@ -232,8 +235,8 @@ return [
     
     'added_by'                          => 'Added By',
 
-    'minimum_package_amount'            => 'Minimum Package Amount',
-    'maximum_package_amount'            => 'Maximum Package Amount',
+    'minimum_package_amount'            => 'Minimum Salary',
+    'maximum_package_amount'            => 'Maximum Salary',
     'minimum_experience_required'       => 'Minimum Experience Required',
     'maximum_experience_required'       => 'Maximum Experience Required',
     'job_url'                           => 'Company Website URL',
@@ -244,4 +247,5 @@ return [
     'is_complete_update'                => 'Complete job update?',
     'expiring_at'                       => 'Expiry Date',
     'last_login_at'                     => 'Last Login At',
+    'employment_eligibility'            => 'Employment Eligibility',
 ];

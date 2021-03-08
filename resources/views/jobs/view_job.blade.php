@@ -64,12 +64,12 @@
                     <hr>
 
                     <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                      <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.address') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->job_address ? $jobDetails->job_address : '' }}" readonly>
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
@@ -77,15 +77,15 @@
                           <input class="form-control" placeholder="{{ $jobDetails->city ? $jobDetails->city : '' }}" readonly>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.county') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->county ? $jobDetails->county : '' }}" readonly>
                         </div>
                       </div>
+                    </div>
+
+                    <div class="row">
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
@@ -93,15 +93,15 @@
                           <input class="form-control" placeholder="{{ $jobDetails->state ? $jobDetails->state : '' }}" readonly>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.country') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->country ? $jobDetails->country : '' }}" readonly>
                         </div>
                       </div>
+                    </div>
+
+                    <!-- <div class="row">
                       
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
@@ -109,7 +109,7 @@
                           <input class="form-control" placeholder="{{ $jobDetails->pincode ? $jobDetails->pincode : '' }}" readonly>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <hr>
 
@@ -121,6 +121,23 @@
                           @if($errors->has('skills'))
                             <div class="error">{{ $errors->first('skills') }}</div>
                           @endif
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '' }}" readonly>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.employment_eligibility') }}</label>
+                          <?php $employmentEligibility = str_replace('_', ' ', $jobDetails->employment_eligibility); ?>
+                          <input class="form-control" placeholder="{{ ucwords($employmentEligibility) }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -147,22 +164,6 @@
                           <label>{{ __('adminlte::adminlte.currency') }}</label>
                           <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
                           <input class="form-control" placeholder="{{ $jobDetails->currency == 'pounds' ? 'Pounds' : 'USD' }}" readonly>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                        <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '' }}" readonly>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                        <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.maximum_experience_required') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->experience_range_max ? $jobDetails->experience_range_max.' Years' : '' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -204,10 +205,16 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_url') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->job_url }}" readonly>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.is_featured') }}</label>
+                          <input class="form-control" placeholder="{{ $jobDetails->is_featured ? 'Yes' : 'No' }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -247,12 +254,6 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                        <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.is_featured') }}</label>
-                          <input class="form-control" placeholder="{{ $jobDetails->is_featured ? 'Yes' : 'No' }}" readonly>
-                        </div>
-                      </div>
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">

@@ -61,7 +61,7 @@
 
                 <div class="address_fields">
                   <div class="row">
-                    <div class="col-6">
+                    <!-- <div class="col-6">
                       <div class="form-group">
                         <label for="job_address">{{ __('adminlte::adminlte.address') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="job_address" class="form-control" id="job_address" value="{{ $jobDetails->job_address }}" maxlength="100">
@@ -69,7 +69,7 @@
                           <div class="error">{{ $errors->first('job_address') }}</div>
                         @endif
                       </div>
-                    </div>
+                    </div> -->
                       
                     <div class="col-6">
                       <div class="form-group">
@@ -80,30 +80,27 @@
                         @endif
                       </div>
                     </div>
-                  </div>
-
-                  <div class="row">
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="county">{{ __('adminlte::adminlte.county') }}</label>
+                        <label for="county">{{ __('adminlte::adminlte.county') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="county" class="form-control" id="county" value="{{ $jobDetails->county }}" maxlength="100">
                         @if($errors->has('county'))
                           <div class="error">{{ $errors->first('county') }}</div>
                         @endif
                       </div>
                     </div>
+                  </div>
+
+                  <div class="row">
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="state">{{ __('adminlte::adminlte.state') }}<span class="text-danger"> *</span></label>
+                        <label for="state">{{ __('adminlte::adminlte.state') }}</label>
                         <input type="text" name="state" class="form-control" id="state" value="{{ $jobDetails->state }}" maxlength="100">
                         @if($errors->has('state'))
                           <div class="error">{{ $errors->first('state') }}</div>
                         @endif
                       </div>
                     </div>
-                  </div>
-
-                  <div class="row">
                     <div class="col-6">
                       <div class="form-group">
                         <label for="country">{{ __('adminlte::adminlte.country') }}<span class="text-danger"> *</span></label>
@@ -117,7 +114,11 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-6">
+                  </div>
+
+                  <div class="row">
+                    
+                    <!-- <div class="col-6">
                       <div class="form-group">
                         <label for="pincode">{{ __('adminlte::adminlte.zip') }}<span class="text-danger"> *</span></label>
                         <input type="text" name="pincode" class="form-control" id="pincode" value="{{ $jobDetails->pincode }}" maxlength="7">
@@ -125,7 +126,7 @@
                           <div class="error">{{ $errors->first('pincode') }}</div>
                         @endif
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
@@ -168,12 +169,33 @@
                         @endif
                       </div>
                     </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                        <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
+                        @if($errors->has('experience_range_min'))
+                          <div class="error">{{ $errors->first('experience_range_min') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="employment_eligibility">{{ __('adminlte::adminlte.employment_eligibility') }}</label>
+                        <select name="employment_eligibility" class="form-control" id="employment_eligibility">
+                        <option value="visa_considered" {{ $jobDetails->employment_eligibility == 'visa_considered' ? 'selected' : '' }}>Visa considered</option>
+                        <option value="sponsorship_offered" {{ $jobDetails->employment_eligibility == 'sponsorship_offered' ? 'selected' : '' }}>Sponsorship offered</option>
+                        </select>
+                        @if($errors->has('employment_eligibility'))
+                          <div class="error">{{ $errors->first('employment_eligibility') }}</div>
+                        @endif
+                      </div>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}<span class="text-danger"> *</span></label>
+                        <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                         <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
                         @if($errors->has('package_range_from'))
                           <div class="error">{{ $errors->first('package_range_from') }}</div>
@@ -182,7 +204,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}<span class="text-danger"> *</span></label>
+                        <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
                         <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
                         @if($errors->has('package_range_to'))
                           <div class="error">{{ $errors->first('package_range_to') }}</div>
@@ -204,24 +226,15 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-6">
+                    <!-- <div class="col-6">
                       <div class="form-group">
-                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}<span class="text-danger"> *</span></label>
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
                         <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
                         @if($errors->has('experience_range_min'))
                           <div class="error">{{ $errors->first('experience_range_min') }}</div>
                         @endif
                       </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-group">
-                        <label for="experience_range_max">{{ __('adminlte::adminlte.maximum_experience_required') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="experience_range_max" class="form-control" id="experience_range_max" value="{{ $jobDetails->experience_range_max }}" maxlength="100">
-                        @if($errors->has('experience_range_max'))
-                          <div class="error">{{ $errors->first('experience_range_max') }}</div>
-                        @endif
-                      </div>
-                    </div>
+                    </div> -->
                   </div>
 
                 </div>
@@ -230,12 +243,15 @@
 
                 <div class="type_fields"> 
                   <div class="row">  
-                    <div class="col-6">
+                    <div class="col-12">
                       <div class="form-group">
                         <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                         <select name="job_type" class="form-control" id="job_type">
                           <option {{ $jobDetails->job_type == 'full_time' ? 'selected' : '' }} value="full_time">{{ __('adminlte::adminlte.full_time') }}</option>
+                          <option {{ $jobDetails->job_type == 'part_time' ? 'selected' : '' }} value="part_time">{{ __('adminlte::adminlte.part_time') }}</option>
                           <option {{ $jobDetails->job_type == 'contract_basis' ? 'selected' : '' }} value="contract_basis">{{ __('adminlte::adminlte.contract_basis') }}</option>
+                          <option {{ $jobDetails->job_type == 'graduate' ? 'selected' : '' }} value="graduate">{{ __('adminlte::adminlte.graduate') }}</option>
+                          <option {{ $jobDetails->job_type == 'public_sector' ? 'selected' : '' }} value="public_sector">{{ __('adminlte::adminlte.public_sector') }}</option>
                           <option {{ $jobDetails->job_type == 'work_from_home' ? 'selected' : '' }} value="work_from_home">{{ __('adminlte::adminlte.work_from_home') }}</option>
                         </select>
                         @if($errors->has('job_type'))
@@ -261,10 +277,22 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100">
+                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small> (Featured job only)</small><span class="text-danger"> *</span></label>
+                        <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100" readonly>
                         @if($errors->has('job_url'))
                           <div class="error">{{ $errors->first('job_url') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group is_featured_group">
+                        <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
+                        <label class="switch">
+                          <input class="" type="checkbox" name="is_featured" id="is_featured" {{ $jobDetails->is_featured ? 'checked' : '' }}>
+                          <span class="slider-btn round"></span>
+                        </label>
+                        @if($errors->has('is_featured'))
+                          <div class="error">{{ $errors->first('is_featured') }}</div>
                         @endif
                       </div>
                     </div>
@@ -330,18 +358,7 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-6">
-                      <div class="form-group is_featured_group">
-                        <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
-                        <label class="switch">
-                          <input class="is_featured" type="checkbox" name="is_featured" disabled="" {{ $jobDetails->is_featured ? 'checked' : '' }}>
-                          <span class="slider round"></span>
-                        </label>
-                        @if($errors->has('is_featured'))
-                          <div class="error">{{ $errors->first('is_featured') }}</div>
-                        @endif
-                      </div>
-                    </div>
+                    
                     <div class="col-6">
                       <div class="form-group is_complete_update_group">
                         <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}</label>
@@ -370,15 +387,34 @@
 @section('css')
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <style>
-    .information_fields { margin-bottom: 30px; }
-    .address_fields { margin-top: 30px; }
-  </style>
+    .information_fields { margin-bottom: 25px; }
+    .address_fields { margin-top: 25px; margin-bottom: 25px; }
+    .requirements_fields { margin-top: 25px; margin-bottom: 25px; }
+    .type_fields { margin-top: 25px; margin-bottom: 25px; }
+    .about_fields { margin-top: 25px; margin-bottom: 25px; }
+    .other_fields { margin-top: 25px; }
+    
+    .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider-btn { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .4s; transition: .4s; }
+    .slider-btn:before { position: absolute; content: ""; height: 19px; width: 18px; left: 1px; bottom: 1px; background-color: white; -webkit-transition: .4s; transition: .4s; }
+    input:checked + .slider-btn { background-color: #2d8427; right: -1px; position: absolute; }
+    input:focus + .slider-btn { box-shadow: 0 0 1px #2d8427; right: -1px; position: absolute; }
+    input:checked + .slider-btn:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
+    /* Rounded sliders */
+    .slider-btn.round { border-radius: 34px; }
+    .slider-btn.round:before { border-radius: 50%; }
+    </style>
 @stop
 
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
     $(document).ready(function() {
+      $("#is_featured").change(function() {
+        $(this).get(0).checked ? $("#job_url").removeAttr('readonly') : $("#job_url").attr('readonly', 'true');
+      });
+
       $("#skills").select2({
         tags: true,
         tokenSeparators: [',', ' ']
@@ -444,40 +480,45 @@
             required: true,
             maxlength: 1000
           },
-          job_address: {
-            required: true
-          },
           city: {
-            required: true
+            required: '#county:blank'
           },
-          state: {
-            required: true
+          county: {
+            required: '#city:blank'
           },
-          pincode: {
-            required: true
-          },
+          // job_address: {
+          //   required: true
+          // },
+          // city: {
+          //   required: true
+          // },
+          // state: {
+          //   required: true
+          // },
+          // pincode: {
+          //   required: true
+          // },
           country: {
             required: true
           },
-          package_range_from: {
-            required: true,
-            maxlength: 10
-          },
-          package_range_to: {
-            required: true,
-            maxlength: 10,
-            greaterThan: '#package_range_from'
-          },
+          // package_range_from: {
+          //   required: true,
+          //   maxlength: 10
+          // },
+          // package_range_to: {
+          //   required: true,
+          //   maxlength: 10,
+          //   greaterThan: '#package_range_from'
+          // },
           salary_currency: {
             required: true,
           },
-          experience_range_min: {
+          "skills[]": {
             required: true,
           },
-          experience_range_max: {
-            required: true,
-            greaterThan: '#experience_range_min'
-          },
+          // experience_range_min: {
+          //   required: true,
+          // },
         },
         messages: {
           job_title: {
@@ -508,40 +549,42 @@
             required: "The Job Description field is required.",
             maxlength: "Enter no more than 1000 characters"
           },
-          job_address: {
-            required: "The Job Address field is required."
-          },
+          // job_address: {
+          //   required: "The Job Address field is required."
+          // },
           city: {
-            required: "The City / Town field is required."
+            required: "The City / Town field is required when County is not present."
           },
-          state: {
-            required: "The State field is required."
+          county: {
+            required: "The County field is required when City is not present."
           },
-          pincode: {
-            required: "The Zip / Postcode field is required."
-          },
+          // state: {
+          //   required: "The State field is required."
+          // },
+          // pincode: {
+          //   required: "The Zip / Postcode field is required."
+          // },
           country: {
             required: "The Country field is required."
           },
-          package_range_from: {
-            required: 'The Minimum Package Amount is required.',
-            pattern: 'The Minimum Package Amount must be valid.'
-          },
-          package_range_to: {
-            required: 'The Maximum Package Amount is required.',
-            pattern: 'The Maximum Package Amount must be valid.',
-            greaterThan: 'The Maximum Package Amount must be greater than or equal to Minimum Package Amount.'
-          },
+          // package_range_from: {
+          //   required: 'The Minimum Package Amount is required.',
+          //   pattern: 'The Minimum Package Amount must be valid.'
+          // },
+          // package_range_to: {
+          //   required: 'The Maximum Package Amount is required.',
+          //   pattern: 'The Maximum Package Amount must be valid.',
+          //   greaterThan: 'The Maximum Package Amount must be greater than or equal to Minimum Package Amount.'
+          // },
           salary_currency: {
-            required: 'The Currency is required.',
+            required: 'The Currency field is required.',
           },
-          experience_range_min: {
-            required: 'The Minimum Experience Required is required.',
+          "skills[]": {
+            required: 'The Skills field is required.',
           },
-          experience_range_max: {
-            required: 'The Miximum Experience Required is required.',
-            greaterThan: 'The Miximum Experience must be greater than or equal to Minimum Experience.'
-          },
+          // experience_range_min: {
+          //   required: 'The Minimum Experience Required is required.',
+          // },
         }
       });
     });

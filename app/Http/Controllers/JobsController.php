@@ -59,12 +59,12 @@ class JobsController extends Controller {
 			'organization_id' => 'required',
 			'recruiter_id' => 'required',
 			'job_description' => 'required',
-			'is_featured' => 'required',
-			'job_address' => 'required',
-			'city' => 'required',
-			'state' => 'required',
+			// 'is_featured' => 'required',
+			// 'job_address' => 'required',
+			// 'city' => 'required',
+			// 'state' => 'required',
 			'country' => 'required',
-			'pincode' => 'required',
+			// 'pincode' => 'required',
 		], [
 			'job_title.required' => 'The Job Title field is required.',
 			'job_type.required' => 'The Job Type field is required.',
@@ -74,12 +74,12 @@ class JobsController extends Controller {
 			'organization_id.required' => 'The Company field is required.',
 			'recruiter_id.required' => 'The Recruiter field is required.',
 			'job_description.required' => 'The Job Description field is required.',
-			'is_featured.required' => 'The Is Featured field is required.',
-			'job_address.required' => 'The Job Address field is required.',
-			'city.required' => 'The City field is required.',
-			'state.required' => 'The State field is required.',
+			// 'is_featured.required' => 'The Is Featured field is required.',
+			// 'job_address.required' => 'The Job Address field is required.',
+			// 'city.required' => 'The City field is required.',
+			// 'state.required' => 'The State field is required.',
 			'country.required' => 'The Country field is required.',
-			'pincode.required' => 'The Zip / Postcode field is required.',
+			// 'pincode.required' => 'The Zip / Postcode field is required.',
 		]);
 		$job = new Job;
 		$jobRefNumber = uniqid();
@@ -89,16 +89,16 @@ class JobsController extends Controller {
 		$job->job_title = $request->job_title;
 		$job->job_description = $request->job_description;
 		$job->job_type = $request->job_type;
-		$job->job_address = $request->job_address;
+		// $job->job_address = $request->job_address;
 		$job->city = $request->city;
 		$job->county = $request->county;
 		$job->state = $request->state;
 		$job->country = $request->country;
-		$job->pincode = $request->pincode;
+		// $job->pincode = $request->pincode;
 		$job->job_industry_id = $request->job_industry_id;
 		$job->job_function_id = $request->job_function_id;
 		$job->job_location_id = $request->job_location_id;
-		$job->is_featured = $request->is_featured;
+		$job->is_featured = $request->is_featured == 'on' ? 1 : 0;
 		$job->min_monthly_salary = $request->min_monthly_salary;
 		$job->max_monthly_salary = $request->max_monthly_salary;
 		$job->min_experience = $request->min_experience;
@@ -179,38 +179,26 @@ class JobsController extends Controller {
 			'job_title' => 'required',
 			'job_description' => 'required',
 			'job_type' => 'required',
-			'job_address' => 'required',
-			'city' => 'required',
-			'state' => 'required',
+			'city' => 'required_without_all:county',
+			'county' => 'required_without_all:city',
 			'country' => 'required',
-			'pincode' => 'required',
 			'job_url' => 'required',
 			'job_industry_id' => 'required',
 			'job_function_id' => 'required',
 			'job_location_id' => 'required',
-			'package_range_from' => 'required',
-			'package_range_to' => 'required',
 			'salary_currency' => 'required',
-			'experience_range_min' => 'required',
-			'experience_range_max' => 'required',
 		], [
 			'job_title.required' => 'The Job Title field is required.',
 			'job_description.required' => 'The Job Description field is required.',
 			'job_type.required' => 'The Job Type field is required.',
-			'job_address.required' => 'The Job Address field is required.',
-			'city.required' => 'The City field is required.',
-			'state.required' => 'The State field is required.',
+			'city.required_without_all' => 'The City / Town field is required when County is not present.',
+			'county.required_without_all' => 'The County field is required when City / Town is not present.',
 			'country.required' => 'The Country field is required.',
-			'pincode.required' => 'The Zip / Postcode field is required.',
 			'job_url.required' => 'The Job URL field is required.',
 			'job_industry_id.required' => 'The Job Industry field is required.',
 			'job_function_id.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Location field is required.',
-			'package_range_from' => 'Minimum Package Amount is required',
-			'package_range_to' => 'Maximum Package Amount is required',
 			'salary_currency' => 'Currency is required',
-			'experience_range_min' => 'Minimum Experience is required',
-			'experience_range_max' => 'Maximum Experience is required',
 		]);
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
@@ -221,14 +209,12 @@ class JobsController extends Controller {
 			"package_range_to" => $request->package_range_to,
 			"salary_currency" => $request->salary_currency,
 			"experience_range_min" => $request->experience_range_min,
-			"experience_range_max" => $request->experience_range_max,
 			"job_description" => $request->job_description,
-			"job_address" => $request->job_address,
 			"city" => $request->city,
 			"county" => $request->county,
 			"state" => $request->state,
 			"country" => $request->country,
-			"pincode" => $request->pincode,
+			$job->is_featured = $request->is_featured == 'on' ? 1 : 0,
 			"job_url" => $request->job_url,
 			"job_location_id" => $request->job_location_id,
 			"salary" => $request->salary,
