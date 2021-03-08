@@ -14,6 +14,7 @@ use App\Models\Recruiter;
 use App\Models\Country;
 use App\Models\JobHistory;
 use Auth;
+use DB;
 
 class JobsController extends Controller {
 	
@@ -150,27 +151,23 @@ class JobsController extends Controller {
 	public function editJob($id) {
 		$jobDetails = Job::find($id);
 		$countries     = Country::all()->toArray();
+		$counties     = DB::table('counties')->get();
+		$cities     = DB::table('cities')->get();
 		$jobIndustries = JobIndustry::all();
 		$jobFunctions  = JobFunction::all();
 		$jobLocations  = JobLocation::all();
-		$JobSkills     = \DB::table('job_skill')->get();
-		$counties     = \DB::table('counties')->get();
-		$cities     = \DB::table('cities')->get();
 		$skills = Skill::all();
 		$organisation = Organization::find($jobDetails->organization_id);
-		$recruiter = Organization::find($jobDetails->recruiter_id);
 		return view('jobs/edit_job', [
-			'organisation' => $organisation,
-			'recruiter' => $recruiter,
-			'countries' => $countries,
-			'counties' => $counties,
-			'cities' => $cities,
+			'jobDetails'		=> $jobDetails,
+			'countries'			=> $countries,
+			'counties'			=> $counties,
+			'cities'				=> $cities,
 			'jobIndustries' => $jobIndustries,
-			'jobFunctions' => $jobFunctions,
-			'jobLocations' => $jobLocations,
-			'JobSkills' => $JobSkills,
-			'jobDetails' => $jobDetails,
-			'skills' => $skills,
+			'jobFunctions'	=> $jobFunctions,
+			'jobLocations'	=> $jobLocations,
+			'skills'				=> $skills,
+			'organisation'	=> $organisation,
 		]);
 	}
 	

@@ -478,9 +478,6 @@
           job_url: {
             required: true
           },
-          recruiter_id: {
-            required: true
-          },
           organization_id: {
             required: true
           },
@@ -549,9 +546,6 @@
           },
           job_url: {
             required: "The Job URL field is required."
-          },
-          recruiter_id: {
-            required: "The Recruiter field is required."
           },
           organization_id: {
             required: "The Company field is required."
