@@ -35,7 +35,8 @@ class CreateJobsTable extends Migration
             $table->double('package_range_to')->nullable();
             $table->enum('salary_currency', ['pounds','dollars']);
             $table->float('experience_range_min')->nullable();
-            $table->enum('status',['open','close']);
+            $table->enum('employment_eligibility', ['visa_considered', 'sponsorship_offered'])->default('visa_considered');
+            $table->enum('status', ['open','close']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
