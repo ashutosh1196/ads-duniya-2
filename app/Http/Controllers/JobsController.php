@@ -219,7 +219,7 @@ class JobsController extends Controller {
 			"county" => $request->county,
 			"state" => $request->state,
 			"country" => $request->country,
-			$job->is_featured = $request->is_featured == 'on' ? 1 : 0,
+			"is_featured" => $request->is_featured == 'on' ? 1 : 0,
 			"job_url" => $job_url,
 			"job_location_id" => $request->job_location_id,
 			"salary" => $request->salary,
