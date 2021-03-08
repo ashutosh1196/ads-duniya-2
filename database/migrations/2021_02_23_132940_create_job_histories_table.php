@@ -15,17 +15,17 @@ class CreateJobHistoriesTable extends Migration
     {
         Schema::create('job_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('job_id')->constrained();
             $table->string('job_ref_number');
             $table->string('job_title');
             $table->text('job_description');
-            $table->enum('job_type', ['full_time', 'contract_basis', 'work_from_home']);
+            $table->enum('job_type',['full_time','contract_basis','part_time','graduate','public_sector','work_from_home']);
             $table->tinyInteger('is_featured')->default(0);
-            $table->string('job_address');
-            $table->string('city');
+            $table->string('company_logo')->nullable();
+            $table->string('city')->nullable();
             $table->string('county')->nullable();
             $table->string('state')->nullable();
             $table->string('country');
-            $table->string('pincode');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('job_url');
@@ -36,13 +36,12 @@ class CreateJobHistoriesTable extends Migration
             $table->double('package_range_to', 15, 8)->nullable();
             $table->enum('salary_currency', ['pounds', 'dollars']);
             $table->float('experience_range_min')->nullable();
-            $table->float('experience_range_max')->nullable();
+            $table->enum('employment_eligibility', ['visa_considered', 'sponsorship_offered'])->default('visa_considered');
             $table->enum('status', ['open','close']);
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
-            $table->timestamp('expiring_at');
-            $table->foreignId('job_id')->constrained();
+            $table->dateTime('expiring_at');
             $table->timestamps();
         });
     }
