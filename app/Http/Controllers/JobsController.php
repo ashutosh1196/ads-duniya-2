@@ -207,6 +207,7 @@ class JobsController extends Controller {
 			"job_type" => $request->job_type,
 			"job_industry_id" => $request->job_industry_id,
 			"job_function_id" => $request->job_function_id,
+			"job_location_id" => $request->job_location_id,
 			"package_range_from" => $request->package_range_from,
 			"package_range_to" => $request->package_range_to,
 			"salary_currency" => $request->salary_currency,
@@ -218,8 +219,6 @@ class JobsController extends Controller {
 			"country" => $request->country,
 			"is_featured" => $request->is_featured == 'on' ? 1 : 0,
 			"job_url" => $job_url,
-			"job_location_id" => $request->job_location_id,
-			"salary" => $request->salary,
 			"job_type" => $request->job_type,
 		];
 		$updateJob = $job->update($jobToUpdate);
