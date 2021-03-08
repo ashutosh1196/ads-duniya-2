@@ -288,6 +288,7 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small> (Featured job only)</small><span class="text-danger"> *</span></label>
+                        <input type="hidden" name="company_url" value="{{ $organisation->url }}">
                         <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100" readonly>
                         @if($errors->has('job_url'))
                           <div class="error">{{ $errors->first('job_url') }}</div>

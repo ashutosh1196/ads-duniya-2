@@ -204,6 +204,7 @@ class JobsController extends Controller {
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
+		$job_url = $request->is_featured == 'on' ? $request->job_url : $request->company_url;
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
@@ -219,7 +220,7 @@ class JobsController extends Controller {
 			"state" => $request->state,
 			"country" => $request->country,
 			$job->is_featured = $request->is_featured == 'on' ? 1 : 0,
-			"job_url" => $request->job_url,
+			"job_url" => $job_url,
 			"job_location_id" => $request->job_location_id,
 			"salary" => $request->salary,
 			"job_type" => $request->job_type,
