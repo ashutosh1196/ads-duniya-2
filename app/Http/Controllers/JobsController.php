@@ -225,11 +225,11 @@ class JobsController extends Controller {
 			"salary" => $request->salary,
 			"job_type" => $request->job_type,
 		];
-		if($request->is_complete_update == "on") {
-			$job->jobHistories()->create($job->toArray());
-		}
 		$updateJob = $job->update($jobToUpdate);
 		if($updateJob) {
+			if($request->is_complete_update == "on") {
+				$job->jobHistories()->create($job->toArray());
+			}
     	$job->skills()->sync($request->skills);
 			$jobsList = Job::all();
 			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
