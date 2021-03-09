@@ -318,8 +318,8 @@
                           <div id="preview-cropped-image">
                             <label class="label" title="Change Image">
                               <?php 
-                                $file = $jobDetails->company_logo ? config('adminlte.website_url').'images/companyLogos/'.$jobDetails->company_logo : 'profile/default-profile-image.svg';
-                                $filePath = asset('images').'/'.$file;
+                                $url = config('adminlte.website_url', '').'images/companyLogos/';
+                                $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : $url.'default-profile-image.svg';
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
                               <input type="file" class="sr-only" id="input" name="image" accept="image/*">
