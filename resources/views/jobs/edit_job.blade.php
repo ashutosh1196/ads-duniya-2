@@ -318,8 +318,7 @@
                           <div id="preview-cropped-image">
                             <label class="label" title="Change Image">
                               <?php 
-                                $folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
-                                $file = $jobDetails->company_logo ? $folderPath.$jobDetails->company_logo : 'profile/default-profile-image.svg';
+                                $file = $jobDetails->company_logo ? config('adminlte.website_url').'images/companyLogos/'.$jobDetails->company_logo : 'profile/default-profile-image.svg';
                                 $filePath = asset('images').'/'.$file;
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
