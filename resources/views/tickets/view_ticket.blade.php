@@ -65,8 +65,23 @@
                         <div class="attachment_show">
                           <div class="box_wrap">
                             <?php if($ticketMessages[$i]->attachment_file) {
-                              $destinationPath = config('adminlte.website_url').'ticket_images/'; ?>
-                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}"><img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt=""></a>
+                              $destinationPath = config('adminlte.admin_url').config('adminlte.ticket_images_path');
+                              $extension = explode('.', $ticketMessages[$i]->attachment_file)[1];
+                              // echo $extension;
+                            ?>
+                            @if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png')
+                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt="File">
+                             </a>
+                              @elseif($extension == 'pdf')
+                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                <img class="attached-image" src="{{ $destinationPath.'pdf_logo.jpeg' }}" alt="File">
+                              </a>
+                              @elseif($extension == 'doc')
+                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                <img class="attached-image" src="{{ $destinationPath.'doc_logo.jpeg' }}" alt="File">
+                              </a>
+                              @endif
                             <?php } ?>
                           </div>
                         </div>
