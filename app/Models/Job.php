@@ -37,7 +37,8 @@ class Job extends Model {
 	'organization_id',
 	'created_by',
 	'expiring_at',
-	'job_url'
+	'job_url',
+	'company_logo'
 	];
 
 	
