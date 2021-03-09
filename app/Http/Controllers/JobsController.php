@@ -206,17 +206,22 @@ class JobsController extends Controller {
 			$job_url = $request->job_url;
 
 			$jobId = $request->id;
-			$logo_image = $request->logo_image;
-			// dd($logo_image);
-			$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
-			$imageParts = explode(";base64,", $logo_image);
-			$imageTypeAux = explode("image/", $imageParts[0]);
-			$imageType = $imageTypeAux[1];
-			$imageBase64 = base64_decode($imageParts[1]);
-			$fileName = uniqid().'.'.$imageType;
-			$file = $folderPath.$fileName;
-			// dd($file);
-			file_put_contents($file, $imageBase64);
+			if($request->logo_image != null) {
+				$logo_image = $request->logo_image;
+				// dd($logo_image);
+				$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+				$imageParts = explode(";base64,", $logo_image);
+				$imageTypeAux = explode("image/", $imageParts[0]);
+				$imageType = $imageTypeAux[1];
+				$imageBase64 = base64_decode($imageParts[1]);
+				$fileName = uniqid().'.'.$imageType;
+				$file = $folderPath.$fileName;
+				// dd($file);
+				file_put_contents($file, $imageBase64);
+			}
+			else {
+				$fileName = "";
+			}
 		}
 		else {
 			$job_url = $request->company_url;

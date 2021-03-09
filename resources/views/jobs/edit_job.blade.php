@@ -492,6 +492,12 @@
 
   <script>
     $(document).ready(function() {
+      if ($('#is_featured').is(':checked')) {
+        $("#uploadPicture").css('display', 'block');
+      }
+      else {
+        $("#uploadPicture").css('display', 'none');
+      }
       $("#is_featured").change(function() {
         if($(this).get(0).checked) {
           $("#job_url").removeAttr('readonly');
