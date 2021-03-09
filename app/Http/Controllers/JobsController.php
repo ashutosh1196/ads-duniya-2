@@ -201,7 +201,7 @@ class JobsController extends Controller {
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
-		if($job->is_featured == 'on') {
+		if($job->is_featured == 1) {
 			$job_url = $request->job_url;
 			$fileName = $request->logo_image;
 			/* if($request->logo_image != null) {
