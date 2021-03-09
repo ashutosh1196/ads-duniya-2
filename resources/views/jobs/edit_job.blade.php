@@ -460,6 +460,7 @@
 @section('css')
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
+  <link rel="stylesheet" href="https://server3.rvtechnologies.in/which-vocation/html-pages/css/style.css">
   <style>
     .information_fields { margin-bottom: 25px; }
     .address_fields { margin-top: 25px; margin-bottom: 25px; }
