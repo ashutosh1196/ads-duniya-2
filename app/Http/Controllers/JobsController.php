@@ -203,7 +203,7 @@ class JobsController extends Controller {
 		]);
 		if($job->is_featured == 1) {
 			$job_url = $request->job_url;
-			$fileName = $request->logo_image;
+			$fileName = $request->logo_image ? $request->logo_image : $job->company_logo;
 			/* if($request->logo_image != null) {
 				$logo_image = $request->logo_image;
 				$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
