@@ -139,11 +139,11 @@
                                 <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;">
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:0px;padding-right:10px;padding-bottom:05px;padding-left:10px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;"><br/>If you’re having trouble clicking the "Verify Account" button, copy and paste the URL below into your web browser:</p>
+                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;"><br/>If you’re having trouble clicking the button, copy and paste the URL below into your web browser:</p>
                                       </div>
                                   </div>
-                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif">For Website : <a href="{{ $websiteLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $websiteLink }}</a></div>
-                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif">For Mobile Devices : <a href="{{ $appLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $appLink }}</a></div>
+                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif"><p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">For Website : <a href="{{ $websiteLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $websiteLink }}</a></p></div>
+                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif"><p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">For Mobile Devices : <a href="{{ $appLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $appLink }}</a></p></div>
                                 </div>
                             </div>
                           </div>
