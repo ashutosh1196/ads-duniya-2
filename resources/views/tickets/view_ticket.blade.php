@@ -67,20 +67,21 @@
                             <?php if($ticketMessages[$i]->attachment_file) {
                               $destinationPath = config('adminlte.admin_url').config('adminlte.ticket_images_path');
                               $extension = explode('.', $ticketMessages[$i]->attachment_file)[1];
-                              // echo $extension;
                             ?>
-                            @if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png')
-                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt="File">
-                             </a>
-                              @elseif($extension == 'pdf')
-                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                <img class="attached-image" src="{{ $destinationPath.'pdf_logo.jpeg' }}" alt="File">
-                              </a>
+                              @if($extension == 'pdf')
+                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-pdf" src="{{ $destinationPath.'pdf_logo.jpeg' }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                  {{ $ticketMessages[$i]->attachment_file }}
+                                </a>
                               @elseif($extension == 'doc')
-                              <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                <img class="attached-image" src="{{ $destinationPath.'doc_logo.jpeg' }}" alt="File">
-                              </a>
+                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-doc" src="{{ $destinationPath.'doc_logo.jpeg' }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                  {{ $ticketMessages[$i]->attachment_file }}
+                                </a>
+                              @else
+                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                </a>
                               @endif
                             <?php } ?>
                           </div>
@@ -117,6 +118,11 @@
 <style>
   .message_reply .upload-file:after {
     content: attr(file-name);
+  }
+  img.attached-pdf, img.attached-doc {
+    border: 0px none !important;
+    width: 30px !important;
+    height: 30px !important;
   }
 </style>
 @stop
