@@ -201,11 +201,13 @@ class JobsController extends Controller {
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
+		$fileName;
 		if($request->is_featured == 'on') {
 			$job_url = $request->job_url;
 
 			$jobId = $request->id;
 			$logo_image = $request->logo_image;
+			// dd($logo_image);
 			$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
 			$imageParts = explode(";base64,", $logo_image);
 			$imageTypeAux = explode("image/", $imageParts[0]);
@@ -213,10 +215,12 @@ class JobsController extends Controller {
 			$imageBase64 = base64_decode($imageParts[1]);
 			$fileName = uniqid().'.'.$imageType;
 			$file = $folderPath.$fileName;
+			// dd($file);
 			file_put_contents($file, $imageBase64);
 		}
 		else {
 			$job_url = $request->company_url;
+			$fileName = "";
 		}
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
@@ -235,9 +239,10 @@ class JobsController extends Controller {
 			"country" => $request->country,
 			"is_featured" => $request->is_featured == 'on' ? 1 : 0,
 			"job_url" => $job_url,
-			"company_logo" => $fileName ? $fileName : '',
+			"company_logo" => $fileName,
 			"job_type" => $request->job_type,
 		];
+		// dd($jobToUpdate);
 		$updateJob = $job->update($jobToUpdate);
 		if($updateJob) {
 			if($request->is_complete_update == "on") {
