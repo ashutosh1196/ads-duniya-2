@@ -777,8 +777,9 @@
               },
               success: function (response) {
                 if (response.success) {
-                  alert("Image Uploaded Successfully!");
-                  // window.location.reload();
+                  setTimeout(() => {
+                    $(".progress").hide();
+                  }, 1000);
                 }
                 else {
                   swal("Error!", "Something went wrong! Please try again.", "warning");
