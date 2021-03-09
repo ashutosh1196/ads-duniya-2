@@ -316,7 +316,7 @@
                           <label class="label" title="Change Image">
                             <?php 
                               $url = config('adminlte.website_url', '').'images/companyLogos/';
-                              $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : $url.'default-profile-image.svg';
+                              $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : config("adminlte.default_avatar");
                             ?>
                             <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
                             <input type="file" class="sr-only" id="input" name="image" accept="image/*">

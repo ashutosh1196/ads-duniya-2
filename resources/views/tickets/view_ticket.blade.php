@@ -41,7 +41,7 @@
                             <?php
                               $publicPath = config('adminlte.website_url');
                               $logoPath = $publicPath.'images/companyLogos/';
-                              $defaultProfileImage = $publicPath.'images/profile/default-profile-image.svg';
+                              $defaultProfileImage = config("adminlte.default_avatar");
                             ?>
                             @if($ticketMessages[$i]->sent_by == 'admin')
                               <img src="{{ $defaultProfileImage }}" alt="">
