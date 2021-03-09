@@ -779,7 +779,7 @@
                 if (response.success) {
                   setTimeout(() => {
                     $(".progress").hide();
-                  }, 1000);
+                  }, 500);
                 }
                 else {
                   swal("Error!", "Something went wrong! Please try again.", "warning");
