@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/custom.css') }}">
+        <link rel="stylesheet" href="https://server3.rvtechnologies.in/which-vocation/html-pages/css/style.css">
 
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
