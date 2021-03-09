@@ -70,17 +70,17 @@
                             ?>
                               @if($extension == 'pdf')
                                 <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-pdf" src="{{ $destinationPath.'pdf_logo.jpeg' }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-pdf" src="{{ $destinationPath.'pdf_logo.jpeg' }}">
                                   {{ $ticketMessages[$i]->attachment_file }}
                                 </a>
                               @elseif($extension == 'doc')
                                 <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-doc" src="{{ $destinationPath.'doc_logo.jpeg' }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-doc" src="{{ $destinationPath.'doc_logo.jpeg' }}">
                                   {{ $ticketMessages[$i]->attachment_file }}
                                 </a>
                               @else
                                 <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}" alt="{{ $ticketMessages[$i]->attachment_file }}">
+                                  <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
                                 </a>
                               @endif
                             <?php } ?>
