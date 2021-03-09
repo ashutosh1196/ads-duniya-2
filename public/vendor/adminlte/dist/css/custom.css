@@ -1001,8 +1001,83 @@ html body {
 .dataTables_wrapper table thead tr th:last-child {
     min-width: 100px;
 }
-
-
+.switch input:checked + .slider-btn:before {
+    left: 0px;
+}
+.switch .slider-btn:before {
+    left: 2px;
+}
+div#preview-cropped-image {
+    margin: 20px 0 0;
+}
+div#preview-cropped-image label.label {
+    cursor: pointer;
+    position: relative;
+}
+div#preview-cropped-image:hover label.label:before {
+    content: "\f03e";
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 150px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: #ffffff;
+    padding: 0 0 60px;
+    font-size: 15px;
+    transition: 0.5s;
+    margin: 0 auto;
+    border: 1px solid #343d49;
+    font: normal normal normal 25px/1 "Font Awesome 5 Free";
+    top: 0;
+    cursor: pointer;
+}
+div#preview-cropped-image:hover label.label:after {
+    content: "Change Your Avatar";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 14px;
+    transition: 0.5s;
+    margin: 0 auto;
+    top: 64%;
+    cursor: pointer;
+    font-weight: 400;
+}
+.is_featured_group button.btn.info_btn {
+    padding: 2px 5px;
+    margin: 0px 10px 0;
+    background-color: #3b9332;
+    color: #343d49;
+    border: none;
+    height: 27px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.is_featured_group button.btn.info_btn i {
+    font-size: 20px;
+    color: #ffffff;
+}
+.form-group.is_featured_group {
+    margin: 25px 0 0;
+    display: flex;
+    align-items: center;
+}
 
 /*Responsive*/
 
