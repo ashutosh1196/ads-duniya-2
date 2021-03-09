@@ -75,7 +75,7 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input class="form-control" list="cities" name="city" id="city" value="{{ $jobDetails->city }}">
+                        <input class="form-control" list="cities" name="city" id="city" value="{{ $jobDetails->city }}" placeholder="Start to enter City/ Town">
                         <datalist id="cities">
                           <?php for($i=0; $i<count($cities); $i++) { ?>
                             <option value="{{ $cities[$i]->city }}" {{ $cities[$i]->city == 'United Kingdom' ? 'selected' : '' }}>{{ $cities[$i]->city }}</option>
@@ -89,7 +89,7 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}<span class="text-danger"> *</span></label>
-                        <input class="form-control" list="counties" name="county" id="county" value="{{ $jobDetails->county }}">
+                        <input class="form-control" list="counties" name="county" id="county" value="{{ $jobDetails->county }}" placeholder="Start to enter County">
                         <datalist id="counties">
                           <?php for($i=0; $i<count($counties); $i++) { ?>
                             <option value="{{ $counties[$i]->county }}" {{ $counties[$i]->county == 'United Kingdom' ? 'selected' : '' }}>{{ $counties[$i]->county }}</option>
@@ -760,17 +760,17 @@
           canvas = cropper.getCroppedCanvas();
           initialAvatarURL = avatar.src;
           avatar.src = canvas.toDataURL();
-          console.log(avatar.src);
-          // $progress.show();
+          // console.log(avatar.src);
+          $progress.show();
           $alert.removeClass('alert-success alert-warning');
           canvas.toBlob(function (blob) {
             var formData = new FormData();
             formData.append('avatar', blob, 'avatar.jpg');
-            $("#logo_image").attr('value', avatar.src);
+            // $("#logo_image").attr('value', avatar.src);
             // setTimeout(() => {
             //   $(".progress").hide();
             // }, 500);
-            /* $.ajax({
+            $.ajax({
               url: "{{ route('upload_company_logo') }}",
               type: "POST",
               dataType: "JSON",
@@ -782,7 +782,9 @@
                 jobId: $("#JobId").val()
               },
               success: function (response) {
+                console.log(response);
                 if (response.success) {
+                  $("#logo_image").attr('value', response.image);
                   setTimeout(() => {
                     $(".progress").hide();
                   }, 500);
@@ -791,7 +793,7 @@
                   swal("Error!", "Something went wrong! Please try again.", "warning");
                 }
               }
-            }); */
+            });
           });
         }
       });

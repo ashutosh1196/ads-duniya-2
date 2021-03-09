@@ -201,13 +201,11 @@ class JobsController extends Controller {
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
-		$fileName;
 		if($request->is_featured == 'on') {
 			$job_url = $request->job_url;
-
-			if($request->logo_image != null) {
+			$fileName = $request->logo_image;
+			/* if($request->logo_image != null) {
 				$logo_image = $request->logo_image;
-				// dd($logo_image);
 				$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
 				$imageParts = explode(";base64,", $logo_image);
 				$imageTypeAux = explode("image/", $imageParts[0]);
@@ -215,15 +213,19 @@ class JobsController extends Controller {
 				$imageBase64 = base64_decode($imageParts[1]);
 				$fileName = uniqid().'.'.$imageType;
 				$file = $folderPath.$fileName;
-				// dd($file);
 				file_put_contents($file, $imageBase64);
 			}
 			else {
 				$fileName = "";
-			}
+			} */
 		}
 		else {
 			$job_url = $request->company_url;
+			$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+			$logoImage = $folderPath.$request->logo_image;
+			if(file_exists($logoImage)) {
+				unlink( $logoImage );
+			}
 			$fileName = "";
 		}
 		$jobToUpdate = [
@@ -342,7 +344,7 @@ class JobsController extends Controller {
 		]);
 	}
 
-	public function uploadImage($jobId, $logoImage) {
+	public function uploadImage(Request $request) {
 		$jobId = $request->jobId;
 		$logo_image = $request->logo_image;
 		$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
@@ -358,11 +360,18 @@ class JobsController extends Controller {
 		$updateImage = Job::where('id', $jobId)->update(['company_logo' => $fileName]);
 		if($updateImage) {
 			$res['success'] = 1;
-			return json_encode($res);
+			$res['image'] = $fileName;
+			$response = [
+				'success' => 1,
+				'image' => $fileName,
+			];
+			return json_encode($response);
 		}
 		else {
 			$res['success'] = 0;
-			return json_encode($res);
+			$res['image'] = "";
+			$response = $res;
+			return json_encode($response);
 		}
 	}
 }
