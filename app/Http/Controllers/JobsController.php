@@ -221,12 +221,13 @@ class JobsController extends Controller {
 		}
 		else {
 			$job_url = $request->company_url;
-			$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
-			$logoImage = $folderPath.$request->logo_image;
-			if(file_exists($logoImage)) {
-				unlink( $logoImage );
-			}
-			$fileName = "";
+			$fileName = $job->company_logo;
+			// $folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+			// $logoImage = $folderPath.$request->logo_image;
+			// if(file_exists($logoImage)) {
+			// 	unlink( $logoImage );
+			// }
+			// $fileName = "";
 		}
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
