@@ -317,21 +317,21 @@ class JobsController extends Controller {
 	}
 
 	public function uploadImage(Request $request) {
-		$organizationId = $request->organizationId;
-		$img = $request['profile_image'];
-		$folderPath = public_path("images/companyLogos");
-		$fileURL = asset("images/companyLogos");
-		$imageParts = explode(";base64,", $img);
+		$jobId = $request->jobId;
+		$logo_image = $request->logo_image;
+		$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+		// $folderPath = public_path("images/companyLogos");
+		// $fileURL = asset("images/companyLogos");
+		$imageParts = explode(";base64,", $logo_image);
 		$imageTypeAux = explode("image/", $imageParts[0]);
 		$imageType = $imageTypeAux[1];
 		$imageBase64 = base64_decode($imageParts[1]);
 		$fileName = uniqid().'.'.$imageType;
-		$file = $folderPath.'/'.$fileName;
+		$file = $folderPath.$fileName;
 		file_put_contents($file, $imageBase64);
-		$updateImage = Organization::where('id', $organizationId)->update([ 'logo' => $fileName]);
+		$updateImage = Job::where('id', $jobId)->update(['company_logo' => $fileName]);
 		if($updateImage) {
 			$res['success'] = 1;
-			\Session::flash('success','Logo Has been uploaded successfully');
 			return json_encode($res);
 		}
 		else {

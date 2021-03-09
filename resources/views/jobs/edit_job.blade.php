@@ -23,7 +23,7 @@
             @endif
             <form id="editJobForm" method="post" action="{{ route('update_job') }}">
               @csrf
-              <input type="hidden" name="id" value="{{ $jobDetails->id}}" maxlength="100">
+              <input type="hidden" name="id" id="JobId" value="{{ $jobDetails->id }}" maxlength="100">
               <div class="card-body">
                 @if ($errors->any())
                   <div class="alert alert-warning">
@@ -772,8 +772,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               data: {
-                profile_image: avatar.src,
-                organizationId: $("#organizationId").val()
+                logo_image: avatar.src,
+                jobId: $("#JobId").val()
               },
               success: function (response) {
                 if (response.success) {
