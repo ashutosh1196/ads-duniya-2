@@ -7,6 +7,7 @@ return [
     'email_verify_url' => env('EMAIL_VERIFY_URL'),
     'default_avatar' => env('DEFAULT_AVATAR'),
     'from_email' => env('FROM_EMAIL', 'admin@whichvocation.com'),
+    'logo_path' => env('LOGO_PATH', '/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/'),
 
     /*
     |--------------------------------------------------------------------------

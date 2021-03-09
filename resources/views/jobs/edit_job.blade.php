@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<?php //dd($_SERVER['SERVER_NAME']); ?>
+<?php //dd($_SERVER['DOCUMENT_ROOT'].config('adminlte.logo_path')); ?>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
@@ -302,7 +302,7 @@
                       <div class="form-group is_featured_group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
                         <label class="switch">
-                          <input class="" type="checkbox" name="is_featured" id="is_featured" {{ $jobDetails->is_featured ? 'checked' : '' }}>
+                          <input class="" type="checkbox" name="is_featured" id="is_featured" disabled {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider-btn round"></span>
                         </label>
                         @if($errors->has('is_featured'))
@@ -493,12 +493,14 @@
   <script>
     $(document).ready(function() {
       if ($('#is_featured').is(':checked')) {
+        $("#job_url").removeAttr('readonly');
         $("#uploadPicture").css('display', 'block');
       }
       else {
+        $("#job_url").attr('readonly', 'true');
         $("#uploadPicture").css('display', 'none');
       }
-      $("#is_featured").change(function() {
+      $/* ("#is_featured").change(function() {
         if($(this).get(0).checked) {
           $("#job_url").removeAttr('readonly');
           $("#uploadPicture").css('display', 'block');
@@ -507,7 +509,7 @@
           $("#job_url").attr('readonly', 'true');
           $("#uploadPicture").css('display', 'none');
         }
-      });
+      }); */
 
       $("#skills").select2({
         tags: true,
