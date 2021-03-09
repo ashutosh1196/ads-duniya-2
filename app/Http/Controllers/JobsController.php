@@ -201,7 +201,23 @@ class JobsController extends Controller {
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
-		$job_url = $request->is_featured == 'on' ? $request->job_url : $request->company_url;
+		if($request->is_featured == 'on') {
+			$job_url = $request->job_url;
+
+			$jobId = $request->id;
+			$logo_image = $request->logo_image;
+			$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+			$imageParts = explode(";base64,", $logo_image);
+			$imageTypeAux = explode("image/", $imageParts[0]);
+			$imageType = $imageTypeAux[1];
+			$imageBase64 = base64_decode($imageParts[1]);
+			$fileName = uniqid().'.'.$imageType;
+			$file = $folderPath.$fileName;
+			file_put_contents($file, $imageBase64);
+		}
+		else {
+			$job_url = $request->company_url;
+		}
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
@@ -219,6 +235,7 @@ class JobsController extends Controller {
 			"country" => $request->country,
 			"is_featured" => $request->is_featured == 'on' ? 1 : 0,
 			"job_url" => $job_url,
+			"company_logo" => $fileName ? $fileName : '',
 			"job_type" => $request->job_type,
 		];
 		$updateJob = $job->update($jobToUpdate);
@@ -316,7 +333,8 @@ class JobsController extends Controller {
 		]);
 	}
 
-	public function uploadImage(Request $request) {
+	public function uploadImage($jobId, $logoImage) {
+		dd($logoImage);
 		$jobId = $request->jobId;
 		$logo_image = $request->logo_image;
 		$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
