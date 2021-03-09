@@ -205,7 +205,6 @@ class JobsController extends Controller {
 		if($request->is_featured == 'on') {
 			$job_url = $request->job_url;
 
-			$jobId = $request->id;
 			if($request->logo_image != null) {
 				$logo_image = $request->logo_image;
 				// dd($logo_image);
@@ -344,7 +343,6 @@ class JobsController extends Controller {
 	}
 
 	public function uploadImage($jobId, $logoImage) {
-		dd($logoImage);
 		$jobId = $request->jobId;
 		$logo_image = $request->logo_image;
 		$folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';

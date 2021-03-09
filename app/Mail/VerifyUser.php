@@ -15,9 +15,10 @@ class VerifyUser extends Mailable {
 	 *
 	 * @return void
 	*/
-	public function __construct($username, $link) {
+	public function __construct($username, $websiteLink, $appLink) {
 		$this->username = $username;
-		$this->link = $link;
+		$this->websiteLink = $websiteLink;
+		$this->appLink = $appLink;
 	}
 
 	/**
@@ -29,6 +30,6 @@ class VerifyUser extends Mailable {
 		return $this->from( config("adminlte.from_email", 'admin@whichvocation.com'), config('adminlte.whichvocation', 'Whichvocation') )
 					->subject(config('adminlte.set_password', ''))
 					->view('emails.verify_user')
-					->with(['username' => $this->username, 'link' => $this->link]);
+					->with(['username' => $this->username, 'websiteLink' => $this->websiteLink, 'appLink' => $this->appLink ]);
 	}
 }
