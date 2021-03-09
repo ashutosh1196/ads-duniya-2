@@ -346,7 +346,6 @@ class JobsController extends Controller {
 		$jobId = $request->jobId;
 		$logo_image = $request->logo_image;
 		$folderPath = $_SERVER['DOCUMENT_ROOT'].config('adminlte.logo_path');
-		dd($folderPath);
 		// $folderPath = public_path("images/companyLogos");
 		// $fileURL = asset("images/companyLogos");
 		$imageParts = explode(";base64,", $logo_image);
