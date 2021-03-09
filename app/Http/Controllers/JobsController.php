@@ -315,4 +315,28 @@ class JobsController extends Controller {
 			'jobLocation' => $jobLocation->name,
 		]);
 	}
+
+	public function uploadImage(Request $request) {
+		$organizationId = $request->organizationId;
+		$img = $request['profile_image'];
+		$folderPath = public_path("images/companyLogos");
+		$fileURL = asset("images/companyLogos");
+		$imageParts = explode(";base64,", $img);
+		$imageTypeAux = explode("image/", $imageParts[0]);
+		$imageType = $imageTypeAux[1];
+		$imageBase64 = base64_decode($imageParts[1]);
+		$fileName = uniqid().'.'.$imageType;
+		$file = $folderPath.'/'.$fileName;
+		file_put_contents($file, $imageBase64);
+		$updateImage = Organization::where('id', $organizationId)->update([ 'logo' => $fileName]);
+		if($updateImage) {
+			$res['success'] = 1;
+			\Session::flash('success','Logo Has been uploaded successfully');
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
 }

@@ -6,6 +6,7 @@
 @stop
 
 @section('content')
+<?php //dd($_SERVER['SERVER_NAME']); ?>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
@@ -295,6 +296,8 @@
                         @endif
                       </div>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="col-6">
                       <div class="form-group is_featured_group">
                         <label for="is_featured">{{ __('adminlte::adminlte.is_featured') }}</label>
@@ -306,6 +309,66 @@
                           <div class="error">{{ $errors->first('is_featured') }}</div>
                         @endif
                       </div>
+                    </div>
+                    <div class="col-6" id="uploadPicture">
+                      
+                      <form class="form" id="updateProfileForm">
+                        @csrf
+                        <div class="profile-image">
+                          <div id="preview-cropped-image">
+                            <label class="label" title="Change Image">
+                              <?php 
+                                $file = $jobDetails->company_logo ? 'companyLogos/'.$jobDetails->company_logo : 'profile/default-profile-image.svg';
+                                $filePath = asset('images').'/'.$file;
+                              ?>
+                              <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
+                              <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+                            </label>
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                          </div>
+                          <div class="alert" role="alert"></div>
+                          <div class="modal fade" id="cropper-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="modalLabel">Crop the image</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="img-container">
+                                    <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                                  </div>
+                                  <div class="row" id="actions" class="action_buttons">
+                                    <div class=" col-12 docs-buttons">
+                                      <div class="btn-group">
+                                        <a class="btn btn-primary btn-sm" title="Upload New Image" onclick="document.getElementById('input').click();"><i class="fa fa-upload"></i></a>
+                                        <button type="button" id="reset" class="btn btn-primary btn-sm action_button" title="Reset">
+                                          <i class="fa fa-refresh"></i>
+                                        </button>
+                                        <button type="button" id="zoomOut" class="btn btn-primary btn-sm action_button" title="Zoom Out">
+                                          <i class="fa fa-search-minus"></i>
+                                        </button>
+                                        <button type="button" id="zoomIn" class="btn btn-primary btn-sm action_button" title="Zoom In">
+                                          <i class="fa fa-search-plus"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                  <button type="button" class="btn btn-primary" id="crop">Upload</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                      
                     </div>
                   </div>
                 </div>
@@ -397,6 +460,7 @@
 
 @section('css')
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
   <style>
     .information_fields { margin-bottom: 25px; }
     .address_fields { margin-top: 25px; margin-bottom: 25px; }
@@ -415,15 +479,32 @@
     /* Rounded sliders */
     .slider-btn.round { border-radius: 34px; }
     .slider-btn.round:before { border-radius: 50%; }
+
+    #uploadPicture { display: none };
+    .label { cursor: pointer; }
+    .modal-dialog { margin-top: 10rem; }
+    .progress { display: none; margin-bottom: 1rem; }
+    .img-container img { max-width: 100%; }
+    .modal-backdrop { position: relative; }
+    #profileImage { height: 150px; width: 200px; border-radius: 10px; object-fit: contain; background-color: #fbfbfb; border: 1px solid #343d49; padding: 10px; }
     </style>
 @stop
 
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script type="text/javascript" src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
+
   <script>
     $(document).ready(function() {
       $("#is_featured").change(function() {
-        $(this).get(0).checked ? $("#job_url").removeAttr('readonly') : $("#job_url").attr('readonly', 'true');
+        if($(this).get(0).checked) {
+          $("#job_url").removeAttr('readonly');
+          $("#uploadPicture").css('display', 'block');
+        }
+        else {
+          $("#job_url").attr('readonly', 'true');
+          $("#uploadPicture").css('display', 'none');
+        }
       });
 
       $("#skills").select2({
@@ -590,6 +671,120 @@
           // experience_range_min: {
           //   required: 'The Minimum Experience Required is required.',
           // },
+        }
+      });
+    });
+  </script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var avatar = document.getElementById('profileImage');
+      var image = document.getElementById('image');
+      var input = document.getElementById('input');
+      var $progress = $('.progress');
+      var $progressBar = $('.progress-bar');
+      var $alert = $('.alert');
+      var $modal = $('#cropper-modal');
+      var cropper;
+      var uploadedImageURL;
+      var options = {
+        movable: true,
+        zoomable: true,
+        rotatable: true,
+        scalable: false
+      }
+
+      $('[data-toggle="tooltip"]').tooltip();
+      input.addEventListener('change', function (e) {
+        var files = e.target.files;
+        var done = function (url) {
+          input.value = '';
+          image.src = url;
+          $alert.hide();
+          $modal.modal('show');
+        };
+        var reader;
+        var file;
+        var url;
+
+        if (files && files.length > 0) {
+          file = files[0];
+
+          if (URL) {
+            done(URL.createObjectURL(file));
+          } else if (FileReader) {
+            reader = new FileReader();
+            reader.onload = function (e) {
+              done(reader.result);
+            };
+            reader.readAsDataURL(file);
+          }
+        }
+      });
+
+      $modal.on('shown.bs.modal', function () {
+        cropper = new Cropper(image, options);
+        $("#zoomIn").click(function() {
+          cropper.zoom(0.1);
+        });
+        $("#zoomOut").click(function() {
+          cropper.zoom(-0.1);
+        });
+        /* $("#rotateLeft").click(function() {
+          cropper.rotate(-90);
+        });
+        $("#rotateRight").click(function() {
+          cropper.rotate(90);
+        }); */
+        $("#reset").click(function() {
+          cropper.reset();
+        });
+        /* $("#destroy").click(function() {
+          cropper.destroy();
+        }); */
+
+      }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+      });
+
+      document.getElementById('crop').addEventListener('click', function () {
+        var initialAvatarURL;
+        var canvas;
+
+        $modal.modal('hide');
+
+        if (cropper) {
+          canvas = cropper.getCroppedCanvas();
+          initialAvatarURL = avatar.src;
+          avatar.src = canvas.toDataURL();
+          console.log(avatar.src);
+          $progress.show();
+          $alert.removeClass('alert-success alert-warning');
+          canvas.toBlob(function (blob) {
+            var formData = new FormData();
+            formData.append('avatar', blob, 'avatar.jpg');
+            $.ajax({
+              url: "{{ route('upload_company_logo') }}",
+              type: "POST",
+              dataType: "JSON",
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              data: {
+                profile_image: avatar.src,
+                organizationId: $("#organizationId").val()
+              },
+              success: function (response) {
+                if (response.success) {
+                  window.location.reload();
+                }
+                else {
+                  swal("Error!", "Something went wrong! Please try again.", "warning");
+                }
+              }
+            });
+          });
         }
       });
     });

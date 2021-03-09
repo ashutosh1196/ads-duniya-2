@@ -140,6 +140,7 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/update', [JobsController::class, 'updateJob'])->name('update_job');
       Route::get('/history', [JobsController::class, 'jobsHistory'])->name('jobs_history');
       Route::get('/view_job_history/{id}', [JobsController::class, 'viewJobHistory'])->name('view_job_history');
+      Route::post('/upload_company_logo', [JobsController::class, 'uploadImage'])->name('upload_company_logo');
       /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
     });
 
