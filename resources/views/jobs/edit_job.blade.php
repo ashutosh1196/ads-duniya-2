@@ -318,7 +318,8 @@
                           <div id="preview-cropped-image">
                             <label class="label" title="Change Image">
                               <?php 
-                                $file = $jobDetails->company_logo ? 'companyLogos/'.$jobDetails->company_logo : 'profile/default-profile-image.svg';
+                                $folderPath = $_SERVER['DOCUMENT_ROOT'].'/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/';
+                                $file = $jobDetails->company_logo ? $folderPath.$jobDetails->company_logo : 'profile/default-profile-image.svg';
                                 $filePath = asset('images').'/'.$file;
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
@@ -777,7 +778,8 @@
               },
               success: function (response) {
                 if (response.success) {
-                  window.location.reload();
+                  alert("Image Uploaded Successfully!");
+                  // window.location.reload();
                 }
                 else {
                   swal("Error!", "Something went wrong! Please try again.", "warning");
