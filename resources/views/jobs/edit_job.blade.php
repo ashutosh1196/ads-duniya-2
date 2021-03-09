@@ -718,8 +718,13 @@
         if (files && files.length > 0) {
           file = files[0];
 
+          console.log(file);
           if (URL) {
             done(URL.createObjectURL(file));
+            if(cropper) {
+              cropper.destroy();
+              cropper = new Cropper(image, options);
+            }
           } else if (FileReader) {
             reader = new FileReader();
             reader.onload = function (e) {
