@@ -142,7 +142,8 @@
                                         <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;"><br/>If you’re having trouble clicking the "Verify Account" button, copy and paste the URL below into your web browser:</p>
                                       </div>
                                   </div>
-                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif"><a href="{{ $link }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $link }}</a></div>
+                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif">For Website : <a href="{{ $websiteLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $websiteLink }}</a></div>
+                                  <div style="font-size:16px;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif">For Mobile Devices : <a href="{{ $appLink }}" style="font-size: 14px; color: #3869d4; padding-bottom: 50px;">{{ $appLink }}</a></div>
                                 </div>
                             </div>
                           </div>
