@@ -8,6 +8,9 @@ use App\Models\TicketMessage;
 use App\Models\Admin;
 use App\Models\Recruiter;
 use App\Models\Organization;
+use App\Mail\TicketAcknowledgement;
+use Auth;
+use Mail;
 
 class TicketsController extends Controller {
 	
@@ -52,9 +55,26 @@ class TicketsController extends Controller {
 		$reply->message_text = $request->message_text;
 		$reply->ticket_id = $request->ticket_id;
 		$reply->attachment_file = $fileName;
+		$reply->admin_id = Auth::id();
 		$reply->sent_by = 'admin';
 		if($reply->save()) {
-			return back();
+			$ticketMessage = TicketMessage::where(['ticket_id' => $reply->ticket_id, 'sent_by' => 'recruiter' ])->latest('created_at')->first();
+			$recruiter = Recruiter::find($ticketMessage->recruiter_id);
+			$admin = Admin::find($reply->admin_id);
+			$senderName = $admin->first_name ? $admin->first_name.' '.$admin->last_name : $admin->email;
+			$receiverName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email;
+			$ticketLinkSender = config('adminlte.admin_url').'admin_panel/tickets/view/'.$reply->ticket_id;
+			$ticketLinkReceiver = config('adminlte.website_url').'recruiter/contact-admin/edit/'.$reply->ticket_id;
+			// $userType = $reply->sent_by == 'admin' ? 'sender' : 'receiver';
+			$mailSentToSender = Mail::to("pawanjeet_rvtech@mailinator.com")->send(new TicketAcknowledgement( $senderName, $ticketLinkSender, 'sender' ));
+			$mailSentToSender = Mail::to($recruiter->email)->send(new TicketAcknowledgement( $receiverName, $ticketLinkReceiver, 'receiver' ));
+			$ticket = Ticket::find($reply->ticket_id);
+			$ticketId = $ticket->id;
+			$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
+			return back()->with([
+				'ticket' => $ticket,
+				'ticketMessages' => $ticketMessages
+			]);
 		}
 		else {
 			return back()->with('error', 'Something went wrong!');
