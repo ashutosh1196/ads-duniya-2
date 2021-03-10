@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'image_tooltip' => 'Only JPG and PNG types are accepted. The File must be less than or equal to 2 MB.',
+    'image_tooltip' => 'Only JPG, JPEG and PNG types are accepted. The File must be less than or equal to 2 MB.',
     'whichvocation' => 'Whichvocation',
     'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',
