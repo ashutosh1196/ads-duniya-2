@@ -18,6 +18,8 @@ class CreateTicketMessagesTable extends Migration
             $table->text('message_text');
             $table->string('attachment_file')->nullable();            
             $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
+            $table->foreignId('admin_id')->nullable()->constrained()->default(null);
             $table->enum('sent_by',['admin','recruiter']);
             $table->timestamps();
         });
