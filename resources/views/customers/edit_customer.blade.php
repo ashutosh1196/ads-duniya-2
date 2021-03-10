@@ -196,7 +196,6 @@
 @section('js')
   <script>
     $(document).ready(function() {
-      if($('.country-list .country').data('dial-code') == );
       $( "input[name=contact_number]" ).focus(function() {
         alert($('.country-list .country.active').data('dial-code'));
         $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
