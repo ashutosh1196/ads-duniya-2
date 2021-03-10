@@ -78,26 +78,34 @@
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.2; font-size: 12px; font-family: 'Ubuntu', Tahoma, Verdana, Segoe, sans-serif; color: #1f2936; mso-line-height-alt: 14px;">
                                         <p style="font-size: 20px; line-height: 1.2; word-break: break-word; text-align: left; font-family: Ubuntu, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 55px; margin: 0;"><span style="font-size: 20px;"><strong>{{ __('adminlte::adminlte.hello') }} {{ $userName }},</strong></span></p>
                                       </div>
-                                  </div>
+                                  </div><br/>
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-                                      <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">
-                                        @if($userType == 'sender')
-                                          {{ __('adminlte::adminlte.ticket_acknowledgement_message_sender') }}
-                                        @else
-                                          {{ __('adminlte::adminlte.ticket_acknowledgement_message_receiver') }}
-                                        @endif
-                                        </p>
-                                      </div>
-                                  </div>
+                                    <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
+                                      <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">
+                                      @if($userType == 'sender')
+                                        {{ __('adminlte::adminlte.ticket_acknowledgement_message_sender') }}
+                                      @else
+                                        {{ __('adminlte::adminlte.ticket_acknowledgement_message_receiver') }}
+                                      @endif
+                                      </p>
+                                    </div>
+                                  </div><br/>
+                                  <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+                                    <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
+                                      <strong>Message: </strong>
+                                      <p style="font-size: 14px; line-height: 1.5; word-break: break-word; text-align: left; mso-line-height-alt: 21px; margin: 0;">
+                                        {{ $messageText }}
+                                      </p>
+                                    </div>
+                                  </div><br/>
                                   <div align="left" class="button-container" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                                     <a href="{{ $ticketLink }}" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #2d8427; border-radius: 28px; -webkit-border-radius: 28px; -moz-border-radius: 28px; width: auto; width: auto; border-top: 1px solid #2d8427; border-right: 1px solid #2d8427; border-bottom: 1px solid #2d8427; border-left: 1px solid #2d8427; padding-top: 5px; padding-bottom: 5px; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; text-align: left; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:undefined;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">
                                     {{ __('adminlte::adminlte.view_ticket') }}
                                     </span></span></a>
-                                  </div>
+                                  </div><br/>
                                   <div style="color:#343d49;font-family:Rubik, Trebuchet MS, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:20px;padding-bottom:20px;padding-left:20px;">
                                       <div class="txtTinyMce-wrapper" style="line-height: 1.5; font-size: 12px; color: #343d49; font-family: Rubik, Trebuchet MS, Helvetica, sans-serif; mso-line-height-alt: 18px;">
-                                        <p style="text-align: left; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">{{ __('adminlte::adminlte.thanks_footer') }}</span></p>
+                                        <p style="text-align: left; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">{{ __('adminlte::adminlte.thanks_footer') }}</span></p><br/>
                                         <p style="text-align: left; line-height: 1.5; word-break: break-word; font-size: 14px; mso-line-height-alt: 21px; margin: 0;"><span style="font-size: 14px;">{{ __('adminlte::adminlte.regards') }},</span><br/><span style="font-size: 14px;">{{ __('adminlte::adminlte.team') }} {{ __('adminlte::adminlte.title') }}</span></p>
                                       </div>
                                   </div>

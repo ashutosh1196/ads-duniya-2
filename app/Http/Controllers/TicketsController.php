@@ -66,8 +66,12 @@ class TicketsController extends Controller {
 			$ticketLinkSender = config('adminlte.admin_url').'admin_panel/tickets/view/'.$reply->ticket_id;
 			$ticketLinkReceiver = config('adminlte.website_url').'recruiter/contact-admin/edit/'.$reply->ticket_id;
 			// $userType = $reply->sent_by == 'admin' ? 'sender' : 'receiver';
-			$mailSentToSender = Mail::to("pawanjeet_rvtech@mailinator.com")->send(new TicketAcknowledgement( $senderName, $ticketLinkSender, 'sender' ));
-			$mailSentToSender = Mail::to($recruiter->email)->send(new TicketAcknowledgement( $receiverName, $ticketLinkReceiver, 'receiver' ));
+			$messageText = $reply->message_text;
+			$file = config('adminlte.website_url').'ticket_images/'.$reply->attachment_file;
+			// dd($attachedFile);
+			$attachedFile = $file ? $file : "";
+			Mail::to("pawanjeet_rvtech@mailinator.com")->send(new TicketAcknowledgement( $senderName, $messageText, $ticketLinkSender, 'sender', $attachedFile ));
+			Mail::to($recruiter->email)->send(new TicketAcknowledgement( $receiverName, $messageText, $ticketLinkReceiver, 'receiver', $attachedFile ));
 			$ticket = Ticket::find($reply->ticket_id);
 			$ticketId = $ticket->id;
 			$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
