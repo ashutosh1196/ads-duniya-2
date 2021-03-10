@@ -744,7 +744,7 @@
               }
             }
             else {
-              $("#image_error").html("The image size should not exceed 2 MB.");
+              $("#image_error").html("The File must be less than or equal to 2 MB.");
               return false;
             }
           }
