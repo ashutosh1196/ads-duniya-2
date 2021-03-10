@@ -719,26 +719,32 @@
         if (files && files.length > 0) {
           file = files[0];
 
-          console.log(file.size);
-          if(file.size <= 2000000) {
-            $("#image_error").html("");
-            if (URL) {
-              done(URL.createObjectURL(file));
-              if(cropper) {
-                cropper.destroy();
-                cropper = new Cropper(image, options);
-              }
-            } else if (FileReader) {
-              reader = new FileReader();
-              reader.onload = function (e) {
-                done(reader.result);
-              };
-              reader.readAsDataURL(file);
-            }
+          // console.log(file);
+          if(file.type != 'image/jpeg' || file.type != 'image/jpg' || file.type != 'image/png') {
+            $("#image_error").html("Only JPG, JPEG and PNG file types are allowed.");
+            return false;
           }
           else {
-            $("#image_error").html("The image size should not exceed 2 MB");
-            return false;
+            if(file.size <= 2000000) {
+              $("#image_error").html("");
+              if (URL) {
+                done(URL.createObjectURL(file));
+                if(cropper) {
+                  cropper.destroy();
+                  cropper = new Cropper(image, options);
+                }
+              } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                  done(reader.result);
+                };
+                reader.readAsDataURL(file);
+              }
+            }
+            else {
+              $("#image_error").html("The image size should not exceed 2 MB.");
+              return false;
+            }
           }
         }
       });
