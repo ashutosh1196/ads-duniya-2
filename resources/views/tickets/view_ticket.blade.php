@@ -65,7 +65,7 @@
                         <div class="attachment_show">
                           <div class="box_wrap">
                             <?php if($ticketMessages[$i]->attachment_file) {
-                              $destinationPath = config('adminlte.website_url').config('adminlte.ticket_images_path');
+                              $destinationPath = config('adminlte.website_url').'ticket_images/';
                               $extension = explode('.', $ticketMessages[$i]->attachment_file)[1];
                             ?>
                               @if($extension == 'pdf')
