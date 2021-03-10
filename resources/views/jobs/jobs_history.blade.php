@@ -46,7 +46,13 @@
                   <td>{{ $jobType }}</td>
                   <td>{{ $jobIndustry->name }}</td>
                   <td>{{ $organisation ? $organisation->name : '' }}</td>
-                  <td><a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}<a></td>
+                  <td>
+                    @if($recruiter)
+                      <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">
+                        {{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}
+                      <a>
+                    @endif
+                  </td>
                   <td>
                     <a class="action-button" title="View" href="view_job_history/{{ $JobHistory[$i]->id}} "><i class="text-info fa fa-eye"></i></a>
                   </td>
