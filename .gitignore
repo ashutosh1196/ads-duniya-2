@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/ticket_images
+/public/images/companyLogos
 /storage/*
 /storage/*.key
 /vendor

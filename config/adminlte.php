@@ -22,6 +22,7 @@ return [
     |
     */
 
+    'image_tooltip' => 'Only JPG and PNG types are accepted. And File must be less than 2 MB.',
     'whichvocation' => 'Whichvocation',
     'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',

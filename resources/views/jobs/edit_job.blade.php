@@ -305,7 +305,7 @@
                           <input class="" type="checkbox" name="is_featured" id="is_featured" disabled {{ $jobDetails->is_featured ? 'checked' : '' }}>
                           <span class="slider-btn round"></span>
                         </label>
-                        <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
+                        <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="{{ config('adminlte.image_tooltip') }}">
                           <i class="fa fa-question-circle"></i>
                         </button>                         
                         @if($errors->has('is_featured'))
@@ -322,6 +322,7 @@
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
                               <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+                              <div class="error" id="image_error"></div>
                               <input type="hidden" id="logo_image" name="logo_image" value="">
                             </label>
                           </div>
@@ -718,19 +719,26 @@
         if (files && files.length > 0) {
           file = files[0];
 
-          console.log(file);
-          if (URL) {
-            done(URL.createObjectURL(file));
-            if(cropper) {
-              cropper.destroy();
-              cropper = new Cropper(image, options);
+          console.log(file.size);
+          if(file.size <= 2000000) {
+            $("#image_error").html("");
+            if (URL) {
+              done(URL.createObjectURL(file));
+              if(cropper) {
+                cropper.destroy();
+                cropper = new Cropper(image, options);
+              }
+            } else if (FileReader) {
+              reader = new FileReader();
+              reader.onload = function (e) {
+                done(reader.result);
+              };
+              reader.readAsDataURL(file);
             }
-          } else if (FileReader) {
-            reader = new FileReader();
-            reader.onload = function (e) {
-              done(reader.result);
-            };
-            reader.readAsDataURL(file);
+          }
+          else {
+            $("#image_error").html("The image size should not exceed 2 MB");
+            return false;
           }
         }
       });
