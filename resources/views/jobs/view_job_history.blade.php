@@ -21,6 +21,14 @@
             </div>
           @endif
           
+          <?php 
+            $url = config('adminlte.website_url', '').'images/companyLogos/';
+            $filePath = $JobHistory->company_logo ? $url.$JobHistory->company_logo : config("adminlte.default_avatar");
+          ?>
+          <div class="job_image_show">
+            <img class="job_image" src="{{ $filePath }}">
+          </div>
+          
           <form class="form_wrap">
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
@@ -298,6 +306,8 @@
   <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
   <style>
     .job-description { font-size: 13px; }
+    img.job_image { width: 150px; object-fit: cover; border: 1px solid #343d49; padding: 5px; border-radius: 3px; }
+    .job_image_show { padding: 10px 10px 30px 10px; }
   </style>
 @stop
 

@@ -34,7 +34,13 @@
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-
+                  <?php 
+                    $url = config('adminlte.website_url', '').'images/companyLogos/';
+                    $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : config("adminlte.default_avatar");
+                  ?>
+                  <div class="job_image_show">
+                    <img class="job_image" src="{{ $filePath }}">
+                  </div>
                   <form class="form_wrap">
                     <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
@@ -304,37 +310,37 @@
                   
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                  <table id="applicators-list" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>{{ __('adminlte::adminlte.name') }}</th>
-                        <th>{{ __('adminlte::adminlte.email') }}</th>
-                        <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                        <th>{{ __('adminlte::adminlte.actions') }}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Test Jobseeker</td>
-                        <td>test_jobseeker@mailinator.com</td>
-                        <td>+449785758697</td>
-                        <td>
-                          <a class="action-button" title="View" href="javascript:void(0)"><i class="text-info fa fa-eye"></i></a>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>#</th>
-                        <th>{{ __('adminlte::adminlte.name') }}</th>
-                        <th>{{ __('adminlte::adminlte.email') }}</th>
-                        <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                        <th>{{ __('adminlte::adminlte.actions') }}</th>
-                      </tr>
-                    </tfoot>
-                  </table>
+                    <table id="applicators-list" class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>{{ __('adminlte::adminlte.name') }}</th>
+                          <th>{{ __('adminlte::adminlte.email') }}</th>
+                          <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                          <th>{{ __('adminlte::adminlte.actions') }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Test Jobseeker</td>
+                          <td>test_jobseeker@mailinator.com</td>
+                          <td>+449785758697</td>
+                          <td>
+                            <a class="action-button" title="View" href="javascript:void(0)"><i class="text-info fa fa-eye"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>#</th>
+                          <th>{{ __('adminlte::adminlte.name') }}</th>
+                          <th>{{ __('adminlte::adminlte.email') }}</th>
+                          <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                          <th>{{ __('adminlte::adminlte.actions') }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -351,6 +357,8 @@
   <link rel="stylesheet" type="text/css" href="https://www.jquery-az.com/jquery/css/intlTelInput//demo.css">
   <style>
     .job-description { font-size: 13px; }
+    img.job_image { width: 150px; object-fit: cover; border: 1px solid #343d49; padding: 5px; border-radius: 3px; }
+    .job_image_show { padding: 10px 10px 30px 10px; }
   </style>
 @stop
 
