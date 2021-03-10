@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'image_tooltip' => 'Only JPG, JPEG and PNG types are accepted. The File must be less than or equal to 2 MB.',
+    'image_tooltip' => 'Upload max 2MB file. Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload',
     'whichvocation' => 'Whichvocation',
     'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',
