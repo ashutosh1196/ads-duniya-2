@@ -348,7 +348,7 @@
                                       <div class="btn-group">
                                         <a class="btn btn-primary btn-sm" title="Upload New Image" onclick="document.getElementById('input').click();"><i class="fa fa-upload"></i></a>
                                         <button type="button" id="reset" class="btn btn-primary btn-sm action_button" title="Reset">
-                                          <i class="fa fa-refresh"></i>
+                                          <i class="fa fa-sync"></i>
                                         </button>
                                         <button type="button" id="zoomOut" class="btn btn-primary btn-sm action_button" title="Zoom Out">
                                           <i class="fa fa-search-minus"></i>
