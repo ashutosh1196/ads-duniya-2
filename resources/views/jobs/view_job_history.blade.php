@@ -25,9 +25,6 @@
             $url = config('adminlte.website_url', '').'images/companyLogos/';
             $filePath = $JobHistory->company_logo ? $url.$JobHistory->company_logo : config("adminlte.default_avatar");
           ?>
-          <div class="job_image_show">
-            <img class="job_image" src="{{ $filePath }}">
-          </div>
           
           <form class="form_wrap">
             <div class="row">
@@ -210,6 +207,9 @@
                   <label>{{ __('adminlte::adminlte.is_featured') }}</label>
                   <input class="form-control" placeholder="{{ $JobHistory->is_featured ? 'Yes' : 'No' }}" readonly>
                 </div>
+              </div>
+              <div class="job_image_show">
+                <img class="job_image" src="{{ $filePath }}">
               </div>
             </div>
 
