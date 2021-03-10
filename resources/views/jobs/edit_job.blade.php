@@ -321,7 +321,7 @@
                                 $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : config("adminlte.default_avatar");
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
-                              <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+                              <input type="file" class="sr-only" id="input" name="image" accept="image/jpeg, image/jpg, image/png">
                               <div class="error" id="image_error"></div>
                               <input type="hidden" id="logo_image" name="logo_image" value="">
                             </label>
@@ -718,13 +718,16 @@
 
         if (files && files.length > 0) {
           file = files[0];
-
           // console.log(file);
-          if(file.type != 'image/jpeg' || file.type != 'image/jpg' || file.type != 'image/png') {
+          var fileName = file.name;
+          var fileExtension = fileName.replace(/^.*\./, '');
+          console.log (fileExtension);
+          // alert(fileExtension)
+          /* if(fileExtension != "jpg" || fileExtension != "png" || fileExtension != "jpeg") {
             $("#image_error").html("Only JPG, JPEG and PNG file types are allowed.");
             return false;
           }
-          else {
+          else { */
             if(file.size <= 2000000) {
               $("#image_error").html("");
               if (URL) {
@@ -745,7 +748,7 @@
               $("#image_error").html("The image size should not exceed 2 MB.");
               return false;
             }
-          }
+          // }
         }
       });
 
