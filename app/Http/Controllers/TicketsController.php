@@ -45,8 +45,8 @@ class TicketsController extends Controller {
 		if($request->file('attachment_file')) {
 			$attachment_file = $request->file('attachment_file');
 			// $destinationPath = config('adminlte.website_url').'ticket_images';
-			// $destinationPath = $_SERVER['DOCUMENT_ROOT'].'/'.config('adminlte.ticket_images_path');
-			$destinationPath = $_SERVER["DOCUMENT_ROOT"].'/which-vocation/website/Amrik-which-vocation-web/public/ticket_images';
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'].'/'.config('adminlte.ticket_images_path');
+			// $destinationPath = $_SERVER["DOCUMENT_ROOT"].'/which-vocation/website/Amrik-which-vocation-web/public/ticket_images';
 			$fileName = uniqid().'.'.$attachment_file->extension();
 			$attachment_file->move($destinationPath, $fileName);
 		}
