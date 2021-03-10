@@ -45,7 +45,13 @@ class OrganizationsController extends Controller {
 	*/
 	public function addCustomer() {
 		$countries = Country::all()->toArray();
-		return view('customers/add_customer', ['countries' => $countries]);
+		$cities = \DB::table('cities')->get();
+		$counties = \DB::table('counties')->get();
+		return view('customers/add_customer', [
+			'countries' => $countries,
+			'cities' => $cities,
+			'counties' => $counties,
+		]);
 	}
 
 	/**
@@ -236,8 +242,16 @@ class OrganizationsController extends Controller {
 	*/
 	public function editCustomer($from_page, $id) {
 		$countries = Country::all()->toArray();
-		$customer = Organization::where('id', $id)->get();
-		return view('customers/edit_customer', ['countries' => $countries, 'customer' => $customer, 'from_page' => $from_page ]);
+		$customer = Organization::find($id);
+		$cities = \DB::table('cities')->get();
+		$counties = \DB::table('counties')->get();
+		return view('customers/edit_customer', [
+			'countries' => $countries,
+			'customer' => $customer,
+			'from_page' => $from_page,
+			'cities' => $cities,
+			'counties' => $counties,
+		]);
 	}
 
 	/**
