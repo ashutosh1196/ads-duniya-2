@@ -720,14 +720,13 @@
           file = files[0];
           // console.log(file);
           var fileName = file.name;
-          var fileExtension = fileName.replace(/^.*\./, '');
+          var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           console.log (fileExtension);
-          // alert(fileExtension)
-          /* if(fileExtension != "jpg" || fileExtension != "png" || fileExtension != "jpeg") {
+          if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
             $("#image_error").html("Only JPG, JPEG and PNG file types are allowed.");
             return false;
           }
-          else { */
+          else {
             if(file.size <= 2000000) {
               $("#image_error").html("");
               if (URL) {
@@ -748,7 +747,7 @@
               $("#image_error").html("The image size should not exceed 2 MB.");
               return false;
             }
-          // }
+          }
         }
       });
 
