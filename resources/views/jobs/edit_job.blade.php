@@ -723,7 +723,7 @@
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           console.log (fileExtension);
           if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
-            $("#image_error").html("Only JPG, JPEG and PNG file types are allowed.");
+            $("#image_error").html("Only JPG, JPEG and PNG types are accepted.");
             return false;
           }
           else {
