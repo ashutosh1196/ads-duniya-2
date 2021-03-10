@@ -15,12 +15,12 @@ class TicketAcknowledgement extends Mailable {
 	 *
 	 * @return void
 	*/
-	public function __construct($userName, $messageText, $ticketLink, $userType, $attachedFile) {
+	public function __construct($userName, $messageText, $ticketLink, $userType/* , $attachedFile */) {
 		$this->userName = $userName;
 		$this->messageText = $messageText;
 		$this->ticketLink = $ticketLink;
 		$this->userType = $userType;
-		$this->attachedFile = $attachedFile;
+		// $this->attachedFile = $attachedFile;
 	}
 
 	/**
@@ -30,11 +30,11 @@ class TicketAcknowledgement extends Mailable {
 	*/
 	public function build() {
 		$subject = $this->userType == 'sender' ? config('adminlte.ticket_acknowledgement_subject_sender', 'Whichvocation | Message Sent on Ticket') : config('adminlte.ticket_acknowledgement_subject_receiver', 'Whichvocation | Message Received on Ticket');
-		$attachedFile = $this->attachedFile;
+		// $attachedFile = $this->attachedFile;
 		return $this->from( config("adminlte.from_email", 'admin@whichvocation.com'), config('adminlte.whichvocation', 'Whichvocation') )
 			->subject($subject)
 			->view('emails.ticket_acknowledgement')
-			->attach($attachedFile)
+			// ->attach($attachedFile)
 			->with([
 				'userName' => $this->userName,
 				'messageText' => $this->messageText,
