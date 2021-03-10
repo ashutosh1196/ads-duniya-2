@@ -36,6 +36,7 @@
                   $organisation = \App\Models\Organization::find($jobsList[$i]->organization_id);
                   $recruiter = \App\Models\Recruiter::find($jobsList[$i]->recruiter_id);
                   $recruiterId = $recruiter->id;
+                  echo $recruiterId;
                 ?>
                 <tr>
                   <th class="display-none"></th>
