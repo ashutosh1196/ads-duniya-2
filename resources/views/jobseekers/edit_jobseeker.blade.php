@@ -82,9 +82,21 @@
                   </div>
                   <div class="col-md-6 col-lg-6 col-xl-6 col-12">
                     <div class="form-group radio">
-                      <label for="is_job_alert_enabled">{{ __('adminlte::adminlte.job_alerts') }}<span class="text-danger"> *</span></label><br/>
-                      <input type="radio" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="is_job_alert_enabled" value="0"> Disable
-                      <input type="radio" class="ml-2" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="is_job_alert_enabled" value="1"> Enable
+                      <label for="is_job_alert_enabled">{{ __('adminlte::adminlte.job_alerts') }}<span class="text-danger"> *</span></label>
+                      <div class="radio_wrap">
+                        <div class="radio_wrap_inner">
+                          <input type="radio" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "0")? "checked" : "" }} id="is_job_alert_enabled" value="0">
+                          <label></label>                          
+                        </div>
+                        Disable                        
+                      </div>
+                      <div class="radio_wrap">
+                        <div class="radio_wrap_inner">
+                          <input type="radio" class="" name="is_job_alert_enabled" {{ ($jobseeker[0]->is_job_alert_enabled == "1")? "checked" : "" }} id="is_job_alert_enabled" value="1"> 
+                          <label></label>                       
+                        </div>
+                        Enable                          
+                      </div>
                       @if($errors->has('is_job_alert_enabled'))
                         <div class="error">{{ $errors->first('is_job_alert_enabled') }}</div>
                       @endif

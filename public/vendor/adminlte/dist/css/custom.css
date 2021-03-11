@@ -409,12 +409,12 @@ section.content .small-box:hover a.small-box-footer img {
     opacity: 1;
     color: #929090;
 }
-.wrapper .content .card-body form.form_wrap .form-group input {
+/*.wrapper .content .card-body form.form_wrap .form-group input {
     background-color: #f6f7fb;
     opacity: 1;
     border: 1px solid #f6f7fb;
     border-radius: 0;
-}
+}*/
 .wrapper .content .alert.alert-success,
 .wrapper .content .alert-danger {
     font-size: 14px;
@@ -461,6 +461,7 @@ body.sidebar-mini .sa-button-container {
 }
 .content-wrapper .card-footer {
     margin: 0 20px 20px;
+    background-color: transparent;
 }
 .content-wrapper .card-body .form-group.alert {
     margin: 0;
@@ -474,8 +475,66 @@ body.sidebar-mini .sa-button-container {
     padding: 8px 30px;
     margin: 0 auto;
     display: block;
+    line-height: normal;
+    height: auto;
 }
-
+.radio_wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 10px 0 0;
+}
+.radio_wrap .radio_wrap_inner {
+    height: 20px;
+    width: 20px;
+    border-radius: 100px;
+    margin: 0 5px 0 0;
+    position: relative;
+}
+.radio_wrap .radio_wrap_inner input[type="radio"] {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 0;
+    z-index: 1;
+    margin: 0;
+}
+.radio_wrap .radio_wrap_inner label {
+    margin: 0;
+}
+.radio_wrap .radio_wrap_inner input[type="radio"]:checked~label {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    border-radius: 100px;
+    background-color: #2d8427;
+    position: relative;
+    border: 1px solid #2d8427;
+}
+.radio_wrap .radio_wrap_inner input[type="radio"]:checked~label:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    background-color: #ffffff;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    border-radius: 100px;
+}
+.radio_wrap .radio_wrap_inner input[type="radio"]~label {
+    border: 1px solid #1f2936;
+    height: 20px;
+    width: 20px;
+    border-radius: 100px;
+}
+.content-wrapper .card-body .form-group label[for="is_job_alert_enabled"] {
+    margin: 0;
+}
 /*Login*/
 
 body.login-page {
@@ -764,13 +823,6 @@ a.paginate_button.next {
     border: none;    
 }
   
-a.paginate_button.next.disabled {
-    background-color:rgba(0,0,0,.075);
-    padding: 5px 9px;
-    position: relative;
-    top: -5px;
-    color: #343d49;
-}
 a.paginate_button.previous {
     background-color: #343d49;
     padding: 5px 9px;
@@ -1003,6 +1055,8 @@ span.selection .select2-selection--multiple {
 }
 .form-group.radio {
     display: flex;
+    padding: 5px 0 0;
+    margin: 0;
 }
 .form-group.radio input {
     width: 20px;
