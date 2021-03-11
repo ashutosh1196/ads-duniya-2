@@ -70,7 +70,7 @@ class TicketsController extends Controller {
 			$file = config('adminlte.website_url').'ticket_images/'.$reply->attachment_file;
 			// dd($attachedFile);
 			// $attachedFile = $file ? $file : "";
-			Mail::to("pawanjeet_rvtech@mailinator.com")->cc(['ashish_kumar@rvtechnologies.com', 'pawanjeet@rvtechnologies.com'])->send(new TicketAcknowledgement( $senderName, $messageText, $ticketLinkSender, 'sender'/* , $attachedFile */ ));
+			Mail::to($admin->email)->cc(['ashish_kumar@rvtechnologies.com', 'pawanjeet@rvtechnologies.com'])->send(new TicketAcknowledgement( $senderName, $messageText, $ticketLinkSender, 'sender'/* , $attachedFile */ ));
 			Mail::to($recruiter->email)->send(new TicketAcknowledgement( $receiverName, $messageText, $ticketLinkReceiver, 'receiver'/* , $attachedFile */ ));
 			$ticket = Ticket::find($reply->ticket_id);
 			$ticketId = $ticket->id;

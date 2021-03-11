@@ -20,7 +20,9 @@ class RecruitersController extends Controller {
 		for ($i=0; $i < count($recruiter); $i++) {
 			for ($j=0; $j < count($customers); $j++) {
 				if($customers[$j]->is_whitelisted == '1') {
-					array_push($recruitersList, $recruiter[$i]);
+					if(!in_array($recruiter[$i], $recruitersList, true)) {
+						array_push($recruitersList, $recruiter[$i]);
+					}
 				}
 			}
 		}

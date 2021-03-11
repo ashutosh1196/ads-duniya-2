@@ -29,7 +29,7 @@ class TicketAcknowledgement extends Mailable {
 	 * @return $this
 	*/
 	public function build() {
-		$subject = $this->userType == 'sender' ? config('adminlte.ticket_acknowledgement_subject_sender', 'Whichvocation | Message Sent on Ticket') : config('adminlte.ticket_acknowledgement_subject_receiver', 'Whichvocation | Message Received on Ticket');
+		$subject = $this->userType == 'sender' ? config('adminlte.ticket_acknowledgement_subject', 'Whichvocation Ticket Updates') : config('adminlte.ticket_acknowledgement_subject_receiver', 'Whichvocation Ticket Updates');
 		// $attachedFile = $this->attachedFile;
 		return $this->from( config("adminlte.from_email", 'admin@whichvocation.com'), config('adminlte.whichvocation', 'Whichvocation') )
 			->subject($subject)

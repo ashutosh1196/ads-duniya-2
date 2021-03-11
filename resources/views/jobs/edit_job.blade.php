@@ -648,10 +648,10 @@
           //   required: "The Job Address field is required."
           // },
           city: {
-            required: "The City / Town field is required when County is not present."
+            required: "The City / Town OR County is required."
           },
           county: {
-            required: "The County field is required when City is not present."
+            required: "The County OR City / Town is required."
           },
           // state: {
           //   required: "The State field is required."

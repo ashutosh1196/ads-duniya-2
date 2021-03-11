@@ -38,6 +38,10 @@
             color: #000000 !important;
         }
         .intl-tel-input { display: block !important; }
+        .divider { display: none; }
+        .country.highlight { display: none; }
+        .country { display: none; }
+        .country.preferred { display: block; }
     </style>
 @stop
 
