@@ -183,7 +183,7 @@ class JobsController extends Controller {
 			'city' => 'required_without_all:county',
 			'county' => 'required_without_all:city',
 			'country' => 'required',
-			'job_url' => 'required',
+			// 'job_url' => 'required',
 			'job_industry_id' => 'required',
 			'job_function_id' => 'required',
 			'job_location_id' => 'required',
@@ -195,14 +195,14 @@ class JobsController extends Controller {
 			'city.required_without_all' => 'The City / Town field is required when County is not present.',
 			'county.required_without_all' => 'The County field is required when City / Town is not present.',
 			'country.required' => 'The Country field is required.',
-			'job_url.required' => 'The Job URL field is required.',
+			// 'job_url.required' => 'The Job URL field is required.',
 			'job_industry_id.required' => 'The Job Industry field is required.',
 			'job_function_id.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
 		if($job->is_featured == 1) {
-			$job_url = $request->job_url;
+			$job_url = $request->job_url ? $request->job_url : $request->company_url;
 			$fileName = $request->logo_image ? $request->logo_image : $job->company_logo;
 			/* if($request->logo_image != null) {
 				$logo_image = $request->logo_image;

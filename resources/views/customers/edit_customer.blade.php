@@ -89,7 +89,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="url">{{ __('adminlte::adminlte.company_domain_url') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="url" class="form-control" id="url" value="{{ $customer->url }}" maxlength="100">
+                        <input type="text" name="url" class="form-control" id="url" value="{{ $customer->url }}" maxlength="100" readonly>
                         @if($errors->has('url'))
                           <div class="error">{{ $errors->first('url') }}</div>
                         @endif
@@ -207,7 +207,6 @@
   <script>
     $(document).ready(function() {
       $( "input[name=contact_number]" ).focus(function() {
-        alert($('.country-list .country.active').data('dial-code'));
         $('input[name=country_code]').val($('.country-list .country.active').data('dial-code'));
       });
       $("#email").blur(function() {
@@ -272,13 +271,13 @@
             required: "The Company Name field is required."
           },
           email: {
-            required: "The Company Name field is required.",
+            required: "The Company Or Consultants Email field is required.",
           },
           contact_number: {
             required: "The Contact Number field is required."
           },
           url: {
-            required: "The Domain URL field is required.",
+            required: "The Company Domain URL field is required.",
             url: "The Company Domain URL must be valid."
           },
           address: {

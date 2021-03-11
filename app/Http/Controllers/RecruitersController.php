@@ -49,9 +49,9 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function editRecruiter($id) {
-		$recruiter = Recruiter::where('id', $id)->get();
-		$organizations = Organization::all();
-		return view('recruiters/edit_recruiter', )->with(["recruiter" => $recruiter, "organizations" => $organizations]);
+		$recruiter = Recruiter::find($id);
+		$organization = Organization::find($recruiter->organization_id);
+		return view('recruiters/edit_recruiter', )->with(["recruiter" => $recruiter, "organization" => $organization]);
 	}
 
 	/**
@@ -64,7 +64,7 @@ class RecruitersController extends Controller {
 		], [
 			'email.required' => 'Email is required.',
 			'email.email' => 'Email is not Valid.',
-			'organization_id' => 'Organization is required.',
+			'organization_id.required' => 'Company is required.',
 		]);
 		$dataToUpdate = [
 			'name' => $request->first_name.' '.$request->last_name,
@@ -72,7 +72,7 @@ class RecruitersController extends Controller {
 			'last_name' => $request->last_name,
 			'email' => $request->email,
 			'phone_number' => $request->phone_number,
-			'organization_id' => $request->organization_id,
+			// 'organization_id' => $request->organization_id,
 		];
 		$updateUser = Recruiter::where('id', $request->id)->update($dataToUpdate);
 		if($updateUser) {

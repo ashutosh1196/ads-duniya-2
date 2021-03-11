@@ -50,7 +50,7 @@
                             @endif
                           </div>
                           <div class="user_detail">
-                            <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
+                            <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email; ?>
                             @if($ticketMessages[$i]->sent_by == 'admin')
                               <label class="name">{{ $superAdmin[0]->name }}</label>
                             @else

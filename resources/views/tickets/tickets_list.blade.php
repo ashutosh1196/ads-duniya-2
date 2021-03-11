@@ -25,23 +25,23 @@
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <?php for ($i=0; $i < count(is_countable($ticketsList) ? $ticketsList : []); $i++) {
-                  $recruiter = \App\Models\Recruiter::where('id', $ticketsList[$i]->recruiter_id)->get();
-                  $organisation = \App\Models\Organization::where('id', $recruiter[0]->organization_id)->get();
+                  $recruiter = \App\Models\Recruiter::find($ticketsList[$i]->recruiter_id);
+                  $organisation = \App\Models\Organization::find($recruiter->organization_id);
                   ?>
                 <tr>
                   <th class="display-none"></th>
                   <td>{{ $ticketsList[$i]->id }}</td>
                   <td>{{ $ticketsList[$i]->subject }}</td>
                   <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
-                  <td>{{ $organisation[0]->name }}</td>
-                  <td>{{ $recruiter[0]->name }}</td>
+                  <td>{{ $organisation->name }}</td>
+                  <td>{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</td>
                   <td>{{ $ticketsList[$i]->created_at ? date('d/m/y', strtotime($ticketsList[$i]->created_at)) : '' }}</td>
                   <td>
                     <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-undo"></i></a>
@@ -61,7 +61,7 @@
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.created_at') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>

@@ -52,7 +52,7 @@
                       <a>
                     @endif
                   </td>
-                  <td>{{ $jobsList[$i]->expired_on ? date('d/m/y', strtotime($jobsList[$i]->expired_on)) : '' }}</td>
+                  <td>{{ $jobsList[$i]->expiring_at ? date('d/m/y', strtotime($jobsList[$i]->expiring_at)) : '' }}</td>
                   <td>
                     <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                     <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
