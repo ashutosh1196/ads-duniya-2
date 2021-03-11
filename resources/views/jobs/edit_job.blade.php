@@ -65,7 +65,7 @@
                 <div class="title">
                   <h5>Location of the job</h5>
                   <hr/>
-                <div>
+                </div>
 
                 <div class="address_fields">
                   <div class="row">

@@ -71,7 +71,7 @@
                     <div class="title">
                       <h5>Location of the job</h5>
                       <hr/>
-                    <div>
+                    </div>
 
                     <div class="row">
                       <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
