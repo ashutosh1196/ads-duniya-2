@@ -14,7 +14,7 @@
           <h3>{{ __('adminlte::adminlte.job_information') }}</h3>
           <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
         </div>        
-        <div class="card-body">
+        <div class="card-body job-history">
           @if (session('status'))
             <div class="alert alert-success" role="alert">
               {{ session('status') }}
