@@ -14,7 +14,6 @@ class SkillsSeeder extends Seeder
 	public function run() {
 
 		\DB::table('skills')->delete();
-
 		\DB::table('skills')->insert([
 			'name' => 'HTML',
 			'slug' => 'html',
