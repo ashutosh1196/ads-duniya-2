@@ -161,7 +161,7 @@ class OrganizationsController extends Controller {
 			$random_pass = uniqid();
 			// $link = config("adminlte.email_verify_url").$random_pass.'?email='.$customer[0]->email;
 			$websiteLink = config("adminlte.email_verify_url").$random_pass;
-			$appLink = config("adminlte.email_verify_url_mobile").$random_pass.'/'.$customer[0]->email;
+			$appLink = config("adminlte.email_verify_url_mobile").$random_pass;
 			$mailSent = Mail::to($customer[0]->email)->cc(['sandeep@rvtechnologies.com'])->send(new VerifyUser($customer[0]->name, $websiteLink, $appLink));
 			$updateRecruiter = Recruiter::where('email', $customer[0]->email)->update(['signup_token' => $random_pass]);
 			if($updateRecruiter) {

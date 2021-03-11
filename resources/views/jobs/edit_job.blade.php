@@ -35,6 +35,10 @@
                   </div>
                 @endif
 
+                <div class="title">
+                  <h5>Tell Us About Your Job</h5>
+                  <hr/>
+                </div>
                 <div class="information_fields">
                   <div class="row">
                     <div class="col-12">
@@ -58,7 +62,10 @@
                   </div>
                 </div>
 
-                <hr/>
+                <div class="title">
+                  <h5>Location of the job</h5>
+                  <hr/>
+                <div>
 
                 <div class="address_fields">
                   <div class="row">
@@ -141,7 +148,10 @@
                   </div>
                 </div>
 
-                <hr/>
+                <div class="title">
+                  <h5>What Are The Job Requirements?</h5>
+                  <hr/>
+                </div>
 
                 <div class="requirements_fields"> 
                   <div class="row">
@@ -252,7 +262,10 @@
 
                 </div>
 
-                <hr/>
+                <div class="title">
+                  <h5>What Does This Job Pay?</h5>
+                  <hr/>
+                </div>
 
                 <div class="type_fields"> 
                   <div class="row">  
@@ -272,7 +285,10 @@
                   </div>
                 </div>
 
-                <hr/>
+                <div class="title">
+                  <h5>Tell Us About Your Company</h5>
+                  <hr/>
+                </div>
 
                 <div class="about_fields"> 
                   <div class="row">
@@ -372,7 +388,10 @@
                   </div>
                 </div>
 
-                <hr/>
+                <div class="title">
+                  <h5>Other details</h5>
+                  <hr/>
+                </div>
 
                 <div class="other_fields"> 
                   <div class="row">
