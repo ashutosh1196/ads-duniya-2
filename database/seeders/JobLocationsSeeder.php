@@ -13,7 +13,7 @@ class JobLocationsSeeder extends Seeder {
 	public function run() {
 
 		\DB::table('job_locations')->delete();
-		\DB::table('job_locations')->insert(
+		\DB::table('job_locations')->insert([
 			[
 				'name' => 'Cymru Wales',
 				'slug' => 'cymru_wales',
@@ -80,6 +80,6 @@ class JobLocationsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
-		);
+		]);
 	}
 }
