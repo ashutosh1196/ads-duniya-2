@@ -27,6 +27,10 @@
           ?>
           
           <form class="form_wrap">
+            <div class="title">
+              <h5>Tell Us About Your Job</h5>
+              <hr/>
+            </div>
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
@@ -52,7 +56,10 @@
               </div>
             </div>
 
-            <hr>
+            <div class="title">
+              <h5>Location of the job</h5>
+              <hr/>
+            <div>
 
             <div class="row">
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -102,7 +109,10 @@
               </div>
             </div> -->
 
-            <hr>
+            <div class="title">
+              <h5>What Are The Job Requirements?</h5>
+              <hr/>
+            </div>
 
             <div class="row">
               <div class="col-sm-12">
@@ -133,6 +143,11 @@
               </div>
             </div>
 
+            <div class="title">
+              <h5>What Does This Job Pay?</h5>
+              <hr/>
+            </div>
+
             <div class="row">
               <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
                 <div class="form-group">
@@ -159,8 +174,6 @@
               </div>
             </div>
 
-            <hr>
-
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <div class="form-group">
@@ -173,7 +186,10 @@
               </div>
             </div>
 
-            <hr>
+            <div class="title">
+              <h5>Tell Us About Your Company</h5>
+              <hr/>
+            </div>
 
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -208,12 +224,21 @@
                   <input class="form-control" placeholder="{{ $JobHistory->is_featured ? 'Yes' : 'No' }}" readonly>
                 </div>
               </div>
-              <div class="job_image_show">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group profile_image">
+                  <label>Profile Image</label>
+                  <img class="job_image" src="{{ $filePath }}">
+                </div>
+              </div>                      
+              <!-- <div class="job_image_show">
                 <img class="job_image" src="{{ $filePath }}">
-              </div>
+              </div> -->
             </div>
 
-            <hr>
+            <div class="title">
+              <h5>Other Details</h5>
+              <hr/>
+            </div>
 
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -258,11 +283,7 @@
                   <input class="form-control" placeholder="{{ $JobHistory->status ? $status : '' }}" readonly>
                 </div>
               </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
@@ -276,9 +297,7 @@
                   <input class="form-control" placeholder="{{ $JobHistory->expiring_at ? date('d/m/y', strtotime($JobHistory->expiring_at)) : '' }}" readonly>
                 </div>
               </div>
-            </div>
-                
-            <div class="row">
+              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
