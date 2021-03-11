@@ -214,6 +214,11 @@
                     </div>
                   </div>
 
+                <div class="title">
+                  <h5>What Does This Job Pay?</h5>
+                  <hr/>
+                </div>
+
                   <div class="row">
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
@@ -260,11 +265,6 @@
                     </div> -->
                   </div>
 
-                </div>
-
-                <div class="title">
-                  <h5>What Does This Job Pay?</h5>
-                  <hr/>
                 </div>
 
                 <div class="type_fields"> 
