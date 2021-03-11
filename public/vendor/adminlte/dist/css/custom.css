@@ -662,6 +662,7 @@ body.login-page .login-box button span {
 }
 .content-wrapper .card .card-header.alert {
     position: relative;
+    padding-top: 15px;
 }
 .content-wrapper .card .card-header.alert:after {
     position: absolute;
@@ -721,7 +722,7 @@ body.login-page .login-box button span {
 }
 .message_box .profile {
     display: flex;
-    padding: 20px 0;
+    padding: 0px 0;
 }
 .message_box .profile .user_img img {
     width: 40px;
@@ -749,7 +750,7 @@ body.login-page .login-box button span {
     padding: 0;
 }
 .message_reply {
-    padding: 20px 0 0;
+    padding: 0px 0 0;
 }
 .message_reply textarea {
     height: 100px;
@@ -769,7 +770,7 @@ body.login-page .login-box button span {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0 0;
+    margin: 0px 0 0;
     position: relative;
     border-radius: 5px;
 }
@@ -789,6 +790,7 @@ body.login-page .login-box button span {
     transform: translateY(-50%);
     font-family: "Font Awesome 5 Free";
     color: #2d8427;
+    font-size: 20px;
 }
 .message_reply .upload-file:after{
     content: attr(file-name);
@@ -814,9 +816,10 @@ body.login-page .login-box button span {
     width: 100%;
     font-size: 0;
 }
-.message_reply button {
+.message_reply button,
+.message_reply button:hover {
     cursor: pointer;
-    margin: 15px 0 0;
+    margin: 35px auto 10px;
     padding: 10px 30px;
     font-size: 13px;
     background-color: #2d8427;
@@ -824,11 +827,14 @@ body.login-page .login-box button span {
     color: #ffffff;
     border: none;
     border-radius: 5px;
+    height: auto;
+    display: block;
 }
 .subject_wraper {
     background-color: #f6f7fb;
-    padding: 20px 25px;
-    border-radius: 5px;
+    margin: 0 0 30px;
+    padding: 30px 30px;
+    border-radius: 10px 10px 0 0;
 }
 .subject_wraper label {
     margin: 0;
@@ -947,6 +953,95 @@ form .card-body {
     margin: 0;
     padding: 0 10px 0 0;
 }
+.help_wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+}
+.content-wrapper .card-body .form-group .help_wrap label {
+    margin: 0;
+}
+.subject_wraper label {
+    color: #343d49;
+}
+.message_box .messages_inner_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.message_box .messages_inner_wrap p {
+    margin: 0;
+    line-height: 24px;
+    font-size: 13px;
+}
+.message_box .messages_inner_wrap .message {
+    background-color: #e6f5f8;
+    border: 1px solid #cbeaf1;
+    padding: 30px 30px;
+    border-radius: 10px 10px 10px 0px;
+    width: calc(100% - 400px);
+}
+.message_box .messages_inner_wrap .message .attachment_show{
+    margin: 10px 0 0;
+}
+.message_box .messages_inner_wrap .message .attachment_show .box_wrap{
+    width: 85px;
+    height: 60px;
+    background-color: #ffffff;
+    border: 1px solid #343d49;
+    border-radius: 3px;
+}
+.message_box .messages_inner_wrap .message .attachment_show .box_wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+}
+.message_box .user_detail {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    padding: 5px 45px 0;
+}
+.message_box.right .messages_inner_wrap .profile {
+    margin: 0 0 0 5px;
+    order: 2;
+}
+.message_box.right .messages_inner_wrap .message {
+    order: 1;
+    background-color: #f2fbf5;
+    border-color: #cae2c7;
+    border-radius: 10px 10px 0px 10px;    
+}
+.message_box.left .messages_inner_wrap .profile {
+    margin: 0 5px 0 0;
+}
+.message_box .user_detail label.name {
+    font-weight: 600;
+    margin: 0 6px 0 0;
+}
+.message_box .user_detail label {
+    display: block;
+    font-size: 13px;
+    margin: 0;
+    font-weight: 500;
+    color: #343d49;
+}
+.message_box {
+    padding: 0;
+    margin: 0 0 35px;
+}
+.message_box.right .user_detail {
+    justify-content: flex-end;
+}
+.message_box.left .messages_inner_wrap {
+    justify-content: end;
+}
+
 /*--Contact Admin--*/
 
 
@@ -1138,8 +1233,8 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     border: 1px solid #f6f7fb;
 }
 span.selection .select2-selection--multiple {
-    border: 1px solid #ced4da !important;
-    padding: 5px 5px;
+    border: 1px solid #1f2936 !important;
+    padding: 10px 10px;
 }
 .form-group.radio {
     display: flex;
@@ -1157,7 +1252,19 @@ span.selection .select2-selection--multiple {
 .job-description p {
     margin: 0;
 }
-
+.dataTables_wrapper table tbody tr td.text-success .badge {
+    background-color: #28a745;
+    color: #ffffff;
+    font-weight: 500;
+}
+.dataTables_wrapper table tbody tr td.text-danger .badge {
+    background-color: #dc3545;
+    color: #ffffff;
+    font-weight: 500;
+}
+i.text-success.fas.fa-door-closed {
+    color: #dc3545 !important;
+}
 /*Added 05-March-2021*/
 
 span.select2-container--default {
@@ -1258,7 +1365,8 @@ div#preview-cropped-image:hover label.label:after {
     cursor: pointer;
     font-weight: 400;
 }
-.is_featured_group button.btn.info_btn {
+.is_featured_group button.btn.info_btn,
+.content-wrapper .card-body .form-group .help_wrap button.btn.info_btn{
     padding: 2px 5px;
     margin: 0px 10px 0;
     background-color: #3b9332;
@@ -1270,7 +1378,8 @@ div#preview-cropped-image:hover label.label:after {
     align-items: center;
     justify-content: center;
 }
-.is_featured_group button.btn.info_btn i {
+.is_featured_group button.btn.info_btn i,
+.content-wrapper .card-body .form-group .help_wrap button.btn.info_btn i {
     font-size: 20px;
     color: #ffffff;
 }
@@ -1287,6 +1396,12 @@ div#preview-cropped-image:hover label.label:after {
 }
 .dataTables_wrapper table tbody tr td a {
     color: #212529;
+}
+tfoot {
+    display: none;
+}
+body .information_fields {
+    margin-bottom: 0px;
 }
 /*Responsive*/
 

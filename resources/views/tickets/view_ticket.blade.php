@@ -3,17 +3,17 @@
 @section('title', 'Ticket messages')
 
 @section('content_header')
-  <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>{{ __('adminlte::adminlte.ticket_messages') }}</h1>
-    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
-  </div>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
+        <div class="card-header alert d-flex justify-content-between align-items-center">
+          <h3>{{ __('adminlte::adminlte.ticket_messages') }}</h3>
+          <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+        </div>        
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -35,72 +35,82 @@
                     </div>
                     <div class="form_wrap message_wraper">
                       <?php  for ($i=0; $i < count($ticketMessages); $i++) {  ?>
-                      <div class="message_box">
-                        <div class="profile">
-                          <div class="user_img">
-                            <?php
-                              $publicPath = config('adminlte.website_url');
-                              $logoPath = $publicPath.'images/companyLogos/';
-                              $defaultProfileImage = config("adminlte.default_avatar");
-                            ?>
-                            @if($ticketMessages[$i]->sent_by == 'admin')
-                              <img src="{{ $defaultProfileImage }}" alt="">
-                            @else
-                              <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defaultProfileImage }}" alt="">
-                            @endif
-                          </div>
-                          <div class="user_detail">
-                            <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
-                            @if($ticketMessages[$i]->sent_by == 'admin')
-                              <label class="name">{{ $superAdmin[0]->name }}</label>
-                            @else
-                              <a href="{{ route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $recruiterName }}</label></a>
-                            @endif
-                            <label class="time_date">{{ $ticketMessages[$i]->created_at ? date('d/m/y', strtotime($ticketMessages[$i]->created_at)) : '' }}</label>
-                          </div>
-                        </div>
-                        <div class="message">
-                          <p>{{ $ticketMessages[$i]->message_text }}</p>
-                        </div>
-                        <div class="attachment_show">
-                          <div class="box_wrap">
-                            <?php if($ticketMessages[$i]->attachment_file) {
-                              $destinationPath = config('adminlte.website_url').'ticket_images/';
-                              $extension = explode('.', $ticketMessages[$i]->attachment_file)[1];
-                            ?>
-                              @if($extension == 'pdf')
-                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-pdf" src="{{ $destinationPath.'pdf_logo.jpeg' }}">
-                                  {{ $ticketMessages[$i]->attachment_file }}
-                                </a>
-                              @elseif($extension == 'doc')
-                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-doc" src="{{ $destinationPath.'doc_logo.jpeg' }}">
-                                  {{ $ticketMessages[$i]->attachment_file }}
-                                </a>
+                      <div class="message_box {{ $ticketMessages[$i]->sent_by == 'admin' ? 'right' : 'left' }}">
+                        <div class="messages_inner_wrap">
+                          <div class="profile">
+                            <div class="user_img">
+                              <?php
+                                $publicPath = config('adminlte.website_url');
+                                $logoPath = $publicPath.'images/companyLogos/';
+                                $defaultProfileImage = config("adminlte.default_avatar");
+                              ?>
+                              @if($ticketMessages[$i]->sent_by == 'admin')
+                                <img src="{{ $defaultProfileImage }}" alt="">
                               @else
-                                <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                  <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
-                                </a>
+                                <img src="{{ $organizationLogo ? $logoPath.$organizationLogo : $defaultProfileImage }}" alt="">
                               @endif
-                            <?php } ?>
+                            </div>
+                          </div>
+                          <div class="message">
+                            <p>{{ $ticketMessages[$i]->message_text }}</p>
+                            <div class="attachment_show">
+                              <div class="box_wrap">
+                                <?php if($ticketMessages[$i]->attachment_file) {
+                                  $destinationPath = config('adminlte.website_url').'ticket_images/';
+                                  $extension = explode('.', $ticketMessages[$i]->attachment_file)[1];
+                                ?>
+                                  @if($extension == 'pdf')
+                                    <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                      <img class="attached-pdf" src="{{ $destinationPath.'pdf_logo.jpeg' }}">
+                                      {{ $ticketMessages[$i]->attachment_file }}
+                                    </a>
+                                  @elseif($extension == 'doc')
+                                    <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                      <img class="attached-doc" src="{{ $destinationPath.'doc_logo.jpeg' }}">
+                                      {{ $ticketMessages[$i]->attachment_file }}
+                                    </a>
+                                  @else
+                                    <a target="_blank" href="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                      <img class="attached-image" src="{{ $destinationPath.$ticketMessages[$i]->attachment_file }}">
+                                    </a>
+                                  @endif
+                                <?php } ?>
+                              </div>
+                            </div>                          
                           </div>
                         </div>
+                        <div class="user_detail">
+                          <?php $recruiterName = $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : 'Anonymous'; ?>
+                          @if($ticketMessages[$i]->sent_by == 'admin')
+                            <label class="name">{{ $superAdmin[0]->name }}</label>
+                          @else
+                            <a href="{{ route('view_recruiter', ['id' => $recruiter->id ]) }}"><label class="name">{{ $recruiterName }}</label></a>
+                          @endif
+                          <label class="time_date">{{ $ticketMessages[$i]->created_at ? date('d/m/y', strtotime($ticketMessages[$i]->created_at)) : '' }}</label>
+                        </div>                        
                       </div>
-                      <hr>
                       <?php } ?>
                     </div>
                       <form action="{{ route('reply_on_ticket') }}" method="post" id="replyForm" enctype="multipart/form-data">
                       <div class="message_reply">
                         <div class="form-group">
+                          <label>Message</label>
                           <textarea id="message_text" name="message_text" class="form-control" maxlength="1000"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <div class="help_wrap">
+                            <label>Attachment</label>                            
+                            <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="" data-original-title="Upload max 2 MB file. Only .jpg .gif .png files are allowed to upload.">
+                            <i class="fa fa-question-circle"></i>
+                            </button>                            
+                          </div>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
                           <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .JPG, .jpeg, .JPEG, .gif, .GIF, .png, .PNG, .doc, .DOC, .docx, .DOCX, .xls, .XLS, .xlsx, .XLSX, .pdf, .PDF">
                           </div>
-                          <div class="error" id="image_error"></div>
-                          <button type="submit">Reply</button>                              
+                          <div class="error" id="image_error"></div>                          
                         </div>
+                        <button type="submit">Reply</button>                              
                       </div>
                     </form>                                     
                   </div>
@@ -190,5 +200,10 @@
         }
       });
     });
+  </script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })    
   </script>
 @stop

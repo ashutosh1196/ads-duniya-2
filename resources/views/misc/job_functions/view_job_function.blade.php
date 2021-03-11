@@ -3,17 +3,17 @@
 @section('title', 'Job Function Information')
 
 @section('content_header')
-  <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>{{ __('adminlte::adminlte.job_function_information') }}</h1>
-    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
-  </div>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
+        <div class="card-header alert d-flex justify-content-between align-items-center">
+          <h3>{{ __('adminlte::adminlte.job_function_information') }}</h3>
+          <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+        </div>        
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">

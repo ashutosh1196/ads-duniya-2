@@ -3,14 +3,17 @@
 @section('title', 'Tickets')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.tickets') }}</h1>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+          <div class="card-header alert d-flex justify-content-between align-items-center">
+            <h3>{{ __('adminlte::adminlte.tickets') }}</h3>
+            <a class="btn btn-sm btn-success invisible" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+          </div>           
           <div class="card-body">
             @if (session('status'))
               <div class="alert alert-success" role="alert">
@@ -39,7 +42,7 @@
                   <th class="display-none"></th>
                   <td>{{ $ticketsList[$i]->id }}</td>
                   <td>{{ $ticketsList[$i]->subject }}</td>
-                  <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
+                  <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}"><div class="badge">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</div></td>
                   <td>{{ $organisation[0]->name }}</td>
                   <td>{{ $recruiter[0]->name }}</td>
                   <td>{{ $ticketsList[$i]->created_at ? date('d/m/y', strtotime($ticketsList[$i]->created_at)) : '' }}</td>
