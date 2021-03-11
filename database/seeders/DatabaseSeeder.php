@@ -17,7 +17,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
 	        RolesSeeder::class,
 	        AdminsSeeder::class,
+	        CitiesTableSeeder::class,
+	        CountiesTableSeeder::class,
 	        CountriesTableSeeder::class,
+	        DropdownsSeeder::class,
+	        JobFunctionsSeeder::class,
+	        JobIndustriesSeeder::class,
+	        JobLocationsSeeder::class,
+	        SkillsSeeder::class,
 	    ]);
     }
 }
