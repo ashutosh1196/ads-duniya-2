@@ -141,5 +141,18 @@ class AdminsSeeder extends Seeder
             'status' => 1
         ]);
 
+        
+
+        
+
     }
 }
+
+
+
+   
+  
+   
+    
+   
+  
