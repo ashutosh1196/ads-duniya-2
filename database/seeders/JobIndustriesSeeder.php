@@ -12,7 +12,7 @@ class JobIndustriesSeeder extends Seeder {
 	*/
 	public function run() {
 
-		\DB::table('job_industries')->delete();
+		// \DB::table('job_industries')->delete();
 
 		\DB::table('job_industries')->insert(
 			[

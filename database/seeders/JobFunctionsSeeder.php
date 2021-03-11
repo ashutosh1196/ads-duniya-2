@@ -12,7 +12,7 @@ class JobFunctionsSeeder extends Seeder {
 	*/
 	public function run() {
 
-		\DB::table('job_functions')->delete();
+		// \DB::table('job_functions')->delete();
 
 		\DB::table('job_functions')->insert([
 			'name' => 'Designer',
