@@ -5,6 +5,7 @@ return [
     'admin_url' => env('ADMIN_URL'),
     'website_url' => env('WEBSITE_URL'),
     'email_verify_url' => env('EMAIL_VERIFY_URL'),
+    'email_verify_url_mobile' => env('EMAIL_VERIFY_URL_MOBILE'),
     'default_avatar' => env('DEFAULT_AVATAR'),
     'from_email' => env('FROM_EMAIL', 'admin@whichvocation.com'),
     'logo_path' => env('LOGO_PATH', '/which-vocation/website/Amrik-which-vocation-web/public/images/companyLogos/'),
