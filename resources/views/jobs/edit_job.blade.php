@@ -303,7 +303,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small> (Featured job only)</small></label>
+                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small>(Featured job only)</small></label>
                         <input type="hidden" name="company_url" value="{{ $organisation->url }}">
                         <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100" readonly>
                         @if($errors->has('job_url'))
@@ -471,7 +471,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.update') }}</button>
+                <button type="text" class="btn btn-primary" >{{ __('adminlte::adminlte.update_job') }}</button>
               </div>
             </form>
           </div>

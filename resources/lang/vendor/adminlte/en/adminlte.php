@@ -33,6 +33,7 @@ return [
     'back'                          => 'Back',
     'save'                          => 'Save',
     'update'                        => 'Update',
+    'update_job'                    => 'Update Job',
     'view'                          => 'View',
     'name'                          => 'Name',
     'email'                         => 'Email',
