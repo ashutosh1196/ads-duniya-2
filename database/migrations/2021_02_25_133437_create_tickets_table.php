@@ -16,6 +16,7 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('recruiter_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->string('subject');
             $table->enum('status',['open','close'])->default('open');
             $table->softDeletes();
