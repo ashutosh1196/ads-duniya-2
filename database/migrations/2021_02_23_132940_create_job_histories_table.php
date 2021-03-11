@@ -42,6 +42,7 @@ class CreateJobHistoriesTable extends Migration
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
             $table->dateTime('expiring_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class CreatePaymentTransactionsTable extends Migration
             $table->dateTime('payment_date');
             $table->enum('status', ['success', 'failed'] );
             $table->longText('response')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

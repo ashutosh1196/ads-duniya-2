@@ -20,6 +20,7 @@ class CreatePagesTable extends Migration
             $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->string('view')->comment('1 => Web , 0 => Mobile')->default(1);
             $table->longText('content');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

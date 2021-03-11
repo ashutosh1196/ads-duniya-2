@@ -18,6 +18,7 @@ class UserSocialLogins extends Migration
             $table->string('provider_id')->unique()->nullable();
             $table->string('provider_name')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

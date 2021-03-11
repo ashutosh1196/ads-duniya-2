@@ -19,6 +19,7 @@ class CreateOrganizationCreditsTable extends Migration
             $table->bigInteger('trial_credits')->default(0);
             $table->tinyInteger('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->foreignId('organization_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

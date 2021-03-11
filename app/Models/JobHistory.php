@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class JobHistory extends Model {
-	use HasFactory;
+class JobHistory extends Model
+{
+    use HasFactory, SoftDeletes;
 
-	protected $fillable = [
+    protected $fillable = [
 		'job_ref_number',
 		'job_title',
 		'job_description',
@@ -38,4 +40,12 @@ class JobHistory extends Model {
 		'job_url',
 		'company_logo'
 	];
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class,'job_skill','job_id','skill_id');
+    }
 }

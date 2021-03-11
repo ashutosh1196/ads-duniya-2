@@ -21,6 +21,7 @@ class CreateTicketMessagesTable extends Migration
             $table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
             $table->foreignId('admin_id')->nullable()->constrained()->default(null);
             $table->enum('sent_by',['admin','recruiter']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

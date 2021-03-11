@@ -18,6 +18,7 @@ class CreateTicketsTable extends Migration
             $table->foreignId('recruiter_id')->constrained();
             $table->string('subject');
             $table->enum('status',['open','close'])->default('open');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

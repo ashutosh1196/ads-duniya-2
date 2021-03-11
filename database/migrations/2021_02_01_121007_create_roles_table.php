@@ -19,6 +19,7 @@ class CreateRolesTable extends Migration
             $table->string('tag');
             $table->longtext('permissions');
             $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
