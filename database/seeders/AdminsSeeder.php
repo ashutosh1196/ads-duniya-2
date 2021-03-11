@@ -14,56 +14,20 @@ class AdminsSeeder extends Seeder
      */
     public function run()
     {
+        // Admins
+        
         \DB::table('admins')->delete();
-
-		$admins = [
+        \DB::table('admins')->insert([
             'name' => 'Super Admin',
             'email' => 'superadmin@whichvocation.com',
             'password' => Hash::make('Sup3r@dm!n'),
             'role_id' => 1,
-        ];
-
-		\DB::table('admins')->insert($admins);
-
-
-        \DB::table('skills')->delete();
-
-        \DB::table('skills')->insert([
-            'name' => 'HTML',
-            'slug' => 'html',
-            'description' => 'desc',
-            'status' => 1
         ]);
+        
 
-        \DB::table('job_functions')->delete();
-
-        \DB::table('job_functions')->insert([
-            'name' => 'Designer',
-            'slug' => 'designer',
-            'description' => 'desc',
-            'status' => 1
-        ]);
-
-        \DB::table('job_locations')->delete();
-
-        \DB::table('job_locations')->insert([
-            'name' => 'East London',
-            'slug' => 'EL',
-            'description' => 'desc',
-            'status' => 1
-        ]);
-
-        \DB::table('job_industries')->delete();
-
-        \DB::table('job_industries')->insert([
-            'name' => 'Information Technology',
-            'slug' => 'information_technology',
-            'description' => 'desc',
-            'status' => 1
-        ]);
+        // Organizations
 
         \DB::table('organizations')->delete();
-
         \DB::table('organizations')->insert([
             'name' => 'RV Technologies',
             'email' => 'info@rvtechnologies.com',
@@ -78,10 +42,12 @@ class AdminsSeeder extends Seeder
             'state' => 'Punjab',
             'country' => 'United Kingdom',
             'pincode' => '132654'
-        ]);    
+        ]);
+        
+
+        // Recruiters
 
         \DB::table('recruiters')->delete();
-
         \DB::table('recruiters')->insert([[
             'email' => 'ashish_kumar@rvtechnologies.com',
             'password' => bcrypt('12345678'),
@@ -115,25 +81,31 @@ class AdminsSeeder extends Seeder
             'organization_id' => 1,
             'is_parent' => 0
         ]]);
+        
+
+        // Organization Credits
 
         \DB::table('organization_credits')->delete();
-
         \DB::table('organization_credits')->insert([
             'trial_credits' => 60,
             'organization_id' => 1,
-        ]);    
-
+        ]);
+        
+        // Organization Credit details
 
         \DB::table('organization_credit_details')->delete();
-
         \DB::table('organization_credit_details')->insert([
             'txn_type' => 'credit',
             'credits' => '60',
             'credit_type' => 'free',
             'organization_id' => 1,
             'organization_credit_id' => 1
-        ]);    
+        ]);
+        
 
+        // Jobs
+
+        \DB::table('jobs')->delete();
         \DB::table('jobs')->insert([
             'job_ref_number' => '2343202116148530002',
             'job_title' => 'Designer',
@@ -158,7 +130,11 @@ class AdminsSeeder extends Seeder
             'organization_id' => 1,
             'expiring_at' => '2022-06-04 11:59:59'
         ]);
+        
 
+        // Job Skills
+
+        \DB::table('job_skill')->delete();
         \DB::table('job_skill')->insert([
             'job_id' => 1,
             'skill_id' => 1,
@@ -374,7 +350,8 @@ class AdminsSeeder extends Seeder
             ['name'=>'job_type','slug'=>'work_from_home','value'=>'Work From Home'],
         ];
 
-        \DB::table('counties')->insert($dropdowns);
+        \DB::table('dropdowns')->insert($dropdowns);
+
     }
 }
 
