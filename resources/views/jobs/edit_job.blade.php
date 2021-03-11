@@ -193,8 +193,9 @@
                       <div class="form-group">
                         <label for="employment_eligibility">{{ __('adminlte::adminlte.employment_eligibility') }}</label>
                         <select name="employment_eligibility" class="form-control" id="employment_eligibility">
-                        <option value="visa_considered" {{ $jobDetails->employment_eligibility == 'visa_considered' ? 'selected' : '' }}>Visa considered</option>
-                        <option value="sponsorship_offered" {{ $jobDetails->employment_eligibility == 'sponsorship_offered' ? 'selected' : '' }}>Sponsorship offered</option>
+                        @foreach($employmentDropdowns as $employmentDropdown)
+                          <option value="{{ $employmentDropdown->slug }}" {{ $jobDetails->employment_eligibility == $employmentDropdown->slug ? 'selected' : '' }}>{{ $employmentDropdown->value }}</option>
+                        @endforeach
                         </select>
                         @if($errors->has('employment_eligibility'))
                           <div class="error">{{ $errors->first('employment_eligibility') }}</div>
@@ -226,8 +227,9 @@
                       <div class="form-group amount">
                         <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}<span class="text-danger"> *</span></label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
-                          <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>GBP Pound</option>
-                          <option value="dollars" {{ $jobDetails->salary_currency == 'dollars' ? 'selected' : '' }}>USD</option>
+                          @foreach($currencies as $currency)
+                            <option value="{{ $currency->slug }}" {{ $jobDetails->currency == $currency->slug ? 'selected' : '' }}>{{ $currency->value }}</option>
+                          @endforeach
                         </select>
                         @if($errors->has('salary_currency'))
                           <div class="error">{{ $errors->first('salary_currency') }}</div>
@@ -258,12 +260,9 @@
                       <div class="form-group">
                         <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                         <select name="job_type" class="form-control" id="job_type">
-                          <option {{ $jobDetails->job_type == 'full_time' ? 'selected' : '' }} value="full_time">{{ __('adminlte::adminlte.full_time') }}</option>
-                          <option {{ $jobDetails->job_type == 'part_time' ? 'selected' : '' }} value="part_time">{{ __('adminlte::adminlte.part_time') }}</option>
-                          <option {{ $jobDetails->job_type == 'contract_basis' ? 'selected' : '' }} value="contract_basis">{{ __('adminlte::adminlte.contract_basis') }}</option>
-                          <option {{ $jobDetails->job_type == 'graduate' ? 'selected' : '' }} value="graduate">{{ __('adminlte::adminlte.graduate') }}</option>
-                          <option {{ $jobDetails->job_type == 'public_sector' ? 'selected' : '' }} value="public_sector">{{ __('adminlte::adminlte.public_sector') }}</option>
-                          <option {{ $jobDetails->job_type == 'work_from_home' ? 'selected' : '' }} value="work_from_home">{{ __('adminlte::adminlte.work_from_home') }}</option>
+                          @foreach($jobTypes as $jobType)
+                            <option {{ $jobDetails->job_type == $jobType->slug ? 'selected' : '' }} value="{{ $jobType->slug }}">{{ $jobType->value }}</option>
+                          @endforeach
                         </select>
                         @if($errors->has('job_type'))
                           <div class="error">{{ $errors->last('job_type') }}</div>

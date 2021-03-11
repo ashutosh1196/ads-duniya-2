@@ -157,6 +157,9 @@ class JobsController extends Controller {
 		$jobFunctions  = JobFunction::all();
 		$jobLocations  = JobLocation::all();
 		$skills = Skill::all();
+		$employmentDropdowns = DB::table('dropdowns')->where('name', 'employment_eligibility')->get();
+		$currencies = DB::table('dropdowns')->where('name', 'currency')->get();
+		$jobTypes = DB::table('dropdowns')->where('name', 'job_type')->get();
 		$organisation = Organization::find($jobDetails->organization_id);
 		return view('jobs/edit_job', [
 			'jobDetails'		=> $jobDetails,
@@ -168,6 +171,9 @@ class JobsController extends Controller {
 			'jobLocations'	=> $jobLocations,
 			'skills'				=> $skills,
 			'organisation'	=> $organisation,
+			'employmentDropdowns'	=> $employmentDropdowns,
+			'currencies'	=> $currencies,
+			'jobTypes'	=> $jobTypes,
 		]);
 	}
 	
