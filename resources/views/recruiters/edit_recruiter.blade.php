@@ -32,13 +32,13 @@
                     </ul>
                   </div>
                 @endif
-                <input type="hidden" name="id" value="{{ $recruiter[0]->id }}">
+                <input type="hidden" name="id" value="{{ $recruiter->id }}">
                 <!-- Form Fields -->
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="first_name">{{ __('adminlte::adminlte.first_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter[0]->first_name }}" maxlength="100">
+                      <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $recruiter->first_name }}" maxlength="100">
                       @if($errors->has('first_name'))
                         <div class="error">{{ $errors->first('first_name') }}</div>
                       @endif
@@ -48,7 +48,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="last_name">{{ __('adminlte::adminlte.last_name') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter[0]->last_name }}" maxlength="100">
+                      <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $recruiter->last_name }}" maxlength="100">
                       @if($errors->has('last_name'))
                         <div class="error">{{ $errors->last('last_name') }}</div>
                       @endif
@@ -60,15 +60,15 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="phone_number">{{ __('adminlte::adminlte.contact_number') }}</label>
-                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter[0]->phone_number ? $recruiter[0]->phone_number : '+44' }}" maxlength="13">
-                        <input type="hidden" name="country_code" value="{{ $recruiter[0]->country_code }}">
+                      <input id="jquery-intl-phone" type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ $recruiter->phone_number ? $recruiter->phone_number : '+44' }}" maxlength="13">
+                        <input type="hidden" name="country_code" value="{{ $recruiter->country_code }}">
                     </div>
                   </div>
                   
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="email">{{ __('adminlte::adminlte.email') }}<span class="text-danger"> *</span></label>
-                      <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter[0]->email }}" readonly maxlength="100">
+                      <input type="text" name="email" class="form-control" id="email" value="{{ $recruiter->email }}" readonly maxlength="100">
                       @if($errors->has('email'))
                         <div class="error">{{ $errors->last('email') }}</div>
                       @endif
@@ -80,12 +80,7 @@
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label for="organization_id">{{ __('adminlte::adminlte.company') }}<span class="text-danger"> *</span></label>
-                      <select name="organization_id" class="form-control" id="organization_id" >
-                        <option value="" hidden>{{ __('adminlte::adminlte.select_company') }}</option>
-                        @for($i=0; $i < count($organizations); $i++)
-                          <option value="{{ $organizations[$i]->id }}" {{ ( $organizations[$i]->id == $recruiter[0]->organization_id) ? 'selected' : '' }}>{{ $organizations[$i]->name }}</option>
-                        @endfor
-                      </select>
+                      <input type="text" class="form-control" name="organization_id" id="organization_id" value="{{ $organization->name }}" readonly>
                       @if($errors->has('organization_id'))
                         <div class="error">{{ $errors->first('organization_id') }}</div>
                       @endif
@@ -132,9 +127,9 @@
         ignore: [],
         debug: false,
         rules: {
-          // name: {
-          //   required: true
-          // },
+          organization_id: {
+            required: true
+          },
           first_name: {
             required: true
           },
@@ -147,9 +142,9 @@
           },
         },
         messages: {
-          /* name: {
-            required: "The Name field is required."
-          }, */
+          organization_id: {
+            required: "The Company field is required."
+          },
           first_name: {
             required: "The First Name field is required."
           },

@@ -226,7 +226,7 @@
                       <div class="form-group amount">
                         <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}<span class="text-danger"> *</span></label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
-                          <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>Pound</option>
+                          <option value="pounds" {{ $jobDetails->salary_currency == 'pounds' ? 'selected' : '' }}>GBP Pound</option>
                           <option value="dollars" {{ $jobDetails->salary_currency == 'dollars' ? 'selected' : '' }}>USD</option>
                         </select>
                         @if($errors->has('salary_currency'))
@@ -288,7 +288,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small> (Featured job only)</small><span class="text-danger"> *</span></label>
+                        <label for="job_url">{{ __('adminlte::adminlte.job_url') }}<small> (Featured job only)</small></label>
                         <input type="hidden" name="company_url" value="{{ $organisation->url }}">
                         <input type="text" name="job_url" class="form-control" id="job_url" value="{{ $jobDetails->job_url }}" maxlength="100" readonly>
                         @if($errors->has('job_url'))
@@ -571,9 +571,9 @@
           job_location_id: {
             required: true
           },
-          job_url: {
+          /* job_url: {
             required: true
-          },
+          }, */
           organization_id: {
             required: true
           },
@@ -596,6 +596,15 @@
           "skills[]": {
             required: true,
           },
+          experience_range_min: {
+            number: true
+          },
+          package_range_from: {
+            number: true
+          },
+          package_range_to: {
+            number: true
+          },
         },
         messages: {
           job_title: {
@@ -613,9 +622,9 @@
           job_location_id: {
             required: "The Job Location field is required."
           },
-          job_url: {
+          /* job_url: {
             required: "The Job URL field is required."
-          },
+          }, */
           organization_id: {
             required: "The Company field is required."
           },
@@ -637,6 +646,15 @@
           },
           "skills[]": {
             required: 'The Skills field is required.',
+          },
+          experience_range_min: {
+            number: "The Minimum Salary must be in numbers only."
+          },
+          package_range_from: {
+            number: "The Maximum Salary must be in numbers only."
+          },
+          package_range_to: {
+            number: "The Minimum Experience Required must be in numbers only."
           },
         }
       });

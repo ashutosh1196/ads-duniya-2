@@ -8,6 +8,7 @@ use App\Models\OrganizationCredit;
 use App\Models\OrganizationCreditDetail;
 use App\Models\Recruiter;
 use App\Models\Admin;
+use Auth;
 
 class CreditsController extends Controller {
 	
@@ -59,6 +60,7 @@ class CreditsController extends Controller {
 				$creditDetail->credit_type = $request->credit_type;
 				$creditDetail->organization_id = $organizationId;
 				$creditDetail->organization_credit_id = $updatedCredit[0]->id;
+				$creditDetail->admin_id = Auth::id();
 				if($creditDetail->save()) {
 					$companyCreditsList = Organization::all();
 					return redirect()->route('company_credits_list', [ 'companyCreditsList' => $companyCreditsList ])->with('success', 'Company Credits Added Successfully!');
