@@ -40,6 +40,7 @@ class CreateJobsTable extends Migration
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->string('created_by')->nullable();
+            $table->enum('advert_days',[30,60,90]);
             $table->dateTime('expiring_at');
             $table->softDeletes();
             $table->timestamps();
