@@ -117,7 +117,7 @@ return [
     'company'                       => 'Company',
     'is_featured'                   => 'Is Featured?',
     'recruiter'                     => 'Recruiter',
-    'job_description'               => 'Job Description',
+    'job_description'               => 'Describe Your Job',
     'bookmarked_jobs'               => 'Bookmarked Jobs',
     'description'                   => 'Description',
     'experience_required'           => 'Experience Required',
