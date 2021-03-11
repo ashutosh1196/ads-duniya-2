@@ -344,7 +344,7 @@ section.content .small-box:hover a.small-box-footer img {
 .dataTables_paginate {
     display: block;
     width: auto;
-    margin: 15px auto 15px;
+    margin: 15px auto 10px;
     background-color: #ffffff;
     border: 1px solid #e9edf2;
     padding: 12px 5px;
@@ -982,24 +982,26 @@ form .card-body {
     border-radius: 10px 10px 10px 0px;
     width: calc(100% - 400px);
 }
-.message_box .messages_inner_wrap .message .attachment_show{
+.message_box .messages_inner_wrap .message .attachment_show {
     margin: 10px 0 0;
+    display: inline-block;
 }
-.message_box .messages_inner_wrap .message .attachment_show .box_wrap{
-    width: 85px;
-    height: 60px;
+.message_box .messages_inner_wrap .message .attachment_show .box_wrap {
+    height: 35px;
     background-color: #ffffff;
     border: 1px solid #343d49;
     border-radius: 3px;
-}
-.message_box .messages_inner_wrap .message .attachment_show .box_wrap img{
+    display: inline-block;
     width: 100%;
-    height: 100%;
+    padding: 0 5px 0 0px;
+}
+.message_box .messages_inner_wrap .message .attachment_show .box_wrap img {
     object-fit: contain;
     padding: 3px;
     border-radius: 3px;
     cursor: pointer;
     border: none;
+    height: 100%;
 }
 .message_box .user_detail {
     padding: 0px;
@@ -1040,6 +1042,12 @@ form .card-body {
 }
 .message_box.left .messages_inner_wrap {
     justify-content: end;
+}
+.card-body form .card-body .title h5 {
+    color: #212529;
+    font-size: 18px;
+    padding: 15px 0 0;
+    font-weight: 600;
 }
 
 /*--Contact Admin--*/
@@ -1401,7 +1409,21 @@ tfoot {
     display: none;
 }
 body .information_fields {
-    margin-bottom: 0px;
+    margin-bottom: 15px;
+}
+body .address_fields,
+body .requirements_fields,
+body .type_fields,
+body .about_fields{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+div#custom-tabs-one-tabContent form.form_wrap .title h5,
+.card-body.job-history form.form_wrap .title h5 {
+    color: #212529;
+    font-size: 18px;
+    padding: 15px 0 0;
+    font-weight: 600;
 }
 /*Responsive*/
 
