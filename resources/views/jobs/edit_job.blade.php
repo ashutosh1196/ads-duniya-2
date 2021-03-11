@@ -235,7 +235,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
-                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}<span class="text-danger"> *</span></label>
+                        <label for="salary_currency">{{ __('adminlte::adminlte.currency') }}</label>
                         <select name="salary_currency" class="form-control" id="salary_currency">
                           @foreach($currencies as $currency)
                             <option value="{{ $currency->slug }}" {{ $jobDetails->currency == $currency->slug ? 'selected' : '' }}>{{ $currency->value }}</option>
