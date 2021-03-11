@@ -3,21 +3,23 @@
 @section('title', 'Admins')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.admins') }}</h1>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+          <div class="card-header alert d-flex justify-content-between align-items-center">
+            <h3>{{ __('adminlte::adminlte.admins') }}</h3>
+            <a class="btn btn-sm btn-success" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>
+          </div>           
           <div class="card-body">
             @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
               </div>
             @endif
-            <a class="btn btn-sm btn-success float-right clear" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>
             <table style="width:100%" id="admins-list" class="table table-bordered table-hover">
               <thead>
                 <tr>

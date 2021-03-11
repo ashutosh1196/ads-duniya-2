@@ -14,7 +14,7 @@
             <h3>{{ __('adminlte::adminlte.edit_recruiter') }}</h3>
             <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
-          <div class="card-body form">
+          <div class="card-body">
             @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
@@ -95,11 +95,11 @@
                 <!-- /Form Fields -->
 
               </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">{{ __('adminlte::adminlte.update') }}</button>
+              </div>              
             </div>
               <!-- /.card-body -->
-              <div class="card-footer submit">
-                <button type="submit" class="btn btn-primary">{{ __('adminlte::adminlte.update') }}</button>
-              </div>
             </form>
           </div>
         </div>

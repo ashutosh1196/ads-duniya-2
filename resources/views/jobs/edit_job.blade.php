@@ -434,9 +434,14 @@
                   <div class="row">
                     
                     <div class="col-6">
-                      <div class="form-group is_complete_update_group">
-                        <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}</label>
-                        <input class="is_complete_update" type="checkbox" name="is_complete_update">
+                      <div class="form-group m-0">
+                        <div class="completed_job_wrap">
+                          <label for="is_complete_update">{{ __('adminlte::adminlte.is_complete_update') }}</label>
+                          <div class="custom-check">
+                            <input class="is_complete_update" type="checkbox" name="is_complete_update">                          
+                            <span></span>
+                          </div>                          
+                        </div>
                         @if($errors->has('is_complete_update'))
                           <div class="error">{{ $errors->last('is_complete_update') }}</div>
                         @endif
@@ -461,7 +466,7 @@
 @section('css')
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
-  <link rel="stylesheet" href="https://server3.rvtechnologies.in/which-vocation/html-pages/css/style.css">
+  <!-- <link rel="stylesheet" href="https://server3.rvtechnologies.in/which-vocation/html-pages/css/style.css"> -->
   <style>
     .information_fields { margin-bottom: 25px; }
     .address_fields { margin-top: 25px; margin-bottom: 25px; }

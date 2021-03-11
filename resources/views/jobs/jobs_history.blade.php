@@ -3,14 +3,17 @@
 @section('title', 'Jobs History')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.jobs_history') }}</h1>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+          <div class="card-header alert d-flex justify-content-between align-items-center">
+            <h3>{{ __('adminlte::adminlte.jobs_history') }}</h3>
+            <a class="btn btn-sm btn-success invisible" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+          </div>           
           <div class="card-body">
             @if (session('status'))
               <div class="alert alert-success" role="alert">

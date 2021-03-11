@@ -370,11 +370,12 @@ section.content .small-box:hover a.small-box-footer img {
     padding: 8px 16px;
 }
 .table-bordered tr td a .text-danger {
-    margin-top: 15px;
+    margin-top: 0x;
 }
 .dataTables_wrapper table tbody tr td:last-child a {
-	position: relative;
-	top: -5px;
+    position: relative;
+    top: 0px;
+    display: inline-block;
 }
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a {
     background-color: #f6f7fb;
@@ -396,13 +397,27 @@ section.content .small-box:hover a.small-box-footer img {
     color: #212529;
 }
 .wrapper .content .card-body form.form_wrap .form-group input::placeholder,
-.content-wrapper .card-body .form-group input, .content-wrapper .card-body .form-group select {
+.content-wrapper .card-body .form-group input, .content-wrapper .card-body .form-group select,
+.form-group textarea{
     font-weight: 400;
     height: 50px;
     border-radius: 5px;
     font-size: 14px;
     border-color: #1f2936;
     color: #495057;
+}
+.job-description{
+    border: 1px solid #1f2936;
+    color: #495057;
+    font-weight: 400;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;                
+}
+.form-group textarea{
+    padding: 14px 15px;
 }
 .form-control:disabled, .form-control[readonly] {
     background-color: #f6f7fb;
@@ -678,7 +693,19 @@ body.login-page .login-box button span {
     padding: 12px 10px;
     margin-top: 0;
 }
-
+.form-group.profile_image {
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-group.profile_image label {
+    width: 100%;
+}
+.dataTables_wrapper table tbody tr td a.action-button {
+    top: 0;
+}
+.dataTables_wrapper table tbody tr td {
+    padding: 15px 0px !important;
+}
 /*--Contact Admin--*/
 
 .message_box {
@@ -858,7 +885,68 @@ a.paginate_button.current {
 .dataTables_info {
     display: none;
 }
-
+form .card-body {
+    padding: 0;
+}
+.content-wrapper form .card-footer {
+    margin: 0;
+    padding: 20px 0 15px;
+}
+.completed_job_wrap {
+    display: flex;
+    align-items: center;
+}
+.completed_job_wrap .custom-check {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.completed_job_wrap .custom-check input.is_complete_update {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    font-size: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    cursor: pointer;
+    z-index: 1;
+}
+.completed_job_wrap .custom-check span {
+    height: 20px;
+    width: 20px;
+    border: 1px solid #000000;
+    display: inline-block;
+    border-radius: 3px;
+}
+.completed_job_wrap .custom-check input.is_complete_update:checked~span {
+    height: 20px;
+    width: 20px;
+    background-color: #2d8427;
+    border-color: #2d8427;
+}
+.completed_job_wrap .custom-check input.is_complete_update:checked~span:before {
+    background-color: #2d8427;
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: "";
+    position: absolute;
+}
+.completed_job_wrap label {
+    margin: 0;
+}
+.completed_job_wrap label {
+    margin: 0;
+    padding: 0 10px 0 0;
+}
 /*--Contact Admin--*/
 
 
@@ -1196,6 +1284,9 @@ div#preview-cropped-image:hover label.label:after {
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview i.fas.fa-ticket-alt {
     padding: 0 2px 0 0;
+}
+.dataTables_wrapper table tbody tr td a {
+    color: #212529;
 }
 /*Responsive*/
 

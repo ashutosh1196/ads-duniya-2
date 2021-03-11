@@ -3,17 +3,17 @@
 @section('title', 'Job Information')
 
 @section('content_header')
-  <div class="header_info d-flex justify-content-between align-items-center">
-    <h1>{{ __('adminlte::adminlte.job_information') }}</h1>
-    <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
-  </div>
 @stop
 
 @section('content')
-<div class="">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
+        <div class="card-header alert d-flex justify-content-between align-items-center">
+          <h3>{{ __('adminlte::adminlte.job_information') }}</h3>
+          <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+        </div>        
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -21,7 +21,7 @@
             </div>
           @endif
           <div class="card-primary card-tabs">
-              <div class="card-header p-0 pt-1">
+              <div class="card-header p-0 m-0 mb-4">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true"><i class="fas fa-fw fa-cogs "></i>Job Detail</a>
@@ -31,7 +31,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="card-body">
+              <div class="card-body p-0">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                   <?php 
@@ -220,9 +220,15 @@
                           <input class="form-control" placeholder="{{ $jobDetails->is_featured ? 'Yes' : 'No' }}" readonly>
                         </div>
                       </div>
-                      <div class="job_image_show">
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group profile_image">
+                          <label>Profile Image</label>
+                          <img class="job_image" src="{{ $filePath }}">
+                        </div>
+                      </div>                      
+<!--                       <div class="job_image_show">
                         <img class="job_image" src="{{ $filePath }}">
-                      </div>
+                      </div> -->
                     </div>
 
                     <hr>
