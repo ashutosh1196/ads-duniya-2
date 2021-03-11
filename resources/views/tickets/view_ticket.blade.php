@@ -96,8 +96,9 @@
                           <textarea id="message_text" name="message_text" class="form-control" maxlength="1000"></textarea>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                            <input type="file" name="attachment_file" id="attachment_file">
+                          <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .JPG, .jpeg, .JPEG, .gif, .GIF, .png, .PNG, .doc, .DOC, .docx, .DOCX, .xls, .XLS, .xlsx, .XLSX, .pdf, .PDF">
                           </div>
+                          <div class="error" id="image_error"></div>
                           <button type="submit">Reply</button>                              
                         </div>
                       </div>
@@ -133,6 +134,47 @@
       $(this).parent().attr('file-name', $(this)[0].files[0].name);
     });
     $(document).ready(function() {
+      var input = document.getElementById('attachment_file');
+      $(input).change(function (e) {
+        var files = e.target.files;
+        if (files && files.length > 0) {
+          file = files[0];
+          var fileName = file.name;
+          var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+          console.log (fileExtension);
+          if(fileExtension != "jpg" &&
+             fileExtension != "JPG" &&
+             fileExtension != "jpeg" &&
+             fileExtension != "JPEG" &&
+             fileExtension != "gif" &&
+             fileExtension != "GIF" &&
+             fileExtension != "png" &&
+             fileExtension != "PNG" &&
+             fileExtension != "doc" && 
+             fileExtension != "DOC" && 
+             fileExtension != "docx" && 
+             fileExtension != "DOCX" && 
+             fileExtension != "xls" && 
+             fileExtension != "XLS" &&  
+             fileExtension != "xlsx" && 
+             fileExtension != "XLSX" &&
+             fileExtension != "pdf" && 
+             fileExtension != "PDF"
+            ) {
+            $("#image_error").html("Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload.");
+            return false;
+          }
+          else {
+            if(file.size <= 2000000) {
+              $("#image_error").html("");
+            }
+            else {
+              $("#image_error").html("The File must be less than or equal to 2 MB.");
+              return false;
+            }
+          }
+        }
+      });
       $('#replyForm').validate({
         ignore: [],
         debug: false,

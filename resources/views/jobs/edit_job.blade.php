@@ -75,28 +75,28 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="city">{{ __('adminlte::adminlte.city') }}<span class="text-danger"> *</span></label>
-                        <input class="form-control" list="cities" name="city" id="city" value="{{ $jobDetails->city }}" placeholder="Start to enter City/ Town">
+                        <input class="form-control city" list="cities" name="city" id="city" value="{{ $jobDetails->city }}" placeholder="Start to enter City/ Town">
                         <datalist id="cities">
                           <?php for($i=0; $i<count($cities); $i++) { ?>
                             <option value="{{ $cities[$i]->city }}" {{ $cities[$i]->city == 'United Kingdom' ? 'selected' : '' }}>{{ $cities[$i]->city }}</option>
                           <?php } ?>
                         </datalist>
                         @if($errors->has('city'))
-                          <div class="error">{{ $errors->first('city') }}</div>
+                          <div class="error" id="city-error">{{ $errors->first('city') }}</div>
                         @endif
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-group">
                         <label for="county">{{ __('adminlte::adminlte.county') }}<span class="text-danger"> *</span></label>
-                        <input class="form-control" list="counties" name="county" id="county" value="{{ $jobDetails->county }}" placeholder="Start to enter County">
+                        <input class="form-control county" list="counties" name="county" id="county" value="{{ $jobDetails->county }}" placeholder="Start to enter County">
                         <datalist id="counties">
                           <?php for($i=0; $i<count($counties); $i++) { ?>
                             <option value="{{ $counties[$i]->county }}" {{ $counties[$i]->county == 'United Kingdom' ? 'selected' : '' }}>{{ $counties[$i]->county }}</option>
                           <?php } ?>
                         </datalist>
                         @if($errors->has('county'))
-                          <div class="error">{{ $errors->first('county') }}</div>
+                          <div class="error" id="county-error">{{ $errors->first('county') }}</div>
                         @endif
                       </div>
                     </div>
@@ -510,25 +510,11 @@
         $("#job_url").attr('readonly', 'true');
         $("#uploadPicture").css('display', 'none');
       }
-      $/* ("#is_featured").change(function() {
-        if($(this).get(0).checked) {
-          $("#job_url").removeAttr('readonly');
-          $("#uploadPicture").css('display', 'block');
-        }
-        else {
-          $("#job_url").attr('readonly', 'true');
-          $("#uploadPicture").css('display', 'none');
-        }
-      }); */
 
       $("#skills").select2({
         tags: true,
         tokenSeparators: [',', ' ']
       })
-      /* CKEDITOR.replace( 'job_description', {
-        customConfig : 'config.js',
-        toolbar : 'simple'
-      }) */
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -551,6 +537,21 @@
         var $otherElement = $(param);
         return parseFloat(value, 10) >= parseFloat($otherElement.val(), 10);
       });
+      $("#city, #county").change(function() {
+        if($(this).hasClass('city') && $(this).val() != "") {
+          $("#county-error").hide();
+        }
+        else if($(this).val() == "") {
+          $("#county-error").show();
+        }
+        if($(this).hasClass('county') && $(this).val() != "") {
+          $("#city-error").hide();
+        }
+        else if($(this).val() == "") {
+          $("#city-error").show();
+        }
+      });
+
       $('#editJobForm').validate({
         ignore: [],
         debug: false,
@@ -577,9 +578,6 @@
             required: true
           },
           job_description:{
-            /* required: function() {
-              CKEDITOR.instances.job_description.updateElement();
-            }, */
             required: true,
             maxlength: 1000
           },
@@ -589,39 +587,15 @@
           county: {
             required: '#city:blank'
           },
-          // job_address: {
-          //   required: true
-          // },
-          // city: {
-          //   required: true
-          // },
-          // state: {
-          //   required: true
-          // },
-          // pincode: {
-          //   required: true
-          // },
           country: {
             required: true
           },
-          // package_range_from: {
-          //   required: true,
-          //   maxlength: 10
-          // },
-          // package_range_to: {
-          //   required: true,
-          //   maxlength: 10,
-          //   greaterThan: '#package_range_from'
-          // },
           salary_currency: {
             required: true,
           },
           "skills[]": {
             required: true,
           },
-          // experience_range_min: {
-          //   required: true,
-          // },
         },
         messages: {
           job_title: {
@@ -649,42 +623,21 @@
             required: "The Job Description field is required.",
             maxlength: "Enter no more than 1000 characters"
           },
-          // job_address: {
-          //   required: "The Job Address field is required."
-          // },
           city: {
             required: "The City / Town OR County is required."
           },
           county: {
             required: "The County OR City / Town is required."
           },
-          // state: {
-          //   required: "The State field is required."
-          // },
-          // pincode: {
-          //   required: "The Zip / Postcode field is required."
-          // },
           country: {
             required: "The Country field is required."
           },
-          // package_range_from: {
-          //   required: 'The Minimum Package Amount is required.',
-          //   pattern: 'The Minimum Package Amount must be valid.'
-          // },
-          // package_range_to: {
-          //   required: 'The Maximum Package Amount is required.',
-          //   pattern: 'The Maximum Package Amount must be valid.',
-          //   greaterThan: 'The Maximum Package Amount must be greater than or equal to Minimum Package Amount.'
-          // },
           salary_currency: {
             required: 'The Currency field is required.',
           },
           "skills[]": {
             required: 'The Skills field is required.',
           },
-          // experience_range_min: {
-          //   required: 'The Minimum Experience Required is required.',
-          // },
         }
       });
     });
@@ -728,7 +681,7 @@
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           console.log (fileExtension);
           if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
-            $("#image_error").html("Only JPG, JPEG and PNG types are accepted.");
+            $("#image_error").html("Only .jpg .gif .png files are allowed to upload.");
             return false;
           }
           else {

@@ -22,7 +22,8 @@ return [
     |
     */
 
-    'image_tooltip' => 'Upload max 2MB file. Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload',
+    'image_tooltip' => 'Upload max 2 MB file. Only .jpg .gif .png files are allowed to upload.',
+    'docs_tooltip' => 'Upload max 2 MB file. Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload.',
     'whichvocation' => 'Whichvocation',
     'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',
