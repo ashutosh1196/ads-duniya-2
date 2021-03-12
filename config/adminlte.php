@@ -34,6 +34,18 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
 
+    'ticket_acknowledgement_subject' => 'Whichvocation Ticket Updates',
+    'ticket_acknowledgement_message_sender' => 'You have replied to a ticket',
+    'ticket_acknowledgement_message_receiver' => 'You have received a new message on a ticket',
+    'thanks_footer' => 'Thank you for using our application!',
+    'not_clickable_message' => 'If you’re having trouble clicking the button, copy and paste the URL below into your web browser:',
+    'copyright' => 'Copyright © 2021 whichVocation',
+    'hello' => 'Hello!',
+    'view_ticket' => 'View Ticket',
+    'regards' => 'Regards',
+    'team' => 'Team',
+    'title' => 'Which Vocation',
+
     /*
     |--------------------------------------------------------------------------
     | Favicon
