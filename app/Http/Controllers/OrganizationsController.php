@@ -7,7 +7,7 @@ use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
 use App\Models\Admin;
-use App\Mail\VerifyUser;
+use App\Notifications\VerifyUser;
 use Mail;
 use DB;
 use Illuminate\Support\Facades\Gate;
@@ -161,13 +161,16 @@ class OrganizationsController extends Controller {
 		$customerId = $id;
 		$whitelistCustomer = Organization::where('id', $customerId)->update(['is_whitelisted' => '1']);
 		if($whitelistCustomer) {
-			$customer = Organization::where('id', $customerId)->get();
+			$customer = Organization::find($customerId);
+			$recruiter = Recruiter::where('email', $customer->email)->first();
 			$random_pass = uniqid();
 			// $link = config("adminlte.email_verify_url").$random_pass.'?email='.$customer[0]->email;
+			$username = $customer->first_name ? $customer->first_name : $customer->email;
 			$websiteLink = config("adminlte.email_verify_url").$random_pass;
 			$appLink = config("adminlte.email_verify_url_mobile").$random_pass;
-			$mailSent = Mail::to($customer[0]->email)->cc(['sandeep@rvtechnologies.com'])->send(new VerifyUser($customer[0]->name, $websiteLink, $appLink));
-			$updateRecruiter = Recruiter::where('email', $customer[0]->email)->update(['signup_token' => $random_pass]);
+			$recruiter->notify(new VerifyUser($username, $websiteLink, $appLink));
+			// $mailSent = Mail::to($customer[0]->email)->cc(['sandeep@rvtechnologies.com'])->send(new VerifyUser($customer[0]->name, $websiteLink, $appLink));
+			$updateRecruiter = Recruiter::where('email', $customer->email)->update(['signup_token' => $random_pass]);
 			if($updateRecruiter) {
 				$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->get();
 				return redirect()->route('whitelisted_customers', ['whitelistedCustomersList' => $whitelistedCustomersList])->with('success', 'Customer Whitelisted Successfully!');

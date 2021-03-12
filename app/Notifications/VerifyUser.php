@@ -10,16 +10,18 @@ use Illuminate\Notifications\Notification;
 class VerifyUser extends Notification
 {
     use Queueable;
+    protected $username, $websiteLink, $appLink;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+	public function __construct($username, $websiteLink, $appLink) {
+		$this->username = $username;
+		$this->websiteLink = $websiteLink;
+		$this->appLink = $appLink;
+	}
 
     /**
      * Get the notification's delivery channels.
@@ -41,9 +43,13 @@ class VerifyUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject(config('adminlte.set_password', ''))
+            ->from(config("adminlte.from_email", 'admin@whichvocation.com'), config('adminlte.whichvocation', 'Whichvocation'))
+            ->cc('ashish_kumar@rvtechnologies.com')
+            ->line('You have successfully registered to Which Vocation. Please click the link below to verify your account.')
+            ->action('Verify Account', $this->websiteLink)
+            ->action('Verify Account for Mobile Devices', $this->appLink)
+            ->line('Thank you for using our application!');
     }
 
     /**
