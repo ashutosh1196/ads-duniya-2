@@ -55,7 +55,7 @@ class JobsController extends Controller {
 			'job_title' => 'required',
 			'job_type' => 'required',
 			'job_industry_id' => 'required',
-			'job_function_id' => 'required',
+			'job_function' => 'required',
 			'job_location_id' => 'required',
 			'organization_id' => 'required',
 			'recruiter_id' => 'required',
@@ -70,7 +70,7 @@ class JobsController extends Controller {
 			'job_title.required' => 'The Job Title field is required.',
 			'job_type.required' => 'The Job Type field is required.',
 			'job_industry_id.required' => 'The Job Industry field is required.',
-			'job_function_id.required' => 'The Job Function field is required.',
+			'job_function.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Region field is required.',
 			'organization_id.required' => 'The Company field is required.',
 			'recruiter_id.required' => 'The Recruiter field is required.',
@@ -97,7 +97,7 @@ class JobsController extends Controller {
 		$job->country = $request->country;
 		// $job->pincode = $request->pincode;
 		$job->job_industry_id = $request->job_industry_id;
-		$job->job_function_id = $request->job_function_id;
+		$job->job_function = $request->job_function;
 		$job->job_location_id = $request->job_location_id;
 		// $job->is_featured = $request->is_featured == 'on' ? 1 : 0;
 		$job->min_monthly_salary = $request->min_monthly_salary;
@@ -131,7 +131,6 @@ class JobsController extends Controller {
 	public function viewJob($id) {
 		$jobDetails = Job::find($id);
 		$jobIndustry = JobIndustry::find($jobDetails->job_industry_id);
-		$jobFunction = JobFunction::find($jobDetails->job_function_id);
 		$jobLocation = JobLocation::find($jobDetails->job_location_id);
 		$organization = Organization::find($jobDetails->organization_id);
 		$recruiter = Recruiter::find( $jobDetails->recruiter_id);
@@ -140,7 +139,6 @@ class JobsController extends Controller {
 			'organizationName' => $organization->name,
 			'recruiter' => $recruiter,
 			'jobIndustry' => $jobIndustry->name,
-			'jobFunction' => $jobFunction->name,
 			'jobLocation' => $jobLocation->name,
 		]);
 	}
@@ -191,7 +189,7 @@ class JobsController extends Controller {
 			'country' => 'required',
 			// 'job_url' => 'required',
 			'job_industry_id' => 'required',
-			'job_function_id' => 'required',
+			// 'job_function' => 'required',
 			'job_location_id' => 'required',
 			'salary_currency' => 'required',
 		], [
@@ -203,7 +201,7 @@ class JobsController extends Controller {
 			'country.required' => 'The Country field is required.',
 			// 'job_url.required' => 'The Job URL field is required.',
 			'job_industry_id.required' => 'The Job Industry field is required.',
-			'job_function_id.required' => 'The Job Function field is required.',
+			// 'job_function.required' => 'The Job Function field is required.',
 			'job_location_id.required' => 'The Job Location field is required.',
 			'salary_currency' => 'Currency is required',
 		]);
@@ -239,7 +237,7 @@ class JobsController extends Controller {
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
 			"job_industry_id" => $request->job_industry_id,
-			"job_function_id" => $request->job_function_id,
+			"job_function" => $request->job_function,
 			"job_location_id" => $request->job_location_id,
 			"package_range_from" => $request->package_range_from,
 			"package_range_to" => $request->package_range_to,
@@ -325,26 +323,24 @@ class JobsController extends Controller {
 	 * This function is used to Show Jobs History
 	*/
 	public function jobsHistory(Request $request) {
-		$JobHistory = JobHistory::all();
-		return view('jobs/jobs_history')->with('JobHistory', $JobHistory);
+		$jobHistory = JobHistory::all();
+		return view('jobs/jobs_history')->with('jobHistory', $jobHistory);
 	}
 
 	/**
 	 * This function is used to Show Jobs History
 	*/
 	public function viewJobHistory($id) {
-		$JobHistory = JobHistory::find($id);
-		$jobIndustry = JobIndustry::find($JobHistory->job_industry_id);
-		$jobFunction = JobFunction::find($JobHistory->job_function_id);
-		$jobLocation = JobLocation::find($JobHistory->job_location_id);
-		$organization = Organization::find($JobHistory->organization_id);
-		$recruiter = Recruiter::find($JobHistory->recruiter_id);
+		$jobHistory = JobHistory::find($id);
+		$jobIndustry = JobIndustry::find($jobHistory->job_industry_id);
+		$jobLocation = JobLocation::find($jobHistory->job_location_id);
+		$organization = Organization::find($jobHistory->organization_id);
+		$recruiter = Recruiter::find($jobHistory->recruiter_id);
 		return view('jobs/view_job_history', [
-			'JobHistory' => $JobHistory,
+			'jobHistory' => $jobHistory,
 			'organizationName' => $organization->name,
 			'recruiter' => $recruiter,
 			'jobIndustry' => $jobIndustry->name,
-			'jobFunction' => $jobFunction->name,
 			'jobLocation' => $jobLocation->name,
 		]);
 	}

@@ -259,7 +259,7 @@
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_function') }}</label>
-                          <input class="form-control" placeholder="{{ $jobFunction ? $jobFunction : '' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->job_function }}" readonly>
                         </div>
                       </div>
                     </div>

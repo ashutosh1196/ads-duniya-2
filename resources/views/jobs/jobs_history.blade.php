@@ -35,17 +35,17 @@
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($JobHistory); $i++) { 
-                  $organisation = \App\Models\Organization::find($JobHistory[$i]->organization_id);
-                  $recruiter = \App\Models\Recruiter::find($JobHistory[$i]->recruiter_id);
-                  $jobTypeTrimmed = str_replace('_', ' ', $JobHistory[$i]->job_type);
+                <?php for ($i=0; $i < count($jobHistory); $i++) { 
+                  $organisation = \App\Models\Organization::find($jobHistory[$i]->organization_id);
+                  $recruiter = \App\Models\Recruiter::find($jobHistory[$i]->recruiter_id);
+                  $jobTypeTrimmed = str_replace('_', ' ', $jobHistory[$i]->job_type);
                   $jobType = ucwords($jobTypeTrimmed);
-                  $jobIndustry = \App\Models\JobIndustry::find($JobHistory[$i]->job_industry_id);
+                  $jobIndustry = \App\Models\JobIndustry::find($jobHistory[$i]->job_industry_id);
                 ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $JobHistory[$i]->job_ref_number }}</td>
-                  <td>{{ $JobHistory[$i]->job_title }}</td>
+                  <td>{{ $jobHistory[$i]->job_ref_number }}</td>
+                  <td>{{ $jobHistory[$i]->job_title }}</td>
                   <td>{{ $jobType }}</td>
                   <td>{{ $jobIndustry->name }}</td>
                   <td>{{ $organisation ? $organisation->name : '' }}</td>
@@ -57,7 +57,7 @@
                     @endif
                   </td>
                   <td>
-                    <a class="action-button" title="View" href="view_job_history/{{ $JobHistory[$i]->id}} "><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="view_job_history/{{ $jobHistory[$i]->id}} "><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

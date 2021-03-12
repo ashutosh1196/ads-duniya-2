@@ -30,7 +30,7 @@ class CreateJobHistoriesTable extends Migration
             $table->string('longitude')->nullable();
             $table->string('job_url');
             $table->foreignId('job_industry_id')->constrained();
-            $table->foreignId('job_function_id')->constrained();
+            $table->string('job_function')->nullable();
             $table->foreignId('job_location_id')->constrained();
             $table->double('package_range_from', 15, 8)->nullable();
             $table->double('package_range_to', 15, 8)->nullable();

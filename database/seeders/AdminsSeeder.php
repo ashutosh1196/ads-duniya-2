@@ -119,7 +119,6 @@ class AdminsSeeder extends Seeder
             'company_logo' => NULL,
             'job_url' => 'http://rvtechnologies.com',
             'job_industry_id' => 1,
-            'job_function_id' => 1,
             'job_location_id' => 1,
             'package_range_from' => 120000,
             'package_range_to' => 150000,
