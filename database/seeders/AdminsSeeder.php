@@ -22,6 +22,8 @@ class AdminsSeeder extends Seeder
             'email' => 'superadmin@whichvocation.com',
             'password' => Hash::make('Sup3r@dm!n'),
             'role_id' => 1,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
 
@@ -41,7 +43,9 @@ class AdminsSeeder extends Seeder
             'county' => 'Phase 8 Industrial Area',
             'state' => 'Punjab',
             'country' => 'United Kingdom',
-            'pincode' => '132654'
+            'pincode' => '132654',
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
 
@@ -55,7 +59,9 @@ class AdminsSeeder extends Seeder
             'status' => 'active',
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
-            'is_parent' => 0
+            'is_parent' => 0,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
             'email' => 'pawanjeet@rvtechnologies.com',
             'password' => bcrypt('12345678'),
@@ -63,7 +69,9 @@ class AdminsSeeder extends Seeder
             'status' => 'active',
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
-            'is_parent' => 0
+            'is_parent' => 0,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
             'email' => 'sandeep@rvtechnologies.com',
             'password' => bcrypt('12345678'),
@@ -71,7 +79,9 @@ class AdminsSeeder extends Seeder
             'status' => 'active',
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
-            'is_parent' => 1
+            'is_parent' => 1,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
             'email' => 'sunil_jaswal@rvtechnologies.com',
             'password' => bcrypt('12345678'),
@@ -79,7 +89,9 @@ class AdminsSeeder extends Seeder
             'status' => 'active',
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
-            'is_parent' => 0
+            'is_parent' => 0,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]]);
         
 
@@ -89,6 +101,8 @@ class AdminsSeeder extends Seeder
         \DB::table('organization_credits')->insert([
             'trial_credits' => 60,
             'organization_id' => 1,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
         // Organization Credit details
@@ -99,7 +113,9 @@ class AdminsSeeder extends Seeder
             'credits' => '60',
             'credit_type' => 'free',
             'organization_id' => 1,
-            'organization_credit_id' => 1
+            'organization_credit_id' => 1,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
 
@@ -127,7 +143,9 @@ class AdminsSeeder extends Seeder
             'status' => 'open',
             'recruiter_id' => 1,
             'organization_id' => 1,
-            'expiring_at' => '2022-06-04 11:59:59'
+            'expiring_at' => '2022-06-04 11:59:59',
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
 
@@ -137,7 +155,9 @@ class AdminsSeeder extends Seeder
         \DB::table('job_skill')->insert([
             'job_id' => 1,
             'skill_id' => 1,
-            'status' => 1
+            'status' => 1,
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         
