@@ -8,8 +8,8 @@ return [
     'email_verify_url_mobile' => env('EMAIL_VERIFY_URL_MOBILE'),
     'default_avatar' => env('DEFAULT_AVATAR'),
     'from_email' => env('FROM_EMAIL', 'admin@whichvocation.com'),
-    'logo_path' => env('LOGO_PATH', '/which-vocation/v2/web/public/images/companyLogos/'),
-    'ticket_images_path' => env('TICKET_IMAGES_PATH', '/which-vocation/v2/web/public/ticket_images/'),
+    'logo_path' => env('LOGO_PATH'),
+    'ticket_images_path' => env('TICKET_IMAGES_PATH'),
 
     /*
     |--------------------------------------------------------------------------
