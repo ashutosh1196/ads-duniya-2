@@ -330,7 +330,7 @@
                       <div id="uploadPicture">
                         <div class="profile-image">
                           <div id="preview-cropped-image">
-                            <label class="label" title="Change Image">
+                            <label class="label">
                               <?php 
                                 $url = config('adminlte.website_url', '').'images/companyLogos/';
                                 $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : config("adminlte.default_avatar");
