@@ -23,59 +23,63 @@
 
             <form class="form" id="updateProfileForm">
               @csrf
-              <div class="profile-image">
-                <div id="preview-cropped-image" class="">
-                  <label class="label" title="Change Image">
-                    <?php 
-                      $url = config('adminlte.website_url', '').'images/companyLogos/';
-                      $filePath = $customer->logo ? $url.$customer->logo : config("adminlte.default_avatar");
-                    ?>
-                    <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
-                    <input type="file" class="sr-only" id="input_logo_image" name="logo_image" accept="image/*">
-                    <div class="error" id="image_error"></div>
-                  </label>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                </div>
-                <div class="alert" role="alert"></div>
-                  <div class="modal fade" id="logo-cropper-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="modalLabel"><img src="{{asset('assets/images/croper_image.svg')}}" alt="">Crop the image</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="img-container">
-                            <img id="logo_image" src="https://avatars0.githubusercontent.com/u/3456749">
-                          </div>
-                          <div class="row" id="actions" class="action_buttons">
-                            <div class=" col-12 docs-buttons">
-                              <div class="btn-group">
-                                <a class="btn btn-primary btn-sm" title="Upload New Image" onclick="document.getElementById('input').click();"><i class="fa fa-upload"></i></a>
-                                <button type="button" id="reset" class="btn btn-primary btn-sm action_button" title="Reset">
-                                  <i class="fa fa-sync"></i>
-                                </button>
-                                <button type="button" id="zoomOut" class="btn btn-primary btn-sm action_button" title="Zoom Out">
-                                  <i class="fa fa-search-minus"></i>
-                                </button>
-                                <button type="button" id="zoomIn" class="btn btn-primary btn-sm action_button" title="Zoom In">
-                                  <i class="fa fa-search-plus"></i>
-                                </button>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <div class="profile-image">
+                    <div id="preview-cropped-image" class="">
+                      <label class="label">Company Logo<br/><br/>
+                        <?php 
+                          $url = config('adminlte.website_url', '').'images/companyLogos/';
+                          $filePath = $customer->logo ? $url.$customer->logo : config("adminlte.default_avatar");
+                        ?>
+                        <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
+                        <input type="file" class="sr-only" id="input_logo_image" name="logo_image" accept="image/*">
+                        <div class="error" id="image_error"></div>
+                      </label>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                    <div class="alert" role="alert"></div>
+                      <div class="modal fade" id="logo-cropper-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="modalLabel"><img src="{{asset('assets/images/croper_image.svg')}}" alt="">Crop the image</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="img-container">
+                                <img id="logo_image" src="https://avatars0.githubusercontent.com/u/3456749">
                               </div>
+                              <div class="row" id="actions" class="action_buttons">
+                                <div class=" col-12 docs-buttons">
+                                  <div class="btn-group">
+                                    <a class="btn btn-primary btn-sm" title="Upload New Image" onclick="document.getElementById('input').click();"><i class="fa fa-upload"></i></a>
+                                    <button type="button" id="reset" class="btn btn-primary btn-sm action_button" title="Reset">
+                                      <i class="fa fa-sync"></i>
+                                    </button>
+                                    <button type="button" id="zoomOut" class="btn btn-primary btn-sm action_button" title="Zoom Out">
+                                      <i class="fa fa-search-minus"></i>
+                                    </button>
+                                    <button type="button" id="zoomIn" class="btn btn-primary btn-sm action_button" title="Zoom In">
+                                      <i class="fa fa-search-plus"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-primary" id="crop">Upload</button>
                             </div>
                           </div>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                          <button type="button" class="btn btn-primary" id="crop">Upload</button>
-                        </div>
                       </div>
-                    </div>
                   </div>
+                </div>
               </div>
             </form>
             
