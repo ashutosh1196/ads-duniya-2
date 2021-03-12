@@ -24,7 +24,7 @@
             $websiteImagesPath = config("adminlte.website_url").'images/companyLogos/';
             $logo = $viewCustomer->logo != null ? $websiteImagesPath.$viewCustomer->logo : config("adminlte.default_avatar");
           ?>
-          <form class="form_wrap">
+          <form class="form_wrap customers-management-view">
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
