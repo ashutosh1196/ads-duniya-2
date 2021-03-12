@@ -1354,7 +1354,7 @@ div#preview-cropped-image:hover label.label:before {
     cursor: pointer;
 }
 div#preview-cropped-image:hover label.label:after {
-    content: "Change Your Avatar";
+    content: "Upload Company Logo";
     position: absolute;
     left: 0;
     right: 0;
