@@ -376,12 +376,12 @@ return [
                     'url'  => 'admin_panel/misc/job_industries/list',
                     'active' => ['admin_panel/misc/job_industries*'],
                 ],
-                [
+                /* [
                     'text' => 'job_functions',
                     'icon' => 'fas fa-fw fa-tasks',
                     'url'  => 'admin_panel/misc/job_functions/list',
                     'active' => ['admin_panel/misc/job_functions*'],
-                ],
+                ], */
                 [
                     'text' => 'job_locations',
                     'icon' => 'fas fa-fw fa-map-marker',
@@ -433,11 +433,11 @@ return [
                     'icon' => 'fas fa-fw fa-industry',
                     'url'  => 'admin_panel/recycle_bin/job_industries/deleted',
                 ],
-                [
+                /* [
                     'text' => 'job_functions',
                     'icon' => 'fas fa-fw fa-tasks',
                     'url'  => 'admin_panel/recycle_bin/job_functions/deleted',
-                ],
+                ], */
                 [
                     'text' => 'job_locations',
                     'icon' => 'fas fa-fw fa-map-marker',
