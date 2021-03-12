@@ -316,4 +316,35 @@ class OrganizationsController extends Controller {
 		}
 	}
 
+	public function uploadLogoImage(Request $request) {
+		$companyId = $request->companyId;
+		$logo_image = $request->logo_image;
+
+		$folderPath = $_SERVER['DOCUMENT_ROOT'].config('adminlte.logo_path');
+		$imageParts = explode(";base64,", $logo_image);
+		$imageTypeAux = explode("image/", $imageParts[0]);
+		$imageType = $imageTypeAux[1];
+		$imageBase64 = base64_decode($imageParts[1]);
+		$fileName = uniqid().'.'.$imageType;
+		$file = $folderPath.$fileName;
+		file_put_contents($file, $imageBase64);
+
+		$updateImage = Organization::where('id', $companyId)->update(['logo' => $fileName]);
+		if($updateImage) {
+			$res['success'] = 1;
+			$res['image'] = $fileName;
+			$response = [
+				'success' => 1,
+				'image' => $fileName,
+			];
+			return json_encode($response);
+		}
+		else {
+			$res['success'] = 0;
+			$res['image'] = "";
+			$response = $res;
+			return json_encode($response);
+		}
+	}
+
 }

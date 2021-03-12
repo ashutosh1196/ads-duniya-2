@@ -135,13 +135,14 @@
           }
         });
       });
+      $.validator.addMethod("regex", function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      }, "The Contact Number must be in numbers only.");
       $('#addJobseekerForm').validate({
         ignore: [],
         debug: false,
         rules: {
-          /* name: {
-            required: true
-          }, */
           first_name: {
             required: true
           },
@@ -160,6 +161,11 @@
             required: true,
             minlength: 8,
             equalTo : "#password"
+          },
+          phone_number: {
+            regex: /^[\d ()+-]+$/,
+            minlength: 7,
+            maxlength: 15
           },
         },
         messages: {

@@ -237,6 +237,10 @@
           }
         });
       });
+      $.validator.addMethod("regex", function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      }, "The Contact Number must be in numbers only.");
       var addCustomerForm = $( "#addCustomerForm" );
       addCustomerForm.validate({
         ignore: [],
@@ -249,7 +253,10 @@
             required: true,
           },
           contact_number: {
-            required: true
+            required: true,
+            regex: /^[\d ()+-]+$/,
+            minlength: 7,
+            maxlength: 15
           },
           url: {
             required: true,

@@ -148,6 +148,10 @@
         $(this).siblings('input').prop('disabled', true);
         $(".editable_field").show();
       }); */
+      $.validator.addMethod("regex", function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      }, "The Contact Number must be in numbers only.");
       $('#editJobseekerForm').validate({
         ignore: [],
         debug: false,
@@ -164,6 +168,11 @@
           email: {
             required: true,
             email: true,
+          },
+          phone_number: {
+            regex: /^[\d ()+-]+$/,
+            minlength: 7,
+            maxlength: 15
           },
         },
         messages: {

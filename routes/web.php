@@ -57,6 +57,7 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/check_email', [OrganizationsController::class, 'checkEmail'])->name('check_email');
       Route::get('/add', [OrganizationsController::class, 'addCustomer'])->name('add_customer');
       Route::post('/save', [OrganizationsController::class, 'saveCustomer'])->name('save_customer');
+      Route::post('/upload_logo_image', [OrganizationsController::class, 'uploadLogoImage'])->name('upload_logo_image');
     });
 
     // Jobseekers Routes

@@ -123,6 +123,10 @@
 @section('js')
   <script>
     $(document).ready(function() {
+      $.validator.addMethod("regex", function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      }, "The Contact Number must be in numbers only.");
       $('#editRecruiterForm').validate({
         ignore: [],
         debug: false,
@@ -139,6 +143,11 @@
           email: {
             required: true,
             email: true,
+          },
+          phone_number: {
+            regex: /^[\d ()+-]+$/,
+            minlength: 7,
+            maxlength: 15
           },
         },
         messages: {

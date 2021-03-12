@@ -156,6 +156,10 @@
           }
         });
       });
+      $.validator.addMethod("regex", function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+      }, "The Contact Number must be in numbers only.");
       $('#addRecruiterForm').validate({
         ignore: [],
         debug: false,
@@ -181,6 +185,11 @@
           },
           organization_id: {
             required: true
+          },
+          phone_number: {
+            regex: /^[\d ()+-]+$/,
+            minlength: 7,
+            maxlength: 15
           },
         },
         messages: {
