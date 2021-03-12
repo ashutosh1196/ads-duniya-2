@@ -143,6 +143,8 @@
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
                   @if($creator != null)
                     <input class="form-control" placeholder="{{ $creator != null && $creator->first_name ? $creator->first_name.' '.$creator->last_name : $creator->email }}" readonly>
+                  @else
+                    <input class="form-control" readonly>
                   @endif
                 </div>
               </div>
