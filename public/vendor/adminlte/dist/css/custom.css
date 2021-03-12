@@ -1425,6 +1425,96 @@ div#custom-tabs-one-tabContent form.form_wrap .title h5,
     padding: 15px 0 0;
     font-weight: 600;
 }
+#cropper-modal .modal-dialog .modal-content .btn-group{
+    width: 100%;
+}
+#cropper-modal .modal-dialog .modal-content .btn-group a, 
+#cropper-modal .modal-dialog .modal-content .btn-group button{
+    width: 33.333%;
+    margin: 13px 2px 0px;
+    border-radius: 5px;
+    padding: 5px 5px;
+    color: #212529;
+    background-color: #f6f7fb;
+    border: 1px solid #212529;
+}
+#cropper-modal .modal-dialog .modal-content .btn-group a:hover, 
+#cropper-modal .modal-content .btn-group button:hover {
+    background-color: #d0ebd8;
+}
+#cropper-modal {
+    background-color: rgba(8,25,43,0.85);
+    padding: 0 !important;
+}
+#cropper-modal .modal-dialog .modal-content .modal-header button.close{
+    border-radius: 100px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    opacity: 1;
+    margin: 0;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    font-size: 25px;
+    color: #ffffff;
+    position: absolute;
+    font-weight: 300;
+    right: -10px;
+    top: -11px;
+    border: 3px solid #ffffff;
+    outline-style: none;
+}
+
+#cropper-modal .modal-dialog .modal-content .modal-footer button{
+   padding: 5px 20px;
+   font-size: 12px;
+   background-color: #2d8427;
+   border-color: #2d8427;
+}
+#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
+   background-color: #dc3545;
+   border-color: #dc3545;    
+}
+#cropper-modal .modal-dialog .modal-content .modal-header h5{
+   font-size: 15px;
+   font-weight: 700;
+   text-transform: capitalize;
+   margin: 0 auto;
+}
+#cropper-modal .modal-dialog {
+   margin-top: 5rem;
+}
+#cropper-modal .modal-dialog .modal-content .modal-header{
+   border: none;
+   padding: 30px 0 0px;
+}
+#cropper-modal .modal-content{
+   border: none;
+}
+#cropper-modal .modal-content .modal-body{
+   background-color: #ffffff;
+   padding: 30px 20px 10px;
+}
+#cropper-modal .modal-content .modal-footer{
+   background-color: #f7f7f7;
+   border: none;
+   padding: 15px 20px 15px;
+   justify-content: space-between;
+   border-radius: 0 0 5px 5px;
+}
+#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
+   background-color: #e6e5e5;
+   border-color: transparent;
+   color: #212529;
+}
+#cropper-modal .modal-content .modal-body .cropper-container.cropper-bg{
+   width: 100% !important;
+}
+#cropper-modal .modal-dialog .modal-content .modal-header h5 img{
+   width: 60px;
+   height: 60px;
+   margin: 0 5px 0 0px;
+}
 /*Responsive*/
 
 @media only screen and (max-width: 1500px) {
