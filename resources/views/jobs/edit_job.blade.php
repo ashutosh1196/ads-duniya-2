@@ -327,7 +327,7 @@
                           <div class="error">{{ $errors->first('is_featured') }}</div>
                         @endif
                       </div>
-                      <div id="uploadPicture">
+                      <div id="uploadPicture" class="edit_job_upload_picture">
                         <div class="profile-image">
                           <div id="preview-cropped-image">
                             <label class="label">
