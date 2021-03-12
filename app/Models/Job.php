@@ -25,7 +25,7 @@ class Job extends Model
 		'latitude',
 		'longitude',
 		'job_industry_id',
-		'job_function_id',
+		'job_function',
 		'job_location_id',
 		'package_range_from',
 		'package_range_to',

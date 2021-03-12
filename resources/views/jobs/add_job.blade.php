@@ -77,15 +77,15 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="job_function_id">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
+                        <label for="job_function">{{ __('adminlte::adminlte.job_function') }}<span class="text-danger"> *</span></label>
                         <input type="hidden" name="job_location_id" value="1" maxlength="100">
-                        <select name="job_function_id" class="form-control" id="job_function_id">
+                        <select name="job_function" class="form-control" id="job_function">
                           <?php for ($i=0; $i < count($jobFunctions); $i++) { ?> 
                             <option value="{{ $jobFunctions[$i]->id }}">{{ $jobFunctions[$i]->name }}</option>
                           <?php } ?>
                         </select>
-                        @if($errors->has('job_function_id'))
-                          <div class="error">{{ $errors->first('job_function_id') }}</div>
+                        @if($errors->has('job_function'))
+                          <div class="error">{{ $errors->first('job_function') }}</div>
                         @endif
                       </div>
                     </div>
@@ -355,7 +355,7 @@
           job_industry_id: {
             required: true
           },
-          job_function_id: {
+          job_function: {
             required: true
           },
           job_location_id: {
@@ -414,7 +414,7 @@
           job_industry_id: {
             required: "The Job Industry field is required."
           },
-          job_function_id: {
+          job_function: {
             required: "The Job Function field is required."
           },
           job_location_id: {
