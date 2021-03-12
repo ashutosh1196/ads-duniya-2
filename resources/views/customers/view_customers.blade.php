@@ -24,7 +24,7 @@
             $websiteImagesPath = config("adminlte.website_url").'images/companyLogos/';
             $logo = $viewCustomer->logo != null ? $websiteImagesPath.$viewCustomer->logo : config("adminlte.default_avatar");
           ?>
-          <!-- <img src="{{ $logo }}" alt="{{ $viewCustomer->name }}" class="profile" style="width:100px;"> -->
+          <img src="{{ $logo }}" alt="{{ $viewCustomer->name }}" class="company_logo" style="width:100px;">
           <form class="form_wrap">
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
