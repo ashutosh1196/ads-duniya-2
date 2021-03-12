@@ -1559,6 +1559,13 @@ form.form_wrap.customers-management-view div#preview-cropped-image {
     background-color: #2d8427;
     padding: 0px 2px;
 }
+.edit_job_upload_picture div#preview-cropped-image {
+    margin: 10px 0 0;
+    padding: 0;
+}
+.edit_job_upload_picture div#preview-cropped-image label.label {
+    margin: 0;
+}
 /*Responsive*/
 
 @media only screen and (max-width: 1500px) {
