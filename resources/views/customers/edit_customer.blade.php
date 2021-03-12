@@ -20,6 +20,65 @@
                 {{ session('status') }}
               </div>
             @endif
+
+            <form class="form" id="updateProfileForm">
+              @csrf
+              <div class="profile-image">
+                <div id="preview-cropped-image" class="">
+                  <label class="label" title="Change Image">
+                    <?php 
+                      $url = config('adminlte.website_url', '').'images/companyLogos/';
+                      $filePath = $customer->logo ? $url.$customer->logo : config("adminlte.default_avatar");
+                    ?>
+                    <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
+                    <input type="file" class="sr-only" id="input_logo_image" name="logo_image" accept="image/*">
+                    <div class="error" id="image_error"></div>
+                  </label>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+                <div class="alert" role="alert"></div>
+                  <div class="modal fade" id="logo-cropper-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalLabel"><img src="{{asset('assets/images/croper_image.svg')}}" alt="">Crop the image</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="img-container">
+                            <img id="logo_image" src="https://avatars0.githubusercontent.com/u/3456749">
+                          </div>
+                          <div class="row" id="actions" class="action_buttons">
+                            <div class=" col-12 docs-buttons">
+                              <div class="btn-group">
+                                <a class="btn btn-primary btn-sm" title="Upload New Image" onclick="document.getElementById('input').click();"><i class="fa fa-upload"></i></a>
+                                <button type="button" id="reset" class="btn btn-primary btn-sm action_button" title="Reset">
+                                  <i class="fa fa-sync"></i>
+                                </button>
+                                <button type="button" id="zoomOut" class="btn btn-primary btn-sm action_button" title="Zoom Out">
+                                  <i class="fa fa-search-minus"></i>
+                                </button>
+                                <button type="button" id="zoomIn" class="btn btn-primary btn-sm action_button" title="Zoom In">
+                                  <i class="fa fa-search-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary" id="crop">Upload</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </form>
+            
             <form id="editCustomerForm" method="post", action="{{ route('update_customer') }}">
               @csrf
               <div class="card-body form">
@@ -194,16 +253,26 @@
 @endsection
 
 @section('css')
+  <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
   <style>
     .information_fields { margin-bottom: 30px; }
     .address_fields { margin-top: 30px; }
     li.country { display: none; }
     li.divider { display: none; }
     li.country.preferred { display: block; }
+
+    .label { cursor: pointer; }
+    .modal-dialog { margin-top: 10rem; }
+    .progress { display: none; margin-bottom: 1rem; }
+    .img-container img { max-width: 100%; }
+    .modal-backdrop { position: relative; }
+    #profileImage { height: 150px; width: 200px; border-radius: 10px; object-fit: contain; background-color: #fbfbfb; border: 1px solid #343d49; padding: 10px; }
+    /* #updateProfileForm { display:none } */
   </style>
 @stop
 
 @section('js')
+  <script type="text/javascript" src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
   <script>
     $(document).ready(function() {
       $( "input[name=contact_number]" ).focus(function() {
@@ -311,46 +380,129 @@
       });
     });
   </script>
-  <!-- <script>
-    var autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById("autocomplete")
-    );
-    autocomplete.addListener('place_changed', function(e) {
-      var place = autocomplete.getPlace();
-      var lat = place.geometry.location.lat();
-      var lng = place.geometry.location.lng();
 
-      var postal_code = '';
-      var country = '';
-      var city = '';
-      var county = '';
-      var state = '';
-      for (var i = 0; i < place.address_components.length; i++) {
-        if(place.address_components[i].types.indexOf("postal_code") != -1) {
-          postal_code = place.address_components[i].long_name;
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var avatar = document.getElementById('profileImage');
+    var image = document.getElementById('logo_image');
+    var input = document.getElementById('input_logo_image');
+    console.log(avatar)
+    var $progress = $('.progress');
+    var $progressBar = $('.progress-bar');
+    var $alert = $('.alert');
+    var $modal = $('#logo-cropper-modal');
+    var cropper;
+    var uploadedImageURL;
+    var options = {
+      movable: true,
+      zoomable: true,
+      rotatable: true,
+      scalable: false
+    }
+
+    $('[data-toggle="tooltip"]').tooltip();
+    input.addEventListener('change', function (e) {
+      var files = e.target.files;
+      var done = function (url) {
+        input.value = '';
+        image.src = url;
+        $alert.hide();
+        $modal.modal('show');
+      };
+      var reader;
+      var file;
+      var url;
+
+      if (files && files.length > 0) {
+        file = files[0];
+        var fileName = file.name;
+        var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+        console.log (fileExtension);
+        if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
+          $("#image_error").html("Only .jpg .gif .png files are allowed to upload.");
+          return false;
         }
-        if(place.address_components[i].types.indexOf("country") != -1) {
-          country = place.address_components[i].long_name;
-        }
-        if(place.address_components[i].types.indexOf("locality") != -1) {
-          city = place.address_components[i].long_name;
-        }
-        if(place.address_components[i].types.indexOf("sublocality_level_1") != -1) {
-          county = place.address_components[i].long_name;
-        }
-        if(place.address_components[i].types.indexOf("administrative_area_level_1") != -1) {
-          state = place.address_components[i].long_name;
-        }
-        console.log(place.address_components[i].types);
-        console.log(place.address_components[i].long_name);
-        console.log('=========');
+        else {
+          if(file.size <= 2000000) {
+            $("#image_error").html("");
+            if (URL) {
+              done(URL.createObjectURL(file));
+              if(cropper) {
+                cropper.destroy();
+                cropper = new Cropper(image, options);
+              }
+            } else if (FileReader) {
+              reader = new FileReader();
+              reader.onload = function (e) {
+                done(reader.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          }
+          else {
+            $("#image_error").html("The File must be less than or equal to 2 MB.");
+            return false;
+          }
+        }     
       }
-      document.getElementById('city').value = city;
-      document.getElementById('state').value = state;
-      document.getElementById('pincode').value = postal_code;
-      document.getElementById('county').value = county;
-      document.getElementById('country').value = country;
     });
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKW4P7mmbMBCf48mhUTBKvpHfLDhPgP1c&libraries=places" async defer></script> -->
+
+    $modal.on('shown.bs.modal', function () {
+      cropper = new Cropper(image, options);
+      $("#zoomIn").click(function() {
+        cropper.zoom(0.1);
+      });
+      $("#zoomOut").click(function() {
+        cropper.zoom(-0.1);
+      });
+      $("#reset").click(function() {
+        cropper.reset();
+      });
+
+    }).on('hidden.bs.modal', function () {
+      cropper.destroy();
+      cropper = null;
+    });
+
+    document.getElementById('crop').addEventListener('click', function () {
+      var initialAvatarURL;
+      var canvas;
+
+      $modal.modal('hide');
+
+      if (cropper) {
+        canvas = cropper.getCroppedCanvas();
+        initialAvatarURL = avatar.src;
+        avatar.src = canvas.toDataURL();
+        console.log(avatar.src);
+        $progress.show();
+        $alert.removeClass('alert-success alert-warning');
+        canvas.toBlob(function (blob) {
+          var formData = new FormData();
+          formData.append('avatar', blob, 'avatar.jpg');
+          $.ajax({
+            url: "{{ route('upload_logo_image') }}",
+            type: "POST",
+            dataType: "JSON",
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+              logo_image: avatar.src,
+              companyId: $("#customer_id").val()
+            },
+            success: function (response) {
+              if (response.success) {
+                window.location.reload();
+              }
+              else {
+                swal("Error!", "Something went wrong! Please try again.", "warning");
+              }
+            }
+          });
+        });
+      }
+    });
+  });
+</script>
 @stop
