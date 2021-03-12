@@ -48,7 +48,7 @@ class VerifyUser extends Notification
             ->from(config("adminlte.from_email", 'admin@whichvocation.com'), config('adminlte.whichvocation', 'Whichvocation'))
             ->cc('ashish_kumar@rvtechnologies.com')
             ->line('You have successfully registered to Which Vocation. Please click the link below to verify your account.')
-            ->line(new HtmlString('<a class="button button-primary" href="'.$this->websiteLink.'">Verify Account</a>'))
+            ->line(new HtmlString('<a style="font-size: 13px;" class="button button-primary" href="'.$this->websiteLink.'">Verify Account</a>'))
             // ->action('Verify Account', $this->websiteLink)
             ->action('Verify Account for Mobile Devices', $this->appLink)
             ->line('Thank you for using our application!');
