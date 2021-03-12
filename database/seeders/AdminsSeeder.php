@@ -19,6 +19,8 @@ class AdminsSeeder extends Seeder
         \DB::table('admins')->delete();
         \DB::table('admins')->insert([
             'name' => 'Super Admin',
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
             'email' => 'superadmin@whichvocation.com',
             'password' => Hash::make('Sup3r@dm!n'),
             'role_id' => 1,
@@ -44,6 +46,8 @@ class AdminsSeeder extends Seeder
             'state' => 'Punjab',
             'country' => 'United Kingdom',
             'pincode' => '132654',
+            'created_by' => 'recruiter',
+            'created_by_id' => 3,
             'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -53,6 +57,8 @@ class AdminsSeeder extends Seeder
 
         \DB::table('recruiters')->delete();
         \DB::table('recruiters')->insert([[
+            'first_name' => '',
+            'last_name' => '',
             'email' => 'ashish_kumar@rvtechnologies.com',
             'password' => bcrypt('12345678'),
             'signup_via' => 'web',
@@ -60,9 +66,13 @@ class AdminsSeeder extends Seeder
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
             'is_parent' => 0,
+            'created_by' => 'recruiter',
+            'created_by_id' => 3,
             'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
+            'first_name' => 'Pawanjeet',
+            'last_name' => 'Kaur',
             'email' => 'pawanjeet@rvtechnologies.com',
             'password' => bcrypt('12345678'),
             'signup_via' => 'web',
@@ -70,9 +80,13 @@ class AdminsSeeder extends Seeder
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
             'is_parent' => 0,
+            'created_by' => 'admin',
+            'created_by_id' => 1,
             'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
+            'first_name' => 'Sandeep',
+            'last_name' => 'Kumar',
             'email' => 'sandeep@rvtechnologies.com',
             'password' => bcrypt('12345678'),
             'signup_via' => 'web',
@@ -80,9 +94,13 @@ class AdminsSeeder extends Seeder
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
             'is_parent' => 1,
+            'created_by' => 'recruiter',
+            'created_by_id' => 3,
             'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ],[
+            'first_name' => '',
+            'last_name' => '',
             'email' => 'sunil_jaswal@rvtechnologies.com',
             'password' => bcrypt('12345678'),
             'signup_via' => 'web',
@@ -90,6 +108,8 @@ class AdminsSeeder extends Seeder
             'ip_address' => '192.168.1.65',
             'organization_id' => 1,
             'is_parent' => 0,
+            'created_by' => 'admin',
+            'created_by_id' => 1,
             'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]]);

@@ -22,81 +22,81 @@
           @endif
           <?php
             $websiteImagesPath = config("adminlte.website_url").'images/companyLogos/';
-            $logo = $viewCustomer[0]->logo != null ? $websiteImagesPath.$viewCustomer[0]->logo : config("adminlte.default_avatar");
+            $logo = $viewCustomer->logo != null ? $websiteImagesPath.$viewCustomer->logo : config("adminlte.default_avatar");
           ?>
-          <!-- <img src="{{ $logo }}" alt="{{ $viewCustomer[0]->name }}" class="profile" style="width:100px;"> -->
+          <!-- <img src="{{ $logo }}" alt="{{ $viewCustomer->name }}" class="profile" style="width:100px;"> -->
           <form class="form_wrap">
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_name') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->name }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->name }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_or_consultants_email') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->email }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.contact_number') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->contact_number ? $viewCustomer[0]->contact_number : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->contact_number ? $viewCustomer->contact_number : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.vat_number') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->vat_number ? $viewCustomer[0]->vat_number : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->vat_number ? $viewCustomer->vat_number : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_domain_url') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->url ? $viewCustomer[0]->url : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->url ? $viewCustomer->url : '' }}" readonly>
                 </div>
               </div>
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.company_domain') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->domain ? $viewCustomer[0]->domain : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->domain ? $viewCustomer->domain : '' }}" readonly>
                 </div>
               </div> -->
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.address') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->address ? $viewCustomer[0]->address : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->address ? $viewCustomer->address : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.city') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->city ? $viewCustomer[0]->city : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->city ? $viewCustomer->city : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.county') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->county ? $viewCustomer[0]->county : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->county ? $viewCustomer->county : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.state') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->state ? $viewCustomer[0]->state : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->state ? $viewCustomer->state : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.country') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->country ? $viewCustomer[0]->country : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->country ? $viewCustomer->country : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.zip') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->pincode ? $viewCustomer[0]->pincode : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->pincode ? $viewCustomer->pincode : '' }}" readonly>
                 </div>
               </div>
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -108,17 +108,17 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.whitelist_status') }}
-                    <!-- <a href="../whitelist/{{$viewCustomer[0]->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
-                    <a href="../reject/{{$viewCustomer[0]->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a> -->
+                    <!-- <a href="../whitelist/{{$viewCustomer->id}}" title="Whitelist" class="pl-2"><i class="text-success fa fa-check-circle"></i></a>
+                    <a href="../reject/{{$viewCustomer->id}}" title="Reject"><i class="text-danger fa fa-times-circle" style="margin-left:5px;"></i></a> -->
                   </label>
                   <?php $whitelistStatus;
-                  if($viewCustomer[0]->is_whitelisted == 0) {
+                  if($viewCustomer->is_whitelisted == 0) {
                     $whitelistStatus = "Pending";
                   }
-                  elseif($viewCustomer[0]->is_whitelisted == 1) {
+                  elseif($viewCustomer->is_whitelisted == 1) {
                     $whitelistStatus = "Whitelisted";
                   }
-                  elseif($viewCustomer[0]->is_whitelisted == 2) {
+                  elseif($viewCustomer->is_whitelisted == 2) {
                     $whitelistStatus = "Rejected";
                   } ?>
                   <input class="form-control" placeholder="{{ $whitelistStatus }}" readonly>
@@ -127,19 +127,19 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->created_by ? $viewCustomer[0]->created_by : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $creator->first_name ? $creator->first_name.' '.$creator->last_name : $creator->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->created_at ? date('d/m/y', strtotime($viewCustomer[0]->created_at)) : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->created_at ? date('d/m/y', strtotime($viewCustomer->created_at)) : '' }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
-                  <input class="form-control" placeholder="{{ $viewCustomer[0]->updated_at ? date('d/m/y', strtotime($viewCustomer[0]->updated_at)) : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $viewCustomer->updated_at ? date('d/m/y', strtotime($viewCustomer->updated_at)) : '' }}" readonly>
                 </div>
               </div>
             </div>

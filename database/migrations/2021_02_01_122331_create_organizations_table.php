@@ -32,7 +32,8 @@ class CreateOrganizationsTable extends Migration
             $table->double('latitude', 10, 7)->nullable();
             $table->double('longitude', 10, 7)->nullable();
             $table->tinyInteger('is_whitelisted')->default(0);
-            $table->bigInteger('created_by')->nullable();
+            $table->enum('created_by', ['recruiter', 'admin'])->default('recruiter');
+            $table->bigInteger('created_by_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

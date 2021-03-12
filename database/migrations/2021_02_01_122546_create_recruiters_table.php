@@ -35,6 +35,8 @@ class CreateRecruitersTable extends Migration
             $table->timestamp('last_logged_in_at')->nullable();
             $table->foreignId('organization_id')->constrained();
             $table->string('signup_token')->nullable();
+            $table->enum('created_by', ['recruiter', 'admin'])->default('recruiter');
+            $table->bigInteger('created_by_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

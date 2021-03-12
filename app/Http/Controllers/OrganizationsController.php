@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
+use App\Models\Admin;
 use App\Mail\VerifyUser;
 use Mail;
 use DB;
@@ -116,14 +117,17 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Listing
 	*/
 	public function viewCustomer($from_page, $id) {
-		$viewCustomer = Organization::where('id', $id)->get();
-		$deletedCustomers = Organization::onlyTrashed()->get();
-		if($viewCustomer->isNotEmpty()) {
-			return view('customers/view_customers')->with('viewCustomer', $viewCustomer);
+		$viewCustomer = Organization::find($id);
+		if($viewCustomer->created_by == 'admin') {
+			$creator = Admin::find($viewCustomer->created_by_id);
 		}
 		else {
-			return view('customers/view_customers')->with('viewCustomer', $deletedCustomers);
+			$creator = Recruiter::find($viewCustomer->created_by_id);
 		}
+		return view('customers/view_customers')->with([
+			'viewCustomer' => $viewCustomer,
+			'creator' => $creator,
+		]);
 	}
 
 	/**
