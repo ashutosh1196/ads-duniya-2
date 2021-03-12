@@ -106,8 +106,9 @@
                           </div>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                          <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .JPG, .jpeg, .JPEG, .gif, .GIF, .png, .PNG, .doc, .DOC, .docx, .DOCX, .xls, .XLS, .xlsx, .XLSX, .pdf, .PDF">
+                            <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .JPG, .jpeg, .JPEG, .gif, .GIF, .png, .PNG, .doc, .DOC, .docx, .DOCX, .xls, .XLS, .xlsx, .XLSX, .pdf, .PDF"/>
                           </div>
+                          <div title="Remove File" class="delete-file text-danger" id="delete-file"><i class="fa fa-trash-alt"></i></div>
                           <div class="error" id="image_error"></div>                          
                         </div>
                         <button type="submit">Reply</button>                              
@@ -127,6 +128,20 @@
 
 @section('css')
 <style>
+  .delete-file {
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 700;
+    display: none;
+    width: fit-content;
+    position: relative;
+    left: 20px;
+    top: -10px;
+  }
+  .delete-file:hover {
+    cursor: pointer;
+  }
   .message_reply .upload-file:after {
     content: attr(file-name);
   }
@@ -146,6 +161,12 @@
     $(document).ready(function() {
       var input = document.getElementById('attachment_file');
       $(input).change(function (e) {
+        $("#delete-file").show();
+        $("#delete-file").click(function() {
+          $('input[name=attachment_file]').val('');
+          $('input[name=attachment_file]').parent().attr('file-name','Upload File');
+          $("#delete-file").hide();
+        });
         var files = e.target.files;
         if (files && files.length > 0) {
           file = files[0];
