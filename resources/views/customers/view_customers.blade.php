@@ -24,16 +24,22 @@
             $websiteImagesPath = config("adminlte.website_url").'images/companyLogos/';
             $logo = $viewCustomer->logo != null ? $websiteImagesPath.$viewCustomer->logo : config("adminlte.default_avatar");
           ?>
-          <div id="preview-cropped-image" class="">
-            <?php 
-              $url = config('adminlte.website_url', '').'images/companyLogos/';
-              $filePath = $viewCustomer->logo ? $url.$viewCustomer->logo : config("adminlte.default_avatar");
-            ?>
-            <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="{{ $viewCustomer->name }} Logo">
-          </label>
-          </div>
-
-          <form class="form_wrap">
+          <form class="form_wrap customers-management-view">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>Company Logo</label><br/>
+                  <div id="preview-cropped-image" class="">
+                  <?php 
+                    $url = config('adminlte.website_url', '').'images/companyLogos/';
+                    $filePath = $viewCustomer->logo ? $url.$viewCustomer->logo : config("adminlte.default_avatar");
+                  ?>
+                  <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="{{ $viewCustomer->name }} Logo">
+                </label>
+                </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">

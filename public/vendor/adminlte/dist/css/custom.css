@@ -1425,11 +1425,14 @@ div#custom-tabs-one-tabContent form.form_wrap .title h5,
     padding: 15px 0 0;
     font-weight: 600;
 }
-#cropper-modal .modal-dialog .modal-content .btn-group{
+#cropper-modal .modal-dialog .modal-content .btn-group,
+#logo-cropper-modal .modal-dialog .modal-content .btn-group{
     width: 100%;
 }
 #cropper-modal .modal-dialog .modal-content .btn-group a, 
-#cropper-modal .modal-dialog .modal-content .btn-group button{
+#cropper-modal .modal-dialog .modal-content .btn-group button,
+#logo-cropper-modal .modal-dialog .modal-content .btn-group a, 
+#logo-cropper-modal .modal-dialog .modal-content .btn-group button{
     width: 33.333%;
     margin: 13px 2px 0px;
     border-radius: 5px;
@@ -1439,14 +1442,18 @@ div#custom-tabs-one-tabContent form.form_wrap .title h5,
     border: 1px solid #212529;
 }
 #cropper-modal .modal-dialog .modal-content .btn-group a:hover, 
-#cropper-modal .modal-content .btn-group button:hover {
+#cropper-modal .modal-content .btn-group button:hover,
+#logo-cropper-modal .modal-dialog .modal-content .btn-group a:hover, 
+#logo-cropper-modal .modal-content .btn-group button:hover {
     background-color: #d0ebd8;
 }
-#cropper-modal {
+#cropper-modal,
+#logo-cropper-modal {
     background-color: rgba(8,25,43,0.85);
     padding: 0 !important;
 }
-#cropper-modal .modal-dialog .modal-content .modal-header button.close{
+#cropper-modal .modal-dialog .modal-content .modal-header button.close,
+#logo-cropper-modal .modal-dialog .modal-content .modal-header button.close{
     border-radius: 100px;
     height: 40px;
     width: 40px;
@@ -1465,55 +1472,92 @@ div#custom-tabs-one-tabContent form.form_wrap .title h5,
     outline-style: none;
 }
 
-#cropper-modal .modal-dialog .modal-content .modal-footer button{
+#cropper-modal .modal-dialog .modal-content .modal-footer button,
+#logo-cropper-modal .modal-dialog .modal-content .modal-footer button{
    padding: 5px 20px;
    font-size: 12px;
    background-color: #2d8427;
    border-color: #2d8427;
 }
-#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
+#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child,
+#logo-cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
    background-color: #dc3545;
    border-color: #dc3545;    
 }
-#cropper-modal .modal-dialog .modal-content .modal-header h5{
+#cropper-modal .modal-dialog .modal-content .modal-header h5,
+#logo-cropper-modal .modal-dialog .modal-content .modal-header h5{
    font-size: 15px;
    font-weight: 700;
    text-transform: capitalize;
    margin: 0 auto;
 }
-#cropper-modal .modal-dialog {
+#cropper-modal .modal-dialog,
+#logo-cropper-modal .modal-dialog {
    margin-top: 5rem;
 }
-#cropper-modal .modal-dialog .modal-content .modal-header{
+#cropper-modal .modal-dialog .modal-content .modal-header,
+#logo-cropper-modal .modal-dialog .modal-content .modal-header{
    border: none;
    padding: 30px 0 0px;
 }
-#cropper-modal .modal-content{
+#cropper-modal .modal-content,
+#logo-cropper-modal .modal-content{
    border: none;
 }
-#cropper-modal .modal-content .modal-body{
+#cropper-modal .modal-content .modal-body,
+#logo-cropper-modal .modal-content .modal-body{
    background-color: #ffffff;
    padding: 30px 20px 10px;
 }
-#cropper-modal .modal-content .modal-footer{
+#cropper-modal .modal-content .modal-footer,
+#logo-cropper-modal .modal-content .modal-footer{
    background-color: #f7f7f7;
    border: none;
    padding: 15px 20px 15px;
    justify-content: space-between;
    border-radius: 0 0 5px 5px;
 }
-#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
+#cropper-modal .modal-dialog .modal-content .modal-footer button:first-child,
+#logo-cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
    background-color: #e6e5e5;
    border-color: transparent;
    color: #212529;
 }
-#cropper-modal .modal-content .modal-body .cropper-container.cropper-bg{
+#cropper-modal .modal-content .modal-body .cropper-container.cropper-bg,
+#logo-cropper-modal .modal-content .modal-body .cropper-container.cropper-bg{
    width: 100% !important;
 }
-#cropper-modal .modal-dialog .modal-content .modal-header h5 img{
+#cropper-modal .modal-dialog .modal-content .modal-header h5 img,
+#logo-cropper-modal .modal-dialog .modal-content .modal-header h5 img{
    width: 60px;
    height: 60px;
    margin: 0 5px 0 0px;
+}
+.customers-management .profile-image div#preview-cropped-image label {
+    width: 100%;
+}
+.customers-management .profile-image div#preview-cropped-image label.label {
+    height: 150px;
+    width: 200px;
+    margin: 0;
+}
+.customers-management .profile-image div#preview-cropped-image,
+form.form_wrap.customers-management-view div#preview-cropped-image {
+    padding: 0;
+    margin: 0;
+}
+.profile-image .progress {
+    width: 200px;
+    margin: 5px 0 0;
+    border-radius: 3px;
+}
+.profile-image .progress~.alert {
+    padding: 0;
+    margin: 0;
+}
+.profile-image .progress .progress-bar.progress-bar-striped.progress-bar-animated {
+    background-color: #2d8427;
+    padding: 0px 2px;
 }
 /*Responsive*/
 
