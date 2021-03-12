@@ -32,6 +32,7 @@
             <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="{{ $viewCustomer->name }} Logo">
           </label>
           </div>
+
           <form class="form_wrap">
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
@@ -159,6 +160,17 @@
 @endsection
 
 @section('css')
+<style>
+  #profileImage {
+    height: 150px;
+    width: 200px;
+    border-radius: 10px;
+    object-fit: contain;
+    background-color: #fbfbfb;
+    border: 1px solid #343d49;
+    padding: 10px;
+  }
+</style>
 @stop
 
 @section('js')
