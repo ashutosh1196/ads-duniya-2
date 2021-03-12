@@ -141,7 +141,9 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_by') }}</label>
-                  <input class="form-control" placeholder="{{ $creator != null && $creator->first_name ? $creator->first_name.' '.$creator->last_name : $creator->email }}" readonly>
+                  @if($creator != null)
+                    <input class="form-control" placeholder="{{ $creator != null && $creator->first_name ? $creator->first_name.' '.$creator->last_name : $creator->email }}" readonly>
+                  @endif
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
