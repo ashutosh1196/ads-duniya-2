@@ -173,24 +173,15 @@
           var fileName = file.name;
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           console.log (fileExtension);
-          if(fileExtension != "jpg" &&
-             fileExtension != "JPG" &&
-             fileExtension != "jpeg" &&
-             fileExtension != "JPEG" &&
-             fileExtension != "gif" &&
-             fileExtension != "GIF" &&
-             fileExtension != "png" &&
-             fileExtension != "PNG" &&
-             fileExtension != "doc" && 
-             fileExtension != "DOC" && 
-             fileExtension != "docx" && 
-             fileExtension != "DOCX" && 
-             fileExtension != "xls" && 
-             fileExtension != "XLS" &&  
-             fileExtension != "xlsx" && 
-             fileExtension != "XLSX" &&
-             fileExtension != "pdf" && 
-             fileExtension != "PDF"
+          if(fileExtension != "jpg" &&fileExtension != "JPG" &&
+             fileExtension != "jpeg" &&fileExtension != "JPEG" &&
+             fileExtension != "gif" &&fileExtension != "GIF" &&
+             fileExtension != "png" &&fileExtension != "PNG" &&
+             fileExtension != "doc" && fileExtension != "DOC" && 
+             fileExtension != "docx" && fileExtension != "DOCX" && 
+             fileExtension != "xls" && fileExtension != "XLS" &&  
+             fileExtension != "xlsx" && fileExtension != "XLSX" &&
+             fileExtension != "pdf" && fileExtension != "PDF"
             ) {
             $("#image_error").html("Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload.");
             return false;
