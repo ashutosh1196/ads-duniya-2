@@ -32,23 +32,19 @@
               <hr/>
             </div>
             <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+              <div class="col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
                   <input class="form-control" placeholder="{{ $jobHistory->job_ref_number ? $jobHistory->job_ref_number : '' }}" readonly>
                 </div>
               </div>
-
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+              <div class="col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_title') }}</label>
                   <input class="form-control" placeholder="{{ $jobHistory->job_title ? $jobHistory->job_title : '' }}" readonly>
                 </div>
               </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+              <div class="col-12">
                 <div class="form-group description">
                   <label>{{ __('adminlte::adminlte.job_description') }}</label><br/>
                   <div class="job-description">{!! $jobHistory->job_description !!}</div>
@@ -59,7 +55,7 @@
             <div class="title">
               <h5>Location of the job</h5>
               <hr/>
-            <div>
+            </div>
 
             <div class="row">
               <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
