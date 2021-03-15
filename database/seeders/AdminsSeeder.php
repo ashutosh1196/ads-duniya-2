@@ -180,6 +180,30 @@ class AdminsSeeder extends Seeder
             'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
+        // Tickets
+
+        \DB::table('tickets')->delete();
+        \DB::table('tickets')->insert([
+            'recruiter_id' => 1,
+            'organization_id' => 1,
+            'subject' => 'Test Ticket',
+            'status' => 'open',
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        // Ticket Messages
+
+        \DB::table('ticket_messages')->delete();
+        \DB::table('ticket_messages')->insert([
+            'message_text' => 'Test Ticket Message',
+            'ticket_id' => 1,
+            'recruiter_id' => 1,
+            'sent_by' => 'recruiter',
+            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
         
 
         

@@ -204,7 +204,25 @@ class OrganizationsController extends Controller {
 	*/
 	public function deleteCustomers(Request $request) {
 		$customerId = $request->id;
-		$deleteCustomer = Organization::where('id', $customerId)->delete();
+		$customer = Organization::find($customerId);
+		$customer->paymentTransactions()->delete();
+		$customer->paymentLogs()->delete();
+		$customer->tickets->each(function($ticket) {
+			$ticket->ticketMessages()->delete();
+			$ticket->delete();
+		});
+		$customer->organizationCreditDetails()->delete();
+		$customer->organizationCredit()->delete();
+		$customer->jobHistories()->delete();
+		$customer->jobs->each(function($job) {
+			// $job->jobSkills()->delete();
+		});
+		$customer->jobs()->delete();
+		$customer->recruiters->each(function($recruiter) {
+			$recruiter->socialLogins()->delete();
+			$recruiter->delete();
+		});
+		$deleteCustomer = $customer->delete();
 		if($deleteCustomer) {
 			$customersList = Organization::all();
 			$res['success'] = 1;
@@ -230,7 +248,24 @@ class OrganizationsController extends Controller {
 	*/
 	public function restoreCustomer(Request $request) {
 		$customerId = $request->id;
-		$customer = Organization::where('id', $customerId);
+		$customer = Organization::onlyTrashed()->find($customerId);
+		// $customer->paymentTransactions()->where('organization_id', $customerId)->update(['deleted_at' => '']);
+		$customer->paymentLogs()->restore();
+		$customer->tickets()->restore();
+		$customer->tickets->each(function($ticket) {
+			$ticket->ticketMessages()->restore();
+		});
+		$customer->organizationCreditDetails()->restore();
+		$customer->organizationCredit()->restore();
+		$customer->jobHistories()->restore();
+		$customer->jobs->each(function($job) {
+			// $job->jobSkills()->restore();
+		});
+		$customer->jobs()->restore();
+		$customer->recruiters()->restore();
+		$customer->recruiters->each(function($recruiter) {
+			$recruiter->socialLogins()->restore();
+		});
 		$restoreCustomer = $customer->restore();
 		if($restoreCustomer) {
 			$customersList = Organization::all();

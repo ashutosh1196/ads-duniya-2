@@ -39,10 +39,24 @@ class Organization extends Model
     {
         return $this->hasMany(Recruiter::class);
     }
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
+    public function jobHistories()
+    {
+    	return $this->hasMany(JobHistory::class);
+    }
 
     public function organizationCredit()
     {
         return $this->hasOne(OrganizationCredit::class);
+    }
+
+    public function organizationCreditDetails()
+    {
+    	return $this->hasMany(OrganizationCreditDetail::class);
     }
 
     public function paymentLogs()
@@ -52,6 +66,14 @@ class Organization extends Model
     public function paymentTransactions()
     {
         return $this->hasOne(PaymentTransaction::class);
+    }
+
+    /**
+     * Get the social logins for the user.
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
     public function ticketMessages()
     {

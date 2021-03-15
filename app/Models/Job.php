@@ -65,4 +65,9 @@ class Job extends Model
     	return $this->hasMany(JobHistory::class);
     }
 
+    public function jobSkills()
+    {
+    	return $this->hasMany(JobSkill::class);
+    }
+
 }
