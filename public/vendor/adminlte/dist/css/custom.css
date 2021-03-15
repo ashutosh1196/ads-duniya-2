@@ -864,7 +864,7 @@ a.paginate_button.previous {
     color: #ffffff;
 }
 
-a.paginate_button.previous.disabled {
+a.paginate_button.previous {
     background-color:transparent;
     padding: 5px 9px;
     position: relative;
