@@ -106,7 +106,7 @@
                           </div>
                           <div class="file_upload_wrap upload-file" file-name="Upload File">
                             <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                            <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .JPG, .jpeg, .JPEG, .gif, .GIF, .png, .PNG, .doc, .DOC, .docx, .DOCX, .xls, .XLS, .xlsx, .XLSX, .pdf, .PDF"/>
+                            <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .jpeg, .gif, .png, .doc, .docx, .xls, .xlsx, .pdf"/>
                           </div>
                           <div title="Remove File" class="delete-file text-danger" id="delete-file"><i class="fa fa-trash-alt"></i></div>
                           <div class="error" id="image_error"></div>                          
