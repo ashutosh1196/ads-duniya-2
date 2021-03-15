@@ -331,7 +331,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Jobs History
 	*/
 	public function viewJobHistory($id) {
-		$jobHistory = JobHistory::find($id)->orderByDesc('id')->get();
+		$jobHistory = JobHistory::find($id);
 		$jobIndustry = JobIndustry::find($jobHistory->job_industry_id);
 		$jobLocation = JobLocation::find($jobHistory->job_location_id);
 		$organization = Organization::find($jobHistory->organization_id);

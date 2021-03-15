@@ -27,7 +27,7 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function adminsList(Request $request) {
-		$adminsList = Admin::where('role_id', '!=', 1)->get();
+		$adminsList = Admin::where('role_id', '!=', 1)->orderByDesc('id')->get();
 		return view('admins/admins_list', ['adminsList' => $adminsList]);
 	}
 
@@ -35,7 +35,7 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function addAdmin(Request $request) {
-		$roles = Role::where('id', '!=', 1)->orderByDesc('id')->get();
+		$roles = Role::where('id', '!=', 1)->get();
 		return view('admins/add_admin', ['roles' => $roles]);
 	}
 
