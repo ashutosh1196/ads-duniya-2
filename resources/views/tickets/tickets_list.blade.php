@@ -47,7 +47,7 @@
                   <td>{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</td>
                   <td>{{ $ticketsList[$i]->created_at ? date('d/m/y', strtotime($ticketsList[$i]->created_at)) : '' }}</td>
                   <td>
-                    <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-undo"></i></a>
+                    <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-reply"></i></a>
                     <?php if($ticketsList[$i]->status == 'open') { ?>
                     <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
                     <?php } else { ?>
