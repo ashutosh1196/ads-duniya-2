@@ -58,7 +58,7 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function jobseekersList(Request $request) {
-		$jobseekersList = User::all();
+		$jobseekersList = User::orderByDesc('id')->get();
 		return view('jobseekers/jobseekers_list')->with('jobseekersList', $jobseekersList);
 	}
 
@@ -156,7 +156,7 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedJobseekersList() {
-		$deletedJobseekers = User::onlyTrashed()->get();
+		$deletedJobseekers = User::onlyTrashed()->orderByDesc('id')->get();
 		return view('jobseekers/deleted_jobseekers_list', ['deletedJobseekers' => $deletedJobseekers]);
 	}
 

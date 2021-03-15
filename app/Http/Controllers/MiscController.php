@@ -52,7 +52,7 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Industries List
 	*/
 	public function jobIndustriesList() {
-		$jobIndustriesList = JobIndustry::all();
+		$jobIndustriesList = JobIndustry::orderByDesc('id')->get();
 		return view('misc/job_industries/job_industries_list', [ 'jobIndustriesList' => $jobIndustriesList ]);
 	}
 	
@@ -152,7 +152,7 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Job Industries Listing
 	*/
 	public function deletedJobIndustries() {
-		$deletedJobIndustries = JobIndustry::onlyTrashed()->get();
+		$deletedJobIndustries = JobIndustry::onlyTrashed()->orderByDesc('id')->get();
 		return view('misc/job_industries/deleted_job_industries_list', ['deletedJobIndustries' => $deletedJobIndustries]);
 	}
 
@@ -187,7 +187,7 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Functions List
 	*/
 	public function jobFunctionsList() {
-		$jobFunctionsList = JobFunction::all();
+		$jobFunctionsList = JobFunction::orderByDesc('id')->get();
 		return view('misc/job_functions/job_functions_list', [ 'jobFunctionsList' => $jobFunctionsList ]);
 	}
 	
@@ -287,7 +287,7 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Job Functions Listing
 	*/
 	public function deletedJobFunctions() {
-		$deletedJobFunctions = JobFunction::onlyTrashed()->get();
+		$deletedJobFunctions = JobFunction::onlyTrashed()->orderByDesc('id')->get();
 		return view('misc/job_functions/deleted_job_functions_list', ['deletedJobFunctions' => $deletedJobFunctions]);
 	}
 
@@ -323,7 +323,7 @@ class MiscController extends Controller {
 	 * This function is used to Get Skills List
 	*/
 	public function skillsList() {
-		$skillsList = Skill::all();
+		$skillsList = Skill::orderByDesc('id')->get();
 		return view('misc/skills/skills_list', [ 'skillsList' => $skillsList ]);
 	}
 	
@@ -423,7 +423,7 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Skills Listing
 	*/
 	public function deletedSkills() {
-		$deletedSkills = Skill::onlyTrashed()->get();
+		$deletedSkills = Skill::onlyTrashed()->orderByDesc('id')->get();
 		return view('misc/skills/deleted_skills_list', ['deletedSkills' => $deletedSkills]);
 	}
 
@@ -459,7 +459,7 @@ class MiscController extends Controller {
 	 * This function is used to Get JobLocations List
 	*/
 	public function jobLocationsList() {
-		$jobLocationsList = JobLocation::all();
+		$jobLocationsList = JobLocation::orderByDesc('id')->get();
 		return view('misc/job_locations/job_locations_list', [ 'jobLocationsList' => $jobLocationsList ]);
 	}
 	
@@ -559,7 +559,7 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted JobLocations Listing
 	*/
 	public function deletedJobLocations() {
-		$deletedJobLocations = JobLocation::onlyTrashed()->get();
+		$deletedJobLocations = JobLocation::onlyTrashed()->orderByDesc('id')->get();
 		return view('misc/job_locations/deleted_job_locations_list', ['deletedJobLocations' => $deletedJobLocations]);
 	}
 

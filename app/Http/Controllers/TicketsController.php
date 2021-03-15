@@ -15,7 +15,7 @@ use Mail;
 class TicketsController extends Controller {
 	
 	public function ticketsList() {
-		$ticketsList = Ticket::all();
+		$ticketsList = Ticket::orderByDesc('id')->get();
 		return view('tickets/tickets_list', [ 'ticketsList' => $ticketsList ]);
 	}
 

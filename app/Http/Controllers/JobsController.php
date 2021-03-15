@@ -121,7 +121,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function jobsList(Request $request) {
-		$jobsList = Job::all();
+		$jobsList = Job::orderByDesc('id')->get();
 		return view('jobs/jobs_list')->with('jobsList', $jobsList);
 	}
 	
@@ -288,7 +288,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function deletedJobs(Request $request) {
-		$deletedJobs = Job::onlyTrashed()->get();
+		$deletedJobs = Job::onlyTrashed()->orderByDesc('id')->get();
 		return view('jobs/deleted_jobs')->with('deletedJobs', $deletedJobs);
 	}
 
@@ -331,7 +331,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Jobs History
 	*/
 	public function viewJobHistory($id) {
-		$jobHistory = JobHistory::find($id);
+		$jobHistory = JobHistory::find($id)->orderByDesc('id')->get();
 		$jobIndustry = JobIndustry::find($jobHistory->job_industry_id);
 		$jobLocation = JobLocation::find($jobHistory->job_location_id);
 		$organization = Organization::find($jobHistory->organization_id);

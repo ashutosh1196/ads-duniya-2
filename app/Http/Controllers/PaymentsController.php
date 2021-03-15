@@ -14,7 +14,7 @@ class PaymentsController extends Controller {
 	 * This function is used to Show Payments Transactions
 	*/
 	public function paymentTransactionsList(Request $request) {
-		$paymentTransactionsList = PaymentLog::all();
+		$paymentTransactionsList = PaymentLog::orderByDesc('id')->get();
 		return view('payments/payment_transactions_list', [ 'paymentTransactionsList' => $paymentTransactionsList ]);
 	}
 

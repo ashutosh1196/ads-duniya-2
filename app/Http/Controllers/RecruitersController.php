@@ -14,7 +14,7 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Recruiters Listing
 	*/
 	public function recruitersList(Request $request) {
-		$recruiter = Recruiter::all();
+		$recruiter = Recruiter::orderByDesc('id')->get();
 		$customers = Organization::all();
 		$recruitersList = [];
 		for ($i=0; $i < count($recruiter); $i++) {
@@ -113,7 +113,7 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedRecruitersList() {
-		$deletedRecruiters = Recruiter::onlyTrashed()->get();
+		$deletedRecruiters = Recruiter::onlyTrashed()->orderByDesc('id')->get();
 		return view('recruiters/deleted_recruiters_list', ['deletedRecruiters' => $deletedRecruiters]);
 	}
 

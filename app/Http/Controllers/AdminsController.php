@@ -35,7 +35,7 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function addAdmin(Request $request) {
-		$roles = Role::where('id', '!=', 1)->get();
+		$roles = Role::where('id', '!=', 1)->orderByDesc('id')->get();
 		return view('admins/add_admin', ['roles' => $roles]);
 	}
 
@@ -143,7 +143,7 @@ class AdminsController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedAdminsList() {
-		$deletedAdmins = Admin::onlyTrashed()->get();
+		$deletedAdmins = Admin::onlyTrashed()->orderByDesc('id')->get();
 		return view('admins/deleted_admins_list', ['deletedAdmins' => $deletedAdmins]);
 	}
 

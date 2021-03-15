@@ -16,7 +16,7 @@ class CreditsController extends Controller {
 	 * This function is used to Show Company Credits List
 	*/
 	public function companyCreditsList(Request $request) {
-		$companyCreditsList = OrganizationCredit::all();
+		$companyCreditsList = OrganizationCredit::orderByDesc('id')->get();
 		return view('company_credits/credits_list', [ 'companyCreditsList' => $companyCreditsList ]);
 	}
 	
@@ -118,7 +118,7 @@ class CreditsController extends Controller {
 	 * This function is used to Show Credits history
 	*/
 	public function creditsHistory(Request $request) {
-		$creditsHistory = OrganizationCreditDetail::all();
+		$creditsHistory = OrganizationCreditDetail::orderByDesc('id')->get();
 		return view('company_credits/credits_history', [ 'creditsHistory' => $creditsHistory ]);
 	}
 	

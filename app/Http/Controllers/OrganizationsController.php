@@ -134,7 +134,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Listing
 	*/
 	public function pendingCustomersList(Request $request) {
-		$pendingCustomersList = Organization::where('is_whitelisted', 0)->get();
+		$pendingCustomersList = Organization::where('is_whitelisted', 0)->orderByDesc('id')->get();
 		return view('customers/pending_customers')->with('pendingCustomersList', $pendingCustomersList);
 	}
 
@@ -142,7 +142,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Listing
 	*/
 	public function whitelistedCustomersList(Request $request) {
-		$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->get();
+		$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->orderByDesc('id')->get();
 		return view('customers/whitelisted_customers')->with('whitelistedCustomersList', $whitelistedCustomersList);
 	}
 
@@ -150,7 +150,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Listing
 	*/
 	public function rejectedCustomersList(Request $request) {
-		$rejectedCustomersList = Organization::where('is_whitelisted', 2)->get();
+		$rejectedCustomersList = Organization::where('is_whitelisted', 2)->orderByDesc('id')->get();
 		return view('customers/rejected_customers')->with('rejectedCustomersList', $rejectedCustomersList);
 	}
 
@@ -221,7 +221,7 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function deletedCustomersList() {
-		$deletedCustomers = Organization::onlyTrashed()->get();
+		$deletedCustomers = Organization::onlyTrashed()->orderByDesc('id')->get();
 		return view('customers/deleted_customers_list', ['deletedCustomers' => $deletedCustomers]);
 	}
 
