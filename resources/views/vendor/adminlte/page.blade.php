@@ -12,6 +12,9 @@
     @stack('css')
     @yield('css')
     <style>
+        th:hover {
+            cursor: pointer;
+        }
         .recruiter-view-link input:hover {
             cursor: pointer;
         }

@@ -100,7 +100,7 @@
                         <div class="form-group">
                           <div class="help_wrap">
                             <label>Attachment</label>                            
-                            <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="" data-original-title="Upload max 2 MB file. Only .jpg .gif .png files are allowed to upload.">
+                            <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ config('adminlte.docs_tooltip') }}">
                             <i class="fa fa-question-circle"></i>
                             </button>                            
                           </div>

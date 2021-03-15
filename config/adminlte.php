@@ -24,7 +24,7 @@ return [
     */
 
     'image_tooltip' => 'Upload max 2 MB file. Only .jpg .gif .png files are allowed to upload.',
-    'docs_tooltip' => 'Upload max 2 MB file. Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload.',
+    'docs_tooltip' => 'Upload max 2 MB file. Only .jpg .gif .png .pdf .doc .xls .xlsx files are allowed to upload.',
     'whichvocation' => 'Whichvocation',
     'set_password' => 'Whichvocation Recruiter Approved | Set Password',
     'title_prefix' => '',
@@ -416,6 +416,11 @@ return [
             'active' => ['admin_panel/recycle_bin*'],
             'submenu' => [
                 [
+                    'text' => 'customers',
+                    'icon' => 'fas fa-fw fa-building',
+                    'url'  => 'admin_panel/recycle_bin/customers/deleted',
+                ],
+                [
                     'text' => 'jobseekers',
                     'icon' => 'fas fa-fw fa-briefcase',
                     'url'  => 'admin_panel/recycle_bin/jobseekers/deleted',
@@ -429,11 +434,6 @@ return [
                     'text' => 'admins',
                     'icon' => 'fas fa-fw fa-universal-access',
                     'url'  => 'admin_panel/recycle_bin/admins/deleted',
-                ],
-                [
-                    'text' => 'customers',
-                    'icon' => 'fas fa-fw fa-building',
-                    'url'  => 'admin_panel/recycle_bin/customers/deleted',
                 ],
                 [
                     'text' => 'jobs',
