@@ -127,6 +127,12 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'skills'], function () {
         Route::get('/deleted', [MiscController::class, 'deletedskills'])->name('deleted_skills');
       });
+      Route::group(['prefix' => 'cities'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedCities'])->name('deleted_cities');
+      });
+      Route::group(['prefix' => 'counties'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedCounties'])->name('deleted_counties');
+      });
     });
 
     // Jobs Routes
@@ -187,6 +193,26 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/update', [MiscController::class, 'updateJobLocation'])->name('update_job_location');
         Route::post('/delete', [MiscController::class, 'deleteJobLocation'])->name('delete_job_location');
         Route::post('/restore', [MiscController::class, 'restoreJobLocation'])->name('restore_job_location');
+      });
+      Route::group(['prefix' => 'cities'], function () {
+        Route::get('/list', [MiscController::class, 'CitiesList'])->name('cities_list');
+        Route::get('/add', [MiscController::class, 'addCity'])->name('add_city');
+        Route::post('/save', [MiscController::class, 'saveCity'])->name('save_city');
+        Route::get('/view/{id}', [MiscController::class, 'viewCity'])->name('view_city');
+        Route::get('/edit/{id}', [MiscController::class, 'editCity'])->name('edit_city');
+        Route::post('/update', [MiscController::class, 'updateCity'])->name('update_city');
+        Route::post('/delete', [MiscController::class, 'deleteCity'])->name('delete_city');
+        Route::post('/restore', [MiscController::class, 'restoreCity'])->name('restore_city');
+      });
+      Route::group(['prefix' => 'counties'], function () {
+        Route::get('/list', [MiscController::class, 'CountiesList'])->name('counties_list');
+        Route::get('/add', [MiscController::class, 'addCounty'])->name('add_county');
+        Route::post('/save', [MiscController::class, 'saveCounty'])->name('save_county');
+        Route::get('/view/{id}', [MiscController::class, 'viewCounty'])->name('view_county');
+        Route::get('/edit/{id}', [MiscController::class, 'editCounty'])->name('edit_county');
+        Route::post('/update', [MiscController::class, 'updateCounty'])->name('update_county');
+        Route::post('/delete', [MiscController::class, 'deleteCounty'])->name('delete_county');
+        Route::post('/restore', [MiscController::class, 'restoreCounty'])->name('restore_county');
       });
     });
 

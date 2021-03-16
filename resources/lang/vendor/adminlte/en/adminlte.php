@@ -177,6 +177,22 @@ return [
     'add_new_skill'                 => 'Add New Skill',
     'skill_information'             => 'Skill Information',
 
+    'add_city'                      => 'Add City',
+    'deleted_cities'                => 'Deleted Cities',
+    'edit_city'                     => 'Edit City',
+    'cities'                        => 'Cities',
+    'add_new_city'                  => 'Add New City',
+    'skill_information'             => 'Skill Information',
+    'city_name'                     => 'City Name',
+
+    'add_county'                    => 'Add County',
+    'deleted_counties'              => 'Deleted Counties',
+    'edit_county'                   => 'Edit County',
+    'counties'                      => 'Counties',
+    'add_new_county'                => 'Add New County',
+    'skill_information'             => 'Skill Information',
+    'county_name'                   => 'County Name',
+
     'add_recruiter'                 => 'Add Recruiter',
     'deleted_recruiters'            => 'Deleted Recruiters',
     'edit_recruiter'                => 'Edit Recruiter',

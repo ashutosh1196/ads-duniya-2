@@ -54,5 +54,8 @@ return [
     
     'tickets_management'          => 'Tickets Management',
     'tickets'                     => 'Tickets',
+    
+    'cities'                      => 'Cities',
+    'counties'                    => 'Counties',
 
 ];

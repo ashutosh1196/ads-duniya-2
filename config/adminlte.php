@@ -406,6 +406,18 @@ return [
                     'url'  => 'admin_panel/misc/skills/list',
                     'active' => ['admin_panel/misc/skills*'],
                 ],
+                [
+                    'text' => 'cities',
+                    'icon' => 'fas fa-city',
+                    'url'  => 'admin_panel/misc/cities/list',
+                    'active' => ['admin_panel/misc/cities*'],
+                ],
+                [
+                    'text' => 'counties',
+                    'icon' => 'fas fa-flag',
+                    'url'  => 'admin_panel/misc/counties/list',
+                    'active' => ['admin_panel/misc/counties*'],
+                ],
             ],
         ],
         [
@@ -459,6 +471,16 @@ return [
                     'text' => 'skills',
                     'icon' => 'fas fa-fw fa-brain',
                     'url'  => 'admin_panel/recycle_bin/skills/deleted',
+                ],
+                [
+                    'text' => 'cities',
+                    'icon' => 'fas fa-city',
+                    'url'  => 'admin_panel/recycle_bin/cities/deleted',
+                ],
+                [
+                    'text' => 'counties',
+                    'icon' => 'fas fa-flag',
+                    'url'  => 'admin_panel/recycle_bin/counties/deleted',
                 ],
             ],
         ],
