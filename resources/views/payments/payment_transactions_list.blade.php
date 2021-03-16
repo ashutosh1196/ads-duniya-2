@@ -24,7 +24,7 @@
             <div class="text-right mb-3">
               <div class="advance-options" style="display: none;">
                 <div class="title">
-                  <h5><i class="fa fa-filter mr-1"></i>Aplly Search Fillter</h5>
+                  <h5><i class="fa fa-filter mr-1"></i>Apply Search Filter</h5>
                 </div>
                 <div class="left_option">
                   <h6>Select Date Range</h6>
