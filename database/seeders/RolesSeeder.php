@@ -15,7 +15,6 @@ class RolesSeeder extends Seeder {
 		\DB::table('roles')->insert([
 			'name' => 'Super Admin',
 			'tag' => 'super_admin',
-			'permissions' => 'add',
 			'status' => 1,
 		]);
 	}

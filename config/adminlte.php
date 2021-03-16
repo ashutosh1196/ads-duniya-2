@@ -421,6 +421,20 @@ return [
             ],
         ],
         [
+            'text' => 'access_control',
+            'icon'    => 'fas fa-fw fa-cogs',
+            'url'  => '#',
+            'active' => ['admin_panel/roles*'],
+            'submenu' => [
+                [
+                    'text' => 'roles',
+                    'icon'    => 'fas fa-fw fa-user',
+                    'url'  => 'admin_panel/roles/list',
+                    'active' => ['admin_panel/roles*'],
+                ]
+            ],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',
@@ -482,6 +496,11 @@ return [
                     'icon' => 'fas fa-flag',
                     'url'  => 'admin_panel/recycle_bin/counties/deleted',
                 ],
+                [
+                    'text' => 'roles',
+                    'icon' => 'fas fa-user',
+                    'url'  => 'admin_panel/recycle_bin/roles/deleted',
+                ],
             ],
         ],
         /* [
@@ -499,18 +518,6 @@ return [
                     'icon' => 'fas fa-fw fa-mobile',
                     'url'  => 'admin_panel/pages/mobile',
                 ],
-            ],
-        ],
-        [
-            'text' => 'access_control',
-            'icon'    => 'fas fa-fw fa-cogs',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'roles',
-                    'icon'    => 'fas fa-fw fa-user',
-                    'url'  => 'admin_panel/roles_list',
-                ]
             ],
         ],
         [

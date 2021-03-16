@@ -134,6 +134,9 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'counties'], function () {
         Route::get('/deleted', [MiscController::class, 'deletedCounties'])->name('deleted_counties');
       });
+      Route::group(['prefix' => 'roles'], function () {
+        Route::get('/deleted', [RolesController::class, 'deletedRoles'])->name('deleted_roles');
+      });
     });
 
     // Jobs Routes
@@ -258,10 +261,14 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Roles Routes
     Route::group(['prefix' => 'roles'], function () {
+      Route::get('/view/{id}', [RolesController::class, 'viewRole'])->name('view_role');
       Route::get('/list', [RolesController::class, 'rolesList'])->name('roles_list');
       Route::get('/add', [RolesController::class, 'addRole'])->name('add_role');
       Route::post('/save', [RolesController::class, 'saveRole'])->name('save_role');
-      Route::get('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
+      Route::get('/edit/{id}', [RolesController::class, 'editRole'])->name('edit_role');
+      Route::post('/update', [RolesController::class, 'updateRole'])->name('update_role');
+      Route::post('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
+      Route::post('/restore', [RolesController::class, 'restoreRole'])->name('restore_role');
     });
 
     Route::prefix('datatable')->as('datatable.')->group(function(){

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Role')
+@section('title', 'Edit Role')
 
 @section('content_header')
 @stop
@@ -20,16 +20,17 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addRoleForm" method="post", action="{{ route('save_role') }}">
+            <form id="addRoleForm" method="post", action="{{ route('update_role') }}">
               @csrf
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
-                      <label for="role_name">{{ __('adminlte::adminlte.name') }}</label>
-                      <input type="text" name="role_name" class="form-control" id="role_name" maxlength="100">
-                      @if($errors->has('role_name'))
-                        <div class="error">{{ $errors->first('role_name') }}</div>
+                      <label for="name">{{ __('adminlte::adminlte.name') }}</label>
+                      <input type="hidden" name="id" value="{{ $role->id }}">
+                      <input type="text" name="name" class="form-control" id="name" value="{{ $role->name }}" maxlength="100">
+                      @if($errors->has('name'))
+                        <div class="error">{{ $errors->first('name') }}</div>
                       @endif
                     </div>
                   </div>
@@ -44,9 +45,13 @@
                       <input type="checkbox" id="customer_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($customersPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass customerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="customers_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($customersPermissions as $permission) {
+                          $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                          foreach($permissionRoles as $permissionRole) { ?>
+                            
+                          <?php } ?>
+                          <input type="checkbox" class="checkBoxClass customerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="customers_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                        <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -56,9 +61,11 @@
                       <input type="checkbox" id="recruiter_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($recruitersPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass recruiterscheckBox" name="permissions[]" value="{{ $permission->id }}" id="recruiters_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                      <?php foreach($recruitersPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass recruiterscheckBox" name="permissions[]" value="{{ $permission->id }}" id="recruiters_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -68,9 +75,11 @@
                       <input type="checkbox" id="jobseeker_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($jobseekersPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass jobseekerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobseekers_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($jobseekersPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass jobseekerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobseekers_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -83,9 +92,11 @@
                       <input type="checkbox" id="admins_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($adminsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass adminscheckBox" name="permissions[]" value="{{ $permission->id }}" id="admins_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($adminsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass adminscheckBox" name="permissions[]" value="{{ $permission->id }}" id="admins_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -95,9 +106,11 @@
                       <input type="checkbox" id="jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($jobsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass jobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobs_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($jobsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass jobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobs_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -107,9 +120,11 @@
                       <input type="checkbox" id="job_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($jobHistoryPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass jobHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobHistory_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($jobHistoryPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass jobHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobHistory_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -122,9 +137,13 @@
                       <input type="checkbox" id="credits_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($companyCreditsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass companyCreditscheckBox" name="permissions[]" value="{{ $permission->id }}" id="companyCredits_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($companyCreditsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) { ?>
+                          
+                        <?php } ?>
+                        <input type="checkbox" class="checkBoxClass companyCreditscheckBox" name="permissions[]" value="{{ $permission->id }}" id="companyCredits_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -134,9 +153,11 @@
                       <input type="checkbox" id="credits_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($companyCreditsHistoryPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass companyCreditsHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="companyCreditsHistory_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($companyCreditsHistoryPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass companyCreditsHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="companyCreditsHistory_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -146,9 +167,11 @@
                       <input type="checkbox" id="payments_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($paymentTransactionsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass paymentTransactionscheckBox" name="permissions[]" value="{{ $permission->id }}" id="paymentTransactions_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($paymentTransactionsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass paymentTransactionscheckBox" name="permissions[]" value="{{ $permission->id }}" id="paymentTransactions_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -161,9 +184,11 @@
                       <input type="checkbox" id="tickets_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($ticketsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass ticketscheckBox" name="permissions[]" value="{{ $permission->id }}" id="tickets_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($ticketsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass ticketscheckBox" name="permissions[]" value="{{ $permission->id }}" id="tickets_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -173,9 +198,11 @@
                       <input type="checkbox" id="job_industries_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($jobIndustriesPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass jobIndustriescheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobIndustries_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($jobIndustriesPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass jobIndustriescheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobIndustries_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -185,9 +212,11 @@
                       <input type="checkbox" id="job_locations_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($jobLocationsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass jobLocationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobLocations_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($jobLocationsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass jobLocationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="jobLocations_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -200,9 +229,11 @@
                       <input type="checkbox" id="skills_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($skillsPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass skillscheckBox" name="permissions[]" value="{{ $permission->id }}" id="skills_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($skillsPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass skillscheckBox" name="permissions[]" value="{{ $permission->id }}" id="skills_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -212,9 +243,11 @@
                       <input type="checkbox" id="cities_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($citiesPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass citiescheckBox" name="permissions[]" value="{{ $permission->id }}" id="cities_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($citiesPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass citiescheckBox" name="permissions[]" value="{{ $permission->id }}" id="cities_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -224,9 +257,11 @@
                       <input type="checkbox" id="counties_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($countiesPermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass countiescheckBox" name="permissions[]" value="{{ $permission->id }}" id="counties_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($countiesPermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass countiescheckBox" name="permissions[]" value="{{ $permission->id }}" id="counties_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -239,9 +274,11 @@
                       <input type="checkbox" id="restore_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                       <strong class="list-text">Select All</strong>
                       <p id="checkBoxes">
-                        @foreach($restorePermissions as $permission)
-                          <input type="checkbox" class="checkBoxClass restorecheckBox" name="permissions[]" value="{{ $permission->id }}" id="restore_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
-                        @endforeach
+                        <?php foreach($restorePermissions as $permission) {
+                        $permissionRoles = \DB::table('permission_role')->where('role_id', $role->id)->where('permission_id', $permission->id)->get();
+                        foreach($permissionRoles as $permissionRole) {} ?>
+                        <input type="checkbox" class="checkBoxClass restorecheckBox" name="permissions[]" value="{{ $permission->id }}" id="restore_{{ $permission->id }}" style="height: 15px;width: 50px;" {{ $permission->id == $permissionRole->permission_id ? 'checked' : '' }}><span class="list-text">{{ $permission->name }}</span><br/>
+                      <?php } ?>
                       </p>
                     </div>
                   </div>
@@ -336,7 +373,7 @@
         ignore: [],
         debug: false,
         rules: {
-          role_name: {
+          name: {
             required: true
           },
           permissions:{
@@ -344,7 +381,7 @@
           }
         },
         messages: {
-          role_name: {
+          name: {
             required: "The Role Name field is required."
           },
           permissions: {

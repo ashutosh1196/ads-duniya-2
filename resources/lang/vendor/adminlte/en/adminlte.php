@@ -202,6 +202,8 @@ return [
 
     'add_role'                      => 'Add Role',
     'role_name'                     => 'Role Name',
+    'role_tag'                      => 'Role tag',
+    'role_permissions'              => 'Role Permissions',
     'permissions'                   => 'Permission(s)',
     'list_data'                     => 'List Data',
     'add_data'                      => 'Add Data',

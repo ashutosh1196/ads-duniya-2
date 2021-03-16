@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\Permission;
+use App\Models\PermissionRole;
 
 class RolesController extends Controller {
 	/**
@@ -17,14 +19,60 @@ class RolesController extends Controller {
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
+	public function viewRole($id) {
+		$role = Role::find($id);
+		$permissions = \DB::table('permission_role')->where('role_id', $role->id)->get();
+		return view('roles/view_role', [
+			'role' => $role,
+			'permissions' => $permissions,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Saved Jobs Listing
+	*/
 	public function addRole(Request $request) {
-		return view('roles/add_role');
+		$customersPermissions = Permission::where('module_slug', 'customers')->get();
+		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
+		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
+		$adminsPermissions = Permission::where('module_slug', 'admins')->get();
+		$jobsPermissions = Permission::where('module_slug', 'jobs')->get();
+		$jobHistoryPermissions = Permission::where('module_slug', 'job_history')->get();
+		$companyCreditsPermissions = Permission::where('module_slug', 'company_credits')->get();
+		$companyCreditsHistoryPermissions = Permission::where('module_slug', 'company_credits_history')->get();
+		$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
+		$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
+		$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
+		$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
+		$skillsPermissions = Permission::where('module_slug', 'skills')->get();
+		$citiesPermissions = Permission::where('module_slug', 'cities')->get();
+		$countiesPermissions = Permission::where('module_slug', 'counties')->get();
+		$restorePermissions = Permission::where('module_slug', 'restore')->get();
+		return view('roles/add_role', [
+			'customersPermissions' => $customersPermissions,
+			'recruitersPermissions' => $recruitersPermissions,
+			'jobseekersPermissions' => $jobseekersPermissions,
+			'adminsPermissions' => $adminsPermissions,
+			'jobsPermissions' => $jobsPermissions,
+			'jobHistoryPermissions' => $jobHistoryPermissions,
+			'companyCreditsPermissions' => $companyCreditsPermissions,
+			'companyCreditsHistoryPermissions' => $companyCreditsHistoryPermissions,
+			'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
+			'ticketsPermissions' => $ticketsPermissions,
+			'jobIndustriesPermissions' => $jobIndustriesPermissions,
+			'jobLocationsPermissions' => $jobLocationsPermissions,
+			'skillsPermissions' => $skillsPermissions,
+			'citiesPermissions' => $citiesPermissions,
+			'countiesPermissions' => $countiesPermissions,
+			'restorePermissions' => $restorePermissions,
+		]);
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function saveRole(Request $request) {
+		// dd($request);
 		$nameToLowercase = strtolower($request->role_name);
 		$roleTag = $name = str_replace(' ', '_', $nameToLowercase);
 		$role = Role::where("tag", $roleTag)->get();
@@ -32,9 +80,9 @@ class RolesController extends Controller {
 			$role = new Role;
 			$role->name = $request->role_name;
 			$role->tag = $roleTag;
-			$role->permissions = $request->permissions;
 			$role->status = 1;
 			if($role->save()) {
+				$role->permissions()->attach($request->permissions);
 				$roles = Role::where('id', '!=', 1)->get();
 				return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Added successfully!');
 			}
@@ -51,14 +99,106 @@ class RolesController extends Controller {
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
+	public function editRole($id) {
+		$role = Role::find($id);
+		$customersPermissions = Permission::where('module_slug', 'customers')->get();
+		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
+		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
+		$adminsPermissions = Permission::where('module_slug', 'admins')->get();
+		$jobsPermissions = Permission::where('module_slug', 'jobs')->get();
+		$jobHistoryPermissions = Permission::where('module_slug', 'job_history')->get();
+		$companyCreditsPermissions = Permission::where('module_slug', 'company_credits')->get();
+		$companyCreditsHistoryPermissions = Permission::where('module_slug', 'company_credits_history')->get();
+		$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
+		$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
+		$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
+		$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
+		$skillsPermissions = Permission::where('module_slug', 'skills')->get();
+		$citiesPermissions = Permission::where('module_slug', 'cities')->get();
+		$countiesPermissions = Permission::where('module_slug', 'counties')->get();
+		$restorePermissions = Permission::where('module_slug', 'restore')->get();
+		return view('roles/edit_role', [
+			'role' => $role,
+			'customersPermissions' => $customersPermissions,
+			'recruitersPermissions' => $recruitersPermissions,
+			'jobseekersPermissions' => $jobseekersPermissions,
+			'adminsPermissions' => $adminsPermissions,
+			'jobsPermissions' => $jobsPermissions,
+			'jobHistoryPermissions' => $jobHistoryPermissions,
+			'companyCreditsPermissions' => $companyCreditsPermissions,
+			'companyCreditsHistoryPermissions' => $companyCreditsHistoryPermissions,
+			'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
+			'ticketsPermissions' => $ticketsPermissions,
+			'jobIndustriesPermissions' => $jobIndustriesPermissions,
+			'jobLocationsPermissions' => $jobLocationsPermissions,
+			'skillsPermissions' => $skillsPermissions,
+			'citiesPermissions' => $citiesPermissions,
+			'countiesPermissions' => $countiesPermissions,
+			'restorePermissions' => $restorePermissions,
+		]);
+	}
+
+	/**
+	 * This function is used to Update Role
+	*/
+	public function updateRole(Request $request) {
+		$role = Role::find($request->id);
+		$roleUpdate = $role->update([
+			'name' => $request->name
+		]);
+		if($roleUpdate) {
+			$updatePermissions = $role->permissions()->sync($request->permissions);
+			if($updatePermissions) {
+				$roles = Role::orderByDesc('id')->get();
+				return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Updated successfully!');
+			}
+		}
+
+	}
+
+	/**
+	 * This function is used to Show Saved Jobs Listing
+	*/
 	public function deleteRole(Request $request) {
-		$deleteRole = true;
+		$role = Role::find($request->id);
+		\DB::table('permission_role')->where('role_id', $request->id)->update(['deleted_at' => \Carbon\Carbon::now()]);
+		$deleteRole = $role->delete();
 		if($deleteRole) {
-			$roles = Role::where('id', '!=', 1)->get();
-			return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Deleted successfully!');
+			$roles = Role::all();
+			$res['success'] = 1;
+			$res['data'] = $roles;
+			return json_encode($res);
 		}
 		else {
-			return redirect()->back()->with('error', 'Something went wrong!');
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+
+	/**
+	 * This function is used to Show deleted Roles
+	*/
+	public function deletedRoles() {
+		$deletedRoles = Role::onlyTrashed()->orderByDesc('id')->get();
+		return view('roles/deleted_roles_list', ['deletedRoles' => $deletedRoles]);
+	}
+
+	/**
+	 * This function is used to Restore Roles
+	*/
+	public function restoreRole(Request $request) {
+		$role = Role::where('id', $request->id);
+		$restoreRole = $role->restore();
+		if($restoreRole) {
+			\DB::table('permission_role')->where('role_id', $request->id)->update(['deleted_at' => NULL]);
+			$roles = Role::all();
+			$res['success'] = 1;
+			$res['data'] = $roles;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
 		}
 	}
 }

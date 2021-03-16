@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Roles')
+@section('title', 'Deleted Roles')
 
 @section('content_header')
 @stop
@@ -25,19 +25,17 @@
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($roles); $i++) { ?>
+                <?php for ($i=0; $i < count($deletedRoles); $i++) { ?>
                   <tr>
                     <th class="display-none"></th>
-                    <td>{{ $roles[$i]->name }}</td>
+                    <td>{{ $deletedRoles[$i]->name }}</td>
                     <!-- <td>
-                      @foreach($roles[$i]->permissions as $permissions)
+                      @foreach($deletedRoles[$i]->permissions as $permissions)
                         {{ $permissions->name }}
                       @endforeach
                     </td> -->
                     <td>
-                      <a href="{{ route('view_role', ['id' => $roles[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>
-                      <a title="Edit" href="{{ route('edit_role', ['id' => $roles[$i]->id]) }}"><i class="text-warning fa fa-edit"></i></a>
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $roles[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      <a class="action-button restore-button" title="Delete" href="javascript:void(0)" data-id="{{ $deletedRoles[$i]->id}}"><i class="text-danger fa fa-undo"></i></a>
                     </td>
                   </tr>
                 <?php } ?>
@@ -68,7 +66,7 @@
         }]
       });
 
-      $('.delete-button').click(function(e) {
+      $('.restore-button').click(function(e) {
         var id = $(this).attr('data-id');
         // var obj = $(this);
         // console.log("ID - ", id);
@@ -81,7 +79,7 @@
         }, function(willDelete) {
           if (willDelete) {
             $.ajax({
-              url: "{{ route('delete_role') }}",
+              url: "{{ route('restore_role') }}",
               type: 'post',
               data: {
                 id: id
@@ -91,7 +89,12 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               success: function(response) {
-                window.location.reload();
+                if(response.success) {
+                  window.location.reload();
+                }
+                else {
+                  alert("Something went wrong!");
+                }
                 /* console.log("response", response);
                 obj.parent().parent().remove(); */
               }

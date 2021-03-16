@@ -13,6 +13,7 @@
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.payments_transactions') }}</h3>
             <a class="btn btn-sm btn-success invisible" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+            <a href="" class="show-advance-options">Advance Options <i class="fa fa-caret-down"></i></a>
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -21,15 +22,18 @@
               </div>
             @endif
             <div class="text-right mb-3">
-              <a href="" class="show-advance-options">Advance Options <i class="fa fa-caret-down"></i></a>
               <div class="advance-options" style="display: none;">
-
-                <input type="text" name="date_range" class="form-control">
+                <div class="title">
+                  <h5><i class="fa fa-filter mr-1"></i>Apply Search Filter</h5>
+                </div>
+                <div class="left_option">
+                  <h6>Select Date Range</h6>
+                  <input type="text" name="date_range" class="form-control">
+                  <button  class="btn btn-primary apply-filter apply">Apply</button> 
+                </div>
                 <div class="advance_options_btn">
                   <button class="btn btn-primary export-as-csv">Export as CSV</button>
-                  <button  class="btn btn-primary export-bulk-invoices">Download bulk invoices</button>   
-                  <button  class="btn btn-primary apply-filter">Apply</button>   
-                                     
+                  <button  class="btn btn-primary export-bulk-invoices">Download bulk invoices</button>           
                 </div>
 
               </div>
