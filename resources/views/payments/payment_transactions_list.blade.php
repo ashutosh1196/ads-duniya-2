@@ -37,7 +37,7 @@
             <table style="width:100%" id="paymentTransactionsList" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th style="display:none">#</th>
+                  {{-- <th style="display:none">#</th> --}}
                   <th>{{ __('adminlte::adminlte.transaction_id') }}</th>
                   <th>{{ __('adminlte::adminlte.amount') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
