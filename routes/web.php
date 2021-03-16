@@ -13,6 +13,7 @@ use App\Http\Controllers\MiscController;
 use App\Http\Controllers\CreditsController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\DatatableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -261,6 +262,14 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/add', [RolesController::class, 'addRole'])->name('add_role');
       Route::post('/save', [RolesController::class, 'saveRole'])->name('save_role');
       Route::get('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
+    });
+
+    Route::prefix('datatable')->as('datatable.')->group(function(){
+      
+      Route::get('/payment-logs',[DatatableController::class,'getPaymentLogs'])->name('payment.logs');
+      Route::post('/export-payment-logs',[DatatableController::class,'exportPaymentLogs'])->name('export.payment.logs');
+      Route::post('/export-bulk-invoices',[DatatableController::class,'exportBulkInvoices'])->name('export.bulk.invoices');
+
     });
 
   });
