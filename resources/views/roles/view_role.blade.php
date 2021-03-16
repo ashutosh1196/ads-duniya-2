@@ -85,6 +85,14 @@
 
 @section('css')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <style>
+  .permission-names {
+    background-color: #efefef;
+    border: 1px solid #efefef;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  </style>
 @stop
 
 @section('js')
