@@ -1566,6 +1566,100 @@ form.form_wrap.customers-management-view div#preview-cropped-image {
 .edit_job_upload_picture div#preview-cropped-image label.label {
     margin: 0;
 }
+.content-wrapper .card .card-header a.show-advance-options {
+    border-radius: 3px;
+}
+.advance-options {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f7fb;
+    padding: 25px 15px;
+    border-radius: 3px;
+    border: 1px solid #dee2e6;
+    position: relative;
+    flex-wrap: wrap;
+    margin: 0 0 40px;
+}
+.advance-options-wrap {
+    margin: 0 0 30px;
+}
+.advance-options input.form-control {
+    font-size: 13px;
+    text-align: center;
+    max-width: 180px;
+    outline-style: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+.advance-options input.form-control:focus {
+    border-color: #ced4da;
+}
+.advance-options .advance_options_btn button {
+    background-color: #343d49;
+    border-color: #343d49;
+    font-size: 12px;
+    list-style: none;
+    box-shadow: none;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.daterangepicker td.active, 
+.daterangepicker td.active:hover {
+    background-color: #3b9332 !important;
+}
+.advance-options .left_option button {
+    background-color: #343d49;
+    border-color: #343d49;
+    font-size: 12px;
+    list-style: none;
+    box-shadow: none;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.advance-options .left_option button.apply {
+    background-color: #3b9332;
+    border-color: #3b9332;
+    margin: 0 0 0 5px;
+    height: 38px;
+}
+.advance-options .left_option h6 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    margin: -5px 0 0;
+    padding: 0 10px 0 0;
+    color: #343d49;
+}
+.advance-options .left_option h6:before{
+    display: none;
+}
+.advance-options .left_option h6 i {
+    font-size: 17px;
+    color: #343d49;
+}
+.advance-options .left_option {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 20px;
+}
+.advance-options .title {
+    width: 100%;
+    text-align: left;
+    padding: 0 0 20px;
+}
+body .daterangepicker.show-calendar .drp-buttons {
+    display: none;
+}
+.advance-options .title h5 {
+    color: #343d49;
+    font-size: 17px;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0 0 10px;
+}
+.advance-options .title h5 i {
+    font-size: 15px;
+}
 /*Responsive*/
 
 @media only screen and (max-width: 1500px) {
