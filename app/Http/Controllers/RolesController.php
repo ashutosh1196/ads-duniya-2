@@ -97,45 +97,50 @@ class RolesController extends Controller {
 	*/
 	public function rolePermissions(Request $request) {
 		$roles = Role::where('id', '!=', 1)->get();
-		$pendingCustomersPermissions = Permission::where('module_slug', 'pending_customers')->get();
-		$whitelistedCustomersPermissions = Permission::where('module_slug', 'whitelisted_customers')->get();
-		$rejectedCustomersPermissions = Permission::where('module_slug', 'rejected_customers')->get();
-		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
-		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
-		$adminsPermissions = Permission::where('module_slug', 'admins')->get();
-		$jobsPermissions = Permission::where('module_slug', 'jobs')->get();
-		$jobHistoryPermissions = Permission::where('module_slug', 'job_history')->get();
-		$companyCreditsPermissions = Permission::where('module_slug', 'company_credits')->get();
-		$companyCreditsHistoryPermissions = Permission::where('module_slug', 'company_credits_history')->get();
-		$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
-		$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
-		$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
-		$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
-		$skillsPermissions = Permission::where('module_slug', 'skills')->get();
-		$citiesPermissions = Permission::where('module_slug', 'cities')->get();
-		$countiesPermissions = Permission::where('module_slug', 'counties')->get();
-		$restorePermissions = Permission::where('module_slug', 'restore')->get();
-		return view('roles/role_permissions', [
-			'roles' => $roles,
-			'pendingCustomersPermissions' => $pendingCustomersPermissions,
-			'whitelistedCustomersPermissions' => $whitelistedCustomersPermissions,
-			'rejectedCustomersPermissions' => $rejectedCustomersPermissions,
-			'recruitersPermissions' => $recruitersPermissions,
-			'jobseekersPermissions' => $jobseekersPermissions,
-			'adminsPermissions' => $adminsPermissions,
-			'jobsPermissions' => $jobsPermissions,
-			'jobHistoryPermissions' => $jobHistoryPermissions,
-			'companyCreditsPermissions' => $companyCreditsPermissions,
-			'companyCreditsHistoryPermissions' => $companyCreditsHistoryPermissions,
-			'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
-			'ticketsPermissions' => $ticketsPermissions,
-			'jobIndustriesPermissions' => $jobIndustriesPermissions,
-			'jobLocationsPermissions' => $jobLocationsPermissions,
-			'skillsPermissions' => $skillsPermissions,
-			'citiesPermissions' => $citiesPermissions,
-			'countiesPermissions' => $countiesPermissions,
-			'restorePermissions' => $restorePermissions,
-		]);
+		if($roles->isNotEmpty()) {
+			$pendingCustomersPermissions = Permission::where('module_slug', 'pending_customers')->get();
+			$whitelistedCustomersPermissions = Permission::where('module_slug', 'whitelisted_customers')->get();
+			$rejectedCustomersPermissions = Permission::where('module_slug', 'rejected_customers')->get();
+			$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
+			$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
+			$adminsPermissions = Permission::where('module_slug', 'admins')->get();
+			$jobsPermissions = Permission::where('module_slug', 'jobs')->get();
+			$jobHistoryPermissions = Permission::where('module_slug', 'job_history')->get();
+			$companyCreditsPermissions = Permission::where('module_slug', 'company_credits')->get();
+			$companyCreditsHistoryPermissions = Permission::where('module_slug', 'company_credits_history')->get();
+			$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
+			$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
+			$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
+			$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
+			$skillsPermissions = Permission::where('module_slug', 'skills')->get();
+			$citiesPermissions = Permission::where('module_slug', 'cities')->get();
+			$countiesPermissions = Permission::where('module_slug', 'counties')->get();
+			$restorePermissions = Permission::where('module_slug', 'restore')->get();
+			return view('roles/role_permissions', [
+				'roles' => $roles,
+				'pendingCustomersPermissions' => $pendingCustomersPermissions,
+				'whitelistedCustomersPermissions' => $whitelistedCustomersPermissions,
+				'rejectedCustomersPermissions' => $rejectedCustomersPermissions,
+				'recruitersPermissions' => $recruitersPermissions,
+				'jobseekersPermissions' => $jobseekersPermissions,
+				'adminsPermissions' => $adminsPermissions,
+				'jobsPermissions' => $jobsPermissions,
+				'jobHistoryPermissions' => $jobHistoryPermissions,
+				'companyCreditsPermissions' => $companyCreditsPermissions,
+				'companyCreditsHistoryPermissions' => $companyCreditsHistoryPermissions,
+				'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
+				'ticketsPermissions' => $ticketsPermissions,
+				'jobIndustriesPermissions' => $jobIndustriesPermissions,
+				'jobLocationsPermissions' => $jobLocationsPermissions,
+				'skillsPermissions' => $skillsPermissions,
+				'citiesPermissions' => $citiesPermissions,
+				'countiesPermissions' => $countiesPermissions,
+				'restorePermissions' => $restorePermissions,
+			]);
+		}
+		else {
+			return redirect()->route('add_role')->with('warning', 'No Roles Found! Please add a Role first.');
+		}
 	}
 
 	/**
@@ -199,7 +204,7 @@ class RolesController extends Controller {
 		}
 	}
 
-	public function Permission(Request $request) {
+	public function getUserPermissions(Request $request) {
 		$user = $request->user();
 		$permissions = $user->role->permissions;
 		// dd($permissions);

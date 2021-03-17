@@ -35,7 +35,7 @@ Route::middleware(['auth:admin'])->group(function () {
   
   // Admin Panel Routes
   Route::group(['prefix' => 'admin_panel'], function () {
-    Route::get('/test_permissions', [RolesController::class, 'Permission'])->name('test_permissions');
+    Route::get('/test_permissions', [RolesController::class, 'getUserPermissions'])->name('test_permissions');
     
     // Common Routes
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
