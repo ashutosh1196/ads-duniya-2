@@ -44,7 +44,13 @@
                 </div>
                 
                 <div class="role-permissions" id="role-permissions">
-                  <label for="permissions" class="label">{{ __('adminlte::adminlte.permissions') }}</label><br><br>
+                  <label for="permissions[]" class="label">{{ __('adminlte::adminlte.permissions') }}</label>
+                  <br>
+                  <label id="permissions[]-error" class="error" for="permissions[]" style="font-weight: 400 !important;"></label>
+                  <br><br> 
+                  @if($errors->has('permissions'))
+                    <div class="error">{{ $errors->first('permissions') }}</div>
+                  @endif
                   <input type="checkbox" id="full_access" style="height: 15px;width: 50px;" class=""><strong>FULL ACCESS</strong><br><br>
                   <div class="row">
                     <div class="col-4">
@@ -292,6 +298,10 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
     $(document).ready(function() {
+      checkAll();
+      $("input[type='checkbox']").change(function() {
+        checkAll();
+      });
       $("#role_name").change(function() {
         $('input').filter(':checkbox').prop('checked',false);
         var role = $(this);
@@ -313,10 +323,35 @@
               const response = res[i];
               var permissionId = "#button_"+response.permission_id;
               $(permissionId).prop('checked', 'true');
+              checkAll();
             }
           }
         });
-      })
+      });
+      
+      $('#addRoleForm').validate({
+        ignore: [],
+        debug: false,
+        rules: {
+          role_name: {
+            required: true
+          },
+          "permissions[]":{
+            required: true
+          }
+        },
+        messages: {
+          role_name: {
+            required: "The Role Name field is required."
+          },
+          "permissions[]": {
+            required: "You must select at least one permission.",
+          }
+        }
+      });
+    });
+    
+    function checkAll() {
       $("#full_access").click(function() {
         $("input[type=checkbox]").prop('checked', this.checked)
       })
@@ -368,27 +403,110 @@
       $("#restore_permissions").click(function() {
         $(".restorecheckBox").prop('checked', this.checked)
       })
-      
-      $('#addRoleForm').validate({
-        ignore: [],
-        debug: false,
-        rules: {
-          role_name: {
-            required: true
-          },
-          permissions:{
-            required: true
-          }
-        },
-        messages: {
-          role_name: {
-            required: "The Role Name field is required."
-          },
-          permissions: {
-            required: "The Permission field is required.",
-          }
-        }
-      });
-    });
+
+      if($('.checkBoxClass:checked').length == $('.checkBoxClass').length) {
+        $("#full_access").prop('checked', 'true');
+      }
+      else {
+        $("#full_access").prop('checked', false);
+      }
+
+      if($('.customerscheckBox:checked').length == $('.customerscheckBox').length) {
+        $("#customer_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#customer_permissions").prop('checked', false);
+      }
+      if($('.recruiterscheckBox:checked').length == $('.recruiterscheckBox').length) {
+        $("#recruiter_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#recruiter_permissions").prop('checked', false);
+      }
+      if($('.jobseekerscheckBox:checked').length == $('.jobseekerscheckBox').length) {
+        $("#jobseeker_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#jobseeker_permissions").prop('checked', false);
+      }
+      if($('.adminscheckBox:checked').length == $('.adminscheckBox').length) {
+        $("#admins_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#admins_permissions").prop('checked', false);
+      }
+      if($('.jobscheckBox:checked').length == $('.jobscheckBox').length) {
+        $("#jobs_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#jobs_permissions").prop('checked', false);
+      }
+      if($('.jobHistorycheckBox:checked').length == $('.jobHistorycheckBox').length) {
+        $("#job_history_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_history_permissions").prop('checked', false);
+      }
+      if($('.companyCreditscheckBox:checked').length == $('.companyCreditscheckBox').length) {
+        $("#credits_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#credits_permissions").prop('checked', false);
+      }
+      if($('.companyCreditsHistorycheckBox:checked').length == $('.companyCreditsHistorycheckBox').length) {
+        $("#credits_history_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#credits_history_permissions").prop('checked', false);
+      }
+      if($('.paymentTransactionscheckBox:checked').length == $('.paymentTransactionscheckBox').length) {
+        $("#payments_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#payments_permissions").prop('checked', false);
+      }
+      if($('.ticketscheckBox:checked').length == $('.ticketscheckBox').length) {
+        $("#tickets_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#tickets_permissions").prop('checked', false);
+      }
+      if($('.jobIndustriescheckBox:checked').length == $('.jobIndustriescheckBox').length) {
+        $("#job_industries_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_industries_permissions").prop('checked', false);
+      }
+      if($('.jobLocationscheckBox:checked').length == $('.jobLocationscheckBox').length) {
+        $("#job_locations_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_locations_permissions").prop('checked', false);
+      }
+      if($('.skillscheckBox:checked').length == $('.skillscheckBox').length) {
+        $("#skills_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#skills_permissions").prop('checked', false);
+      }
+      if($('.citiescheckBox:checked').length == $('.citiescheckBox').length) {
+        $("#cities_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#cities_permissions").prop('checked', false);
+      }
+      if($('.countiescheckBox:checked').length == $('.countiescheckBox').length) {
+        $("#counties_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#counties_permissions").prop('checked', false);
+      }
+      if($('.restorecheckBox:checked').length == $('.restorecheckBox').length) {
+        $("#restore_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#restore_permissions").prop('checked', false);
+      }
+    }
   </script>
 @stop
