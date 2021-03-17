@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Permission;
-use App\Models\PermissionRole;
 
 class RolesController extends Controller {
 	/**
@@ -197,6 +196,16 @@ class RolesController extends Controller {
 		else {
 			$res['success'] = 0;
 			return json_encode($res);
+		}
+	}
+
+	public function Permission(Request $request) {
+		$user = $request->user();
+		$permissions = $user->role->permissions;
+		// dd($permissions);
+		for ($i=0; $i < count($permissions); $i++) { 
+			echo $permissions[$i]->slug."<br>";
+			echo "\n";
 		}
 	}
 }

@@ -15,23 +15,7 @@ class PermissionsSeeder extends Seeder {
 		\DB::table('permissions')->insert([
 			// Pending Customers
 			[
-				'name' => 'List Pending Customers',
-				'slug' => 'list_pending_customers',
-				'module_name' => 'Pending Customers',
-				'module_slug' => 'pending_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Pending Customer',
-				'slug' => 'view_pending_customer',
-				'module_name' => 'Pending Customers',
-				'module_slug' => 'pending_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Customer',
+				'name' => 'Add',
 				'slug' => 'add_customer',
 				'module_name' => 'Pending Customers',
 				'module_slug' => 'pending_customers',
@@ -39,7 +23,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Pending Customer',
+				'name' => 'Edit',
 				'slug' => 'edit_pending_customer',
 				'module_name' => 'Pending Customers',
 				'module_slug' => 'pending_customers',
@@ -47,49 +31,25 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Pending Customer',
+				'name' => 'Delete',
 				'slug' => 'delete_pending_customer',
 				'module_name' => 'Pending Customers',
 				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
-			/* [
-				'name' => 'Whitelist Customer',
-				'slug' => 'whitelist_customer',
+			[
+				'name' => 'View',
+				'slug' => 'view_pending_customer',
 				'module_name' => 'Pending Customers',
 				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
-			[
-				'name' => 'Reject Customer',
-				'slug' => 'reject_customer',
-				'module_name' => 'Pending Customers',
-				'module_slug' => 'pending_customers',
-				'description' => 'desc',
-				'status' => 1
-			], */
 
 			// Whitelisted Customers
 			[
-				'name' => 'List Whitelisted Customers',
-				'slug' => 'list_whitelisted_customers',
-				'module_name' => 'Whitelisted Customers',
-				'module_slug' => 'whitelisted_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Whitelisted Customer',
-				'slug' => 'view_whitelisted_customer',
-				'module_name' => 'Whitelisted Customers',
-				'module_slug' => 'whitelisted_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Edit Whitelisted Customer',
+				'name' => 'Edit',
 				'slug' => 'edit_whitelisted_customer',
 				'module_name' => 'Whitelisted Customers',
 				'module_slug' => 'whitelisted_customers',
@@ -97,41 +57,25 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Whitelisted Customer',
+				'name' => 'Delete',
 				'slug' => 'delete_whitelisted_customer',
 				'module_name' => 'Whitelisted Customers',
 				'module_slug' => 'whitelisted_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
-			/* [
-				'name' => 'Reject Customer',
-				'slug' => 'reject_customer',
+			[
+				'name' => 'View',
+				'slug' => 'view_whitelisted_customer',
 				'module_name' => 'Whitelisted Customers',
 				'module_slug' => 'whitelisted_customers',
 				'description' => 'desc',
 				'status' => 1
-			], */
+			],
 			
 			// Rejected Customers
 			[
-				'name' => 'List Rejected Customers',
-				'slug' => 'list_rejected_customers',
-				'module_name' => 'Rejected Customers',
-				'module_slug' => 'rejected_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Rejected Customer',
-				'slug' => 'view_rejected_customer',
-				'module_name' => 'Rejected Customers',
-				'module_slug' => 'rejected_customers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Edit Rejected Customer',
+				'name' => 'Edit',
 				'slug' => 'edit_rejected_customer',
 				'module_name' => 'Rejected Customers',
 				'module_slug' => 'rejected_customers',
@@ -139,41 +83,25 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Rejected Customer',
+				'name' => 'Delete',
 				'slug' => 'delete_rejected_customer',
 				'module_name' => 'Rejected Customers',
 				'module_slug' => 'rejected_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
-			/* [
-				'name' => 'Whitelist Customer',
-				'slug' => 'whitelist_customer',
+			[
+				'name' => 'View',
+				'slug' => 'view_rejected_customer',
 				'module_name' => 'Rejected Customers',
 				'module_slug' => 'rejected_customers',
 				'description' => 'desc',
 				'status' => 1
-			], */
+			],
 
 			// Jobseeker
 			[
-				'name' => 'List Jobseekers',
-				'slug' => 'list_jobseekers',
-				'module_name' => 'Jobseekers',
-				'module_slug' => 'jobseekers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Jobseeker',
-				'slug' => 'view_jobseeker',
-				'module_name' => 'Jobseekers',
-				'module_slug' => 'jobseekers',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Jobseeker',
+				'name' => 'Add',
 				'slug' => 'add_jobseeker',
 				'module_name' => 'Jobseekers',
 				'module_slug' => 'jobseekers',
@@ -181,7 +109,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Jobseeker',
+				'name' => 'Edit',
 				'slug' => 'edit_jobseeker',
 				'module_name' => 'Jobseekers',
 				'module_slug' => 'jobseekers',
@@ -189,8 +117,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Jobseeker',
+				'name' => 'Delete',
 				'slug' => 'delete_jobseeker',
+				'module_name' => 'Jobseekers',
+				'module_slug' => 'jobseekers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_jobseeker',
 				'module_name' => 'Jobseekers',
 				'module_slug' => 'jobseekers',
 				'description' => 'desc',
@@ -198,23 +134,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Recruiter
 			[
-				'name' => 'List Recruiters',
-				'slug' => 'list_recruiters',
-				'module_name' => 'Recruiters',
-				'module_slug' => 'recruiters',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Recruiter',
-				'slug' => 'view_recruiter',
-				'module_name' => 'Recruiters',
-				'module_slug' => 'recruiters',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Recruiter',
+				'name' => 'Add',
 				'slug' => 'add_recruiter',
 				'module_name' => 'Recruiters',
 				'module_slug' => 'recruiters',
@@ -222,7 +142,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Recruiter',
+				'name' => 'Edit',
 				'slug' => 'edit_recruiter',
 				'module_name' => 'Recruiters',
 				'module_slug' => 'recruiters',
@@ -230,8 +150,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Recruiter',
+				'name' => 'Delete',
 				'slug' => 'delete_recruiter',
+				'module_name' => 'Recruiters',
+				'module_slug' => 'recruiters',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_recruiter',
 				'module_name' => 'Recruiters',
 				'module_slug' => 'recruiters',
 				'description' => 'desc',
@@ -239,23 +167,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Admins
 			[
-				'name' => 'List Admins',
-				'slug' => 'list_admins',
-				'module_name' => 'Admins',
-				'module_slug' => 'admins',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Admin',
-				'slug' => 'view_admin',
-				'module_name' => 'Admins',
-				'module_slug' => 'admins',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Admin',
+				'name' => 'Add',
 				'slug' => 'add_admin',
 				'module_name' => 'Admins',
 				'module_slug' => 'admins',
@@ -263,7 +175,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Admin',
+				'name' => 'Edit',
 				'slug' => 'edit_admin',
 				'module_name' => 'Admins',
 				'module_slug' => 'admins',
@@ -271,8 +183,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Admin',
+				'name' => 'Delete',
 				'slug' => 'delete_admin',
+				'module_name' => 'Admins',
+				'module_slug' => 'admins',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_admin',
 				'module_name' => 'Admins',
 				'module_slug' => 'admins',
 				'description' => 'desc',
@@ -280,23 +200,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Jobs
 			[
-				'name' => 'List Jobs',
-				'slug' => 'list_jobs',
-				'module_name' => 'Jobs',
-				'module_slug' => 'jobs',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Job',
-				'slug' => 'view_job',
-				'module_name' => 'Jobs',
-				'module_slug' => 'jobs',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Job',
+				'name' => 'Add',
 				'slug' => 'add_job',
 				'module_name' => 'Jobs',
 				'module_slug' => 'jobs',
@@ -304,7 +208,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Job',
+				'name' => 'Edit',
 				'slug' => 'edit_job',
 				'module_name' => 'Jobs',
 				'module_slug' => 'jobs',
@@ -312,8 +216,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Job',
+				'name' => 'Delete',
 				'slug' => 'delete_job',
+				'module_name' => 'Jobs',
+				'module_slug' => 'jobs',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_job',
 				'module_name' => 'Jobs',
 				'module_slug' => 'jobs',
 				'description' => 'desc',
@@ -321,41 +233,25 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Job History
 			[
-				'name' => 'List Job History',
-				'slug' => 'list_job_history',
-				'module_name' => 'Job History',
-				'module_slug' => 'job_history',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Job History',
+				'name' => 'View',
 				'slug' => 'view_job_history',
 				'module_name' => 'Job History',
 				'module_slug' => 'job_history',
 				'description' => 'desc',
 				'status' => 1
 			],
-			// Jobs
+			// Company Credits
 			[
-				'name' => 'List Company Credits',
-				'slug' => 'list_company_credits',
+				'name' => 'Add',
+				'slug' => 'add_company_credit',
 				'module_name' => 'Company Credits',
 				'module_slug' => 'company_credits',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
-				'name' => 'View Job',
-				'slug' => 'view_company_credits',
-				'module_name' => 'Company Credits',
-				'module_slug' => 'company_credits',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Company Credit',
-				'slug' => 'add_company_credits',
+				'name' => 'View',
+				'slug' => 'view_company_credit',
 				'module_name' => 'Company Credits',
 				'module_slug' => 'company_credits',
 				'description' => 'desc',
@@ -363,16 +259,8 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Company Credit History
 			[
-				'name' => 'List Company Credit History',
-				'slug' => 'list_company_credits_history',
-				'module_name' => 'Company Credits History',
-				'module_slug' => 'company_credits_history',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Company Credit History',
-				'slug' => 'view_company_credits_history',
+				'name' => 'View',
+				'slug' => 'view_credits_history',
 				'module_name' => 'Company Credits History',
 				'module_slug' => 'company_credits_history',
 				'description' => 'desc',
@@ -380,15 +268,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Payment Transactions
 			[
-				'name' => 'List Payment Transactions',
-				'slug' => 'list_payment_transactions',
-				'module_name' => 'Payment Transactions',
-				'module_slug' => 'payment_transactions',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Payment Transaction',
+				'name' => 'View',
 				'slug' => 'view_payment_transaction',
 				'module_name' => 'Payment Transactions',
 				'module_slug' => 'payment_transactions',
@@ -397,16 +277,16 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Tickets
 			[
-				'name' => 'List Tickets',
-				'slug' => 'list_tickets',
+				'name' => 'View',
+				'slug' => 'view_ticket',
 				'module_name' => 'Tickets',
 				'module_slug' => 'tickets',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
-				'name' => 'View Ticket',
-				'slug' => 'view_ticket',
+				'name' => 'Reply',
+				'slug' => 'reply_ticket',
 				'module_name' => 'Tickets',
 				'module_slug' => 'tickets',
 				'description' => 'desc',
@@ -414,23 +294,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Job Industries
 			[
-				'name' => 'List Job Industries',
-				'slug' => 'list_job_industries',
-				'module_name' => 'Job Industries',
-				'module_slug' => 'job_industries',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Job Industry',
-				'slug' => 'view_job_industry',
-				'module_name' => 'Job Industries',
-				'module_slug' => 'job_industries',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Job Industry',
+				'name' => 'Add',
 				'slug' => 'add_job_industry',
 				'module_name' => 'Job Industries',
 				'module_slug' => 'job_industries',
@@ -438,7 +302,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Job Industry',
+				'name' => 'Edit',
 				'slug' => 'edit_job_industry',
 				'module_name' => 'Job Industries',
 				'module_slug' => 'job_industries',
@@ -446,8 +310,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Job Industry',
+				'name' => 'Delete',
 				'slug' => 'delete_job_industry',
+				'module_name' => 'Job Industries',
+				'module_slug' => 'job_industries',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_job_industry',
 				'module_name' => 'Job Industries',
 				'module_slug' => 'job_industries',
 				'description' => 'desc',
@@ -455,23 +327,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Job Locations
 			[
-				'name' => 'List Job Locations',
-				'slug' => 'list_job_locations',
-				'module_name' => 'Job Locations',
-				'module_slug' => 'job_locations',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Job Location',
-				'slug' => 'view_job_location',
-				'module_name' => 'Job Locations',
-				'module_slug' => 'job_locations',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Job Location',
+				'name' => 'Add',
 				'slug' => 'add_job_location',
 				'module_name' => 'Job Locations',
 				'module_slug' => 'job_locations',
@@ -479,7 +335,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Job Location',
+				'name' => 'Edit',
 				'slug' => 'edit_job_location',
 				'module_name' => 'Job Locations',
 				'module_slug' => 'job_locations',
@@ -487,8 +343,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Job Location',
+				'name' => 'Delete',
 				'slug' => 'delete_job_location',
+				'module_name' => 'Job Locations',
+				'module_slug' => 'job_locations',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_job_location',
 				'module_name' => 'Job Locations',
 				'module_slug' => 'job_locations',
 				'description' => 'desc',
@@ -496,23 +360,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Skills
 			[
-				'name' => 'List Skills',
-				'slug' => 'list_skills',
-				'module_name' => 'Skills',
-				'module_slug' => 'skills',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Skill',
-				'slug' => 'view_skill',
-				'module_name' => 'Skills',
-				'module_slug' => 'skills',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add Skill',
+				'name' => 'Add',
 				'slug' => 'add_skill',
 				'module_name' => 'Skills',
 				'module_slug' => 'skills',
@@ -520,7 +368,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Skill',
+				'name' => 'Edit',
 				'slug' => 'edit_skill',
 				'module_name' => 'Skills',
 				'module_slug' => 'skills',
@@ -528,8 +376,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Skill',
+				'name' => 'Delete',
 				'slug' => 'delete_skill',
+				'module_name' => 'Skills',
+				'module_slug' => 'skills',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_skill',
 				'module_name' => 'Skills',
 				'module_slug' => 'skills',
 				'description' => 'desc',
@@ -537,23 +393,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Cities
 			[
-				'name' => 'List Cities',
-				'slug' => 'list_cities',
-				'module_name' => 'Cities',
-				'module_slug' => 'cities',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View City',
-				'slug' => 'view_city',
-				'module_name' => 'Cities',
-				'module_slug' => 'cities',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add City',
+				'name' => 'Add',
 				'slug' => 'add_city',
 				'module_name' => 'Cities',
 				'module_slug' => 'cities',
@@ -561,7 +401,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit City',
+				'name' => 'Edit',
 				'slug' => 'edit_city',
 				'module_name' => 'Cities',
 				'module_slug' => 'cities',
@@ -569,8 +409,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete City',
+				'name' => 'Delete',
 				'slug' => 'delete_city',
+				'module_name' => 'Cities',
+				'module_slug' => 'cities',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_city',
 				'module_name' => 'Cities',
 				'module_slug' => 'cities',
 				'description' => 'desc',
@@ -578,23 +426,7 @@ class PermissionsSeeder extends Seeder {
 			],
 			// Counties
 			[
-				'name' => 'List Counties',
-				'slug' => 'list_counties',
-				'module_name' => 'Counties',
-				'module_slug' => 'counties',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View County',
-				'slug' => 'view_county',
-				'module_name' => 'Counties',
-				'module_slug' => 'counties',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Add County',
+				'name' => 'Add',
 				'slug' => 'add_county',
 				'module_name' => 'Counties',
 				'module_slug' => 'counties',
@@ -602,7 +434,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Edit County',
+				'name' => 'Edit',
 				'slug' => 'edit_county',
 				'module_name' => 'Counties',
 				'module_slug' => 'counties',
@@ -610,8 +442,16 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete County',
+				'name' => 'Delete',
 				'slug' => 'delete_county',
+				'module_name' => 'Counties',
+				'module_slug' => 'counties',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_county',
 				'module_name' => 'Counties',
 				'module_slug' => 'counties',
 				'description' => 'desc',

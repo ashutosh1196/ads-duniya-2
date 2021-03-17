@@ -25,13 +25,6 @@ class Role extends Model
 	}
 
 	/**
-	 * Get the roles permissions for the role.
-	*/
-	public function rolePermissions() {
-		return $this->hasMany(PermissionRole::class);
-	}
-
-	/**
 	 * Get the admins for the role.
 	*/
 	public function admins() {

@@ -52,8 +52,13 @@
                     <div class="error">{{ $errors->first('permissions') }}</div>
                   @endif
                   <input type="checkbox" id="full_access" style="height: 15px;width: 50px;" class=""><strong>FULL ACCESS</strong><br><br>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Customers Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Pending Customers</strong></p>
@@ -92,7 +97,12 @@
                     </div>
                   </div>
 
-                  <div class="row">
+                  <div class="title">
+                    <h5>Users Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Recruiters</strong></p>
@@ -130,8 +140,13 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Jobs Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Jobs</strong></p>
@@ -156,6 +171,14 @@
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Credits Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Company Credits</strong></p>
@@ -168,12 +191,9 @@
                         </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="row">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Company Credits History</strong></p>
+                        <p><strong class="list-text">Credits History</strong></p>
                         <input type="checkbox" id="credits_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
@@ -195,9 +215,16 @@
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Tickets Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Tickets Credits</strong></p>
                         <input type="checkbox" id="tickets_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
@@ -208,8 +235,13 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Misc Data Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Job Industries</strong></p>
@@ -246,9 +278,6 @@
                         </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="row">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Cities</strong></p>
@@ -273,9 +302,16 @@
                         </p>
                       </div>
                     </div>  
+                  </div>
+
+                  <div class="title">
+                    <h5>Recycle Bin</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Recycle Bin</strong></p>
                         <input type="checkbox" id="restore_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
