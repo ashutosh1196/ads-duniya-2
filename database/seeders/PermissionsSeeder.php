@@ -13,46 +13,148 @@ class PermissionsSeeder extends Seeder {
 	public function run() {
 		\DB::table('permissions')->delete();
 		\DB::table('permissions')->insert([
+			// Pending Customers
 			[
-				'name' => 'List Customers',
-				'slug' => 'list_customers',
-				'module_name' => 'Customers',
-				'module_slug' => 'customers',
+				'name' => 'List Pending Customers',
+				'slug' => 'list_pending_customers',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
-				'name' => 'View Customer',
-				'slug' => 'view_customer',
-				'module_name' => 'Customers',
-				'module_slug' => 'customers',
+				'name' => 'View Pending Customer',
+				'slug' => 'view_pending_customer',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
 				'name' => 'Add Customer',
 				'slug' => 'add_customer',
-				'module_name' => 'Customers',
-				'module_slug' => 'customers',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
-				'name' => 'Edit Customer',
-				'slug' => 'edit_customer',
-				'module_name' => 'Customers',
-				'module_slug' => 'customers',
+				'name' => 'Edit Pending Customer',
+				'slug' => 'edit_pending_customer',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Customer',
-				'slug' => 'delete_customer',
-				'module_name' => 'Customers',
-				'module_slug' => 'customers',
+				'name' => 'Delete Pending Customer',
+				'slug' => 'delete_pending_customer',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
 				'description' => 'desc',
 				'status' => 1
 			],
+			/* [
+				'name' => 'Whitelist Customer',
+				'slug' => 'whitelist_customer',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Reject Customer',
+				'slug' => 'reject_customer',
+				'module_name' => 'Pending Customers',
+				'module_slug' => 'pending_customers',
+				'description' => 'desc',
+				'status' => 1
+			], */
+
+			// Whitelisted Customers
+			[
+				'name' => 'List Whitelisted Customers',
+				'slug' => 'list_whitelisted_customers',
+				'module_name' => 'Whitelisted Customers',
+				'module_slug' => 'whitelisted_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Whitelisted Customer',
+				'slug' => 'view_whitelisted_customer',
+				'module_name' => 'Whitelisted Customers',
+				'module_slug' => 'whitelisted_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Edit Whitelisted Customer',
+				'slug' => 'edit_whitelisted_customer',
+				'module_name' => 'Whitelisted Customers',
+				'module_slug' => 'whitelisted_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Delete Whitelisted Customer',
+				'slug' => 'delete_whitelisted_customer',
+				'module_name' => 'Whitelisted Customers',
+				'module_slug' => 'whitelisted_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			/* [
+				'name' => 'Reject Customer',
+				'slug' => 'reject_customer',
+				'module_name' => 'Whitelisted Customers',
+				'module_slug' => 'whitelisted_customers',
+				'description' => 'desc',
+				'status' => 1
+			], */
+			
+			// Rejected Customers
+			[
+				'name' => 'List Rejected Customers',
+				'slug' => 'list_rejected_customers',
+				'module_name' => 'Rejected Customers',
+				'module_slug' => 'rejected_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Rejected Customer',
+				'slug' => 'view_rejected_customer',
+				'module_name' => 'Rejected Customers',
+				'module_slug' => 'rejected_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Edit Rejected Customer',
+				'slug' => 'edit_rejected_customer',
+				'module_name' => 'Rejected Customers',
+				'module_slug' => 'rejected_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Delete Rejected Customer',
+				'slug' => 'delete_rejected_customer',
+				'module_name' => 'Rejected Customers',
+				'module_slug' => 'rejected_customers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			/* [
+				'name' => 'Whitelist Customer',
+				'slug' => 'whitelist_customer',
+				'module_name' => 'Rejected Customers',
+				'module_slug' => 'rejected_customers',
+				'description' => 'desc',
+				'status' => 1
+			], */
+
 			// Jobseeker
 			[
 				'name' => 'List Jobseekers',

@@ -98,7 +98,9 @@ class RolesController extends Controller {
 	*/
 	public function rolePermissions(Request $request) {
 		$roles = Role::where('id', '!=', 1)->get();
-		$customersPermissions = Permission::where('module_slug', 'customers')->get();
+		$pendingCustomersPermissions = Permission::where('module_slug', 'pending_customers')->get();
+		$whitelistedCustomersPermissions = Permission::where('module_slug', 'whitelisted_customers')->get();
+		$rejectedCustomersPermissions = Permission::where('module_slug', 'rejected_customers')->get();
 		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
 		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
 		$adminsPermissions = Permission::where('module_slug', 'admins')->get();
@@ -116,7 +118,9 @@ class RolesController extends Controller {
 		$restorePermissions = Permission::where('module_slug', 'restore')->get();
 		return view('roles/role_permissions', [
 			'roles' => $roles,
-			'customersPermissions' => $customersPermissions,
+			'pendingCustomersPermissions' => $pendingCustomersPermissions,
+			'whitelistedCustomersPermissions' => $whitelistedCustomersPermissions,
+			'rejectedCustomersPermissions' => $rejectedCustomersPermissions,
 			'recruitersPermissions' => $recruitersPermissions,
 			'jobseekersPermissions' => $jobseekersPermissions,
 			'adminsPermissions' => $adminsPermissions,
