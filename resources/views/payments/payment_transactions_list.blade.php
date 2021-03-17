@@ -29,7 +29,8 @@
                 <div class="left_option">
                   <h6>Select Date Range</h6>
                   <input type="text" name="date_range" class="form-control">
-                  <button  class="btn btn-primary apply-filter apply">Apply</button> 
+                  <button  class="btn btn-primary apply-filter apply">Apply</button>
+                  <button class="btn btn-primary reset-button">Reset</button> 
                 </div>
                 <div class="advance_options_btn">
                   <button class="btn btn-primary export-as-csv">Export as CSV</button>
@@ -100,7 +101,7 @@
   <script>
     var table;
     function build_datatable(date_range='') {
-        $('#paymentTransactionsList').DataTable({
+        table = $('#paymentTransactionsList').DataTable({
             processing: true,
             serverSide: true,
             aaSorting: [],
@@ -129,6 +130,15 @@
             language: {
             "processing": "<div class='datatable-loader-processing'><div class='loader-img'></div></div>"
             },
+            "drawCallback": function( settings ) {
+
+                if (table.data().count() > 0) {
+                    $('.advance_options_btn').show();
+                }else{
+                    $('.advance_options_btn').hide();
+                }
+
+            }
         });
     }
     build_datatable();
@@ -144,7 +154,20 @@
 
       $('input[name="date_range"]').daterangepicker({
         "startDate": "01/01/2021",
-        "endDate": "12/31/2021"
+        "endDate": "12/31/2021",
+        "autoApply": true,
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
+      });
+
+      $('input[name="date_range"]').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      });
+
+      $('input[name="date_range"]').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
       });
       $('body').on('click','.show-advance-options',function(e){
         e.preventDefault();
@@ -219,6 +242,44 @@
                 window.URL.revokeObjectURL(url);
             }
         });
+      })
+
+       $('body').on('click','.download-invoice',function(){
+
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: '{{ route('datatable.export.bulk.invoices') }}',
+            method: 'post',
+            data: {
+                id: id
+            },
+            xhrFields: {
+                responseType: 'blob'
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                console.log(data);
+                // return false;
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = 'invoices.pdf';
+                document.body.append(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+      })
+
+      $('body').on('click','.reset-button',function(){
+        $('input[name="date_range"]').val('');
+        $('#paymentTransactionsList').DataTable().destroy();
+        build_datatable($('input[name="date_range"]').val());
+        $('.advance_options_btn').hide();
       })
   </script>
 @stop
