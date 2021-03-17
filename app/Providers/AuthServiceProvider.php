@@ -24,6 +24,20 @@ class AuthServiceProvider extends ServiceProvider {
 	public function boot() {
 		$this->registerPolicies();
 
+		Gate::define('pending_customer_all', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_customer' || 
+					$permissions[$i]->slug == 'edit_pending_customer' || 
+					$permissions[$i]->slug == 'delete_pending_customer' || 
+					$permissions[$i]->slug == 'view_pending_customer'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_customer', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
