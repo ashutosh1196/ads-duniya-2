@@ -96,7 +96,7 @@ class RolesController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function rolePermissions(Request $request) {
-		$roles = Role::where('id', '!=', 1)->get();
+		$roles = Role::all();
 		$pendingCustomersPermissions = Permission::where('module_slug', 'pending_customers')->get();
 		$whitelistedCustomersPermissions = Permission::where('module_slug', 'whitelisted_customers')->get();
 		$rejectedCustomersPermissions = Permission::where('module_slug', 'rejected_customers')->get();
