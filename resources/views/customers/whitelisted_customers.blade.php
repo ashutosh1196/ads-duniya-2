@@ -45,10 +45,16 @@
                   <td>{{ $whitelistedCustomersList[$i]->email }}</td>
                   <td>{{ $whitelistedCustomersList[$i]->contact_number ? $whitelistedCustomersList[$i]->contact_number : '' }}</td>
                   <td>
-                  <a href="whitelisted/view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <a href="whitelisted/edit/{{$whitelistedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    @can('view_whitelisted_customer')
+                      <a href="whitelisted/view/{{$whitelistedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      <a href="reject/{{$whitelistedCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                    @endcan
+                    @can('edit_whitelisted_customer')
+                      <a href="whitelisted/edit/{{$whitelistedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                    @endcan
+                    @can('delete_whitelisted_customer')
+                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $whitelistedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    @endcan
                   </td>
                 </tr>
                 <?php } ?>

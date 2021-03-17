@@ -46,9 +46,9 @@
                   <td>
                     @can('view_pending_customer')
                       <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
+                      <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
                     @endcan
-                    <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                    <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
                     @can('edit_pending_customer')
                       <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                     @endcan
