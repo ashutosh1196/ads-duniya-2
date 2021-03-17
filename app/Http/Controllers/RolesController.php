@@ -32,47 +32,13 @@ class RolesController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addRole(Request $request) {
-		$customersPermissions = Permission::where('module_slug', 'customers')->get();
-		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
-		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
-		$adminsPermissions = Permission::where('module_slug', 'admins')->get();
-		$jobsPermissions = Permission::where('module_slug', 'jobs')->get();
-		$jobHistoryPermissions = Permission::where('module_slug', 'job_history')->get();
-		$companyCreditsPermissions = Permission::where('module_slug', 'company_credits')->get();
-		$companyCreditsHistoryPermissions = Permission::where('module_slug', 'company_credits_history')->get();
-		$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
-		$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
-		$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
-		$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
-		$skillsPermissions = Permission::where('module_slug', 'skills')->get();
-		$citiesPermissions = Permission::where('module_slug', 'cities')->get();
-		$countiesPermissions = Permission::where('module_slug', 'counties')->get();
-		$restorePermissions = Permission::where('module_slug', 'restore')->get();
-		return view('roles/add_role', [
-			'customersPermissions' => $customersPermissions,
-			'recruitersPermissions' => $recruitersPermissions,
-			'jobseekersPermissions' => $jobseekersPermissions,
-			'adminsPermissions' => $adminsPermissions,
-			'jobsPermissions' => $jobsPermissions,
-			'jobHistoryPermissions' => $jobHistoryPermissions,
-			'companyCreditsPermissions' => $companyCreditsPermissions,
-			'companyCreditsHistoryPermissions' => $companyCreditsHistoryPermissions,
-			'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
-			'ticketsPermissions' => $ticketsPermissions,
-			'jobIndustriesPermissions' => $jobIndustriesPermissions,
-			'jobLocationsPermissions' => $jobLocationsPermissions,
-			'skillsPermissions' => $skillsPermissions,
-			'citiesPermissions' => $citiesPermissions,
-			'countiesPermissions' => $countiesPermissions,
-			'restorePermissions' => $restorePermissions,
-		]);
+		return view('roles/add_role');
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function saveRole(Request $request) {
-		// dd($request);
 		$nameToLowercase = strtolower($request->role_name);
 		$roleTag = $name = str_replace(' ', '_', $nameToLowercase);
 		$role = Role::where("tag", $roleTag)->get();
@@ -82,7 +48,6 @@ class RolesController extends Controller {
 			$role->tag = $roleTag;
 			$role->status = 1;
 			if($role->save()) {
-				$role->permissions()->attach($request->permissions);
 				$roles = Role::where('id', '!=', 1)->get();
 				return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Added successfully!');
 			}
@@ -101,6 +66,38 @@ class RolesController extends Controller {
 	*/
 	public function editRole($id) {
 		$role = Role::find($id);
+		return view('roles/edit_role', [
+			'role' => $role
+		]);
+	}
+
+	/**
+	 * This function is used to Update Role
+	*/
+	public function updateRole(Request $request) {
+		$updateRole = Role::where('id', $request->id)->update([
+			'name' => $request->name
+		]);
+		if($updateRole) {
+			$roles = Role::orderByDesc('id')->get();
+			return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Updated successfully!');
+		}
+
+	}
+
+	/**
+	 * This function is used to Show Saved Jobs Listing
+	*/
+	public function getRolePermissions(Request $request) {
+		$rolePermissions = \DB::table('permission_role')->where('role_id', $request->role_id)->get();
+		return json_encode($rolePermissions);
+	}
+
+	/**
+	 * This function is used to Show Saved Jobs Listing
+	*/
+	public function rolePermissions(Request $request) {
+		$roles = Role::where('id', '!=', 1)->get();
 		$customersPermissions = Permission::where('module_slug', 'customers')->get();
 		$recruitersPermissions = Permission::where('module_slug', 'recruiters')->get();
 		$jobseekersPermissions = Permission::where('module_slug', 'jobseekers')->get();
@@ -117,8 +114,8 @@ class RolesController extends Controller {
 		$citiesPermissions = Permission::where('module_slug', 'cities')->get();
 		$countiesPermissions = Permission::where('module_slug', 'counties')->get();
 		$restorePermissions = Permission::where('module_slug', 'restore')->get();
-		return view('roles/edit_role', [
-			'role' => $role,
+		return view('roles/role_permissions', [
+			'roles' => $roles,
 			'customersPermissions' => $customersPermissions,
 			'recruitersPermissions' => $recruitersPermissions,
 			'jobseekersPermissions' => $jobseekersPermissions,
@@ -139,21 +136,18 @@ class RolesController extends Controller {
 	}
 
 	/**
-	 * This function is used to Update Role
+	 * This function is used to Show Saved Jobs Listing
 	*/
-	public function updateRole(Request $request) {
-		$role = Role::find($request->id);
-		$roleUpdate = $role->update([
-			'name' => $request->name
-		]);
-		if($roleUpdate) {
-			$updatePermissions = $role->permissions()->sync($request->permissions);
-			if($updatePermissions) {
-				$roles = Role::orderByDesc('id')->get();
-				return redirect()->route('roles_list', ['roles' => $roles])->with('success', 'Role Updated successfully!');
-			}
+	public function saveRolePermissions(Request $request) {
+		$role = Role::find($request->role_id);
+		$updatePermissions = $role->permissions()->sync($request->permissions);
+		if($updatePermissions) {
+			$roles = Role::where('id', '!=', 1)->get();
+			return back()->with('success', 'Role Permissions Added successfully!');
 		}
-
+		else {
+			return redirect()->back()->with('error', 'Something went wrong!');
+		}
 	}
 
 	/**

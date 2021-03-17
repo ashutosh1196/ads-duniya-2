@@ -267,6 +267,9 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/save', [RolesController::class, 'saveRole'])->name('save_role');
       Route::get('/edit/{id}', [RolesController::class, 'editRole'])->name('edit_role');
       Route::post('/update', [RolesController::class, 'updateRole'])->name('update_role');
+      Route::post('/get_role_permissions', [RolesController::class, 'getRolePermissions'])->name('get_role_permissions');
+      Route::get('/role_permissions', [RolesController::class, 'rolePermissions'])->name('role_permissions');
+      Route::post('/save_permissions', [RolesController::class, 'saveRolePermissions'])->name('save_permissions');
       Route::post('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
       Route::post('/restore', [RolesController::class, 'restoreRole'])->name('restore_role');
     });

@@ -57,5 +57,6 @@ return [
     
     'cities'                      => 'Cities',
     'counties'                    => 'Counties',
+    'permissions'                 => 'Permissions',
 
 ];
