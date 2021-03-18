@@ -29,7 +29,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_pending_customers')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -43,31 +43,28 @@
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '' }}</td>
-                  <td>
-                    @can('view_pending_customer')
-                      <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                      <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    @endcan
-                    @can('edit_pending_customer')
-                      <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
-                    @endcan
-                    @can('delete_pending_customer')
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                    @endcan
-                  </td>
+                  @can('manage_pending_customers')
+                    <td>
+                      @can('view_pending_customer')
+                        <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('whitelist_pending_customer')
+                        <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
+                      @endcan
+                      @can('reject_pending_customer')
+                        <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                      @endcan
+                      @can('edit_pending_customer')
+                        <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_pending_customer')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.email') }}</th>
-                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

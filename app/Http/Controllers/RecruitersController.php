@@ -7,6 +7,7 @@ use App\Models\Recruiter;
 use App\Models\Organization;
 use App\Models\RecruiterSocialLogin;
 use Hash;
+use Auth;
 
 class RecruitersController extends Controller {
 
@@ -14,34 +15,44 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Recruiters Listing
 	*/
 	public function recruitersList(Request $request) {
-		$recruiter = Recruiter::orderByDesc('id')->get();
-		$customers = Organization::all();
-		$recruitersList = [];
-		for ($i=0; $i < count($recruiter); $i++) {
-			for ($j=0; $j < count($customers); $j++) {
-				if($customers[$j]->is_whitelisted == '1') {
-					if(!in_array($recruiter[$i], $recruitersList, true)) {
-						array_push($recruitersList, $recruiter[$i]);
+		if(Auth::user()->can('manage_recruiters')) {
+			$recruiter = Recruiter::orderByDesc('id')->get();
+			$customers = Organization::all();
+			$recruitersList = [];
+			for ($i=0; $i < count($recruiter); $i++) {
+				for ($j=0; $j < count($customers); $j++) {
+					if($customers[$j]->is_whitelisted == '1') {
+						if(!in_array($recruiter[$i], $recruitersList, true)) {
+							array_push($recruitersList, $recruiter[$i]);
+						}
 					}
 				}
 			}
+			return view('recruiters/recruiters_list', ['recruitersList' => $recruitersList]);
 		}
-		return view('recruiters/recruiters_list', ['recruitersList' => $recruitersList]);
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function viewRecruiter($id) {
-		$recruiter = Recruiter::where('id', $id)->get();
-		$deletedRecruiter = Recruiter::onlyTrashed()->get();
-		if($recruiter->isNotEmpty()) {
-			$organization = Organization::where('id', $recruiter[0]->organization_id)->get();
-			return view('recruiters/view_recruiter')->with(['recruiter' => $recruiter, 'organization' => $organization]);
+		if(Auth::user()->can('view_recruiter')) {
+			$recruiter = Recruiter::where('id', $id)->get();
+			$deletedRecruiter = Recruiter::onlyTrashed()->get();
+			if($recruiter->isNotEmpty()) {
+				$organization = Organization::where('id', $recruiter[0]->organization_id)->get();
+				return view('recruiters/view_recruiter')->with(['recruiter' => $recruiter, 'organization' => $organization]);
+			}
+			else {
+				$organization = Organization::where('id', $deletedRecruiter[0]->organization_id)->get();
+				return view('recruiters/view_recruiter')->with(['recruiter' => $deletedRecruiter, 'organization' => $deletedRecruiter]);
+			}
 		}
 		else {
-			$organization = Organization::where('id', $deletedRecruiter[0]->organization_id)->get();
-			return view('recruiters/view_recruiter')->with(['recruiter' => $deletedRecruiter, 'organization' => $deletedRecruiter]);
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
 	}
 
@@ -49,9 +60,14 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function editRecruiter($id) {
-		$recruiter = Recruiter::find($id);
-		$organization = Organization::find($recruiter->organization_id);
-		return view('recruiters/edit_recruiter', )->with(["recruiter" => $recruiter, "organization" => $organization]);
+		if(Auth::user()->can('edit_recruiter')) {
+			$recruiter = Recruiter::find($id);
+			$organization = Organization::find($recruiter->organization_id);
+			return view('recruiters/edit_recruiter', )->with(["recruiter" => $recruiter, "organization" => $organization]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -113,8 +129,13 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedRecruitersList() {
-		$deletedRecruiters = Recruiter::onlyTrashed()->orderByDesc('id')->get();
-		return view('recruiters/deleted_recruiters_list', ['deletedRecruiters' => $deletedRecruiters]);
+		if(Auth::user()->can('restore_recruiters')) {
+			$deletedRecruiters = Recruiter::onlyTrashed()->orderByDesc('id')->get();
+			return view('recruiters/deleted_recruiters_list', ['deletedRecruiters' => $deletedRecruiters]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -140,8 +161,13 @@ class RecruitersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addRecruiter() {
-		$companies = organization::where('is_whitelisted', 1)->where('deleted_at', NULL)->get();
-		return view('recruiters/add_recruiter', ['companies' => $companies]);
+		if(Auth::user()->can('add_recruiter')) {
+			$companies = organization::where('is_whitelisted', 1)->where('deleted_at', NULL)->get();
+			return view('recruiters/add_recruiter', ['companies' => $companies]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**

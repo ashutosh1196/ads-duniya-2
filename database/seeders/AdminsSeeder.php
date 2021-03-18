@@ -18,14 +18,26 @@ class AdminsSeeder extends Seeder
         
         \DB::table('admins')->delete();
         \DB::table('admins')->insert([
-            'name' => 'Super Admin',
-            'first_name' => 'Super',
-            'last_name' => 'Admin',
-            'email' => 'superadmin@whichvocation.com',
-            'password' => Hash::make('Sup3r@dm!n'),
-            'role_id' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            [
+                'name' => 'Super Admin',
+                'first_name' => 'Super',
+                'last_name' => 'Admin',
+                'email' => 'superadmin@whichvocation.com',
+                'password' => Hash::make('Sup3r@dm!n'),
+                'role_id' => 1,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Test Viewer',
+                'first_name' => 'Test',
+                'last_name' => 'Viewer',
+                'email' => 'test_viewer@yopmail.com',
+                'password' => Hash::make('12345678'),
+                'role_id' => 2,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
         
 
@@ -39,7 +51,7 @@ class AdminsSeeder extends Seeder
             'contact_number' => '+918968519881',
             'url' => 'https://rvtechnologies.com/',
             'domain' => 'rvtechnologies.com',
-            'is_whitelisted' => 1,
+            'is_whitelisted' => 0,
             'address' => 'C127, Ground Floor',
             'city' => 'Mohali',
             'county' => 'Phase 8 Industrial Area',
@@ -56,63 +68,65 @@ class AdminsSeeder extends Seeder
         // Recruiters
 
         \DB::table('recruiters')->delete();
-        \DB::table('recruiters')->insert([[
-            'first_name' => '',
-            'last_name' => '',
-            'email' => 'ashish_kumar@rvtechnologies.com',
-            'password' => bcrypt('12345678'),
-            'signup_via' => 'web',
-            'status' => 'active',
-            'ip_address' => '192.168.1.65',
-            'organization_id' => 1,
-            'is_parent' => 0,
-            'created_by' => 'recruiter',
-            'created_by_id' => 3,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-        ],[
-            'first_name' => 'Pawanjeet',
-            'last_name' => 'Kaur',
-            'email' => 'pawanjeet@rvtechnologies.com',
-            'password' => bcrypt('12345678'),
-            'signup_via' => 'web',
-            'status' => 'active',
-            'ip_address' => '192.168.1.65',
-            'organization_id' => 1,
-            'is_parent' => 0,
-            'created_by' => 'admin',
-            'created_by_id' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-        ],[
-            'first_name' => 'Sandeep',
-            'last_name' => 'Kumar',
-            'email' => 'sandeep@rvtechnologies.com',
-            'password' => bcrypt('12345678'),
-            'signup_via' => 'web',
-            'status' => 'active',
-            'ip_address' => '192.168.1.65',
-            'organization_id' => 1,
-            'is_parent' => 1,
-            'created_by' => 'recruiter',
-            'created_by_id' => 3,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-        ],[
-            'first_name' => '',
-            'last_name' => '',
-            'email' => 'sunil_jaswal@rvtechnologies.com',
-            'password' => bcrypt('12345678'),
-            'signup_via' => 'web',
-            'status' => 'active',
-            'ip_address' => '192.168.1.65',
-            'organization_id' => 1,
-            'is_parent' => 0,
-            'created_by' => 'admin',
-            'created_by_id' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-        ]]);
+        \DB::table('recruiters')->insert([
+            [
+                'first_name' => 'Pawanjeet',
+                'last_name' => 'Kaur',
+                'email' => 'pawanjeet@rvtechnologies.com',
+                'password' => bcrypt('12345678'),
+                'signup_via' => 'web',
+                'status' => 'active',
+                'ip_address' => '192.168.1.65',
+                'organization_id' => 1,
+                'is_parent' => 1,
+                'created_by' => 'recruiter',
+                'created_by_id' => 1,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],[
+                'first_name' => '',
+                'last_name' => '',
+                'email' => 'ashish_kumar@rvtechnologies.com',
+                'password' => bcrypt('12345678'),
+                'signup_via' => 'web',
+                'status' => 'active',
+                'ip_address' => '192.168.1.65',
+                'organization_id' => 1,
+                'is_parent' => 0,
+                'created_by' => 'recruiter',
+                'created_by_id' => 3,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],[
+                'first_name' => 'Sandeep',
+                'last_name' => 'Kumar',
+                'email' => 'sandeep@rvtechnologies.com',
+                'password' => bcrypt('12345678'),
+                'signup_via' => 'web',
+                'status' => 'active',
+                'ip_address' => '192.168.1.65',
+                'organization_id' => 1,
+                'is_parent' => 0,
+                'created_by' => 'recruiter',
+                'created_by_id' => 3,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],[
+                'first_name' => '',
+                'last_name' => '',
+                'email' => 'sunil_jaswal@rvtechnologies.com',
+                'password' => bcrypt('12345678'),
+                'signup_via' => 'web',
+                'status' => 'active',
+                'ip_address' => '192.168.1.65',
+                'organization_id' => 1,
+                'is_parent' => 0,
+                'created_by' => 'admin',
+                'created_by_id' => 1,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ]
+        ]);
         
 
         // Organization Credits

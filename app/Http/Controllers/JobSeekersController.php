@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserSocialLogin;
 use Illuminate\Support\Facades\Gate;
 use Hash;
+use Auth;
 
 class JobSeekersController extends Controller {
 	
@@ -14,7 +15,12 @@ class JobSeekersController extends Controller {
 	 * This function is used to Add Job Seeker
 	*/
 	public function addJobseeker() {
-		return view('jobseekers/add_jobseeker');
+		if(Auth::user()->can('add_jobseeker')) {
+			return view('jobseekers/add_jobseeker');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -58,21 +64,31 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function jobseekersList(Request $request) {
-		$jobseekersList = User::orderByDesc('id')->get();
-		return view('jobseekers/jobseekers_list')->with('jobseekersList', $jobseekersList);
+		if(Auth::user()->can('manage_jobseekers')) {
+			$jobseekersList = User::orderByDesc('id')->get();
+			return view('jobseekers/jobseekers_list')->with('jobseekersList', $jobseekersList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function viewJobseeker($id) {
-		$jobseeker = User::where('id', $id)->get();
-		$deletedJobseekers = User::onlyTrashed()->get();
-		if($jobseeker->isNotEmpty()) {
-			return view('jobseekers/view_jobseeker')->with('jobseeker', $jobseeker);
+		if(Auth::user()->can('view_jobseeker')) {
+			$jobseeker = User::where('id', $id)->get();
+			$deletedJobseekers = User::onlyTrashed()->get();
+			if($jobseeker->isNotEmpty()) {
+				return view('jobseekers/view_jobseeker')->with('jobseeker', $jobseeker);
+			}
+			else {
+				return view('jobseekers/view_jobseeker')->with('jobseeker', $deletedJobseekers);
+			}
 		}
 		else {
-			return view('jobseekers/view_jobseeker')->with('jobseeker', $deletedJobseekers);
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
 	}
 
@@ -80,8 +96,13 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function editJobseeker($id) {
-		$jobseeker = User::where('id', $id)->get();
-		return view('jobseekers/edit_jobseeker')->with("jobseeker", $jobseeker);
+		if(Auth::user()->can('edit_jobseeker')) {
+			$jobseeker = User::where('id', $id)->get();
+			return view('jobseekers/edit_jobseeker')->with("jobseeker", $jobseeker);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -156,8 +177,13 @@ class JobSeekersController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedJobseekersList() {
-		$deletedJobseekers = User::onlyTrashed()->orderByDesc('id')->get();
-		return view('jobseekers/deleted_jobseekers_list', ['deletedJobseekers' => $deletedJobseekers]);
+		if(Auth::user()->can('restore_jobseekers')) {
+			$deletedJobseekers = User::onlyTrashed()->orderByDesc('id')->get();
+			return view('jobseekers/deleted_jobseekers_list', ['deletedJobseekers' => $deletedJobseekers]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**

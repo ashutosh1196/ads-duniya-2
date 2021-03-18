@@ -7,6 +7,7 @@ use App\Models\PaymentTransaction;
 use App\Models\PaymentLog;
 use App\Models\Organization;
 use App\Models\Recruiter;
+use Auth;
 
 class PaymentsController extends Controller {
 
@@ -14,21 +15,31 @@ class PaymentsController extends Controller {
 	 * This function is used to Show Payments Transactions
 	*/
 	public function paymentTransactionsList(Request $request) {
-		$paymentTransactionsList = PaymentLog::orderByDesc('id')->get();
-		return view('payments/payment_transactions_list', [ 'paymentTransactionsList' => $paymentTransactionsList ]);
+		if(Auth::user()->can('view_payment_transaction')) {
+			$paymentTransactionsList = PaymentLog::orderByDesc('id')->get();
+			return view('payments/payment_transactions_list', [ 'paymentTransactionsList' => $paymentTransactionsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to View Payment Transaction
 	*/
 	public function viewPaymentTransaction($id) {
-		$paymentTransaction = PaymentLog::find($id);
-		$organization = Organization::find($paymentTransaction->organization_id);
-		$recruiter = Recruiter::find($paymentTransaction->recruiter_id);
-		return view('payments/view_payment_transaction', [
-			'paymentTransaction' => $paymentTransaction,
-			'organization' => $organization,
-			'recruiter' => $recruiter,
+		if(Auth::user()->can('view_payment_transaction')) {
+			$paymentTransaction = PaymentLog::find($id);
+			$organization = Organization::find($paymentTransaction->organization_id);
+			$recruiter = Recruiter::find($paymentTransaction->recruiter_id);
+			return view('payments/view_payment_transaction', [
+				'paymentTransaction' => $paymentTransaction,
+				'organization' => $organization,
+				'recruiter' => $recruiter,
 			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 }

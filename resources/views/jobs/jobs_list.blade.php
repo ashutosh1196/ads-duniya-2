@@ -31,7 +31,7 @@
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.created_by') }}</th>
                   <th>{{ __('adminlte::adminlte.expired_on') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_job')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -53,26 +53,22 @@
                     @endif
                   </td>
                   <td>{{ $jobsList[$i]->expiring_at ? date('d/m/y', strtotime($jobsList[$i]->expiring_at)) : '' }}</td>
-                  <td>
-                    <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_job')
+                    <td>
+                      @can('view_job')
+                        <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('edit_job')
+                        <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_job')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.created_by') }}</th>
-                  <th>{{ __('adminlte::adminlte.expired_on') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

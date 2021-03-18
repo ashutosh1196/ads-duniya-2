@@ -14,14 +14,13 @@
             <h3>{{ __('adminlte::adminlte.roles') }}</h3>
           </div>
           <div class="card-body">
-            <a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>
+            @can('add_role')<a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>@endcan
             <table style="width:100%" id="roles-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <!-- <th>{{ __('adminlte::adminlte.permissions') }}</th> -->
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_roles')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -29,16 +28,19 @@
                   <tr>
                     <th class="display-none"></th>
                     <td>{{ $roles[$i]->name }}</td>
-                    <!-- <td>
-                      @foreach($roles[$i]->permissions as $permissions)
-                        {{ $permissions->name }}
-                      @endforeach
-                    </td> -->
-                    <td>
-                      <a href="{{ route('view_role', ['id' => $roles[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>
-                      <a title="Edit" href="{{ route('edit_role', ['id' => $roles[$i]->id]) }}"><i class="text-warning fa fa-edit"></i></a>
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $roles[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                    </td>
+                    @can('manage_roles')
+                      <td>
+                        @can('view_role')
+                          <a href="{{ route('view_role', ['id' => $roles[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>
+                        @endcan
+                        @can('edit_role')
+                          <a title="Edit" href="{{ route('edit_role', ['id' => $roles[$i]->id]) }}"><i class="text-warning fa fa-edit"></i></a>
+                        @endcan
+                        @can('delete_role')
+                          <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $roles[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                        @endcan
+                      </td>
+                      @endcan
                   </tr>
                 <?php } ?>
               </tbody>
@@ -70,9 +72,6 @@
 
       $('.delete-button').click(function(e) {
         var id = $(this).attr('data-id');
-        // var obj = $(this);
-        // console.log("ID - ", id);
-        // console.log("obj - ", obj);
         swal({
           title: "Are you sure?",
           text: "Are you sure you want to move this Role to the Recycle Bin?",
@@ -92,8 +91,6 @@
               },
               success: function(response) {
                 window.location.reload();
-                /* console.log("response", response);
-                obj.parent().parent().remove(); */
               }
             });
           } 

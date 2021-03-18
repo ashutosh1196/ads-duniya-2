@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.company_credits') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_company_credit') }}">{{ __('adminlte::adminlte.add_company_credit') }}</a>
+            @can('add_company_credit')<a class="btn btn-sm btn-success" href="{{ route('add_company_credit') }}">{{ __('adminlte::adminlte.add_company_credit') }}</a>@endcan
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -26,7 +26,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_credits')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -40,20 +40,16 @@
                     {{ $company->name }}
                   </td>
                   <td>{{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
-                  <td>
-                    <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
-                  </td>
+                  @can('manage_credits')
+                    <td>
+                    @can('view_company_credit')
+                      <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>
+                    @endcan
+                    </td>
+                  @endcan
                 </tr>
                 @endfor
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.credits_available') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

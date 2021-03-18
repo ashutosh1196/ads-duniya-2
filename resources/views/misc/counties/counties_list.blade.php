@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Counties</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_county') }}">{{ __('adminlte::adminlte.add_new_county') }}</a>
+            @can('add_county')<a class="btn btn-sm btn-success" href="{{ route('add_county') }}">{{ __('adminlte::adminlte.add_new_county') }}</a>@endcan
           </div>            
           <div class="card-body">
             @if (session('status'))
@@ -26,7 +26,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.country') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_counties')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -35,11 +35,19 @@
                     <th class="display-none"></th>
                     <td>{{ $countiesList[$i]->county }}</td>
                     <td>{{ $countiesList[$i]->country }}</td>
-                    <td>
-                      <a class="action-button" title="View" href="view/{{$countiesList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      <a class="action-button" title="Edit" href="edit/{{$countiesList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $countiesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                    </td>
+                    @can('manage_counties')
+                      <td>
+                        @can('view_county')
+                          <a class="action-button" title="View" href="view/{{$countiesList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                        @endcan
+                        @can('edit_county')
+                          <a class="action-button" title="Edit" href="edit/{{$countiesList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                        @endcan
+                        @can('delete_county')
+                          <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $countiesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                        @endcan
+                      </td>
+                    @endcan
                   </tr>
                 @endfor
               </tbody>

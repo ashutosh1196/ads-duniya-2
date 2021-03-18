@@ -15,24 +15,34 @@ use Mail;
 class TicketsController extends Controller {
 	
 	public function ticketsList() {
-		$ticketsList = Ticket::orderByDesc('id')->get();
-		return view('tickets/tickets_list', [ 'ticketsList' => $ticketsList ]);
+		if(Auth::user()->can('manage_tickets')) {
+			$ticketsList = Ticket::orderByDesc('id')->get();
+			return view('tickets/tickets_list', [ 'ticketsList' => $ticketsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function viewTicket($id) {
-		$ticket = Ticket::find($id);
-		$ticketId = $ticket->id;
-		$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
-		$superAdmin = Admin::where('role_id', 1)->get();
-		$recruiter = Recruiter::find($ticket->recruiter_id);
-		$organization = Organization::find($recruiter->organization_id);
-		return view('tickets/view_ticket', [
-			'ticket' => $ticket,
-			'ticketMessages' => $ticketMessages,
-			'superAdmin' => $superAdmin,
-			'recruiter' => $recruiter,
-			'organizationLogo' => $organization->logo
-		]);
+		if(Auth::user()->can('view_ticket')) {
+			$ticket = Ticket::find($id);
+			$ticketId = $ticket->id;
+			$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
+			$superAdmin = Admin::where('role_id', 1)->get();
+			$recruiter = Recruiter::find($ticket->recruiter_id);
+			$organization = Organization::find($recruiter->organization_id);
+			return view('tickets/view_ticket', [
+				'ticket' => $ticket,
+				'ticketMessages' => $ticketMessages,
+				'superAdmin' => $superAdmin,
+				'recruiter' => $recruiter,
+				'organizationLogo' => $organization->logo
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function replyOnTicket(Request $request) {

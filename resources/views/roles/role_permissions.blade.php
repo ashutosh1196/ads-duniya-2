@@ -305,6 +305,39 @@
                   </div>
 
                   <div class="title">
+                    <h5>Access Control</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p><strong class="list-text">Roles</strong></p>
+                        <input type="checkbox" id="roles_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                        <strong class="list-text">Select All</strong>
+                        <p id="checkBoxes">
+                          @foreach($rolesPermissions as $permission)
+                            <input type="checkbox" class="checkBoxClass rolescheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
+                          @endforeach
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p><strong class="list-text">Permissions</strong></p>
+                        <input type="checkbox" id="access_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                        <strong class="list-text">Select All</strong>
+                        <p id="checkBoxes">
+                          @foreach($accessPermissions as $permission)
+                            <input type="checkbox" class="checkBoxClass accesscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
+                          @endforeach
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+                  <div class="title">
                     <h5>Recycle Bin</h5>
                     <hr/>
                   </div>
@@ -467,6 +500,12 @@
       $("#counties_permissions").click(function() {
         $(".countiescheckBox").prop('checked', this.checked)
       })
+      $("#roles_permissions").click(function() {
+        $(".rolescheckBox").prop('checked', this.checked)
+      })
+      $("#access_permissions").click(function() {
+        $(".accesscheckBox").prop('checked', this.checked)
+      })
       $("#restore_permissions").click(function() {
         $(".restorecheckBox").prop('checked', this.checked)
       })
@@ -579,6 +618,18 @@
       }
       else {
         $("#counties_permissions").prop('checked', false);
+      }
+      if($('.rolescheckBox:checked').length == $('.rolescheckBox').length) {
+        $("#roles_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#roles_permissions").prop('checked', false);
+      }
+      if($('.accesscheckBox:checked').length == $('.accesscheckBox').length) {
+        $("#access_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#access_permissions").prop('checked', false);
       }
       if($('.restorecheckBox:checked').length == $('.restorecheckBox').length) {
         $("#restore_permissions").prop('checked', 'true');

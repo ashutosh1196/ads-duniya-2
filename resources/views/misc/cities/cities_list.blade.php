@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Cities</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_city') }}">{{ __('adminlte::adminlte.add_new_city') }}</a>
+            @can('add_city')<a class="btn btn-sm btn-success" href="{{ route('add_city') }}">{{ __('adminlte::adminlte.add_new_city') }}</a>@endcan
           </div>            
           <div class="card-body">
             @if (session('status'))
@@ -25,7 +25,7 @@
                 <tr>
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_cities')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -37,11 +37,19 @@
                 <tr>
                   <th class="display-none"></th>
                   <td>{{ $citiesList[$i]->city }}</td>
-                  <td>
-                    <a class="action-button" title="View" href="{{ route('view_city', ['id' => $citiesList[$i]->id]) }}"><i class="text-info fa fa-eye"></i></a>
-                    <a class="action-button" title="Edit" href="{{ route('edit_city', ['id' => $citiesList[$i]->id]) }}"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $citiesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_cities')
+                    <td>
+                      @can('view_city')
+                        <a class="action-button" title="View" href="{{ route('view_city', ['id' => $citiesList[$i]->id]) }}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('edit_city')
+                        <a class="action-button" title="Edit" href="{{ route('edit_city', ['id' => $citiesList[$i]->id]) }}"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_city')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $citiesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>

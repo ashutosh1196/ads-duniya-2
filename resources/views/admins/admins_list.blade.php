@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.admins') }}</h3>
-            <a class="btn btn-sm btn-success" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>
+            @can('add_admin')<a class="btn btn-sm btn-success" href="add">{{ __('adminlte::adminlte.add_new_admin') }}</a>@endcan
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.role') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_admins')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -39,11 +39,19 @@
                     <td>{{ $adminsList[$i]->name }}</td>
                     <td>{{ $adminsList[$i]->email }}</td>
                     <td>{{ $role[0]->name }}</td>
-                    <td>
-                      <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      <a class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $adminsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                    </td>
+                    @can('manage_admins')
+                      <td>
+                        @can('view_admin')
+                          <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                        @endcan
+                        @can('edit_admin')
+                          <a class="action-button" title="Edit" href="edit/{{$adminsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                        @endcan
+                        @can('delete_admin')
+                          <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $adminsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                        @endcan
+                      </td>
+                    @endcan
                   </tr>
                 <?php } ?>
               </tbody>

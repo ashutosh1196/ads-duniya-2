@@ -30,7 +30,7 @@
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.created_at') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_tickets')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -46,29 +46,25 @@
                   <td>{{ $organisation->name }}</td>
                   <td>{{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}</td>
                   <td>{{ $ticketsList[$i]->created_at ? date('d/m/y', strtotime($ticketsList[$i]->created_at)) : '' }}</td>
-                  <td>
-                    <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-reply"></i></a>
-                    <?php if($ticketsList[$i]->status == 'open') { ?>
-                    <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
-                    <?php } else { ?>
-                    <a class="action-button open-ticket-button" title="Open" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-danger fas fa-door-open"></i></a>
-                    <?php } ?>
-                  </td>
+                  @can('manage_tickets')
+                    <td>
+                      @can('view_ticket')
+                        <a href="view/{{$ticketsList[$i]->id}}" title="Reply"><i class="text-info fa fa-reply"></i></a>
+                      @endcan
+                      <?php if($ticketsList[$i]->status == 'open') { ?>
+                      @can('open_ticket')
+                        <a class="action-button close-ticket-button" title="Close" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-success fas fa-door-closed"></i></a>
+                      @endcan
+                      <?php } else { ?>
+                      @can('close_ticket')
+                        <a class="action-button open-ticket-button" title="Open" href="javascript:void(0)" data-id="{{ $ticketsList[$i]->id}}"><i class="text-danger fas fa-door-open"></i></a>
+                      @endcan
+                      <?php } ?>
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.ticket_id') }}</th>
-                  <th>{{ __('adminlte::adminlte.subject') }}</th>
-                  <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.recruiter') }}</th>
-                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>
