@@ -45,6 +45,11 @@
         .country.highlight { display: none; }
         .country { display: none; }
         .country.preferred { display: block; }
+        .permissions-section {
+            background-color: #efefef;
+            border-radius: 5px;
+            padding: 20px;
+        }
     </style>
 @stop
 

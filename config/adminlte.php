@@ -281,6 +281,7 @@ return [
                     'icon' => 'fas fa-fw fa-exclamation-circle',
                     'url'  => 'admin_panel/customers/pending',
                     'active' => ['admin_panel/customers/pending*', 'admin_panel/customers/add*'],
+                    'can' => ['pending_customer_all']
                 ],
                 [
                     'text' => 'Whitelisted',

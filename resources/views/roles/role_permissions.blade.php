@@ -52,19 +52,57 @@
                     <div class="error">{{ $errors->first('permissions') }}</div>
                   @endif
                   <input type="checkbox" id="full_access" style="height: 15px;width: 50px;" class=""><strong>FULL ACCESS</strong><br><br>
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Customers Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Customers</strong></p>
-                        <input type="checkbox" id="customer_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                        <p><strong class="list-text">Pending Customers</strong></p>
+                        <input type="checkbox" id="pending_customer_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
-                          @foreach($customersPermissions as $permission)
-                            <input type="checkbox" class="checkBoxClass customerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
+                          @foreach($pendingCustomersPermissions as $permission)
+                            <input type="checkbox" class="checkBoxClass pendingCustomerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
                           @endforeach
                         </p>
                       </div>
                     </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p><strong class="list-text">Whitelisted Customers</strong></p>
+                        <input type="checkbox" id="whitelisted_customer_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                        <strong class="list-text">Select All</strong>
+                        <p id="checkBoxes">
+                          @foreach($whitelistedCustomersPermissions as $permission)
+                            <input type="checkbox" class="checkBoxClass whitelistedCustomerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
+                          @endforeach
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p><strong class="list-text">Rejected Customers</strong></p>
+                        <input type="checkbox" id="rejected_customer_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                        <strong class="list-text">Select All</strong>
+                        <p id="checkBoxes">
+                          @foreach($rejectedCustomersPermissions as $permission)
+                            <input type="checkbox" class="checkBoxClass rejectedCustomerscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}" style="height: 15px;width: 50px;"><span class="list-text">{{ $permission->name }}</span><br/>
+                          @endforeach
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Users Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Recruiters</strong></p>
@@ -89,9 +127,6 @@
                         </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="row">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Admins</strong></p>
@@ -104,6 +139,14 @@
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Jobs Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Jobs</strong></p>
@@ -129,8 +172,13 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Credits Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Company Credits</strong></p>
@@ -145,7 +193,7 @@
                     </div>
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Company Credits History</strong></p>
+                        <p><strong class="list-text">Credits History</strong></p>
                         <input type="checkbox" id="credits_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
@@ -168,11 +216,15 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Tickets Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Tickets Credits</strong></p>
                         <input type="checkbox" id="tickets_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
@@ -182,6 +234,14 @@
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Misc Data Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Job Industries</strong></p>
@@ -206,9 +266,6 @@
                         </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="row">
                     <div class="col-4">
                       <div class="form-group">
                         <p><strong class="list-text">Skills</strong></p>
@@ -244,13 +301,17 @@
                           @endforeach
                         </p>
                       </div>
-                    </div>
+                    </div>  
                   </div>
-                  
-                  <div class="row">
+
+                  <div class="title">
+                    <h5>Recycle Bin</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
                     <div class="col-4">
                       <div class="form-group">
-                        <p><strong class="list-text">Restore Data</strong></p>
                         <input type="checkbox" id="restore_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
                         <strong class="list-text">Select All</strong>
                         <p id="checkBoxes">
@@ -355,8 +416,14 @@
       $("#full_access").click(function() {
         $("input[type=checkbox]").prop('checked', this.checked)
       })
-      $("#customer_permissions").click(function() {
-        $(".customerscheckBox").prop('checked', this.checked)
+      $("#pending_customer_permissions").click(function() {
+        $(".pendingCustomerscheckBox").prop('checked', this.checked)
+      })
+      $("#whitelisted_customer_permissions").click(function() {
+        $(".whitelistedCustomerscheckBox").prop('checked', this.checked)
+      })
+      $("#rejected_customer_permissions").click(function() {
+        $(".rejectedCustomerscheckBox").prop('checked', this.checked)
       })
       $("#recruiter_permissions").click(function() {
         $(".recruiterscheckBox").prop('checked', this.checked)
@@ -411,11 +478,23 @@
         $("#full_access").prop('checked', false);
       }
 
-      if($('.customerscheckBox:checked').length == $('.customerscheckBox').length) {
-        $("#customer_permissions").prop('checked', 'true');
+      if($('.pendingCustomerscheckBox:checked').length == $('.pendingCustomerscheckBox').length) {
+        $("#pending_customer_permissions").prop('checked', 'true');
       }
       else {
-        $("#customer_permissions").prop('checked', false);
+        $("#pending_customer_permissions").prop('checked', false);
+      }
+      if($('.whitelistedCustomerscheckBox:checked').length == $('.whitelistedCustomerscheckBox').length) {
+        $("#whitelisted_customer_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#whitelisted_customer_permissions").prop('checked', false);
+      }
+      if($('.rejectedCustomerscheckBox:checked').length == $('.rejectedCustomerscheckBox').length) {
+        $("#rejected_customer_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#rejected_customer_permissions").prop('checked', false);
       }
       if($('.recruiterscheckBox:checked').length == $('.recruiterscheckBox').length) {
         $("#recruiter_permissions").prop('checked', 'true');

@@ -21,4 +21,11 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+	/**
+	 * Get the admins for the role.
+	*/
+	public function role() {
+		return $this->belongsTo(Role::class);
+	}
 }

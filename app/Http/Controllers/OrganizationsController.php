@@ -10,6 +10,7 @@ use App\Models\Admin;
 use App\Notifications\VerifyUser;
 use Mail;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\Gate;
 
 class OrganizationsController extends Controller {
@@ -45,14 +46,19 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Add Job Seeker View
 	*/
 	public function addCustomer() {
-		$countries = Country::all()->toArray();
-		$cities = \DB::table('cities')->get();
-		$counties = \DB::table('counties')->get();
-		return view('customers/add_customer', [
-			'countries' => $countries,
-			'cities' => $cities,
-			'counties' => $counties,
-		]);
+		if(Auth::user()->can('add_customer')) {
+			$countries = Country::all()->toArray();
+			$cities = \DB::table('cities')->get();
+			$counties = \DB::table('counties')->get();
+			return view('customers/add_customer', [
+				'countries' => $countries,
+				'cities' => $cities,
+				'counties' => $counties,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**

@@ -12,7 +12,9 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.pending_customers') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_customer') }}">{{ __('adminlte::adminlte.add_new_customer') }}</a>
+            @can('add_customer')
+              <a class="btn btn-sm btn-success" href="{{ route('add_customer') }}">{{ __('adminlte::adminlte.add_new_customer') }}</a>
+            @endcan
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -24,7 +26,6 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
-                  <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -39,16 +40,21 @@
                   ?>
                 <tr>
                   <th class="display-none"></th>
-                  <!-- <td><img src="{{ $logo }}" alt="{{ $pendingCustomersList[$i]->name }}"></td> -->
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '' }}</td>
                   <td>
-                    <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                    <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
-                    <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    @can('view_pending_customer')
+                      <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      <a href="whitelist/{{$pendingCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
+                      <a href="reject/{{$pendingCustomersList[$i]->id}}" title="Reject"><i class="text-danger fa fa-times-circle"></i></a>
+                    @endcan
+                    @can('edit_pending_customer')
+                      <a href="pending/edit/{{$pendingCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                    @endcan
+                    @can('delete_pending_customer')
+                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $pendingCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    @endcan
                   </td>
                 </tr>
                 <?php } ?>
@@ -56,7 +62,6 @@
               <tfoot>
                 <tr>
                   <th class="display-none"></th>
-                  <!-- <th>Logo</th> -->
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>

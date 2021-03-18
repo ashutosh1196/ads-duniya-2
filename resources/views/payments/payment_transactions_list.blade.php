@@ -23,20 +23,25 @@
             @endif
             <div class="text-right mb-3">
               <div class="advance-options" style="display: none;">
-                <div class="title">
-                  <h5><i class="fa fa-filter mr-1"></i>Apply Search Filter</h5>
-                </div>
-                <div class="left_option">
-                  <h6>Select Date Range</h6>
-                  <input type="text" name="date_range" class="form-control">
-                  <button  class="btn btn-primary apply-filter apply">Apply</button>
-                  <button class="btn btn-primary reset-button">Reset</button> 
-                </div>
-                <div class="advance_options_btn">
-                  <button class="btn btn-primary export-as-csv">Export as CSV</button>
-                  <button  class="btn btn-primary export-bulk-invoices">Download bulk invoices</button>           
-                </div>
-
+                 <div class="title">
+                   <h5><i class="fa fa-filter mr-1"></i>Apply Search Filter</h5>
+                 </div>                      
+                 <div class="left_option">
+                   <div class="left_inner">
+                     <h6>Select Date Range</h6><i class="fas fa-calendar-alt mr-2"></i></i>
+                     <div class="button_input_wrap">
+                       <input type="text" name="date_range" class="form-control" autocomplete="off">
+                       <div class="apply_reset_btn">
+                         <button  class="btn btn-primary apply apply-filter mr-1"><i class="fas fa-paper-plane mr-2"></i>Apply</button>
+                         <button class="btn btn-primary reset-button"><i class="fas fa-sync-alt mr-2"></i>Reset</button>                          
+                       </div>                              
+                     </div>                                                    
+                   </div>
+                  <div class="advance_options_btn" style="display: none;">
+                   <button class="btn btn-primary export-as-csv"><i class="fas fa-share mr-2"></i>Export as CSV</button>
+                   <button  class="btn btn-primary export-bulk-invoices"><i class="fas fa-download mr-2"></i>Download bulk invoices</button>                                            
+                 </div>                         
+                 </div>
               </div>
             </div>
             <table style="width:100%" id="paymentTransactionsList" class="table table-bordered table-hover">
