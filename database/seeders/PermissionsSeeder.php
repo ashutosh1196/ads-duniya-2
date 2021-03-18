@@ -640,7 +640,6 @@ class PermissionsSeeder extends Seeder {
 
 		/* \DB::table('permission_role')->delete();
 		$allPermissions = \DB::table('permissions')->all();
-		// $dataToAdd = [];
 		for ($i=0; $i < count($allPermissions); $i++) { 
 			$permission = $allPermissions[$i];
 			\DB::table('permission_role')->insert([
