@@ -34,17 +34,14 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'view_pending_customer' ||
 					 $permissions[$i]->slug == 'whitelist_pending_customer' ||
 					 $permissions[$i]->slug == 'reject_pending_customer' ||
-					 $permissions[$i]->slug == 'add_customer' || 
-					 $permissions[$i]->slug == 'edit_pending_customer' || 
-					 $permissions[$i]->slug == 'delete_pending_customer' || 
-					 $permissions[$i]->slug == 'view_pending_customer' ||
-					 $permissions[$i]->slug == 'whitelist_pending_customer' ||
-					 $permissions[$i]->slug == 'reject_pending_customer' ||
 					 $permissions[$i]->slug == 'edit_whitelisted_customer' || 
 					 $permissions[$i]->slug == 'delete_whitelisted_customer' || 
 					 $permissions[$i]->slug == 'view_whitelisted_customer' ||
-					 $permissions[$i]->slug == 'whitelist_whitelisted_customer' ||
-					 $permissions[$i]->slug == 'reject_whitelisted_customer'
+					 $permissions[$i]->slug == 'reject_whitelisted_customer' ||
+					 $permissions[$i]->slug == 'edit_rejected_customer' || 
+					 $permissions[$i]->slug == 'delete_rejected_customer' || 
+					 $permissions[$i]->slug == 'view_rejected_customer' ||
+					 $permissions[$i]->slug == 'whitelist_rejected_customer'
 				) {
 					return true;
 				}
@@ -89,8 +86,7 @@ class AuthServiceProvider extends ServiceProvider {
 				if($permissions[$i]->slug == 'edit_rejected_customer' || 
 					$permissions[$i]->slug == 'delete_rejected_customer' || 
 					$permissions[$i]->slug == 'view_rejected_customer' ||
-					$permissions[$i]->slug == 'whitelist_rejected_customer' ||
-					$permissions[$i]->slug == 'reject_rejected_customer'
+					$permissions[$i]->slug == 'whitelist_rejected_customer'
 				) {
 					return true;
 				}
