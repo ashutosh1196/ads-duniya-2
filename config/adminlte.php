@@ -395,7 +395,7 @@ return [
         ],
         [
             'text' => 'misc_data_management',
-            'icon' => 'fas fa-fw fa-cogs',
+            'icon' => 'fas fa-fw fa-info-circle',
             'url'  => '#',
             'can' => ['manage_misc_data'],
             'submenu' => [
