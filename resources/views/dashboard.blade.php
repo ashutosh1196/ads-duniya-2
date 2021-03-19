@@ -13,7 +13,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-          @can('manage_customers')
+          @can('manage_whitelisted_customers')
             <div class="col-md-3 col-lg-3 col-xl-3 col-12">
               <div class="small-box customer">
                 <div class="inner">
