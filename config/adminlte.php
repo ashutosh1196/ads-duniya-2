@@ -451,14 +451,14 @@ return [
             'submenu' => [
                 [
                     'text' => 'roles',
-                    'icon'    => 'fas fa-fw fa-user',
+                    'icon'    => 'fas fa-fw fa-users',
                     'url'  => 'admin_panel/roles/list',
                     'active' => ['admin_panel/roles/list*', 'admin_panel/roles/add*', 'admin_panel/roles/edit*', 'admin_panel/roles/view*'],
                     'can' => 'manage_roles',
                 ],
                 [
                     'text' => 'permissions',
-                    'icon'    => 'fas fa-users',
+                    'icon'    => 'fas fa-key',
                     'url'  => 'admin_panel/roles/role_permissions',
                     'active' => ['admin_panel/roles/role_permissions*'],
                     'can' => 'add_permissions',
@@ -540,7 +540,7 @@ return [
                 ],
                 [
                     'text' => 'roles',
-                    'icon' => 'fas fa-user',
+                    'icon' => 'fas fa-users',
                     'url'  => 'admin_panel/recycle_bin/roles/deleted',
                     'can' => 'restore_roles',
                 ],
