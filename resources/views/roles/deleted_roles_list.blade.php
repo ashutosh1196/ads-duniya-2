@@ -14,7 +14,6 @@
             <h3>{{ __('adminlte::adminlte.roles') }}</h3>
           </div>
           <div class="card-body">
-            <a class="btn btn-sm btn-success float-right clear" href="add">Create New Role</a>
             <table style="width:100%" id="roles-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
