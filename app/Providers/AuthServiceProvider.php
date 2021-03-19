@@ -1007,7 +1007,8 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'restore_job_locations' ||
 					 $permissions[$i]->slug == 'restore_skills' ||
 					 $permissions[$i]->slug == 'restore_cities' ||
-					 $permissions[$i]->slug == 'restore_counties'
+					 $permissions[$i]->slug == 'restore_counties' ||
+					 $permissions[$i]->slug == 'restore_roles'
 					) {
 					return true;
 				}
