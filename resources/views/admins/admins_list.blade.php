@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.role') }}</th>
-                  @can('manage_admins')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_admins_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -39,7 +39,7 @@
                     <td>{{ $adminsList[$i]->name }}</td>
                     <td>{{ $adminsList[$i]->email }}</td>
                     <td>{{ $role[0]->name }}</td>
-                    @can('manage_admins')
+                    @can('manage_admins_actions')
                       <td>
                         @can('view_admin')
                           <a class="action-button" title="View" href="view/{{$adminsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

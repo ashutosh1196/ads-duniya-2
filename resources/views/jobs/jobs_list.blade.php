@@ -31,7 +31,7 @@
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.created_by') }}</th>
                   <th>{{ __('adminlte::adminlte.expired_on') }}</th>
-                  @can('manage_job')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_jobs_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -53,7 +53,7 @@
                     @endif
                   </td>
                   <td>{{ $jobsList[$i]->expiring_at ? date('d/m/y', strtotime($jobsList[$i]->expiring_at)) : '' }}</td>
-                  @can('manage_job')
+                  @can('manage_jobs_actions')
                     <td>
                       @can('view_job')
                         <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

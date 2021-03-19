@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
-                  @can('manage_skills')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_skills_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -41,7 +41,7 @@
                   <td>{{ $skillsList[$i]->name }}</td>
                   <td>{{ $skillsList[$i]->slug }}</td>
                   <td>{{ $skillsList[$i]->status ? 'Active' : 'Inactive' }}</td>
-                  @can('manage_skills')
+                  @can('manage_skills_actions')
                     <td>
                       @can('view_skill')
                         <a class="action-button" title="View" href="view/{{$skillsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

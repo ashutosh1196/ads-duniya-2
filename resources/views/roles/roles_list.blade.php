@@ -20,7 +20,7 @@
                 <tr>
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
-                  @can('manage_roles')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_roles_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -28,7 +28,7 @@
                   <tr>
                     <th class="display-none"></th>
                     <td>{{ $roles[$i]->name }}</td>
-                    @can('manage_roles')
+                    @can('manage_roles_actions')
                       <td>
                         @can('view_role')
                           <a href="{{ route('view_role', ['id' => $roles[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>

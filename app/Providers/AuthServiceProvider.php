@@ -47,6 +47,21 @@ class AuthServiceProvider extends ServiceProvider {
 				}
 			}
 		});
+
+		Gate::define('manage_pending_customers_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_pending_customer' || 
+					 $permissions[$i]->slug == 'delete_pending_customer' || 
+					 $permissions[$i]->slug == 'view_pending_customer' ||
+					 $permissions[$i]->slug == 'whitelist_pending_customer' ||
+					 $permissions[$i]->slug == 'reject_pending_customer'
+				) {
+					return true;
+				}
+			}
+		});
 		
 		Gate::define('manage_pending_customers', function ($user) {
 			$user = Auth::user();
@@ -269,6 +284,19 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_jobseekers_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_jobseeker' || 
+					 $permissions[$i]->slug == 'delete_jobseeker' || 
+					 $permissions[$i]->slug == 'view_jobseeker'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_jobseeker', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -316,6 +344,19 @@ class AuthServiceProvider extends ServiceProvider {
 				if($permissions[$i]->slug == 'add_recruiter' ||
 					 $permissions[$i]->slug == 'edit_recruiter' ||
 					 $permissions[$i]->slug == 'delete_recruiter' ||
+					 $permissions[$i]->slug == 'view_recruiter'
+				) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('manage_recruiters_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_recruiter' || 
+					 $permissions[$i]->slug == 'delete_recruiter' || 
 					 $permissions[$i]->slug == 'view_recruiter'
 				) {
 					return true;
@@ -377,6 +418,19 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_admins_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_admin' || 
+					 $permissions[$i]->slug == 'delete_admin' || 
+					 $permissions[$i]->slug == 'view_admin'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_admin', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -427,6 +481,19 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'view_job' ||
 					 $permissions[$i]->slug == 'view_job_history'
 				  ) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('manage_jobs_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_job' || 
+					 $permissions[$i]->slug == 'delete_job' || 
+					 $permissions[$i]->slug == 'view_job'
+				) {
 					return true;
 				}
 			}
@@ -659,6 +726,19 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_job_industry_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_job_industry' || 
+					 $permissions[$i]->slug == 'delete_job_industry' || 
+					 $permissions[$i]->slug == 'view_job_industry'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_job_industry', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -708,6 +788,19 @@ class AuthServiceProvider extends ServiceProvider {
 				$permissions[$i]->slug == 'delete_job_location' ||
 				$permissions[$i]->slug == 'view_job_location'
 					) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('manage_job_location_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_job_location' || 
+					 $permissions[$i]->slug == 'delete_job_location' || 
+					 $permissions[$i]->slug == 'view_job_location'
+				) {
 					return true;
 				}
 			}
@@ -767,6 +860,19 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_skills_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_skill' || 
+					 $permissions[$i]->slug == 'delete_skill' || 
+					 $permissions[$i]->slug == 'view_skill'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_skill', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -821,6 +927,19 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_cities_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_city' || 
+					 $permissions[$i]->slug == 'delete_city' || 
+					 $permissions[$i]->slug == 'view_city'
+				) {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('add_city', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -870,6 +989,19 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'delete_county' ||
 					 $permissions[$i]->slug == 'view_county'
 					) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('manage_counties_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_county' || 
+					 $permissions[$i]->slug == 'delete_county' || 
+					 $permissions[$i]->slug == 'view_county'
+				) {
 					return true;
 				}
 			}
@@ -939,6 +1071,19 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'view_role' ||
 					 $permissions[$i]->slug == 'delete_role'
 					) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('manage_roles_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_role' || 
+					 $permissions[$i]->slug == 'delete_role' || 
+					 $permissions[$i]->slug == 'view_role'
+				) {
 					return true;
 				}
 			}

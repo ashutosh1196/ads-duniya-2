@@ -26,7 +26,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.credits_available') }}</th>
-                  @can('manage_credits')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('view_company_credit')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -40,7 +40,7 @@
                     {{ $company->name }}
                   </td>
                   <td>{{ $companyCreditsList[$i]->total_paid_credits+$companyCreditsList[$i]->trial_credits }}</td>
-                  @can('manage_credits')
+                  @can('view_company_credit')
                     <td>
                     @can('view_company_credit')
                       <a class="action-button" title="View" href="{{ route( 'view_company_credit', [ 'id' => $companyCreditsList[$i]->id ] ) }}"><i class="text-info fa fa-eye"></i></a>

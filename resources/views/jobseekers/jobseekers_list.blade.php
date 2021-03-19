@@ -27,7 +27,7 @@
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                @can('manage_jobseekers')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                @can('manage_jobseekers_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
               </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '' }}</td>
                 <!-- <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td> -->
                 <!-- <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td> -->
-                @can('manage_jobseekers')
+                @can('manage_jobseekers_actions')
                   <td>
                     @can('view_jobseeker')
                       <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

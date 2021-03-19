@@ -28,7 +28,7 @@
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.last_login_at') }}</th>
                   <th>{{ __('adminlte::adminlte.created_at') }}</th>
-                  @can('manage_recruiters')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_recruiters_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -41,7 +41,7 @@
                   <td>{{ $recruitersList[$i]->email }}</td>
                   <td>{{ $recruitersList[$i]->last_logged_in_at ? date('d/m/y', strtotime($recruitersList[$i]->last_logged_in_at)) : '' }}</td>
                   <td>{{ $recruitersList[$i]->created_at ? date('d/m/y', strtotime($recruitersList[$i]->created_at)) : '' }}</td>
-                  @can('manage_recruiters')
+                  @can('manage_recruiters_actions')
                     <td>
                       @can('view_recruiter')
                         <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>

@@ -26,7 +26,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.country') }}</th>
-                  @can('manage_counties')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_counties_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -35,7 +35,7 @@
                     <th class="display-none"></th>
                     <td>{{ $countiesList[$i]->county }}</td>
                     <td>{{ $countiesList[$i]->country }}</td>
-                    @can('manage_counties')
+                    @can('manage_counties_actions')
                       <td>
                         @can('view_county')
                           <a class="action-button" title="View" href="view/{{$countiesList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

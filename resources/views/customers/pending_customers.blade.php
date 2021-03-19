@@ -29,7 +29,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                  @can('manage_pending_customers')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_pending_customers_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -43,7 +43,7 @@
                   <td>{{ $pendingCustomersList[$i]->name }}</td>
                   <td>{{ $pendingCustomersList[$i]->email }}</td>
                   <td>{{ $pendingCustomersList[$i]->contact_number ? $pendingCustomersList[$i]->contact_number : '' }}</td>
-                  @can('manage_pending_customers')
+                  @can('manage_pending_customers_actions')
                     <td>
                       @can('view_pending_customer')
                         <a href="pending/view/{{$pendingCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>

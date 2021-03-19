@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
-                  @can('manage_job_industry')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('manage_job_industry_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -41,7 +41,7 @@
                   <td>{{ $jobIndustriesList[$i]->name }}</td>
                   <td>{{ $jobIndustriesList[$i]->slug }}</td>
                   <td>{{ $jobIndustriesList[$i]->status ? 'Active' : 'Inactive' }}</td>
-                  @can('manage_job_industry')
+                  @can('manage_job_industry_actions')
                     <td>
                       @can('view_job_industry')
                         <a class="action-button" title="View" href="view/{{$jobIndustriesList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
