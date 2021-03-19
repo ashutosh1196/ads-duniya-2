@@ -542,6 +542,7 @@ return [
                     'text' => 'roles',
                     'icon' => 'fas fa-user',
                     'url'  => 'admin_panel/recycle_bin/roles/deleted',
+                    'can' => 'restore_roles',
                 ],
             ],
         ],
