@@ -44,7 +44,7 @@ class AdminsSeeder extends Seeder
                 'last_name' => 'Admin',
                 'email' => 'viewer@whichvocation.com',
                 'password' => Hash::make('@dm!nV!3w3r'),
-                'role_id' => 2,
+                'role_id' => 3,
                 'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
             ],
