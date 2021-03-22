@@ -29,11 +29,21 @@ class AdminsSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'name' => 'Test Viewer',
-                'first_name' => 'Test',
-                'last_name' => 'Viewer',
-                'email' => 'test_viewer@yopmail.com',
-                'password' => Hash::make('12345678'),
+                'name' => 'Admin',
+                'first_name' => 'Admin',
+                'last_name' => 'User',
+                'email' => 'admin@whichvocation.com',
+                'password' => Hash::make('@dm!nU$3r'),
+                'role_id' => 2,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Viewer',
+                'first_name' => 'Viewer',
+                'last_name' => 'Admin',
+                'email' => 'viewer@whichvocation.com',
+                'password' => Hash::make('@dm!nV!3w3r'),
                 'role_id' => 2,
                 'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
