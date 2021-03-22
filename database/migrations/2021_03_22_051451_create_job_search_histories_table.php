@@ -21,7 +21,7 @@ class CreateJobSearchHistoriesTable extends Migration
             $table->string('location');
             $table->string('industry');
             $table->string('distance');
-            $table->string('posted_within');
+            $table->string('posted_within_days');
             $table->string('job_type');
             $table->softDeletes();
             $table->timestamps();
