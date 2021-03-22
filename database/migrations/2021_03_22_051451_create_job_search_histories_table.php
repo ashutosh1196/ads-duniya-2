@@ -17,12 +17,12 @@ class CreateJobSearchHistoriesTable extends Migration
             $table->id();
             $table->foreignId('job_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('keywords');
-            $table->string('location');
-            $table->string('industry');
-            $table->string('distance');
-            $table->string('posted_within_days');
-            $table->string('job_type');
+            $table->string('keywords')->nullable();
+            $table->string('location')->nullable();
+            $table->string('industry')->nullable();
+            $table->string('distance')->nullable();
+            $table->string('posted_within_days')->nullable();
+            $table->string('job_type')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
