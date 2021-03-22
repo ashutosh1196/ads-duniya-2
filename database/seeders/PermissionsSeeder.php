@@ -1780,6 +1780,13 @@ class PermissionsSeeder extends Seeder {
 				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
 			],
       [
+				'permission_id' => 55,
+				'role_id' => 3,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
 				'permission_id' => 59,
 				'role_id' => 3,
 				'status' => 1,
