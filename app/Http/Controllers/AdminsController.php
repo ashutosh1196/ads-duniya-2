@@ -28,7 +28,7 @@ class AdminsController extends Controller {
 	*/
 	public function adminsList(Request $request) {
 		if(Auth::user()->can('manage_admins')) {
-			$adminsList = Admin::where('role_id', '!=', 1)->orderByDesc('id')->get();
+			$adminsList = Admin::where('role_id', '!=', 1)->where('id', '!=', Auth::id())->orderByDesc('id')->get();
 			return view('admins/admins_list', ['adminsList' => $adminsList]);
 		}
 		else {
