@@ -15,7 +15,6 @@ class CreateJobSearchHistoriesTable extends Migration
     {
         Schema::create('job_search_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->string('keywords')->nullable();
             $table->string('location')->nullable();
