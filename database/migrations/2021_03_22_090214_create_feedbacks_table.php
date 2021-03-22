@@ -15,7 +15,7 @@ class CreateFeedbacksTable extends Migration {
 			$table->id();
 			$table->enum('rating', [1, 2, 3, 4, 5]);
 			$table->longtext('message')->nullable();
-			$table->enum('added_by',['admin', 'recruiter']);
+			$table->enum('added_by',['jobseeker', 'recruiter']);
 			$table->foreignId('user_id')->nullable()->constrained()->default(null);
 			$table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
 			$table->string('file')->nullable();
