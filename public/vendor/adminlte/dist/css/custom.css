@@ -909,12 +909,14 @@ form .card-body {
     display: flex;
     align-items: center;
 }
-.completed_job_wrap .custom-check {
+.completed_job_wrap .custom-check,
+.custom-check {
     position: relative;
     width: 20px;
     height: 20px;
 }
-.completed_job_wrap .custom-check input.is_complete_update {
+.completed_job_wrap .custom-check input.is_complete_update,
+.custom-check input {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -926,20 +928,23 @@ form .card-body {
     cursor: pointer;
     z-index: 1;
 }
-.completed_job_wrap .custom-check span {
+.completed_job_wrap .custom-check span,
+.custom-check span {
     height: 20px;
     width: 20px;
     border: 1px solid #000000;
     display: inline-block;
     border-radius: 3px;
 }
-.completed_job_wrap .custom-check input.is_complete_update:checked~span {
+.completed_job_wrap .custom-check input.is_complete_update:checked~span,
+.custom-check input:checked~span {
     height: 20px;
     width: 20px;
     background-color: #2d8427;
     border-color: #2d8427;
 }
-.completed_job_wrap .custom-check input.is_complete_update:checked~span:before {
+.completed_job_wrap .custom-check input.is_complete_update:checked~span:before,
+.custom-check input:checked~span:before {
     background-color: #2d8427;
     left: 7px;
     top: 2px;
@@ -1056,7 +1061,67 @@ form .card-body {
     padding: 15px 0 0;
     font-weight: 600;
 }
-
+.custom_check_wrap {
+    display: flex;
+    margin: 0 0 10px;
+}
+.custom_check_wrap .custom-check {
+    margin: 0 10px 0 0;
+}
+form#addRoleForm {
+    color: #343d49;
+}
+.permissions-section p strong.list-text {
+    left: 0;
+    top: 0;
+}
+.permissions-section p {
+    margin: 0;
+}
+.permissions-section .custom_check_wrap strong.list-text {
+    left: 0;
+    top: 0;
+}
+.permissions-section .custom_check_wrap {
+    align-items: center;
+    margin-bottom: 5px;
+}
+.permissions-section p.headings {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+.content-wrapper .card-body .form-group .custom_check_wrap .custom-check input {
+    height: 20px;
+}
+.permissions-section #checkBoxes {
+    padding: 5px 0 0 30px;
+}
+.permissions-section #checkBoxes .custom_check_wrap {
+    margin-bottom: 5px;
+}
+.permissions-section #checkBoxes .custom_check_wrap label {
+    font-weight: 500;
+    font-size: 14px;
+}
+body .permissions-section {
+    background-color: transparent;
+    padding: 0px;
+}
+body .permissions-section .form-group {
+    margin: 0;
+    height: 100%;
+    padding: 0 0px 15px;
+}
+.permissions-section-inner-sec {
+    background-color: #f6f7fb;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+}
+.permissions-section .custom_check_wrap .custom-check {
+    background-color: #ffffff;
+}
 /*--Contact Admin--*/
 
 
