@@ -17,7 +17,7 @@ class CreateBookmarkedJobsTable extends Migration
             $table->id();
             $table->foreignId('job_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->enum('status', ['on', 'off'])->default('on');
+            $table->tinyInteger('is_bookmarked')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });
