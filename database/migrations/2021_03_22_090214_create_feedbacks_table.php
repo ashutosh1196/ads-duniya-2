@@ -13,9 +13,11 @@ class CreateFeedbacksTable extends Migration {
 	public function up() {
 		Schema::create('feedbacks', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('user_id')->constrained();
 			$table->enum('rating', [1, 2, 3, 4, 5]);
 			$table->longtext('message')->nullable();
+			$table->enum('added_by',['admin', 'recruiter']);
+			$table->foreignId('user_id')->nullable()->constrained()->default(null);
+			$table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
 			$table->string('file')->nullable();
 			$table->timestamps();
 		});
