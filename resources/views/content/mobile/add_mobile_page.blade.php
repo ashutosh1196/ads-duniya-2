@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Page')
+@section('title', 'Add Mobile Page')
 
 @section('content_header')
 @stop
@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header">
           <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-            <h3>Add Page</h3>
+            <h3>Add Mobile Page</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -20,7 +20,7 @@
                 {{ session('status') }}
               </div>
             @endif
-            <form id="addPageForm" method="post", action="save_content">
+            <form id="addPageForm" method="post", action="{{ route('save_mobile_page') }}">
               @csrf
               <div class="card-body">
                 <div class="form-group">
@@ -33,38 +33,18 @@
                 <div class="form-group">
                   <label for="section">Section</label>
                   <select name="section" class="form-control" id="section">
-                    <option value="terms_and_conditions">Terms and Conditions</option>
-                    <option value="privacy_policy">Privacy Policy</option>
-                    <option value="about_us">About Us</option>
+                    @foreach($pageSections as $pageSection)
+                      <option value="{{ $pageSection->slug }}">{{ $pageSection->title }}</option>
+                    @endforeach
                   </select>
                   @if($errors->has('section'))
                     <div class="error">{{ $errors->first('section') }}</div>
                   @endif
                 </div>
-                <div class="form-group">
-                  <label for="status">Status</label>
-                  <select name="status" class="form-control" id="status">
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                  </select>
-                  @if($errors->has('status'))
-                    <div class="error">{{ $errors->first('status') }}</div>
-                  @endif
-                </div>
-                <div class="form-group">
-                  <label for="view">View</label>
-                  <select name="view" class="form-control" id="view">
-                    <option value="1">Website</option>
-                    <option value="0">Mobile</option>
-                  </select>
-                  @if($errors->has('view'))
-                    <div class="error">{{ $errors->first('view') }}</div>
-                  @endif
-                </div>
-                <textarea id="content" name="content" maxlength="1000"></textarea>
+                <textarea id="content" name="content"></textarea>
                 <div class="form-group mb-0">
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="content" class="custom-control-input" id="exampleCheck1" maxlength="100">
+                    <input type="checkbox" name="content" class="custom-control-input">
                   @if($errors->has('content'))
                     <div class="error">{{ $errors->first('content') }}</div>
                   @endif

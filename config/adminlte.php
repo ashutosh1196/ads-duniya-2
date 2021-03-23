@@ -466,6 +466,25 @@ return [
             ],
         ],
         [
+            'text' => 'content_management',
+            'icon' => 'fas fa-fw fa-edit',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'website',
+                    'icon' => 'fas fa-fw fa-laptop',
+                    'url'  => 'admin_panel/content/website/list',
+                    'active' => ['admin_panel/content/website*'],
+                ],
+                [
+                    'text' => 'mobile',
+                    'icon' => 'fas fa-fw fa-mobile',
+                    'url'  => 'admin_panel/content/mobile/list',
+                    'active' => ['admin_panel/content/mobile*'],
+                ],
+            ],
+        ],
+        [
             'key' => 'admin_recylce_bin',
             'text' => 'recylce_bin',
             'icon' => 'far fa-trash-alt',
@@ -544,26 +563,21 @@ return [
                     'url'  => 'admin_panel/recycle_bin/roles/deleted',
                     'can' => 'restore_roles',
                 ],
+                [
+                    'text' => 'website_pages',
+                    'icon' => 'fas fa-desktop',
+                    'url'  => 'admin_panel/recycle_bin/website/deleted',
+                    'can' => 'restore_website_page',
+                ],
+                [
+                    'text' => 'mobile_pages',
+                    'icon' => 'fas fa-mobile',
+                    'url'  => 'admin_panel/recycle_bin/mobile/deleted',
+                    'can' => 'restore_mobile_page',
+                ],
             ],
         ],
         /* [
-            'text' => 'content_management',
-            'icon' => 'fas fa-fw fa-edit',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'website',
-                    'icon' => 'fas fa-fw fa-laptop',
-                    'url'  => 'admin_panel/pages/website',
-                ],
-                [
-                    'text' => 'mobile',
-                    'icon' => 'fas fa-fw fa-mobile',
-                    'url'  => 'admin_panel/pages/mobile',
-                ],
-            ],
-        ],
-        [
             'text' => 'logout',
             'icon'    => 'fas fa-fw fa-sign-out-alt',
             'url'  => '#'
