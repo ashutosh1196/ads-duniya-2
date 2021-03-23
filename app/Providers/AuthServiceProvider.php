@@ -1153,7 +1153,9 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'restore_skills' ||
 					 $permissions[$i]->slug == 'restore_cities' ||
 					 $permissions[$i]->slug == 'restore_counties' ||
-					 $permissions[$i]->slug == 'restore_roles'
+					 $permissions[$i]->slug == 'restore_roles' ||
+					 $permissions[$i]->slug == 'restore_website_page' ||
+					 $permissions[$i]->slug == 'restore_mobile_page'
 					) {
 					return true;
 				}
@@ -1269,5 +1271,160 @@ class AuthServiceProvider extends ServiceProvider {
 				}
 			}
 		});
+
+		Gate::define('restore_website_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'restore_website_page') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('restore_mobile_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'restore_mobile_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('manage_website_pages', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_website_page' ||
+					 $permissions[$i]->slug == 'edit_website_page' ||
+					 $permissions[$i]->slug == 'delete_website_page' ||
+					 $permissions[$i]->slug == 'view_website_page'
+					) {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('manage_website_pages_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_website_page' ||
+					 $permissions[$i]->slug == 'delete_website_page' ||
+					 $permissions[$i]->slug == 'view_website_page'
+					) {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('add_website_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_website_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('edit_website_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_website_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('delete_website_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'delete_website_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('view_website_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_website_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('manage_mobile_pages', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_mobile_page' ||
+					 $permissions[$i]->slug == 'edit_mobile_page' ||
+					 $permissions[$i]->slug == 'delete_mobile_page' ||
+					 $permissions[$i]->slug == 'view_mobile_page'
+					) {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('manage_mobile_pages_actions', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_mobile_page' ||
+					 $permissions[$i]->slug == 'delete_mobile_page' ||
+					 $permissions[$i]->slug == 'view_mobile_page'
+					) {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('add_mobile_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_mobile_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('edit_mobile_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_mobile_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('delete_mobile_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'delete_mobile_page') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('view_mobile_page', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_mobile_page') {
+					return true;
+				}
+			}
+		});
+
 	}
 }

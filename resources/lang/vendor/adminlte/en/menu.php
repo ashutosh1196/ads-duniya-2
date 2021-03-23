@@ -58,5 +58,8 @@ return [
     'cities'                      => 'Cities',
     'counties'                    => 'Counties',
     'permissions'                 => 'Permissions',
+    
+    'website_pages'               => 'Website Pages',
+    'mobile_pages'                => 'Mobile Pages',
 
 ];

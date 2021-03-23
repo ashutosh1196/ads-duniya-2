@@ -636,6 +636,86 @@ class PermissionsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
+			[
+				'name' => 'Restore Website Page',
+				'slug' => 'restore_website_page',
+				'module_name' => 'Restore',
+				'module_slug' => 'restore',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Restore Mobile Page',
+				'slug' => 'restore_mobile_page',
+				'module_name' => 'Restore',
+				'module_slug' => 'restore',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Add Website Page',
+				'slug' => 'add_website_page',
+				'module_name' => 'Website Pages',
+				'module_slug' => 'website_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Edit Website Page',
+				'slug' => 'edit_website_page',
+				'module_name' => 'Website Pages',
+				'module_slug' => 'website_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Delete Website Page',
+				'slug' => 'delete_website_page',
+				'module_name' => 'Website Pages',
+				'module_slug' => 'website_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Website Page',
+				'slug' => 'view_website_page',
+				'module_name' => 'Website Pages',
+				'module_slug' => 'website_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+      [
+				'name' => 'Add Mobile Page',
+				'slug' => 'add_mobile_page',
+				'module_name' => 'Mobile Pages',
+				'module_slug' => 'mobile_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Edit Mobile Page',
+				'slug' => 'edit_mobile_page',
+				'module_name' => 'Mobile Pages',
+				'module_slug' => 'mobile_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Delete Mobile Page',
+				'slug' => 'delete_mobile_page',
+				'module_name' => 'Mobile Pages',
+				'module_slug' => 'mobile_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Mobile Page',
+				'slug' => 'view_mobile_page',
+				'module_name' => 'Mobile Pages',
+				'module_slug' => 'mobile_pages',
+				'description' => 'desc',
+				'status' => 1
+			],
 		]);
 
 		/* \DB::table('permission_role')->delete();
@@ -1173,6 +1253,76 @@ class PermissionsSeeder extends Seeder {
 			],
       [
 				'permission_id' => 75,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 76,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 77,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 78,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 79,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 80,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 81,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 82,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 83,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 84,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 85,
 				'role_id' => 1,
 				'status' => 1,
 				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
