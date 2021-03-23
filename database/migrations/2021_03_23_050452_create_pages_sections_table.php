@@ -4,22 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesTable extends Migration {
+class CreatePagesSectionsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	*/
 	public function up() {
-		Schema::create('pages', function (Blueprint $table) {
+		Schema::create('pages_sections', function (Blueprint $table) {
 			$table->id();
 			$table->string('title');
-			$table->longText('content');
-			$table->string('section');
+			$table->string('slug');
 			$table->enum('device_type', ['web', 'mobile'])->default('web');
-			$table->bigInteger('added_by_id');
-			$table->bigInteger('updated_by_id');
-			$table->timestamp('last_updated_at');
 			$table->enum('status', ['active', 'inactive'])->default('active');
 			$table->softDeletes();
 			$table->timestamps();
@@ -32,6 +28,6 @@ class CreatePagesTable extends Migration {
 	 * @return void
 	*/
 	public function down() {
-		Schema::dropIfExists('pages');
+		Schema::dropIfExists('pages_sections');
 	}
 }
