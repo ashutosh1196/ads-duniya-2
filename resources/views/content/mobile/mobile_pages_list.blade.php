@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Mobile Pages</h3>
-            @can('add_mobile_page')<a class="btn btn-success" href="{{ route('add_mobile_page') }}">Create Mobile Page</a>@endcan
+            {{-- @can('add_mobile_page')<a class="btn btn-success" href="{{ route('add_mobile_page') }}">Create Mobile Page</a>@endcan --}}
           </div>
           <div class="card-body">
             <table id="pages-list" class="table table-bordered table-hover">

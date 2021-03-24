@@ -234,8 +234,8 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/view/{id}', [ContentController::class, 'viewWebsitePage'])->name('view_website_page');
         Route::get('/edit/{id}', [ContentController::class, 'editWebsitePage'])->name('edit_website_page');
         Route::post('/update', [ContentController::class, 'updateWebsitePage'])->name('update_website_page');
-        Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
-        Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
+        // Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
+        // Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
         Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
         Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
       });
@@ -244,8 +244,8 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/view/{id}', [ContentController::class, 'viewMobilePage'])->name('view_mobile_page');
         Route::get('/edit/{id}', [ContentController::class, 'editMobilePage'])->name('edit_mobile_page');
         Route::post('/update', [ContentController::class, 'updateMobilePage'])->name('update_mobile_page');
-        Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
-        Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
+        // Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
+        // Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
         Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
         Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
       });

@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Website Pages</h3>
-            @can('add_website_page')<a class="btn btn-success" href="{{ route('add_website_page') }}">Create Website Page</a>@endcan
+            {{-- @can('add_website_page')<a class="btn btn-success" href="{{ route('add_website_page') }}">Create Website Page</a>@endcan --}}
           </div>
           <div class="card-body">
             <table id="pages-list" class="table table-bordered table-hover">
