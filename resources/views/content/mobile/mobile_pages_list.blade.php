@@ -40,9 +40,9 @@
                         @can('edit_mobile_page')
                           <a href="{{ route('edit_mobile_page', ['id' => $mobilePagesList[$i]->id]) }}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                         @endcan
-                        @can('delete_mobile_page')
+                        {{-- @can('delete_mobile_page')
                           <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $mobilePagesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                        @endcan
+                        @endcan --}}
                       </td>
                     @endcan
                   </tr>

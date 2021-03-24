@@ -236,8 +236,8 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/update', [ContentController::class, 'updateWebsitePage'])->name('update_website_page');
         // Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
         // Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
-        Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
-        Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
+        // Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
+        // Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
       });
       Route::group(['prefix' => 'mobile'], function () {
         Route::get('/list', [ContentController::class, 'mobilePagesList'])->name('mobile_pages_list');
@@ -246,8 +246,8 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/update', [ContentController::class, 'updateMobilePage'])->name('update_mobile_page');
         // Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
         // Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
-        Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
-        Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
+        // Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
+        // Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
       });
     });
 
@@ -289,12 +289,12 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'roles'], function () {
         Route::get('/deleted', [RolesController::class, 'deletedRoles'])->name('deleted_roles');
       });
-      Route::group(['prefix' => 'website'], function () {
+      /* Route::group(['prefix' => 'website'], function () {
         Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_website_pages');
       });
       Route::group(['prefix' => 'mobile'], function () {
         Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_mobile_pages');
-      });
+      }); */
     });
 
     Route::prefix('datatable')->as('datatable.')->group(function(){

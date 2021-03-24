@@ -40,9 +40,9 @@
                         @can('edit_website_page')
                           <a href="{{ route('edit_website_page', ['id' => $websitePagesList[$i]->id]) }}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                         @endcan
-                        @can('delete_website_page')
+                        {{-- @can('delete_website_page')
                           <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $websitePagesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                        @endcan
+                        @endcan --}}
                       </td>
                     @endcan
                   </tr>

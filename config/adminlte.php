@@ -563,7 +563,7 @@ return [
                     'url'  => 'admin_panel/recycle_bin/roles/deleted',
                     'can' => 'restore_roles',
                 ],
-                [
+                /* [
                     'text' => 'website_pages',
                     'icon' => 'fas fa-desktop',
                     'url'  => 'admin_panel/recycle_bin/website/deleted',
@@ -574,7 +574,7 @@ return [
                     'icon' => 'fas fa-mobile',
                     'url'  => 'admin_panel/recycle_bin/mobile/deleted',
                     'can' => 'restore_mobile_page',
-                ],
+                ], */
             ],
         ],
         /* [
