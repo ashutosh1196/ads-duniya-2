@@ -15,7 +15,7 @@ class CreateJobReportsTable extends Migration
     {
         Schema::create('job_reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('job_id')->constrained();
             $table->string('reported_by')->nullable();
             $table->string('job_ref_number')->nullable();
