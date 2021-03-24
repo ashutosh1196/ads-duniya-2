@@ -1425,6 +1425,26 @@ class AuthServiceProvider extends ServiceProvider {
 				}
 			}
 		});
+		
+		Gate::define('view_feedback', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_feedback') {
+					return true;
+				}
+			}
+		});
+		
+		Gate::define('view_contact_us', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_contact_us') {
+					return true;
+				}
+			}
+		});
 
 	}
 }

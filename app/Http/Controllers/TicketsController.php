@@ -129,22 +129,42 @@ class TicketsController extends Controller {
 	}
 
 	public function feedbacksList(Request $request) {
-		$feedbacksList = Feedback::orderByDesc('id')->get();
-		return view('feedbacks/feedbacks_list', [ 'feedbacksList' => $feedbacksList ]);
+		if(Auth::user()->can('view_feedback')) {
+			$feedbacksList = Feedback::orderByDesc('id')->get();
+			return view('feedbacks/feedbacks_list', [ 'feedbacksList' => $feedbacksList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function viewFeedback($id) {
-		$feedback = Feedback::find($id);
-		return view('feedbacks/view_feedback', [ 'feedback' => $feedback ]);
+		if(Auth::user()->can('view_feedback')) {
+			$feedback = Feedback::find($id);
+			return view('feedbacks/view_feedback', [ 'feedback' => $feedback ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function contactUsMessagesList(Request $request) {
-		$contactUsMessagesList = ContactUs::orderByDesc('id')->get();
-		return view('contact_us/contact_us_list', [ 'contactUsMessagesList' => $contactUsMessagesList ]);
+		if(Auth::user()->can('view_contact_us')) {
+			$contactUsMessagesList = ContactUs::orderByDesc('id')->get();
+			return view('contact_us/contact_us_list', [ 'contactUsMessagesList' => $contactUsMessagesList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function viewContactUsMessage($id) {
-		$contactUsMessage = ContactUs::find($id);
-		return view('contact_us/view_contact_us_message', [ 'contactUsMessage' => $contactUsMessage ]);
+		if(Auth::user()->can('view_contact_us')) {
+			$contactUsMessage = ContactUs::find($id);
+			return view('contact_us/view_contact_us_message', [ 'contactUsMessage' => $contactUsMessage ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 }

@@ -419,12 +419,14 @@ return [
                     'icon' => 'fas fa-comments',
                     'url'  => 'admin_panel/feedbacks/list',
                     'active' => ['admin_panel/feedbacks*'],
+                    'can' => ['view_feedback'],
                 ],
                 [
                     'text' => 'contact_us',
                     'icon' => 'fas fa-envelope',
                     'url'  => 'admin_panel/contact_us/list',
                     'active' => ['admin_panel/contact_us*'],
+                    'can' => ['view_contact_us'],
                 ],
             ]
         ],

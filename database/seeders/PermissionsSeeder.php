@@ -716,6 +716,22 @@ class PermissionsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
+			[
+				'name' => 'View Feedback',
+				'slug' => 'view_feedback',
+				'module_name' => 'Feedback',
+				'module_slug' => 'feedback',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Contact Us',
+				'slug' => 'view_contact_us',
+				'module_name' => 'Contact Us',
+				'module_slug' => 'contact_us',
+				'description' => 'desc',
+				'status' => 1
+			],
 		]);
 
 		/* \DB::table('permission_role')->delete();
@@ -1323,6 +1339,20 @@ class PermissionsSeeder extends Seeder {
 			],
       [
 				'permission_id' => 85,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 86,
+				'role_id' => 1,
+				'status' => 1,
+				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+			],
+      [
+				'permission_id' => 87,
 				'role_id' => 1,
 				'status' => 1,
 				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
