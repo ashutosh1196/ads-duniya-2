@@ -19,9 +19,9 @@
                 <tr>
                   <th>#</th>
                   <th>Rating</th>
-                  <th>Added By</th>
+                  <th>User Name</th>
                   <th>User Type</th>
-                  <th>Added On</th>
+                  <th>Email</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -32,12 +32,12 @@
                   $username = null;
                   if($feedbacksList[$i]->user_id != null) {
                     $user = \App\Models\User::find($feedbacksList[$i]->user_id);
-                    $username = $user->first_name ? $user->first_name.' '.$user->last_name : $user->email;
+                    $username = $user->first_name.' '.$user->last_name;
                     $userType = 'Jobseeker';
                   }
                   else if($feedbacksList[$i]->recruiter_id != null) {
                     $user = \App\Models\Recruiter::find($feedbacksList[$i]->recruiter_id);
-                    $username = $user->first_name ? $user->first_name.' '.$user->last_name : $user->email;
+                    $username = $user->first_name.' '.$user->last_name;
                     $userType = 'Recruiter';
                   }
                   else { 
@@ -60,7 +60,7 @@
                     </td>
                     <td>{{ $username }}</td>
                     <td>{{ $userType }}</td>
-                    <td>{{ date('d/m/y', strtotime($feedbacksList[$i]->created_at)) }}</td>
+                    <td>{{ $feedbacksList[$i]->email }}</td>
                       <td>
                         <a href="{{ route('view_feedback', ['id' => $feedbacksList[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>
                       </td>

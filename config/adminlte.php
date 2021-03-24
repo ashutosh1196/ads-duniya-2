@@ -382,7 +382,26 @@ return [
             ],
         ],
         [
-            'text' => 'tickets_management',
+            'text' => 'content_management',
+            'icon' => 'fas fa-fw fa-edit',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'website',
+                    'icon' => 'fas fa-fw fa-laptop',
+                    'url'  => 'admin_panel/content/website/list',
+                    'active' => ['admin_panel/content/website*'],
+                ],
+                [
+                    'text' => 'mobile',
+                    'icon' => 'fas fa-fw fa-mobile',
+                    'url'  => 'admin_panel/content/mobile/list',
+                    'active' => ['admin_panel/content/mobile*'],
+                ],
+            ],
+        ],
+        [
+            'text' => "Users' Feedback",
             'icon' => 'fas fa-ticket-alt',
             'url'  => '#',
             'active' => ['admin_panel/tickets*'],
@@ -479,25 +498,6 @@ return [
                     'active' => ['admin_panel/roles/role_permissions*'],
                     'can' => 'add_permissions',
                 ]
-            ],
-        ],
-        [
-            'text' => 'content_management',
-            'icon' => 'fas fa-fw fa-edit',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'website',
-                    'icon' => 'fas fa-fw fa-laptop',
-                    'url'  => 'admin_panel/content/website/list',
-                    'active' => ['admin_panel/content/website*'],
-                ],
-                [
-                    'text' => 'mobile',
-                    'icon' => 'fas fa-fw fa-mobile',
-                    'url'  => 'admin_panel/content/mobile/list',
-                    'active' => ['admin_panel/content/mobile*'],
-                ],
             ],
         ],
         [
