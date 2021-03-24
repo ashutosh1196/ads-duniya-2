@@ -8,6 +8,8 @@ use App\Models\TicketMessage;
 use App\Models\Admin;
 use App\Models\Recruiter;
 use App\Models\Organization;
+use App\Models\Feedback;
+use App\Models\ContactUs;
 use App\Notifications\TicketAcknowledgement;
 use Auth;
 use Mail;
@@ -124,5 +126,25 @@ class TicketsController extends Controller {
 			$res['success'] = 0;
 			return json_encode($res);
 		}
+	}
+
+	public function feedbacksList(Request $request) {
+		$feedbacksList = Feedback::orderByDesc('id')->get();
+		return view('feedbacks/feedbacks_list', [ 'feedbacksList' => $feedbacksList ]);
+	}
+
+	public function viewFeedback($id) {
+		$feedback = Feedback::find($id);
+		return view('feedbacks/view_feedback', [ 'feedback' => $feedback ]);
+	}
+
+	public function contactUsMessagesList(Request $request) {
+		$contactUsMessagesList = ContactUs::orderByDesc('id')->get();
+		return view('contact_us/contact_us_list', [ 'contactUsMessagesList' => $contactUsMessagesList ]);
+	}
+
+	public function viewContactUsMessage($id) {
+		$contactUsMessage = ContactUs::find($id);
+		return view('contact_us/view_contact_us_message', [ 'contactUsMessage' => $contactUsMessage ]);
 	}
 }

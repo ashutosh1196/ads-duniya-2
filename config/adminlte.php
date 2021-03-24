@@ -387,11 +387,27 @@ return [
             'url'  => '#',
             'active' => ['admin_panel/tickets*'],
             'can' => ['manage_tickets'],
-            'submenu' => [[
-                'text' => 'tickets',
-                'icon' => 'fas fa-ticket-alt',
-                'url'  => 'admin_panel/tickets/list',
-            ]]
+            'submenu' => [
+                [
+                    'text' => 'tickets',
+                    'icon' => 'fas fa-ticket-alt',
+                    'url'  => 'admin_panel/tickets/list',
+                    'can' => ['manage_tickets'],
+                    'active' => ['admin_panel/tickets*'],
+                ],
+                [
+                    'text' => 'feedbacks',
+                    'icon' => 'fas fa-comments',
+                    'url'  => 'admin_panel/feedbacks/list',
+                    'active' => ['admin_panel/feedbacks*'],
+                ],
+                [
+                    'text' => 'contact_us',
+                    'icon' => 'fas fa-envelope',
+                    'url'  => 'admin_panel/contact_us/list',
+                    'active' => ['admin_panel/contact_us*'],
+                ],
+            ]
         ],
         [
             'text' => 'misc_data_management',

@@ -147,6 +147,18 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/reply', [TicketsController::class, 'replyOnTicket'])->name('reply_on_ticket');
     });
 
+    // Feedback
+    Route::group(['prefix' => 'feedbacks'], function () {
+      Route::get('/list', [TicketsController::class, 'feedbacksList'])->name('feedbacks_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewFeedback'])->name('view_feedback');
+    });
+
+    // Contact Us
+    Route::group(['prefix' => 'contact_us'], function () {
+      Route::get('/list', [TicketsController::class, 'contactUsMessagesList'])->name('contact_us_message_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewContactUsMessage'])->name('view_contact_us_message');
+    });
+
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
