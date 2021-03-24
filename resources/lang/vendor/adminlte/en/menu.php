@@ -61,5 +61,8 @@ return [
     
     'website_pages'               => 'Website Pages',
     'mobile_pages'                => 'Mobile Pages',
+    
+    'feedbacks'                   => 'Feedbacks',
+    'contact_us'                  => 'Contact Us',
 
 ];

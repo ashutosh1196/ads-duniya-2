@@ -67,13 +67,13 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label>Last Updated</label>
-                    <input class="form-control" placeholder="{{ date('d-m-y', strtotime($pageContent->last_updated_at)) }}" readonly>
+                    <input class="form-control" placeholder="{{ date('d/m/y', strtotime($pageContent->last_updated_at)) }}" readonly>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label>Created Date</label>
-                    <input class="form-control" placeholder="{{ date('d-m-y', strtotime($pageContent->created_at)) }}" readonly>
+                    <input class="form-control" placeholder="{{ date('d/m/y', strtotime($pageContent->created_at)) }}" readonly>
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label>Updated Date</label>
-                    <input class="form-control" placeholder="{{ date('d-m-y', strtotime($pageContent->updated_at)) }}" readonly>
+                    <input class="form-control" placeholder="{{ date('d/m/y', strtotime($pageContent->updated_at)) }}" readonly>
                   </div>
                 </div>
               </div>

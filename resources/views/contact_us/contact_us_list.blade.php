@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Deleted Website Pages')
+@section('title', 'Contact Messages')
 
 @section('content_header')
 @stop
@@ -10,32 +10,32 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
-            <h3>Deleted Website Pages</h3>
+          <div class="card-header alert d-flex justify-content-between align-items-center">
+            <h3>Contact Messages</h3>
           </div>
           <div class="card-body">
             <table id="pages-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Title</th>
-                  <th>Section</th>
-                  @can('manage_website_pages_actions')<th>Actions</th>@endcan
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact Number</th>
+                  <th>Subject</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($deletedWebsitePages); $i++) { ?>
+                <?php for ($i=0; $i < count($contactUsMessagesList); $i++) { ?>
                   <tr>
                     <td>{{ $i+1 }}</td>
-                    <td>{{ $deletedWebsitePages[$i]->title }}</td>
-                    <td>{{ $deletedWebsitePages[$i]->section }}</td>
-                    @can('manage_website_pages_actions')
-                      <td>
-                        {{-- @can('restore_website_page')
-                          <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedWebsitePages[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                        @endcan --}}
-                      </td>
-                    @endcan
+                    <td>{{ $contactUsMessagesList[$i]->name }}</td>
+                    <td>{{ $contactUsMessagesList[$i]->email }}</td>
+                    <td>{{ $contactUsMessagesList[$i]->contact_number }}</td>
+                    <td>{{ $contactUsMessagesList[$i]->subject }}</td>
+                    <td>
+                      <a href="{{ route('view_contact_us_message', ['id' => $contactUsMessagesList[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>
+                    </td>
                   </tr>
                 <?php } ?>
               </tbody>

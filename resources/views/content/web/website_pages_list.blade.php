@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>Website Pages</h3>
-            @can('add_website_page')<a class="btn btn-success" href="{{ route('add_website_page') }}">Create Website Page</a>@endcan
+            {{-- @can('add_website_page')<a class="btn btn-success" href="{{ route('add_website_page') }}">Create Website Page</a>@endcan --}}
           </div>
           <div class="card-body">
             <table id="pages-list" class="table table-bordered table-hover">
@@ -40,9 +40,9 @@
                         @can('edit_website_page')
                           <a href="{{ route('edit_website_page', ['id' => $websitePagesList[$i]->id]) }}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
                         @endcan
-                        @can('delete_website_page')
+                        {{-- @can('delete_website_page')
                           <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $websitePagesList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                        @endcan
+                        @endcan --}}
                       </td>
                     @endcan
                   </tr>
@@ -71,49 +71,6 @@
           return data.substr( 0, 2 );
         }
       }]
-    });
-
-    $('.delete-button').click(function(e) {
-      var id = $(this).attr('data-id');
-      var obj = $(this);
-      console.log(id);
-      swal({
-        title: "Are you sure?",
-        text: "Are you sure you want to move this Page to the Recycle Bin?",
-        type: "warning",
-        showCancelButton: true,
-      }, function(willDelete) {
-        if (willDelete) {
-          $.ajax({
-            url: "{{ route('delete_website_page') }}",
-            type: 'post',
-            data: {
-              id: id
-            },
-            dataType: "JSON",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-              console.log("Response", response);
-              if(response.success == 1) {
-                window.location.reload();
-                /* console.log("response", response);
-                obj.parent().parent().remove(); */
-              }
-              else {
-                console.log("FALSE");
-                setTimeout(() => {
-                  alert("Something went wrong! Please try again.");
-                  // swal("Error!", "Something went wrong! Please try again.", "error");
-                }, 500);
-                
-                // swal("Something went wrong! Please try again.");
-              }
-            }
-          });
-        } 
-      });
     });
   </script>
 @stop

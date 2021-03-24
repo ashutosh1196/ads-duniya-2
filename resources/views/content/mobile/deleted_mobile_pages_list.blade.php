@@ -31,9 +31,9 @@
                     <td>{{ $deletedMobilePages[$i]->section }}</td>
                     @can('manage_mobile_pages_actions')
                       <td>
-                        @can('restore_mobile_page')
+                        {{-- @can('restore_mobile_page')
                           <a class="action-button delete-button" title="Restore" href="javascript:void(0)" data-id="{{ $deletedMobilePages[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                        @endcan
+                        @endcan --}}
                       </td>
                     @endcan
                   </tr>
@@ -62,44 +62,6 @@
           return data.substr( 0, 2 );
         }
       }]
-    });
-
-    $('.delete-button').click(function(e) {
-      var id = $(this).attr('data-id');
-      var obj = $(this);
-      console.log(id);
-      swal({
-        title: "Are you sure?",
-        text: "Are you sure you want to restore this Page?",
-        type: "warning",
-        showCancelButton: true,
-      }, function(willDelete) {
-        if (willDelete) {
-          $.ajax({
-            url: "{{ route('restore_mobile_page') }}",
-            type: 'post',
-            data: {
-              id: id
-            },
-            dataType: "JSON",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-              console.log("Response", response);
-              if(response.success == 1) {
-                window.location.reload();
-              }
-              else {
-                console.log("FALSE");
-                setTimeout(() => {
-                  alert("Something went wrong! Please try again.");
-                }, 500);
-              }
-            }
-          });
-        } 
-      });
     });
   </script>
 @stop

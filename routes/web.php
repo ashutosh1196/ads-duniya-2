@@ -147,6 +147,18 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/reply', [TicketsController::class, 'replyOnTicket'])->name('reply_on_ticket');
     });
 
+    // Feedback
+    Route::group(['prefix' => 'feedbacks'], function () {
+      Route::get('/list', [TicketsController::class, 'feedbacksList'])->name('feedbacks_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewFeedback'])->name('view_feedback');
+    });
+
+    // Contact Us
+    Route::group(['prefix' => 'contact_us'], function () {
+      Route::get('/list', [TicketsController::class, 'contactUsMessagesList'])->name('contact_us_message_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewContactUsMessage'])->name('view_contact_us_message');
+    });
+
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
@@ -234,20 +246,20 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/view/{id}', [ContentController::class, 'viewWebsitePage'])->name('view_website_page');
         Route::get('/edit/{id}', [ContentController::class, 'editWebsitePage'])->name('edit_website_page');
         Route::post('/update', [ContentController::class, 'updateWebsitePage'])->name('update_website_page');
-        Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
-        Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
-        Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
-        Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
+        // Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
+        // Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
+        // Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
+        // Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
       });
       Route::group(['prefix' => 'mobile'], function () {
         Route::get('/list', [ContentController::class, 'mobilePagesList'])->name('mobile_pages_list');
         Route::get('/view/{id}', [ContentController::class, 'viewMobilePage'])->name('view_mobile_page');
         Route::get('/edit/{id}', [ContentController::class, 'editMobilePage'])->name('edit_mobile_page');
         Route::post('/update', [ContentController::class, 'updateMobilePage'])->name('update_mobile_page');
-        Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
-        Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
-        Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
-        Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
+        // Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
+        // Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
+        // Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
+        // Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
       });
     });
 
@@ -289,12 +301,12 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'roles'], function () {
         Route::get('/deleted', [RolesController::class, 'deletedRoles'])->name('deleted_roles');
       });
-      Route::group(['prefix' => 'website'], function () {
+      /* Route::group(['prefix' => 'website'], function () {
         Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_website_pages');
       });
       Route::group(['prefix' => 'mobile'], function () {
         Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_mobile_pages');
-      });
+      }); */
     });
 
     Route::prefix('datatable')->as('datatable.')->group(function(){
