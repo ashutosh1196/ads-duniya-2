@@ -72,46 +72,5 @@
         }
       }]
     });
-
-    $('.delete-button').click(function(e) {
-      var id = $(this).attr('data-id');
-      var obj = $(this);
-      console.log(id);
-      swal({
-        title: "Are you sure?",
-        text: "Are you sure you want to move this Page to the Recycle Bin?",
-        type: "warning",
-        showCancelButton: true,
-      }, function(willDelete) {
-        if (willDelete) {
-          $.ajax({
-            url: "{{ route('delete_mobile_page') }}",
-            type: 'post',
-            data: {
-              id: id
-            },
-            dataType: "JSON",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-              console.log("Response", response);
-              if(response.success == 1) {
-                window.location.reload();
-                /* console.log("response", response);
-                obj.parent().parent().remove(); */
-              }
-              else {
-                console.log("FALSE");
-                setTimeout(() => {
-                  alert("Something went wrong! Please try again.");
-                  // swal("Error!", "Something went wrong! Please try again.", "error");
-                }, 500);
-              }
-            }
-          });
-        } 
-      });
-    });
   </script>
 @stop
