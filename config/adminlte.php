@@ -382,7 +382,26 @@ return [
             ],
         ],
         [
-            'text' => 'tickets_management',
+            'text' => 'content_management',
+            'icon' => 'fas fa-fw fa-edit',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'website',
+                    'icon' => 'fas fa-fw fa-laptop',
+                    'url'  => 'admin_panel/content/website/list',
+                    'active' => ['admin_panel/content/website*'],
+                ],
+                [
+                    'text' => 'mobile',
+                    'icon' => 'fas fa-fw fa-mobile',
+                    'url'  => 'admin_panel/content/mobile/list',
+                    'active' => ['admin_panel/content/mobile*'],
+                ],
+            ],
+        ],
+        [
+            'text' => "Users' Feedback",
             'icon' => 'fas fa-ticket-alt',
             'url'  => '#',
             'active' => ['admin_panel/tickets*'],
@@ -400,12 +419,14 @@ return [
                     'icon' => 'fas fa-comments',
                     'url'  => 'admin_panel/feedbacks/list',
                     'active' => ['admin_panel/feedbacks*'],
+                    'can' => ['view_feedback'],
                 ],
                 [
                     'text' => 'contact_us',
                     'icon' => 'fas fa-envelope',
                     'url'  => 'admin_panel/contact_us/list',
                     'active' => ['admin_panel/contact_us*'],
+                    'can' => ['view_contact_us'],
                 ],
             ]
         ],
@@ -479,25 +500,6 @@ return [
                     'active' => ['admin_panel/roles/role_permissions*'],
                     'can' => 'add_permissions',
                 ]
-            ],
-        ],
-        [
-            'text' => 'content_management',
-            'icon' => 'fas fa-fw fa-edit',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'website',
-                    'icon' => 'fas fa-fw fa-laptop',
-                    'url'  => 'admin_panel/content/website/list',
-                    'active' => ['admin_panel/content/website*'],
-                ],
-                [
-                    'text' => 'mobile',
-                    'icon' => 'fas fa-fw fa-mobile',
-                    'url'  => 'admin_panel/content/mobile/list',
-                    'active' => ['admin_panel/content/mobile*'],
-                ],
             ],
         ],
         [

@@ -20,8 +20,8 @@
                 <tr>
                   <th>#</th>
                   <th>Title</th>
-                  <th>Section</th>
-                  <th>Status</th>
+                  <!-- <th>Section</th>
+                  <th>Status</th> -->
                   @can('manage_mobile_pages_actions')<th>Actions</th>@endcan
                 </tr>
               </thead>
@@ -30,8 +30,8 @@
                   <tr>
                     <td>{{ $i+1 }}</td>
                     <td>{{ $mobilePagesList[$i]->title }}</td>
-                    <td>{{ $mobilePagesList[$i]->section }}</td>
-                    <td class="{{ $mobilePagesList[$i]->status == 'active' ? 'text-success' : 'text-danger' }}">{{ $mobilePagesList[$i]->status == 'active' ? "Active" : "Inactive" }}</td>
+                    <!-- <td>{{ $mobilePagesList[$i]->section }}</td> -->
+                    <!-- <td class="{{ $mobilePagesList[$i]->status == 'active' ? 'text-success' : 'text-danger' }}">{{ $mobilePagesList[$i]->status == 'active' ? "Active" : "Inactive" }}</td> -->
                     @can('manage_mobile_pages_actions')
                       <td>
                         @can('view_mobile_page')

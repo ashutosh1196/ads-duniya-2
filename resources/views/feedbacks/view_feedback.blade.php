@@ -66,17 +66,8 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <label>Added By</label>
-                    <input class="form-control" placeholder="{{ $username }}" readonly>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label>User Type</label>
-                    <input class="form-control" placeholder="{{ ucfirst($userType) }}" readonly>
+                    <label>Email</label>
+                    <input class="form-control" placeholder="{{ $feedback->email }}" readonly>
                   </div>
                 </div>
                 <div class="col-12">
@@ -88,16 +79,10 @@
               </div>
 
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <div class="form-group">
                     <label>Created Date</label>
                     <input class="form-control" placeholder="{{ date('d/m/y', strtotime($feedback->created_at)) }}" readonly>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>Updated Date</label>
-                    <input class="form-control" placeholder="{{ date('d/m/y', strtotime($feedback->updated_at)) }}" readonly>
                   </div>
                 </div>
               </div>
@@ -109,19 +94,16 @@
                       <label>File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-pdf" src="{{ $destinationPath.'adobe-pdf-icon.svg' }}">
-                        <div>{{ $feedback->file }}</div>
                       </a>
                     @elseif($extension == 'doc' || $extension == 'doxc')
                       <label>File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-doc" src="{{ $destinationPath.'wordfile.png' }}">
-                        <div>{{ $feedback->file }}</div>
                       </a>
                     @elseif($extension == 'xls' || $extension == 'ods')
                       <label>File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-doc" src="{{ $destinationPath.'xls.jpeg' }}">
-                        <div>{{ $feedback->file }}</div>
                       </a>
                     @elseif($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif')
                       <label>File</label><br>
