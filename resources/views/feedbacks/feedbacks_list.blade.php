@@ -19,8 +19,6 @@
                 <tr>
                   <th>#</th>
                   <th>Rating</th>
-                  <th>User Name</th>
-                  <th>User Type</th>
                   <th>Email</th>
                   <th>Actions</th>
                 </tr>
@@ -58,8 +56,6 @@
                         <i class="fa fa-star text-grey" id="5_{{ $feedbacksList[$i]->rating }}"  aria-hidden="true"></i>
                       </div>
                     </td>
-                    <td>{{ $username }}</td>
-                    <td>{{ $userType }}</td>
                     <td>{{ $feedbacksList[$i]->email }}</td>
                       <td>
                         <a href="{{ route('view_feedback', ['id' => $feedbacksList[$i]->id]) }}" title="View"><i class="text-info fa fa-eye"></i></a>

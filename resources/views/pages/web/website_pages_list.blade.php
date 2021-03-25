@@ -20,8 +20,8 @@
                 <tr>
                   <th>#</th>
                   <th>Title</th>
-                  <th>Section</th>
-                  <th>Status</th>
+                  <!-- <th>Section</th>
+                  <th>Status</th> -->
                   @can('manage_website_pages_actions')<th>Actions</th>@endcan
                 </tr>
               </thead>
@@ -30,8 +30,8 @@
                   <tr>
                     <td>{{ $i+1 }}</td>
                     <td>{{ $websitePagesList[$i]->title }}</td>
-                    <td>{{ $websitePagesList[$i]->section }}</td>
-                    <td class="{{ $websitePagesList[$i]->status == 'active' ? 'text-success' : 'text-danger' }}">{{ $websitePagesList[$i]->status == 'active' ? "Active" : "Inactive" }}</td>
+                    <!-- <td>{{ $websitePagesList[$i]->section }}</td>
+                    <td class="{{ $websitePagesList[$i]->status == 'active' ? 'text-success' : 'text-danger' }}">{{ $websitePagesList[$i]->status == 'active' ? "Active" : "Inactive" }}</td> -->
                     @can('manage_website_pages_actions')
                       <td>
                         @can('view_website_page')

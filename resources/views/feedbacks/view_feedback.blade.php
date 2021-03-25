@@ -64,21 +64,6 @@
               </div>
 
               <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>Added By</label>
-                    <input class="form-control" placeholder="{{ $username }}" readonly>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>User Type</label>
-                    <input class="form-control" placeholder="{{ ucfirst($userType) }}" readonly>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
                 <div class="col-12">
                   <div class="form-group">
                     <label>Email</label>

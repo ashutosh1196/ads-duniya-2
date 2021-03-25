@@ -16,7 +16,7 @@ class ContentController extends Controller {
 	*/
 	public function websitePagesList(Request $request) {
 		$websitePagesList = Page::where('device_type', 'web')->get();
-		return view('content/web/website_pages_list')->with('websitePagesList', $websitePagesList);
+		return view('pages/web/website_pages_list')->with('websitePagesList', $websitePagesList);
 	}
 
 	/**
@@ -24,7 +24,7 @@ class ContentController extends Controller {
 	*/
 	public function addWebsitePage(Request $request) {
 		$pageSections = DB::table('pages_sections')->get();
-		return view('content/web/add_website_page', [ 'pageSections' => $pageSections ]);
+		return view('pages/web/add_website_page', [ 'pageSections' => $pageSections ]);
 	}
 
 	/**
@@ -61,7 +61,7 @@ class ContentController extends Controller {
 	public function editWebsitePage($id) {
     $pageContent = Page::find($id);
 		$pageSections = DB::table('pages_sections')->get();
-		return view('content/web/edit_website_page', [
+		return view('pages/web/edit_website_page', [
 			'pageContent' => $pageContent,
 			'pageSections' => $pageSections,
 		]);
@@ -100,7 +100,7 @@ class ContentController extends Controller {
 		$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
 		$addedBy = Admin::find($pageContent->added_by_id);
 		$updatedBy = Admin::find($pageContent->updated_by_id);
-		return view('content/web/view_website_page', [
+		return view('pages/web/view_website_page', [
 			'addedBy' => $addedBy,
 			'updatedBy' => $updatedBy,
 			'section' => $section->title,
@@ -130,7 +130,7 @@ class ContentController extends Controller {
 	public function deletedWebsitePages() {
 		if(Auth::user()->can('restore_website_page')) {
 			$deletedWebsitePages = Page::onlyTrashed()->orderByDesc('id')->get();
-			return view('content/web/deleted_website_pages_list', ['deletedWebsitePages' => $deletedWebsitePages]);
+			return view('pages/web/deleted_website_pages_list', ['deletedWebsitePages' => $deletedWebsitePages]);
 		}
 		else {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
@@ -157,7 +157,7 @@ class ContentController extends Controller {
 	*/
 	public function mobilePagesList(Request $request) {
 		$mobilePagesList = Page::where('device_type', 'mobile')->get();
-		return view('content/mobile/mobile_pages_list')->with('mobilePagesList', $mobilePagesList);
+		return view('pages/mobile/mobile_pages_list')->with('mobilePagesList', $mobilePagesList);
 	}
 
 	/**
@@ -165,7 +165,7 @@ class ContentController extends Controller {
 	*/
 	public function addMobilePage(Request $request) {
 		$pageSections = DB::table('pages_sections')->get();
-		return view('content/mobile/add_mobile_page', [ 'pageSections' => $pageSections ]);
+		return view('pages/mobile/add_mobile_page', [ 'pageSections' => $pageSections ]);
 	}
 
 	/**
@@ -202,7 +202,7 @@ class ContentController extends Controller {
 	public function editMobilePage($id) {
 		$pageContent = Page::find($id);
 		$pageSections = DB::table('pages_sections')->get();
-		return view('content/mobile/edit_mobile_page', [
+		return view('pages/mobile/edit_mobile_page', [
 			'pageContent' => $pageContent,
 			'pageSections' => $pageSections,
 		]);
@@ -241,7 +241,7 @@ class ContentController extends Controller {
 		$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
 		$addedBy = Admin::find($pageContent->added_by_id);
 		$updatedBy = Admin::find($pageContent->updated_by_id);
-		return view('content/mobile/view_mobile_page', [
+		return view('pages/mobile/view_mobile_page', [
 			'addedBy' => $addedBy,
 			'updatedBy' => $updatedBy,
 			'section' => $section->title,
@@ -271,7 +271,7 @@ class ContentController extends Controller {
 	public function deletedMobilePages() {
 		if(Auth::user()->can('restore_mobile_page')) {
 			$deletedMobilePages = Page::onlyTrashed()->orderByDesc('id')->get();
-			return view('content/mobile/deleted_mobile_pages_list', ['deletedMobilePages' => $deletedMobilePages]);
+			return view('pages/mobile/deleted_mobile_pages_list', ['deletedMobilePages' => $deletedMobilePages]);
 		}
 		else {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');

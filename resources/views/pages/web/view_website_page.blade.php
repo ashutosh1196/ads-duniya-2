@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mobile Page Content')
+@section('title', 'Website Page Content')
 
 @section('content_header')
 @stop
@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header">
             <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
-            <h3>Mobile Page Content</h3>
+            <h3>Website Page Content</h3>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -21,6 +21,7 @@
               </div>
             @endif
             <form class="form_wrap">
+              
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
@@ -30,39 +31,27 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Section</label>
-                    <input class="form-control" placeholder="{{ $section }}" readonly>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
                     <label>Device Type</label>
                     <input class="form-control" placeholder="{{ ucfirst($pageContent->device_type) }}" readonly>
                   </div>
                 </div>
+              </div>
+              
+              <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label>Added By</label>
                     <input class="form-control" placeholder="{{ $addedBy->first_name.' '.$addedBy->last_name }}" readonly>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label>Updated By</label>
                     <input class="form-control" placeholder="{{ $updatedBy->first_name.' '.$updatedBy->last_name }}" readonly>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>Status</label>
-                    <input class="form-control" placeholder="{{ ucfirst($pageContent->status) }}" readonly>
-                  </div>
-                </div>
               </div>
+              
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
@@ -77,14 +66,16 @@
                   </div>
                 </div>
               </div>
+              
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <div class="form-group">
                     <label>Updated Date</label>
                     <input class="form-control" placeholder="{{ date('d/m/y', strtotime($pageContent->updated_at)) }}" readonly>
                   </div>
                 </div>
               </div>
+              
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">

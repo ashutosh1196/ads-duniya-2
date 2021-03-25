@@ -717,7 +717,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'View Feedback',
+				'name' => 'View',
 				'slug' => 'view_feedback',
 				'module_name' => 'Feedback',
 				'module_slug' => 'feedback',
@@ -725,7 +725,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'View Contact Us',
+				'name' => 'View',
 				'slug' => 'view_contact_us',
 				'module_name' => 'Contact Us',
 				'module_slug' => 'contact_us',

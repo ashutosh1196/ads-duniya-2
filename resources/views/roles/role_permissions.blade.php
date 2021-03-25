@@ -377,6 +377,7 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Tickets</strong></p>
                           <div class="custom_check_wrap">
                             <div class="custom-check">
                               <input type="checkbox" id="tickets_permissions" class="ckbCheckAll">
@@ -398,6 +399,59 @@
                         </div>
                       </div>
                     </div>
+                    
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Feedbacks</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="feedbacks_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($feedbacksPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass feedbackscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Contact Us</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="contact_us_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($contactUsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass contactUscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
 
                   <div class="title">
@@ -753,6 +807,12 @@
       $("#tickets_permissions").click(function() {
         $(".ticketscheckBox").prop('checked', this.checked)
       })
+      $("#feedbacks_permissions").click(function() {
+        $(".feedbackscheckBox").prop('checked', this.checked)
+      })
+      $("#contact_us_permissions").click(function() {
+        $(".contactUscheckBox").prop('checked', this.checked)
+      })
       $("#job_industries_permissions").click(function() {
         $(".jobIndustriescheckBox").prop('checked', this.checked)
       })
@@ -856,6 +916,18 @@
       }
       else {
         $("#tickets_permissions").prop('checked', false);
+      }
+      if($('.feedbackscheckBox:checked').length == $('.feedbackscheckBox').length) {
+        $("#feedbacks_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#feedbacks_permissions").prop('checked', false);
+      }
+      if($('.contactUscheckBox:checked').length == $('.contactUscheckBox').length) {
+        $("#contact_us_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#contact_us_permissions").prop('checked', false);
       }
       if($('.jobIndustriescheckBox:checked').length == $('.jobIndustriescheckBox').length) {
         $("#job_industries_permissions").prop('checked', 'true');
