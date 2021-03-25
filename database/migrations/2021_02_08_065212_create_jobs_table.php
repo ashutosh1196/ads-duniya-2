@@ -25,8 +25,8 @@ class CreateJobsTable extends Migration
             $table->string('county')->nullable();
             $table->string('state')->nullable();
             $table->string('country');
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
+            $table->double('latitude', 11, 7)->nullable();
+            $table->double('longitude', 11, 7)->nullable();
             $table->string('job_url');
             $table->foreignId('job_industry_id')->constrained();
             $table->string('job_function')->nullable();
