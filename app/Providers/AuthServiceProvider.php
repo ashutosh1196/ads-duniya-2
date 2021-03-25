@@ -1292,13 +1292,25 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 		
+		Gate::define('manage_cms', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'edit_website_page' ||
+					 $permissions[$i]->slug == 'view_website_page' ||
+					 $permissions[$i]->slug == 'edit_mobile_page' ||
+					 $permissions[$i]->slug == 'view_mobile_page'
+					) {
+					return true;
+				}
+			}
+		});
+		
 		Gate::define('manage_website_pages', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_website_page' ||
-					 $permissions[$i]->slug == 'edit_website_page' ||
-					 $permissions[$i]->slug == 'delete_website_page' ||
+				if($permissions[$i]->slug == 'edit_website_page' ||
 					 $permissions[$i]->slug == 'view_website_page'
 					) {
 					return true;
@@ -1311,19 +1323,8 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'edit_website_page' ||
-					 $permissions[$i]->slug == 'delete_website_page' ||
 					 $permissions[$i]->slug == 'view_website_page'
 					) {
-					return true;
-				}
-			}
-		});
-		
-		Gate::define('add_website_page', function ($user) {
-			$user = Auth::user();
-			$permissions = $user->role->permissions;
-			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_website_page') {
 					return true;
 				}
 			}
@@ -1334,16 +1335,6 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'edit_website_page') {
-					return true;
-				}
-			}
-		});
-		
-		Gate::define('delete_website_page', function ($user) {
-			$user = Auth::user();
-			$permissions = $user->role->permissions;
-			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'delete_website_page') {
 					return true;
 				}
 			}
@@ -1363,9 +1354,7 @@ class AuthServiceProvider extends ServiceProvider {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_mobile_page' ||
-					 $permissions[$i]->slug == 'edit_mobile_page' ||
-					 $permissions[$i]->slug == 'delete_mobile_page' ||
+				if($permissions[$i]->slug == 'edit_mobile_page' ||
 					 $permissions[$i]->slug == 'view_mobile_page'
 					) {
 					return true;
@@ -1378,19 +1367,8 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'edit_mobile_page' ||
-					 $permissions[$i]->slug == 'delete_mobile_page' ||
 					 $permissions[$i]->slug == 'view_mobile_page'
 					) {
-					return true;
-				}
-			}
-		});
-		
-		Gate::define('add_mobile_page', function ($user) {
-			$user = Auth::user();
-			$permissions = $user->role->permissions;
-			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_mobile_page') {
 					return true;
 				}
 			}
@@ -1401,16 +1379,6 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'edit_mobile_page') {
-					return true;
-				}
-			}
-		});
-		
-		Gate::define('delete_mobile_page', function ($user) {
-			$user = Auth::user();
-			$permissions = $user->role->permissions;
-			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'delete_mobile_page') {
 					return true;
 				}
 			}

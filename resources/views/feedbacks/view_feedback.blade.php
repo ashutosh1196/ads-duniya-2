@@ -91,27 +91,27 @@
                 <div class="col-12">
                   <div class="form-group">
                     @if($extension == 'pdf')
-                      <label>File</label><br>
+                      <label>Uploafded File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-pdf" src="{{ $destinationPath.'adobe-pdf-icon.svg' }}">
                       </a>
                     @elseif($extension == 'doc' || $extension == 'doxc')
-                      <label>File</label><br>
+                      <label>Uploafded File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-doc" src="{{ $destinationPath.'wordfile.png' }}">
                       </a>
                     @elseif($extension == 'xls' || $extension == 'ods')
-                      <label>File</label><br>
+                      <label>Uploafded File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-doc" src="{{ $destinationPath.'xls.jpeg' }}">
                       </a>
                     @elseif($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif')
-                      <label>File</label><br>
+                      <label>Uploafded File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-image" src="{{ $filePath }}">
                       </a>
                     @elseif($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif')
-                      <label>File</label><br>
+                      <label>Uploafded File</label><br>
                       <a target="_blank" href="{{ $filePath }}">
                         <img style="width:50px;" class="attached-image" src="{{ $filePath }}">
                       </a>

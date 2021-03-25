@@ -143,6 +143,8 @@ class RolesController extends Controller {
 				$restorePermissions = Permission::where('module_slug', 'restore')->get();
 				$feedbacksPermissions = Permission::where('module_slug', 'feedback')->get();
 				$contactUsPermissions = Permission::where('module_slug', 'contact_us')->get();
+				$websitePagesPermissions = Permission::where('module_slug', 'website_pages')->get();
+				$mobilePagesPermissions = Permission::where('module_slug', 'mobile_pages')->get();
 				return view('roles/role_permissions', [
 					'roles' => $roles,
 					'pendingCustomersPermissions' => $pendingCustomersPermissions,
@@ -167,6 +169,8 @@ class RolesController extends Controller {
 					'restorePermissions' => $restorePermissions,
 					'feedbacksPermissions' => $feedbacksPermissions,
 					'contactUsPermissions' => $contactUsPermissions,
+					'websitePagesPermissions' => $websitePagesPermissions,
+					'mobilePagesPermissions' => $mobilePagesPermissions,
 				]);
 			}
 			else {

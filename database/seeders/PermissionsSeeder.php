@@ -637,7 +637,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Restore Website Page',
+				'name' => 'Restore',
 				'slug' => 'restore_website_page',
 				'module_name' => 'Restore',
 				'module_slug' => 'restore',
@@ -645,7 +645,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Restore Mobile Page',
+				'name' => 'Restore',
 				'slug' => 'restore_mobile_page',
 				'module_name' => 'Restore',
 				'module_slug' => 'restore',
@@ -653,15 +653,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Add Website Page',
-				'slug' => 'add_website_page',
-				'module_name' => 'Website Pages',
-				'module_slug' => 'website_pages',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'Edit Website Page',
+				'name' => 'Edit',
 				'slug' => 'edit_website_page',
 				'module_name' => 'Website Pages',
 				'module_slug' => 'website_pages',
@@ -669,31 +661,15 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Website Page',
-				'slug' => 'delete_website_page',
-				'module_name' => 'Website Pages',
-				'module_slug' => 'website_pages',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Website Page',
+				'name' => 'View',
 				'slug' => 'view_website_page',
 				'module_name' => 'Website Pages',
 				'module_slug' => 'website_pages',
 				'description' => 'desc',
 				'status' => 1
 			],
-      [
-				'name' => 'Add Mobile Page',
-				'slug' => 'add_mobile_page',
-				'module_name' => 'Mobile Pages',
-				'module_slug' => 'mobile_pages',
-				'description' => 'desc',
-				'status' => 1
-			],
 			[
-				'name' => 'Edit Mobile Page',
+				'name' => 'Edit',
 				'slug' => 'edit_mobile_page',
 				'module_name' => 'Mobile Pages',
 				'module_slug' => 'mobile_pages',
@@ -701,15 +677,7 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			[
-				'name' => 'Delete Mobile Page',
-				'slug' => 'delete_mobile_page',
-				'module_name' => 'Mobile Pages',
-				'module_slug' => 'mobile_pages',
-				'description' => 'desc',
-				'status' => 1
-			],
-			[
-				'name' => 'View Mobile Page',
+				'name' => 'View',
 				'slug' => 'view_mobile_page',
 				'module_name' => 'Mobile Pages',
 				'module_slug' => 'mobile_pages',
@@ -1325,34 +1293,6 @@ class PermissionsSeeder extends Seeder {
 			],
       [
 				'permission_id' => 83,
-				'role_id' => 1,
-				'status' => 1,
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-			],
-      [
-				'permission_id' => 84,
-				'role_id' => 1,
-				'status' => 1,
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-			],
-      [
-				'permission_id' => 85,
-				'role_id' => 1,
-				'status' => 1,
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-			],
-      [
-				'permission_id' => 86,
-				'role_id' => 1,
-				'status' => 1,
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-			],
-      [
-				'permission_id' => 87,
 				'role_id' => 1,
 				'status' => 1,
 				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),

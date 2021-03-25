@@ -369,7 +369,65 @@
                   </div>
 
                   <div class="title">
-                    <h5>Tickets Management</h5>
+                    <h5>Content Management</h5>
+                    <hr/>
+                  </div>
+
+                  <div class="row permissions-section">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Website</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="website_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($websitePagesPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass websitecheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Mobile</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="mobile_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($mobilePagesPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass mobilecheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="title">
+                    <h5>Users' Feedback</h5>
                     <hr/>
                   </div>
 
@@ -837,6 +895,12 @@
       $("#restore_permissions").click(function() {
         $(".restorecheckBox").prop('checked', this.checked)
       })
+      $("#website_permissions").click(function() {
+        $(".websitecheckBox").prop('checked', this.checked)
+      })
+      $("#mobile_permissions").click(function() {
+        $(".mobilecheckBox").prop('checked', this.checked)
+      })
 
       if($('.checkBoxClass:checked').length == $('.checkBoxClass').length) {
         $("#full_access").prop('checked', 'true');
@@ -976,6 +1040,18 @@
       }
       else {
         $("#restore_permissions").prop('checked', false);
+      }
+      if($('.websitecheckBox:checked').length == $('.websitecheckBox').length) {
+        $("#website_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#website_permissions").prop('checked', false);
+      }
+      if($('.mobilecheckBox:checked').length == $('.mobilecheckBox').length) {
+        $("#mobile_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#mobile_permissions").prop('checked', false);
       }
     }
   </script>

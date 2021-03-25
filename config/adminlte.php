@@ -385,18 +385,21 @@ return [
             'text' => 'content_management',
             'icon' => 'fas fa-fw fa-edit',
             'url'  => '#',
+            'can' => ['manage_cms'],
             'submenu' => [
                 [
                     'text' => 'website',
                     'icon' => 'fas fa-fw fa-laptop',
                     'url'  => 'admin_panel/content/website/list',
                     'active' => ['admin_panel/content/website*'],
+                    'can' => ['manage_website_pages'],
                 ],
                 [
                     'text' => 'mobile',
                     'icon' => 'fas fa-fw fa-mobile',
                     'url'  => 'admin_panel/content/mobile/list',
                     'active' => ['admin_panel/content/mobile*'],
+                    'can' => ['manage_mobile_pages'],
                 ],
             ],
         ],
