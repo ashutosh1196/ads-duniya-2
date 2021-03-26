@@ -325,10 +325,10 @@
                   
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                    <table id="applicators-list" class="table table-bordered table-hover">
+                    <table style="width:100%" id="applicators-list" class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <th class="display-none"></th>
                           <th>{{ __('adminlte::adminlte.name') }}</th>
                           <th>{{ __('adminlte::adminlte.email') }}</th>
                           <th>{{ __('adminlte::adminlte.contact_number') }}</th>
@@ -336,25 +336,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Test Jobseeker</td>
-                          <td>test_jobseeker@mailinator.com</td>
-                          <td>+449785758697</td>
-                          <td>
-                            <a class="action-button" title="View" href="javascript:void(0)"><i class="text-info fa fa-eye"></i></a>
-                          </td>
-                        </tr>
+                        @for($i=0; $i < count($applicants); $i++)
+                          <tr>
+                            <td class="display-none">1</td>
+                            <td>{{ $applicants[$i]->first_name.' '.$applicants[$i]->last_name }}</td>
+                            <td>{{ $applicants[$i]->email }}</td>
+                            <td>{{ $applicants[$i]->phone_number }}</td>
+                            <td>
+                              <a class="action-button" title="View" href="{{route('view_jobseeker', ['id'=>$applicants[$i]->id])}}"><i class="text-info fa fa-eye"></i></a>
+                            </td>
+                          </tr>
+                        @endfor
                       </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>#</th>
-                          <th>{{ __('adminlte::adminlte.name') }}</th>
-                          <th>{{ __('adminlte::adminlte.email') }}</th>
-                          <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                          <th>{{ __('adminlte::adminlte.actions') }}</th>
-                        </tr>
-                      </tfoot>
                     </table>
                   </div>
                 </div>

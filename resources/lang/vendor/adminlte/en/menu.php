@@ -64,5 +64,8 @@ return [
     
     'feedbacks'                   => 'Feedbacks',
     'contact_us'                  => 'Contact Us',
+    
+    'job_applications'            => 'Job Applications',
+    'job_search_history'          => 'Job Search History',
 
 ];

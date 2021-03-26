@@ -350,6 +350,24 @@ return [
                     'active' => ['admin_panel/jobs/history/*', 'admin_panel/jobs/view_job_history/*'],
                     'can' => ['view_job_history'],
                 ],
+                /* [
+                    'text' => 'bookmarked_jobs',
+                    'icon' => 'fas fa-fw fa-bookmark',
+                    'url'  => 'admin_panel/jobs/bookmarked/list',
+                    'active' => ['admin_panel/jobs/bookmarked*'],
+                ],
+                [
+                    'text' => 'job_applications',
+                    'icon' => 'fab fa-wpforms',
+                    'url'  => 'admin_panel/jobs/applications/list',
+                    'active' => ['admin_panel/jobs/applications*'],
+                ],
+                [
+                    'text' => 'job_search_history',
+                    'icon' => 'fa fa-history',
+                    'url'  => 'admin_panel/jobs/search_history/list',
+                    'active' => ['admin_panel/jobs/search_history*'],
+                ], */
             ],
         ],
         [
@@ -385,18 +403,21 @@ return [
             'text' => 'content_management',
             'icon' => 'fas fa-fw fa-edit',
             'url'  => '#',
+            'can' => ['manage_cms'],
             'submenu' => [
                 [
                     'text' => 'website',
                     'icon' => 'fas fa-fw fa-laptop',
                     'url'  => 'admin_panel/content/website/list',
                     'active' => ['admin_panel/content/website*'],
+                    'can' => ['manage_website_pages'],
                 ],
                 [
                     'text' => 'mobile',
                     'icon' => 'fas fa-fw fa-mobile',
                     'url'  => 'admin_panel/content/mobile/list',
                     'active' => ['admin_panel/content/mobile*'],
+                    'can' => ['manage_mobile_pages'],
                 ],
             ],
         ],

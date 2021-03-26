@@ -15,16 +15,26 @@ class ContentController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function websitePagesList(Request $request) {
-		$websitePagesList = Page::where('device_type', 'web')->get();
-		return view('pages/web/website_pages_list')->with('websitePagesList', $websitePagesList);
+		if(Auth::user()->can('manage_website_pages')) {
+			$websitePagesList = Page::where('device_type', 'web')->get();
+			return view('pages/web/website_pages_list')->with('websitePagesList', $websitePagesList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addWebsitePage(Request $request) {
-		$pageSections = DB::table('pages_sections')->get();
-		return view('pages/web/add_website_page', [ 'pageSections' => $pageSections ]);
+		if(Auth::user()->can('add_website_page')) {
+			$pageSections = DB::table('pages_sections')->get();
+			return view('pages/web/add_website_page', [ 'pageSections' => $pageSections ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -59,12 +69,17 @@ class ContentController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function editWebsitePage($id) {
-    $pageContent = Page::find($id);
-		$pageSections = DB::table('pages_sections')->get();
-		return view('pages/web/edit_website_page', [
-			'pageContent' => $pageContent,
-			'pageSections' => $pageSections,
-		]);
+		if(Auth::user()->can('edit_website_page')) {
+			$pageContent = Page::find($id);
+			$pageSections = DB::table('pages_sections')->get();
+			return view('pages/web/edit_website_page', [
+				'pageContent' => $pageContent,
+				'pageSections' => $pageSections,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -96,16 +111,21 @@ class ContentController extends Controller {
 	 * This function is used to View Website Content
 	*/
 	public function viewWebsitePage($id) {
-		$pageContent = Page::find($id);
-		$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
-		$addedBy = Admin::find($pageContent->added_by_id);
-		$updatedBy = Admin::find($pageContent->updated_by_id);
-		return view('pages/web/view_website_page', [
-			'addedBy' => $addedBy,
-			'updatedBy' => $updatedBy,
-			'section' => $section->title,
-			'pageContent' => $pageContent
-		]);
+		if(Auth::user()->can('view_website_page')) {
+			$pageContent = Page::find($id);
+			$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
+			$addedBy = Admin::find($pageContent->added_by_id);
+			$updatedBy = Admin::find($pageContent->updated_by_id);
+			return view('pages/web/view_website_page', [
+				'addedBy' => $addedBy,
+				'updatedBy' => $updatedBy,
+				'section' => $section->title,
+				'pageContent' => $pageContent
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -156,16 +176,26 @@ class ContentController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function mobilePagesList(Request $request) {
-		$mobilePagesList = Page::where('device_type', 'mobile')->get();
-		return view('pages/mobile/mobile_pages_list')->with('mobilePagesList', $mobilePagesList);
+		if(Auth::user()->can('manage_mobile_pages')) {
+			$mobilePagesList = Page::where('device_type', 'mobile')->get();
+			return view('pages/mobile/mobile_pages_list')->with('mobilePagesList', $mobilePagesList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function addMobilePage(Request $request) {
-		$pageSections = DB::table('pages_sections')->get();
-		return view('pages/mobile/add_mobile_page', [ 'pageSections' => $pageSections ]);
+		if(Auth::user()->can('add_mobile_page')) {
+			$pageSections = DB::table('pages_sections')->get();
+			return view('pages/mobile/add_mobile_page', [ 'pageSections' => $pageSections ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -200,12 +230,17 @@ class ContentController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function editMobilePage($id) {
-		$pageContent = Page::find($id);
-		$pageSections = DB::table('pages_sections')->get();
-		return view('pages/mobile/edit_mobile_page', [
-			'pageContent' => $pageContent,
-			'pageSections' => $pageSections,
-		]);
+		if(Auth::user()->can('edit_mobile_page')) {
+			$pageContent = Page::find($id);
+			$pageSections = DB::table('pages_sections')->get();
+			return view('pages/mobile/edit_mobile_page', [
+				'pageContent' => $pageContent,
+				'pageSections' => $pageSections,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -237,16 +272,21 @@ class ContentController extends Controller {
 	 * This function is used to View Mobile Content
 	*/
 	public function viewMobilePage($id) {
-		$pageContent = Page::find($id);
-		$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
-		$addedBy = Admin::find($pageContent->added_by_id);
-		$updatedBy = Admin::find($pageContent->updated_by_id);
-		return view('pages/mobile/view_mobile_page', [
-			'addedBy' => $addedBy,
-			'updatedBy' => $updatedBy,
-			'section' => $section->title,
-			'pageContent' => $pageContent
-		]);
+		if(Auth::user()->can('view_mobile_page')) {
+			$pageContent = Page::find($id);
+			$section = DB::table('pages_sections')->where('slug', $pageContent->section)->first();
+			$addedBy = Admin::find($pageContent->added_by_id);
+			$updatedBy = Admin::find($pageContent->updated_by_id);
+			return view('pages/mobile/view_mobile_page', [
+				'addedBy' => $addedBy,
+				'updatedBy' => $updatedBy,
+				'section' => $section->title,
+				'pageContent' => $pageContent
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
