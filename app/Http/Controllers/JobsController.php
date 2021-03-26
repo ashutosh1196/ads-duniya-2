@@ -143,6 +143,15 @@ class JobsController extends Controller {
 	public function viewJob($id) {
 		if(Auth::user()->can('view_job')) {
 			$jobDetails = Job::find($id);
+			$jobApplications = DB::table('job_applications')->where('job_id', $id)->get();
+			$applicantIds = [];
+			for ($i=0; $i < count($jobApplications); $i++) { 
+				$jobApplication = $jobApplications[$i];
+				if(!in_array($jobApplication->applicant_id, $applicantIds, true)) {
+					array_push($applicantIds, $jobApplication->applicant_id);
+				}
+			}
+			$applicants = User::whereIn('id', $applicantIds)->get();
 			$jobIndustry = JobIndustry::find($jobDetails->job_industry_id);
 			$jobLocation = JobLocation::find($jobDetails->job_location_id);
 			$organization = Organization::find($jobDetails->organization_id);
@@ -153,6 +162,7 @@ class JobsController extends Controller {
 				'recruiter' => $recruiter,
 				'jobIndustry' => $jobIndustry->name,
 				'jobLocation' => $jobLocation->name,
+				'applicants' => $applicants,
 			]);
 		}
 		else {
