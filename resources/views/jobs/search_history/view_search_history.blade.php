@@ -54,13 +54,13 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.distance') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->distance }} KM" readonly>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->distance ? $jobSearchHistory->distance.' KM' : '' }}" readonly>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.posted_within_days') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->posted_within_days }} Days" readonly>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->posted_within_days ? $jobSearchHistory->posted_within_days.' Days' : '' }}" readonly>
                 </div>
               </div>              
             </div>
