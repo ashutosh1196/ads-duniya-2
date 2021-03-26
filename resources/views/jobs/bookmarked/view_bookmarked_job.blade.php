@@ -304,7 +304,6 @@
             </div>
 
             <div class="row">
-              
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.created_date') }}</label>
@@ -316,6 +315,15 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.last_updated_date') }}</label>
                   <input class="form-control" placeholder="{{ $bookmarkedJob->updated_at ? date('d/m/y', strtotime($bookmarkedJob->updated_at)) : '' }}" readonly>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>Bookmarked On</label>
+                  <input class="form-control" placeholder="{{ $bookmark->created_at ? date('d/m/y', strtotime($bookmark->created_at)) : '' }}" readonly>
                 </div>
               </div>
             </div>
