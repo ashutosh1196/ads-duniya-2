@@ -13,6 +13,7 @@ use App\Http\Controllers\MiscController;
 use App\Http\Controllers\CreditsController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\DatatableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,17 +33,19 @@ Route::get('/', function () {
 
 Route::middleware(['auth:admin'])->group(function () {
   
-  // Admin Panel Routes
+  // Admin Panel
   Route::group(['prefix' => 'admin_panel'], function () {
+    Route::get('/user_permissions', [RolesController::class, 'getUserPermissions'])->name('user_permissions');
+    Route::get('/all_permissions', [RolesController::class, 'getAllPermissions'])->name('all_permissions');
     
-    // Common Routes
+    // Common
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin_profile', [AdminController::class, 'adminProfile'])->name('admin_profile');
     Route::post('/update_profile', [AdminController::class, 'updateProfile'])->name('update_profile');
     Route::post('/check_password', [AdminController::class, 'checkPassword'])->name('check_password');
     Route::post('/change_password', [AdminController::class, 'changePassword'])->name('change_password');
 
-    // Customers Routes
+    // Customers Management
     Route::group(['prefix' => 'customers'], function () {
       Route::get('/pending', [OrganizationsController::class, 'pendingCustomersList'])->name('pending_customers');
       Route::get('/whitelisted', [OrganizationsController::class, 'whitelistedCustomersList'])->name('whitelisted_customers');
@@ -60,8 +63,9 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/upload_logo_image', [OrganizationsController::class, 'uploadLogoImage'])->name('upload_logo_image');
     });
 
-    // Jobseekers Routes
+    // Users Management
     Route::group(['prefix' => 'users'], function () {
+      // Jobseekers
       Route::group(['prefix' => 'jobseekers'], function () {
         Route::get('/list', [JobSeekersController::class, 'jobseekersList'])->name('jobseekers_list');
         Route::get('/view/{id}', [JobSeekersController::class, 'viewJobseeker'])->name('view_jobseeker');
@@ -73,7 +77,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/save', [JobSeekersController::class, 'saveJobseeker'])->name('save_jobseeker');
       });
 
-      // Recruiters Routes
+      // Recruiters
       Route::group(['prefix' => 'recruiters'], function () {
         Route::get('/list', [RecruitersController::class, 'recruitersList'])->name('recruiters_list');
         Route::get('/view/{id}', [RecruitersController::class, 'viewRecruiter'])->name('view_recruiter');
@@ -85,7 +89,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/save', [RecruitersController::class, 'saveRecruiter'])->name('save_recruiter');
       });
 
-      // Admins Routes
+      // Admins
       Route::group(['prefix' => 'admins'], function () {
         Route::get('/list', [AdminsController::class, 'adminsList'])->name('admins_list');
         Route::get('/view/{id}', [AdminsController::class, 'viewAdmin'])->name('view_admin');
@@ -98,38 +102,7 @@ Route::middleware(['auth:admin'])->group(function () {
       });
     });
 
-    // Recycle bin Routes
-    Route::group(['prefix' => 'recycle_bin'], function () {
-      Route::group(['prefix' => 'customers'], function () {
-        Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
-      });
-      Route::group(['prefix' => 'jobseekers'], function () {
-        Route::get('/deleted', [JobSeekersController::class, 'deletedJobseekersList'])->name('deleted_jobseekers_list');
-      });
-      Route::group(['prefix' => 'recruiters'], function () {
-        Route::get('/deleted', [RecruitersController::class, 'deletedRecruitersList'])->name('deleted_recruiters_list');
-      });
-      Route::group(['prefix' => 'admins'], function () {
-        Route::get('/deleted', [AdminsController::class, 'deletedAdminsList'])->name('deleted_admins_list');
-      });
-      Route::group(['prefix' => 'jobs'], function () {
-        Route::get('/deleted', [JobsController::class, 'deletedJobs'])->name('deleted_jobs_list');
-      });
-      Route::group(['prefix' => 'job_industries'], function () {
-        Route::get('/deleted', [MiscController::class, 'deletedJobIndustries'])->name('deleted_job_industries');
-      });
-      Route::group(['prefix' => 'job_functions'], function () {
-        Route::get('/deleted', [MiscController::class, 'deletedJobFunctions'])->name('deleted_job_functions');
-      });
-      Route::group(['prefix' => 'job_locations'], function () {
-        Route::get('/deleted', [MiscController::class, 'deletedJobLocations'])->name('deleted_job_locations');
-      });
-      Route::group(['prefix' => 'skills'], function () {
-        Route::get('/deleted', [MiscController::class, 'deletedskills'])->name('deleted_skills');
-      });
-    });
-
-    // Jobs Routes
+    // Jobs Management
     Route::group(['prefix' => 'jobs'], function () {
       Route::get('/list', [JobsController::class, 'jobsList'])->name('jobs_list');
       Route::get('/add', [JobsController::class, 'addJob'])->name('add_job');
@@ -142,10 +115,62 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/history', [JobsController::class, 'jobsHistory'])->name('jobs_history');
       Route::get('/view_job_history/{id}', [JobsController::class, 'viewJobHistory'])->name('view_job_history');
       Route::post('/upload_company_logo', [JobsController::class, 'uploadImage'])->name('upload_company_logo');
-      /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
+      Route::group(['prefix' => 'bookmarked'], function () {
+        Route::get('/list', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewBookmarkedJob'])->name('view_bookmarked_job');
+      });
+      Route::group(['prefix' => 'applications'], function () {
+        Route::get('/list', [JobsController::class, 'jobApplications'])->name('job_applications_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewJobApplication'])->name('view_job_application');
+      });
+      Route::group(['prefix' => 'search_history'], function () {
+        Route::get('/list', [JobsController::class, 'jobSearchHistoryList'])->name('job_search_history_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewJobSearchHistory'])->name('view_search_history');
+      });
     });
 
-    // Recycle bin Routes
+    // Company Credits
+    Route::group(['prefix' => 'credits'], function () {
+      Route::get('/list', [CreditsController::class, 'companyCreditsList'])->name('company_credits_list');
+      Route::get('/view/{id}', [CreditsController::class, 'viewCompanyCredit'])->name('view_company_credit');
+      Route::get('/add', [CreditsController::class, 'addCompanyCredit'])->name('add_company_credit');
+      Route::post('/save', [CreditsController::class, 'saveCompanyCredit'])->name('save_company_credit');
+    });
+
+    // Credits History
+    Route::group(['prefix' => 'credits_history'], function () {
+      Route::get('/list', [CreditsController::class, 'creditsHistory'])->name('credits_history');
+      Route::get('/view/{id}', [CreditsController::class, 'viewCreditHistory'])->name('view_credit_history');
+    });
+
+    // Payments Transactions
+    Route::group(['prefix' => 'payment_transactions'], function () {
+      Route::get('/list', [PaymentsController::class, 'paymentTransactionsList'])->name('payment_transactions_list');
+      Route::get('/view/{id}', [PaymentsController::class, 'viewPaymentTransaction'])->name('view_payment_transaction');
+    });
+
+    // Tickets Management
+    Route::group(['prefix' => 'tickets'], function () {
+      Route::get('/list', [TicketsController::class, 'ticketsList'])->name('tickets_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewTicket'])->name('view_ticket');
+      Route::post('/close', [TicketsController::class, 'closeTicket'])->name('close_ticket');
+      Route::post('/open', [TicketsController::class, 'openTicket'])->name('open_ticket');
+      Route::post('/reply', [TicketsController::class, 'replyOnTicket'])->name('reply_on_ticket');
+    });
+
+    // Feedback
+    Route::group(['prefix' => 'feedbacks'], function () {
+      Route::get('/list', [TicketsController::class, 'feedbacksList'])->name('feedbacks_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewFeedback'])->name('view_feedback');
+    });
+
+    // Contact Us
+    Route::group(['prefix' => 'contact_us'], function () {
+      Route::get('/list', [TicketsController::class, 'contactUsMessagesList'])->name('contact_us_message_list');
+      Route::get('/view/{id}', [TicketsController::class, 'viewContactUsMessage'])->name('view_contact_us_message');
+    });
+
+    // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
       Route::group(['prefix' => 'job_industries'], function () {
@@ -188,53 +213,119 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/delete', [MiscController::class, 'deleteJobLocation'])->name('delete_job_location');
         Route::post('/restore', [MiscController::class, 'restoreJobLocation'])->name('restore_job_location');
       });
+      Route::group(['prefix' => 'cities'], function () {
+        Route::get('/list', [MiscController::class, 'CitiesList'])->name('cities_list');
+        Route::get('/add', [MiscController::class, 'addCity'])->name('add_city');
+        Route::post('/save', [MiscController::class, 'saveCity'])->name('save_city');
+        Route::get('/view/{id}', [MiscController::class, 'viewCity'])->name('view_city');
+        Route::get('/edit/{id}', [MiscController::class, 'editCity'])->name('edit_city');
+        Route::post('/update', [MiscController::class, 'updateCity'])->name('update_city');
+        Route::post('/delete', [MiscController::class, 'deleteCity'])->name('delete_city');
+        Route::post('/restore', [MiscController::class, 'restoreCity'])->name('restore_city');
+      });
+      Route::group(['prefix' => 'counties'], function () {
+        Route::get('/list', [MiscController::class, 'CountiesList'])->name('counties_list');
+        Route::get('/add', [MiscController::class, 'addCounty'])->name('add_county');
+        Route::post('/save', [MiscController::class, 'saveCounty'])->name('save_county');
+        Route::get('/view/{id}', [MiscController::class, 'viewCounty'])->name('view_county');
+        Route::get('/edit/{id}', [MiscController::class, 'editCounty'])->name('edit_county');
+        Route::post('/update', [MiscController::class, 'updateCounty'])->name('update_county');
+        Route::post('/delete', [MiscController::class, 'deleteCounty'])->name('delete_county');
+        Route::post('/restore', [MiscController::class, 'restoreCounty'])->name('restore_county');
+      });
     });
 
-    // Credit Management Pages Routes
-    Route::group(['prefix' => 'credits'], function () {
-      Route::get('/list', [CreditsController::class, 'companyCreditsList'])->name('company_credits_list');
-      Route::get('/view/{id}', [CreditsController::class, 'viewCompanyCredit'])->name('view_company_credit');
-      Route::get('/add', [CreditsController::class, 'addCompanyCredit'])->name('add_company_credit');
-      Route::post('/save', [CreditsController::class, 'saveCompanyCredit'])->name('save_company_credit');
-    });
-
-    // Credits History Pages Routes
-    Route::group(['prefix' => 'credits_history'], function () {
-      Route::get('/list', [CreditsController::class, 'creditsHistory'])->name('credits_history');
-      Route::get('/view/{id}', [CreditsController::class, 'viewCreditHistory'])->name('view_credit_history');
-    });
-
-    // Payments History Pages Routes
-    Route::group(['prefix' => 'payment_transactions'], function () {
-      Route::get('/list', [PaymentsController::class, 'paymentTransactionsList'])->name('payment_transactions_list');
-      Route::get('/view/{id}', [PaymentsController::class, 'viewPaymentTransaction'])->name('view_payment_transaction');
-    });
-
-    // Tickets Pages Routes
-    Route::group(['prefix' => 'tickets'], function () {
-      Route::get('/list', [TicketsController::class, 'ticketsList'])->name('tickets_list');
-      Route::get('/view/{id}', [TicketsController::class, 'viewTicket'])->name('view_ticket');
-      Route::post('/close', [TicketsController::class, 'closeTicket'])->name('close_ticket');
-      Route::post('/open', [TicketsController::class, 'openTicket'])->name('open_ticket');
-      Route::post('/reply', [TicketsController::class, 'replyOnTicket'])->name('reply_on_ticket');
-    });
-
-    // Content Pages Routes
-    Route::group(['prefix' => 'content'], function () {
-      Route::get('/website', [ContentController::class, 'websitePagesList'])->name('content_website');
-      Route::get('/mobile', [ContentController::class, 'mobilePagesList'])->name('content_mobile');
-      Route::get('/edit/{id}', [ContentController::class, 'editPagesContentView'])->name('edit_content');
-      Route::post('/update', [ContentController::class, 'updateContent'])->name('update_content');
-      /* Route::get('/add', [ContentController::class, 'addPagesContentView'])->name('add_content');
-      Route::post('/save', [ContentController::class, 'saveContent'])->name('save_content'); */
-    });
-
-    // Roles Routes
+    // Access Controls
     Route::group(['prefix' => 'roles'], function () {
+      Route::get('/view/{id}', [RolesController::class, 'viewRole'])->name('view_role');
       Route::get('/list', [RolesController::class, 'rolesList'])->name('roles_list');
       Route::get('/add', [RolesController::class, 'addRole'])->name('add_role');
       Route::post('/save', [RolesController::class, 'saveRole'])->name('save_role');
-      Route::get('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
+      Route::get('/edit/{id}', [RolesController::class, 'editRole'])->name('edit_role');
+      Route::post('/update', [RolesController::class, 'updateRole'])->name('update_role');
+      Route::post('/get_role_permissions', [RolesController::class, 'getRolePermissions'])->name('get_role_permissions');
+      Route::get('/role_permissions', [RolesController::class, 'rolePermissions'])->name('role_permissions');
+      Route::post('/save_permissions', [RolesController::class, 'saveRolePermissions'])->name('save_permissions');
+      Route::post('/delete', [RolesController::class, 'deleteRole'])->name('delete_role');
+      Route::post('/restore', [RolesController::class, 'restoreRole'])->name('restore_role');
+    });
+
+    // Content Management
+    Route::group(['prefix' => 'content'], function () {
+      Route::group(['prefix' => 'website'], function () {
+        Route::get('/list', [ContentController::class, 'websitePagesList'])->name('website_pages_list');
+        Route::get('/view/{id}', [ContentController::class, 'viewWebsitePage'])->name('view_website_page');
+        Route::get('/edit/{id}', [ContentController::class, 'editWebsitePage'])->name('edit_website_page');
+        Route::post('/update', [ContentController::class, 'updateWebsitePage'])->name('update_website_page');
+        // Route::get('/add', [ContentController::class, 'addWebsitePage'])->name('add_website_page');
+        // Route::post('/save', [ContentController::class, 'saveWebsitePage'])->name('save_website_page');
+        // Route::post('/delete', [ContentController::class, 'deleteWebsitePage'])->name('delete_website_page');
+        // Route::post('/restore', [ContentController::class, 'restoreWebsitePage'])->name('restore_website_page');
+      });
+      Route::group(['prefix' => 'mobile'], function () {
+        Route::get('/list', [ContentController::class, 'mobilePagesList'])->name('mobile_pages_list');
+        Route::get('/view/{id}', [ContentController::class, 'viewMobilePage'])->name('view_mobile_page');
+        Route::get('/edit/{id}', [ContentController::class, 'editMobilePage'])->name('edit_mobile_page');
+        Route::post('/update', [ContentController::class, 'updateMobilePage'])->name('update_mobile_page');
+        // Route::get('/add', [ContentController::class, 'addMobilePage'])->name('add_mobile_page');
+        // Route::post('/save', [ContentController::class, 'saveMobilePage'])->name('save_mobile_page');
+        // Route::post('/delete', [ContentController::class, 'deleteMobilePage'])->name('delete_mobile_page');
+        // Route::post('/restore', [ContentController::class, 'restoreMobilePage'])->name('restore_mobile_page');
+      });
+    });
+
+    // Recycle Bin
+    Route::group(['prefix' => 'recycle_bin'], function () {
+      Route::group(['prefix' => 'customers'], function () {
+        Route::get('/deleted', [OrganizationsController::class, 'deletedCustomersList'])->name('deleted_customers_list');
+      });
+      Route::group(['prefix' => 'jobseekers'], function () {
+        Route::get('/deleted', [JobSeekersController::class, 'deletedJobseekersList'])->name('deleted_jobseekers_list');
+      });
+      Route::group(['prefix' => 'recruiters'], function () {
+        Route::get('/deleted', [RecruitersController::class, 'deletedRecruitersList'])->name('deleted_recruiters_list');
+      });
+      Route::group(['prefix' => 'admins'], function () {
+        Route::get('/deleted', [AdminsController::class, 'deletedAdminsList'])->name('deleted_admins_list');
+      });
+      Route::group(['prefix' => 'jobs'], function () {
+        Route::get('/deleted', [JobsController::class, 'deletedJobs'])->name('deleted_jobs_list');
+      });
+      Route::group(['prefix' => 'job_industries'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobIndustries'])->name('deleted_job_industries');
+      });
+      Route::group(['prefix' => 'job_functions'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobFunctions'])->name('deleted_job_functions');
+      });
+      Route::group(['prefix' => 'job_locations'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedJobLocations'])->name('deleted_job_locations');
+      });
+      Route::group(['prefix' => 'skills'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedskills'])->name('deleted_skills');
+      });
+      Route::group(['prefix' => 'cities'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedCities'])->name('deleted_cities');
+      });
+      Route::group(['prefix' => 'counties'], function () {
+        Route::get('/deleted', [MiscController::class, 'deletedCounties'])->name('deleted_counties');
+      });
+      Route::group(['prefix' => 'roles'], function () {
+        Route::get('/deleted', [RolesController::class, 'deletedRoles'])->name('deleted_roles');
+      });
+      /* Route::group(['prefix' => 'website'], function () {
+        Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_website_pages');
+      });
+      Route::group(['prefix' => 'mobile'], function () {
+        Route::get('/deleted', [ContentController::class, 'deletedWebsitePages'])->name('deleted_mobile_pages');
+      }); */
+    });
+
+    Route::prefix('datatable')->as('datatable.')->group(function(){
+      
+      Route::get('/payment-logs',[DatatableController::class,'getPaymentLogs'])->name('payment.logs');
+      Route::post('/export-payment-logs',[DatatableController::class,'exportPaymentLogs'])->name('export.payment.logs');
+      Route::post('/export-bulk-invoices',[DatatableController::class,'exportBulkInvoices'])->name('export.bulk.invoices');
+
     });
 
   });

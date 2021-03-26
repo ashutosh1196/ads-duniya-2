@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.job_locations') }}</h3>
-            <a class="btn btn-sm btn-success float-right" href="{{ route('add_job_location') }}">{{ __('adminlte::adminlte.add_new_job_location') }}</a>
+            @can('add_job_location')<a class="btn btn-sm btn-success float-right" href="{{ route('add_job_location') }}">{{ __('adminlte::adminlte.add_new_job_location') }}</a>@endcan
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_job_location_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -37,23 +37,22 @@
                   <td>{{ $jobLocationsList[$i]->name }}</td>
                   <td>{{ $jobLocationsList[$i]->slug }}</td>
                   <td>{{ $jobLocationsList[$i]->status ? 'Active' : 'Inactive' }}</td>
-                  <td>
-                    <a class="action-button" title="View" href="view/{{$jobLocationsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a class="action-button" title="Edit" href="edit/{{$jobLocationsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobLocationsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_job_location_actions')
+                    <td>
+                      @can('view_job_location')
+                        <a class="action-button" title="View" href="view/{{$jobLocationsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('edit_job_location')
+                        <a class="action-button" title="Edit" href="edit/{{$jobLocationsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_job_location')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobLocationsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.slug') }}</th>
-                  <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

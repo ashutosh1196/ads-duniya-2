@@ -13,6 +13,10 @@ use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
 use App\Models\JobHistory;
+use App\Models\BookmarkedJob;
+use App\Models\User;
+use App\Models\JobApplication;
+use App\Models\JobSearchHistory;
 use Auth;
 use DB;
 
@@ -22,29 +26,34 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function addJob() {
-		$countries     = Country::all()->toArray();
-		$jobIndustries = JobIndustry::all();
-		$jobFunctions  = JobFunction::all();
-		$jobLocations  = JobLocation::all();
-		$JobSkills     = Skill::all();
+		if(Auth::user()->can('add_job')) {
+			$countries     = Country::all()->toArray();
+			$jobIndustries = JobIndustry::all();
+			$jobFunctions  = JobFunction::all();
+			$jobLocations  = JobLocation::all();
+			$JobSkills     = Skill::all();
 
-		$organisationsList = Organization::where('is_whitelisted', 1)->get();
-		$recruitersList = [];
-		for ($i=0; $i < count($organisationsList); $i++) {
-			$recruiter = Recruiter::where('organization_id', $organisationsList[$i]->id)->get();
-			if($recruiter->isNotEmpty()) {
-				array_push($recruitersList, $recruiter[0]);
+			$organisationsList = Organization::where('is_whitelisted', 1)->get();
+			$recruitersList = [];
+			for ($i=0; $i < count($organisationsList); $i++) {
+				$recruiter = Recruiter::where('organization_id', $organisationsList[$i]->id)->get();
+				if($recruiter->isNotEmpty()) {
+					array_push($recruitersList, $recruiter[0]);
+				}
 			}
+			return view('jobs/add_job', [
+				'organisationsList' => $organisationsList,
+				'recruitersList' => $recruitersList,
+				'countries' => $countries,
+				'jobIndustries' => $jobIndustries,
+				'jobFunctions' => $jobFunctions,
+				'jobLocations' => $jobLocations,
+				'JobSkills' => $JobSkills
+			]);
 		}
-		return view('jobs/add_job', [
-			'organisationsList' => $organisationsList,
-			'recruitersList' => $recruitersList,
-			'countries' => $countries,
-			'jobIndustries' => $jobIndustries,
-			'jobFunctions' => $jobFunctions,
-			'jobLocations' => $jobLocations,
-			'JobSkills' => $JobSkills
-		]);
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
@@ -121,58 +130,83 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function jobsList(Request $request) {
-		$jobsList = Job::orderByDesc('id')->get();
-		return view('jobs/jobs_list')->with('jobsList', $jobsList);
+		if(Auth::user()->can('manage_job')) {
+			$jobsList = Job::orderByDesc('id')->get();
+			return view('jobs/jobs_list')->with('jobsList', $jobsList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function viewJob($id) {
-		$jobDetails = Job::find($id);
-		$jobIndustry = JobIndustry::find($jobDetails->job_industry_id);
-		$jobLocation = JobLocation::find($jobDetails->job_location_id);
-		$organization = Organization::find($jobDetails->organization_id);
-		$recruiter = Recruiter::find( $jobDetails->recruiter_id);
-		return view('jobs/view_job', [
-			'jobDetails' => $jobDetails,
-			'organizationName' => $organization->name,
-			'recruiter' => $recruiter,
-			'jobIndustry' => $jobIndustry->name,
-			'jobLocation' => $jobLocation->name,
-		]);
+		if(Auth::user()->can('view_job')) {
+			$jobDetails = Job::find($id);
+			$jobApplications = DB::table('job_applications')->where('job_id', $id)->get();
+			$applicantIds = [];
+			for ($i=0; $i < count($jobApplications); $i++) { 
+				$jobApplication = $jobApplications[$i];
+				if(!in_array($jobApplication->applicant_id, $applicantIds, true)) {
+					array_push($applicantIds, $jobApplication->applicant_id);
+				}
+			}
+			$applicants = User::whereIn('id', $applicantIds)->get();
+			$jobIndustry = JobIndustry::find($jobDetails->job_industry_id);
+			$jobLocation = JobLocation::find($jobDetails->job_location_id);
+			$organization = Organization::find($jobDetails->organization_id);
+			$recruiter = Recruiter::find( $jobDetails->recruiter_id);
+			return view('jobs/view_job', [
+				'jobDetails' => $jobDetails,
+				'organizationName' => $organization->name,
+				'recruiter' => $recruiter,
+				'jobIndustry' => $jobIndustry->name,
+				'jobLocation' => $jobLocation->name,
+				'applicants' => $applicants,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function editJob($id) {
-		$jobDetails = Job::find($id);
-		$countries     = Country::all()->toArray();
-		$counties     = DB::table('counties')->get();
-		$cities     = DB::table('cities')->get();
-		$jobIndustries = JobIndustry::all();
-		$jobFunctions  = JobFunction::all();
-		$jobLocations  = JobLocation::all();
-		$skills = Skill::all();
-		$employmentDropdowns = DB::table('dropdowns')->where('name', 'employment_eligibility')->get();
-		$currencies = DB::table('dropdowns')->where('name', 'currency')->get();
-		$jobTypes = DB::table('dropdowns')->where('name', 'job_type')->get();
-		$organisation = Organization::find($jobDetails->organization_id);
-		return view('jobs/edit_job', [
-			'jobDetails'		=> $jobDetails,
-			'countries'			=> $countries,
-			'counties'			=> $counties,
-			'cities'				=> $cities,
-			'jobIndustries' => $jobIndustries,
-			'jobFunctions'	=> $jobFunctions,
-			'jobLocations'	=> $jobLocations,
-			'skills'				=> $skills,
-			'organisation'	=> $organisation,
-			'employmentDropdowns'	=> $employmentDropdowns,
-			'currencies'	=> $currencies,
-			'jobTypes'	=> $jobTypes,
-		]);
+		if(Auth::user()->can('edit_job')) {
+			$jobDetails = Job::find($id);
+			$countries     = Country::all()->toArray();
+			$counties     = DB::table('counties')->get();
+			$cities     = DB::table('cities')->get();
+			$jobIndustries = JobIndustry::all();
+			$jobFunctions  = JobFunction::all();
+			$jobLocations  = JobLocation::all();
+			$skills = Skill::all();
+			$employmentDropdowns = DB::table('dropdowns')->where('name', 'employment_eligibility')->get();
+			$currencies = DB::table('dropdowns')->where('name', 'currency')->get();
+			$jobTypes = DB::table('dropdowns')->where('name', 'job_type')->get();
+			$organisation = Organization::find($jobDetails->organization_id);
+			return view('jobs/edit_job', [
+				'jobDetails'		=> $jobDetails,
+				'countries'			=> $countries,
+				'counties'			=> $counties,
+				'cities'				=> $cities,
+				'jobIndustries' => $jobIndustries,
+				'jobFunctions'	=> $jobFunctions,
+				'jobLocations'	=> $jobLocations,
+				'skills'				=> $skills,
+				'organisation'	=> $organisation,
+				'employmentDropdowns'	=> $employmentDropdowns,
+				'currencies'	=> $currencies,
+				'jobTypes'	=> $jobTypes,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
@@ -288,8 +322,13 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function deletedJobs(Request $request) {
-		$deletedJobs = Job::onlyTrashed()->orderByDesc('id')->get();
-		return view('jobs/deleted_jobs')->with('deletedJobs', $deletedJobs);
+		if(Auth::user()->can('restore_jobs')) {
+			$deletedJobs = Job::onlyTrashed()->orderByDesc('id')->get();
+			return view('jobs/deleted_jobs')->with('deletedJobs', $deletedJobs);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -312,37 +351,39 @@ class JobsController extends Controller {
 	}
 
 	/**
-	 * This function is used to Show Saved Jobs Listing
-	*/
-	public function bookmarkedJobs(Request $request) {
-		$bookmarkedJobs = Job::all();
-		return view('jobs/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
-	}
-
-	/**
 	 * This function is used to Show Jobs History
 	*/
 	public function jobsHistory(Request $request) {
-		$jobHistory = JobHistory::all();
-		return view('jobs/jobs_history')->with('jobHistory', $jobHistory);
+		if(Auth::user()->can('view_job_history')) {
+			$jobHistory = JobHistory::all();
+			return view('jobs/jobs_history')->with('jobHistory', $jobHistory);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Jobs History
 	*/
 	public function viewJobHistory($id) {
-		$jobHistory = JobHistory::find($id);
-		$jobIndustry = JobIndustry::find($jobHistory->job_industry_id);
-		$jobLocation = JobLocation::find($jobHistory->job_location_id);
-		$organization = Organization::find($jobHistory->organization_id);
-		$recruiter = Recruiter::find($jobHistory->recruiter_id);
-		return view('jobs/view_job_history', [
-			'jobHistory' => $jobHistory,
-			'organizationName' => $organization->name,
-			'recruiter' => $recruiter,
-			'jobIndustry' => $jobIndustry->name,
-			'jobLocation' => $jobLocation->name,
-		]);
+		if(Auth::user()->can('view_job_history')) {
+			$jobHistory = JobHistory::find($id);
+			$jobIndustry = JobIndustry::find($jobHistory->job_industry_id);
+			$jobLocation = JobLocation::find($jobHistory->job_location_id);
+			$organization = Organization::find($jobHistory->organization_id);
+			$recruiter = Recruiter::find($jobHistory->recruiter_id);
+			return view('jobs/view_job_history', [
+				'jobHistory' => $jobHistory,
+				'organizationName' => $organization->name,
+				'recruiter' => $recruiter,
+				'jobIndustry' => $jobIndustry->name,
+				'jobLocation' => $jobLocation->name,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function uploadImage(Request $request) {
@@ -374,5 +415,69 @@ class JobsController extends Controller {
 			$response = $res;
 			return json_encode($response);
 		}
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function bookmarkedJobs(Request $request) {
+		$bookmarkedJobs = BookmarkedJob::all();
+		return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewBookmarkedJob($id) {
+		$bookmark = BookmarkedJob::find($id);
+		$bookmarkedJob = Job::find($bookmark->job_id);
+		$user = User::find($bookmark->user_id);
+		return view('jobs/bookmarked/view_bookmarked_job', [
+			'bookmark' => $bookmark,
+			'bookmarkedJob' => $bookmarkedJob,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function jobApplications(Request $request) {
+		$jobApplications = JobApplication::all();
+		return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewJobApplication($id) {
+		$jobApplication = JobApplication::find($id);
+		$appliedJob = Job::find($jobApplication->job_id);
+		$user = User::find($jobApplication->applicant_id);
+		return view('jobs/applications/view_job_application', [
+			'jobApplication' => $jobApplication,
+			'appliedJob' => $appliedJob,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function jobSearchHistoryList(Request $request) {
+		$jobSearchHistoryList = JobSearchHistory::all();
+		return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewJobSearchHistory($id) {
+		$jobSearchHistory = JobSearchHistory::find($id);
+		$user = User::find($jobSearchHistory->user_id);
+		return view('jobs/search_history/view_search_history', [
+			'jobSearchHistory' => $jobSearchHistory,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
 	}
 }

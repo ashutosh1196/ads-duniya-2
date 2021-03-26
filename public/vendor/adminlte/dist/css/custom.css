@@ -377,6 +377,13 @@ section.content .small-box:hover a.small-box-footer img {
     top: 0px;
     display: inline-block;
 }
+.dataTables_wrapper table#paymentTransactionsList tbody tr td:last-child a {
+    color: #17a2b8;
+    cursor: pointer;
+    background-color: #f6f7fb;
+    border: none;
+    padding: 1px 5px;
+}
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a {
     background-color: #f6f7fb;
 }
@@ -902,12 +909,14 @@ form .card-body {
     display: flex;
     align-items: center;
 }
-.completed_job_wrap .custom-check {
+.completed_job_wrap .custom-check,
+.custom-check {
     position: relative;
     width: 20px;
     height: 20px;
 }
-.completed_job_wrap .custom-check input.is_complete_update {
+.completed_job_wrap .custom-check input.is_complete_update,
+.custom-check input {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -919,20 +928,23 @@ form .card-body {
     cursor: pointer;
     z-index: 1;
 }
-.completed_job_wrap .custom-check span {
+.completed_job_wrap .custom-check span,
+.custom-check span {
     height: 20px;
     width: 20px;
     border: 1px solid #000000;
     display: inline-block;
     border-radius: 3px;
 }
-.completed_job_wrap .custom-check input.is_complete_update:checked~span {
+.completed_job_wrap .custom-check input.is_complete_update:checked~span,
+.custom-check input:checked~span {
     height: 20px;
     width: 20px;
     background-color: #2d8427;
     border-color: #2d8427;
 }
-.completed_job_wrap .custom-check input.is_complete_update:checked~span:before {
+.completed_job_wrap .custom-check input.is_complete_update:checked~span:before,
+.custom-check input:checked~span:before {
     background-color: #2d8427;
     left: 7px;
     top: 2px;
@@ -1068,6 +1080,66 @@ form .card-body {
     border-radius: 4px;
     border: 1px solid #212529;
     padding: 2px;
+}
+.custom_check_wrap {
+    display: flex;
+    margin: 0 0 10px;
+}
+.custom_check_wrap .custom-check {
+    margin: 0 10px 0 0;
+}
+form#addRoleForm {
+    color: #343d49;
+}
+.permissions-section p strong.list-text {
+    left: 0;
+    top: 0;
+}
+.permissions-section p {
+    margin: 0;
+}
+.permissions-section .custom_check_wrap strong.list-text {
+    left: 0;
+    top: 0;
+}
+.permissions-section .custom_check_wrap {
+    align-items: center;
+    margin-bottom: 5px;
+}
+.permissions-section p.headings {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+.content-wrapper .card-body .form-group .custom_check_wrap .custom-check input {
+    height: 20px;
+}
+.permissions-section #checkBoxes {
+    padding: 5px 0 0 30px;
+}
+.permissions-section #checkBoxes .custom_check_wrap {
+    margin-bottom: 5px;
+}
+.permissions-section #checkBoxes .custom_check_wrap label {
+    font-weight: 500;
+    font-size: 14px;
+}
+body .permissions-section {
+    background-color: transparent;
+    padding: 0px;
+}
+body .permissions-section .form-group {
+    margin: 0;
+    height: 100%;
+    padding: 0 0px 15px;
+}
+.permissions-section-inner-sec {
+    background-color: #f6f7fb;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+}
+.permissions-section .custom_check_wrap .custom-check {
     background-color: #ffffff;
 }
 /*--Contact Admin--*/
@@ -1585,6 +1657,140 @@ form.form_wrap.customers-management-view div#preview-cropped-image {
 }
 .edit_job_upload_picture div#preview-cropped-image label.label {
     margin: 0;
+}
+.content-wrapper .card .card-header a.show-advance-options {
+    border-radius: 3px;
+}
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active, 
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #3b9332;
+    border-color: #3b9332;
+}
+.advance-options {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f7fb;
+    padding: 25px 15px;
+    border-radius: 3px;
+    border: 1px solid #dee2e6;
+    position: relative;
+    flex-wrap: wrap;
+}
+.advance-options-wrap {
+    margin: 0 0 30px;
+}
+.advance-options input.form-control {
+    font-size: 13px;
+    text-align: center;
+    max-width: 200px;
+    outline-style: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+.advance-options input.form-control:focus {
+    border-color: #ced4da;
+}
+.advance-options .advance_options_btn button {
+    background-color: #343d49;
+    border-color: #343d49;
+    font-size: 12px;
+    list-style: none;
+    box-shadow: none;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.daterangepicker td.active, 
+.daterangepicker td.active:hover {
+    background-color: #3b9332 !important;
+}
+.advance-options .left_option button,
+.advance-options .left_option button:active {
+    background-color: #343d49;
+    border-color: #343d49;
+    font-size: 12px;
+    list-style: none;
+    box-shadow: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    margin: 0 0 5px;
+}
+.advance-options .left_option button.apply,
+.advance-options .left_option button.apply:active {
+    background-color: #3b9332;
+    border-color: #3b9332;
+}
+.advance-options .left_option button:last-child {
+    margin: 0;
+}
+.advance-options .left_option .left_inner i.fas.fa-calendar-alt {
+    padding: 8px 0 0;
+    font-size: 18px;
+}
+.advance-options .left_option {
+    display: flex;
+    align-items: center;
+    padding: 0 18px 0;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.advance-options input.form-control:-internal-autofill-selected{
+    background-color: #ffffff !important;
+}
+.advance-options .left_option .left_inner {
+    width: 60%;
+    display: flex;
+}
+.advance-options .left_option .apply_reset_btn {
+    width: 100%;
+    margin: 15px 0 0;
+}
+.advance-options .left_option .apply_reset_btn button {
+    padding: 5px 20px;
+    margin: 3px 0 0;
+}
+.advance_options_btn {
+    padding: 15px 0 0 18px;
+    width: 40%;
+} 
+.advance-options .left_option h6 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    padding: 8px 10px 0 0;
+}
+.advance-options .left_option h6:before{
+    display: none;
+}
+.advance-options .left_option h6 i {
+    font-size: 17px;
+    color: #343d49;
+}
+body .daterangepicker.show-calendar .drp-buttons {
+    display: none;
+}
+.advance-options .title{
+    width: 100%;
+}
+.advance-options .title h5 {
+    color: #343d49;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0 0 10px;
+    text-align: left;
+    margin: 0 0 25px;
+}
+.advance-options .title h5 i {
+    font-size: 15px;
+}
+.advance-options .left_option .advance_options_btn button {
+    clear: both;
+    display: block;
+    float: right;
 }
 /*Responsive*/
 

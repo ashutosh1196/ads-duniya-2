@@ -8,6 +8,8 @@ use App\Models\TicketMessage;
 use App\Models\Admin;
 use App\Models\Recruiter;
 use App\Models\Organization;
+use App\Models\Feedback;
+use App\Models\ContactUs;
 use App\Notifications\TicketAcknowledgement;
 use Auth;
 use Mail;
@@ -15,24 +17,34 @@ use Mail;
 class TicketsController extends Controller {
 	
 	public function ticketsList() {
-		$ticketsList = Ticket::orderByDesc('id')->get();
-		return view('tickets/tickets_list', [ 'ticketsList' => $ticketsList ]);
+		if(Auth::user()->can('manage_tickets')) {
+			$ticketsList = Ticket::orderByDesc('id')->get();
+			return view('tickets/tickets_list', [ 'ticketsList' => $ticketsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function viewTicket($id) {
-		$ticket = Ticket::find($id);
-		$ticketId = $ticket->id;
-		$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
-		$superAdmin = Admin::where('role_id', 1)->get();
-		$recruiter = Recruiter::find($ticket->recruiter_id);
-		$organization = Organization::find($recruiter->organization_id);
-		return view('tickets/view_ticket', [
-			'ticket' => $ticket,
-			'ticketMessages' => $ticketMessages,
-			'superAdmin' => $superAdmin,
-			'recruiter' => $recruiter,
-			'organizationLogo' => $organization->logo
-		]);
+		if(Auth::user()->can('view_ticket')) {
+			$ticket = Ticket::find($id);
+			$ticketId = $ticket->id;
+			$ticketMessages = TicketMessage::where('ticket_id', $ticketId)->get();
+			$superAdmin = Admin::where('role_id', 1)->get();
+			$recruiter = Recruiter::find($ticket->recruiter_id);
+			$organization = Organization::find($recruiter->organization_id);
+			return view('tickets/view_ticket', [
+				'ticket' => $ticket,
+				'ticketMessages' => $ticketMessages,
+				'superAdmin' => $superAdmin,
+				'recruiter' => $recruiter,
+				'organizationLogo' => $organization->logo
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function replyOnTicket(Request $request) {
@@ -113,6 +125,46 @@ class TicketsController extends Controller {
 		else {
 			$res['success'] = 0;
 			return json_encode($res);
+		}
+	}
+
+	public function feedbacksList(Request $request) {
+		if(Auth::user()->can('view_feedback')) {
+			$feedbacksList = Feedback::orderByDesc('id')->get();
+			return view('feedbacks/feedbacks_list', [ 'feedbacksList' => $feedbacksList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	public function viewFeedback($id) {
+		if(Auth::user()->can('view_feedback')) {
+			$feedback = Feedback::find($id);
+			return view('feedbacks/view_feedback', [ 'feedback' => $feedback ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	public function contactUsMessagesList(Request $request) {
+		if(Auth::user()->can('view_contact_us')) {
+			$contactUsMessagesList = ContactUs::orderByDesc('id')->get();
+			return view('contact_us/contact_us_list', [ 'contactUsMessagesList' => $contactUsMessagesList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	public function viewContactUsMessage($id) {
+		if(Auth::user()->can('view_contact_us')) {
+			$contactUsMessage = ContactUs::find($id);
+			return view('contact_us/view_contact_us_message', [ 'contactUsMessage' => $contactUsMessage ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
 	}
 }

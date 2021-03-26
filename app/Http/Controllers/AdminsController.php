@@ -27,16 +27,26 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function adminsList(Request $request) {
-		$adminsList = Admin::where('role_id', '!=', 1)->orderByDesc('id')->get();
-		return view('admins/admins_list', ['adminsList' => $adminsList]);
+		if(Auth::user()->can('manage_admins')) {
+			$adminsList = Admin::where('role_id', '!=', 1)->where('id', '!=', Auth::id())->orderByDesc('id')->get();
+			return view('admins/admins_list', ['adminsList' => $adminsList]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Admins Listing
 	*/
 	public function addAdmin(Request $request) {
-		$roles = Role::where('id', '!=', 1)->get();
-		return view('admins/add_admin', ['roles' => $roles]);
+		if(Auth::user()->can('add_admin')) {
+			$roles = Role::where('id', '!=', 1)->get();
+			return view('admins/add_admin', ['roles' => $roles]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -74,13 +84,18 @@ class AdminsController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function viewAdmin($id) {
-		$viewAdmin = Admin::where('id', $id)->get();
-		$deletedAdmins = Admin::onlyTrashed()->get();
-		if($viewAdmin->isNotEmpty()) {
-			return view('admins/view_admin', ['viewAdmin' => $viewAdmin]);
+		if(Auth::user()->can('view_admin')) {
+			$viewAdmin = Admin::where('id', $id)->get();
+			$deletedAdmins = Admin::onlyTrashed()->get();
+			if($viewAdmin->isNotEmpty()) {
+				return view('admins/view_admin', ['viewAdmin' => $viewAdmin]);
+			}
+			else {
+				return view('admins/view_admin', ['viewAdmin' => $deletedAdmins]);
+			}
 		}
 		else {
-			return view('admins/view_admin', ['viewAdmin' => $deletedAdmins]);
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
 	}
 
@@ -88,9 +103,14 @@ class AdminsController extends Controller {
 	 * This function is used to Show Admins Listing
 	*/
 	public function editAdmin($id) {
-		$roles = Role::where('id', '!=', 1)->get();
-		$admin = Admin::where('id', $id)->get();
-		return view('admins/edit_admin', ['roles' => $roles, 'admin' => $admin]);
+		if(Auth::user()->can('edit_admin')) {
+			$roles = Role::where('id', '!=', 1)->get();
+			$admin = Admin::where('id', $id)->get();
+			return view('admins/edit_admin', ['roles' => $roles, 'admin' => $admin]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -143,8 +163,13 @@ class AdminsController extends Controller {
 	 * This function is used to Show Saved Jobs Listing
 	*/
 	public function deletedAdminsList() {
-		$deletedAdmins = Admin::onlyTrashed()->orderByDesc('id')->get();
-		return view('admins/deleted_admins_list', ['deletedAdmins' => $deletedAdmins]);
+		if(Auth::user()->can('restore_admins')) {
+			$deletedAdmins = Admin::onlyTrashed()->orderByDesc('id')->get();
+			return view('admins/deleted_admins_list', ['deletedAdmins' => $deletedAdmins]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**

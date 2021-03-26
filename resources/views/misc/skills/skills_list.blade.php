@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.skills') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_skill') }}">{{ __('adminlte::adminlte.add_new_skill') }}</a>            
+            @can('add_skill')<a class="btn btn-sm btn-success" href="{{ route('add_skill') }}">{{ __('adminlte::adminlte.add_new_skill') }}</a>@endcan            
           </div>           
           <div class="card-body">
             @if (session('status'))
@@ -27,7 +27,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.slug') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_skills_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -41,23 +41,22 @@
                   <td>{{ $skillsList[$i]->name }}</td>
                   <td>{{ $skillsList[$i]->slug }}</td>
                   <td>{{ $skillsList[$i]->status ? 'Active' : 'Inactive' }}</td>
-                  <td>
-                    <a class="action-button" title="View" href="view/{{$skillsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a class="action-button" title="Edit" href="edit/{{$skillsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $skillsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_skills_actions')
+                    <td>
+                      @can('view_skill')
+                        <a class="action-button" title="View" href="view/{{$skillsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('edit_skill')
+                        <a class="action-button" title="Edit" href="edit/{{$skillsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_skill')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $skillsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.slug') }}</th>
-                  <th>{{ __('adminlte::adminlte.status') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

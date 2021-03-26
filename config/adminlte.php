@@ -275,24 +275,28 @@ return [
             'text' => 'customers_management',
             'icon' => 'fas fa-fw fa-building',
             'active' => ['admin_panel/customers*'],
+            'can' => ['manage_customers'],
             'submenu' => [
                 [
                     'text' => 'pending',
                     'icon' => 'fas fa-fw fa-exclamation-circle',
                     'url'  => 'admin_panel/customers/pending',
                     'active' => ['admin_panel/customers/pending*', 'admin_panel/customers/add*'],
+                    'can' => ['manage_pending_customers']
                 ],
                 [
                     'text' => 'Whitelisted',
                     'icon' => 'fas fa-fw fa-check-circle',
                     'url'  => 'admin_panel/customers/whitelisted',
                     'active' => ['admin_panel/customers/whitelisted*'],
+                    'can' => ['manage_whitelisted_customers']
                 ],
                 [
                     'text' => 'rejected',
                     'icon' => 'fas fa-fw fa-times-circle',
                     'url'  => 'admin_panel/customers/rejected',
                     'active' => ['admin_panel/customers/rejected*'],
+                    'can' => ['manage_rejected_customers']
                 ],
             ],
         ],
@@ -301,24 +305,28 @@ return [
             'text' => 'users_management',
             'icon' => 'fas fa-fw fa-users',
             'active' => ['admin_panel/users*'],
+            'can' => ['manage_users'],
             'submenu' => [
                 [
                     'text' => 'jobseekers',
                     'icon' => 'fas fa-fw fa-briefcase',
                     'url'  => 'admin_panel/users/jobseekers/list',
                     'active' => ['admin_panel/users/jobseekers*'],
+                    'can' => ['manage_jobseekers'],
                 ],
                 [
                     'text' => 'recruiters',
                     'icon' => 'fas fa-fw fa-user-tie',
                     'url'  => 'admin_panel/users/recruiters/list',
                     'active' => ['admin_panel/users/recruiters*'],
+                    'can' => ['manage_recruiters'],
                 ],
                 [
                     'text' => 'admins',
                     'icon' => 'fas fa-fw fa-universal-access',
                     'url'  => 'admin_panel/users/admins/list',
                     'active' => ['admin_panel/users/admins*'],
+                    'can' => ['manage_admins'],
                 ],
             ],
         ],
@@ -326,67 +334,135 @@ return [
             'text' => 'jobs_management',
             'icon' => 'fas fa-fw fa-briefcase',
             'url'  => '#',
+            'can' => ['manage_jobs'],
             'submenu' => [
                 [
                     'text' => 'published_jobs',
                     'icon' => 'fas fa-fw fa-list',
                     'url'  => 'admin_panel/jobs/list',
                     'active' => ['admin_panel/jobs/list/*', 'admin_panel/jobs/view/*', 'admin_panel/jobs/edit/*'],
+                    'can' => ['manage_job'],
                 ],
                 [
                     'text' => 'jobs_history',
                     'icon' => 'fas fa-fw fa-map-pin',
                     'url'  => 'admin_panel/jobs/history',
                     'active' => ['admin_panel/jobs/history/*', 'admin_panel/jobs/view_job_history/*'],
+                    'can' => ['view_job_history'],
                 ],
+                /* [
+                    'text' => 'bookmarked_jobs',
+                    'icon' => 'fas fa-fw fa-bookmark',
+                    'url'  => 'admin_panel/jobs/bookmarked/list',
+                    'active' => ['admin_panel/jobs/bookmarked*'],
+                ],
+                [
+                    'text' => 'job_applications',
+                    'icon' => 'fab fa-wpforms',
+                    'url'  => 'admin_panel/jobs/applications/list',
+                    'active' => ['admin_panel/jobs/applications*'],
+                ],
+                [
+                    'text' => 'job_search_history',
+                    'icon' => 'fa fa-history',
+                    'url'  => 'admin_panel/jobs/search_history/list',
+                    'active' => ['admin_panel/jobs/search_history*'],
+                ], */
             ],
         ],
         [
             'text' => 'credit_management',
             'icon' => 'fas fa-fw fa-credit-card',
             'url'  => '#',
+            'can' => ['manage_company_credits'],
             'submenu' => [
                 [
                     'text' => 'company_credits',
                     'icon' => 'fas fa-fw fa-coins',
                     'url'  => 'admin_panel/credits/list',
                     'active' => ['admin_panel/credits/*'],
+                    'can' => ['manage_credits'],
                 ],
                 [
                     'text' => 'credits_history',
                     'icon' => 'fas fa-fw fa-money-check-alt',
                     'url'  => 'admin_panel/credits_history/list',
                     'active' => ['admin_panel/credits_history*'],
+                    'can' => ['view_credits_history'],
                 ],
                 [
                     'text' => 'payment_transactions',
                     'icon' => 'fab fa-fw fa-cc-stripe',
                     'url'  => 'admin_panel/payment_transactions/list',
                     'active' => ['admin_panel/payment_transactions*'],
+                    'can' => ['view_payment_transaction'],
                 ],
             ],
         ],
         [
-            'text' => 'tickets_management',
+            'text' => 'content_management',
+            'icon' => 'fas fa-fw fa-edit',
+            'url'  => '#',
+            'can' => ['manage_cms'],
+            'submenu' => [
+                [
+                    'text' => 'website',
+                    'icon' => 'fas fa-fw fa-laptop',
+                    'url'  => 'admin_panel/content/website/list',
+                    'active' => ['admin_panel/content/website*'],
+                    'can' => ['manage_website_pages'],
+                ],
+                [
+                    'text' => 'mobile',
+                    'icon' => 'fas fa-fw fa-mobile',
+                    'url'  => 'admin_panel/content/mobile/list',
+                    'active' => ['admin_panel/content/mobile*'],
+                    'can' => ['manage_mobile_pages'],
+                ],
+            ],
+        ],
+        [
+            'text' => "Users' Feedback",
             'icon' => 'fas fa-ticket-alt',
             'url'  => '#',
             'active' => ['admin_panel/tickets*'],
-            'submenu' => [[
-                'text' => 'tickets',
-                'icon' => 'fas fa-ticket-alt',
-                'url'  => 'admin_panel/tickets/list',
-            ]]
+            'can' => ['manage_tickets'],
+            'submenu' => [
+                [
+                    'text' => 'tickets',
+                    'icon' => 'fas fa-ticket-alt',
+                    'url'  => 'admin_panel/tickets/list',
+                    'can' => ['manage_tickets'],
+                    'active' => ['admin_panel/tickets*'],
+                ],
+                [
+                    'text' => 'feedbacks',
+                    'icon' => 'fas fa-comments',
+                    'url'  => 'admin_panel/feedbacks/list',
+                    'active' => ['admin_panel/feedbacks*'],
+                    'can' => ['view_feedback'],
+                ],
+                [
+                    'text' => 'contact_us',
+                    'icon' => 'fas fa-envelope',
+                    'url'  => 'admin_panel/contact_us/list',
+                    'active' => ['admin_panel/contact_us*'],
+                    'can' => ['view_contact_us'],
+                ],
+            ]
         ],
         [
             'text' => 'misc_data_management',
-            'icon' => 'fas fa-fw fa-cogs',
+            'icon' => 'fas fa-fw fa-info-circle',
             'url'  => '#',
+            'can' => ['manage_misc_data'],
             'submenu' => [
                 [
                     'text' => 'job_industries',
                     'icon' => 'fas fa-fw fa-industry',
                     'url'  => 'admin_panel/misc/job_industries/list',
                     'active' => ['admin_panel/misc/job_industries*'],
+                    'can' => ['manage_job_industry'],
                 ],
                 /* [
                     'text' => 'job_functions',
@@ -399,13 +475,52 @@ return [
                     'icon' => 'fas fa-fw fa-map-marker',
                     'url'  => 'admin_panel/misc/job_locations/list',
                     'active' => ['admin_panel/misc/job_locations*'],
+                    'can' => ['manage_job_location'],
                 ],
                 [
                     'text' => 'skills',
                     'icon' => 'fas fa-fw fa-brain',
                     'url'  => 'admin_panel/misc/skills/list',
                     'active' => ['admin_panel/misc/skills*'],
+                    'can' => ['manage_skills'],
                 ],
+                [
+                    'text' => 'cities',
+                    'icon' => 'fas fa-city',
+                    'url'  => 'admin_panel/misc/cities/list',
+                    'active' => ['admin_panel/misc/cities*'],
+                    'can' => ['manage_cities'],
+                ],
+                [
+                    'text' => 'counties',
+                    'icon' => 'fas fa-flag',
+                    'url'  => 'admin_panel/misc/counties/list',
+                    'active' => ['admin_panel/misc/counties*'],
+                    'can' => ['manage_counties'],
+                ],
+            ],
+        ],
+        [
+            'text' => 'access_control',
+            'icon'    => 'fas fa-fw fa-cogs',
+            'url'  => '#',
+            'active' => ['admin_panel/roles*'],
+            'can' => 'manage_access_control',
+            'submenu' => [
+                [
+                    'text' => 'roles',
+                    'icon'    => 'fas fa-fw fa-users',
+                    'url'  => 'admin_panel/roles/list',
+                    'active' => ['admin_panel/roles/list*', 'admin_panel/roles/add*', 'admin_panel/roles/edit*', 'admin_panel/roles/view*'],
+                    'can' => 'manage_roles',
+                ],
+                [
+                    'text' => 'permissions',
+                    'icon'    => 'fas fa-key',
+                    'url'  => 'admin_panel/roles/role_permissions',
+                    'active' => ['admin_panel/roles/role_permissions*'],
+                    'can' => 'add_permissions',
+                ]
             ],
         ],
         [
@@ -414,36 +529,43 @@ return [
             'icon' => 'far fa-trash-alt',
             'url'  => '#',
             'active' => ['admin_panel/recycle_bin*'],
+            'can' => ['manage_recycle_bin'],
             'submenu' => [
                 [
                     'text' => 'customers',
                     'icon' => 'fas fa-fw fa-building',
                     'url'  => 'admin_panel/recycle_bin/customers/deleted',
+                    'can' => 'restore_customers',
                 ],
                 [
                     'text' => 'jobseekers',
                     'icon' => 'fas fa-fw fa-briefcase',
                     'url'  => 'admin_panel/recycle_bin/jobseekers/deleted',
+                    'can' => 'restore_jobseekers',
                 ],
                 [
                     'text' => 'recruiters',
                     'icon' => 'fas fa-fw fa-user-tie',
                     'url'  => 'admin_panel/recycle_bin/recruiters/deleted',
+                    'can' => 'restore_recruiters',
                 ],
                 [
                     'text' => 'admins',
                     'icon' => 'fas fa-fw fa-universal-access',
                     'url'  => 'admin_panel/recycle_bin/admins/deleted',
+                    'can' => 'restore_admins',
                 ],
                 [
                     'text' => 'jobs',
                     'icon' => 'fas fa-fw fa-briefcase',
                     'url'  => 'admin_panel/recycle_bin/jobs/deleted',
+                    'can' => 'restore_jobs',
                 ],
                 [
                     'text' => 'job_industries',
                     'icon' => 'fas fa-fw fa-industry',
                     'url'  => 'admin_panel/recycle_bin/job_industries/deleted',
+                    'can' => 'restore_job_industries',
                 ],
                 /* [
                     'text' => 'job_functions',
@@ -454,44 +576,47 @@ return [
                     'text' => 'job_locations',
                     'icon' => 'fas fa-fw fa-map-marker',
                     'url'  => 'admin_panel/recycle_bin/job_locations/deleted',
+                    'can' => 'restore_job_locations',
                 ],
                 [
                     'text' => 'skills',
                     'icon' => 'fas fa-fw fa-brain',
                     'url'  => 'admin_panel/recycle_bin/skills/deleted',
+                    'can' => 'restore_skills',
                 ],
+                [
+                    'text' => 'cities',
+                    'icon' => 'fas fa-city',
+                    'url'  => 'admin_panel/recycle_bin/cities/deleted',
+                    'can' => 'restore_cities',
+                ],
+                [
+                    'text' => 'counties',
+                    'icon' => 'fas fa-flag',
+                    'url'  => 'admin_panel/recycle_bin/counties/deleted',
+                    'can' => 'restore_counties',
+                ],
+                [
+                    'text' => 'roles',
+                    'icon' => 'fas fa-users',
+                    'url'  => 'admin_panel/recycle_bin/roles/deleted',
+                    'can' => 'restore_roles',
+                ],
+                /* [
+                    'text' => 'website_pages',
+                    'icon' => 'fas fa-desktop',
+                    'url'  => 'admin_panel/recycle_bin/website/deleted',
+                    'can' => 'restore_website_page',
+                ],
+                [
+                    'text' => 'mobile_pages',
+                    'icon' => 'fas fa-mobile',
+                    'url'  => 'admin_panel/recycle_bin/mobile/deleted',
+                    'can' => 'restore_mobile_page',
+                ], */
             ],
         ],
         /* [
-            'text' => 'content_management',
-            'icon' => 'fas fa-fw fa-edit',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'website',
-                    'icon' => 'fas fa-fw fa-laptop',
-                    'url'  => 'admin_panel/pages/website',
-                ],
-                [
-                    'text' => 'mobile',
-                    'icon' => 'fas fa-fw fa-mobile',
-                    'url'  => 'admin_panel/pages/mobile',
-                ],
-            ],
-        ],
-        [
-            'text' => 'access_control',
-            'icon'    => 'fas fa-fw fa-cogs',
-            'url'  => '#',
-            'submenu' => [
-                [
-                    'text' => 'roles',
-                    'icon'    => 'fas fa-fw fa-user',
-                    'url'  => 'admin_panel/roles_list',
-                ]
-            ],
-        ],
-        [
             'text' => 'logout',
             'icon'    => 'fas fa-fw fa-sign-out-alt',
             'url'  => '#'

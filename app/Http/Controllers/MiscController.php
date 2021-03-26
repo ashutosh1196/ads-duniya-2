@@ -7,7 +7,11 @@ use App\Models\JobIndustry;
 use App\Models\JobFunction;
 use App\Models\JobLocation;
 use App\Models\Skill;
+use App\Models\City;
+use App\Models\County;
+use App\Models\Country;
 use DB;
+use Auth;
 
 class MiscController extends Controller {
 	
@@ -44,23 +48,38 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Industry Details
 	*/
 	public function viewJobIndustry($id) {
-		$jobIndustry = JobIndustry::where('id', $id)->get();
-		return view('misc/job_industries/view_job_industry', [ 'jobIndustry' => $jobIndustry ]);
+		if(Auth::user()->can('view_job_industry')) {
+			$jobIndustry = JobIndustry::where('id', $id)->get();
+			return view('misc/job_industries/view_job_industry', [ 'jobIndustry' => $jobIndustry ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Job Industries List
 	*/
 	public function jobIndustriesList() {
-		$jobIndustriesList = JobIndustry::orderByDesc('id')->get();
-		return view('misc/job_industries/job_industries_list', [ 'jobIndustriesList' => $jobIndustriesList ]);
+		if(Auth::user()->can('manage_job_industry')) {
+			$jobIndustriesList = JobIndustry::orderByDesc('id')->get();
+			return view('misc/job_industries/job_industries_list', [ 'jobIndustriesList' => $jobIndustriesList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Add Job Industry View
 	*/
 	public function addJobIndustry() {
-		return view('misc/job_industries/add_job_industry');
+		if(Auth::user()->can('add_job_industry')) {
+			return view('misc/job_industries/add_job_industry');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -96,8 +115,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Edit Job Industries View
 	*/
 	public function editJobIndustry($id) {
-		$jobIndustry = JobIndustry::where('id', $id)->get();
-		return view('misc/job_industries/edit_job_industry', [ 'jobIndustry' => $jobIndustry ]);
+		if(Auth::user()->can('edit_job_industry')) {
+			$jobIndustry = JobIndustry::where('id', $id)->get();
+			return view('misc/job_industries/edit_job_industry', [ 'jobIndustry' => $jobIndustry ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -152,8 +176,13 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Job Industries Listing
 	*/
 	public function deletedJobIndustries() {
-		$deletedJobIndustries = JobIndustry::onlyTrashed()->orderByDesc('id')->get();
-		return view('misc/job_industries/deleted_job_industries_list', ['deletedJobIndustries' => $deletedJobIndustries]);
+		if(Auth::user()->can('restore_job_industries')) {
+			$deletedJobIndustries = JobIndustry::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/job_industries/deleted_job_industries_list', ['deletedJobIndustries' => $deletedJobIndustries]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -179,23 +208,38 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Function Details
 	*/
 	public function viewJobFunction($id) {
-		$jobFunction = JobFunction::where('id', $id)->get();
-		return view('misc/job_functions/view_job_function', [ 'jobFunction' => $jobFunction ]);
+		if(Auth::user()->can('view_job_function')) {
+			$jobFunction = JobFunction::where('id', $id)->get();
+			return view('misc/job_functions/view_job_function', [ 'jobFunction' => $jobFunction ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Job Functions List
 	*/
 	public function jobFunctionsList() {
-		$jobFunctionsList = JobFunction::orderByDesc('id')->get();
-		return view('misc/job_functions/job_functions_list', [ 'jobFunctionsList' => $jobFunctionsList ]);
+		if(Auth::user()->can('manage_job_function')) {
+			$jobFunctionsList = JobFunction::orderByDesc('id')->get();
+			return view('misc/job_functions/job_functions_list', [ 'jobFunctionsList' => $jobFunctionsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Add Job Industry View
 	*/
 	public function addJobFunction() {
-		return view('misc/job_functions/add_job_function');
+		if(Auth::user()->can('add_job_function')) {
+			return view('misc/job_functions/add_job_function');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -231,8 +275,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Edit Job Functions View
 	*/
 	public function editJobFunction($id) {
-		$jobFunction = JobFunction::where('id', $id)->get();
-		return view('misc/job_functions/edit_job_function', [ 'jobFunction' => $jobFunction ]);
+		if(Auth::user()->can('edit_job_function')) {
+			$jobFunction = JobFunction::where('id', $id)->get();
+			return view('misc/job_functions/edit_job_function', [ 'jobFunction' => $jobFunction ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -287,8 +336,13 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Job Functions Listing
 	*/
 	public function deletedJobFunctions() {
-		$deletedJobFunctions = JobFunction::onlyTrashed()->orderByDesc('id')->get();
-		return view('misc/job_functions/deleted_job_functions_list', ['deletedJobFunctions' => $deletedJobFunctions]);
+		if(Auth::user()->can('restore_job_functions')) {
+			$deletedJobFunctions = JobFunction::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/job_functions/deleted_job_functions_list', ['deletedJobFunctions' => $deletedJobFunctions]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -314,8 +368,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Function Details
 	*/
 	public function viewSkill($id) {
-		$skill = Skill::where('id', $id)->get();
-		return view('misc/skills/view_skill', [ 'skill' => $skill ]);
+		if(Auth::user()->can('view_skill')) {
+			$skill = Skill::where('id', $id)->get();
+			return view('misc/skills/view_skill', [ 'skill' => $skill ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -323,15 +382,25 @@ class MiscController extends Controller {
 	 * This function is used to Get Skills List
 	*/
 	public function skillsList() {
-		$skillsList = Skill::orderByDesc('id')->get();
-		return view('misc/skills/skills_list', [ 'skillsList' => $skillsList ]);
+		if(Auth::user()->can('manage_skills')) {
+			$skillsList = Skill::orderByDesc('id')->get();
+			return view('misc/skills/skills_list', [ 'skillsList' => $skillsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Add Job Industry View
 	*/
 	public function addSkill() {
-		return view('misc/skills/add_skill');
+		if(Auth::user()->can('add_skill')) {
+			return view('misc/skills/add_skill');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -367,8 +436,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Edit Job Functions View
 	*/
 	public function editSkill($id) {
-		$skill = Skill::where('id', $id)->get();
-		return view('misc/skills/edit_skill', [ 'skill' => $skill ]);
+		if(Auth::user()->can('edit_skill')) {
+			$skill = Skill::where('id', $id)->get();
+			return view('misc/skills/edit_skill', [ 'skill' => $skill ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -423,8 +497,13 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted Skills Listing
 	*/
 	public function deletedSkills() {
-		$deletedSkills = Skill::onlyTrashed()->orderByDesc('id')->get();
-		return view('misc/skills/deleted_skills_list', ['deletedSkills' => $deletedSkills]);
+		if(Auth::user()->can('restore_skills')) {
+			$deletedSkills = Skill::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/skills/deleted_skills_list', ['deletedSkills' => $deletedSkills]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -450,8 +529,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Job Function Details
 	*/
 	public function viewJobLocation($id) {
-		$jobLocation = JobLocation::where('id', $id)->get();
-		return view('misc/job_locations/view_job_location', [ 'jobLocation' => $jobLocation ]);
+		if(Auth::user()->can('view_job_location')) {
+			$jobLocation = JobLocation::where('id', $id)->get();
+			return view('misc/job_locations/view_job_location', [ 'jobLocation' => $jobLocation ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -459,15 +543,25 @@ class MiscController extends Controller {
 	 * This function is used to Get JobLocations List
 	*/
 	public function jobLocationsList() {
-		$jobLocationsList = JobLocation::orderByDesc('id')->get();
-		return view('misc/job_locations/job_locations_list', [ 'jobLocationsList' => $jobLocationsList ]);
+		if(Auth::user()->can('manage_job_location')) {
+			$jobLocationsList = JobLocation::orderByDesc('id')->get();
+			return view('misc/job_locations/job_locations_list', [ 'jobLocationsList' => $jobLocationsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Get Add Job Industry View
 	*/
 	public function addJobLocation() {
-		return view('misc/job_locations/add_job_location');
+		if(Auth::user()->can('add_job_location')) {
+			return view('misc/job_locations/add_job_location');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -503,8 +597,13 @@ class MiscController extends Controller {
 	 * This function is used to Get Edit Job Functions View
 	*/
 	public function editJobLocation($id) {
-		$jobLocation = JobLocation::where('id', $id)->get();
-		return view('misc/job_locations/edit_job_location', [ 'jobLocation' => $jobLocation ]);
+		if(Auth::user()->can('edit_job_location')) {
+			$jobLocation = JobLocation::where('id', $id)->get();
+			return view('misc/job_locations/edit_job_location', [ 'jobLocation' => $jobLocation ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	
@@ -559,8 +658,13 @@ class MiscController extends Controller {
 	 * This function is used to Show Deleted JobLocations Listing
 	*/
 	public function deletedJobLocations() {
-		$deletedJobLocations = JobLocation::onlyTrashed()->orderByDesc('id')->get();
-		return view('misc/job_locations/deleted_job_locations_list', ['deletedJobLocations' => $deletedJobLocations]);
+		if(Auth::user()->can('restore_job_locations')) {
+			$deletedJobLocations = JobLocation::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/job_locations/deleted_job_locations_list', ['deletedJobLocations' => $deletedJobLocations]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -574,6 +678,299 @@ class MiscController extends Controller {
 			$jobLocationsList = JobLocation::all();
 			$res['success'] = 1;
 			$res['data'] = $jobLocationsList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+	
+	/**
+	 * This function is used to Get Cities List
+	*/
+	public function CitiesList() {
+		if(Auth::user()->can('manage_cities')) {
+			$citiesList = City::orderByDesc('id')->get();
+			return view('misc/cities/cities_list', [ 'citiesList' => $citiesList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to view City
+	*/
+	public function viewCity($id) {
+		if(Auth::user()->can('view_city')) {
+			$city = City::find($id);
+			return view('misc/cities/view_city', [ 'city' => $city ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Show Add City View
+	*/
+	public function addCity() {
+		if(Auth::user()->can('add_city')) {
+			return view('misc/cities/add_city');
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Save City
+	*/
+	public function saveCity(Request $request) {
+		$validatedData = $request->validate([
+			'city' => 'required',
+		], [
+			'city.required' => 'City Name is required',
+		]);
+		$city = new City;
+		$city->city = $request->city;
+		if($city->save()) {
+			$citiesList = City::all();
+			return redirect()->route('cities_list', [ 'citiesList' => $citiesList ])->with('success', 'City Added Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+	
+	/**
+	 * This function is used to Show Edit City View
+	*/
+	public function editCity($id) {
+		if(Auth::user()->can('edit_city')) {
+			$city = City::find($id);
+			return view('misc/cities/edit_city', ['city' => $city]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Update City
+	*/
+	public function updateCity(Request $request) {
+		$validatedData = $request->validate([
+			'city' => 'required',
+		], [
+			'city.required' => 'City Name is required',
+		]);
+		$updateCity = City::where('id', $request->id)->update(['city' => $request->city]);
+		if($updateCity) {
+			$citiesList = City::all();
+			return redirect()->route('cities_list', [ 'citiesList' => $citiesList ])->with('success', 'City Updated Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
+	/**
+	 * This function is used to Delete City
+	*/
+	public function deleteCity(Request $request) {
+		$cityId = $request->id;
+		$deleteCity = City::where('id', $cityId)->delete();
+		if($deleteCity) {
+			$citiesList = City::all();
+			$res['success'] = 1;
+			$res['data'] = $citiesList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+
+	/**
+	 * This function is used to Show Deleted Cities Listing
+	*/
+	public function deletedCities() {
+		if(Auth::user()->can('restore_cities')) {
+			$deletedCities = City::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/cities/deleted_cities_list', ['deletedCities' => $deletedCities]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to Restore City
+	*/
+	public function restoreCity(Request $request) {
+		$cityId = $request->id;
+		$city = City::where('id', $cityId);
+		$restoreCity = $city->restore();
+		if($restoreCity) {
+			$citiesList = City::all();
+			$res['success'] = 1;
+			$res['data'] = $citiesList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+	
+	/**
+	 * This function is used to Get Counties List
+	*/
+	public function CountiesList() {
+		if(Auth::user()->can('manage_counties')) {
+			$countiesList = County::orderByDesc('id')->get();
+			return view('misc/counties/counties_list', [ 'countiesList' => $countiesList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to view City
+	*/
+	public function viewCounty($id) {
+		if(Auth::user()->can('view_county')) {
+			$county = County::find($id);
+			return view('misc/counties/view_county', [ 'county' => $county ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Show Add City View
+	*/
+	public function addCounty() {
+		if(Auth::user()->can('add_county')) {
+			$countries = Country::all();
+			return view('misc/counties/add_county', ['countries' => $countries]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Save City
+	*/
+	public function saveCounty(Request $request) {
+		$validatedData = $request->validate([
+			'county' => 'required',
+			'country' => 'required',
+		], [
+			'county.required' => 'County Name is required',
+			'country.required' => 'Country is required',
+		]);
+		$county = new County;
+		$county->county = $request->county;
+		$county->country = $request->country;
+		if($county->save()) {
+			$countiesList = County::all();
+			return redirect()->route('counties_list', [ 'countiesList' => $countiesList ])->with('success', 'County Added Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+	
+	/**
+	 * This function is used to Show Edit City View
+	*/
+	public function editCounty($id) {
+		if(Auth::user()->can('edit_county')) {
+			$county = County::find($id);
+			$countries = Country::all();
+			return view('misc/counties/edit_county', [
+				'county' => $county,
+				'countries' => $countries,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+	
+	/**
+	 * This function is used to Update City
+	*/
+	public function updateCounty(Request $request) {
+		$validatedData = $request->validate([
+			'county' => 'required',
+			'country' => 'required',
+		], [
+			'county.required' => 'County Name is required',
+			'country.required' => 'Country is required',
+		]);
+		$updateCounty = County::where('id', $request->id)->update([
+			'county' => $request->county,
+			'country' => $request->country
+		]);
+		if($updateCounty) {
+			$countiesList = County::all();
+			return redirect()->route('counties_list', [ 'countiesList' => $countiesList ])->with('success', 'County Updated Successfully');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
+	/**
+	 * This function is used to Delete County
+	*/
+	public function deleteCounty(Request $request) {
+		$countyId = $request->id;
+		$deleteCounty = County::where('id', $countyId)->delete();
+		if($deleteCounty) {
+			$citiesList = County::all();
+			$res['success'] = 1;
+			$res['data'] = $citiesList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+
+	/**
+	 * This function is used to Show Deleted Cities Listing
+	*/
+	public function deletedCounties() {
+		if(Auth::user()->can('restore_counties')) {
+			$deletedCounties = County::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/counties/deleted_counties_list', ['deletedCounties' => $deletedCounties]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to Restore County
+	*/
+	public function restoreCounty(Request $request) {
+		$countyId = $request->id;
+		$county = County::where('id', $countyId);
+		$restoreCounty = $county->restore();
+		if($restoreCounty) {
+			$countiesList = County::all();
+			$res['success'] = 1;
+			$res['data'] = $countiesList;
 			return json_encode($res);
 		}
 		else {

@@ -29,7 +29,7 @@
                   <th>{{ __('adminlte::adminlte.name') }}</th>
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_rejected_customers')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -44,25 +44,25 @@
                   <td>{{ $rejectedCustomersList[$i]->name }}</td>
                   <td>{{ $rejectedCustomersList[$i]->email }}</td>
                   <td>{{ $rejectedCustomersList[$i]->contact_number ? $rejectedCustomersList[$i]->contact_number : '' }}</td>
-                  <td>
-                    <a href="rejected/view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                    <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
-                    <a href="rejected/edit/{{$rejectedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $rejectedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_rejected_customers')
+                    <td>
+                      @can('view_rejected_customer')
+                        <a href="rejected/view/{{$rejectedCustomersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('whitelist_rejected_customer')
+                        <a href="whitelist/{{$rejectedCustomersList[$i]->id}}" title="Whitelist"><i class="text-success fa fa-check-circle"></i></a>
+                      @endcan
+                      @can('edit_rejected_customer')
+                        <a href="rejected/edit/{{$rejectedCustomersList[$i]->id}}" title="Edit"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_rejected_customer')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $rejectedCustomersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <!-- <th>Logo</th> -->
-                  <th>{{ __('adminlte::adminlte.name') }}</th>
-                  <th>{{ __('adminlte::adminlte.email') }}</th>
-                  <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

@@ -25,4 +25,16 @@ class PaymentLog extends Model
     protected $cast = [
         'created_at' => 'datetime'
     ];
+
+    protected $appends = ['invoice_link'];
+
+    public function getInvoiceLinkAttribute()
+    {
+        return asset('web-storage/public/'.$this->invoice);
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }

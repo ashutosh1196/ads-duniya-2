@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Job extends Model
-{
-    use HasFactory,SoftDeletes;
+class Job extends Model {
+	use HasFactory,SoftDeletes;
 
-    protected $fillable = [
+	protected $fillable = [
 		'job_ref_number',
 		'job_title',
 		'job_description',
@@ -39,30 +38,41 @@ class Job extends Model
 		'expiring_at',
 		'job_url',
 		'company_logo'
-    ];
+	];
 
-    
-
-    /**
-     * Get the organization for the recruiter.
-     */
-    public function recruiter()
-	{
-	    return $this->belongsTo(Recruiter::class);
-	}
-
+	
 
 	/**
-     * The roles that belong to the user.
-     */
-    public function skills()
-    {
-        return $this->belongsToMany(Skill::class);
-    }
+	 * Get the organization for the recruiter.
+	*/
+	public function recruiter() {
+		return $this->belongsTo(Recruiter::class);
+	}
 
-    public function jobHistories()
-    {
-    	return $this->hasMany(JobHistory::class);
-    }
+	/**
+	 * Get the organization for the recruiter.
+	*/
+	public function organization() {
+		return $this->belongsTo(Organization::class);
+	}
+
+	/**
+	 * The roles that belong to the user.
+	*/
+	public function skills() {
+		return $this->belongsToMany(Skill::class);
+	}
+
+	public function jobHistories() {
+		return $this->hasMany(JobHistory::class);
+	}
+
+	public function jobSkills() {
+		return $this->hasMany(JobSkill::class);
+	}
+
+	public function bookmarkedJobs() {
+		return $this->hasMany(BookmarkedJob::class);
+	}
 
 }

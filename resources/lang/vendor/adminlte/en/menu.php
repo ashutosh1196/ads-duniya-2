@@ -54,5 +54,18 @@ return [
     
     'tickets_management'          => 'Tickets Management',
     'tickets'                     => 'Tickets',
+    
+    'cities'                      => 'Cities',
+    'counties'                    => 'Counties',
+    'permissions'                 => 'Permissions',
+    
+    'website_pages'               => 'Website Pages',
+    'mobile_pages'                => 'Mobile Pages',
+    
+    'feedbacks'                   => 'Feedbacks',
+    'contact_us'                  => 'Contact Us',
+    
+    'job_applications'            => 'Job Applications',
+    'job_search_history'          => 'Job Search History',
 
 ];

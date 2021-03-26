@@ -12,7 +12,7 @@
       <div class="card">
         <div class="card-header alert d-flex justify-content-between align-items-center">
           <h3>{{ __('adminlte::adminlte.jobseekers') }}</h3>
-          <a class="btn btn-sm btn-success" href="{{ route('add_jobseeker') }}">{{ __('adminlte::adminlte.add_new_jobseeker') }}</a>
+          @can('add_jobseeker')<a class="btn btn-sm btn-success" href="{{ route('add_jobseeker') }}">{{ __('adminlte::adminlte.add_new_jobseeker') }}</a>@endcan
         </div>        
         <div class="card-body">
           @if (session('status'))
@@ -27,7 +27,7 @@
                 <th>{{ __('adminlte::adminlte.name') }}</th>
                 <th>{{ __('adminlte::adminlte.email') }}</th>
                 <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                <th>{{ __('adminlte::adminlte.actions') }}</th>
+                @can('manage_jobseekers_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
               </tr>
             </thead>
             <tbody>
@@ -39,23 +39,22 @@
                 <td>{{ $jobseekersList[$i]->phone_number ? $jobseekersList[$i]->phone_number : '' }}</td>
                 <!-- <td class="{{ $jobseekersList[$i]->is_job_alert_enabled ? 'text-success' : 'text-danger' }}">{{ $jobseekersList[$i]->is_job_alert_enabled ? 'Enabled' : 'Disabled' }}</td> -->
                 <!-- <td>{{ $jobseekersList[$i]->status ? 'Active' : 'Inactive' }}</td> -->
-                <td>
-                  <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                  <a class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                  <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobseekersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                </td>
+                @can('manage_jobseekers_actions')
+                  <td>
+                    @can('view_jobseeker')
+                      <a class="action-button" title="View" href="view/{{$jobseekersList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
+                    @endcan
+                    @can('edit_jobseeker')
+                      <a class="action-button" title="Edit" href="edit/{{$jobseekersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                    @endcan
+                    @can('delete_jobseeker')
+                      <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobseekersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                    @endcan
+                  </td>
+                @endcan
               </tr>
               <?php } ?>
             </tbody>
-            <tfoot>
-              <tr>
-                  <th class="display-none"></th>
-                <th>{{ __('adminlte::adminlte.name') }}</th>
-                <th>{{ __('adminlte::adminlte.email') }}</th>
-                <th>{{ __('adminlte::adminlte.contact_number') }}</th>
-                <th>{{ __('adminlte::adminlte.actions') }}</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>

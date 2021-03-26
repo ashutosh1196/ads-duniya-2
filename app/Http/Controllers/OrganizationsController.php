@@ -8,8 +8,10 @@ use App\Models\Recruiter;
 use App\Models\Country;
 use App\Models\Admin;
 use App\Notifications\VerifyUser;
+use Notification;
 use Mail;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\Gate;
 
 class OrganizationsController extends Controller {
@@ -45,14 +47,19 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Add Job Seeker View
 	*/
 	public function addCustomer() {
-		$countries = Country::all()->toArray();
-		$cities = \DB::table('cities')->get();
-		$counties = \DB::table('counties')->get();
-		return view('customers/add_customer', [
-			'countries' => $countries,
-			'cities' => $cities,
-			'counties' => $counties,
-		]);
+		if(Auth::user()->can('add_customer')) {
+			$countries = Country::all()->toArray();
+			$cities = \DB::table('cities')->get();
+			$counties = \DB::table('counties')->get();
+			return view('customers/add_customer', [
+				'countries' => $countries,
+				'cities' => $cities,
+				'counties' => $counties,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -117,41 +124,64 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Listing
 	*/
 	public function viewCustomer($from_page, $id) {
-		$viewCustomer = Organization::find($id);
-		if($viewCustomer->created_by == 'admin') {
-			$creator = Admin::find($viewCustomer->created_by_id);
+		if(Auth::user()->can('view_pending_customer') || 
+			 Auth::user()->can('view_whitelisted_customer') || 
+			 Auth::user()->can('view_rejected_customer')
+			) {
+			$viewCustomer = Organization::find($id);
+			if($viewCustomer->created_by == 'admin') {
+				$creator = Admin::find($viewCustomer->created_by_id);
+			}
+			else {
+				$creator = Recruiter::find($viewCustomer->created_by_id);
+			}
+			return view('customers/view_customers')->with([
+				'viewCustomer' => $viewCustomer,
+				'creator' => $creator,
+			]);
 		}
 		else {
-			$creator = Recruiter::find($viewCustomer->created_by_id);
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
-		return view('customers/view_customers')->with([
-			'viewCustomer' => $viewCustomer,
-			'creator' => $creator,
-		]);
 	}
 
 	/**
 	 * This function is used to Show Listing
 	*/
 	public function pendingCustomersList(Request $request) {
-		$pendingCustomersList = Organization::where('is_whitelisted', 0)->orderByDesc('id')->get();
-		return view('customers/pending_customers')->with('pendingCustomersList', $pendingCustomersList);
+		if(Auth::user()->can('manage_pending_customers')) {
+			$pendingCustomersList = Organization::where('is_whitelisted', 0)->orderByDesc('id')->get();
+			return view('customers/pending_customers')->with('pendingCustomersList', $pendingCustomersList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Listing
 	*/
 	public function whitelistedCustomersList(Request $request) {
-		$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->orderByDesc('id')->get();
-		return view('customers/whitelisted_customers')->with('whitelistedCustomersList', $whitelistedCustomersList);
+		if(Auth::user()->can('manage_whitelisted_customers')) {
+			$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->orderByDesc('id')->get();
+			return view('customers/whitelisted_customers')->with('whitelistedCustomersList', $whitelistedCustomersList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Listing
 	*/
 	public function rejectedCustomersList(Request $request) {
-		$rejectedCustomersList = Organization::where('is_whitelisted', 2)->orderByDesc('id')->get();
-		return view('customers/rejected_customers')->with('rejectedCustomersList', $rejectedCustomersList);
+		if(Auth::user()->can('manage_rejected_customers')) {
+			$rejectedCustomersList = Organization::where('is_whitelisted', 2)->orderByDesc('id')->get();
+			return view('customers/rejected_customers')->with('rejectedCustomersList', $rejectedCustomersList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -162,16 +192,13 @@ class OrganizationsController extends Controller {
 		$whitelistCustomer = Organization::where('id', $customerId)->update(['is_whitelisted' => '1']);
 		if($whitelistCustomer) {
 			$customer = Organization::find($customerId);
-			$recruiter = Recruiter::where('email', $customer->email)->first();
 			$random_pass = uniqid();
-			// $link = config("adminlte.email_verify_url").$random_pass.'?email='.$customer[0]->email;
 			$username = $customer->first_name ? $customer->first_name : $customer->email;
 			$websiteLink = config("adminlte.email_verify_url").$random_pass;
 			$appLink = config("adminlte.email_verify_url_mobile").$random_pass;
-			$recruiter->notify(new VerifyUser($username, $websiteLink, $appLink));
-			// $mailSent = Mail::to($customer[0]->email)->cc(['sandeep@rvtechnologies.com'])->send(new VerifyUser($customer[0]->name, $websiteLink, $appLink));
 			$updateRecruiter = Recruiter::where('email', $customer->email)->update(['signup_token' => $random_pass]);
 			if($updateRecruiter) {
+				Notification::route('mail', $customer->email)->notify(new VerifyUser($username, $websiteLink, $appLink));
 				$whitelistedCustomersList = Organization::where('is_whitelisted', 1)->get();
 				return redirect()->route('whitelisted_customers', ['whitelistedCustomersList' => $whitelistedCustomersList])->with('success', 'Customer Whitelisted Successfully!');
 			}
@@ -204,7 +231,25 @@ class OrganizationsController extends Controller {
 	*/
 	public function deleteCustomers(Request $request) {
 		$customerId = $request->id;
-		$deleteCustomer = Organization::where('id', $customerId)->delete();
+		$customer = Organization::find($customerId);
+		$customer->paymentTransactions()->delete();
+		$customer->paymentLogs()->delete();
+		$customer->tickets->each(function($ticket) {
+			$ticket->ticketMessages()->delete();
+			$ticket->delete();
+		});
+		$customer->organizationCreditDetails()->delete();
+		$customer->organizationCredit()->delete();
+		$customer->jobHistories()->delete();
+		$customer->jobs->each(function($job) {
+			// $job->jobSkills()->delete();
+		});
+		$customer->jobs()->delete();
+		$customer->recruiters->each(function($recruiter) {
+			$recruiter->socialLogins()->delete();
+			$recruiter->delete();
+		});
+		$deleteCustomer = $customer->delete();
 		if($deleteCustomer) {
 			$customersList = Organization::all();
 			$res['success'] = 1;
@@ -221,8 +266,13 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function deletedCustomersList() {
-		$deletedCustomers = Organization::onlyTrashed()->orderByDesc('id')->get();
-		return view('customers/deleted_customers_list', ['deletedCustomers' => $deletedCustomers]);
+		if(Auth::user()->can('restore_customers')) {
+			$deletedCustomers = Organization::onlyTrashed()->orderByDesc('id')->get();
+			return view('customers/deleted_customers_list', ['deletedCustomers' => $deletedCustomers]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -230,7 +280,24 @@ class OrganizationsController extends Controller {
 	*/
 	public function restoreCustomer(Request $request) {
 		$customerId = $request->id;
-		$customer = Organization::where('id', $customerId);
+		$customer = Organization::onlyTrashed()->find($customerId);
+		// $customer->paymentTransactions()->where('organization_id', $customerId)->update(['deleted_at' => '']);
+		$customer->paymentLogs()->restore();
+		$customer->tickets()->restore();
+		$customer->tickets->each(function($ticket) {
+			$ticket->ticketMessages()->restore();
+		});
+		$customer->organizationCreditDetails()->restore();
+		$customer->organizationCredit()->restore();
+		$customer->jobHistories()->restore();
+		$customer->jobs->each(function($job) {
+			// $job->jobSkills()->restore();
+		});
+		$customer->jobs()->restore();
+		$customer->recruiters()->restore();
+		$customer->recruiters->each(function($recruiter) {
+			$recruiter->socialLogins()->restore();
+		});
 		$restoreCustomer = $customer->restore();
 		if($restoreCustomer) {
 			$customersList = Organization::all();
@@ -248,17 +315,22 @@ class OrganizationsController extends Controller {
 	 * This function is used to Show Job Seekers Listing
 	*/
 	public function editCustomer($from_page, $id) {
-		$countries = Country::all()->toArray();
-		$customer = Organization::find($id);
-		$cities = \DB::table('cities')->get();
-		$counties = \DB::table('counties')->get();
-		return view('customers/edit_customer', [
-			'countries' => $countries,
-			'customer' => $customer,
-			'from_page' => $from_page,
-			'cities' => $cities,
-			'counties' => $counties,
-		]);
+		if(Auth::user()->can('edit_pending_customer') || Auth::user()->can('edit_whitelisted_customer') || Auth::user()->can('edit_rejected_customer')) {
+			$countries = Country::all()->toArray();
+			$customer = Organization::find($id);
+			$cities = \DB::table('cities')->get();
+			$counties = \DB::table('counties')->get();
+			return view('customers/edit_customer', [
+				'countries' => $countries,
+				'customer' => $customer,
+				'from_page' => $from_page,
+				'cities' => $cities,
+				'counties' => $counties,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**

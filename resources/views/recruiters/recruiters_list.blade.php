@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.recruiters') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ route('add_recruiter') }}">{{ __('adminlte::adminlte.add_new_recruiter') }}</a>            
+            @can('add_recruiter')<a class="btn btn-sm btn-success" href="{{ route('add_recruiter') }}">{{ __('adminlte::adminlte.add_new_recruiter') }}</a>@endcan
           </div>          
           <div class="card-body">
             @if (session('status'))
@@ -28,7 +28,7 @@
                   <th>{{ __('adminlte::adminlte.email') }}</th>
                   <th>{{ __('adminlte::adminlte.last_login_at') }}</th>
                   <th>{{ __('adminlte::adminlte.created_at') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
+                  @can('manage_recruiters_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
@@ -41,24 +41,22 @@
                   <td>{{ $recruitersList[$i]->email }}</td>
                   <td>{{ $recruitersList[$i]->last_logged_in_at ? date('d/m/y', strtotime($recruitersList[$i]->last_logged_in_at)) : '' }}</td>
                   <td>{{ $recruitersList[$i]->created_at ? date('d/m/y', strtotime($recruitersList[$i]->created_at)) : '' }}</td>
-                  <td>
-                    <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
-                    <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                    <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
-                  </td>
+                  @can('manage_recruiters_actions')
+                    <td>
+                      @can('view_recruiter')
+                        <a href="view/{{$recruitersList[$i]->id}}" title="View"><i class="text-info fa fa-eye"></i></a>
+                      @endcan
+                      @can('edit_recruiter')
+                        <a title="Edit" href="edit/{{$recruitersList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
+                      @endcan
+                      @can('delete_recruiter')
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $recruitersList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @endcan
+                    </td>
+                  @endcan
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.company') }}</th>
-                  <th>{{ __('adminlte::adminlte.email') }}</th>
-                  <th>{{ __('adminlte::adminlte.last_login_at') }}</th>
-                  <th>{{ __('adminlte::adminlte.created_at') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

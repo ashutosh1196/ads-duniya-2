@@ -19,6 +19,7 @@ class CreatePaymentLogsTable extends Migration
             $table->string('amount');
             $table->string('status');
             $table->string('description');
+            $table->string('invoice');
             $table->text('request');
             $table->text('response');
             $table->foreignId('recruiter_id')->constrained();

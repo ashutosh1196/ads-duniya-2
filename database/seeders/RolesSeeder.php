@@ -13,10 +13,21 @@ class RolesSeeder extends Seeder {
 	public function run() {
 		\DB::table('roles')->delete();
 		\DB::table('roles')->insert([
-			'name' => 'Super Admin',
-			'tag' => 'super_admin',
-			'permissions' => 'add',
-			'status' => 1,
+			[
+				'name' => 'Super Admin',
+				'tag' => 'super_admin',
+				'status' => 1,
+			],
+			[
+				'name' => 'Admin',
+				'tag' => 'admin',
+				'status' => 1,
+			],
+			[
+				'name' => 'Viewer',
+				'tag' => 'viewer',
+				'status' => 1,
+			],
 		]);
 	}
 }

@@ -16,16 +16,26 @@ class CreditsController extends Controller {
 	 * This function is used to Show Company Credits List
 	*/
 	public function companyCreditsList(Request $request) {
-		$companyCreditsList = OrganizationCredit::orderByDesc('id')->get();
-		return view('company_credits/credits_list', [ 'companyCreditsList' => $companyCreditsList ]);
+		if(Auth::user()->can('manage_credits')) {
+			$companyCreditsList = OrganizationCredit::orderByDesc('id')->get();
+			return view('company_credits/credits_list', [ 'companyCreditsList' => $companyCreditsList ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to Show Add Company Credit Page
 	*/
 	public function addCompanyCredit() {
-		$organizations = Organization::all();
-		return view('company_credits/add_credit', [ 'organizations' => $organizations]);
+		if(Auth::user()->can('add_company_credit')) {
+			$organizations = Organization::all();
+			return view('company_credits/add_credit', [ 'organizations' => $organizations]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
@@ -103,39 +113,54 @@ class CreditsController extends Controller {
 	 * This function is used to View Company Credit
 	*/
 	public function viewCompanyCredit($id) {
-		$companyCredits = OrganizationCredit::find($id);
-		$companyCreditDetails = OrganizationCreditDetail::where('organization_id', $companyCredits->organization_id)->get();
-		$company = Organization::where('id', $companyCredits->id)->get();
-		$recruiter = Recruiter::find($companyCreditDetails[0]->recruiter_id);
-		return view('company_credits/view_credit', [
-			'companyCredits' => $companyCredits,
-			'company' => $company,
-			'recruiter' => $recruiter
-		]);
+		if(Auth::user()->can('view_company_credit')) {
+			$companyCredits = OrganizationCredit::find($id);
+			$companyCreditDetails = OrganizationCreditDetail::where('organization_id', $companyCredits->organization_id)->get();
+			$company = Organization::where('id', $companyCredits->id)->get();
+			$recruiter = Recruiter::find($companyCreditDetails[0]->recruiter_id);
+			return view('company_credits/view_credit', [
+				'companyCredits' => $companyCredits,
+				'company' => $company,
+				'recruiter' => $recruiter
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Credits history
 	*/
 	public function creditsHistory(Request $request) {
-		$creditsHistory = OrganizationCreditDetail::orderByDesc('id')->get();
-		return view('company_credits/credits_history', [ 'creditsHistory' => $creditsHistory ]);
+		if(Auth::user()->can('view_credits_history')) {
+			$creditsHistory = OrganizationCreditDetail::orderByDesc('id')->get();
+			return view('company_credits/credits_history', [ 'creditsHistory' => $creditsHistory ]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 	
 	/**
 	 * This function is used to View Credit History
 	*/
 	public function viewCreditHistory($id) {
-		$viewCreditHistory = OrganizationCreditDetail::find($id);
-		$companyName = Organization::where('id', $viewCreditHistory->id)->get();
-		$recruiter = Recruiter::find($viewCreditHistory->recruiter_id);
-		$admin = Admin::find($viewCreditHistory->admin_id);
-		return view('company_credits/view_credit_history', [
-			'viewCreditHistory' => $viewCreditHistory,
-			'companyName' => $companyName,
-			'recruiter' => $recruiter,
-			'admin' => $admin
-		]);
+		if(Auth::user()->can('view_credits_history')) {
+			$viewCreditHistory = OrganizationCreditDetail::find($id);
+			$companyName = Organization::where('id', $viewCreditHistory->id)->get();
+			$recruiter = Recruiter::find($viewCreditHistory->recruiter_id);
+			$admin = Admin::find($viewCreditHistory->admin_id);
+			return view('company_credits/view_credit_history', [
+				'viewCreditHistory' => $viewCreditHistory,
+				'companyName' => $companyName,
+				'recruiter' => $recruiter,
+				'admin' => $admin
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 }
