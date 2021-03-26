@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('user_locked_at')->nullable();
             $table->timestamp('last_logged_in_at')->nullable();
             $table->string('profile_picture')->nullable();
+            $table->string('resume')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
