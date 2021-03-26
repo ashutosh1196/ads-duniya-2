@@ -356,6 +356,18 @@ return [
                     'url'  => 'admin_panel/jobs/bookmarked/list',
                     'active' => ['admin_panel/jobs/bookmarked*'],
                 ],
+                [
+                    'text' => 'job_applications',
+                    'icon' => 'fab fa-wpforms',
+                    'url'  => 'admin_panel/jobs/applications/list',
+                    'active' => ['admin_panel/jobs/applications*'],
+                ],
+                [
+                    'text' => 'job_search_history',
+                    'icon' => 'fa fa-history',
+                    'url'  => 'admin_panel/jobs/search_history/list',
+                    'active' => ['admin_panel/jobs/search_history*'],
+                ],
             ],
         ],
         [

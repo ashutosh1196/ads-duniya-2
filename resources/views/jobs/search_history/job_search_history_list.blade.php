@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Bookmarked Jobs')
+@section('title', 'Job Search History')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.bookmarked_jobs') }}</h1>
+  <h1>Job Search History</h1>
 @stop
 
 @section('content')
@@ -21,24 +21,25 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.reference_number') }}</th>
-                  <th>{{ __('adminlte::adminlte.job_title') }}</th>
+                  <th>{{ __('adminlte::adminlte.searched_by') }}</th>
+                  <th>{{ __('adminlte::adminlte.keywords') }}</th>
+                  <th>{{ __('adminlte::adminlte.search_date') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                  for ($i=0; $i < count($bookmarkedJobs); $i++) {
-                    $bookmarkedJob = $bookmarkedJobs[$i];
-                    $job = \App\Models\Job::find($bookmarkedJob->job_id);
-                    $organization = \App\Models\Organization::with('jobs')->find($job->organization_id);
+                  for ($i=0; $i < count($jobSearchHistoryList); $i++) {
+                    $jobSearchHistory = $jobSearchHistoryList[$i];
+                    $user = \DB::table('users')->find($jobSearchHistory->user_id);
                 ?>
                 <tr>
                   <td class="display-none"></td>
-                  <td>{{ $job->job_ref_number }}</td>
-                  <td>{{ $job->job_title }}</td>
+                  <td>{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</td>
+                  <td>{{ $jobSearchHistory->keywords }}</td>
+                  <td>{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{route('view_bookmarked_job', ['id'=>$bookmarkedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{route('view_search_history', ['id'=>$jobSearchHistory->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

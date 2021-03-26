@@ -119,6 +119,14 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/list', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs_list');
         Route::get('/view/{id}', [JobsController::class, 'viewBookmarkedJob'])->name('view_bookmarked_job');
       });
+      Route::group(['prefix' => 'applications'], function () {
+        Route::get('/list', [JobsController::class, 'jobApplications'])->name('job_applications_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewJobApplication'])->name('view_job_application');
+      });
+      Route::group(['prefix' => 'search_history'], function () {
+        Route::get('/list', [JobsController::class, 'jobSearchHistoryList'])->name('job_search_history_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewJobSearchHistory'])->name('view_search_history');
+      });
     });
 
     // Company Credits

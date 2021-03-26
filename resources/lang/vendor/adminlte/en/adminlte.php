@@ -161,6 +161,7 @@ return [
     'add_new_job_industry'          => 'Add New Job Industry',
     'job_industry_information'      => 'Job Industry Details',
 
+    'search_history_location'       => 'Location',
     'job_location'                  => 'Job Location',
     'job_locations'                 => 'Job Locations',
     'job_location_information'      => 'Job Location Details',
@@ -281,4 +282,11 @@ return [
     'site_title' => 'Which Vocation',
 
     'feedback_information'   => 'Feedback Details',
+    'applicant_name'   => 'Applicant Name',
+    'keywords'   => 'Keywords',
+    'searched_by'   => 'Searched By',
+    'search_date'   => 'Searched Date',
+    'distance'   => 'Distance',
+    'posted_within_days'   => 'Posted Within Days',
+    'searched_at'   => 'Searched Date',
 ];

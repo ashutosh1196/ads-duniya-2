@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Bookmarked Jobs')
+@section('title', 'Job Applications')
 
 @section('content_header')
-  <h1>{{ __('adminlte::adminlte.bookmarked_jobs') }}</h1>
+  <h1>Job Applications</h1>
 @stop
 
 @section('content')
@@ -23,22 +23,25 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
+                  <th>{{ __('adminlte::adminlte.applicant_name') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                  for ($i=0; $i < count($bookmarkedJobs); $i++) {
-                    $bookmarkedJob = $bookmarkedJobs[$i];
-                    $job = \App\Models\Job::find($bookmarkedJob->job_id);
-                    $organization = \App\Models\Organization::with('jobs')->find($job->organization_id);
+                  for ($i=0; $i < count($jobApplications); $i++) {
+                    $jobApplication = $jobApplications[$i];
+                    $job = \App\Models\Job::find($jobApplication->job_id);
+                    $organization = \App\Models\Organization::find($job->organization_id);
+                    $applicant = \App\Models\User::find($jobApplication->applicant_id);
                 ?>
                 <tr>
                   <td class="display-none"></td>
                   <td>{{ $job->job_ref_number }}</td>
                   <td>{{ $job->job_title }}</td>
+                  <td>{{ $applicant->first_name.' '.$applicant->last_name }}</td>
                   <td>
-                    <a class="action-button" title="View" href="{{route('view_bookmarked_job', ['id'=>$bookmarkedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{route('view_job_application', ['id'=>$jobApplication->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php } ?>
