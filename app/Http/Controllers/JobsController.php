@@ -13,6 +13,8 @@ use App\Models\Organization;
 use App\Models\Recruiter;
 use App\Models\Country;
 use App\Models\JobHistory;
+use App\Models\BookmarkedJob;
+use App\Models\User;
 use Auth;
 use DB;
 
@@ -337,11 +339,33 @@ class JobsController extends Controller {
 	}
 
 	/**
-	 * This function is used to Show Saved Jobs Listing
+	 * This function is used to Show Bookmarked Jobs Listing
 	*/
 	public function bookmarkedJobs(Request $request) {
-		$bookmarkedJobs = Job::all();
-		return view('jobs/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+		$bookmarkedJobs = BookmarkedJob::all();
+		return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewBookmarkedJob($id) {
+		$bookmark = BookmarkedJob::find($id);
+		$bookmarkedJob = Job::find($bookmark->job_id);
+		$jobIndustry = JobIndustry::find($bookmarkedJob->job_industry_id);
+		$jobLocation = JobLocation::find($bookmarkedJob->job_location_id);
+		$organization = Organization::find($bookmarkedJob->organization_id);
+		$recruiter = Recruiter::find( $bookmarkedJob->recruiter_id);
+		$user = User::find($bookmark->user_id);
+		return view('jobs/bookmarked/view_bookmarked_job', [
+			'bookmark' => $bookmark,
+			'bookmarkedJob' => $bookmarkedJob,
+			'organizationName' => $organization->name,
+			'recruiter' => $recruiter,
+			'jobIndustry' => $jobIndustry->name,
+			'jobLocation' => $jobLocation->name,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
 	}
 
 	/**

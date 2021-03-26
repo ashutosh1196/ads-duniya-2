@@ -278,7 +278,7 @@ return [
     'view_ticket' => 'View Ticket',
     'regards' => 'Regards',
     'team' => 'Team',
-    'title' => 'Which Vocation',
+    'site_title' => 'Which Vocation',
 
     'feedback_information'   => 'Feedback Details',
 ];

@@ -17,42 +17,32 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table id="bookmarked-jobs" class="table table-bordered table-hover">
+            <table style="width:100%" id="bookmarked-jobs" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.company_name') }}</th>
                   <th>{{ __('adminlte::adminlte.title') }}</th>
-                  <th>{{ __('adminlte::adminlte.description') }}</th>
-                  <th>{{ __('adminlte::adminlte.experience_required') }}</th>
-                  <th>{{ __('adminlte::adminlte.salary') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($bookmarkedJobs); $i++) { ?>
+                <?php
+                  for ($i=0; $i < count($bookmarkedJobs); $i++) {
+                    $bookmarkedJob = $bookmarkedJobs[$i];
+                    $job = \App\Models\Job::find($bookmarkedJob->job_id);
+                    $organization = \App\Models\Organization::with('jobs')->find($job->organization_id);
+                ?>
                 <tr>
-                  <td>1</td>
-                  <td>RV Technologies</td>
-                  <td>Software Developer</td>
-                  <td>Urgent Requirement for Software Developer</td>
-                  <td>3 Years</td>
-                  <td>NA</td>
-                  <td><a href="#">View | Edit | Delete</a></td>
+                  <td class="display-none"></td>
+                  <td>{{ $organization->name }}</td>
+                  <td>{{ $job->job_title }}</td>
+                  <td>
+                    <a class="action-button" title="View" href="{{route('view_bookmarked_job', ['id'=>$bookmarkedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th>#</th>
-                  <th>{{ __('adminlte::adminlte.company_name') }}</th>
-                  <th>{{ __('adminlte::adminlte.title') }}</th>
-                  <th>{{ __('adminlte::adminlte.description') }}</th>
-                  <th>{{ __('adminlte::adminlte.experience_required') }}</th>
-                  <th>{{ __('adminlte::adminlte.salary') }}</th>
-                  <th>{{ __('adminlte::adminlte.actions') }}</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

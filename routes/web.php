@@ -115,7 +115,10 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/history', [JobsController::class, 'jobsHistory'])->name('jobs_history');
       Route::get('/view_job_history/{id}', [JobsController::class, 'viewJobHistory'])->name('view_job_history');
       Route::post('/upload_company_logo', [JobsController::class, 'uploadImage'])->name('upload_company_logo');
-      /* Route::get('/bookmarked', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs'); */
+      Route::group(['prefix' => 'bookmarked'], function () {
+        Route::get('/list', [JobsController::class, 'bookmarkedJobs'])->name('bookmarked_jobs_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewBookmarkedJob'])->name('view_bookmarked_job');
+      });
     });
 
     // Company Credits
