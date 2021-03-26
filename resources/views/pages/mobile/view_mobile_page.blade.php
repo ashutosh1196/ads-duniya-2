@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Device Type</label>
+                    <label>View</label>
                     <input class="form-control" placeholder="{{ ucfirst($pageContent->device_type) }}" readonly>
                   </div>
                 </div>
