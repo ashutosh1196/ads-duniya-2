@@ -351,86 +351,6 @@ class JobsController extends Controller {
 	}
 
 	/**
-	 * This function is used to Show Bookmarked Jobs Listing
-	*/
-	public function bookmarkedJobs(Request $request) {
-		$bookmarkedJobs = BookmarkedJob::all();
-		return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
-	}
-
-	/**
-	 * This function is used to View Bookmarked Job
-	*/
-	public function viewBookmarkedJob($id) {
-		$bookmark = BookmarkedJob::find($id);
-		$bookmarkedJob = Job::find($bookmark->job_id);
-		$jobIndustry = JobIndustry::find($bookmarkedJob->job_industry_id);
-		$jobLocation = JobLocation::find($bookmarkedJob->job_location_id);
-		$organization = Organization::find($bookmarkedJob->organization_id);
-		$recruiter = Recruiter::find( $bookmarkedJob->recruiter_id);
-		$user = User::find($bookmark->user_id);
-		return view('jobs/bookmarked/view_bookmarked_job', [
-			'bookmark' => $bookmark,
-			'bookmarkedJob' => $bookmarkedJob,
-			'organizationName' => $organization->name,
-			'recruiter' => $recruiter,
-			'jobIndustry' => $jobIndustry->name,
-			'jobLocation' => $jobLocation->name,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
-	}
-
-	/**
-	 * This function is used to Show Bookmarked Jobs Listing
-	*/
-	public function jobApplications(Request $request) {
-		$jobApplications = JobApplication::all();
-		return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
-	}
-
-	/**
-	 * This function is used to View Bookmarked Job
-	*/
-	public function viewJobApplication($id) {
-		$jobApplication = JobApplication::find($id);
-		$appliedJob = Job::find($jobApplication->job_id);
-		$jobIndustry = JobIndustry::find($appliedJob->job_industry_id);
-		$jobLocation = JobLocation::find($appliedJob->job_location_id);
-		$organization = Organization::find($appliedJob->organization_id);
-		$recruiter = Recruiter::find( $appliedJob->recruiter_id);
-		$user = User::find($jobApplication->applicant_id);
-		return view('jobs/applications/view_job_application', [
-			'jobApplication' => $jobApplication,
-			'appliedJob' => $appliedJob,
-			'organizationName' => $organization->name,
-			'recruiter' => $recruiter,
-			'jobIndustry' => $jobIndustry->name,
-			'jobLocation' => $jobLocation->name,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
-	}
-
-	/**
-	 * This function is used to Show Bookmarked Jobs Listing
-	*/
-	public function jobSearchHistoryList(Request $request) {
-		$jobSearchHistoryList = JobSearchHistory::all();
-		return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
-	}
-
-	/**
-	 * This function is used to View Bookmarked Job
-	*/
-	public function viewJobSearchHistory($id) {
-		$jobSearchHistory = JobSearchHistory::find($id);
-		$user = User::find($jobSearchHistory->user_id);
-		return view('jobs/search_history/view_search_history', [
-			'jobSearchHistory' => $jobSearchHistory,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
-	}
-
-	/**
 	 * This function is used to Show Jobs History
 	*/
 	public function jobsHistory(Request $request) {
@@ -495,5 +415,69 @@ class JobsController extends Controller {
 			$response = $res;
 			return json_encode($response);
 		}
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function bookmarkedJobs(Request $request) {
+		$bookmarkedJobs = BookmarkedJob::all();
+		return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewBookmarkedJob($id) {
+		$bookmark = BookmarkedJob::find($id);
+		$bookmarkedJob = Job::find($bookmark->job_id);
+		$user = User::find($bookmark->user_id);
+		return view('jobs/bookmarked/view_bookmarked_job', [
+			'bookmark' => $bookmark,
+			'bookmarkedJob' => $bookmarkedJob,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function jobApplications(Request $request) {
+		$jobApplications = JobApplication::all();
+		return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewJobApplication($id) {
+		$jobApplication = JobApplication::find($id);
+		$appliedJob = Job::find($jobApplication->job_id);
+		$user = User::find($jobApplication->applicant_id);
+		return view('jobs/applications/view_job_application', [
+			'jobApplication' => $jobApplication,
+			'appliedJob' => $appliedJob,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function jobSearchHistoryList(Request $request) {
+		$jobSearchHistoryList = JobSearchHistory::all();
+		return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewJobSearchHistory($id) {
+		$jobSearchHistory = JobSearchHistory::find($id);
+		$user = User::find($jobSearchHistory->user_id);
+		return view('jobs/search_history/view_search_history', [
+			'jobSearchHistory' => $jobSearchHistory,
+			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+		]);
 	}
 }
