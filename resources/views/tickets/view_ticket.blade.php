@@ -98,6 +98,14 @@
                             <label>Message</label>
                             <textarea id="message_text" name="message_text" class="form-control" maxlength="1000"></textarea>
                           </div>
+<<<<<<< HEAD
+                          <div class="file_upload_wrap upload-file" file-name="Upload File">
+                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
+                            <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .jpeg, .gif, .png, .doc, .docx, .xls, .xlsx, .pdf"/>
+                            <div title="Remove File" class="delete-file text-danger" id="delete-file"><i class="fa fa-trash-alt"></i></div>                            
+                          </div>
+                          <div class="error" id="image_error"></div>                          
+=======
                           <div class="form-group">
                             <div class="help_wrap">
                               <label>Attachment</label>                            
@@ -113,6 +121,7 @@
                             <div class="error" id="image_error"></div>                          
                           </div>
                           <button type="submit">Reply</button>                              
+>>>>>>> 5f3853704e64279e343d0c2c41c727b9b3d385a6
                         </div>
                       </form>
                     @endcan
