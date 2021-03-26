@@ -1049,7 +1049,27 @@ form .card-body {
     padding: 15px 0 0;
     font-weight: 600;
 }
-
+.message_reply .upload-file div#delete-file {
+    position: absolute;
+    right: 10px;
+    left: inherit;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 17px;
+    z-index: 2;
+}
+.box_wrap {
+    margin: 10px 0 0;
+}
+.message_box .messages_inner_wrap .message .box_wrap img.attached-image {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #212529;
+    padding: 2px;
+    background-color: #ffffff;
+}
 /*--Contact Admin--*/
 
 
