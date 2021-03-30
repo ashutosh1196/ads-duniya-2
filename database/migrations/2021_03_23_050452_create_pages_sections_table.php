@@ -18,7 +18,8 @@ class CreatePagesSectionsTable extends Migration {
 			$table->enum('device_type', ['web', 'mobile'])->default('web');
 			$table->enum('status', ['active', 'inactive'])->default('active');
 			$table->softDeletes();
-			$table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->nullable();
 		});
 	}
 

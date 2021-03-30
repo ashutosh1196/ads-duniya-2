@@ -18,7 +18,8 @@ class CreateCountiesTable extends Migration
             $table->string('county');
             $table->string('country');
 			$table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

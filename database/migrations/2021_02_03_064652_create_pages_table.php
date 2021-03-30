@@ -22,7 +22,8 @@ class CreatePagesTable extends Migration {
 			$table->timestamp('last_updated_at');
 			$table->enum('status', ['active', 'inactive'])->default('active');
 			$table->softDeletes();
-			$table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->nullable();
 		});
 	}
 

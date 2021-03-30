@@ -23,7 +23,8 @@ class CreateJobSearchHistoriesTable extends Migration
             $table->string('posted_within_days')->nullable();
             $table->string('job_type')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

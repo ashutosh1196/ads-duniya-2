@@ -24,9 +24,7 @@ class AdminsSeeder extends Seeder
                 'last_name' => 'Admin',
                 'email' => 'superadmin@whichvocation.com',
                 'password' => Hash::make('Sup3r@dm!n'),
-                'role_id' => 1,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'role_id' => 1
             ],
             [
                 'name' => 'Admin',
@@ -34,9 +32,7 @@ class AdminsSeeder extends Seeder
                 'last_name' => 'User',
                 'email' => 'admin@whichvocation.com',
                 'password' => Hash::make('@dm!nU$3r'),
-                'role_id' => 2,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'role_id' => 2
             ],
             [
                 'name' => 'Viewer',
@@ -44,9 +40,7 @@ class AdminsSeeder extends Seeder
                 'last_name' => 'Admin',
                 'email' => 'viewer@whichvocation.com',
                 'password' => Hash::make('@dm!nV!3w3r'),
-                'role_id' => 3,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'role_id' => 3
             ],
         ]);
         
@@ -69,9 +63,7 @@ class AdminsSeeder extends Seeder
             'country' => 'United Kingdom',
             'pincode' => '132654',
             'created_by' => 'recruiter',
-            'created_by_id' => 3,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'created_by_id' => 3
         ]);
         
 
@@ -90,9 +82,7 @@ class AdminsSeeder extends Seeder
                 'organization_id' => 1,
                 'is_parent' => 1,
                 'created_by' => 'recruiter',
-                'created_by_id' => 1,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'created_by_id' => 1
             ],[
                 'first_name' => '',
                 'last_name' => '',
@@ -104,9 +94,7 @@ class AdminsSeeder extends Seeder
                 'organization_id' => 1,
                 'is_parent' => 0,
                 'created_by' => 'recruiter',
-                'created_by_id' => 3,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'created_by_id' => 3
             ],[
                 'first_name' => 'Sandeep',
                 'last_name' => 'Kumar',
@@ -118,9 +106,7 @@ class AdminsSeeder extends Seeder
                 'organization_id' => 1,
                 'is_parent' => 0,
                 'created_by' => 'recruiter',
-                'created_by_id' => 3,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'created_by_id' => 3
             ] ,[
                 'first_name' => '',
                 'last_name' => '',
@@ -132,9 +118,7 @@ class AdminsSeeder extends Seeder
                 'organization_id' => 1,
                 'is_parent' => 0,
                 'created_by' => 'admin',
-                'created_by_id' => 1,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'created_by_id' => 1
             ] ,[
                 'first_name' => '',
                 'last_name' => '',
@@ -146,9 +130,25 @@ class AdminsSeeder extends Seeder
                 'organization_id' => 1,
                 'is_parent' => 1,
                 'created_by' => 'admin',
-                'created_by_id' => 1,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+                'created_by_id' => 1
+            ]
+        ]);
+        
+        // Jobseekers
+        
+        \DB::table('users')->delete();
+        \DB::table('users')->insert([
+            [
+                'name' => 'John Doe',
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john_doe@yopmail.com',
+                'password' => Hash::make('12345678'),
+                'ip_address' => '192.168.1.65',
+                'login_with' => 'email',
+                'signup_via' => 'web',
+                'is_email_verified' => 1,
+                'email_verified_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
             ]
         ]);
         
@@ -158,9 +158,7 @@ class AdminsSeeder extends Seeder
         \DB::table('organization_credits')->delete();
         \DB::table('organization_credits')->insert([
             'trial_credits' => 60,
-            'organization_id' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'organization_id' => 1
         ]);
         
         // Organization Credit details
@@ -171,9 +169,7 @@ class AdminsSeeder extends Seeder
             'credits' => '60',
             'credit_type' => 'free',
             'organization_id' => 1,
-            'organization_credit_id' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'organization_credit_id' => 1
         ]);
         
 
@@ -201,9 +197,7 @@ class AdminsSeeder extends Seeder
             'status' => 'open',
             'recruiter_id' => 1,
             'organization_id' => 1,
-            'expiring_at' => '2022-06-04 11:59:59',
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'expiring_at' => '2022-06-04 11:59:59'
         ]);
         
 
@@ -213,9 +207,7 @@ class AdminsSeeder extends Seeder
         \DB::table('job_skill')->insert([
             'job_id' => 1,
             'skill_id' => 1,
-            'status' => 1,
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'status' => 1
         ]);
 
         // Tickets
@@ -225,9 +217,7 @@ class AdminsSeeder extends Seeder
             'recruiter_id' => 1,
             'organization_id' => 1,
             'subject' => 'Test Ticket',
-            'status' => 'open',
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'status' => 'open'
         ]);
 
         // Ticket Messages
@@ -237,9 +227,7 @@ class AdminsSeeder extends Seeder
             'message_text' => 'Test Ticket Message',
             'ticket_id' => 1,
             'recruiter_id' => 1,
-            'sent_by' => 'recruiter',
-            'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            'sent_by' => 'recruiter'
         ]);
 
         

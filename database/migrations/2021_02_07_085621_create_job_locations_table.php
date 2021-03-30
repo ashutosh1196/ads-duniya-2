@@ -20,7 +20,8 @@ class CreateJobLocationsTable extends Migration
             $table->longtext('description')->nullable();
             $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

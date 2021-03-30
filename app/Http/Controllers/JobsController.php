@@ -421,63 +421,93 @@ class JobsController extends Controller {
 	 * This function is used to Show Bookmarked Jobs Listing
 	*/
 	public function bookmarkedJobs(Request $request) {
-		$bookmarkedJobs = BookmarkedJob::all();
-		return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+		if(Auth::user()->can('view_job_bookmarks')) {
+			$bookmarkedJobs = BookmarkedJob::all();
+			return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to View Bookmarked Job
 	*/
 	public function viewBookmarkedJob($id) {
-		$bookmark = BookmarkedJob::find($id);
-		$bookmarkedJob = Job::find($bookmark->job_id);
-		$user = User::find($bookmark->user_id);
-		return view('jobs/bookmarked/view_bookmarked_job', [
-			'bookmark' => $bookmark,
-			'bookmarkedJob' => $bookmarkedJob,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
+		if(Auth::user()->can('view_job_bookmarks')) {
+			$bookmark = BookmarkedJob::find($id);
+			$bookmarkedJob = Job::find($bookmark->job_id);
+			$user = User::find($bookmark->user_id);
+			return view('jobs/bookmarked/view_bookmarked_job', [
+				'bookmark' => $bookmark,
+				'bookmarkedJob' => $bookmarkedJob,
+				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Bookmarked Jobs Listing
 	*/
 	public function jobApplications(Request $request) {
-		$jobApplications = JobApplication::all();
-		return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
+		if(Auth::user()->can('view_job_applications')) {
+			$jobApplications = JobApplication::all();
+			return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to View Bookmarked Job
 	*/
 	public function viewJobApplication($id) {
-		$jobApplication = JobApplication::find($id);
-		$appliedJob = Job::find($jobApplication->job_id);
-		$user = User::find($jobApplication->applicant_id);
-		return view('jobs/applications/view_job_application', [
-			'jobApplication' => $jobApplication,
-			'appliedJob' => $appliedJob,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
+		if(Auth::user()->can('view_job_applications')) {
+			$jobApplication = JobApplication::find($id);
+			$appliedJob = Job::find($jobApplication->job_id);
+			$user = User::find($jobApplication->applicant_id);
+			return view('jobs/applications/view_job_application', [
+				'jobApplication' => $jobApplication,
+				'appliedJob' => $appliedJob,
+				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Bookmarked Jobs Listing
 	*/
 	public function jobSearchHistoryList(Request $request) {
-		$jobSearchHistoryList = JobSearchHistory::all();
-		return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
+		if(Auth::user()->can('view_job_search_history')) {
+			$jobSearchHistoryList = JobSearchHistory::all();
+			return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to View Bookmarked Job
 	*/
 	public function viewJobSearchHistory($id) {
-		$jobSearchHistory = JobSearchHistory::find($id);
-		$user = User::find($jobSearchHistory->user_id);
-		return view('jobs/search_history/view_search_history', [
-			'jobSearchHistory' => $jobSearchHistory,
-			'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
-		]);
+		if(Auth::user()->can('view_job_search_history')) {
+			$jobSearchHistory = JobSearchHistory::find($id);
+			$user = User::find($jobSearchHistory->user_id);
+			return view('jobs/search_history/view_search_history', [
+				'jobSearchHistory' => $jobSearchHistory,
+				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 }

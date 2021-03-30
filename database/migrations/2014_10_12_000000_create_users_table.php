@@ -34,7 +34,8 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('resume')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

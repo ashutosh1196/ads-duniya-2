@@ -20,7 +20,8 @@ class CreateTicketsTable extends Migration
             $table->string('subject');
             $table->enum('status',['open','close'])->default('open');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

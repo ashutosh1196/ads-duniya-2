@@ -283,6 +283,81 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Job Bookmarks</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="job_bookmarks_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($jobBookmarksPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass jobBookmarkscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>  
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Job Applications</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="job_applications_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($jobApplicationsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass jobApplicationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>  
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Job Search History</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="job_search_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($jobSearchHistoryPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass jobSearchHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>  
+                                </div>
+                                <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="title">
@@ -853,6 +928,15 @@
       $("#job_history_permissions").click(function() {
         $(".jobHistorycheckBox").prop('checked', this.checked)
       })
+      $("#job_bookmarks_permissions").click(function() {
+        $(".jobBookmarkscheckBox").prop('checked', this.checked)
+      })
+      $("#job_applications_permissions").click(function() {
+        $(".jobApplicationscheckBox").prop('checked', this.checked)
+      })
+      $("#job_search_history_permissions").click(function() {
+        $(".jobSearchHistorycheckBox").prop('checked', this.checked)
+      })
       $("#credits_permissions").click(function() {
         $(".companyCreditscheckBox").prop('checked', this.checked)
       })
@@ -956,6 +1040,24 @@
       }
       else {
         $("#job_history_permissions").prop('checked', false);
+      }
+      if($('.jobBookmarkscheckBox:checked').length == $('.jobBookmarkscheckBox').length) {
+        $("#job_bookmarks_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_bookmarks_permissions").prop('checked', false);
+      }
+      if($('.jobApplicationscheckBox:checked').length == $('.jobApplicationscheckBox').length) {
+        $("#job_applications_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_applications_permissions").prop('checked', false);
+      }
+      if($('.jobSearchHistorycheckBox:checked').length == $('.jobSearchHistorycheckBox').length) {
+        $("#job_search_history_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_search_history_permissions").prop('checked', false);
       }
       if($('.companyCreditscheckBox:checked').length == $('.companyCreditscheckBox').length) {
         $("#credits_permissions").prop('checked', 'true');

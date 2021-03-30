@@ -285,8 +285,7 @@ return [
     'applicant_name'   => 'Applicant Name',
     'keywords'   => 'Keywords',
     'searched_by'   => 'Searched By',
-    'search_date'   => 'Searched Date',
+    'searched_on'   => 'Searched On',
     'distance'   => 'Distance',
     'posted_within_days'   => 'Posted Within Days',
-    'searched_at'   => 'Searched Date',
 ];

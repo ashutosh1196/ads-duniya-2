@@ -18,7 +18,8 @@ class CreateJobApplicationsTable extends Migration
             $table->foreignId('job_id')->constrained();
             $table->unsignedBigInteger('applicant_id');
             $table->string('applicant_type');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

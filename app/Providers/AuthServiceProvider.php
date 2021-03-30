@@ -479,7 +479,10 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'edit_job' ||
 					 $permissions[$i]->slug == 'delete_job' ||
 					 $permissions[$i]->slug == 'view_job' ||
-					 $permissions[$i]->slug == 'view_job_history'
+					 $permissions[$i]->slug == 'view_job_history' ||
+					 $permissions[$i]->slug == 'view_job_bookmarks' ||
+					 $permissions[$i]->slug == 'view_job_applications' ||
+					 $permissions[$i]->slug == 'view_job_search_history'
 				  ) {
 					return true;
 				}
@@ -558,6 +561,36 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'view_job_history') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_job_bookmarks', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_job_bookmarks') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_job_applications', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_job_applications') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_job_search_history', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_job_search_history') {
 					return true;
 				}
 			}

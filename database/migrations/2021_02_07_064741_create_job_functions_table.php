@@ -21,7 +21,8 @@ class CreateJobFunctionsTable extends Migration
             // $table->foreignId('job_industry_id')->references('id')->on('job_industries')->constrained();
             $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

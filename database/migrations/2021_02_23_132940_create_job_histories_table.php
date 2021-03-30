@@ -44,7 +44,8 @@ class CreateJobHistoriesTable extends Migration
             $table->enum('advert_days',[30,60,90]);
             $table->dateTime('expiring_at');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

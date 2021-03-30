@@ -23,10 +23,7 @@ class PagesSeeder extends Seeder {
 				'section' => 'privacy_policy',
 				'device_type' => 'web',
 				'added_by_id' => 1,
-				'updated_by_id' => 1,
-				'last_updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'updated_by_id' => 1
 			],
 			[
 				'title' => 'Privacy Policy',
@@ -38,10 +35,7 @@ class PagesSeeder extends Seeder {
 				'section' => 'privacy_policy',
 				'device_type' => 'mobile',
 				'added_by_id' => 1,
-				'updated_by_id' => 1,
-				'last_updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'updated_by_id' => 1
 			],
 			[
 				'title' => 'Terms & Conditions',
@@ -56,10 +50,7 @@ class PagesSeeder extends Seeder {
 				'section' => 'terms_and_conditions',
 				'device_type' => 'web',
 				'added_by_id' => 1,
-				'updated_by_id' => 1,
-				'last_updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'updated_by_id' => 1
 			],
 			[
 				'title' => 'Terms & Conditions',
@@ -74,10 +65,7 @@ class PagesSeeder extends Seeder {
 				'section' => 'terms_and_conditions',
 				'device_type' => 'mobile',
 				'added_by_id' => 1,
-				'updated_by_id' => 1,
-				'last_updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'updated_by_id' => 1
 			],
 		]);
 	}

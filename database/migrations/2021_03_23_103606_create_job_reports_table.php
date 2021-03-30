@@ -24,7 +24,8 @@ class CreateJobReportsTable extends Migration
             $table->string('email_content')->nullable();
             $table->string('email_sent')->nullable();
             $table->string('created_by')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

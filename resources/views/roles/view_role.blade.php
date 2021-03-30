@@ -46,13 +46,12 @@
                       $permissions = $role->permissions;
                       $permissionNames = [];
                       for($i=0; $i<count($permissions);$i++) {
-                        array_push($permissionNames, $permissions[$i]->name);
+                        array_push($permissionNames, $permissions[$i]->slug);
                       }
-                      // dd($permissionNames);
                     ?>
                     <div class="permission-names row">
                       <?php foreach($permissionNames as $name) {
-                        echo '<li class="col-3">'.$name.'</li>';
+                        echo '<li class="col-3">'.ucwords(str_replace('_', ' ', $name)).'</li>';
                       } ?>
                     </div>
                   </div>

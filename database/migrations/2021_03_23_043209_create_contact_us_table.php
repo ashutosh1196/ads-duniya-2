@@ -20,7 +20,8 @@ class CreateContactUsTable extends Migration {
 			$table->longtext('message');
 			$table->string('file');
 			$table->softDeletes();
-			$table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->nullable();
 		});
 	}
 

@@ -17,9 +17,10 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('tag');
-            $table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
+			$table->enum('status', ['active', 'incative'])->default('active');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

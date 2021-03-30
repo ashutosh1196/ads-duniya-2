@@ -20,7 +20,8 @@ class CreateOrganizationCreditsTable extends Migration
             $table->tinyInteger('status')->comment('1 => Active , 0 => Incative')->default(1);
             $table->foreignId('organization_id')->constrained();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

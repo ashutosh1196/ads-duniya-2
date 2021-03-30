@@ -24,7 +24,8 @@ class CreateOrganizationCreditDetailsTable extends Migration
             $table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
             $table->foreignId('admin_id')->nullable()->constrained()->default(null);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

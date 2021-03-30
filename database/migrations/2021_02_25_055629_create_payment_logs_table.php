@@ -25,7 +25,8 @@ class CreatePaymentLogsTable extends Migration
             $table->foreignId('recruiter_id')->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

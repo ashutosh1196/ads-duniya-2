@@ -145,6 +145,9 @@ class RolesController extends Controller {
 				$contactUsPermissions = Permission::where('module_slug', 'contact_us')->get();
 				$websitePagesPermissions = Permission::where('module_slug', 'website_pages')->get();
 				$mobilePagesPermissions = Permission::where('module_slug', 'mobile_pages')->get();
+				$jobBookmarksPermissions = Permission::where('module_slug', 'bookmarks')->get();
+				$jobApplicationsPermissions = Permission::where('module_slug', 'job_applications')->get();
+				$jobSearchHistoryPermissions = Permission::where('module_slug', 'job_search_history')->get();
 				return view('roles/role_permissions', [
 					'roles' => $roles,
 					'pendingCustomersPermissions' => $pendingCustomersPermissions,
@@ -171,6 +174,9 @@ class RolesController extends Controller {
 					'contactUsPermissions' => $contactUsPermissions,
 					'websitePagesPermissions' => $websitePagesPermissions,
 					'mobilePagesPermissions' => $mobilePagesPermissions,
+					'jobBookmarksPermissions' => $jobBookmarksPermissions,
+					'jobApplicationsPermissions' => $jobApplicationsPermissions,
+					'jobSearchHistoryPermissions' => $jobSearchHistoryPermissions,
 				]);
 			}
 			else {

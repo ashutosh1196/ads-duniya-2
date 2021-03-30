@@ -15,18 +15,15 @@ class RolesSeeder extends Seeder {
 		\DB::table('roles')->insert([
 			[
 				'name' => 'Super Admin',
-				'tag' => 'super_admin',
-				'status' => 1,
+				'tag' => 'super_admin'
 			],
 			[
 				'name' => 'Admin',
-				'tag' => 'admin',
-				'status' => 1,
+				'tag' => 'admin'
 			],
 			[
 				'name' => 'Viewer',
-				'tag' => 'viewer',
-				'status' => 1,
+				'tag' => 'viewer'
 			],
 		]);
 	}

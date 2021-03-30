@@ -23,7 +23,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.searched_by') }}</th>
                   <th>{{ __('adminlte::adminlte.keywords') }}</th>
-                  <th>{{ __('adminlte::adminlte.search_date') }}</th>
+                  <th>{{ __('adminlte::adminlte.searched_on') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>

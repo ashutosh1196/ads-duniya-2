@@ -24,7 +24,8 @@ class CreateAdminsTable extends Migration
             $table->foreignId('role_id')->constrained();
             $table->rememberToken();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

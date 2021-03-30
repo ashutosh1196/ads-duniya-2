@@ -21,7 +21,8 @@ class CreateFeedbackTable extends Migration {
 			$table->foreignId('recruiter_id')->nullable()->constrained()->default(null);
 			$table->string('file')->nullable();
 			$table->softDeletes();
-			$table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->nullable();
 		});
 	}
 

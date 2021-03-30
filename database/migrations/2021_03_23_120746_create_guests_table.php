@@ -17,7 +17,8 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->string('email');
             $table->string('resume');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

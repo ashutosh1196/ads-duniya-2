@@ -15,9 +15,10 @@ class CreatePermissionRoleTable extends Migration {
 			$table->id();
 			$table->foreignId('permission_id')->constrained();
 			$table->foreignId('role_id')->constrained();
-			$table->integer('status')->comment('1 => Active , 0 => Incative')->default(1);
+			$table->enum('status', ['active', 'incative'])->default('active');
 			$table->softDeletes();
-			$table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->nullable();
 		});
 	}
 

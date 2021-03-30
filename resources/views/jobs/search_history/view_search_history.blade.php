@@ -74,7 +74,7 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.searched_at') }}</label>
+                  <label>{{ __('adminlte::adminlte.searched_on') }}</label>
                   <input class="form-control" placeholder="{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}" readonly>
                 </div>
               </div>

@@ -16,16 +16,12 @@ class PagesSectionsSeeder extends Seeder {
 			[
 				'title' => 'Privacy Policy',
 				'slug' => 'privacy_policy',
-				'device_type' => 'web',
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'device_type' => 'web'
 			],
 			[
 				'title' => 'Terms & Conditions',
 				'slug' => 'terms_and_conditions',
-				'device_type' => 'web',
-				'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-				'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+				'device_type' => 'web'
 			],
 		]);
 	}

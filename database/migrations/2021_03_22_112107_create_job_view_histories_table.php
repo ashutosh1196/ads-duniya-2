@@ -17,7 +17,8 @@ class CreateJobViewHistoriesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('job_id')->constrained();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
