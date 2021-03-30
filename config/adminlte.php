@@ -350,7 +350,7 @@ return [
                     'active' => ['admin_panel/jobs/history/*', 'admin_panel/jobs/view_job_history/*'],
                     'can' => ['view_job_history'],
                 ],
-                /* [
+                [
                     'text' => 'bookmarked_jobs',
                     'icon' => 'fas fa-fw fa-bookmark',
                     'url'  => 'admin_panel/jobs/bookmarked/list',
@@ -367,7 +367,7 @@ return [
                     'icon' => 'fa fa-history',
                     'url'  => 'admin_panel/jobs/search_history/list',
                     'active' => ['admin_panel/jobs/search_history*'],
-                ], */
+                ],
             ],
         ],
         [
