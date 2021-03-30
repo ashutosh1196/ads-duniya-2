@@ -36,7 +36,7 @@ class AdminController extends Controller
 		$recruitersCount = count($recruitersList);
 		$customers = Organization::where('is_whitelisted', 1)->get();
 		$customersCount = count($customers);
-		$admins = Admin::where('role_id', '!=', 1)->get();
+		$admins = Admin::where('role_id', '!=', 1)->where('id', '!=', Auth::id())->get();
 		$adminsCount = count($admins);
 		$jobs = Job::all();
 		$jobsCount = count($jobs);
