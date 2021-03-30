@@ -67,5 +67,7 @@ return [
     
     'job_applications'            => 'Job Applications',
     'job_search_history'          => 'Job Search History',
+    
+    'reported_jobs'               => 'Reported Jobs',
 
 ];

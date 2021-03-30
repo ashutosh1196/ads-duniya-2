@@ -127,6 +127,10 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/list', [JobsController::class, 'jobSearchHistoryList'])->name('job_search_history_list');
         Route::get('/view/{id}', [JobsController::class, 'viewJobSearchHistory'])->name('view_search_history');
       });
+      Route::group(['prefix' => 'reported'], function () {
+        Route::get('/list', [JobsController::class, 'reportedJobsList'])->name('reported_jobs_list');
+        Route::get('/view/{id}', [JobsController::class, 'viewReportedJob'])->name('view_reported_job');
+      });
     });
 
     // Company Credits

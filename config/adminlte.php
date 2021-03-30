@@ -371,6 +371,13 @@ return [
                     'active' => ['admin_panel/jobs/search_history*'],
                     'can' => ['view_job_search_history'],
                 ],
+                [
+                    'text' => 'reported_jobs',
+                    'icon' => 'fas fa-exclamation-triangle',
+                    'url'  => 'admin_panel/jobs/reported/list',
+                    'active' => ['admin_panel/jobs/reported*'],
+                    'can' => ['view_reported_job'],
+                ],
             ],
         ],
         [

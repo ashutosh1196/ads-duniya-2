@@ -482,7 +482,8 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'view_job_history' ||
 					 $permissions[$i]->slug == 'view_job_bookmarks' ||
 					 $permissions[$i]->slug == 'view_job_applications' ||
-					 $permissions[$i]->slug == 'view_job_search_history'
+					 $permissions[$i]->slug == 'view_job_search_history' ||
+					 $permissions[$i]->slug == 'view_reported_job'
 				  ) {
 					return true;
 				}
@@ -591,6 +592,16 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'view_job_search_history') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_reported_job', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_reported_job') {
 					return true;
 				}
 			}

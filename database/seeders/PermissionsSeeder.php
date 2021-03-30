@@ -724,6 +724,14 @@ class PermissionsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
+			[
+				'name' => 'View',
+				'slug' => 'view_reported_job',
+				'module_name' => 'Reported Jobs',
+				'module_slug' => 'reported_jobs',
+				'description' => 'desc',
+				'status' => 1
+			],
 		]);
 
 		\DB::table('permission_role')->delete();

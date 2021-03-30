@@ -17,6 +17,7 @@ use App\Models\BookmarkedJob;
 use App\Models\User;
 use App\Models\JobApplication;
 use App\Models\JobSearchHistory;
+use App\Models\JobReport;
 use Auth;
 use DB;
 
@@ -503,6 +504,36 @@ class JobsController extends Controller {
 			$user = User::find($jobSearchHistory->user_id);
 			return view('jobs/search_history/view_search_history', [
 				'jobSearchHistory' => $jobSearchHistory,
+				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to Show Bookmarked Jobs Listing
+	*/
+	public function reportedJobsList(Request $request) {
+		if(Auth::user()->can('view_reported_job')) {
+			$reportedJobs = JobReport::all();
+			return view('jobs/reported/reported_jobs_list')->with('reportedJobs', $reportedJobs);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to View Bookmarked Job
+	*/
+	public function viewReportedJob($id) {
+		if(Auth::user()->can('view_reported_job')) {
+			$reportedJob = JobReport::find($id);
+			$user = User::find($reportedJob->user_id);
+			return view('jobs/reported/view_reported_job', [
+				'reportedJob' => $reportedJob,
 				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
 			]);
 		}

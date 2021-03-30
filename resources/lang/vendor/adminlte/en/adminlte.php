@@ -121,6 +121,7 @@ return [
     'job_description'               => 'Describe Your Job',
     'bookmarked_jobs'               => 'Bookmarked Jobs',
     'description'                   => 'Description',
+    'issue_description'             => 'Issue Description',
     'experience_required'           => 'Experience Required',
     'deleted_jobs'                  => 'Deleted Jobs',
     'reference_number'              => 'Reference Number',
@@ -290,4 +291,5 @@ return [
     'posted_within_days'   => 'Posted Within Days',
     'user_name'   => 'User Name',
     'bookmarked_by'   => 'Bookmarked By',
+    'reported_jobs'   => 'Reported Jobs',
 ];
