@@ -45,9 +45,9 @@ class AdminsSeeder extends Seeder
         ]);
         
 
-        // Organizations
+        /* // Organizations
 
-        /* \DB::table('organizations')->delete();
+        \DB::table('organizations')->delete();
         \DB::table('organizations')->insert([
             'name' => 'RV Technologies',
             'email' => 'info@rvtechnologies.com',
@@ -64,12 +64,12 @@ class AdminsSeeder extends Seeder
             'pincode' => '132654',
             'created_by' => 'recruiter',
             'created_by_id' => 3
-        ]); */
+        ]);
         
 
         // Recruiters
 
-        /* \DB::table('recruiters')->delete();
+        \DB::table('recruiters')->delete();
         \DB::table('recruiters')->insert([
             [
                 'first_name' => 'Pawanjeet',
@@ -132,50 +132,50 @@ class AdminsSeeder extends Seeder
                 'created_by' => 'admin',
                 'created_by_id' => 1
             ]
-        ]); */
+        ]);
         
         // Jobseekers
         
-        // \DB::table('users')->delete();
-        // \DB::table('users')->insert([
-        //     [
-        //         'name' => 'John Doe',
-        //         'first_name' => 'John',
-        //         'last_name' => 'Doe',
-        //         'email' => 'john_doe@yopmail.com',
-        //         'password' => Hash::make('12345678'),
-        //         'ip_address' => '192.168.1.65',
-        //         'login_with' => 'email',
-        //         'signup_via' => 'web',
-        //         'is_email_verified' => 1,
-        //         'email_verified_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
-        //     ]
-        // ]);
+        \DB::table('users')->delete();
+        \DB::table('users')->insert([
+            [
+                'name' => 'John Doe',
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john_doe@yopmail.com',
+                'password' => Hash::make('12345678'),
+                'ip_address' => '192.168.1.65',
+                'login_with' => 'email',
+                'signup_via' => 'web',
+                'is_email_verified' => 1,
+                'email_verified_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
+            ]
+        ]);
         
 
         // Organization Credits
 
-        /* \DB::table('organization_credits')->delete();
+        \DB::table('organization_credits')->delete();
         \DB::table('organization_credits')->insert([
             'trial_credits' => 60,
             'organization_id' => 1
-        ]); */
+        ]);
         
         // Organization Credit details
 
-        /* \DB::table('organization_credit_details')->delete();
+        \DB::table('organization_credit_details')->delete();
         \DB::table('organization_credit_details')->insert([
             'txn_type' => 'credit',
             'credits' => '60',
             'credit_type' => 'free',
             'organization_id' => 1,
             'organization_credit_id' => 1
-        ]); */
+        ]);
         
 
         // Jobs
 
-        /* \DB::table('jobs')->delete();
+        \DB::table('jobs')->delete();
         \DB::table('jobs')->insert([
             'job_ref_number' => '2343202116148530002',
             'job_title' => 'Designer',
@@ -198,42 +198,37 @@ class AdminsSeeder extends Seeder
             'recruiter_id' => 1,
             'organization_id' => 1,
             'expiring_at' => '2022-06-04 11:59:59'
-        ]); */
+        ]);
         
 
         // Job Skills
 
-        /* \DB::table('job_skill')->delete();
+        \DB::table('job_skill')->delete();
         \DB::table('job_skill')->insert([
             'job_id' => 1,
             'skill_id' => 1,
             'status' => 1
-        ]); */
+        ]);
 
         // Tickets
 
-        // \DB::table('tickets')->delete();
-        // \DB::table('tickets')->insert([
-        //     'recruiter_id' => 1,
-        //     'organization_id' => 1,
-        //     'subject' => 'Test Ticket',
-        //     'status' => 'open'
-        // ]);
+        \DB::table('tickets')->delete();
+        \DB::table('tickets')->insert([
+            'recruiter_id' => 1,
+            'organization_id' => 1,
+            'subject' => 'Test Ticket',
+            'status' => 'open'
+        ]);
 
         // Ticket Messages
 
-       /*  \DB::table('ticket_messages')->delete();
+        \DB::table('ticket_messages')->delete();
         \DB::table('ticket_messages')->insert([
             'message_text' => 'Test Ticket Message',
             'ticket_id' => 1,
             'recruiter_id' => 1,
             'sent_by' => 'recruiter'
         ]); */
-
-        
-
-        
-
     }
 }
 
