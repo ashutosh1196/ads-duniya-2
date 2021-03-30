@@ -288,4 +288,6 @@ return [
     'searched_on'   => 'Searched On',
     'distance'   => 'Distance',
     'posted_within_days'   => 'Posted Within Days',
+    'user_name'   => 'User Name',
+    'bookmarked_by'   => 'Bookmarked By',
 ];

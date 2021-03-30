@@ -23,7 +23,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.applicant_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.user_name') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>

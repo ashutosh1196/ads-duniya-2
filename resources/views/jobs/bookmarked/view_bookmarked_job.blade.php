@@ -47,13 +47,13 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>Bookmarked By</label>
+                  <label>{{ __('adminlte::adminlte.user_name') }}</label>
                   <input class="form-control" placeholder="{{ $userName }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>Bookmarked On</label>
+                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
                   <input class="form-control" placeholder="{{ $bookmark->created_at ? date('d/m/y', strtotime($bookmark->created_at)) : '' }}" readonly>
                 </div>
               </div>
