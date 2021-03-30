@@ -531,9 +531,11 @@ class JobsController extends Controller {
 	public function viewReportedJob($id) {
 		if(Auth::user()->can('view_reported_job')) {
 			$reportedJob = JobReport::find($id);
+			$job = Job::find($reportedJob->job_id);
 			$user = User::find($reportedJob->user_id);
 			return view('jobs/reported/view_reported_job', [
 				'reportedJob' => $reportedJob,
+				'job' =>  $job,
 				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
 			]);
 		}

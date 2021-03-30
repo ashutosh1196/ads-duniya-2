@@ -27,7 +27,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $reportedJob->job_ref_number ? $reportedJob->job_ref_number : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $job->job_ref_number ? $job->job_ref_number : '' }}" readonly>
                 </div>
               </div>
             </div>
