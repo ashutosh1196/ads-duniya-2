@@ -424,7 +424,7 @@ class JobsController extends Controller {
 	*/
 	public function bookmarkedJobs(Request $request) {
 		if(Auth::user()->can('view_job_bookmarks')) {
-			$bookmarkedJobs = BookmarkedJob::all();
+			$bookmarkedJobs = BookmarkedJob::orderByDesc('id')->get();
 			return view('jobs/bookmarked/bookmarked_jobs')->with('bookmarkedJobs', $bookmarkedJobs);
 		}
 		else {
@@ -456,7 +456,7 @@ class JobsController extends Controller {
 	*/
 	public function jobApplications(Request $request) {
 		if(Auth::user()->can('view_job_applications')) {
-			$jobApplications = JobApplication::all();
+			$jobApplications = JobApplication::orderByDesc('id')->get();
 			return view('jobs/applications/job_applications_list')->with('jobApplications', $jobApplications);
 		}
 		else {
@@ -488,7 +488,7 @@ class JobsController extends Controller {
 	*/
 	public function jobSearchHistoryList(Request $request) {
 		if(Auth::user()->can('view_job_search_history')) {
-			$jobSearchHistoryList = JobSearchHistory::all();
+			$jobSearchHistoryList = JobSearchHistory::orderByDesc('id')->get();
 			return view('jobs/search_history/job_search_history_list')->with('jobSearchHistoryList', $jobSearchHistoryList);
 		}
 		else {
@@ -518,7 +518,7 @@ class JobsController extends Controller {
 	*/
 	public function reportedJobsList(Request $request) {
 		if(Auth::user()->can('view_reported_job')) {
-			$reportedJobs = JobReport::all();
+			$reportedJobs = JobReport::orderByDesc('id')->get();
 			return view('jobs/reported/reported_jobs_list')->with('reportedJobs', $reportedJobs);
 		}
 		else {
@@ -550,7 +550,7 @@ class JobsController extends Controller {
 	*/
 	public function viewedJobsList(Request $request) {
 		if(Auth::user()->can('view_reported_job')) {
-			$viewedJobs = JobViewHistory::all();
+			$viewedJobs = JobViewHistory::orderByDesc('id')->get();
 			return view('jobs/viewed/viewed_jobs_list')->with('viewedJobs', $viewedJobs);
 		}
 		else {
