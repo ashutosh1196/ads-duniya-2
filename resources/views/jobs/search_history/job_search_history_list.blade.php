@@ -36,7 +36,7 @@
                 <tr>
                   <td class="display-none"></td>
                   <td>{{ $jobSearchHistory->keywords }}</td>
-                  <td>{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</td>
+                  <td><a class="link-text" href="{{ $user ? route('view_jobseeker', ['id' => $user->id]) : '#' }}">{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</a></td>
                   <td>{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{route('view_search_history', ['id'=>$jobSearchHistory->id])}}"><i class="text-info fa fa-eye"></i></a>

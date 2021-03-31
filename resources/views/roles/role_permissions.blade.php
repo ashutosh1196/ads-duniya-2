@@ -232,153 +232,190 @@
                     <hr/>
                   </div>
 
-                  <div class="row permissions-section">
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Jobs</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
-                            </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($jobsPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass jobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
+                  <div class="permissions-section">
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Published</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
                               </div>
-                            @endforeach
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($jobsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass jobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Applications</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="job_applications_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
+                              </div>
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($jobApplicationsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass jobApplicationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Bookmarked</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="job_bookmarks_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
+                              </div>
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($jobBookmarksPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass jobBookmarkscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Job History</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="job_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
-                            </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($jobHistoryPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass jobHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>  
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Reported</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="reported_jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
                               </div>
-                            @endforeach
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($reportedJobsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass reportedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Viewed</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="viewed_jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
+                              </div>
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($viewedJobsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass viewedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs History</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="job_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
+                              </div>
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($jobHistoryPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass jobHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Job Bookmarks</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="job_bookmarks_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
-                            </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($jobBookmarksPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass jobBookmarkscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>  
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Search History</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="job_search_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
+                                <span></span>
                               </div>
-                            @endforeach
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Job Applications</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="job_applications_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
+                                <strong class="list-text">Select All</strong>
                             </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($jobApplicationsPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass jobApplicationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>  
+                            <div id="checkBoxes">
+                              @foreach($jobSearchHistoryPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass jobSearchHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>  
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
                                 </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
-                              </div>
-                            @endforeach
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Job Search History</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="job_search_history_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
+                              @endforeach
                             </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($jobSearchHistoryPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass jobSearchHistorycheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>  
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
-                              </div>
-                            @endforeach
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Reported Jobs</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="reported_jobs_permissions" style="height: 15px;width: 50px;" class="ckbCheckAll">
-                              <span></span>
-                            </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($reportedJobsPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass reportedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>  
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
-                              </div>
-                            @endforeach
                           </div>
                         </div>
                       </div>
@@ -965,6 +1002,9 @@
       $("#reported_jobs_permissions").click(function() {
         $(".reportedJobscheckBox").prop('checked', this.checked)
       })
+      $("#viewed_jobs_permissions").click(function() {
+        $(".viewedJobscheckBox").prop('checked', this.checked)
+      })
       $("#credits_permissions").click(function() {
         $(".companyCreditscheckBox").prop('checked', this.checked)
       })
@@ -1092,6 +1132,12 @@
       }
       else {
         $("#reported_jobs_permissions").prop('checked', false);
+      }
+      if($('.viewedJobscheckBox:checked').length == $('.viewedJobscheckBox').length) {
+        $("#viewed_jobs_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#viewed_jobs_permissions").prop('checked', false);
       }
       if($('.companyCreditscheckBox:checked').length == $('.companyCreditscheckBox').length) {
         $("#credits_permissions").prop('checked', 'true');

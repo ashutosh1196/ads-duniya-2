@@ -26,8 +26,20 @@
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.user_name') }}</label>
-                  <input class="form-control" placeholder="{{ $userName }}" readonly>
+                  <label>{{ __('adminlte::adminlte.searched_by') }}</label>
+                  <a class="link-text" href="{{ $user ? route('view_jobseeker', ['id' => $user->id]) : '#' }}">
+                  @php if($user) {
+                    if($user && $user->first_name) {
+                      $userName = $user->first_name.' '.$user->last_name;
+                    }
+                    else {
+                      $userName = $user->email;
+                    }
+                  }
+                  else {
+                    $userName = $reportedJob->email_sent;
+                  } @endphp
+                  <input class="form-control" placeholder="{{ $userName }}" readonly></a>
                 </div>
               </div>
               <div class="col-6">
@@ -74,7 +86,7 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
+                  <label>{{ __('adminlte::adminlte.searched_date') }}</label>
                   <input class="form-control" placeholder="{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}" readonly>
                 </div>
               </div>

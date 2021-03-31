@@ -25,8 +25,8 @@ return [
     'admins'                        => 'Admins',
 
     'jobs_management'               => 'Jobs Management',
-    'published_jobs'                => 'Published Jobs',
-    'bookmarked_jobs'               => 'Bookmarked Jobs',
+    'published_jobs'                => 'Jobs Published',
+    'bookmarked_jobs'               => 'Jobs Bookmarked',
 
     'recylce_bin'                   => 'Recylce Bin',
     'jobs'                          => 'Jobs',
@@ -65,9 +65,10 @@ return [
     'feedbacks'                   => 'Feedbacks',
     'contact_us'                  => 'Contact Us',
     
-    'job_applications'            => 'Job Applications',
+    'job_applications'            => 'Jobs Applications',
     'job_search_history'          => 'Jobs Search History',
     
-    'reported_jobs'               => 'Reported Jobs',
+    'reported_jobs'               => 'Jobs Reported',
+    'jobs_viewed'               => 'Jobs Viewed',
 
 ];

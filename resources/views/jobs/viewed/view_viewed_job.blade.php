@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Reported Job Details')
+@section('title', 'Viewed Job Details')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header alert d-flex justify-content-between align-items-center">
-          <h3>Reported Job Details</h3>
+          <h3>Viewed Job Details</h3>
           <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
         </div>        
         <div class="card-body job-history">
@@ -24,36 +24,31 @@
           <form class="form_wrap">
           
             <div class="row">
-              <div class="col-12">
+              <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
                   <a class="link-text" href="{{ route('view_job', ['id' => $job->id]) }}"><input class="form-control" placeholder="{{ $job->job_ref_number ? $job->job_ref_number : '' }}" readonly></a>
                 </div>
               </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.job_title') }}</label>
+                  <input class="form-control" placeholder="{{ $job->job_title ? $job->job_title : '' }}" readonly>
+                </div>
+              </div>
             </div>
 
             <div class="row">
-              <div class="col-12">
-                <div class="form-group description">
-                  <label>{{ __('adminlte::adminlte.issue_description') }}</label><br/>
-                  <div class="job-description">{!! $reportedJob->issue_description !!}</div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.viewed_by') }}</label>
+                  <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}"><input class="form-control" placeholder="{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly></a>
                 </div>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+              <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.reported_by') }}</label>
-                  @if($user)
-                    <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}">
-                    <input class="form-control" placeholder="{{ $userName = $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly></a>
-                  @else
-                    <input class="form-control" placeholder="Guest User" readonly></a>
-                  @endif
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.report_date') }}</label>
-                  <input class="form-control" placeholder="{{ $reportedJob->created_at ? date('d/m/y', strtotime($reportedJob->created_at)) : '' }}" readonly>
+                  <label>{{ __('adminlte::adminlte.viewed_date') }}</label>
+                  <input class="form-control" placeholder="{{ $viewedJob->created_at ? date('d/m/y', strtotime($viewedJob->created_at)) : '' }}" readonly>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.user_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.bookmarked_by') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -37,9 +37,9 @@
                 ?>
                 <tr>
                   <td class="display-none"></td>
-                  <td>{{ $job->job_ref_number }}</td>
+                  <td><a class="link-text" href="{{ route('view_job', ['id' => $job->id]) }}">{{ $job->job_ref_number }}<a></td>
                   <td>{{ $job->job_title }}</td>
-                  <td>{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</td>
+                  <td><a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}">{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</a></td>
                   <td>
                     <a class="action-button" title="View" href="{{route('view_bookmarked_job', ['id'=>$bookmarkedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>

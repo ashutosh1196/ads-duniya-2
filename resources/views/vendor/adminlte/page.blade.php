@@ -15,9 +15,13 @@
         th:hover {
             cursor: pointer;
         }
-        .recruiter-view-link input:hover {
+        .recruiter-view-link input:hover, .link-text input:hover {
             cursor: pointer;
         }
+        .link-text, .link-text>input::placeholder {
+            color: #17a2b8 !important;
+        }
+
         li.has-treeview li.nav-item {
             margin-left: 15px;
         }

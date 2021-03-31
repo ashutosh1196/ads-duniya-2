@@ -81,11 +81,31 @@ class JobSeekersController extends Controller {
 			$jobseeker = User::where('id', $id)->get();
 			$deletedJobseekers = User::onlyTrashed()->get();
 			if($jobseeker->isNotEmpty()) {
-				return view('jobseekers/view_jobseeker')->with('jobseeker', $jobseeker);
+				return view('jobseekers/view_jobseeker')->with([
+					'jobseeker' => $jobseeker,
+					'applicantType' => null
+				]);
 			}
 			else {
 				return view('jobseekers/view_jobseeker')->with('jobseeker', $deletedJobseekers);
 			}
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to Show Job Seekers Listing
+	*/
+	public function viewUser($id, $applicantType) {
+		$applicantType = base64_decode(base64_decode($applicantType));
+		if(Auth::user()->can('view_jobseeker')) {
+			$jobseeker = $applicantType::where('id', $id)->get();
+			return view('jobseekers/view_jobseeker')->with([
+				'jobseeker' => $jobseeker,
+				'applicantType' => $applicantType
+			]);
 		}
 		else {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');

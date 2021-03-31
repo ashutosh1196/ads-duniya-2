@@ -27,7 +27,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $bookmarkedJob->job_ref_number ? $bookmarkedJob->job_ref_number : '' }}" readonly>
+                  <a class="link-text" href="{{ route('view_job', ['id' => $bookmarkedJob->id]) }}"><input class="form-control" placeholder="{{ $bookmarkedJob->job_ref_number ? $bookmarkedJob->job_ref_number : '' }}" readonly></a>
                 </div>
               </div>
               <div class="col-6">
@@ -47,13 +47,13 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.user_name') }}</label>
-                  <input class="form-control" placeholder="{{ $userName }}" readonly>
+                  <label>{{ __('adminlte::adminlte.bookmarked_by') }}</label>
+                  <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}"><input class="form-control" placeholder="{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
+                  <label>{{ __('adminlte::adminlte.bookmark_date') }}</label>
                   <input class="form-control" placeholder="{{ $bookmark->created_at ? date('d/m/y', strtotime($bookmark->created_at)) : '' }}" readonly>
                 </div>
               </div>

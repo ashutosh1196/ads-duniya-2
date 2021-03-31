@@ -18,6 +18,7 @@ use App\Models\User;
 use App\Models\JobApplication;
 use App\Models\JobSearchHistory;
 use App\Models\JobReport;
+use App\Models\JobViewHistory;
 use Auth;
 use DB;
 
@@ -442,7 +443,7 @@ class JobsController extends Controller {
 			return view('jobs/bookmarked/view_bookmarked_job', [
 				'bookmark' => $bookmark,
 				'bookmarkedJob' => $bookmarkedJob,
-				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+				'user' =>  $user,
 			]);
 		}
 		else {
@@ -470,11 +471,11 @@ class JobsController extends Controller {
 		if(Auth::user()->can('view_job_applications')) {
 			$jobApplication = JobApplication::find($id);
 			$appliedJob = Job::find($jobApplication->job_id);
-			$user = User::find($jobApplication->applicant_id);
+			$user = $jobApplication->applicant_type::find($jobApplication->applicant_id);
 			return view('jobs/applications/view_job_application', [
 				'jobApplication' => $jobApplication,
 				'appliedJob' => $appliedJob,
-				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+				'user' =>  $user,
 			]);
 		}
 		else {
@@ -504,7 +505,7 @@ class JobsController extends Controller {
 			$user = User::find($jobSearchHistory->user_id);
 			return view('jobs/search_history/view_search_history', [
 				'jobSearchHistory' => $jobSearchHistory,
-				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+				'user' =>  $user,
 			]);
 		}
 		else {
@@ -533,21 +534,42 @@ class JobsController extends Controller {
 			$reportedJob = JobReport::find($id);
 			$job = Job::find($reportedJob->job_id);
 			$user = User::find($reportedJob->user_id);
-			if($user) {
-				if($user && $user->first_name) {
-					$userName = $user->first_name.' '.$user->last_name;
-				}
-				else {
-					$userName = $user->email;
-				}
-			}
-			else {
-				$userName = "";
-			}
 			return view('jobs/reported/view_reported_job', [
 				'reportedJob' => $reportedJob,
 				'job' =>  $job,
-				'userName' =>  $userName,
+				'user' =>  $user,
+			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to Show Viewed Jobs Listing
+	*/
+	public function viewedJobsList(Request $request) {
+		if(Auth::user()->can('view_reported_job')) {
+			$viewedJobs = JobViewHistory::all();
+			return view('jobs/viewed/viewed_jobs_list')->with('viewedJobs', $viewedJobs);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to View Viewed Job
+	*/
+	public function viewViewedJob($id) {
+		if(Auth::user()->can('view_viewed_job')) {
+			$viewedJob = JobViewHistory::find($id);
+			$job = Job::find($viewedJob->job_id);
+			$user = User::find($viewedJob->user_id);
+			return view('jobs/viewed/view_viewed_job', [
+				'viewedJob' => $viewedJob,
+				'job' =>  $job,
+				'user' =>  $user,
 			]);
 		}
 		else {

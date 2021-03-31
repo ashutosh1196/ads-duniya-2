@@ -607,6 +607,16 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('view_viewed_job', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_viewed_job') {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('manage_company_credits', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;

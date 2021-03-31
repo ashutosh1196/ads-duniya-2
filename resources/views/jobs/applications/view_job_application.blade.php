@@ -27,7 +27,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $appliedJob->job_ref_number ? $appliedJob->job_ref_number : '' }}" readonly>
+                  <a class="link-text" href="{{ route('view_job', ['id' => $appliedJob->id]) }}"><input class="form-control" placeholder="{{ $appliedJob->job_ref_number ? $appliedJob->job_ref_number : '' }}" readonly></a>
                 </div>
               </div>
               <div class="col-6">
@@ -47,13 +47,18 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.user_name') }}</label>
-                  <input class="form-control" placeholder="{{ $userName }}" readonly>
+                  <label>{{ __('adminlte::adminlte.applied_by') }}</label>
+                  <a class="link-text" href="{{ route('view_user', ['id' => $user->id, 'applicantType' => base64_encode(base64_encode($jobApplication->applicant_type))]) }}">
+                  @if($user)
+                    <input class="form-control" placeholder="{{ $userName = $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly></a>
+                  @else
+                    <input class="form-control" placeholder="Guest User" readonly></a>
+                  @endif
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.created_date') }}</label>
+                  <label>{{ __('adminlte::adminlte.applied_date') }}</label>
                   <input class="form-control" placeholder="{{ $jobApplication->created_at ? date('d/m/y', strtotime($jobApplication->created_at)) : '' }}" readonly>
                 </div>
               </div>

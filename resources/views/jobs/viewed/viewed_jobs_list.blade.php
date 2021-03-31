@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Job Applications')
+@section('title', 'Viewed Jobs')
 
 @section('content_header')
-  <h1>Job Applications</h1>
+  <h1>{{ __('adminlte::adminlte.viewed_jobs') }}</h1>
 @stop
 
 @section('content')
@@ -23,25 +23,25 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.applied_by') }}</th>
+                  <th>{{ __('adminlte::adminlte.viewed_by') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                  for ($i=0; $i < count($jobApplications); $i++) {
-                    $jobApplication = $jobApplications[$i];
-                    $job = \App\Models\Job::find($jobApplication->job_id);
-                    $organization = \App\Models\Organization::find($job->organization_id);
-                    $applicant = $jobApplication->applicant_type::find($jobApplication->applicant_id);
+                  for ($i=0; $i < count($viewedJobs); $i++) {
+                    $viewedJob = $viewedJobs[$i];
+                    $job = \App\Models\Job::find($viewedJob->job_id);
+                    $organization = \App\Models\Organization::with('jobs')->find($job->organization_id);
+                    $user = \App\Models\User::find($viewedJob->user_id);
                 ?>
                 <tr>
                   <td class="display-none"></td>
-                  <td><a class="link-text" href="{{ route('view_job', ['id' => $job->id]) }}">{{ $job->job_ref_number }}</a></td>
+                  <td><a class="link-text" href="{{ route('view_job', ['id' => $job->id]) }}">{{ $job->job_ref_number }}<a></td>
                   <td>{{ $job->job_title }}</td>
-                  <td><a class="link-text" href="{{ route('view_user', ['id' => $applicant->id, 'applicantType' => base64_encode(base64_encode($jobApplication->applicant_type))]) }}">{{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}</a></td>
+                  <td><a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}">{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</a></td>
                   <td>
-                    <a class="action-button" title="View" href="{{route('view_job_application', ['id'=>$jobApplication->id])}}"><i class="text-info fa fa-eye"></i></a>
+                    <a class="action-button" title="View" href="{{route('view_viewed_job', ['id'=>$viewedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php } ?>

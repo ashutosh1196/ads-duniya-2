@@ -12,8 +12,12 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>{{ __('adminlte::adminlte.jobseeker_information') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+            <h3> @if($applicantType)
+                {{$applicantType == 'App\Models\User' ? __('adminlte::adminlte.jobseeker_information') : __('adminlte::adminlte.guest_information')}}
+              @else
+                {{__('adminlte::adminlte.jobseeker_information')}}
+              @endif</h3>
+              <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>        
           <div class="card-body">
             @if (session('status'))
