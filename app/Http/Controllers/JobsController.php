@@ -533,10 +533,21 @@ class JobsController extends Controller {
 			$reportedJob = JobReport::find($id);
 			$job = Job::find($reportedJob->job_id);
 			$user = User::find($reportedJob->user_id);
+			if($user) {
+				if($user && $user->first_name) {
+					$userName = $user->first_name.' '.$user->last_name;
+				}
+				else {
+					$userName = $user->email;
+				}
+			}
+			else {
+				$userName = "";
+			}
 			return view('jobs/reported/view_reported_job', [
 				'reportedJob' => $reportedJob,
 				'job' =>  $job,
-				'userName' =>  $user->first_name ? $user->first_name.' '.$user->last_name : $user->email,
+				'userName' =>  $userName,
 			]);
 		}
 		else {

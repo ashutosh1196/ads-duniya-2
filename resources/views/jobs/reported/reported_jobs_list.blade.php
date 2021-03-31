@@ -32,12 +32,23 @@
                   for ($i=0; $i < count($reportedJobs); $i++) {
                     $reportedJob = $reportedJobs[$i];
                     $job = \App\Models\Job::find($reportedJob->job_id);
-                    $user = \App\Models\User::find($reportedJob->user_id); ?>
+                    $user = \App\Models\User::find($reportedJob->user_id);
+                    if($user) {
+                      if($user && $user->first_name) {
+                        $userName = $user->first_name.' '.$user->last_name;
+                      }
+                      else {
+                        $userName = $user->email;
+                      }
+                    }
+                    else {
+                      $userName = "";
+                    } ?>
                     <tr>
                       <td class="display-none"></td>
                       <td>{{ $job->job_ref_number }}</td>
                       <td>{{ $job->job_title }}</td>
-                      <td>{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</td>
+                      <td>{{ $userName }}</td>
                       <td>
                         <a class="action-button" title="View" href="{{route('view_reported_job', ['id'=>$reportedJob->id])}}"><i class="text-info fa fa-eye"></i></a>
                       </td>
