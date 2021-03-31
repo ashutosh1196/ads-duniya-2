@@ -204,7 +204,7 @@
         return this.optional(element) || (element.files[0].size <= param)
       }, 'File size must be less than 2 MB');
       $.validator.addMethod("extension", function (value, element, param) {
-        param = typeof param === "string" ? param.replace(/,/g, '|') : "jpg|jpe?g|pdf|doc|docx|png";
+        param = typeof param === "string" ? param.replace(/,/g, '|') : "jpg|jpe?g|gif|png|svg|doc|docx|xls|xlsx|ods|pdf";
         return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
       }, "Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload.");
       $('#replyForm').validate({
