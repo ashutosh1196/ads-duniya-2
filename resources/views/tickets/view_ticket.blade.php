@@ -186,7 +186,7 @@
              fileExtension != "pdf" && fileExtension != "PDF" &&
              fileExtension != "svg" && fileExtension != "SVG"
             ) {
-            $("#image_error").html("Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload.");
+            $("#image_error").html("Only .jpg .gif .png .svg .doc .docx .xls .xlsx .ods .pdf files are allowed to upload.");
             return false;
           }
           else {
@@ -206,7 +206,7 @@
       $.validator.addMethod("extension", function (value, element, param) {
         param = typeof param === "string" ? param.replace(/,/g, '|') : "jpg|jpe?g|gif|png|svg|doc|docx|xls|xlsx|ods|pdf";
         return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
-      }, "Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload.");
+      }, "Only .jpg .gif .png .svg .doc .docx .xls .xlsx .ods .pdf files are allowed to upload.");
       $('#replyForm').validate({
         ignore: [],
         debug: false,
@@ -225,7 +225,7 @@
             required: "The Message field Name is required."
           },
           attachment_file: {
-            extension: "Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload."
+            extension: "Only .jpg .gif .png .svg .doc .docx .xls .xlsx .ods .pdf files are allowed to upload."
           }
         }
       });
