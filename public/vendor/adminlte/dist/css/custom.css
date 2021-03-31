@@ -712,8 +712,34 @@ body.login-page .login-box button span {
     top: 0;
 }
 .dataTables_wrapper table tbody tr td {
-    padding: 15px 0px !important;
+    padding: 15px 10px !important;
 }
+.table-bordered tr th[aria-label="Expired On: activate to sort column ascending"] {
+    width: 92px !important;
+}
+.table-bordered tr th[aria-label="Created By: activate to sort column ascending"] {
+    width: 140px !important;
+}
+.table-bordered tr th[aria-label="Job Title: activate to sort column ascending"] {
+    width: 120px !important;
+}
+.table-bordered tr th[aria-label="Job Type: activate to sort column ascending"],
+.table-bordered tr th[aria-label="Created At: activate to sort column ascending"] {
+    width: 90px !important;
+}
+.table-bordered tr th[aria-label="Job Industry: activate to sort column ascending"] {
+    width: 105px !important;
+}
+.table-bordered tr th[aria-label="Credit Type: activate to sort column ascending"] {
+    width: 80px !important;
+}
+.table-bordered tr th[aria-label="Company Name: activate to sort column ascending"] {
+    width: 130px !important;
+}
+.table-bordered tr th[aria-label="Ticket ID: activate to sort column ascending"] {
+    width: 72px !important;
+}
+
 /*--Contact Admin--*/
 
 .message_box {
@@ -771,7 +797,7 @@ body.login-page .login-box button span {
     font-size: 13px;
 }
 .message_reply .upload-file {
-    background-color: #f6f7fb;
+    background-color: transparent;
     padding: 15px 20px;
     height: 70px;
     display: flex;
@@ -780,6 +806,7 @@ body.login-page .login-box button span {
     margin: 0px 0 0;
     position: relative;
     border-radius: 5px;
+    border: 1px solid #1f2936;
 }
 .attachment_show .box_wrap img {
     width: 60px;
@@ -1791,6 +1818,41 @@ body .daterangepicker.show-calendar .drp-buttons {
     clear: both;
     display: block;
     float: right;
+}
+div#delete-file {
+    position: absolute;
+    right: 15px;
+    top: 69%;
+    z-index: 999;
+    background-color: #dc3545;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 34px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0;
+    left: inherit;
+    align-items: center;
+}
+label#attachment_file-error {
+    color: #dc3545 !important;
+    font-size: 12px !important;
+    position: absolute;
+    font-weight: 400 !important;
+    padding: 0;
+    display: block;
+    line-height: 15px;
+    left: 0;
+    bottom: -25px;
+}
+div#delete-file i {
+    font-size: 16px;
+    color: #ffffff;
+}
+.message_reply .form-group {
+    position: relative;
 }
 /*Responsive*/
 
