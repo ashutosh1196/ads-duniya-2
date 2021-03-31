@@ -33,7 +33,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.industry') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->industry }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->industry != 'null' ? $jobSearchHistory->industry : '' }}" readonly>
                 </div>
               </div>
               <div class="col-6">
@@ -45,7 +45,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_type') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->job_type }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->job_type != 'null' ? $jobSearchHistory->job_type : '' }}" readonly>
                 </div>
               </div>
               <div class="col-6">
