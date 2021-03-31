@@ -48,7 +48,7 @@
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.bookmarked_by') }}</label>
-                  <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}"><input class="form-control" placeholder="{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly>
+                  <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}"><input class="form-control" placeholder="{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly></a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
