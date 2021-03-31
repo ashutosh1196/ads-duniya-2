@@ -475,8 +475,7 @@ class AuthServiceProvider extends ServiceProvider {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_job' ||
-					 $permissions[$i]->slug == 'edit_job' ||
+				if($permissions[$i]->slug == 'edit_job' ||
 					 $permissions[$i]->slug == 'delete_job' ||
 					 $permissions[$i]->slug == 'view_job' ||
 					 $permissions[$i]->slug == 'view_job_history' ||
@@ -507,8 +506,7 @@ class AuthServiceProvider extends ServiceProvider {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
-				if($permissions[$i]->slug == 'add_job' ||
-					 $permissions[$i]->slug == 'edit_job' ||
+				if($permissions[$i]->slug == 'edit_job' ||
 					 $permissions[$i]->slug == 'delete_job' ||
 					 $permissions[$i]->slug == 'view_job'
 				  ) {
@@ -517,7 +515,7 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
-		Gate::define('add_job', function ($user) {
+		/* Gate::define('add_job', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
@@ -525,7 +523,7 @@ class AuthServiceProvider extends ServiceProvider {
 					return true;
 				}
 			}
-		});
+		}); */
 
 		Gate::define('edit_job', function ($user) {
 			$user = Auth::user();

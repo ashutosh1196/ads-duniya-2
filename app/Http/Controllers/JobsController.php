@@ -28,7 +28,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function addJob() {
-		if(Auth::user()->can('add_job')) {
+		// if(Auth::user()->can('add_job')) {
 			$countries     = Country::all()->toArray();
 			$jobIndustries = JobIndustry::all();
 			$jobFunctions  = JobFunction::all();
@@ -52,10 +52,10 @@ class JobsController extends Controller {
 				'jobLocations' => $jobLocations,
 				'JobSkills' => $JobSkills
 			]);
-		}
+		/* }
 		else {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
-		}
+		} */
 	}
 	
 	/**

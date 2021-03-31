@@ -231,14 +231,14 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 			// Jobs
-			[
-				'name' => 'Add',
-				'slug' => 'add_job',
-				'module_name' => 'Jobs',
-				'module_slug' => 'jobs',
-				'description' => 'desc',
-				'status' => 1
-			],
+			// [
+			// 	'name' => 'Add',
+			// 	'slug' => 'add_job',
+			// 	'module_name' => 'Jobs',
+			// 	'module_slug' => 'jobs',
+			// 	'description' => 'desc',
+			// 	'status' => 1
+			// ],
 			[
 				'name' => 'Edit',
 				'slug' => 'edit_job',
