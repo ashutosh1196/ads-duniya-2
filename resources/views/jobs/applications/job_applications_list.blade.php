@@ -24,6 +24,7 @@
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
                   <th>{{ __('adminlte::adminlte.applied_by') }}</th>
+                  <th>{{ __('adminlte::adminlte.applicant_type') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -33,7 +34,7 @@
                     $jobApplication = $jobApplications[$i];
                     $job = \App\Models\Job::find($jobApplication->job_id);
                     $organization = \App\Models\Organization::find($job->organization_id);
-                    $applicantType = $jobApplication->applicant_type == 'App\Models\User' ? 'User' : 'Guest';
+                    $applicantType = $jobApplication->applicant_type == 'App\Models\User' ? 'Jobseeker' : 'Guest User';
                     $applicant = $jobApplication->applicant_type::find($jobApplication->applicant_id);
                 ?>
                 <tr>
@@ -41,12 +42,13 @@
                   <td><a class="link-text" href="{{ route('view_job', ['id' => $job->id]) }}">{{ $job->job_ref_number }}</a></td>
                   <td>{{ $job->job_title }}</td>
                   <td>
-                  @if($applicantType == 'User')
+                  @if($applicantType == 'Jobseeker')
                     <a class="link-text" href="{{ route('view_jobseeker', ['id' => $applicant->id]) }}">{{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}</a>
                   @else
                     {{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}
                   @endif
                   </td>
+                  <td>{{ $applicantType }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{route('view_job_application', ['id'=>$jobApplication->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>

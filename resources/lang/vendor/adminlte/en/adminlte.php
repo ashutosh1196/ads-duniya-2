@@ -306,4 +306,6 @@ return [
     'report_date'   => 'Reported Date',
     'reported_jobs'   => 'Reported Jobs',
     'viewed_jobs'   => 'Viewed Jobs',
+    'user_type'   => 'User Type',
+    'applicant_type'   => 'Applicant Type',
 ];
