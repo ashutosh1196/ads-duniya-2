@@ -308,7 +308,7 @@ class JobsController extends Controller {
 	public function deleteJob(Request $request) {
 		$jobId = $request->id;
 		$deleteJob = Job::where('id', $jobId)->delete();
-		$jobsList = Job::all();
+		$jobsList = Job::orderByDesc('id')->get();
 		if($deleteJob) {
 			$res['success'] = 1;
 			$res['data'] = $jobsList;
@@ -341,7 +341,7 @@ class JobsController extends Controller {
 		$job = Job::where('id', $jobId);
 		$restoreJob = $job->restore();
 		if($restoreJob) {
-			$jobsList = Job::all();
+			$jobsList = Job::orderByDesc('id')->get();
 			$res['success'] = 1;
 			$res['data'] = $jobsList;
 			return json_encode($res);
@@ -357,7 +357,7 @@ class JobsController extends Controller {
 	*/
 	public function jobsHistory(Request $request) {
 		if(Auth::user()->can('view_job_history')) {
-			$jobHistory = JobHistory::all();
+			$jobHistory = JobHistory::orderByDesc('id')->get();
 			return view('jobs/jobs_history')->with('jobHistory', $jobHistory);
 		}
 		else {
