@@ -35,7 +35,9 @@
               <div class="col-12">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.reference_number') }}</label>
-                  <input class="form-control" placeholder="{{ $jobHistory->job_ref_number ? $jobHistory->job_ref_number : '' }}" readonly>
+                  <a class="link-text" href="{{ route('view_job', ['id' => $jobHistory->job_id]) }}">
+                    <input class="form-control" placeholder="{{ $jobHistory->job_ref_number ? $jobHistory->job_ref_number : '' }}" readonly>
+                  </a>
                 </div>
               </div>
               <div class="col-12">

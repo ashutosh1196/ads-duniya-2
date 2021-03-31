@@ -44,7 +44,7 @@
                 ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $jobHistory[$i]->job_ref_number }}</td>
+                  <td><a class="link-text" href="{{ route('view_job', ['id' => $jobHistory[$i]->job_id]) }}">{{ $jobHistory[$i]->job_ref_number }}</a></td>
                   <td>{{ $jobHistory[$i]->job_title }}</td>
                   <td>{{ $jobType }}</td>
                   <td>{{ $jobIndustry->name }}</td>
