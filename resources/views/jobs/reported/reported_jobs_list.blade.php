@@ -42,7 +42,7 @@
                       }
                     }
                     else {
-                      $userName = "";
+                      $userName = $reportedJob->email_sent;
                     } ?>
                     <tr>
                       <td class="display-none"></td>

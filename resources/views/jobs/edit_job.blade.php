@@ -54,6 +54,10 @@
                       <div class="form-group">
                         <label for="job_description">{{ __('adminlte::adminlte.job_description') }}<span class="text-danger"> *</span></label>
                         <textarea class="form-control" id="job_description" name="job_description" maxlength="1000" style="font-size: 13px;">{{ $jobDetails->job_description }}</textarea>
+                        <div class="counter-wrappar">
+                          <span>0</span> /
+                          1000
+                        </div>
                         @if($errors->has('job_description'))
                           <div class="error">{{ $errors->last('job_description') }}</div>
                         @endif
@@ -507,6 +511,7 @@
     .img-container img { max-width: 100%; }
     .modal-backdrop { position: relative; }
     #profileImage { height: 150px; width: 200px; border-radius: 10px; object-fit: contain; background-color: #fbfbfb; border: 1px solid #343d49; padding: 10px; }
+    .counter-wrappar { text-align: center; font-size: 13px; font-weight: 600; float: right; background-color: #e6e6e6; padding: 3px 0px; clear: both; border: 1px solid #cccccc; border-radius: 4px; width: 100px; top: 5px; position: relative; }
     </style>
 @stop
 
@@ -515,7 +520,11 @@
   <script type="text/javascript" src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
 
   <script>
+    $('body').on('keyup','textarea[name=job_description]',function() {
+      $(this).parent().find('.counter-wrappar > span').text($(this).val().length);
+    });
     $(document).ready(function() {
+      $('.counter-wrappar > span').text($("textarea[name=job_description]").val().length);
       if ($('#is_featured').is(':checked')) {
         $("#job_url").removeAttr('readonly');
         $("#uploadPicture").css('display', 'block');

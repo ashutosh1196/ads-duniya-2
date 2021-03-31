@@ -66,7 +66,7 @@ return [
     'contact_us'                  => 'Contact Us',
     
     'job_applications'            => 'Job Applications',
-    'job_search_history'          => 'Job Search History',
+    'job_search_history'          => 'Jobs Search History',
     
     'reported_jobs'               => 'Reported Jobs',
 

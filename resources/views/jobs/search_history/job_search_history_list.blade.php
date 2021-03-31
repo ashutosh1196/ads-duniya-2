@@ -22,8 +22,8 @@
                 <tr>
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.keywords') }}</th>
-                  <th>{{ __('adminlte::adminlte.searched_on') }}</th>
                   <th>{{ __('adminlte::adminlte.user_name') }}</th>
+                  <th>{{ __('adminlte::adminlte.searched_on') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
                 </tr>
               </thead>
@@ -36,8 +36,8 @@
                 <tr>
                   <td class="display-none"></td>
                   <td>{{ $jobSearchHistory->keywords }}</td>
-                  <td>{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}</td>
                   <td>{{ $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}</td>
+                  <td>{{ date('d/m/y', strtotime($jobSearchHistory->created_at)) }}</td>
                   <td>
                     <a class="action-button" title="View" href="{{route('view_search_history', ['id'=>$jobSearchHistory->id])}}"><i class="text-info fa fa-eye"></i></a>
                   </td>
