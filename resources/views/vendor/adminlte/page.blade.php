@@ -54,6 +54,7 @@
             border-radius: 5px;
             padding: 20px;
         }
+        .job-description { height: auto; }
     </style>
 @stop
 
