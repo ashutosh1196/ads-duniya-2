@@ -293,6 +293,7 @@ return [
     'searched_date'   => 'Searched Date',
     'distance'   => 'Distance',
     'posted_within_days'   => 'Posted Within Days',
+    'posted'   => 'Posted',
     'user_name'   => 'User Name',
     'bookmarked_by'   => 'Bookmarked By',
     'bookmark_date'   => 'Bookmarked Date',

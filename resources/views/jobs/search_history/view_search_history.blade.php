@@ -26,20 +26,26 @@
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.searched_by') }}</label>
-                  <a class="link-text" href="{{ $user ? route('view_jobseeker', ['id' => $user->id]) : '#' }}">
-                  @php if($user) {
-                    if($user && $user->first_name) {
-                      $userName = $user->first_name.' '.$user->last_name;
-                    }
-                    else {
-                      $userName = $user->email;
-                    }
-                  }
-                  else {
-                    $userName = $reportedJob->email_sent;
-                  } @endphp
-                  <input class="form-control" placeholder="{{ $userName }}" readonly></a>
+                  <label>{{ __('adminlte::adminlte.posted_within_days') }}</label>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->posted_within_days ? $jobSearchHistory->posted_within_days.' Days' : '' }}" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.industry') }}</label>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->industry }}" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.distance') }}</label>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->distance ? $jobSearchHistory->distance.' KM' : '' }}" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>{{ __('adminlte::adminlte.job_type') }}</label>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->job_type }}" readonly>
                 </div>
               </div>
               <div class="col-6">
@@ -56,32 +62,20 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.industry') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->industry }}" readonly>
-                </div>
-              </div>              
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.distance') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->distance ? $jobSearchHistory->distance.' KM' : '' }}" readonly>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.posted_within_days') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->posted_within_days ? $jobSearchHistory->posted_within_days.' Days' : '' }}" readonly>
-                </div>
-              </div>              
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.job_type') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->job_type }}" readonly>
+                  <label>{{ __('adminlte::adminlte.searched_by') }}</label>
+                  <a class="link-text" href="{{ $user ? route('view_jobseeker', ['id' => $user->id]) : '#' }}">
+                  @php if($user) {
+                    if($user && $user->first_name) {
+                      $userName = $user->first_name.' '.$user->last_name;
+                    }
+                    else {
+                      $userName = $user->email;
+                    }
+                  }
+                  else {
+                    $userName = $reportedJob->email_sent;
+                  } @endphp
+                  <input class="form-control" placeholder="{{ $userName }}" readonly></a>
                 </div>
               </div>
               <div class="col-6">
