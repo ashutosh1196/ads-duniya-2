@@ -27,8 +27,8 @@
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.job_type') }}</th>
-                  <th>{{ __('adminlte::adminlte.industry') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.job_type') }}</th>
+                  <th>{{ __('adminlte::adminlte.industry') }}</th> -->
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.recruiter') }}</th>
                   <th>{{ __('adminlte::adminlte.actions') }}</th>
@@ -46,8 +46,8 @@
                   <th class="display-none"></th>
                   <td><a class="link-text" href="{{ route('view_job', ['id' => $jobHistory[$i]->job_id]) }}">{{ $jobHistory[$i]->job_ref_number }}</a></td>
                   <td>{{ $jobHistory[$i]->job_title }}</td>
-                  <td>{{ $jobType }}</td>
-                  <td>{{ $jobIndustry->name }}</td>
+                  <!-- <td>{{ $jobType }}</td>
+                  <td>{{ $jobIndustry->name }}</td> -->
                   <td>{{ $organisation ? $organisation->name : '' }}</td>
                   <td>
                     @if($recruiter)
