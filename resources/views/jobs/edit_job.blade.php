@@ -340,7 +340,7 @@
                                 $filePath = $jobDetails->company_logo ? $url.$jobDetails->company_logo : config("adminlte.default_avatar");
                               ?>
                               <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
-                              <input type="file" class="sr-only" id="input" name="image" accept="image/jpeg, image/jpg, image/png">
+                              <input type="file" class="sr-only" id="input" name="image" accept="image/jpeg, image/jpg, image/png, .svg">
                               <div class="error" id="image_error"></div>
                               <input type="hidden" id="logo_image" name="logo_image" value="">
                             </label>
@@ -715,8 +715,8 @@
           var fileName = file.name;
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           console.log (fileExtension);
-          if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
-            $("#image_error").html("Only .jpg .gif .png files are allowed to upload.");
+          if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG" && fileExtension != "svg" && fileExtension != "SVG") {
+            $("#image_error").html("Only .jpg .gif .png .svg files are allowed to upload.");
             return false;
           }
           else {

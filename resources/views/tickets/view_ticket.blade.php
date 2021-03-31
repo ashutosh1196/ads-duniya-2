@@ -107,7 +107,7 @@
                             </div>
                             <div class="file_upload_wrap upload-file" file-name="Upload File">
                               <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                              <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .jpeg, .gif, .png, .doc, .docx, .xls, .xlsx, .pdf"/>
+                              <input type="file" name="attachment_file" id="attachment_file" accept=".jpg, .jpeg, .gif, .png, .svg, .doc, .docx, .xls, .xlsx, .pdf"/>
                             </div>
                             <div title="Remove File" class="delete-file text-danger" id="delete-file"><i class="fa fa-trash-alt"></i></div>
                             <div class="error" id="image_error"></div>                          
@@ -169,7 +169,7 @@
           $('input[name=attachment_file]').parent().attr('file-name','Upload File');
           $("#delete-file").hide();
         });
-        var files = e.target.files;
+        /* var files = e.target.files;
         if (files && files.length > 0) {
           file = files[0];
           var fileName = file.name;
@@ -183,9 +183,10 @@
              fileExtension != "docx" && fileExtension != "DOCX" && 
              fileExtension != "xls" && fileExtension != "XLS" &&  
              fileExtension != "xlsx" && fileExtension != "XLSX" &&
-             fileExtension != "pdf" && fileExtension != "PDF"
+             fileExtension != "pdf" && fileExtension != "PDF" &&
+             fileExtension != "svg" && fileExtension != "SVG"
             ) {
-            $("#image_error").html("Only .jpg .gif .png .doc .xls .xlsx files are allowed to upload.");
+            $("#image_error").html("Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload.");
             return false;
           }
           else {
@@ -197,8 +198,15 @@
               return false;
             }
           }
-        }
+        } */
       });
+      $.validator.addMethod('filesize', function (value, element, param) {
+        return this.optional(element) || (element.files[0].size <= param)
+      }, 'File size must be less than 2 MB');
+      $.validator.addMethod("extension", function (value, element, param) {
+        param = typeof param === "string" ? param.replace(/,/g, '|') : "jpg|jpe?g|pdf|doc|docx|png";
+        return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
+      }, "Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload.");
       $('#replyForm').validate({
         ignore: [],
         debug: false,
@@ -206,11 +214,19 @@
           message_text: {
             required: true
           },
+          attachment_file: {
+            accept: false,
+            filesize: 2000000,
+            extension: "jpg|gif|png|svg|doc|docx|xls|xlsx|ods|pdf"
+          }
         },
         messages: {
           message_text: {
             required: "The Message field Name is required."
           },
+          attachment_file: {
+            extension: "Only .jpg .gif .png .svg .doc .xls .xlsx .ods .pdf files are allowed to upload."
+          }
         }
       });
     });
