@@ -20,6 +20,7 @@ class CreateJobReportsTable extends Migration
             $table->string('reported_by')->nullable();
             $table->string('job_ref_number')->nullable();
             $table->string('issue_description');
+            $table->string('cookie_value')->nullable();
             $table->string('email_subject')->nullable();
             $table->string('email_content')->nullable();
             $table->string('email_sent')->nullable();
