@@ -51,7 +51,7 @@
                   <td>{{ $organisation ? $organisation->name : '' }}</td>
                   <td>
                     @if($recruiter)
-                      <a href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">
+                      <a class="link-text" href="{{ route('view_recruiter', [ 'id' => $recruiter->id ]) }}">
                         {{ $recruiter->first_name ? $recruiter->first_name.' '.$recruiter->last_name : $recruiter->email }}
                       <a>
                     @endif
