@@ -26,7 +26,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.posted_within_days') }}</label>
+                  <label>{{ __('adminlte::adminlte.posted_within') }}</label>
                   <input class="form-control" placeholder="{{ $jobSearchHistory->posted_within_days ? $jobSearchHistory->posted_within_days.' Days' : '' }}" readonly>
                 </div>
               </div>
