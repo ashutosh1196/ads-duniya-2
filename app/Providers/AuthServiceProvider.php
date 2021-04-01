@@ -337,6 +337,38 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_guests', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_guest' ||
+					 $permissions[$i]->slug == 'view_guest_resume'
+					) {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_guest', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_guest') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('view_guest_resume', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'view_guest_resume') {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('manage_recruiters', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;

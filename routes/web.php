@@ -14,6 +14,7 @@ use App\Http\Controllers\CreditsController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\DatatableController;
+use App\Http\Controllers\GuestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +101,13 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/restore', [AdminsController::class, 'restoreAdmin'])->name('restore_admin');
         Route::get('/add', [AdminsController::class, 'addAdmin'])->name('add_admin');
         Route::post('/save', [AdminsController::class, 'saveAdmin'])->name('save_admin');
+      });
+
+      // Guests
+      Route::group(['prefix' => 'guests'], function () {
+        Route::get('/list', [GuestsController::class, 'guestsList'])->name('guests_list');
+        Route::get('/view/{id}', [GuestsController::class, 'viewGuest'])->name('view_guest');
+        Route::get('/view_guest_resume/{id}', [GuestsController::class, 'viewGuestResume'])->name('view_guest_resume');
       });
     });
 

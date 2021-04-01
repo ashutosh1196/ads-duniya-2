@@ -11,6 +11,9 @@ class PermissionsSeeder extends Seeder {
 	 * @return void
 	*/
 	public function run() {
+
+		\DB::table('permission_role')->delete();
+
 		\DB::table('permissions')->delete();
 		\DB::table('permissions')->insert([
 			// Pending Customers
@@ -161,6 +164,22 @@ class PermissionsSeeder extends Seeder {
 				'slug' => 'view_jobseeker',
 				'module_name' => 'Jobseekers',
 				'module_slug' => 'jobseekers',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_guest',
+				'module_name' => 'Guests',
+				'module_slug' => 'guests',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View Resume',
+				'slug' => 'view_guest_resume',
+				'module_name' => 'Guests',
+				'module_slug' => 'guests',
 				'description' => 'desc',
 				'status' => 1
 			],
@@ -741,8 +760,6 @@ class PermissionsSeeder extends Seeder {
 				'status' => 1
 			],
 		]);
-
-		\DB::table('permission_role')->delete();
 		
 		$allPermissions = \DB::table('permissions')->get();
 		for($i=0; $i < count($allPermissions); $i++) {

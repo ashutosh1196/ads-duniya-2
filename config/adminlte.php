@@ -315,6 +315,13 @@ return [
                     'can' => ['manage_jobseekers'],
                 ],
                 [
+                    'text' => 'guests',
+                    'icon' => 'fas fa-fw fa-user',
+                    'url'  => 'admin_panel/users/guests/list',
+                    'active' => ['admin_panel/users/guests*'],
+                    'can' => ['manage_guests'],
+                ],
+                [
                     'text' => 'recruiters',
                     'icon' => 'fas fa-fw fa-user-tie',
                     'url'  => 'admin_panel/users/recruiters/list',

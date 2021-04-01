@@ -203,6 +203,31 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Guests</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="guest_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($guestsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass guestscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
                           <p class="headings"><strong class="list-text">Admins</strong></p>
                           <div class="custom_check_wrap">
                             <div class="custom-check">
@@ -981,6 +1006,9 @@
       $("#jobseeker_permissions").click(function() {
         $(".jobseekerscheckBox").prop('checked', this.checked)
       })
+      $("#guest_permissions").click(function() {
+        $(".guestscheckBox").prop('checked', this.checked)
+      })
       $("#admins_permissions").click(function() {
         $(".adminscheckBox").prop('checked', this.checked)
       })
@@ -1090,6 +1118,12 @@
       }
       else {
         $("#jobseeker_permissions").prop('checked', false);
+      }
+      if($('.guestscheckBox:checked').length == $('.guestscheckBox').length) {
+        $("#guest_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#guest_permissions").prop('checked', false);
       }
       if($('.adminscheckBox:checked').length == $('.adminscheckBox').length) {
         $("#admins_permissions").prop('checked', 'true');

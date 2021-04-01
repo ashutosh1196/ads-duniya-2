@@ -308,4 +308,8 @@ return [
     'viewed_jobs'   => 'Viewed Jobs',
     'user_type'   => 'User Type',
     'applicant_type'   => 'Applicant Type',
+
+    'guests'                    => 'Guests',
+    'guest_information'         => 'Guest Details',
+    'view_resume'         => 'View Resume',
 ];
