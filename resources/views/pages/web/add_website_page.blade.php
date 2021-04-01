@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-          <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
+          <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
             <h3>Add Website Page</h3>
           </div>
           <div class="card-body">

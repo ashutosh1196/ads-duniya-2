@@ -51,6 +51,8 @@
                   <?php $applicantType = $jobApplication->applicant_type == 'App\Models\User' ? 'Jobseeker' : 'Guest User'; ?>
                   @if($applicantType == 'Jobseeker')
                     <a class="link-text" href="{{ route('view_jobseeker', ['id' => $user->id]) }}">
+                  @else
+                    <a class="link-text" href="{{ route('view_guest', ['id' => $user->id]) }}">
                   @endif
                   @if($user)
                     <input class="form-control" placeholder="{{ $userName = $user->first_name ? $user->first_name.' '.$user->last_name : $user->email }}" readonly></a>
