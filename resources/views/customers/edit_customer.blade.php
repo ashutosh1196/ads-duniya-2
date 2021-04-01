@@ -28,7 +28,12 @@
                   <div class="form-group">
                     <div class="profile-image">
                       <div id="preview-cropped-image" class="">
-                        <label>Company Logo</label>
+                        <div class="help_wrap">
+                          <label>Company Logo</label>
+                          <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ config('adminlte.image_tooltip') }}">
+                          <i class="fa fa-question-circle"></i>
+                          </button>
+                        </div>
                         <label class="label">
                           <?php 
                             $url = config('adminlte.website_url', '').'images/companyLogos/';

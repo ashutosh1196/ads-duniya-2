@@ -104,10 +104,10 @@
                           </div>
                           <div class="form-group">
                             <div class="help_wrap">
-                              <label>Attachment</label>                            
+                              <label>Attachment</label>
                               <button type="button" class="btn info_btn" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ config('adminlte.docs_tooltip') }}">
                               <i class="fa fa-question-circle"></i>
-                              </button>                            
+                              </button>
                             </div>
                             <div class="file_upload_wrap upload-file" file-name="Upload File">
                               <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
@@ -242,6 +242,6 @@
   <script>
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
-    })    
+    })
   </script>
 @stop
