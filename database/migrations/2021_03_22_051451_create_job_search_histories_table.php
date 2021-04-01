@@ -22,6 +22,7 @@ class CreateJobSearchHistoriesTable extends Migration
             $table->string('distance')->nullable();
             $table->string('posted_within_days')->nullable();
             $table->string('job_type')->nullable();
+            $table->string('salary_range')->nullable();
             $table->softDeletes();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
