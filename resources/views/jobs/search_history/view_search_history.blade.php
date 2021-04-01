@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_industry') }}</label>
                   <div class="job-description">
-                    <?php for ($i=0; $i < count($jobIndustries); $i++) { ?>
+                    <?php for ($i=0; $i < count(is_countable($jobIndustries)?$jobIndustries:[]); $i++) { ?>
                        {{ $jobIndustries[$i]->name }}<br/>
                     <?php } ?>
                   </div>
@@ -50,7 +50,7 @@
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_type') }}</label>
                   <div class="job-description">
-                    <?php for ($i=0; $i < count($jobTypes); $i++) { ?>
+                    <?php for ($i=0; $i < count(is_countable($jobTypes)?$jobTypes:[]); $i++) { ?>
                        {{ ucwords(str_replace('_', ' ', $jobTypes[$i])) }}<br/>
                     <?php } ?>
                   </div>
