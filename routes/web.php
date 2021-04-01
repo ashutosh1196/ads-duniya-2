@@ -69,7 +69,6 @@ Route::middleware(['auth:admin'])->group(function () {
       // Jobseekers
       Route::group(['prefix' => 'jobseekers'], function () {
         Route::get('/list', [JobSeekersController::class, 'jobseekersList'])->name('jobseekers_list');
-        Route::get('/view_user/{id}/{applicantType}', [JobSeekersController::class, 'viewUser'])->name('view_user');
         Route::get('/view/{id}', [JobSeekersController::class, 'viewJobseeker'])->name('view_jobseeker');
         Route::get('/edit/{id}', [JobSeekersController::class, 'editJobseeker'])->name('edit_jobseeker');
         Route::post('/update', [JobSeekersController::class, 'updateJobseeker'])->name('update_jobseeker');
