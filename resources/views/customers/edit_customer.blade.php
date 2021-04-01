@@ -40,7 +40,7 @@
                             $filePath = $customer->logo ? $url.$customer->logo : config("adminlte.default_avatar");
                           ?>
                           <img id="profileImage" class="profile-image" src="{{ $filePath }}" alt="Profilbild">
-                          <input type="file" class="sr-only" id="input_logo_image" name="logo_image" accept="image/*">
+                          <input type="file" class="sr-only" id="input_logo_image" name="logo_image" accept=".jpg, .svg, .png">
                           <div class="error" id="image_error"></div>
                         </label>
                       </div>
