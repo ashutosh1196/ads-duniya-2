@@ -331,9 +331,8 @@
                       <thead>
                         <tr>
                           <th class="display-none"></th>
-                          <th>{{ __('adminlte::adminlte.name') }}</th>
                           <th>{{ __('adminlte::adminlte.email') }}</th>
-                          <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                          <th>{{ __('adminlte::adminlte.name') }}</th>
                           <th>{{ __('adminlte::adminlte.applicant_type') }}</th>
                           <th>{{ __('adminlte::adminlte.actions') }}</th>
                         </tr>
@@ -345,9 +344,8 @@
                         $applicantType = $jobApplications[$i]->applicant_type == 'App\Models\User' ? 'Jobseeker' : 'Guest'; ?>
                           <tr>
                             <td class="display-none">1</td>
-                            <td>{{ $applicant->first_name.' '.$applicant->last_name }}</td>
                             <td>{{ $applicant->email }}</td>
-                            <td>{{ $applicant->phone_number }}</td>
+                            <td>{{ $applicant->first_name.' '.$applicant->last_name }}</td>
                             <td>{{ $applicantType }}</td>
                             <td>
                             @if($applicantType == 'Jobseeker')

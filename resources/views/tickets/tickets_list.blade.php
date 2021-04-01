@@ -24,7 +24,7 @@
               <thead>
                 <tr>
                   <th class="display-none"></th>
-                  <th>{{ __('adminlte::adminlte.ticket_id') }}</th>
+                  <!-- <th>{{ __('adminlte::adminlte.ticket_id') }}</th> -->
                   <th>{{ __('adminlte::adminlte.subject') }}</th>
                   <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
@@ -40,7 +40,7 @@
                   ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $ticketsList[$i]->id }}</td>
+                  <!-- <td>{{ $ticketsList[$i]->id }}</td> -->
                   <td>{{ $ticketsList[$i]->subject }}</td>
                   <td class="{{ $ticketsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $ticketsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
                   <td>{{ $organisation->name }}</td>
