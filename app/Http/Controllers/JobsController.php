@@ -502,9 +502,16 @@ class JobsController extends Controller {
 	public function viewJobSearchHistory($id) {
 		if(Auth::user()->can('view_job_search_history')) {
 			$jobSearchHistory = JobSearchHistory::find($id);
+			$jobIndustries = [];
+			if($jobSearchHistory->industry) {
+				$jobIndustries = JobIndustry::whereIn('id', $jobSearchHistory->industry)->get();
+			}
+			$jobTypes = $jobSearchHistory->job_type;
 			$user = User::find($jobSearchHistory->user_id);
 			return view('jobs/search_history/view_search_history', [
 				'jobSearchHistory' => $jobSearchHistory,
+				'jobIndustries' => $jobIndustries,
+				'jobTypes' => $jobTypes,
 				'user' =>  $user,
 			]);
 		}

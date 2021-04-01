@@ -103,6 +103,7 @@ return [
     'add_job'                       => 'Add Job',
     'job_title'                     => 'Job Title',
     'job_type'                      => 'Job Type',
+    'job_types'                     => 'Job Types',
     'full_time'                     => 'Full Time',
     'part_time'                     => 'Part Time',
     'contract_basis'                => 'Contract Basis',

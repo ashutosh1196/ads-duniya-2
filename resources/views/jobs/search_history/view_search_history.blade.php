@@ -32,8 +32,12 @@
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label>{{ __('adminlte::adminlte.industry') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->industry != 'null' ? $jobSearchHistory->industry : '' }}" readonly>
+                  <label>{{ __('adminlte::adminlte.job_industry') }}</label>
+                  <div class="job-description">
+                    <?php for ($i=0; $i < count($jobIndustries); $i++) { ?>
+                       {{ $jobIndustries[$i]->name }}<br/>
+                    <?php } ?>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
@@ -45,7 +49,11 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.job_type') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->job_type != 'null' ? $jobSearchHistory->job_type : '' }}" readonly>
+                  <div class="job-description">
+                    <?php for ($i=0; $i < count($jobTypes); $i++) { ?>
+                       {{ ucwords(str_replace('_', ' ', $jobTypes[$i])) }}<br/>
+                    <?php } ?>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
