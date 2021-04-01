@@ -96,10 +96,10 @@
                         <div class="message_reply">
                           <div class="form-group">
                             <label>Message</label>
-                            <textarea id="message_text" name="message_text" class="form-control" maxlength="500"></textarea>
+                            <textarea id="message_text" name="message_text" class="form-control" maxlength="200"></textarea>
                             <div class="counter-wrappar">
                               <span>0</span> /
-                              500
+                              200
                             </div>
                           </div>
                           <div class="form-group">
