@@ -45,7 +45,7 @@
                   @if($applicantType == 'Jobseeker')
                     <a class="link-text" href="{{ route('view_jobseeker', ['id' => $applicant->id]) }}">{{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}</a>
                   @else
-                    {{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}
+                  <a class="link-text" href="{{ route('view_guest', ['id' => $applicant->id]) }}">{{ $applicant->first_name ? $applicant->first_name.' '.$applicant->last_name : $applicant->email }}</a>
                   @endif
                   </td>
                   <td>{{ $applicantType }}</td>
