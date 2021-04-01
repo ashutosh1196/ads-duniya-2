@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
             <h3>{{ __('adminlte::adminlte.edit_county') }}</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back</a>
+            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>
           <div class="card-body">
             @if (session('status'))

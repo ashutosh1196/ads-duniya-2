@@ -3,7 +3,7 @@
 @section('title', 'My Profile')
 
 @section('content_header')
-  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">Back</a>
+  <a class="btn btn-sm btn-success back-button" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
   <h1>My Profile</h1>
 @stop
 
