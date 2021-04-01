@@ -45,7 +45,7 @@ class AdminsSeeder extends Seeder
         ]);
         
 
-        /* // Organizations
+        // Organizations
 
         \DB::table('organizations')->delete();
         \DB::table('organizations')->insert([
@@ -228,7 +228,7 @@ class AdminsSeeder extends Seeder
             'ticket_id' => 1,
             'recruiter_id' => 1,
             'sent_by' => 'recruiter'
-        ]); */
+        ]);
     }
 }
 
