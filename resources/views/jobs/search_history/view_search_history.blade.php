@@ -59,7 +59,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>{{ __('adminlte::adminlte.salary_range') }}</label>
-                  <input class="form-control" placeholder="{{ $jobSearchHistory->salary_range != 'null' ? $jobSearchHistory->salary_range : '' }}" readonly>
+                  <input class="form-control" placeholder="{{ $jobSearchHistory->salary_range != null ? '£'.$jobSearchHistory->salary_range : '' }}" readonly>
                 </div>
               </div>
               <div class="col-6">
