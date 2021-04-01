@@ -334,21 +334,30 @@
                           <th>{{ __('adminlte::adminlte.name') }}</th>
                           <th>{{ __('adminlte::adminlte.email') }}</th>
                           <th>{{ __('adminlte::adminlte.contact_number') }}</th>
+                          <th>{{ __('adminlte::adminlte.applicant_type') }}</th>
                           <th>{{ __('adminlte::adminlte.actions') }}</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @for($i=0; $i < count($applicants); $i++)
+                      <?php
+                       for($i=0; $i < count($jobApplications); $i++) {
+                        $applicant = $jobApplications[$i]->applicant_type::find($jobApplications[$i]->applicant_id);
+                        $applicantType = $jobApplications[$i]->applicant_type == 'App\Models\User' ? 'Jobseeker' : 'Guest'; ?>
                           <tr>
                             <td class="display-none">1</td>
-                            <td>{{ $applicants[$i]->first_name.' '.$applicants[$i]->last_name }}</td>
-                            <td>{{ $applicants[$i]->email }}</td>
-                            <td>{{ $applicants[$i]->phone_number }}</td>
+                            <td>{{ $applicant->first_name.' '.$applicant->last_name }}</td>
+                            <td>{{ $applicant->email }}</td>
+                            <td>{{ $applicant->phone_number }}</td>
+                            <td>{{ $applicantType }}</td>
                             <td>
-                              <a class="action-button" title="View" href="{{route('view_jobseeker', ['id'=>$applicants[$i]->id])}}"><i class="text-info fa fa-eye"></i></a>
+                            @if($applicantType == 'Jobseeker')
+                              <a class="action-button" title="View" href="{{route('view_jobseeker', ['id'=>$applicant->id])}}"><i class="text-info fa fa-eye"></i></a>
+                            @else
+                              <a class="action-button" title="View" href="{{route('view_guest', ['id'=>$applicant->id])}}"><i class="text-info fa fa-eye"></i></a>
+                            @endif
                             </td>
                           </tr>
-                        @endfor
+                      <?php } ?>
                       </tbody>
                     </table>
                   </div>
