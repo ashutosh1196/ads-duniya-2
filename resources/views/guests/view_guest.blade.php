@@ -51,10 +51,6 @@
                         <a target="_blank" href="{{ $resumePath.$guest->resume }}">
                           <img style="width:60px;" class="attached-doc" src="{{ $defaultPath.'doc_logo.jpeg' }}">
                         </a>
-                      @else
-                        <a target="_blank" href="{{ $resumePath.$guest->resume }}">
-                          <img style="width:60px;" class="attached-image" src="{{ $defaultPath.$guest->resume }}">
-                        </a>
                       @endif
                   </div>
                 </div>
