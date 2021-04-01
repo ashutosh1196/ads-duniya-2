@@ -12,16 +12,10 @@
       <div class="card">
         <div class="card-header alert d-flex justify-content-between align-items-center">
           <h3>{{ __('adminlte::adminlte.job_information') }}</h3>
-          <?php
-            /* $segments = explode('/', url()->previous());
-            $numSegments = count($segments);
-            $currentSegment = $segments[$numSegments - 1];
-            $lastSecondSegment = $segments[$numSegments - 2];
-            $segment = $lastSecondSegment.'/'.$currentSegment;
-            $previousUrl = $segment != "jobs/list" ? url()->previous() : route('jobs_list'); */
-          ?>
-          <a class="btn btn-sm btn-success" href="{{ route('jobs_list') }}">{{ __('adminlte::adminlte.back') }}</a>
-        </div>        
+          <!-- <a class="btn btn-sm btn-success" href="{{ route('jobs_list') }}">Back to Jobs Published</a>
+          <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">Back to Prevous Page</a> -->
+          <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
+        </div>
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">
