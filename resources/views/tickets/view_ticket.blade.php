@@ -230,7 +230,7 @@
         },
         messages: {
           message_text: {
-            required: "The Message field Name is required."
+            required: "The Message field is required."
           },
           attachment_file: {
             extension: "Only .jpg .gif .png .svg .doc .docx .xls .xlsx .ods .pdf files are allowed to upload."
