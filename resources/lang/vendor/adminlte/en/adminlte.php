@@ -312,4 +312,5 @@ return [
     'guests'                    => 'Guests',
     'guest_information'         => 'Guest Details',
     'view_resume'         => 'View Resume',
+    'salary_range'         => 'Salary Range',
 ];
