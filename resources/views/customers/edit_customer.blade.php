@@ -431,8 +431,8 @@
         var fileName = file.name;
         var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
         console.log (fileExtension);
-        if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG") {
-          $("#image_error").html("Only .jpg .gif .png files are allowed to upload.");
+        if(fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "png" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG" && fileExtension != "svg" && fileExtension != "SVG") {
+          $("#image_error").html("Only .jpg .svg .png files are allowed to upload.");
           return false;
         }
         else {
