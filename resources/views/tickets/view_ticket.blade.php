@@ -97,6 +97,10 @@
                           <div class="form-group">
                             <label>Message</label>
                             <textarea id="message_text" name="message_text" class="form-control" maxlength="1000"></textarea>
+                            <div class="counter-wrappar">
+                              <span>0</span> /
+                              1000
+                            </div>
                           </div>
                           <div class="form-group">
                             <div class="help_wrap">
@@ -152,11 +156,15 @@
     width: 30px !important;
     height: 30px !important;
   }
+  .counter-wrappar { text-align: center; font-size: 13px; font-weight: 600; float: right; background-color: #e6e6e6; padding: 3px 0px; clear: both; border: 1px solid #cccccc; border-radius: 4px; width: 100px; top: 5px; position: relative; }
 </style>
 @stop
 
 @section('js')
   <script>
+    $('body').on('keyup','textarea[name=message_text]',function() {
+      $(this).parent().find('.counter-wrappar > span').text($(this).val().length);
+    });
     $('body').on('change','input[name=attachment_file]',function(){
       $(this).parent().attr('file-name', $(this)[0].files[0].name);
     });
