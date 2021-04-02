@@ -151,6 +151,7 @@ class RolesController extends Controller {
 				$reportedJobsPermissions = Permission::where('module_slug', 'reported_jobs')->get();
 				$viewedJobsPermissions = Permission::where('module_slug', 'viewed_jobs')->get();
 				$guestsPermissions = Permission::where('module_slug', 'guests')->get();
+				$suspendedJobsPermissions = Permission::where('module_slug', 'suspended_jobs')->get();
 				return view('roles/role_permissions', [
 					'roles' => $roles,
 					'pendingCustomersPermissions' => $pendingCustomersPermissions,
@@ -183,6 +184,7 @@ class RolesController extends Controller {
 					'reportedJobsPermissions' => $reportedJobsPermissions,
 					'viewedJobsPermissions' => $viewedJobsPermissions,
 					'guestsPermissions' => $guestsPermissions,
+					'suspendedJobsPermissions' => $suspendedJobsPermissions,
 				]);
 			}
 			else {
