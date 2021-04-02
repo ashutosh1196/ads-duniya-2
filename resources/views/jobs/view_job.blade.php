@@ -230,6 +230,12 @@
                       </div>
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.is_suspended') }}</label>
+                          <input class="form-control" placeholder="{{ $jobDetails->is_suspended ? 'Yes' : 'No' }}" readonly>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
                           <label>{{ __('adminlte::adminlte.is_featured') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->is_featured ? 'Yes' : 'No' }}" readonly>
                         </div>

@@ -117,6 +117,8 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::post('/save', [JobsController::class, 'saveJob'])->name('save_job');
       Route::post('/delete', [JobsController::class, 'deleteJob'])->name('delete_job');
       Route::post('/restore', [JobsController::class, 'restoreJob'])->name('restore_job');
+      Route::get('/suspend/{id}', [JobsController::class, 'suspendJob'])->name('suspend_job');
+      Route::get('/resume/{id}', [JobsController::class, 'resumeJob'])->name('resume_job');
       Route::get('/view/{id}', [JobsController::class, 'viewJob'])->name('view_job');
       Route::get('/edit/{id}', [JobsController::class, 'editJob'])->name('edit_job');
       Route::post('/update', [JobsController::class, 'updateJob'])->name('update_job');
@@ -142,6 +144,9 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::group(['prefix' => 'viewed'], function () {
         Route::get('/list', [JobsController::class, 'viewedJobsList'])->name('viewed_jobs_list');
         Route::get('/view/{id}', [JobsController::class, 'viewViewedJob'])->name('view_viewed_job');
+      });
+      Route::group(['prefix' => 'suspended'], function () {
+        Route::get('/list', [JobsController::class, 'suspendJobsList'])->name('suspended_jobs_list');
       });
     });
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Published Jobs')
+@section('title', 'Suspended Jobs')
 
 @section('content_header')
 @stop
@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>{{ __('adminlte::adminlte.published_jobs') }}</h3>
+            <h3>{{ __('adminlte::adminlte.suspended_jobs') }}</h3>
             <a class="btn btn-sm btn-success invisible" href="{{ url()->previous() }}">{{ __('adminlte::adminlte.back') }}</a>
           </div>           
           <div class="card-body">
@@ -21,29 +21,27 @@
               </div>
             @endif
             <!-- <a class="btn btn-sm btn-success float-right" href="{{ route('add_job') }}">{{ __('adminlte::adminlte.add_new_job') }}</a> -->
-            <table style="width:100%" id="jobsList" class="table table-bordered table-hover">
+            <table style="width:100%" id="suspendJobs" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th class="display-none"></th>
                   <th>{{ __('adminlte::adminlte.reference_number') }}</th>
                   <th>{{ __('adminlte::adminlte.job_title') }}</th>
-                  <th>{{ __('adminlte::adminlte.status') }}</th>
                   <th>{{ __('adminlte::adminlte.company') }}</th>
                   <th>{{ __('adminlte::adminlte.created_by') }}</th>
                   <th>{{ __('adminlte::adminlte.expired_on') }}</th>
-                  @can('manage_jobs_actions')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
+                  @can('resume_job')<th>{{ __('adminlte::adminlte.actions') }}</th>@endcan
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i=0; $i < count($jobsList); $i++) { 
-                  $organisation = \App\Models\Organization::find($jobsList[$i]->organization_id);
-                  $recruiter = \App\Models\Recruiter::find($jobsList[$i]->recruiter_id);
+                <?php for ($i=0; $i < count($suspendJobs); $i++) { 
+                  $organisation = \App\Models\Organization::find($suspendJobs[$i]->organization_id);
+                  $recruiter = \App\Models\Recruiter::find($suspendJobs[$i]->recruiter_id);
                 ?>
                 <tr>
                   <th class="display-none"></th>
-                  <td>{{ $jobsList[$i]->job_ref_number }}</td>
-                  <td>{{ $jobsList[$i]->job_title }}</td>
-                  <td class="{{ $jobsList[$i]->status == 'open' ? 'text-success' : 'text-danger' }}">{{ $jobsList[$i]->status == 'open' ? 'Open' : 'Closed' }}</td>
+                  <td>{{ $suspendJobs[$i]->job_ref_number }}</td>
+                  <td>{{ $suspendJobs[$i]->job_title }}</td>
                   <td>{{ $organisation ? $organisation->name : '' }}</td>
                   <td>
                     @if($recruiter)
@@ -52,20 +50,11 @@
                       <a>
                     @endif
                   </td>
-                  <td>{{ $jobsList[$i]->expiring_at ? date('d/m/y', strtotime($jobsList[$i]->expiring_at)) : '' }}</td>
-                  @can('manage_jobs_actions')
+                  <td>{{ $suspendJobs[$i]->expiring_at ? date('d/m/y', strtotime($suspendJobs[$i]->expiring_at)) : '' }}</td>
+                  @can('resume_job')
                     <td>
-                      @can('view_job')
-                        <a class="action-button" title="View" href="view/{{$jobsList[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
-                      @endcan
-                      @can('edit_job')
-                        <a class="action-button" title="Edit" href="edit/{{$jobsList[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
-                      @endcan
-                      @can('suspend_job')
-                        <a class="action-button" title="Suspend" href="{{ route('suspend_job', ['id' => $jobsList[$i]->id]) }}"><i class="text-primary fa fa-exclamation-circle"></i></a>
-                      @endcan
-                      @can('delete_job')
-                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobsList[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
+                      @can('resume_job')
+                        <a class="action-button" title="Resume" href="{{ route('resume_job', ['id' => $suspendJobs[$i]->id]) }}"><i class="text-primary fa fa-arrow-circle-up"></i></a>
                       @endcan
                     </td>
                   @endcan
@@ -89,7 +78,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#jobsList').DataTable( {
+      $('#suspendJobs').DataTable( {
         columnDefs: [ {
           targets: 0,
           render: function ( data, type, row ) {

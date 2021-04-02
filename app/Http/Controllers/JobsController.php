@@ -120,7 +120,7 @@ class JobsController extends Controller {
 		$job->organization_id = $request->organization_id;
 		$job->created_by = Auth::user()->name;
 		if($job->save()) {
-			$jobsList = Job::all();
+			$jobsList = Job::orderByDesc('id')->where('is_suspended', 0)->get();
 			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Added Successfully!');
 		}
 		else {
@@ -133,7 +133,7 @@ class JobsController extends Controller {
 	*/
 	public function jobsList(Request $request) {
 		if(Auth::user()->can('manage_job')) {
-			$jobsList = Job::orderByDesc('id')->get();
+			$jobsList = Job::orderByDesc('id')->where('is_suspended', 0)->get();
 			return view('jobs/jobs_list')->with('jobsList', $jobsList);
 		}
 		else {
@@ -570,6 +570,55 @@ class JobsController extends Controller {
 				'job' =>  $job,
 				'user' =>  $user,
 			]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to View Viewed Job
+	*/
+	public function suspendJob($id) {
+		if(Auth::user()->can('suspend_job')) {
+			$suspendJob = Job::where('id', $id)->update(['is_suspended' => 1]);
+			if($suspendJob) {
+				return redirect()->route('suspended_jobs_list')->with('success', 'Job Suspended Successfully!');
+			}
+			else {
+				return back()->with('error', 'Something went wrong!');
+			}
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to View Viewed Job
+	*/
+	public function suspendJobsList() {
+		if(Auth::user()->can('resume_job')) {
+			$suspendJobs = Job::orderByDesc('id')->where('is_suspended', 1)->get();
+			return view('jobs/suspended/suspended_jobs_list')->with('suspendJobs', $suspendJobs);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
+
+	/**
+	 * This function is used to View Viewed Job
+	*/
+	public function resumeJob($id) {
+		if(Auth::user()->can('resume_job')) {
+			$suspendJob = Job::where('id', $id)->update(['is_suspended' => 0]);
+			if($suspendJob) {
+				return redirect()->route('jobs_list')->with('success', 'Job resumed Successfully!');
+			}
+			else {
+				return back()->with('error', 'Something went wrong!');
+			}
 		}
 		else {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
