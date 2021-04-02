@@ -286,30 +286,30 @@
                       </div>
 
                       <div class="col-4">
-                      <div class="form-group">
-                        <div class="permissions-section-inner-sec">
-                          <p class="headings"><strong class="list-text">Jobs Suspended</strong></p>
-                          <div class="custom_check_wrap">
-                            <div class="custom-check">
-                              <input type="checkbox" id="suspended_jobs_permissions" class="ckbCheckAll">
-                              <span></span>
-                            </div>
-                              <strong class="list-text">Select All</strong>
-                          </div>
-                          <div id="checkBoxes">
-                            @foreach($suspendedJobsPermissions as $permission)
-                              <div class="custom_check_wrap">
-                                <div class="custom-check">
-                                  <input type="checkbox" class="checkBoxClass suspendedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
-                                  <span></span>
-                                </div>
-                                <label class="mb-0">{{ $permission->name }}</label>
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Suspended</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="suspended_jobs_permissions" class="ckbCheckAll">
+                                <span></span>
                               </div>
-                            @endforeach
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($suspendedJobsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass suspendedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
                       <div class="col-4">
                         <div class="form-group">
@@ -336,7 +336,9 @@
                           </div>
                         </div>
                       </div>
+                    </div>
 
+                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
@@ -362,9 +364,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
@@ -442,9 +441,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
