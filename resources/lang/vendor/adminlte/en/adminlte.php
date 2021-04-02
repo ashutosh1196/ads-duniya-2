@@ -314,4 +314,6 @@ return [
     'guest_information'         => 'Guest Details',
     'view_resume'         => 'View Resume',
     'salary_range'         => 'Salary Range',
+    'suspended_jobs'         => 'Suspended Jobs',
+    'is_suspended'         => 'Is this Job Suspended?',
 ];

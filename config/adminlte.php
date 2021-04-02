@@ -351,6 +351,13 @@ return [
                     'can' => ['manage_job'],
                 ],
                 [
+                    'text' => 'suspended_jobs',
+                    'icon' => 'fa fa-exclamation-circle',
+                    'url'  => 'admin_panel/jobs/suspended/list',
+                    'active' => ['admin_panel/jobs/suspended*'],
+                    'can' => ['resume_job'],
+                ],
+                [
                     'text' => 'job_applications',
                     'icon' => 'fab fa-wpforms',
                     'url'  => 'admin_panel/jobs/applications/list',

@@ -288,6 +288,32 @@
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
+                            <p class="headings"><strong class="list-text">Jobs Suspended</strong></p>
+                            <div class="custom_check_wrap">
+                              <div class="custom-check">
+                                <input type="checkbox" id="suspended_jobs_permissions" class="ckbCheckAll">
+                                <span></span>
+                              </div>
+                                <strong class="list-text">Select All</strong>
+                            </div>
+                            <div id="checkBoxes">
+                              @foreach($suspendedJobsPermissions as $permission)
+                                <div class="custom_check_wrap">
+                                  <div class="custom-check">
+                                    <input type="checkbox" class="checkBoxClass suspendedJobscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                    <span></span>
+                                  </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                                </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <div class="permissions-section-inner-sec">
                             <p class="headings"><strong class="list-text">Jobs Applications</strong></p>
                             <div class="custom_check_wrap">
                               <div class="custom-check">
@@ -310,7 +336,9 @@
                           </div>
                         </div>
                       </div>
+                    </div>
 
+                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
@@ -336,9 +364,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
@@ -416,9 +441,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-4">
                         <div class="form-group">
                           <div class="permissions-section-inner-sec">
@@ -1015,6 +1037,9 @@
       $("#jobs_permissions").click(function() {
         $(".jobscheckBox").prop('checked', this.checked)
       })
+      $("#suspended_jobs_permissions").click(function() {
+        $(".suspendedJobscheckBox").prop('checked', this.checked)
+      })
       $("#job_history_permissions").click(function() {
         $(".jobHistorycheckBox").prop('checked', this.checked)
       })
@@ -1136,6 +1161,12 @@
       }
       else {
         $("#jobs_permissions").prop('checked', false);
+      }
+      if($('.suspendedJobscheckBox:checked').length == $('.suspendedJobscheckBox').length) {
+        $("#suspended_jobs_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#suspended_jobs_permissions").prop('checked', false);
       }
       if($('.jobHistorycheckBox:checked').length == $('.jobHistorycheckBox').length) {
         $("#job_history_permissions").prop('checked', 'true');

@@ -72,4 +72,5 @@ return [
     'jobs_viewed'               => 'Jobs Viewed',
 
     'guests'                    => 'Guests',
+    'suspended_jobs'                    => 'Jobs Suspended',
 ];

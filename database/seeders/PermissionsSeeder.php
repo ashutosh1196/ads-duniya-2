@@ -282,6 +282,22 @@ class PermissionsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
+			[
+				'name' => 'Suspend',
+				'slug' => 'suspend_job',
+				'module_name' => 'Jobs',
+				'module_slug' => 'jobs',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Resume',
+				'slug' => 'resume_job',
+				'module_name' => 'Suspended Jobs',
+				'module_slug' => 'suspended_jobs',
+				'description' => 'desc',
+				'status' => 1
+			],
 			// Job History
 			[
 				'name' => 'View',

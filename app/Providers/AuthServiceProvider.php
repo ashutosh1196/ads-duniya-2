@@ -587,6 +587,26 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('suspend_job', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'suspend_job') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('resume_job', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'resume_job') {
+					return true;
+				}
+			}
+		});
+
 		Gate::define('view_job_history', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
