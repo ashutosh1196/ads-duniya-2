@@ -21,6 +21,7 @@ class CreateJobAlertsTable extends Migration
             $table->string('min_salary')->nullable();
             $table->string('max_salary')->nullable();
             $table->string('job_types')->nullable();
+            $table->string('job_posted')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
