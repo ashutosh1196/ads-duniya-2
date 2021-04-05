@@ -35,6 +35,7 @@ class DropdownsSeeder extends Seeder {
 			['name'=>'job_posted','slug'=>'30','value'=>'Within 30 days'],
 			['name'=>'job_posted','slug'=>'60','value'=>'Within 60 days'],
 			['name'=>'job_posted','slug'=>'90','value'=>'Within 90 days'],
+			['name'=>'job_posted','slug'=>'1','value'=>'Today'],
 		];
 		\DB::table('dropdowns')->insert($dropdowns);
 	}
