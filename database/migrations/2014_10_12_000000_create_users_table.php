@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->tinyInteger('is_email_verified')->default(0);
             $table->string('phone_number')->nullable();
-            $table->tinyInteger('is_job_alert_enabled')->default(1);
+            $table->tinyInteger('is_job_alert_enabled')->default(0);
             $table->ipAddress('ip_address');
             $table->rememberToken();
             $table->enum('login_with',['email','facebook','google']);
