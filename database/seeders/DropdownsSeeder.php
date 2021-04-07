@@ -25,11 +25,11 @@ class DropdownsSeeder extends Seeder {
 			['name'=>'job_type','slug'=>'public_sector','value'=>'Public Sector'],
 			['name'=>'job_type','slug'=>'work_from_home','value'=>'Work From Home'],
 
-			['name'=>'job_distance','slug'=>'5','value'=>'5 Kms'],
-			['name'=>'job_distance','slug'=>'10','value'=>'10 Kms'],
-			['name'=>'job_distance','slug'=>'25','value'=>'25 Kms'],
-			['name'=>'job_distance','slug'=>'50','value'=>'50 Kms'],
-			['name'=>'job_distance','slug'=>'100','value'=>'100 Kms'],
+			['name'=>'job_distance','slug'=>'5','value'=>'5 Miles'],
+			['name'=>'job_distance','slug'=>'10','value'=>'10 Miles'],
+			['name'=>'job_distance','slug'=>'25','value'=>'25 Miles'],
+			['name'=>'job_distance','slug'=>'50','value'=>'50 Miles'],
+			['name'=>'job_distance','slug'=>'100','value'=>'100 Miles'],
 
 			['name'=>'job_posted','slug'=>'7','value'=>'Within 7 days'],
 			['name'=>'job_posted','slug'=>'30','value'=>'Within 30 days'],

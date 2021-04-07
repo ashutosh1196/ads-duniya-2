@@ -203,12 +203,12 @@ class AdminsSeeder extends Seeder
 
         // Job Skills
 
-        \DB::table('job_skill')->delete();
-        \DB::table('job_skill')->insert([
-            'job_id' => 1,
-            'skill_id' => 1,
-            'status' => 1
-        ]);
+        // \DB::table('job_skill')->delete();
+        // \DB::table('job_skill')->insert([
+        //     'job_id' => 1,
+        //     'skill_id' => 1,
+        //     'status' => 1
+        // ]);
 
         // Tickets
 
