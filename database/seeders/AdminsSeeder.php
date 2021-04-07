@@ -175,30 +175,30 @@ class AdminsSeeder extends Seeder
 
         // Jobs
 
-        \DB::table('jobs')->delete();
-        \DB::table('jobs')->insert([
-            'job_ref_number' => '2343202116148530002',
-            'job_title' => 'Designer',
-            'job_description' => 'Designer Job',
-            'job_type' => 'full_time',
-            'is_featured' => 0,
-            'city' => 'Mohali',
-            'county' => 'Phase 8',
-            'state' => 'Punjab',
-            'country' => 'United Kingdom',
-            'company_logo' => NULL,
-            'job_url' => 'http://rvtechnologies.com',
-            'job_industry_id' => 1,
-            'job_location_id' => 1,
-            'package_range_from' => 120000,
-            'package_range_to' => 150000,
-            'salary_currency' => 'dollars',
-            'experience_range_min' => 1.5,
-            'status' => 'open',
-            'recruiter_id' => 1,
-            'organization_id' => 1,
-            'expiring_at' => '2022-06-04 11:59:59'
-        ]);
+        // \DB::table('jobs')->delete();
+        // \DB::table('jobs')->insert([
+        //     'job_ref_number' => '2343202116148530002',
+        //     'job_title' => 'Designer',
+        //     'job_description' => 'Designer Job',
+        //     'job_type' => 'full_time',
+        //     'is_featured' => 0,
+        //     'city' => 'Mohali',
+        //     'county' => 'Phase 8',
+        //     'state' => 'Punjab',
+        //     'country' => 'United Kingdom',
+        //     'company_logo' => NULL,
+        //     'job_url' => 'http://rvtechnologies.com',
+        //     'job_industry_id' => 1,
+        //     'job_location_id' => 1,
+        //     'package_range_from' => 120000,
+        //     'package_range_to' => 150000,
+        //     'salary_currency' => 'dollars',
+        //     'experience_range_min' => 1.5,
+        //     'status' => 'open',
+        //     'recruiter_id' => 1,
+        //     'organization_id' => 1,
+        //     'expiring_at' => '2022-06-04 11:59:59'
+        // ]);
         
 
         // Job Skills
