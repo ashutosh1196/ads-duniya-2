@@ -534,7 +534,10 @@
       $(this).parent().find('.counter-wrappar > span').text($(this).val().length);
     });
     $(document).ready(function() {
+      var today = new Date(); 
+
       $('input[name="expiring_on"]').daterangepicker({
+        minDate:today,
         singleDatePicker: true,
         showDropdowns: true,
         minYear: 1901,
