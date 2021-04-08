@@ -449,9 +449,9 @@
                     </div>
                     {{-- {{dd($jobDetails->expiring_at)}} --}}
                     <div class="col-6">
-                      <div class="form-group">
+                      <div class="form-group pb-3">
                         <label for="advert_days">{{ __('adminlte::adminlte.expiring_on') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="expiring_on" value="{{\Carbon\Carbon::parse($jobDetails->expiring_at)->format('d/m/Y')}}" />
+                        <input type="text" name="expiring_on" class="form-control" value="{{\Carbon\Carbon::parse($jobDetails->expiring_at)->format('d/m/Y')}}" />
                         @if($errors->has('advert_days'))
                           <div class="error">{{ $errors->first('advert_days') }}</div>
                         @endif
