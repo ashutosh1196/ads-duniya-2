@@ -92,7 +92,7 @@ class AdminsSeeder extends Seeder
                 'status' => 'active',
                 'ip_address' => '192.168.1.65',
                 'organization_id' => 1,
-                'is_parent' => 0,
+                'is_parent' => 1,
                 'created_by' => 'recruiter',
                 'created_by_id' => 3
             ],[
