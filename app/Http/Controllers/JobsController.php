@@ -207,6 +207,7 @@ class JobsController extends Controller {
 	 * This function is used to Show Published Jobs Listing
 	*/
 	public function updateJob(Request $request) {
+
 		$job = Job::find($request->id);
 		$validatedData = $request->validate([
 			'job_title' => 'required',
@@ -279,6 +280,7 @@ class JobsController extends Controller {
 			"job_url" => $job_url,
 			"company_logo" => $fileName,
 			"job_type" => $request->job_type,
+			"expiring_at" => \Carbon\Carbon::createFromFormat('d/m/Y',$request->expiring_on)
 		];
 		$updateJob = $job->update($jobToUpdate);
 		if($updateJob) {

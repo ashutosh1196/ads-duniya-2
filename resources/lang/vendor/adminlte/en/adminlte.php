@@ -268,6 +268,7 @@ return [
     'region'                            => 'Job Region',
     'is_featured'                       => 'Is this a featured job?',
     'advert_days'                       => 'Advert Days',
+    'expiring_on'                       => 'Expiring On',
     'currency'                          => 'Currency',
     'is_complete_update'                => 'Complete job update?',
     'expiring_at'                       => 'Expiry Date',

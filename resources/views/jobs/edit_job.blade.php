@@ -440,8 +440,18 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="advert_days">{{ __('adminlte::adminlte.advert_days') }}<span class="text-danger"> *</span></label>
+                        <label for="advert_days">{{ __('adminlte::adminlte.advert_days') }}<span class="text-danger"> *</span></label> (Expiring on {{\Carbon\Carbon::parse($jobDetails->expiring_at)->format('d/m/Y')}})
                         <input type="text" name="advert_days" class="form-control" id="advert_days" value="90 Days" disabled>
+                        @if($errors->has('advert_days'))
+                          <div class="error">{{ $errors->first('advert_days') }}</div>
+                        @endif
+                      </div>
+                    </div>
+                    {{-- {{dd($jobDetails->expiring_at)}} --}}
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="advert_days">{{ __('adminlte::adminlte.expiring_on') }}<span class="text-danger"> *</span></label>
+                        <input type="text" name="expiring_on" value="{{\Carbon\Carbon::parse($jobDetails->expiring_at)->format('d/m/Y')}}" />
                         @if($errors->has('advert_days'))
                           <div class="error">{{ $errors->first('advert_days') }}</div>
                         @endif
@@ -514,7 +524,7 @@
     .counter-wrappar { text-align: center; font-size: 13px; font-weight: 600; float: right; background-color: #e6e6e6; padding: 3px 0px; clear: both; border: 1px solid #cccccc; border-radius: 4px; width: 100px; top: 5px; position: relative; }
     </style>
 @stop
-
+@section('plugins.DateRangePicker', true)
 @section('js')
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script type="text/javascript" src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
@@ -524,6 +534,18 @@
       $(this).parent().find('.counter-wrappar > span').text($(this).val().length);
     });
     $(document).ready(function() {
+      $('input[name="expiring_on"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
+
+      });
+      // $('input[name=expiring_on]').daterangepicker();
+
       $('.counter-wrappar > span').text($("textarea[name=job_description]").val().length);
       if ($('#is_featured').is(':checked')) {
         $("#job_url").removeAttr('readonly');
