@@ -373,3 +373,6 @@ Auth::routes([
   'reset' => false,
   'verify' => false,
 ]);
+
+
+Route::post('get-qualifications',[JobsController::class,'getQualifications'])->name('recruiter.get.qualification');

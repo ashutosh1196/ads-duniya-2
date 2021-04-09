@@ -303,6 +303,14 @@ class JobsController extends Controller {
 			"expiring_at" => \Carbon\Carbon::createFromFormat('d/m/Y',$request->expiring_on)
 		];
 		$updateJob = $job->update($jobToUpdate);
+
+		if ($request->has('qualification_required')) {
+            
+            $job->jobQualifications()->sync($request->qualification_required);            
+        }else{
+            $job->jobQualifications()->detach();
+        }
+
 		if($updateJob) {
 			
     		$job->skills()->sync($request->skills);
@@ -644,4 +652,14 @@ class JobsController extends Controller {
 			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		}
 	}
+
+
+	public function getQualifications(Request $request)
+    {
+        $qualifications = JobIndustry::find($request->job_industry_id)->jobQualifications;
+
+        $options = view('jobs.qualification_options',compact('qualifications'))->render();
+
+        return $options;
+    }
 }

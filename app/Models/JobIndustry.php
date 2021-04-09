@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class JobIndustry extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function jobQualifications()
+    {
+    	return $this->hasMany(JobQualification::class);
+    }
 }

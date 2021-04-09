@@ -97,4 +97,13 @@ class Job extends Model {
     {
         return $this->belongsToMany(User::class,'job_view_histories')->withTimestamps();
     }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function jobQualifications()
+    {
+        return $this->belongsToMany(JobQualification::class);
+    }
+
 }

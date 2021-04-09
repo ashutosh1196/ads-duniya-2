@@ -216,6 +216,37 @@
                         @endif
                       </div>
                     </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="job_industry_id">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
+                        <select name="job_industry_id" class="form-control" id="job_industry_id">
+                          <?php for($i=0; $i<count($jobIndustries); $i++) { ?>
+                            <option value="{{ $jobIndustries[$i]->id }}" {{ ( $jobIndustries[$i]->id == $jobDetails->job_industry_id) ? 'selected' : '' }}>{{ $jobIndustries[$i]->name }}</option>
+                          <?php } ?>
+                        </select>
+                        @if($errors->has('job_industry_id'))
+                          <div class="error">{{ $errors->first('job_industry_id') }}</div>
+                        @endif
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        @php
+                            $all_qualification = \App\Models\JobIndustry::find($jobDetails->job_industry_id)->jobQualifications;
+                            // dd($all_qualification);
+                            $selected_qualifications = $jobDetails->jobQualifications()->pluck('job_qualifications.id')->toArray();                                   
+                        @endphp
+                          <label class=""><img src="{{asset('assets/images/industry')}}.png" alt="">Qualifications Required</label>
+                          <select name="qualification_required[]" multiple="multiple" class="qualification-multiselect">
+                            @if(!empty($all_qualification))
+                              @foreach($all_qualification as $k => $q)
+                                  <option {{in_array($q->id, $selected_qualifications)?'selected':''}} value="{{$q->id}}">{{$q->name}}</option>
+                              @endforeach
+                            @endif
+                          </select>
+                      </div>
+                    </div>
                   </div> 
 
                 <div class="title">
@@ -419,19 +450,7 @@
 
                 <div class="other_fields"> 
                   <div class="row">
-                    <div class="col-6">
-                      <div class="form-group">
-                        <label for="job_industry_id">{{ __('adminlte::adminlte.industry') }}<span class="text-danger"> *</span></label>
-                        <select name="job_industry_id" class="form-control" id="job_industry_id">
-                          <?php for($i=0; $i<count($jobIndustries); $i++) { ?>
-                            <option value="{{ $jobIndustries[$i]->id }}" {{ ( $jobIndustries[$i]->id == $jobDetails->job_industry_id) ? 'selected' : '' }}>{{ $jobIndustries[$i]->name }}</option>
-                          <?php } ?>
-                        </select>
-                        @if($errors->has('job_industry_id'))
-                          <div class="error">{{ $errors->first('job_industry_id') }}</div>
-                        @endif
-                      </div>
-                    </div>
+                    
 
                     <div class="col-6">
                       <div class="form-group">
@@ -442,9 +461,7 @@
                         @endif
                       </div>
                     </div>
-                  </div>
 
-                  <div class="row">
                     <div class="col-6">
                       <div class="form-group">
                         <label for="job_location_id">{{ __('adminlte::adminlte.region') }}<span class="text-danger"> *</span></label>
@@ -458,6 +475,10 @@
                         @endif
                       </div>
                     </div>
+                  </div>
+
+                  <div class="row">
+                    
                     <div class="col-6">
                       <div class="form-group">
                         <label for="advert_days">{{ __('adminlte::adminlte.advert_days') }}<span class="text-danger"> *</span></label> (Expiring on {{\Carbon\Carbon::parse($jobDetails->expiring_at)->format('d/m/Y')}})
@@ -612,6 +633,8 @@
         tags: true,
         tokenSeparators: [',', ' ']
       })
+
+      $('.qualification-multiselect').select2();
       $("#email").blur(function() {
         $.ajax({
           type:"GET",
@@ -892,5 +915,28 @@
         }
       });
     });
+
+
+$('body').on('change','select[name=job_industry_id]',function(){
+
+    var job_industry_id = $(this).val();
+    $.ajax('{{route('recruiter.get.qualification')}}', {
+        method: 'POST',
+        data:{
+            job_industry_id: job_industry_id
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(res) {
+
+            $('select[name="qualification_required[]"]').html(res);
+            // $alert.show().addClass('alert-success').text('Upload success');
+
+
+        }
+    });
+
+});
   </script>
 @stop
