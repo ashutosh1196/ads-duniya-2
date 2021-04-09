@@ -1034,9 +1034,6 @@ class MiscController extends Controller {
 		else {
 			return back()->with('error', 'Something went wrong! Please try again.');
 		}
-		return view('misc/job_qualifications/add_job_qualification')->with([
-			'jobIndustries' => $jobIndustries,
-		]);
 	}
 
 	/**
@@ -1051,4 +1048,57 @@ class MiscController extends Controller {
 		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
 		// }
 	}
+
+	public function editJobQualification($id) {
+		// if(Auth::user()->can('edit_job_qualification')) {
+			$jobIndustries = JobIndustry::all();
+			$jobQualification = JobQualification::find($id);
+			return view('misc/job_qualifications/edit_job_qualification')->with([
+				'jobIndustries' => $jobIndustries,
+				'jobQualification' => $jobQualification,
+			]);
+		// }
+		// else {
+		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		// }
+	}
+
+	public function updateJobQualification(Request $request) {
+		$validatedData = $request->validate([
+			'job_industry_id' => 'required',
+			'name' => 'required',
+		], [
+			'job_industry_id.required' => 'The Job Industry field is required.',
+			'name.required' => 'The Job Qualification Name is required.',
+		]);
+		$updateJobQualification = JobQualification::find($request->id)->update([
+			'job_industry_id' => $request->job_industry_id,
+			'name' => $request->name,
+		]);
+		if($updateJobQualification) {
+			$jobQualification = JobQualification::all();
+			return redirect()->route('job_qualifications_list');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+	}
+
+	public function deleteJobQualification(Request $request) {
+		$deleteJobQualification = JobQualification::find($request->id)->delete();
+		if($deleteJobQualification) {
+			$jobQualifications = JobQualification::all();
+			$res['success'] = 1;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
+	}
+
+	public function restoreJobQualification($id) {
+
+	}
+
 }
