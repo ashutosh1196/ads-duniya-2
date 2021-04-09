@@ -48,4 +48,25 @@ class JobHistory extends Model
     {
         return $this->belongsToMany(Skill::class,'job_skill','job_id','skill_id');
     }
+
+    public function jobHistoryApplications()
+    {
+        return $this->hasMany(JobHistoryApplication::class);
+    }
+
+        /**
+     * Get the organization for the user.
+     */
+    public function bookmarkedUsers()
+    {
+        return $this->belongsToMany(User::class,'job_history_bookmarks');
+    }
+
+        /**
+     * Job seacrh history for a perticular user.
+     */
+    public function userViewed()
+    {
+        return $this->belongsToMany(User::class,'job_history_views')->withTimestamps();
+    }
 }
