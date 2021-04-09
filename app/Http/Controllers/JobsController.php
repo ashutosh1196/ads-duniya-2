@@ -263,6 +263,24 @@ class JobsController extends Controller {
 			// $fileName = "";
 		}
 
+		if($request->is_complete_update == "on") {
+			// $job->jobHistories()->create($job->toArray());
+
+			$job_history = $job->jobHistories()->create($job->toArray());
+
+            $job_history->jobHistoryApplications()->createMany($job->jobApplications()->select('applicant_id','applicant_type')->get()->toArray());
+
+            $job->jobApplications()->delete();
+
+            $job_history->bookmarkedUsers()->attach($job->bookmarkedUsers()->pluck('users.id'));
+
+            $job->bookmarkedUsers()->detach();
+
+            $job_history->userViewed()->attach($job->userViewHistory()->pluck('users.id'));
+
+            $job->userViewHistory()->detach();
+		}
+
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
@@ -286,10 +304,8 @@ class JobsController extends Controller {
 		];
 		$updateJob = $job->update($jobToUpdate);
 		if($updateJob) {
-			if($request->is_complete_update == "on") {
-				$job->jobHistories()->create($job->toArray());
-			}
-    	$job->skills()->sync($request->skills);
+			
+    		$job->skills()->sync($request->skills);
 			$jobsList = Job::all();
 			return redirect()->route('jobs_list', ['jobsList' => $jobsList])->with('success', 'Job Updated Successfully!');
 		}

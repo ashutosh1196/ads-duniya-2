@@ -75,5 +75,26 @@ class Job extends Model {
 	public function bookmarkedJobs() {
 		return $this->hasMany(BookmarkedJob::class);
 	}
+ 
+ 	public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
 
+    /**
+     * Get the organization for the user.
+     */
+    public function bookmarkedUsers()
+    {
+        return $this->belongsToMany(User::class,'bookmarked_jobs');
+    }
+
+    
+    /**
+     * Job seacrh history for a perticular user.
+     */
+    public function userViewHistory()
+    {
+        return $this->belongsToMany(User::class,'job_view_histories')->withTimestamps();
+    }
 }
