@@ -217,7 +217,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/edit/{id}', [MiscController::class, 'editJobQualification'])->name('edit_job_qualification');
         Route::post('/update', [MiscController::class, 'updateJobQualification'])->name('update_job_qualification');
         Route::post('/delete', [MiscController::class, 'deleteJobQualification'])->name('delete_job_qualification');
-        Route::post('/restore', [MiscController::class, 'restoreJobQualification'])->name('restore_job_qualification');
+        // Route::post('/restore', [MiscController::class, 'restoreJobQualification'])->name('restore_job_qualification');
       });
       Route::group(['prefix' => 'job_functions'], function () {
         Route::get('/list', [MiscController::class, 'jobFunctionsList'])->name('job_functions_list');

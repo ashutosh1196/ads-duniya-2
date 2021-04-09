@@ -1084,8 +1084,17 @@ class MiscController extends Controller {
 		}
 	}
 
-	public function deleteJobQualification($id) {
-
+	public function deleteJobQualification(Request $request) {
+		$deleteJobQualification = JobQualification::find($request->id)->delete();
+		if($deleteJobQualification) {
+			$jobQualifications = JobQualification::all();
+			$res['success'] = 1;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
 	}
 
 	public function restoreJobQualification($id) {

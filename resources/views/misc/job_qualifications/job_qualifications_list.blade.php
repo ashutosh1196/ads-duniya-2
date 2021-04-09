@@ -52,7 +52,7 @@
                         <a class="action-button" title="Edit" href="edit/{{$jobQualifications[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
                       {{-- @endcan --}}
                       {{-- @can('delete_job_qualification') --}}
-                        <!-- <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobQualifications[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a> -->
+                        <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobQualifications[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                       {{-- @endcan --}}
                     </td>
                   {{-- @endcan --}}
@@ -95,7 +95,7 @@
         }, function(willDelete) {
           if (willDelete) {
             $.ajax({
-              url: "{{ route('delete_job_industry') }}",
+              url: "{{ route('delete_job_qualification') }}",
               type: 'post',
               data: {
                 id: id
