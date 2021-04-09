@@ -49,7 +49,7 @@
                         <a class="action-button" title="View" href="view/{{$jobQualifications[$i]->id}}"><i class="text-info fa fa-eye"></i></a>
                       {{-- @endcan --}}
                       {{-- @can('edit_job_qualification') --}}
-                        <!-- <a class="action-button" title="Edit" href="edit/{{$jobQualifications[$i]->id}}"><i class="text-warning fa fa-edit"></i></a> -->
+                        <a class="action-button" title="Edit" href="edit/{{$jobQualifications[$i]->id}}"><i class="text-warning fa fa-edit"></i></a>
                       {{-- @endcan --}}
                       {{-- @can('delete_job_qualification') --}}
                         <!-- <a class="action-button delete-button" title="Delete" href="javascript:void(0)" data-id="{{ $jobQualifications[$i]->id}}"><i class="text-danger fa fa-trash-alt"></i></a> -->

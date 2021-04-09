@@ -214,10 +214,10 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/add', [MiscController::class, 'addJobQualification'])->name('add_job_qualification');
         Route::post('/save', [MiscController::class, 'saveJobQualification'])->name('save_job_qualification');
         Route::get('/view/{id}', [MiscController::class, 'viewJobQualification'])->name('view_job_qualification');
-        /* Route::get('/edit/{id}', [MiscController::class, 'editJobIndustry'])->name('edit_job_industry');
-        Route::post('/update', [MiscController::class, 'updateJobIndustry'])->name('update_job_industry');
-        Route::post('/delete', [MiscController::class, 'deleteJobIndustry'])->name('delete_job_industry');
-        Route::post('/restore', [MiscController::class, 'restoreJobIndustry'])->name('restore_job_industry'); */
+        Route::get('/edit/{id}', [MiscController::class, 'editJobQualification'])->name('edit_job_qualification');
+        Route::post('/update', [MiscController::class, 'updateJobQualification'])->name('update_job_qualification');
+        Route::post('/delete', [MiscController::class, 'deleteJobQualification'])->name('delete_job_qualification');
+        Route::post('/restore', [MiscController::class, 'restoreJobQualification'])->name('restore_job_qualification');
       });
       Route::group(['prefix' => 'job_functions'], function () {
         Route::get('/list', [MiscController::class, 'jobFunctionsList'])->name('job_functions_list');
