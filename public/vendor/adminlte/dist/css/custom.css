@@ -1916,6 +1916,9 @@ span.select2 span.selection span.select2-selection {
     background-size: 24px;
     background-repeat: no-repeat;
     background-position: center right;
+    -webkit-appearance: none;
+   -moz-appearance:none;
+   appearance:none;
 }
 .form-group.radio label.switch {
     width: 45px;
@@ -1978,6 +1981,9 @@ span.select2 span.selection span.select2-selection {
 }
 #job_alert_form .form-group label img {
     margin-right: 10px;
+}
+.form-group.radio .job_alerts i {
+    cursor: pointer;
 }
 
 /*Responsive*/
