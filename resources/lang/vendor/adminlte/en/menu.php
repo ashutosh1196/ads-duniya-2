@@ -69,8 +69,9 @@ return [
     'job_search_history'          => 'Jobs Search History',
     
     'reported_jobs'               => 'Jobs Reported',
-    'jobs_viewed'               => 'Jobs Viewed',
+    'jobs_viewed'                 => 'Jobs Viewed',
 
-    'guests'                    => 'Guests',
+    'guests'                      => 'Guests',
     'suspended_jobs'                    => 'Jobs Suspended',
+    'job_qualifications'          => 'Job Qualifications',
 ];

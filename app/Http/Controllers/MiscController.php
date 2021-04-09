@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobIndustry;
+use App\Models\JobQualification;
 use App\Models\JobFunction;
 use App\Models\JobLocation;
 use App\Models\Skill;
@@ -977,5 +978,77 @@ class MiscController extends Controller {
 			$res['success'] = 0;
 			return json_encode($res);
 		}
+	}
+
+	/**
+	 * This function is used to Show Job Qualifications List
+	*/
+	public function jobQualificationsList(Request $request) {
+		// if(Auth::user()->can('manage_job_qualification')) {
+			$jobQualifications = JobQualification::orderByDesc('id')->get();
+			return view('misc/job_qualifications/job_qualifications_list')->with([
+				'jobQualifications' => $jobQualifications,
+			]);
+		// }
+		// else {
+		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		// }
+	}
+
+	/**
+	 * This function is used to Show Job Qualifications List
+	*/
+	public function addJobQualification() {
+		// if(Auth::user()->can('add_job_qualification')) {
+			$jobIndustries = JobIndustry::all();
+			return view('misc/job_qualifications/add_job_qualification')->with([
+				'jobIndustries' => $jobIndustries,
+			]);
+		// }
+		// else {
+		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		// }
+	}
+
+	/**
+	 * This function is used to Show Job Qualifications List
+	*/
+	public function saveJobQualification(Request $request) {
+		$validatedData = $request->validate([
+			'job_industry_id' => 'required',
+			'name' => 'required',
+		], [
+			'job_industry_id.required' => 'The Job Industry field is required.',
+			'name.required' => 'The Job Qualification Name is required.',
+		]);
+
+		$jobQualification = new JobQualification;
+		$jobQualification->job_industry_id = $request->job_industry_id;
+		$jobQualification->name = $request->name;
+		$jobQualification->status = $request->status;
+
+		if($jobQualification->save()) {
+			$jobQualification = JobQualification::all();
+			return redirect()->route('job_qualifications_list');
+		}
+		else {
+			return back()->with('error', 'Something went wrong! Please try again.');
+		}
+		return view('misc/job_qualifications/add_job_qualification')->with([
+			'jobIndustries' => $jobIndustries,
+		]);
+	}
+
+	/**
+	 * This function is used to Show Job Qualifications List
+	*/
+	public function viewJobQualification($id) {
+		// if(Auth::user()->can('view_job_qualification')) {
+			$jobQualification = JobQualification::find($id);
+			return view('misc/job_qualifications/view_job_qualification', [ 'jobQualification' => $jobQualification ]);
+		// }
+		// else {
+		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		// }
 	}
 }
