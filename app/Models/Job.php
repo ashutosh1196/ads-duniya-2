@@ -37,7 +37,8 @@ class Job extends Model {
 		'created_by',
 		'expiring_at',
 		'job_url',
-		'company_logo'
+		'company_logo',
+		'salary_type'
 	];
 
 	

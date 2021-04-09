@@ -76,6 +76,11 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/restore', [JobSeekersController::class, 'restoreJobseeker'])->name('restore_jobseeker');
         Route::get('/add', [JobSeekersController::class, 'addJobseeker'])->name('add_jobseeker');
         Route::post('/save', [JobSeekersController::class, 'saveJobseeker'])->name('save_jobseeker');
+
+        //ajax routes
+        Route::post('/toggle-job-alert', [JobSeekersController::class, 'toggleJobAlert'])->name('toggle.job.alert');
+        Route::post('/store-job-alert/{id}', [JobSeekersController::class, 'storeJobAlert'])->name('store.job.alert');
+
       });
 
       // Recruiters

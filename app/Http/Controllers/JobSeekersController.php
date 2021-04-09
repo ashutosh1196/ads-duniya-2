@@ -225,4 +225,53 @@ class JobSeekersController extends Controller {
 		}
 	}
 
+	public function toggleJobAlert(Request $request)
+	{
+		$user = User::find($request->job_seeker_id);
+
+        if ($user->is_job_alert_enabled) {
+            
+            $user->is_job_alert_enabled = 0;
+
+        }else{
+            
+            $user->is_job_alert_enabled = 1;            
+        }
+
+        $user->save();
+		
+	}
+
+	public function storeJobAlert(Request $request,$id)
+	{
+		
+		if (User::find($id)->jobAlert) {
+            
+            User::find($id)->jobAlert()->update([
+                'keywords' => $request->keywords,
+                'locations' => isset($request->locations)?implode(',', $request->locations):null,
+                'distance' => $request->distance,
+                'min_salary' => $request->min_salary,
+                'max_salary' => $request->max_salary,
+                'job_types' => isset($request->job_types)?implode(',', $request->job_types):null,
+                'job_posted' => $request->job_posted
+
+            ]);
+        }else{
+            User::find($id)->jobAlert()->create([
+                'keywords' => $request->keywords,
+                'locations' => isset($request->locations)?implode(',', $request->locations):null,
+                'distance' => $request->distance,
+                'min_salary' => $request->min_salary,
+                'max_salary' => $request->max_salary,
+                'job_types' => isset($request->job_types)?implode(',', $request->job_types):null,
+                'job_posted' => $request->job_posted
+            ]);
+        }
+            
+        return response()->json([
+            'status'=> true,
+        ]);		
+	}
+
 }

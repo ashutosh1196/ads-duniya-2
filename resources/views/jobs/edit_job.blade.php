@@ -216,7 +216,7 @@
                         @endif
                       </div>
                     </div>
-                  </div>
+                  </div> 
 
                 <div class="title">
                   <h5>What Does This Job Pay?</h5>
@@ -224,10 +224,27 @@
                 </div>
 
                   <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-sm-4 col-">
+                      <div class="form-group ">
+                          <label><img class="" src="{{asset('assets/images/amount')}}.png" alt="">Salary Type</label>
+                          @php
+                              $salary_types = \App\Models\Dropdown::where('name','salary_type')->get();
+                          @endphp
+                          <select name="salary_type" class="form-control">
+                              <option selected="selected" disabled="disabled">Select salary type</option>
+                              @foreach($salary_types as $salary_type)
+                                  <option {{($jobDetails->salary_type == $salary_type->slug)?'selected':''}} value="{{$salary_type->slug}}">{{$salary_type->value}}</option>
+                              @endforeach
+                          </select>
+                          @error('salary_type')
+                              <label class="error">{{$message}}</label>
+                          @enderror
+                      </div>
+                    </div>
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
                         <label for="package_range_from">{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
-                        <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ $jobDetails->package_range_from }}" maxlength="100">
+                        <input type="text" name="package_range_from" class="form-control" id="package_range_from" value="{{ ($jobDetails->package_range_from)?number_format($jobDetails->package_range_from):'' }}" maxlength="11" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)">
                         @if($errors->has('package_range_from'))
                           <div class="error">{{ $errors->first('package_range_from') }}</div>
                         @endif
@@ -236,7 +253,7 @@
                     <div class="col-xl-4 col-lg-4 col-sm-4 col-12">
                       <div class="form-group amount">
                         <label for="package_range_to">{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
-                        <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ $jobDetails->package_range_to }}" maxlength="100">
+                        <input type="text" name="package_range_to" class="form-control" id="package_range_to" value="{{ ($jobDetails->package_range_to)?number_format($jobDetails->package_range_to):'' }}" maxlength="11" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)">
                         @if($errors->has('package_range_to'))
                           <div class="error">{{ $errors->first('package_range_to') }}</div>
                         @endif
@@ -255,6 +272,26 @@
                         @endif
                       </div>
                     </div>
+
+                    <div class="col-xl-8 col-lg-8 col-sm-8 col-8">
+                      {{-- <div class="type_fields">  --}}
+                      <div class=""> 
+                        
+                            <div class="form-group">
+                              <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
+                              <select name="job_type" class="form-control" id="job_type">
+                                @foreach($jobTypes as $jobType)
+                                  <option {{ $jobDetails->job_type == $jobType->slug ? 'selected' : '' }} value="{{ $jobType->slug }}">{{ $jobType->value }}</option>
+                                @endforeach
+                              </select>
+                              @if($errors->has('job_type'))
+                                <div class="error">{{ $errors->last('job_type') }}</div>
+                              @endif
+                            </div>
+                          </div>
+                        
+
+                    </div>
                   </div>
 
                   <div class="row">
@@ -271,24 +308,7 @@
 
                 </div>
 
-                <div class="type_fields"> 
-                  <div class="row">  
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
-                        <select name="job_type" class="form-control" id="job_type">
-                          @foreach($jobTypes as $jobType)
-                            <option {{ $jobDetails->job_type == $jobType->slug ? 'selected' : '' }} value="{{ $jobType->slug }}">{{ $jobType->value }}</option>
-                          @endforeach
-                        </select>
-                        @if($errors->has('job_type'))
-                          <div class="error">{{ $errors->last('job_type') }}</div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                    
                 <div class="title">
                   <h5>Tell Us About Your Company</h5>
                   <hr/>
@@ -533,6 +553,35 @@
     $('body').on('keyup','textarea[name=job_description]',function() {
       $(this).parent().find('.counter-wrappar > span').text($(this).val().length);
     });
+
+    function FormatCurrency(ctrl) {
+        //Check if arrow keys are pressed - we want to allow navigation around textbox using arrow keys
+        if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
+            return;
+        }
+
+        var val = ctrl.value;
+
+        val = val.replace(/,/g, "")
+        ctrl.value = "";
+        val += '';
+        x = val.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+
+        var rgx = /(\d+)(\d{3})/;
+
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+
+        ctrl.value = x1 + x2;
+    }
+
+    function CheckNumeric() {
+        return event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 46;
+    }
+
     $(document).ready(function() {
       var today = new Date(); 
 

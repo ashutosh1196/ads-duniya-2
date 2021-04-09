@@ -262,14 +262,16 @@ class JobsController extends Controller {
 			// }
 			// $fileName = "";
 		}
+
 		$jobToUpdate = [
 			"job_title" => $request->job_title,
 			"job_type" => $request->job_type,
 			"job_industry_id" => $request->job_industry_id,
 			"job_function" => $request->job_function,
 			"job_location_id" => $request->job_location_id,
-			"package_range_from" => $request->package_range_from,
-			"package_range_to" => $request->package_range_to,
+			"package_range_from" => ($request->package_range_from != null)?str_replace(",", "", $request->package_range_from):$request->package_range_from,
+			"package_range_to" => ($request->package_range_to != null)?str_replace(",", "", $request->package_range_to):$request->package_range_to,
+			"salary_type" => $request->salary_type,
 			"salary_currency" => $request->salary_currency,
 			"experience_range_min" => $request->experience_range_min,
 			"job_description" => $request->job_description,

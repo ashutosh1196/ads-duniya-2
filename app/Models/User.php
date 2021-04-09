@@ -28,7 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'ip_address',
         'is_email_verified',
         'login_with',
-        'signup_via'
+        'signup_via',
+        'is_job_alert_enabled'
     ];
 
     /**
@@ -77,6 +78,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         // Your your own implementation.
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    
+    /**
+     * Job seacrh history for a perticular user.
+     */
+    public function jobAlert()
+    {
+        return $this->hasOne(JobAlert::class);
     }
 
 }
