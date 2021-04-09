@@ -495,6 +495,12 @@ return [
                     'active' => ['admin_panel/misc/job_industries*'],
                     'can' => ['manage_job_industry'],
                 ],
+                [
+                    'text' => 'job_qualifications',
+                    'icon' => 'fas fa-fw fa-industry',
+                    'url'  => 'admin_panel/misc/job_qualifications/list',
+                    'active' => ['admin_panel/misc/job_qualifications*'],
+                ],
                 /* [
                     'text' => 'job_functions',
                     'icon' => 'fas fa-fw fa-tasks',
