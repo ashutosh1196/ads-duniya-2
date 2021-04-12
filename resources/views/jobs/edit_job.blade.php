@@ -44,7 +44,16 @@
                     <div class="col-12">
                       <div class="form-group">
                         <label for="job_title">{{ __('adminlte::adminlte.job_title') }}<span class="text-danger"> *</span></label>
-                        <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails->job_title }}" maxlength="100">
+                        <input type="text" name="job_title" class="form-control" id="job_title" value="{{ $jobDetails->job_title }}" maxlength="100"
+                        list="job_title_suggestion_list">
+                          @php
+                              $job_title_suggestion = \App\Models\JobTitleSuggestion::all();
+                          @endphp
+                          <datalist id="job_title_suggestion_list">
+                              @foreach($job_title_suggestion as $v)
+                                  <option>{{$v->title}}</option>
+                              @endforeach
+                          </datalist>
                         @if($errors->has('job_title'))
                           <div class="error">{{ $errors->first('job_title') }}</div>
                         @endif
@@ -307,7 +316,7 @@
                     <div class="col-xl-8 col-lg-8 col-sm-8 col-8">
                       {{-- <div class="type_fields">  --}}
                       <div class=""> 
-                        
+                              
                             <div class="form-group">
                               <label for="job_type">{{ __('adminlte::adminlte.job_type') }}<span class="text-danger"> *</span></label>
                               <select name="job_type" class="form-control" id="job_type">
