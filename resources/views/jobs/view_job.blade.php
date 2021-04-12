@@ -167,8 +167,10 @@
                           @endphp
                           {{-- {{dump($qualifications)}} --}}
 
-
-                          <input class="form-control" placeholder="{{ $qualifications }}" readonly>
+                          <div class="qualifications_wrap">
+                            {{ $qualifications }}
+                          </div>
+                          <!-- <input class="form-control" placeholder="{{ $qualifications }}" readonly> -->
                         </div>
                       </div>
                     </div>
