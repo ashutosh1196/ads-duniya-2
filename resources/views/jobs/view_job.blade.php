@@ -151,6 +151,26 @@
                           <input class="form-control" placeholder="{{ ucwords($employmentEligibility) }}" readonly>
                         </div>
                       </div>
+
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.job_industry') }}</label>
+                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry : '' }}" readonly>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                        <div class="form-group">
+                          <label>{{ __('adminlte::adminlte.job_industry') }}</label>
+                          @php
+                            $qualifications = implode(',', $jobDetails->jobQualifications->pluck('name')->toArray());
+                          @endphp
+                          {{-- {{dump($qualifications)}} --}}
+
+
+                          <input class="form-control" placeholder="{{ $qualifications }}" readonly>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="title">
@@ -257,12 +277,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
-                        <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.job_industry') }}</label>
-                          <input class="form-control" placeholder="{{ $jobIndustry ? $jobIndustry : '' }}" readonly>
-                        </div>
-                      </div>
+                      
 
                       {{-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
