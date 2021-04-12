@@ -1985,7 +1985,15 @@ span.select2 span.selection span.select2-selection {
 .form-group.radio .job_alerts i {
     cursor: pointer;
 }
-
+.qualifications_wrap {
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #495057;
+    background-color: #f6f7fb;
+    border: 1px solid #1f2936;
+    padding: 14px .75rem;
+}
 /*Responsive*/
 
 @media only screen and (max-width: 1500px) {
