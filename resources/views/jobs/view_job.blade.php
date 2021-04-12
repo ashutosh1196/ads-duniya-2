@@ -161,7 +161,7 @@
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.job_industry') }}</label>
+                          <label>Qualifications Required</label>
                           @php
                             $qualifications = implode(',', $jobDetails->jobQualifications->pluck('name')->toArray());
                           @endphp
