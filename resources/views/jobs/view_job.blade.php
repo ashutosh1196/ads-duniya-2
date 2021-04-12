@@ -139,7 +139,7 @@
                     <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }} (In Years)</label>
+                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }} <small class="ml-1">(In Years)</small></label>
                           <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '' }}" readonly>
                         </div>
                       </div>

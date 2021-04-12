@@ -205,7 +205,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }} (In Years)</label>
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }} <small class="ml-1"> (In Years)</small></label>
                         <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
                         @if($errors->has('experience_range_min'))
                           <div class="error">{{ $errors->first('experience_range_min') }}</div>
