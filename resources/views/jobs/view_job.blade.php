@@ -139,7 +139,7 @@
                     <div class="row">
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
-                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                          <label>{{ __('adminlte::adminlte.minimum_experience_required') }} (In Years)</label>
                           <input class="form-control" placeholder="{{ $jobDetails->experience_range_min ? $jobDetails->experience_range_min.' Years' : '' }}" readonly>
                         </div>
                       </div>
@@ -163,7 +163,7 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.minimum_package_amount') }}</label>
                           <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->package_range_from ? $jobDetails->package_range_from : '' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->package_range_from ? number_format($jobDetails->package_range_from) : '' }}" readonly>
                         </div>
                       </div>
 
@@ -171,7 +171,7 @@
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.maximum_package_amount') }}</label>
                           <?php $currency = $jobDetails->salary_currency == 'pounds' ? '£' : '$' ?>
-                          <input class="form-control" placeholder="{{ $jobDetails->package_range_to ? $jobDetails->package_range_to : '' }}" readonly>
+                          <input class="form-control" placeholder="{{ $jobDetails->package_range_to ? number_format($jobDetails->package_range_to) : '' }}" readonly>
                         </div>
                       </div>
 
@@ -264,15 +264,15 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                      {{-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.job_function') }}</label>
                           <input class="form-control" placeholder="{{ $jobDetails->job_function }}" readonly>
                         </div>
-                      </div>
-                    </div>
+                      </div> --}}
+                    {{-- </div> --}}
 
-                    <div class="row">
+                    {{-- <div class="row"> --}}
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">
                           <label>{{ __('adminlte::adminlte.region') }}</label>
@@ -286,9 +286,9 @@
                           <input class="form-control" placeholder="90 Days" readonly>
                         </div>
                       </div>
-                    </div>
+                    {{-- </div> --}}
 
-                    <div class="row">
+                    {{-- <div class="row"> --}}
 
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
                         <div class="form-group">

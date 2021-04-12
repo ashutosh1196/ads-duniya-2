@@ -196,7 +196,7 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }}</label>
+                        <label for="experience_range_min">{{ __('adminlte::adminlte.minimum_experience_required') }} (In Years)</label>
                         <input type="text" name="experience_range_min" class="form-control" id="experience_range_min" value="{{ $jobDetails->experience_range_min }}" maxlength="100">
                         @if($errors->has('experience_range_min'))
                           <div class="error">{{ $errors->first('experience_range_min') }}</div>
@@ -452,7 +452,7 @@
                   <div class="row">
                     
 
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                       <div class="form-group">
                         <label for="job_function">{{ __('adminlte::adminlte.function') }}</label>
                         <input type="text" name="job_function" class="form-control" id="job_function" value="{{ $jobDetails->job_function }}">
@@ -460,7 +460,7 @@
                           <div class="error">{{ $errors->first('job_function') }}</div>
                         @endif
                       </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-6">
                       <div class="form-group">
@@ -475,9 +475,9 @@
                         @endif
                       </div>
                     </div>
-                  </div>
+                  {{-- </div>
 
-                  <div class="row">
+                  <div class="row"> --}}
                     
                     <div class="col-6">
                       <div class="form-group">
