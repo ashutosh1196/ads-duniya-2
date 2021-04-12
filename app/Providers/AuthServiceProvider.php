@@ -883,6 +883,73 @@ class AuthServiceProvider extends ServiceProvider {
 			}
 		});
 
+		Gate::define('manage_job_qualifications', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'add_job_qualification' ||
+					 $permissions[$i]->slug == 'edit_job_qualification' ||
+					 $permissions[$i]->slug == 'delete_job_qualification' ||
+					 $permissions[$i]->slug == 'view_job_qualification'
+					) {
+					return true;
+				}
+			}
+		});
+
+    Gate::define('manage_job_qualification_actions', function ($user) {
+      $user = Auth::user();
+      $permissions = $user->role->permissions;
+      for ($i=0; $i < count($permissions); $i++) { 
+        if($permissions[$i]->slug == 'edit_job_qualification' || 
+          $permissions[$i]->slug == 'delete_job_qualification' || 
+          $permissions[$i]->slug == 'view_job_qualification'
+        ) {
+          return true;
+        }
+      }
+    });
+
+    Gate::define('add_job_qualification', function ($user) {
+      $user = Auth::user();
+      $permissions = $user->role->permissions;
+      for ($i=0; $i < count($permissions); $i++) { 
+        if($permissions[$i]->slug == 'add_job_qualification') {
+          return true;
+        }
+      }
+    });
+
+    Gate::define('edit_job_qualification', function ($user) {
+      $user = Auth::user();
+      $permissions = $user->role->permissions;
+      for ($i=0; $i < count($permissions); $i++) { 
+        if($permissions[$i]->slug == 'edit_job_qualification') {
+          return true;
+        }
+      }
+    });
+
+    Gate::define('delete_job_qualification', function ($user) {
+      $user = Auth::user();
+      $permissions = $user->role->permissions;
+      for ($i=0; $i < count($permissions); $i++) { 
+        if($permissions[$i]->slug == 'delete_job_qualification') {
+          return true;
+        }
+      }
+    });
+
+    Gate::define('view_job_qualification', function ($user) {
+      $user = Auth::user();
+      $permissions = $user->role->permissions;
+      for ($i=0; $i < count($permissions); $i++) { 
+        if($permissions[$i]->slug == 'view_job_qualification') {
+          return true;
+        }
+      }
+    });
+
 		Gate::define('manage_job_location', function ($user) {
 			$user = Auth::user();
 			$permissions = $user->role->permissions;
@@ -1259,7 +1326,8 @@ class AuthServiceProvider extends ServiceProvider {
 					 $permissions[$i]->slug == 'restore_counties' ||
 					 $permissions[$i]->slug == 'restore_roles' ||
 					 $permissions[$i]->slug == 'restore_website_page' ||
-					 $permissions[$i]->slug == 'restore_mobile_page'
+					 $permissions[$i]->slug == 'restore_mobile_page' ||
+					 $permissions[$i]->slug == 'restore_job_qualifications'
 					) {
 					return true;
 				}
@@ -1321,6 +1389,16 @@ class AuthServiceProvider extends ServiceProvider {
 			$permissions = $user->role->permissions;
 			for ($i=0; $i < count($permissions); $i++) { 
 				if($permissions[$i]->slug == 'restore_job_industries') {
+					return true;
+				}
+			}
+		});
+
+		Gate::define('restore_job_qualifications', function ($user) {
+			$user = Auth::user();
+			$permissions = $user->role->permissions;
+			for ($i=0; $i < count($permissions); $i++) { 
+				if($permissions[$i]->slug == 'restore_job_qualifications') {
 					return true;
 				}
 			}

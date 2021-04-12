@@ -730,6 +730,31 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="permissions-section-inner-sec">
+                          <p class="headings"><strong class="list-text">Job Qualifications</strong></p>
+                          <div class="custom_check_wrap">
+                            <div class="custom-check">
+                              <input type="checkbox" id="job_qualifications_permissions" class="ckbCheckAll">
+                              <span></span>
+                            </div>
+                              <strong class="list-text">Select All</strong>
+                          </div>
+                          <div id="checkBoxes">
+                            @foreach($jobQualificationsPermissions as $permission)
+                              <div class="custom_check_wrap">
+                                <div class="custom-check">
+                                  <input type="checkbox" class="checkBoxClass jobQualificationscheckBox" name="permissions[]" value="{{ $permission->id }}" id="button_{{ $permission->id }}">
+                                  <span></span>
+                                </div>
+                                  <label class="mb-0">{{ $permission->name }}</label>
+                              </div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <div class="permissions-section-inner-sec">
                           <p class="headings"><strong class="list-text">Job Locations</strong></p>
                           <div class="custom_check_wrap">
                             <div class="custom-check">
@@ -1079,6 +1104,9 @@
       $("#job_industries_permissions").click(function() {
         $(".jobIndustriescheckBox").prop('checked', this.checked)
       })
+      $("#job_qualifications_permissions").click(function() {
+        $(".jobQualificationscheckBox").prop('checked', this.checked)
+      })
       $("#job_locations_permissions").click(function() {
         $(".jobLocationscheckBox").prop('checked', this.checked)
       })
@@ -1245,6 +1273,12 @@
       }
       else {
         $("#job_industries_permissions").prop('checked', false);
+      }
+      if($('.jobQualificationscheckBox:checked').length == $('.jobQualificationscheckBox').length) {
+        $("#job_qualifications_permissions").prop('checked', 'true');
+      }
+      else {
+        $("#job_qualifications_permissions").prop('checked', false);
       }
       if($('.jobLocationscheckBox:checked').length == $('.jobLocationscheckBox').length) {
         $("#job_locations_permissions").prop('checked', 'true');

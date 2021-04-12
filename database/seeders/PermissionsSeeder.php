@@ -408,6 +408,39 @@ class PermissionsSeeder extends Seeder {
 				'description' => 'desc',
 				'status' => 1
 			],
+			// Job Qualifications
+			[
+				'name' => 'Add',
+				'slug' => 'add_job_qualification',
+				'module_name' => 'Job Qualifications',
+				'module_slug' => 'job_qualifications',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Edit',
+				'slug' => 'edit_job_qualification',
+				'module_name' => 'Job Qualifications',
+				'module_slug' => 'job_qualifications',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Delete',
+				'slug' => 'delete_job_qualification',
+				'module_name' => 'Job Qualifications',
+				'module_slug' => 'job_qualifications',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'View',
+				'slug' => 'view_job_qualification',
+				'module_name' => 'Job Qualifications',
+				'module_slug' => 'job_qualifications',
+				'description' => 'desc',
+				'status' => 1
+			],
 			// Job Locations
 			[
 				'name' => 'Add',
@@ -626,6 +659,14 @@ class PermissionsSeeder extends Seeder {
 			[
 				'name' => 'Restore Job Industries',
 				'slug' => 'restore_job_industries',
+				'module_name' => 'Restore',
+				'module_slug' => 'restore',
+				'description' => 'desc',
+				'status' => 1
+			],
+			[
+				'name' => 'Restore Job Qualifications',
+				'slug' => 'restore_job_qualifications',
 				'module_name' => 'Restore',
 				'module_slug' => 'restore',
 				'description' => 'desc',

@@ -134,6 +134,7 @@ class RolesController extends Controller {
 				$paymentTransactionsPermissions = Permission::where('module_slug', 'payment_transactions')->get();
 				$ticketsPermissions = Permission::where('module_slug', 'tickets')->get();
 				$jobIndustriesPermissions = Permission::where('module_slug', 'job_industries')->get();
+				$jobQualificationsPermissions = Permission::where('module_slug', 'job_qualifications')->get();
 				$jobLocationsPermissions = Permission::where('module_slug', 'job_locations')->get();
 				$skillsPermissions = Permission::where('module_slug', 'skills')->get();
 				$citiesPermissions = Permission::where('module_slug', 'cities')->get();
@@ -167,6 +168,7 @@ class RolesController extends Controller {
 					'paymentTransactionsPermissions' => $paymentTransactionsPermissions,
 					'ticketsPermissions' => $ticketsPermissions,
 					'jobIndustriesPermissions' => $jobIndustriesPermissions,
+					'jobQualificationsPermissions' => $jobQualificationsPermissions,
 					'jobLocationsPermissions' => $jobLocationsPermissions,
 					'skillsPermissions' => $skillsPermissions,
 					'citiesPermissions' => $citiesPermissions,

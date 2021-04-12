@@ -984,30 +984,30 @@ class MiscController extends Controller {
 	 * This function is used to Show Job Qualifications List
 	*/
 	public function jobQualificationsList(Request $request) {
-		// if(Auth::user()->can('manage_job_qualification')) {
+		if(Auth::user()->can('manage_job_qualifications')) {
 			$jobQualifications = JobQualification::orderByDesc('id')->get();
 			return view('misc/job_qualifications/job_qualifications_list')->with([
 				'jobQualifications' => $jobQualifications,
 			]);
-		// }
-		// else {
-		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
-		// }
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
 	 * This function is used to Show Job Qualifications List
 	*/
 	public function addJobQualification() {
-		// if(Auth::user()->can('add_job_qualification')) {
+		if(Auth::user()->can('add_job_qualification')) {
 			$jobIndustries = JobIndustry::all();
 			return view('misc/job_qualifications/add_job_qualification')->with([
 				'jobIndustries' => $jobIndustries,
 			]);
-		// }
-		// else {
-		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
-		// }
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	/**
@@ -1040,27 +1040,27 @@ class MiscController extends Controller {
 	 * This function is used to Show Job Qualifications List
 	*/
 	public function viewJobQualification($id) {
-		// if(Auth::user()->can('view_job_qualification')) {
+		if(Auth::user()->can('view_job_qualification')) {
 			$jobQualification = JobQualification::find($id);
 			return view('misc/job_qualifications/view_job_qualification', [ 'jobQualification' => $jobQualification ]);
-		// }
-		// else {
-		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
-		// }
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function editJobQualification($id) {
-		// if(Auth::user()->can('edit_job_qualification')) {
+		if(Auth::user()->can('edit_job_qualification')) {
 			$jobIndustries = JobIndustry::all();
 			$jobQualification = JobQualification::find($id);
 			return view('misc/job_qualifications/edit_job_qualification')->with([
 				'jobIndustries' => $jobIndustries,
 				'jobQualification' => $jobQualification,
 			]);
-		// }
-		// else {
-		// 	return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
-		// }
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
 	}
 
 	public function updateJobQualification(Request $request) {
@@ -1097,8 +1097,30 @@ class MiscController extends Controller {
 		}
 	}
 
-	public function restoreJobQualification($id) {
+	public function deletedJobQualifications(Request $request) {
+		if(Auth::user()->can('restore_job_qualifications')) {
+			$deletedJobQualifications = JobQualification::onlyTrashed()->orderByDesc('id')->get();
+			return view('misc/job_qualifications/deleted_job_qualifications_list', ['deletedJobQualifications' => $deletedJobQualifications]);
+		}
+		else {
+			return redirect()->route('dashboard')->with('warning', 'You do not have permission for this action!');
+		}
+	}
 
+	public function restoreJobQualification(Request $request) {
+		$qualificationId = $request->id;
+		$jobQualification = JobQualification::where('id', $qualificationId);
+		$restoreJobQualification = $jobQualification->restore();
+		if($restoreJobQualification) {
+			$jobIndustriesList = JobQualification::all();
+			$res['success'] = 1;
+			$res['data'] = $jobIndustriesList;
+			return json_encode($res);
+		}
+		else {
+			$res['success'] = 0;
+			return json_encode($res);
+		}
 	}
 
 }

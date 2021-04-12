@@ -497,9 +497,10 @@ return [
                 ],
                 [
                     'text' => 'job_qualifications',
-                    'icon' => 'fas fa-fw fa-industry',
+                    'icon' => 'fas fa-fw fa-graduation-cap',
                     'url'  => 'admin_panel/misc/job_qualifications/list',
                     'active' => ['admin_panel/misc/job_qualifications*'],
+                    'can' => ['manage_job_qualifications'],
                 ],
                 /* [
                     'text' => 'job_functions',
@@ -603,6 +604,12 @@ return [
                     'icon' => 'fas fa-fw fa-industry',
                     'url'  => 'admin_panel/recycle_bin/job_industries/deleted',
                     'can' => 'restore_job_industries',
+                ],
+                [
+                    'text' => 'job_qualifications',
+                    'icon' => 'fas fa-fw fa-graduation-cap',
+                    'url'  => 'admin_panel/recycle_bin/job_qualifications/deleted',
+                    'can' => 'restore_job_qualifications',
                 ],
                 /* [
                     'text' => 'job_functions',
