@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->enum('job_type',['full_time','contract_basis','part_time','graduate','public_sector','work_from_home']);
             $table->tinyInteger('is_featured')->default(0);
             $table->tinyInteger('is_suspended')->default(0);
+            $table->tinyInteger('is_payment_received')->default(0);
             $table->string('company_logo')->nullable();
             $table->string('city')->nullable();
             $table->string('county')->nullable();

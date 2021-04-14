@@ -143,6 +143,46 @@
                 </div>
               </div>
             </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>Company's Address</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->address }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>City / Town</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->city }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>County</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->county }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>State</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->state }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>Country</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->country }}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-12">
+                <div class="form-group">
+                  <label>Zip / Postcode</label>
+                  <input class="form-control" placeholder="{{ $organization[0]->pincode }}" readonly>
+                </div>
+              </div>
+              
+            </div>
           </form>
           
         </div>
