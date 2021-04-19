@@ -79,7 +79,7 @@
                     
                    <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="english">Estonia<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
+                        <label for="english">Spanish<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
                         <input type="text" name="estonia" value="{{ $editmodel[0]->model_name_es }}" class="form-control" id="estonia" maxlength="100">
                         @error('estonia')
                         <div id ="model_error" class="error">{{ $message }}</div>
@@ -96,7 +96,7 @@
                         <label for="make">Make<span class="text-danger"> *</span></label>
                         <select name="make" class="form-control" id="make">
                         @foreach($make as $data)
-                          <option value="{{$data->id}}">{{$data->brand_name_en}}</option>
+                          <option value="{{$data->id}}" @if($data->id==$editmodel[0]->brand_id) selected @endif>{{$data->brand_name_en}}</option>
                         @endforeach
                         </select>
                         @error('make')

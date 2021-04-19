@@ -358,6 +358,40 @@ return [
                     'url'  => 'admin_panel/model-list',
                     'active' => ['admin_panel/vehicle/model_vehicle*'],
                 ],
+                [
+                    'text' => 'Sell',
+                    'icon' => 'fas fa-ticket-alt',
+                    'url'  => '#',
+                    'submenu' => [
+
+                        [
+                            'text' => 'Cars',
+                            'icon' => 'fas fa-fw fa-user',
+                            'url'  => 'admin_panel/model-list',
+                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                        ],
+                        [
+                            'text' => 'Motos',
+                            'icon' => 'fas fa-envelope',
+                            'url'  => 'admin_panel/model-list',
+                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                        ],
+                        [
+                            'text' => 'Power Equipment',
+                            'icon' => 'fas fa-comments',
+                            'url'  => 'admin_panel/model-list',
+                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                        ],
+                        [
+                            'text' => 'Auto & Moto Parts',
+                            'icon' => 'fas fa-ticket-alt',
+                            'url'  => 'admin_panel/model-list',
+                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                        ],
+
+
+                    ],
+                ],
                 // [
                 //     'text' => 'job_industries',
                 //     'icon' => 'fas fa-fw fa-industry',

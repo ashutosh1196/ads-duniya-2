@@ -216,6 +216,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/editmodel/{id}', [VehicleController::class, 'editModel'])->name('edit_model');
     Route::post('/modelupdate', [VehicleController::class, 'updateModel'])->name('update_model');
     Route::post('/modeldelete', [VehicleController::class, 'deleteModel'])->name('delete_model');
+
+    //sells
+    
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');

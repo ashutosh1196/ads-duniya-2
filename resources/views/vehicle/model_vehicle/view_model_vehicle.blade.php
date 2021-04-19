@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <div class="card">
          <div class="card-header alert d-flex justify-content-between align-items-center">
-          <h3>Make Information</h3>
+          <h3>Model Information</h3>
           <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">back</a>
         </div>       
         <div class="card-body">
@@ -42,14 +42,14 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Haitian</label>
+                  <label>Haitian Creole</label>
                   <input class="form-control" placeholder="{{ $modelList[0]->model_name_ht }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Estonia</label>
+                  <label>Spanish</label>
                   <input class="form-control" placeholder="{{ $modelList[0]->model_name_es }}" readonly>
                 </div>
               </div>

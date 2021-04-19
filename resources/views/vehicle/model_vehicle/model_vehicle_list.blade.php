@@ -25,8 +25,8 @@
                <tr>
                    <th>English</th>
                    <th>French</th>    
-                   <th>Haitian</th>
-                  <th>Estonia</th>
+                   <th>Haitian Creole</th>
+                  <th>Spanish</th>
                   <th>Brand</th>
                    <th>Action</th>  
                </tr>
@@ -35,8 +35,8 @@
                <tr>
                    <th>English</th>
                    <th>French</th>    
-                   <th>Haitian</th>
-                  <th>Estonia</th>
+                   <th>Haitian Creole</th>
+                  <th>Spanish</th>
                   <th>Brand</th>
                    <th>Action</th> 
                </tr>

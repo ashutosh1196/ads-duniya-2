@@ -42,14 +42,14 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Haitian</label>
+                  <label>Haitian Creole</label>
                   <input class="form-control" placeholder="{{ $makeList[0]->brand_name_ht }}" readonly>
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
-                  <label>Estonia</label>
+                  <label>Spanish</label>
                   <input class="form-control" placeholder="{{ $makeList[0]->brand_name_es }}" readonly>
                 </div>
               </div>
@@ -64,12 +64,17 @@
                       @endif
                       @if($makeList[0]->brand_for==1)
                      @php 
-                          $brand = 'Motor';
+                          $brand = 'Moto';
                         @endphp
                       @endif
                       @if($makeList[0]->brand_for==2)
-                     @php 
-                          $brand = 'Other';
+                        @php 
+                          $brand = 'Power Equipment';
+                        @endphp
+                      @endif
+                      @if($makeList[0]->brand_for==3)
+                        @php 
+                          $brand = 'Auto and Moto Parts';
                         @endphp
                       @endif
                   <input class="form-control" placeholder="{{ $brand }}" readonly>

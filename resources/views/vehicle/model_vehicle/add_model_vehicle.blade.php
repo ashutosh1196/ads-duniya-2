@@ -78,7 +78,7 @@
                     
                    <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="english">Estonia<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
+                        <label for="english">Spanish<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
                         <input type="text" name="estonia" class="form-control" id="estonia" maxlength="100">
                         @error('estonia')
                         <div id ="model_error" class="error">{{ $message }}</div>
