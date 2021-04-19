@@ -13,19 +13,19 @@ class DatabaseSeeder extends Seeder {
 	public function run() {
 		// \App\Models\User::factory(10)->create();
 		$this->call([
-			PagesSectionsSeeder::class,
-			PagesSeeder::class,
-			CitiesSeeder::class,
-			CountiesSeeder::class,
-			CountriesTableSeeder::class,
-			DropdownsSeeder::class,
-			JobFunctionsSeeder::class,
-			JobIndustriesSeeder::class,
-			JobLocationsSeeder::class,
-			SkillsSeeder::class,
-			RolesSeeder::class,
-			AdminsSeeder::class,
-			PermissionsSeeder::class,
+			DropdownSeeder::class,
+			// PagesSeeder::class,
+			// CitiesSeeder::class,
+			// CountiesSeeder::class,
+			// CountriesTableSeeder::class,
+			// DropdownsSeeder::class,
+			// JobFunctionsSeeder::class,
+			// JobIndustriesSeeder::class,
+			// JobLocationsSeeder::class,
+			// SkillsSeeder::class,
+			// RolesSeeder::class,
+			// AdminsSeeder::class,
+			// PermissionsSeeder::class,
 		]);
 	}
 }

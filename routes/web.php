@@ -15,6 +15,8 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\GuestsController;
+use App\Http\Controllers\VehicleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -196,10 +198,38 @@ Route::middleware(['auth:admin'])->group(function () {
       Route::get('/view/{id}', [TicketsController::class, 'viewContactUsMessage'])->name('view_contact_us_message');
     });
 
+
+
+    // make and model
+    Route::get('/make-list', [VehicleController::class, 'makeList'])->name('make-list');
+    Route::get('/add-make', [VehicleController::class, 'addMake'])->name('add-make');
+    Route::post('/save-make', [VehicleController::class, 'saveMake'])->name('save-make-vehicle');
+    Route::get('/makeview/{id}', [VehicleController::class, 'viewMake'])->name('view_make');
+    Route::get('/editmake/{id}', [VehicleController::class, 'editMake'])->name('edit_make');
+    Route::post('/makeupdate', [VehicleController::class, 'updateMake'])->name('update_make');
+    Route::post('/makedelete', [VehicleController::class, 'deleteMake'])->name('delete_make');
+    // make and model
+    Route::get('/model-list', [VehicleController::class, 'modelList'])->name('model-list');
+    Route::get('/add-model', [VehicleController::class, 'addModel'])->name('add-model');
+    Route::post('/save-model', [VehicleController::class, 'saveModel'])->name('save-model-vehicle');
+    Route::get('/modelview/{id}', [VehicleController::class, 'viewModel'])->name('view_model');
+    Route::get('/editmodel/{id}', [VehicleController::class, 'editModel'])->name('edit_model');
+    Route::post('/modelupdate', [VehicleController::class, 'updateModel'])->name('update_model');
+    Route::post('/modeldelete', [VehicleController::class, 'deleteModel'])->name('delete_model');
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
-      Route::group(['prefix' => 'job_industries'], function () {
+      // Route::group(['prefix' => 'make_vehicle'], function () {
+      //   Route::get('/list', [MiscController::class, 'makeVehicleList'])->name('make_vehicle_list');
+      //   Route::get('/add', [MiscController::class, 'addMakeVehicle'])->name('add_make_vehicle');
+      //   // Route::post('/save', [MiscController::class, 'saveJobIndustry'])->name('save_job_industry');
+      //   // Route::get('/view/{id}', [MiscController::class, 'viewJobIndustry'])->name('view_job_industry');
+      //   // Route::get('/edit/{id}', [MiscController::class, 'editJobIndustry'])->name('edit_job_industry');
+      //   // Route::post('/update', [MiscController::class, 'updateJobIndustry'])->name('update_job_industry');
+      //   // Route::post('/delete', [MiscController::class, 'deleteJobIndustry'])->name('delete_job_industry');
+      //   // Route::post('/restore', [MiscController::class, 'restoreJobIndustry'])->name('restore_job_industry');
+      // });
+        Route::group(['prefix' => 'job_industries'], function () {
         Route::get('/list', [MiscController::class, 'jobIndustriesList'])->name('job_industries_list');
         Route::get('/add', [MiscController::class, 'addJobIndustry'])->name('add_job_industry');
         Route::post('/save', [MiscController::class, 'saveJobIndustry'])->name('save_job_industry');

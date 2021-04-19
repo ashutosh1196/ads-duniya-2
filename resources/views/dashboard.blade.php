@@ -11,7 +11,7 @@
 <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
+       <!--  <div class="row">
 
           @can('manage_whitelisted_customers')
             <div class="col-md-3 col-lg-3 col-xl-3 col-12">
@@ -118,7 +118,7 @@
             </div>
           @endcan
 
-            <!-- <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+            <div class="col-md-3 col-lg-3 col-xl-3 col-6">
               <div class="small-box job-applied">
                 <div class="inner">
                   <div class="left">
@@ -137,7 +137,7 @@
               </div>
             </div> -->
 
-        </div>
+        </div> 
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
