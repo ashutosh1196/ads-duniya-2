@@ -27,7 +27,7 @@
                    <th>French</th>    
                    <th>Haitian Creole</th>
                   <th>Spanish</th>
-                  <th>Brand</th>
+                  <th>Type</th>
                    <th>Action</th>  
                </tr>
            </thead>
@@ -37,7 +37,7 @@
                    <th>French</th>    
                    <th>Haitian Creole</th>
                   <th>Spanish</th>
-                  <th>Brand</th>
+                  <th>Type</th>
                    <th>Action</th> 
                </tr>
            </tfoot>

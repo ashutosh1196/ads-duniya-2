@@ -121,9 +121,18 @@ class VehicleController extends Controller
 			return json_encode($res);
 		}
 	}
+	public function getMake(Request $request){
+		//return $request->brand_id;
+       $models = MdBrand::where('brand_for',$request->brand_id)->get();
+       $res['status'] = true;
+       $res['data'] = $models;
+       return $res;
+   }
 	public function addModel() {
-		    $make = MdBrand::all();
-			return view('vehicle/model_vehicle/add_model_vehicle',['make' => $make]);
+		 //    $make = MdBrand::all();
+			// return view('vehicle/model_vehicle/add_model_vehicle',['make' => $make]);
+			$type = MdDropdown::where('belongs_to','make_type')->get();
+			return view('vehicle/model_vehicle/add_model_vehicle')->with('type',$type);
 		
 	}
 	public function saveModel(Request $request) {

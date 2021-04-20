@@ -367,26 +367,26 @@ return [
                         [
                             'text' => 'Cars',
                             'icon' => 'fas fa-fw fa-user',
-                            'url'  => 'admin_panel/model-list',
-                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                            'url'  => 'admin_panel/add-car',
+                            'active' => ['admin_panel/sells/car*'],
                         ],
                         [
                             'text' => 'Motos',
                             'icon' => 'fas fa-envelope',
-                            'url'  => 'admin_panel/model-list',
-                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                            'url'  => 'admin_panel/add-moto',
+                            'active' => ['admin_panel/sells/moto*'],
                         ],
                         [
                             'text' => 'Power Equipment',
                             'icon' => 'fas fa-comments',
-                            'url'  => 'admin_panel/model-list',
-                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                            'url'  => 'admin_panel/add-power-equipment',
+                            'active' => ['admin_panel/sells/power_equipment*'],
                         ],
                         [
                             'text' => 'Auto & Moto Parts',
                             'icon' => 'fas fa-ticket-alt',
-                            'url'  => 'admin_panel/model-list',
-                            'active' => ['admin_panel/vehicle/model_vehicle*'],
+                            'url'  => 'admin_panel/add-auto-moto',
+                            'active' => ['admin_panel/sells/auto_moto_parts*'],
                         ],
 
 

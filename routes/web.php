@@ -16,6 +16,7 @@ use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\GuestsController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Admin\SellController;
 
 
 /*
@@ -201,6 +202,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
 
     // make and model
+    Route::post('get-brand',[VehicleController::class, 'getMake'])->name('get-brand');
     Route::get('/make-list', [VehicleController::class, 'makeList'])->name('make-list');
     Route::get('/add-make', [VehicleController::class, 'addMake'])->name('add-make');
     Route::post('/save-make', [VehicleController::class, 'saveMake'])->name('save-make-vehicle');
@@ -218,7 +220,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/modeldelete', [VehicleController::class, 'deleteModel'])->name('delete_model');
 
     //sells
-    
+    Route::get('/add-car', [SellController::class, 'addCar'])->name('add-car');
+    Route::get('/add-moto', [SellController::class, 'addMoto'])->name('add-moto');
+    Route::get('/add-power-equipment', [SellController::class, 'addPowerEquipment'])->name('add-power-equipment');
+    Route::get('/add-auto-moto', [SellController::class, 'addAutoMoto'])->name('add-auto-moto');
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');
