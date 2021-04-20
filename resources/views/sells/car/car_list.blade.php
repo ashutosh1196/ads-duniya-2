@@ -27,7 +27,7 @@
                    <th>Make</th>
                   <th>Model</th>
                   <th>Manufacturing Date</th>
-                  <th>Vehicle Images</th> 
+                  
                    <th>Action</th> 
                </tr>
            </thead>
@@ -37,7 +37,7 @@
                    <th>Make</th>
                   <th>Model</th>
                   <th>Manufacturing Date</th>
-                  <th>Vehicle Images</th> 
+                   
                    <th>Action</th> 
                </tr>
            </tfoot>
@@ -48,10 +48,7 @@
                     <td>{{$list->make->brand_name_en}}</td>
                     <td>{{$list->model->model_name_en}}</td>
                      <td>{{$list->manufacturing_date}}</td>
-                     @php 
-                          $img = isset($list->getFile->file)?$list->getFile->file:'';
-                     @endphp
-                      <td><img src="{{asset('storage/inventory_files').'/'.$img}}" height="100px" width="100px" /></td>
+                     
                      <td>
                     <a class="action-button" title="View" href="car_view/{{$list->id}}"><i class="text-info fa fa-eye"></i></a>
 
