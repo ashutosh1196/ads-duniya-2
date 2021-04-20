@@ -367,7 +367,7 @@ return [
                         [
                             'text' => 'Cars',
                             'icon' => 'fas fa-fw fa-user',
-                            'url'  => 'admin_panel/add-car',
+                            'url'  => 'admin_panel/car-list',
                             'active' => ['admin_panel/sells/car*'],
                         ],
                         [

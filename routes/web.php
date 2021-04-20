@@ -219,10 +219,19 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/modelupdate', [VehicleController::class, 'updateModel'])->name('update_model');
     Route::post('/modeldelete', [VehicleController::class, 'deleteModel'])->name('delete_model');
 
-    //sells
+    //sell car
+    Route::post('get-model',[SellController::class, 'getModel'])->name('get-model');
     Route::get('/add-car', [SellController::class, 'addCar'])->name('add-car');
+    Route::post('/save-car', [SellController::class, 'saveCar'])->name('save-car');
+    Route::get('/car-list', [SellController::class, 'carList'])->name('car-list');
+     Route::get('/car_view/{id}', [SellController::class, 'viewCar'])->name('car_view');
+    //sell moto
     Route::get('/add-moto', [SellController::class, 'addMoto'])->name('add-moto');
+
+    //sell power equipment
     Route::get('/add-power-equipment', [SellController::class, 'addPowerEquipment'])->name('add-power-equipment');
+
+    //sell auto moto
     Route::get('/add-auto-moto', [SellController::class, 'addAutoMoto'])->name('add-auto-moto');
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {

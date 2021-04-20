@@ -29,7 +29,7 @@
               </div>
             @endif -->
 
-            <form id="makeVehicleForm" method="post" action="{{ route('save-make-vehicle') }}">
+            <form id="add_car_details_form" method="post" action="{{ route('save-car') }}" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
                 <!-- @if ($errors->any())
@@ -62,7 +62,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="english">Description<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
-                        <textarea  name="description" class="form-control" id="description">Description</textarea>
+                        <textarea  name="description" class="form-control" id="description" placeholder="description"></textarea>
                         @error('description')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
@@ -75,14 +75,14 @@
                  <div class="row">
                   <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="make">Make<span class="text-danger"> *</span></label>
-                        <select name="make" class="form-control" id="make">
-                      
-                          <option value="">select</option>
-                          <option value="0">suzuki</option>
-                       
+                        <label for="vehicle_make">Make<span class="text-danger"> *</span></label>
+                        <select name="vehicle_make" class="form-control" id="vehicle_make">
+                         <option value="" disabled="" selected>Select</option>
+                         @foreach($make as $data)
+                          <option value="{{$data->id}}">{{$data->brand_name_en}}</option>
+                        @endforeach
                         </select>
-                        @error('make')
+                        @error('vehicle_make')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -90,14 +90,11 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="model">Model<span class="text-danger"> *</span></label>
-                        <select name="model" class="form-control" id="model">
-                       
-                          <option value="">select vehicle model</option>
-                          <option value="0">bmw</option>
-                      
+                        <label for="vehicle_model">Model<span class="text-danger"> *</span></label>
+                        <select name="vehicle_model" class="form-control" id="vehicle_model">
+                       <option value="" disabled="" selected>Select vehicle Model</option>
                         </select>
-                        @error('make')
+                        @error('vehicle_model')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -108,8 +105,8 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                         <label for="make">Manufacturing Date<span class="text-danger"> *</span></label>
-                         <input type="date" name="manufacturing-date" class="form-control" id="manufacturing-date" maxlength="100">
-                        @error('manufacturing-date')
+                         <input type="date" name="manufacturing_date" class="form-control" id="manufacturing_date" placeholder="DD/MM/YYYY">
+                        @error('manufacturing_date')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -117,14 +114,14 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="fuel-type">Fuel Type<span class="text-danger"> *</span></label>
-                        <select name="fuel-type" class="form-control" id="fuel-type">
-                       
-                          <option value="">select</option>
-                          <option value="0">cng</option>
-                      
+                        <label for="fuel_type">Fuel Type<span class="text-danger"> *</span></label>
+                        <select name="fuel_type" class="form-control" id="fuel_type">
+                        <option value="" disabled="" selected>Select</option>
+                        @foreach($fuel_types as $fuel_type)
+                          <option value="{{$fuel_type->value}}">{{$fuel_type->name_en}}</option>
+                       @endforeach
                         </select>
-                        @error('make')
+                        @error('fuel_type')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -144,9 +141,9 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="drive">Drive<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
+                        <label for="drives">Drive<span class="text-danger"> *</span></label>
+                        <input type="text" name="drives" class="form-control" id="drives" maxlength="100">
+                        @error('drives')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -158,10 +155,10 @@
                       <div class="form-group">
                         <label for="transmission">Transmission<span class="text-danger"> *</span></label>
                         <select name="transmission" class="form-control" id="transmission">
-                      
-                          <option value="">select</option>
-                          <option value="0">automatic</option>
-                       
+                         <option value="" disabled="" selected>Select</option>
+                        @foreach($transmissions as $transmission)
+                          <option value="{{$transmission->value}}">{{$transmission->name_en}}</option>
+                       @endforeach
                         </select>
                         @error('transmission')
                         <div id ="car_error" class="error">{{ $message }}</div>
@@ -959,8 +956,8 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                         <label for="trim">Model Year<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
+                        <input type="text" name="vehicle_model_year" class="form-control" id="vehicle_model_year" maxlength="100">
+                        @error('vehicle_model_year')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -968,9 +965,9 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="drive">Mileage<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
+                        <label for="mileage">Mileage<span class="text-danger"> *</span></label>
+                        <input type="text" name="mileage" class="form-control" id="mileage" maxlength="100">
+                        @error('mileage')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -980,8 +977,8 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                         <label for="trim">Selling Price<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
+                        <input type="text" name="selling_price" class="form-control" id="selling_price" maxlength="100">
+                        @error('selling_price')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -990,8 +987,8 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="drive">Exterior color<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
+                        <input type="text" name="exterior_color" class="form-control" id="exterior_color" maxlength="100">
+                        @error('exterior_color')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -1001,8 +998,8 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                         <label for="trim">Interior color<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
+                        <input type="text" name="interior_color" class="form-control" id="interior_color" maxlength="100">
+                        @error('interior_color')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -1010,13 +1007,14 @@
                     <div class="col-sm-6">
                     <div class="form-group">
                         <label for="fuel-type">Mpg highway<span class="text-danger"> *</span></label>
-                        <select name="fuel-type" class="form-control" id="fuel-type">
-                       
-                          <option value="">select</option>
-                          <option value="0">cng</option>
+                        <select name="mpg_highway" class="form-control" id="mpg_highway">
+                          <option value="" disabled="" selected>Select</option>
+                         @foreach($mpg_highway as $item)
+                        <option value="{{$item->value}}">{{$item->name_en}}</option>
+                        @endforeach
                       
                         </select>
-                        @error('make')
+                        @error('mpg_highway')
                         <div id ="car_error" class="error">{{ $message }}</div>
                         @enderror
                       </div>
@@ -1118,43 +1116,509 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <!-- @section('js') -->
   <script>
- 
-     $('#makeVehicleForm').validate({
-         rules: {
-             english: {
-                 required: true
-             },
-             haitian: {
-                 required: true
-             },
-             french: {
-                 required: true
-             },
-             estonia: {
-                 required: true
-             },
-             type: {
-                 required: true
-             },      
-         },
-         messages: {
-             english: {
-                 required: "The English Language is required."
-             },            
-             haitian: {
-                 required: "The Haitian Language is required."
-             },
-             french: {
-                 required: "The French Language is required."
-             },        
-             estonia: {
-                 required: "The Estonia Language is required."
-             },
-             type: {
-                 required: "The Vehicle Brand is required."
-             },      
-         }
-     });
- </script>
+      $('#add_car_details_form').validate({
+          rules: {
+              title: {
+                  required: true
+              }, 
+              vehicle_make: {
+                  required: true
+              },
+              // vehicle_model: {
+              //     required: true
+              // },
+              vehicle_model_year: {
+                  required: true
+              },  
+              vin: {
+                  required: true
+              },
+              drives: {
+                  required: true
+              },
+              trim: {
+                  required: true
+              },
+              manufacturing_date: {
+                  required: true
+              },
+              fuel_type: {
+                  required: true
+              },
+              transmission: {
+                  required: true
+              },
+              mileage: {
+                  required: true
+              },
+              selling_price: {
+                  required: true
+              },
+              exterior_color: {
+                  required: true
+              },
+              interior_color: {
+                  required: true
+              },
+              mpg_highway: {
+                  required: true
+              },
+              description: {
+                  required: true
+              },
+              // condition: {
+              //     required: true
+              // },
+              // vehicle_ever_been_in_accident: {
+              //     required: true
+              // },
+              // vehicle_has_any_flood_damage: {
+              //     required: true
+              // },
+              // vehicle_has_any_frame_damage: {
+              //     required: true
+              // },
+              // vehicle_has_any_mechanical_issues: {
+              //     required: true
+              // },
+              // any_warning_lights_currently_visible: {
+              //     required: true
+              // },
+              // any_panel_in_need_of_paint_or_body_work: {
+              //     required: true
+              // },
+              // any_interior_parts_broken_or_inoperable: {
+              //     required: true
+              // },
+              // any_rips_tears_or_strains_in_interior: {
+              //     required: true
+              // },
+              // any_tyres_need_to_be_replaced: {
+              //     required: true
+              // },
+              // vehicle_has_any_aftermarket_modification: {
+              //     required: true
+              // },
+              // odometer_broken_or_replaced: {
+              //     required: true
+              // },
+              // how_many_vehicle_keys: {
+              //     required: true
+              // },
+             
+          },
+          messages: {
+              title: {
+                  required: "The Title is required."
+              },            
+              vehicle_make: {
+                  required: "The Make is required."
+              },
+              // vehicle_model: {
+              //     required: "The Model is required."
+              // },
+              vehicle_model_year: {
+                  required: "The Model Year is required."
+              },
+              vin: {
+                  required: "The Vin is required."
+              },
+              trim: {
+                  required: "The Trim is required."
+              },
+              transmission: {
+                  required: "The Transmission is required."
+              },
+              mileage: {
+                  required: "The Mileage is required."
+              },
+              selling_price: {
+                  required: "The Selling Price is required."
+              },
+              exterior_color: {
+                  required: "The Exterior color is required."
+              },
+              interior_color: {
+                  required: "The Interior color is required."
+              },
+              mpg_highway: {
+                  required: "The Mpg highway is required."
+              },
+              description: {
+                  required: "The Description is required."
+              },
+              manufacturing_date: {
+                  required: "The Manufacturing Date is required."
+              },
+              drives: {
+                  required: "The Drive is required."
+              },
 
+              // condition: {
+              //     required: "The Condition is required."
+              // },
+              // vehicle_ever_been_in_accident: {
+              //     required: "The Condition is required."
+              // },
+              // vehicle_has_any_flood_damage: {
+              //     required: true
+              // },
+              // vehicle_has_any_frame_damage: {
+              //     required: true
+              // },
+              // vehicle_has_any_mechanical_issues: {
+              //     required: true
+              // },
+              // any_warning_lights_currently_visible: {
+              //     required: true
+              // },
+              // any_panel_in_need_of_paint_or_body_work: {
+              //     required: true
+              // },
+              // any_interior_parts_broken_or_inoperable: {
+              //     required: true
+              // },
+              // any_rips_tears_or_strains_in_interior: {
+              //     required: true
+              // },
+              // any_tyres_need_to_be_replaced: {
+              //     required: true
+              // },
+              // vehicle_has_any_aftermarket_modification: {
+              //     required: true
+              // },
+              // odometer_broken_or_replaced: {
+              //     required: true
+              // },
+              // how_many_vehicle_keys: {
+              //     required: true
+              // },
+             
+          }
+      });
+  </script>
+
+     <script type="text/javascript">
+     $(document).ready(function() {
+      var file_base64_array = [];
+      if (window.File && window.FileList && window.FileReader) {
+        $("#files").on("change", function(e) {
+
+          // check file type
+          var ext = $(this).val().split('.').pop().toLowerCase();
+          if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+             $('#image_error').text('Invalid file format.');
+             $('#image_error').css('display','block');
+             return false;
+          }
+          var a=(this.files[0].size);
+          // alert(a/(1024*1024));
+          if(a/(1024*1024) > 2) {
+              $('#image_error').text('File size can not be greater than 2mb.');
+              $('#image_error').css('display','block');
+              return false;
+          };
+          // check file type
+          $('#image_error').text('You must select an image.');
+          $('#image_error').css('display','none');
+          var files = e.target.files,
+          filesLength = files.length;
+          for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              var file = e.target;
+
+              file_base64_array.push(e.target.result);
+              console.log(file_base64_array);
+              $('#image_array').val(file_base64_array);
+              
+              $("<span class=\"pip\" file=\"" + e.target.result + "\">" +
+                "<img height=\"100\" width=\"100\" class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<br/><span class=\"remove\">X</span>" +
+                "</span>").insertAfter("#files");
+              $(".remove").click(function(){
+                console.log('clicked---');
+                console.log(file_base64_array.length);
+                const index = file_base64_array.indexOf($(this).parent().attr('file'));
+                if (index > -1) {
+                  file_base64_array.splice(index, 1);
+                }
+                console.log(file_base64_array.length);
+                $('#image_array').val(file_base64_array);
+                $(this).parent(".pip").remove();
+              });
+              
+            });
+            fileReader.readAsDataURL(f);
+          }
+    
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+
+
+      $(document).on('click','#submit_btn',function(){
+        if($('#interior_color').val()!="" && $('#interior_color').val()!=null){
+          if(file_base64_array.length<1){
+            $('#image_error').css('display','block');
+            return false;
+          }else{
+            $('#image_error').css('display','none');
+
+          }
+        }
+
+
+        var flag = false;
+      
+        $("#condition_error").css('display','block');
+        flag = true;
+        $('.condition').each(function(){
+          if($(this).prop('checked')){
+            $("#condition_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#accident_error").css('display','block');
+        flag = true;
+        $('.vehicle_ever_been_in_accident').each(function(){
+          if($(this).prop('checked')){
+            $("#accident_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#flood_error").css('display','block');
+        flag = true;
+        $('.vehicle_has_any_flood_damage').each(function(){
+          if($(this).prop('checked')){
+            $("#flood_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#frame_error").css('display','block');
+        flag = true;
+        $('.vehicle_has_any_frame_damage').each(function(){
+          if($(this).prop('checked')){
+            $("#frame_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#issue_error").css('display','block');
+        flag = true;
+        $('.vehicle_has_any_mechanical_issues').each(function(){
+          if($(this).prop('checked')){
+            $("#issue_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#warning_error").css('display','block');
+        flag = true;
+        $('.any_warning_lights_currently_visible').each(function(){
+          if($(this).prop('checked')){
+            $("#warning_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#panel_error").css('display','block');
+        flag = true;
+        $('.any_panel_in_need_of_paint_or_body_work').each(function(){
+          if($(this).prop('checked')){
+            $("#panel_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#broken_error").css('display','block');
+        flag = true;
+        $('.any_interior_parts_broken_or_inoperable').each(function(){
+          if($(this).prop('checked')){
+            $("#broken_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#strain_error").css('display','block');
+        flag = true;
+        $('.any_rips_tears_or_strains_in_interior').each(function(){
+          if($(this).prop('checked')){
+            $("#strain_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#replace_error").css('display','block');
+        flag = true;
+        $('.any_tyres_need_to_be_replaced').each(function(){
+          if($(this).prop('checked')){
+            $("#replace_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#modification_error").css('display','block');
+        flag = true;
+        $('.vehicle_has_any_aftermarket_modification').each(function(){
+          if($(this).prop('checked')){
+            $("#modification_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#odometer_error").css('display','block');
+        flag = true;
+        $('.odometer_broken_or_replaced').each(function(){
+          if($(this).prop('checked')){
+            $("#odometer_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        $("#keys_error").css('display','block');
+        flag = true;
+        $('.how_many_vehicle_keys').each(function(){
+          if($(this).prop('checked')){
+            $("#keys_error").css('display','none');
+            flag = false;
+          }
+        })
+
+        if(flag){
+          if(($('#title').val()!="" && $('#title').val()!=null) && ($('#description').val()!="" && $('#description').val()!=null) && ($('#vehicle_make').val()!="" && $('#vehicle_make').val()!=null) && ($('#vehicle_model').val()!="" && $('#vehicle_model').val()!=null) && ($('#manufacturing_date').val()!="" && $('#manufacturing_date').val()!=null) && ($('#fuel_type').val()!="" && $('#fuel_type').val()!=null) && ($('#trim').val()!="" && $('#trim').val()!=null) && ($('#drives').val()!="" && $('#drives').val()!=null) && ($('#transmission').val()!="" && $('#transmission').val()!=null) && ($('#vin').val()!="" && $('#vin').val()!=null) && ($('#vehicle_model_year').val()!="" && $('#vehicle_model_year').val()!=null) && ($('#mileage').val()!="" && $('#mileage').val()!=null) && ($('#selling_price').val()!="" && $('#selling_price').val()!=null) && ($('#exterior_color').val()!="" && $('#exterior_color').val()!=null) && ($('#interior_color').val()!="" && $('#interior_color').val()!=null) && ($('#mpg_highway').val()!="" && $('#mpg_highway').val()!=null)){
+            return false;
+          }
+        }
+
+      })
+
+
+    });
+   </script>
+
+   <script type="text/javascript">
+    const input = document.getElementById('file-input');
+    const video = document.getElementById('video');
+    const videoSource = document.createElement('source');
+
+    input.addEventListener('change', function() {
+      $('#video').css('display','block');
+      const files = this.files || [];
+
+      if (!files.length) return;
+      
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        videoSource.setAttribute('src', e.target.result);
+        video.appendChild(videoSource);
+        video.load();
+        video.play();
+      };
+      
+      reader.onprogress = function (e) {
+        console.log('progress: ', Math.round((e.loaded * 100) / e.total));
+      };
+      
+      reader.readAsDataURL(files[0]);
+    });
+   </script>
+
+   <script type="text/javascript">
+     $(document).on('click','#choose_video',function(){
+      $('#file-input').click();
+      $('#video_url').val("");
+
+     })
+
+     $(document).on('keyup','#video_url',function(){
+      $('#file-input').val("")
+      $('#video').css('display','none');
+     })
+
+     $(document).on('click','#choose_image', function(){
+      $('#files').click();
+     })
+
+
+     $(document).on('change','#file-input',function(){
+      // check file type
+      var ext = $(this).val().split('.').pop().toLowerCase();
+      if($.inArray(ext, ['mp4','mov','webm']) == -1) {
+         $('#video').css('display','none');
+         $('#file-input').val('');
+         $('#video_error').text('Invalid file format.');
+         $('#video_error').css('display','block');
+         return false;
+      }
+      var a=(this.files[0].size);
+      // alert(a/(1024*1024));
+      if(a/(1024*1024) > 3) {
+          $('#video').css('display','none');
+          $('#file-input').val('');
+          $('#video_error').text('File size can not be greater than 3mb.');
+          $('#video_error').css('display','block');
+          return false;
+      };
+
+      $('#video_error').text('');
+      $('#video_error').css('display','none');
+      // check file type
+     })
+
+   </script>
+  
+   
+   
+ 
+   <script type="text/javascript">
+     $(document).on('change','#vehicle_make',function(){
+        var brand_id = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+           type:'POST',
+           url:"{{route('get-model')}}",
+           data :{
+            brand_id : brand_id,
+           },
+           success:function(response) {
+              console.log('success---------');
+              var html = "";
+              $.each(response.data,function(ind,val){
+                html = html + '<option value="'+val.id+'">'+val.model_name_en+'</option>'
+              })
+              $('#vehicle_model').html(html);
+           }
+        });
+     })
+   </script>
+
+
+   <script type="text/javascript">
+     $(document).on('click','#check_all',function(){
+      if($(this).prop('checked')==true){
+        $('.checkbox').each(function(){
+          $(this).prop('checked',true);
+        })
+      }else{
+        $('.checkbox').each(function(){
+          $(this).prop('checked',false);
+        })
+      }
+     })
+
+     $(document).on('click','.checkbox',function(){
+      $('#check_all').prop('checked',false);
+     })
+   </script>
 <!-- @stop -->
