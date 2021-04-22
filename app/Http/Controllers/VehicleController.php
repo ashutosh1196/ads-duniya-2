@@ -123,7 +123,7 @@ class VehicleController extends Controller
 	}
 	public function getMake(Request $request){
 		//return $request->brand_id;
-       $models = MdBrand::where('brand_for',$request->brand_id)->get();
+       $models = MdBrand::where('brand_for',$request->type)->get();
        $res['status'] = true;
        $res['data'] = $models;
        return $res;

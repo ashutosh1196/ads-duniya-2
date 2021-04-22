@@ -26,7 +26,7 @@
                    <th>Title</th>
                    <th>Make</th>
                   <th>Model</th>
-                  <th>Manufacturing Date</th>
+                  <th>Model Year</th>
                   
                    <th>Action</th> 
                </tr>
@@ -36,7 +36,7 @@
                    <th>Title</th>
                    <th>Make</th>
                   <th>Model</th>
-                  <th>Manufacturing Date</th>
+                  <th>Model Year</th>
                    
                    <th>Action</th> 
                </tr>
@@ -47,14 +47,14 @@
                   <td>{{$list->title}}</td>
                     <td>{{$list->make->brand_name_en}}</td>
                     <td>{{$list->model->model_name_en}}</td>
-                     <td>{{$list->manufacturing_date}}</td>
+                     <td>{{$list->vehicle_model_year}}</td>
                      
                      <td>
                     <a class="action-button" title="View" href="car_view/{{$list->id}}"><i class="text-info fa fa-eye"></i></a>
 
-                    <a class="action-button" title="Edit" href="#"><i class="text-warning fa fa-edit"></i></a>
+                    <a class="action-button" title="Edit" href="{{url('admin_panel/edit-car-details').'/'.$list->id}}"><i class="text-warning fa fa-edit"></i></a>
 
-                     <a class="action-button delete-button" title="Delete" href="#" data-id=""><i class="text-danger fa fa-trash-alt"></i></a>
+                     <a class="action-button delete-button" title="Delete" href="Javascript:void(0)" data-id="{{$list->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                    </td>
                </tr>
               @endforeach
@@ -101,7 +101,7 @@
         }, function(willDelete) {
           if (willDelete) {
             $.ajax({
-              url: "{{ route('delete_make') }}",
+              url: "{{ route('delete-inventory') }}",
               type: 'post',
               data: {
                 id: id
@@ -112,18 +112,15 @@
               },
               success: function(response) {
                 console.log("Response", response);
-                if(response.success == 1) {
+                if(response.status == true) {
                   window.location.reload();
-                  /* console.log("response", response);
-                  obj.parent().parent().remove(); */
                 }
                 else {
                   console.log("FALSE");
                   setTimeout(() => {
                   alert("Something went wrong! Please try again.");
                   }, 500);
-                  // swal("Error!", "Something went wrong! Please try again.", "error");
-                  // swal("Something went wrong! Please try again.");
+                  
                 }
               }
             });

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder {
 	public function run() {
 		// \App\Models\User::factory(10)->create();
 		$this->call([
-			DropdownSeeder::class,
+			// DropdownSeeder::class,
 			// PagesSeeder::class,
 			// CitiesSeeder::class,
 			// CountiesSeeder::class,
@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder {
 			// JobIndustriesSeeder::class,
 			// JobLocationsSeeder::class,
 			// SkillsSeeder::class,
-			// RolesSeeder::class,
-			// AdminsSeeder::class,
+			RolesSeeder::class,
+			AdminsSeeder::class,
 			// PermissionsSeeder::class,
 		]);
 	}

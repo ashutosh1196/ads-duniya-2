@@ -33,7 +33,6 @@ class CreateRecruitersTable extends Migration
             $table->tinyInteger('is_user_locked')->default(0);
             $table->timestamp('user_locked_at')->nullable();
             $table->timestamp('last_logged_in_at')->nullable();
-            $table->tinyInteger('is_warning_mail_sent')->default(0);
             $table->foreignId('organization_id')->constrained();
             $table->string('signup_token')->nullable();
             $table->enum('created_by', ['recruiter', 'admin'])->default('recruiter');

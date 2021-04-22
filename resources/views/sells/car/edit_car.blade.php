@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Add Car')
+@section('title', 'Edit Car')
 @section('content_header')
 @stop
 @section('content')
@@ -24,7 +24,7 @@
                 </div>
                 @endif
               <div class="title text-center">
-                <h4>Add Car Details</h4>
+                <h4>Edit Car Details</h4>
               </div>
 
 
@@ -39,7 +39,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label></i>Title<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('title') error @enderror" name="title" id="title" placeholder="Name" value="{{ old('title') }}">
+                      <input type="text" class="form-control @error('title') error @enderror" name="title" id="title" value="{{ $inventory->title }}">
                       @error('title')
                           <label class="error">
                               {{ $message }}
@@ -51,7 +51,7 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label>Description<span class="required">*</span></label>
-                      <textarea class="form-control @error('description') error @enderror" name="description" id="description" placeholder="Description" value="{{ old('description') }}"></textarea>
+                      <textarea class="form-control @error('description') error @enderror" name="description" id="description" value="{{ $inventory->description }}">{{ $inventory->description }}</textarea>
                       @error('description')
                           <label class="error">
                               {{ $message }}
@@ -71,15 +71,7 @@
                       <select name="vehicle_make" id="vehicle_make" class="form-control @error('vehicle_make') error @enderror">
                         <option value="" disabled="" selected>Select</option>
                         @foreach($make as $brand)
-                        @if(session()->get('locale') == 'fr')
-                        <option value="{{$brand->id}}">{{$brand->brand_name_fr}}</option>
-                        @elseif(session()->get('locale') == 'sp')
-                        <option value="{{$brand->id}}">{{$brand->brand_name_es}}</option>
-                        @elseif(session()->get('locale') == 'hc')
-                        <option value="{{$brand->id}}">{{$brand->brand_name_ht}}</option>
-                        @else
-                        <option value="{{$brand->id}}">{{$brand->brand_name_en}}</option>
-                        @endif
+                        <option value="{{$brand->id}}" @if($inventory->make_id==$brand->id) selected @endif>{{$brand->brand_name_en}}</option>
                         @endforeach
                         
                       </select>
@@ -106,7 +98,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Manufacturing date<span class="required">*</span></label>
-                      <input type="date" name="manufacturing_date" id="manufacturing_date" class="form-control @error('manufacturing_date') error @enderror" placeholder="DD/MM/YYYY">
+                      <input type="date" name="manufacturing_date" id="manufacturing_date" class="form-control @error('manufacturing_date') error @enderror" value="{{date('Y-m-d',strtotime($inventory->manufacturing_date))}}">
 
 
                       @error('manufacturing_date')
@@ -123,15 +115,7 @@
                       <select name="fuel_type" id="fuel_type" class="form-control @error('fuel_type') error @enderror">
                         <option value="" disabled="" selected>Select</option>
                         @foreach($fuel_types as $fuel_type)
-                        @if(session()->get('locale') == 'fr')
-                        <option value="{{$fuel_type->value}}">{{$fuel_type->name_fr}}</option>
-                        @elseif(session()->get('locale') == 'sp')
-                        <option value="{{$fuel_type->value}}">{{$fuel_type->name_es}}</option>
-                        @elseif(session()->get('locale') == 'hc')
-                        <option value="{{$fuel_type->value}}">{{$fuel_type->name_ht}}</option>
-                        @else
-                        <option value="{{$fuel_type->value}}">{{$fuel_type->name_en}}</option>
-                        @endif
+                        <option value="{{$fuel_type->value}}" @if($fuel_type->value==$inventory->fuel_type) selected @endif>{{$fuel_type->name_en}}</option>
                         @endforeach
 
 
@@ -147,7 +131,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="trim">Trim<span class="required">*</span></label>
-                      <input type="text" name="trim" id="trim" class="form-control @error('trim') error @enderror" value="{{ old('trim') }}" placeholder="">
+                      <input type="text" name="trim" id="trim" class="form-control @error('trim') error @enderror" value="{{ $inventory->trim }}">
                       @error('trim')
                           <label class="error">
                               {{ $message }}
@@ -159,7 +143,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Drive<span class="required">*</span></label>
-                      <input type="text" name="drives" id="drives" class="form-control @error('drives') error @enderror" placeholder="" value="{{ old('drives') }}">
+                      <input type="text" name="drives" id="drives" class="form-control @error('drives') error @enderror" value="{{ $inventory->drives }}">
                       @error('drives')
                           <label class="error">
                               {{ $message }}
@@ -174,15 +158,9 @@
                       <select name="transmission" id="transmission" class="@error('transmission') error @enderror form-control">
                         <option value="" disabled="" selected>Select</option>
                         @foreach($transmissions as $transmission)
-                        @if(session()->get('locale') == 'fr')
-                        <option value="{{$transmission->value}}">{{$transmission->name_fr}}</option>
-                        @elseif(session()->get('locale') == 'sp')
-                        <option value="{{$transmission->value}}">{{$transmission->name_es}}</option>
-                        @elseif(session()->get('locale') == 'hc')
-                        <option value="{{$transmission->value}}">{{$transmission->name_ht}}</option>
-                        @else
-                        <option value="{{$transmission->value}}">{{$transmission->name_en}}</option>
-                        @endif
+                        
+                        <option value="{{$transmission->value}}" @if($transmission->value==$inventory->transmission) selected @endif>{{$transmission->name_en}}</option>
+                        
                         @endforeach
                       </select>
                       @error('transmission')
@@ -196,7 +174,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Vin<span class="required">*</span></label>
-                      <input type="text" name="vin" id="vin" class="form-control @error('vin') error @enderror" value="{{ old('vin') }}" placeholder="Vin">
+                      <input type="text" name="vin" id="vin" class="form-control @error('vin') error @enderror" value="{{$inventory->vin}}">
                       @error('vin')
                           <label class="error">
                               {{ $message }}
@@ -223,47 +201,17 @@
                     </div>
                   </div>
                   @foreach($extra_features as $extra_feature)
-                  @if(session()->get('locale') == 'fr')
+                  
                   <div class="col-md-4">
                     <div class="form-group">
                       <div class="custom_check">
-                          <input type="checkbox" name="{{$extra_feature->slug}}" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>{{$extra_feature->name_fr}}</label>
-                    </div>
-                  </div>
-                  @elseif(session()->get('locale') == 'sp')
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="{{$extra_feature->slug}}" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>{{$extra_feature->name_es}}</label>
-                    </div>
-                  </div>
-                  @elseif(session()->get('locale') == 'hc')
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="{{$extra_feature->slug}}" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>{{$extra_feature->name_ht}}</label>
-                    </div>
-                  </div>
-                  @else
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="{{$extra_feature->slug}}" class="form-control checkbox">
+                          <input type="checkbox" @if($inventory[$extra_feature->slug]==1) checked @endif name="{{$extra_feature->slug}}" class="form-control checkbox">
                           <span></span>
                       </div>
                       <label>{{$extra_feature->name_en}}</label>
                     </div>
                   </div>
-                  @endif
+                  
                   @endforeach
         
                 </div>
@@ -288,7 +236,7 @@
                           @foreach($conditions as $condition)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="condition" value="{{$condition->value}}" class="form-control condition">
+                                <input type="radio" name="condition" @if($inventory->condition==$condition->value) checked @endif value="{{$condition->value}}" class="form-control condition">
                                 <span></span>
                             </div>                       
                             <label>{{$condition->name_en}}</label>
@@ -315,7 +263,7 @@
                             @foreach($accidents as $accident)
                             <div class="form-group mr-3">
                               <div class="custom_check radio">
-                                  <input type="radio" name="vehicle_ever_been_in_accident" value="{{$accident->value}}" class="form-control vehicle_ever_been_in_accident">
+                                  <input type="radio" @if($inventory->vehicle_ever_been_in_accident==$accident->value) checked @endif name="vehicle_ever_been_in_accident" value="{{$accident->value}}" class="form-control vehicle_ever_been_in_accident">
                                   <span></span>
                               </div>                       
                               <label>{{$accident->name_en}}</label>
@@ -343,7 +291,7 @@
                             @foreach($flood_damages as $flood_damage)
                             <div class="form-group mr-3">
                               <div class="custom_check radio">
-                                  <input type="radio" name="vehicle_has_any_flood_damage" value="{{$flood_damage->value}}" class="form-control vehicle_has_any_flood_damage">
+                                  <input type="radio" name="vehicle_has_any_flood_damage" @if($inventory->vehicle_has_any_flood_damage==$flood_damage->value) checked @endif value="{{$flood_damage->value}}" class="form-control vehicle_has_any_flood_damage">
                                   <span></span>
                               </div>                       
                               <label>{{$flood_damage->name_en}}</label>
@@ -370,7 +318,7 @@
                             @foreach($frame_damages as $frame_damage)
                             <div class="form-group mr-3">
                               <div class="custom_check radio">
-                                  <input type="radio" name="vehicle_has_any_frame_damage" value="{{$frame_damage->value}}" class="form-control vehicle_has_any_frame_damage">
+                                  <input type="radio" name="vehicle_has_any_frame_damage" value="{{$frame_damage->value}}" @if($inventory->vehicle_has_any_frame_damage==$frame_damage->value) checked @endif class="form-control vehicle_has_any_frame_damage">
                                   <span></span>
                               </div>                       
                               <label>{{$frame_damage->name_en}}</label>
@@ -396,7 +344,7 @@
                             @foreach($mechanical_issues as $issue)
                             <div class="form-group mr-3">
                               <div class="custom_check radio">
-                                  <input type="radio" id="vehicle_has_any_mechanical_issues" name="vehicle_has_any_mechanical_issues" class="form-control vehicle_has_any_mechanical_issues" value="{{$issue->value}}">
+                                  <input type="radio" id="vehicle_has_any_mechanical_issues" name="vehicle_has_any_mechanical_issues" @if($inventory->vehicle_has_any_mechanical_issues==$issue->value) checked @endif class="form-control vehicle_has_any_mechanical_issues" value="{{$issue->value}}">
                                   <span></span>
                               </div>                      
                               <label>{{$issue->name_en}}</label>
@@ -423,7 +371,7 @@
                           @foreach($lights_warning as $warning)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="any_warning_lights_currently_visible" class="form-control any_warning_lights_currently_visible" value="{{$warning->value}}">
+                                <input type="radio" name="any_warning_lights_currently_visible" class="form-control any_warning_lights_currently_visible"  @if($inventory->any_warning_lights_currently_visible==$warning->value) checked @endif value="{{$warning->value}}">
                                 <span></span>
                             </div>                      
                             <label>{{$warning->name_en}}</label>
@@ -451,7 +399,7 @@
                           @foreach($paint_or_body_work as $work)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="any_panel_in_need_of_paint_or_body_work" class="form-control any_panel_in_need_of_paint_or_body_work" id="any_panel_in_need_of_paint_or_body_work" value="{{$work->value}}">
+                                <input type="radio" name="any_panel_in_need_of_paint_or_body_work" class="form-control any_panel_in_need_of_paint_or_body_work" id="any_panel_in_need_of_paint_or_body_work" @if($inventory->any_panel_in_need_of_paint_or_body_work==$work->value) checked @endif value="{{$work->value}}">
                                 <span></span>
                             </div>                      
                             <label>{{$work->name_en}}</label>
@@ -479,7 +427,7 @@
                           @foreach($interior_part_broken as $broken)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="any_interior_parts_broken_or_inoperable" class="form-control any_interior_parts_broken_or_inoperable" value="{{$broken->value}}">
+                                <input type="radio" name="any_interior_parts_broken_or_inoperable" class="form-control any_interior_parts_broken_or_inoperable" value="{{$broken->value}}" @if($inventory->any_interior_parts_broken_or_inoperable==$broken->value) checked @endif>
                                 <span></span>
                             </div>                      
                             <label>{{$broken->name_en}}</label>
@@ -509,7 +457,7 @@
                           @foreach($interior_tear_or_strain as $strain)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" id="any_rips_tears_or_strains_in_interior" name="any_rips_tears_or_strains_in_interior" class="form-control any_rips_tears_or_strains_in_interior" value="{{$strain->value}}">
+                                <input type="radio" id="any_rips_tears_or_strains_in_interior" name="any_rips_tears_or_strains_in_interior" class="form-control any_rips_tears_or_strains_in_interior" @if($inventory->any_rips_tears_or_strains_in_interior==$strain->value) checked @endif value="{{$strain->value}}">
                                 <span></span>
                             </div>                      
                             <label>{{$strain->name_en}}</label>
@@ -537,7 +485,7 @@
                           @foreach($tyre_replacable as $replace)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" id="any_tyres_need_to_be_replaced" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="{{$replace->value}}">
+                                <input type="radio" id="any_tyres_need_to_be_replaced" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" @if($inventory->any_tyres_need_to_be_replaced==$replace->value) checked @endif value="{{$replace->value}}">
                                 <span></span>
                             </div>                      
                             <label>{{$replace->name_en}}</label>
@@ -565,7 +513,7 @@
                           @foreach($aftermarket_modification as $modification)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" id="vehicle_has_any_aftermarket_modification" name="vehicle_has_any_aftermarket_modification" class="form-control vehicle_has_any_aftermarket_modification" value="{{$modification->value}}">
+                                <input type="radio" id="vehicle_has_any_aftermarket_modification" name="vehicle_has_any_aftermarket_modification" class="form-control vehicle_has_any_aftermarket_modification" value="{{$modification->value}}" @if($inventory->vehicle_has_any_aftermarket_modification==$modification->value) checked @endif>
                                 <span></span>
                             </div>                      
                             <label>{{$modification->name_en}}</label>
@@ -593,7 +541,7 @@
                           @foreach($odometer_broken as $odometer)
                           <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="odometer_broken_or_replaced" class="form-control odometer_broken_or_replaced" value="{{$odometer->value}}">
+                                <input type="radio" name="odometer_broken_or_replaced" class="form-control odometer_broken_or_replaced" value="{{$odometer->value}}" @if($inventory->odometer_broken_or_replaced==$odometer->value) checked @endif>
                                 <span></span>
                             </div>                      
                             <label>{{$odometer->name_en}}</label>
@@ -621,7 +569,7 @@
                           @foreach($keys as $key)
                           <div class="form-group d-flex align-items-center mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" id="how_many_vehicle_keys" name="how_many_vehicle_keys" class="form-control how_many_vehicle_keys" value="{{$key->value}}">
+                                <input type="radio" id="how_many_vehicle_keys" name="how_many_vehicle_keys" class="form-control how_many_vehicle_keys" value="{{$key->value}}" @if($inventory->how_many_vehicle_keys==$key->value) checked @endif>
                                 <span></span>
                             </div>                      
                             <label class="keys_count">{{$key->name_en}}</label>
@@ -641,7 +589,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Model Year<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('vehicle_model_year') error @enderror" name="vehicle_model_year" id="vehicle_model_year" name="vehicle_model_year" value="{{ old('vehicle_model_year') }}" placeholder="Model Year">
+                      <input type="text" class="form-control @error('vehicle_model_year') error @enderror" name="vehicle_model_year" id="vehicle_model_year" name="vehicle_model_year" value="{{ $inventory->vehicle_model_year }}">
                       @error('vehicle_model_year')
                           <label class="error">
                               {{ $message }}
@@ -652,7 +600,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Mileage<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('mileage') error @enderror" placeholder="Mileage" value="{{ old('mileage') }}" name="mileage" id="mileage">
+                      <input type="text" class="form-control @error('mileage') error @enderror" value="{{ $inventory->mileage }}" name="mileage" id="mileage">
                       @error('mileage')
                           <label class="error">
                               {{ $message }}
@@ -665,7 +613,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Miles Traveled<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('miles_traveled') error @enderror" placeholder="Miles Traveled" value="{{ old('miles_traveled') }}" name="miles_traveled" id="miles_traveled">
+                      <input type="text" class="form-control @error('miles_traveled') error @enderror" value="{{ $inventory->miles_traveled }}" name="miles_traveled" id="miles_traveled">
                       @error('mileage')
                           <label class="error">
                               {{ $message }}
@@ -678,7 +626,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Selling Price<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('selling_price') error @enderror" name="selling_price" placeholder="Selling Price" value="{{ old('selling_price') }}" id="selling_price">
+                      <input type="text" class="form-control @error('selling_price') error @enderror" name="selling_price" value="{{ $inventory->selling_price }}" id="selling_price">
                       @error('selling_price')
                           <label class="error">
                               {{ $message }}
@@ -690,7 +638,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Exterior color<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('exterior_color') error @enderror" name="exterior_color" id="exterior_color" placeholder="Exterior color" value="{{ old('exterior_color') }}">
+                      <input type="text" class="form-control @error('exterior_color') error @enderror" name="exterior_color" id="exterior_color" value="{{ $inventory->exterior_color}}">
                       @error('exterior_color')
                           <label class="error">
                               {{ $message }}
@@ -701,7 +649,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Interior color<span class="required">*</span></label>
-                      <input type="text" class="form-control @error('interior_color') error @enderror" name="interior_color" id="interior_color" placeholder="Interior color" value="{{ old('interior_color') }}">
+                      <input type="text" class="form-control @error('interior_color') error @enderror" name="interior_color" id="interior_color" value="{{ $inventory->interior_color}}">
                       @error('interior_color')
                           <label class="error">
                               {{ $message }}
@@ -715,7 +663,7 @@
                       <select name="mpg_highway" id="mpg_highway" class="@error('mpg_highway') error @enderror form-control">
                         <option value="" disabled="" selected>Select</option>
                         @foreach($mpg_highway as $item)
-                        <option value="{{$item->value}}">{{$item->name_en}}</option>
+                        <option value="{{$item->value}}" @if($item->value==$inventory->mpg_highway) selected @endif>{{$item->name_en}}</option>
                         @endforeach
                       </select>
                       @error('mpg_highway')
@@ -761,6 +709,24 @@
 
                 </div>
 
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                <div class="form-group">
+                  <label>Vehicle Images</label><br><br>
+                  @foreach($inventory->images as $image)
+                  <!-- <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="150" width="auto" /> -->
+
+
+                  <span class="pip">
+                    <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="100px" width="100px" class="imageThumb">
+                    <br>
+                    <span class="remove delete_image">X</span>
+                  </span>
+
+                  @endforeach
+                </div>
+              </div>
+
+
                 <br>
                 <div class="form-group">
                   <h5>Vehicle Video</h5>
@@ -790,6 +756,18 @@
                     </div>
                   </div>
 
+
+                  @if($inventory->video)
+                  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                    <div class="form-group">
+                      <label>Vehicle Video</label><br><br>
+                      <video id="video" width="300" height="300" src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$inventory->video->file}}" style="height:auto" controls class="form-control"></video>
+                      
+                    </div>
+                  </div>
+                  @endif
+
+
                 </div>
                 <div class="or">
                   <label>OR</label>
@@ -807,7 +785,7 @@
                 <!-- vehicle media -->
                 <!-- <input id="datepicker" width="270" /> -->
 
-                <button type="submit" id="submit_btn" class="btn btn-primary mt-2">Submit</button>
+                <button type="submit" id="submit_btn" class="btn btn-primary mt-2"><i class="fa fa-sign-in mr-2"></i>Submit</button>
                 
               </form>              
             </div>

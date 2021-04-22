@@ -23,4 +23,12 @@ class Inventory extends Model
     	return $this->hasOne(InventoryFile::class,'inventory_id','id');
     }
 
+    public function images(){
+        return $this->hasMany(InventoryFile::class)->where('media_type',0);
+    }
+
+    public function video(){
+        return $this->hasOne(InventoryFile::class)->where('media_type',1);
+    }
+
 }

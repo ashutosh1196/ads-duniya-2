@@ -77,7 +77,7 @@ class DropdownSeeder extends Seeder
 
 			['name_en' => 'Side Airbags','name_es' => 'Airbags laterales','name_fr' => 'Airbags latéraux','name_ht' => 'Èrbag Side','slug'=>'side_airbags','belongs_to'=>'extra_features','type'=>0,'value'=>null],
 
-			['name_en' => 'Smart Key','name_es' => 'Llave inteligente','name_fr' => 'Clé intelligente','name_ht' => 'Smart Key','slug'=>'smart_key','belongs_to'=>'extra_features','type'=>0,'value'=>null],
+			['name_en' => 'Smart Key','name_es' => 'Llave inteligente','name_fr' => 'Clé intelligente','name_ht' => 'Smart Key','slug'=>'smart_keys','belongs_to'=>'extra_features','type'=>0,'value'=>null],
 
 			['name_en' => 'Sunroof(s)','name_es' => 'Techo (s) corredizo','name_fr' => 'Toit (s) ouvrant (s)','name_ht' => 'Twati ouvè','slug'=>'sun_roof','belongs_to'=>'extra_features','type'=>0,'value'=>null],
 
@@ -119,7 +119,7 @@ class DropdownSeeder extends Seeder
 
 			['name_en' => 'Power Locks','name_es' => 'Power Locks','name_fr' => 'Power Locks','name_ht' => 'Power Locks','slug'=>'power_locks','belongs_to'=>'extra_features','type'=>1,'value'=>null],
 
-			['name_en' => 'Smart Key','name_es' => 'Smart Key','name_fr' => 'Smart Key','name_ht' => 'Smart Key','slug'=>'smart_key','belongs_to'=>'extra_features','type'=>1,'value'=>null],
+			['name_en' => 'Smart Key','name_es' => 'Smart Key','name_fr' => 'Smart Key','name_ht' => 'Smart Key','slug'=>'smart_keys','belongs_to'=>'extra_features','type'=>1,'value'=>null],
 
 			['name_en' => 'Alloy Wheels','name_es' => 'Alloy Wheels','name_fr' => 'Alloy Wheels','name_ht' => 'Alloy Wheels','slug'=>'alloy_wheels','belongs_to'=>'extra_features','type'=>1,'value'=>null],
 

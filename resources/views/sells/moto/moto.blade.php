@@ -1,198 +1,149 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Car')
+@section('title', 'Add Moto')
 
 @section('content_header')
 @stop
 
 @section('content')
 
-<section id="form_wraper">
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-12">
-        <div class="card">
-          <div class="card-header alert d-flex justify-content-between align-items-center">
-            <h3>Moto Details</h3>
-            <a class="btn btn-sm btn-success" href="{{ url()->previous() }}">back<!-- {{ __('adminlte::adminlte.back') }} --></a>
-          </div>
-         
-          
-          <div class="card-body">
-            <div class="form-group mt-4">
-                  <h5>Primary Information</h5>
+ <section id="form_wraper">
+      <div id="particles-js"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="sell_form">
+
+              <!-- messages section -->
+              @if ($message = Session::get('success'))
+              <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                      <strong>{{ $message }}</strong>
+              </div>
+              @endif
+
+              @if ($message = Session::get('warning'))
+              <div class="alert alert-warning alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                      <strong>{{ $message }}</strong>
+              </div>
+              @endif
+              <!-- messages section -->
+
+              <div class="title text-center">
+                <h4>Moto Details</h4>
+              </div>
+              <form id="add_car_details_form" action="{{route('save-moto')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <h5>Primary information</h5>
                 </div>
                 <hr>
-            <!-- @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-              </div>
-            @endif -->
-
-            <form id="makeVehicleForm" method="post" action="{{ route('save-make-vehicle') }}">
-              @csrf
-              <div class="card-body">
-                <!-- @if ($errors->any())
-                  <div class="alert alert-warning">
-                    <ul>
-                      @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                      @endforeach
-                    </ul>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Title<span class="required">*</span></label>
+                      <input type="text" class="form-control" name="title" id="title" placeholder="Name">
+                    </div>
                   </div>
-                @endif -->
-
-                <div class="information_fields">
-                  
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="english">Title<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
-                        <input type="text" name="title" class="form-control" id="title" maxlength="100">
-                        @error('title')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                        <!-- @if($errors->has('name'))
-                          <div class="error">{{ $errors->first('name') }}</div>
-                        @endif -->
-                      </div>
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="english">Description<!-- {{ __('adminlte::adminlte.name') }} --><span class="text-danger">*</span></label>
-                        <textarea  name="description" class="form-control" id="description">Description</textarea>
-                        @error('description')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                        <!-- @if($errors->has('name'))
-                          <div class="error">{{ $errors->first('name') }}</div>
-                        @endif -->
-                      </div>
-                    </div>
-                </div>
-                 <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="make">Make<span class="text-danger"> *</span></label>
-                        <select name="make" class="form-control" id="make">
-                      
-                          <option value="">select</option>
-                          <option value="0">suzuki</option>
-                       
-                        </select>
-                        @error('make')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="model">Model<span class="text-danger"> *</span></label>
-                        <select name="model" class="form-control" id="model">
-                       
-                          <option value="">select vehicle model</option>
-                          <option value="0">bmw</option>
-                      
-                        </select>
-                        @error('make')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="make">Manufacturing Date<span class="text-danger"> *</span></label>
-                         <input type="date" name="manufacturing-date" class="form-control" id="manufacturing-date" maxlength="100">
-                        @error('manufacturing-date')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="fuel-type">Fuel Type<span class="text-danger"> *</span></label>
-                        <select name="fuel-type" class="form-control" id="fuel-type">
-                       
-                          <option value="">select</option>
-                          <option value="0">cng</option>
-                      
-                        </select>
-                        @error('make')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="trim">Trim<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="drive">Displacement<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="transmission">Transmission<span class="text-danger"> *</span></label>
-                        <select name="transmission" class="form-control" id="transmission">
-                      
-                          <option value="">select</option>
-                          <option value="0">automatic</option>
-                       
-                        </select>
-                        @error('transmission')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="vin">Vin<span class="text-danger"> *</span></label>
-                        <input type="text" name="vin" placeholder="vin"class="form-control" id="vin" maxlength="100">
-                        @error('vin')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
                  
-              </div>
-              
-              <!-- /.card-body -->
 
-               <!-- </div>
-                </div> -->
-              <div class="form-group mt-4">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Description<span class="required">*</span></label>
+                      <textarea class="form-control" placeholder="Description" name="description" id="description"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Make<span class="required">*</span></label>
+                      <select name="make" id="make" class="form-control @error('make') error @enderror">
+                        <option value="" disabled="" selected>Select</option>
+                        @foreach($brands as $brand)
+                        @if(session()->get('locale') == 'fr')
+                        <option value="{{$brand->id}}">{{$brand->brand_name_fr}}</option>
+                        @elseif(session()->get('locale') == 'sp')
+                        <option value="{{$brand->id}}">{{$brand->brand_name_es}}</option>
+                        @elseif(session()->get('locale') == 'hc')
+                        <option value="{{$brand->id}}">{{$brand->brand_name_ht}}</option>
+                        @else
+                        <option value="{{$brand->id}}">{{$brand->brand_name_en}}</option>
+                        @endif
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Model<span class="required">*</span></label>
+                      <select name="model" id="model" class="form-control @error('model') error @enderror">
+                       <option value="" disabled="" selected>Select Vehicle Model</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Manufacturing Date<span class="required">*</span></label>
+                      <input type="date" name="manufacturing_date" id="manufacturing_date" class="form-control" placeholder="DD/MM/YYYY" >
+                    </div>
+                  </div>  
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Transmission<span class="required">*</span></label>
+                      <select name="transmission" id="transmission" class="form-control @error('transmission') error @enderror">
+                        <option value="" disabled="" selected>Select</option>
+                        @foreach($transmissions as $transmission)
+                        <option value="{{$transmission->value}}">{{$transmission->name_en}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Fuel Type<span class="required">*</span></label>
+                      <select name="fuel_type" id="fuel_type" class="form-control @error('fuel_type') error @enderror">
+                        <option value="" disabled="" selected>Select</option>
+                        @foreach($fuel_types as $fuel_type)
+                        <option value="{{$fuel_type->value}}">{{$fuel_type->name_en}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="trim">Trim<span class="required">*</span></label>
+                      <input type="text" name="trim" id="trim" class="form-control" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="trim">Displacement<span class="required">*</span></label>
+                      <input type="text" class="form-control" placeholder="Ex: 350 cc" name="displacement" id="displacement">
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Vin<span class="required">*</span></label>
+                      <input type="text" name="vin" id="vin" class="form-control" placeholder="Vin">
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+                <div class="form-group">
                   <h5>Extra Features</h5>
                 </div>
                 <hr>
-             <div class="row checkbox_wrap">
 
-                  <div class="col-md-4">
+                <div class="row checkbox_wrap">
+                  <div class="col-12">
                     <div class="form-group">
                       <div class="custom_check">
                           <input type="checkbox" id="check_all" name="check_all" class="form-control check_all">
@@ -201,135 +152,27 @@
                       <label class="select_all">Select All</label>
                     </div>
                   </div>
+                  @foreach($extra_features as $extra_feature)
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="custom_check">
+                          <input type="checkbox" name="{{$extra_feature->slug}}" class="form-control checkbox">
+                          <span></span>
+                      </div>
+                      <label>{{$extra_feature->name_en}}</label>
+                    </div>
+                  </div>
+                  @endforeach
+
+                  
                 </div>
+
                 <br>
-                <div class="row checkbox_wrap">
-                  
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="keyless_ignition" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Keyless Ignition</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="navigation_system" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Navigation System</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="sports_bike_gas_tanks" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Sports Bike Gas Tanks</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="leg_guards" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Leg Guards</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="motorbike_alarms" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Motorbike Alarms</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="sound_system" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Sound System</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="front_disc_brakes" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Front Disc Brakes</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="rear_disc_brakes" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Rear Disc Brakes</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="digital_console" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Digital console</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="power_locks" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Power Locks</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="smart_key" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Smart Key</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="alloy_wheels" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Alloy Wheels</label>
-                    </div>
-                  </div>
-                                    <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="custom_check">
-                          <input type="checkbox" name="tubeless_tyres" class="form-control checkbox">
-                          <span></span>
-                      </div>
-                      <label>Tubeless Tyres</label>
-                    </div>
-                  </div>
-                  
-                  
-                </div>
-              <div class="form-group mt-4">
-                  <h5>More Information About Vehicle Condition</h5>
+                <div class="form-group">
+                  <h5>More information about the Vehicle</h5>
                 </div>
                 <hr>
-               <div class="row radio_wrap">
+                <div class="row radio_wrap">
                   <div class="col-md-6">
                     <div class="form-group">
                       <h6>Condition<span class="required">*</span></h6>
@@ -338,42 +181,16 @@
 
                     <div class="form_inner_wrap d-flex flex-wrap">
 
-                                            <div class="form-group mr-3">
+                      @foreach($conditions as $condition)
+                      <div class="form-group mr-3">
                         <div class="custom_check radio">
-                            <input type="radio" name="condition" value="0" class="form-control condition">
+                            <input type="radio" name="condition" value="{{$condition->value}}" class="form-control condition">
                             <span></span>
                         </div>                       
-                        <label>Outstanding</label>
+                        <label>{{$condition->name_en}}</label>
                       </div>
-                                            <div class="form-group mr-3">
-                        <div class="custom_check radio">
-                            <input type="radio" name="condition" value="1" class="form-control condition">
-                            <span></span>
-                        </div>                       
-                        <label>Clean</label>
-                      </div>
-                                            <div class="form-group mr-3">
-                        <div class="custom_check radio">
-                            <input type="radio" name="condition" value="2" class="form-control condition">
-                            <span></span>
-                        </div>                       
-                        <label>Average</label>
-                      </div>
-                                            <div class="form-group mr-3">
-                        <div class="custom_check radio">
-                            <input type="radio" name="condition" value="3" class="form-control condition">
-                            <span></span>
-                        </div>                       
-                        <label>Rough</label>
-                      </div>
-                                            <div class="form-group mr-3">
-                        <div class="custom_check radio">
-                            <input type="radio" name="condition" value="4" class="form-control condition">
-                            <span></span>
-                        </div>                       
-                        <label>Damaged</label>
-                      </div>
-                                        
+                      @endforeach
+                  
                     </div>
                     <div class="form-group field_error" id="condition_error" style="display:none">
                       <label for="conditon">This field is required.</label>
@@ -388,21 +205,16 @@
                     <div class="row radio_wrap">
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group mr-3">
+                          @foreach($accidents as $accident)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="vehicle_ever_been_in_accident" value="1" class="form-control vehicle_ever_been_in_accident">
+                                <input type="radio" name="vehicle_ever_been_in_accident" value="{{$accident->value}}" class="form-control vehicle_ever_been_in_accident">
                                 <span></span>
                             </div>                       
-                            <label>Yes</label>
+                            <label>{{$accident->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="vehicle_ever_been_in_accident" value="0" class="form-control vehicle_ever_been_in_accident">
-                                <span></span>
-                            </div>                       
-                            <label>No</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                         <div class="form-group field_error" id="accident_error" style="display:none">
                           <label for="title">This field is required.</label>
@@ -419,21 +231,16 @@
                     <div class="row radio_wrap">
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group mr-3">
+                          @foreach($flood_damages as $flood_damage)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_flood_damage" value="1" class="form-control vehicle_has_any_flood_damage">
+                                <input type="radio" name="vehicle_has_any_flood_damage" value="{{$flood_damage->value}}" class="form-control vehicle_has_any_flood_damage">
                                 <span></span>
                             </div>                       
-                            <label>Yes</label>
+                            <label>{{$flood_damage->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_flood_damage" value="0" class="form-control vehicle_has_any_flood_damage">
-                                <span></span>
-                            </div>                       
-                            <label>No</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                         <div class="form-group field_error" id="flood_error" style="display:none">
                           <label for="title">This field is required.</label>
@@ -450,21 +257,16 @@
                     <div class="row radio_wrap">
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group mr-3">
+                          @foreach($frame_damages as $frame_damage)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_frame_damage" value="1" class="form-control vehicle_has_any_frame_damage">
+                                <input type="radio" name="vehicle_has_any_frame_damage" value="{{$frame_damage->value}}" class="form-control vehicle_has_any_frame_damage">
                                 <span></span>
                             </div>                       
-                            <label>Yes</label>
+                            <label>{{$frame_damage->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_frame_damage" value="0" class="form-control vehicle_has_any_frame_damage">
-                                <span></span>
-                            </div>                       
-                            <label>No</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                         <div class="form-group field_error" id="frame_error" style="display:none">
                           <label for="title">This field is required.</label>
@@ -484,21 +286,16 @@
                     <div class="row radio_wrap">
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group mr-3">
+                          @foreach($mechanical_issues as $issue)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_mechanical_issues" class="form-control vehicle_has_any_mechanical_issues" value="1">
+                                <input type="radio" name="vehicle_has_any_mechanical_issues" class="form-control vehicle_has_any_mechanical_issues" value="{{$issue->value}}">
                                 <span></span>
                             </div>                      
-                            <label>Yes</label>
+                            <label>{{$issue->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_mechanical_issues" class="form-control vehicle_has_any_mechanical_issues" value="0">
-                                <span></span>
-                            </div>                      
-                            <label>No</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                       </div>
                     </div>
@@ -516,35 +313,16 @@
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
           
-                                                    <div class="form-group mr-3">
+                          @foreach($tyre_replacable as $replace)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="1">
+                                <input type="radio" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="{{$replace->value}}">
                                 <span></span>
                             </div>                      
-                            <label>1</label>
+                            <label>{{$replace->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="2">
-                                <span></span>
-                            </div>                      
-                            <label>2</label>
-                          </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="3">
-                                <span></span>
-                            </div>                      
-                            <label>3</label>
-                          </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="any_tyres_need_to_be_replaced" class="form-control any_tyres_need_to_be_replaced" value="4">
-                                <span></span>
-                            </div>                      
-                            <label>More</label>
-                          </div>
-                                                  </div>
+                          @endforeach
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -560,21 +338,16 @@
                     <div class="row radio_wrap">
                       <div class="col-md-6">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group mr-3">
+                          @foreach($aftermarket_modification as $modification)
+                          <div class="form-group mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_aftermarket_modification" class="form-control vehicle_has_any_aftermarket_modification" value="1">
+                                <input type="radio" name="vehicle_has_any_aftermarket_modification" class="form-control vehicle_has_any_aftermarket_modification" value="{{$modification->value}}">
                                 <span></span>
                             </div>                      
-                            <label>Yes</label>
+                            <label>{{$modification->name_en}}</label>
                           </div>
-                                                    <div class="form-group mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="vehicle_has_any_aftermarket_modification" class="form-control vehicle_has_any_aftermarket_modification" value="0">
-                                <span></span>
-                            </div>                      
-                            <label>No</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                       </div>
                     </div>
@@ -592,127 +365,123 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form_inner_wrap d-flex flex-wrap">
-                                                    <div class="form-group d-flex align-items-center mr-3">
+                          @foreach($keys as $key)
+                          <div class="form-group d-flex align-items-center mr-3">
                             <div class="custom_check radio">
-                                <input type="radio" name="how_many_vehicle_keys" class="form-control how_many_vehicle_keys" value="0">
+                                <input type="radio" name="how_many_vehicle_keys" class="form-control how_many_vehicle_keys" value="{{$key->value}}">
                                 <span></span>
                             </div>                      
-                            <label class="keys_count">1</label>
+                            <label class="keys_count">{{$key->name_en}}</label>
                           </div>
-                                                    <div class="form-group d-flex align-items-center mr-3">
-                            <div class="custom_check radio">
-                                <input type="radio" name="how_many_vehicle_keys" class="form-control how_many_vehicle_keys" value="1">
-                                <span></span>
-                            </div>                      
-                            <label class="keys_count">2 or More</label>
-                          </div>
-                                                    
+                          @endforeach
+                          
                         </div>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="trim">Model Year<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
 
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="drive">Mileage<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="trim">Selling Price<span class="text-danger"> *</span></label>
-                        <input type="text" name="trim" class="form-control" id="trim" maxlength="100">
-                        @error('trim')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
 
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="drive">Color<span class="text-danger"> *</span></label>
-                        <input type="text" name="drive" class="form-control" id="drive" maxlength="100">
-                        @error('drive')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
+
+                <div class="row mt-4">
+                  <div class="col-md-6">
                     <div class="form-group">
-                        <label for="fuel-type">Mpg highway<span class="text-danger"> *</span></label>
-                        <select name="fuel-type" class="form-control" id="fuel-type">
-                       
-                          <option value="">select</option>
-                          <option value="0">cng</option>
-                      
-                        </select>
-                        @error('make')
-                        <div id ="car_error" class="error">{{ $message }}</div>
-                        @enderror
-                      </div>
-                      </div>
+                      <label>Model Year<span class="required">*</span></label>
+                      <input type="text" class="form-control" name="model_year" id="model_year" placeholder="Model Year">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Mileage<span class="required">*</span></label>
+                      <input type="text" class="form-control" name="mileage" id="mileage" placeholder="Mileage">
+                    </div>
+                  </div>
+
+                  <!-- miles traveled -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Miles Traveled<span class="required">*</span></label>
+                      <input type="text" class="form-control" name="miles_traveled" id="miles_traveled" placeholder="Miles Traveled">
+                    </div>
+                  </div>
+                  <!-- miles traveled -->
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Selling Price<span class="required">*</span></label>
+                      <input type="text" class="form-control" name="selling_price" id="selling_price" placeholder="Selling Price">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Color</label>
+                      <input type="text" class="form-control" name="color" id="color" id="color" placeholder="Color">
+                    </div>
+                  </div>
+                 
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Mpg highway<span class="required">*</span></label>
+                      <select name="mpg_highway" id="mpg_highway" class="form-control @error('mpg_highway') error @enderror">
+                        <option value="" disabled="" selected>Select</option>
+                        @foreach($mpg_highway as $item)
+                        <option value="{{$item->value}}">{{$item->name_en}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
                 </div>
+
+
+                
+
                 <div class="form-group mt-4">
                   <h5>Vehicle Images</h5>
                 </div>
                 <hr>
-             <div class="row upload_images">
+                
+                <div class="row upload_images">
 
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Upload your images<span class="required">*</span></label>
                         <!-- <div class="alert alert-warning" role="alert">
                           Note: you can upload multiple images selecting one at a time.
-                        </div>  -->  
-                        <br><br>
-
-
+                        </div>  --> 
                         <div class="alert alert-danger" role="alert" id="image_error" style="display:none">
-                          You must select an image
+                          You must select an image.
                         </div> 
 
                       <div class="image_wrapper">
                         <button class="btn btn-info" type="button" id="choose_image"><i class="fa fa-plus"></i></button>
-                        <input type="file" style="display:none" class="form-control col-md-6" id="files" name="files[]">
-                        <input type="hidden" class="form-control" id="image_array" name="image_array">
-                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="" data-original-title="Upload max 2MB file. Only jpg png jpeg gif files are allowed to upload">
+
+                        <input type="file" style="display:none" class="form-control col-md-6" id="files" name="files[]"/>
+
+                        <input type="hidden" class="form-control" id="image_array" name="image_array"/>
+                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg jpeg png gif files are allowed to upload">
                           <i class="fa fa-question-circle"></i>
-                        </button>                        
+                        </button>
                       </div>
                     
                     </div>
                   </div>
 
                 </div>
+
+                <br>
                 <div class="form-group">
                   <h5>Vehicle Video</h5>
                 </div>
                 <hr>
+                
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-0">
                       <div class="upload_video_title">
                         <label>Upload video</label>
-                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="" data-original-title="Upload max 3MB file. Only mp4 mov webm files are allowed to upload"><i class="fa fa-question-circle"></i>
+                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 3MB file. Only mp4 mov webm files are allowed to upload"><i class="fa fa-question-circle"></i>
                         </button> 
                       </div>
 
@@ -724,7 +493,7 @@
 
                       <input id="file-input" style="display:none" type="file" accept="video/*" class="form-control col-md-6" name="video">
                       <br>
-                      <video id="video" style="display:none;" width="300" height="300" controls="" class="form-control"></video>
+                      <video id="video" style="display:none;" width="300" height="300" controls class="form-control"></video>
 
                     
                     </div>
@@ -744,66 +513,431 @@
                   </div>
 
                 </div>
-               <div class="card-footer">
-                <button type="text" class="btn btn-primary" >save<!-- {{ __('adminlte::adminlte.save') }} --></button>
-              </div>
-            </form>
+                <!-- vehicle media -->
+
+
+                <button type="submit" id="submit_btn" class="btn btn-primary mt-2">Submit</button>
+              </form>              
             </div>
-  </div>
+          </div>
+        </div>
       </div>
-  </div>
-</div>
-</section>
+    </section>
 @endsection
 
 @section('css')
-  <style>
-    .information_fields { margin-bottom: 30px; }
-    .address_fields { margin-top: 30px; }
-  </style>
+ 
 @stop
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"> -->
 
+<style>
+  .required label{
+    color:red;
+    font-weight: 300 !important;
+  }
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <!-- @section('js') -->
-  <script>
- 
-     $('#makeVehicleForm').validate({
-         rules: {
-             english: {
-                 required: true
-             },
-             haitian: {
-                 required: true
-             },
-             french: {
-                 required: true
-             },
-             estonia: {
-                 required: true
-             },
-             type: {
-                 required: true
-             },      
-         },
-         messages: {
-             english: {
-                 required: "The English Language is required."
-             },            
-             haitian: {
-                 required: "The Haitian Language is required."
-             },
-             french: {
-                 required: "The French Language is required."
-             },        
-             estonia: {
-                 required: "The Estonia Language is required."
-             },
-             type: {
-                 required: "The Vehicle Brand is required."
-             },      
-         }
-     });
- </script>
+  <script type="text/javascript">
+     $(document).ready(function() {
+      var file_base64_array = [];
+      if (window.File && window.FileList && window.FileReader) {
+        $("#files").on("change", function(e) {
+
+          // check file type
+          var ext = $(this).val().split('.').pop().toLowerCase();
+          if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+             // return alert('Invalid file format!');
+             $('#image_error').text('Invalid file format.');
+             $('#image_error').css('display','block');
+             return false;
+          }
+          var a=(this.files[0].size);
+          // alert(a/(1024*1024));
+          if(a/(1024*1024) > 2) {
+              // return alert('File size can not be greater than 2mb');
+              $('#image_error').text('File size can not be greater than 2mb.');
+              $('#image_error').css('display','block');
+              return false;
+          };
+          // check file type
+          $('#image_error').text('You must select an image.');
+          $('#image_error').css('display','none');
+          var files = e.target.files,
+          filesLength = files.length;
+          for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              var file = e.target;
+
+              file_base64_array.push(e.target.result);
+              console.log(file_base64_array);
+              $('#image_array').val(file_base64_array);
+              
+              $("<span class=\"pip\" file=\"" + e.target.result + "\">" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<br/><span class=\"remove\">X</span>" +
+                "</span>").insertAfter("#files");
+              $(".remove").click(function(){
+                console.log('clicked---');
+                console.log(file_base64_array.length);
+                const index = file_base64_array.indexOf($(this).parent().attr('file'));
+                if (index > -1) {
+                  file_base64_array.splice(index, 1);
+                }
+                console.log(file_base64_array.length);
+                $('#image_array').val(file_base64_array);
+                $(this).parent(".pip").remove();
+              });
+              
+            });
+            fileReader.readAsDataURL(f);
+          }
+    
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+
+      $(document).on('click','#submit_btn',function(){
+        if($('#color').val()!="" && $('#color').val()!=null){
+          if(file_base64_array.length<1){
+            $('#image_error').css('display','block');
+            return false;
+          }else{
+            $('#image_error').css('display','none');
+
+          }
+        }
+
+       
+        $("#condition_error").css('display','block');
+        var condition_flag = true;
+        $('.condition').each(function(){
+          if($(this).prop('checked')){
+            $("#condition_error").css('display','none');
+            condition_flag = false;
+          }
+        })
+
+        // advertisement
+        $("#advertisement_error").css('display','block');
+        var advertisement_flag = true;
+        $('.advertisement').each(function(){
+
+          if($(this).prop('checked')){
+            $("#advertisement_error").css('display','none');
+            advertisement_flag = false;
+          }
+        })
+        // advertisement
+
+        $("#accident_error").css('display','block');
+        var accident_flag = true;
+        $('.vehicle_ever_been_in_accident').each(function(){
+          if($(this).prop('checked')){
+            $("#accident_error").css('display','none');
+            accident_flag = false;
+          }
+        })
+
+        $("#flood_error").css('display','block');
+        var flood_flag = true;
+        $('.vehicle_has_any_flood_damage').each(function(){
+          if($(this).prop('checked')){
+            $("#flood_error").css('display','none');
+            flood_flag = false;
+          }
+        })
+
+        $("#frame_error").css('display','block');
+        var frame_flag = true;
+        $('.vehicle_has_any_frame_damage').each(function(){
+          if($(this).prop('checked')){
+            $("#frame_error").css('display','none');
+            frame_flag = false;
+          }
+        })
+
+        $("#issue_error").css('display','block');
+        var issue_flag = true;
+        $('.vehicle_has_any_mechanical_issues').each(function(){
+          if($(this).prop('checked')){
+            $("#issue_error").css('display','none');
+            issue_flag = false;
+          }
+        })
+
+        $("#replace_error").css('display','block');
+        var replace_flag = true;
+        $('.any_tyres_need_to_be_replaced').each(function(){
+          if($(this).prop('checked')){
+            $("#replace_error").css('display','none');
+            replace_flag = false;
+          }
+        })
+
+        $("#modification_error").css('display','block');
+        var modification_flag = true;
+        $('.vehicle_has_any_aftermarket_modification').each(function(){
+          if($(this).prop('checked')){
+            $("#modification_error").css('display','none');
+            modification_flag = false;
+          }
+        })
+
+        $("#keys_error").css('display','block');
+        var keys_flag = true;
+        $('.how_many_vehicle_keys').each(function(){
+          if($(this).prop('checked')){
+            $("#keys_error").css('display','none');
+            keys_flag = false;
+          }
+        })
+
+        if(condition_flag || accident_flag || flood_flag || frame_flag || issue_flag || replace_flag || modification_flag || keys_flag){
+          if(($('#title').val()!="" && $('#title').val()!=null) && ($('#description').val()!="" && $('#description').val()!=null) && ($('#make').val()!="" && $('#make').val()!=null) && ($('#model').val()!="" && $('#model').val()!=null) && ($('#manufacturing_date').val()!="" && $('#manufacturing_date').val()!=null) && ($('#trim').val()!="" && $('#trim').val()!=null) && ($('#transmission').val()!="" && $('#transmission').val()!=null) && ($('#vin').val()!="" && $('#vin').val()!=null) && ($('#displacement').val()!="" && $('#displacement').val()!=null) && ($('#model_year').val()!="" && $('#model_year').val()!=null) && ($('#mileage').val()!="" && $('#mileage').val()!=null) && ($('#selling_price').val()!="" && $('#selling_price').val()!=null) && ($('#color').val()!="" && $('#color').val()!=null) && ($('#mpg_highway').val()!="" && $('#mpg_highway').val()!=null)){
+            return false;
+          }
+        }
+
+      })
+
+    });
+   </script>
+
+   <script type="text/javascript">
+    const input = document.getElementById('file-input');
+    const video = document.getElementById('video');
+    const videoSource = document.createElement('source');
+
+    input.addEventListener('change', function() {
+      $('#video').css('display','block');
+      const files = this.files || [];
+
+      if (!files.length) return;
+      
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        videoSource.setAttribute('src', e.target.result);
+        video.appendChild(videoSource);
+        video.load();
+        video.play();
+      };
+      
+      reader.onprogress = function (e) {
+        console.log('progress: ', Math.round((e.loaded * 100) / e.total));
+      };
+      
+      reader.readAsDataURL(files[0]);
+    });
+   </script>
+
+   <script type="text/javascript">
+     $(document).on('click','#choose_video',function(){
+      $('#file-input').click();
+      $('#video_url').val("");
+     })
+
+     $(document).on('keyup','#video_url',function(){
+      $('#file-input').val("")
+      $('#video').css('display','none');
+     })
+
+     $(document).on('click','#choose_image', function(){
+      $('#files').click();
+     })
+
+     $(document).on('change','#file-input',function(){
+      // check file type
+      var ext = $(this).val().split('.').pop().toLowerCase();
+      if($.inArray(ext, ['mp4','mov','webm']) == -1) {
+         $('#video').css('display','none');
+         $('#file-input').val('');
+         $('#video_error').text('Invalid file format.');
+         $('#video_error').css('display','block');
+         return false;
+      }
+      var a=(this.files[0].size);
+      // alert(a/(1024*1024));
+      if(a/(1024*1024) > 3) {
+          $('#video').css('display','none');
+          $('#file-input').val('');
+          $('#video_error').text('File size can not be greater than 3mb.');
+          $('#video_error').css('display','block');
+          return false;
+      };
+
+      $('#video_error').text('');
+      $('#video_error').css('display','none');
+      // check file type
+     })
+
+   </script>
+  
+
+    <script type="text/javascript">
+     $(document).on('change','#make',function(){
+      console.log('working');
+        var brand_id = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+           type:'POST',
+           url:"{{route('get-model')}}",
+           data :{
+            brand_id : brand_id,
+           },
+           success:function(response) {
+              console.log('success---------');
+              var html = "";
+              $.each(response.data,function(ind,val){
+                html = html + '<option value="'+val.id+'">'+val.model_name_en+'</option>'
+              })
+              $('#model').html(html);
+           }
+        });
+     })
+   </script>
+
+   <script type="text/javascript">
+     $(document).on('click','#check_all',function(){
+      if($(this).prop('checked')==true){
+        $('.checkbox').each(function(){
+          $(this).prop('checked',true);
+        })
+      }else{
+        $('.checkbox').each(function(){
+          $(this).prop('checked',false);
+        })
+      }
+     })
+
+     $(document).on('click','.checkbox',function(){
+      $('#check_all').prop('checked',false);
+     })
+   </script>
+
+
+   <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> 
+
+   <script>
+  
+      $('#add_car_details_form').validate({
+          rules: {
+              title: {
+                  required: true
+              }, 
+              make: {
+                  required: true
+              },
+              model: {
+                  required: true
+              },
+              model_year: {
+                  required: true
+              },  
+              vin: {
+                  required: true
+              },
+              
+              trim: {
+                  required: true
+              },
+              manufacturing_date: {
+                  required: true
+              },
+              fuel_type: {
+                  required: true
+              },
+              transmission: {
+                  required: true
+              },
+              mileage: {
+                  required: true
+              },
+              miles_traveled: {
+                  required: true
+              },
+              selling_price: {
+                  required: true
+              },
+              color: {
+                  required: true
+              },
+              
+              mpg_highway: {
+                  required: true
+              },
+              description: {
+                  required: true
+              },
+              displacement: {
+                  required: true
+              },
+          },
+          messages: {
+              title: {
+                  required: "The Title is required."
+              }, 
+              fuel_type: {
+                  required: "The Fuel Type is required."
+              },            
+              make: {
+                  required: "The Make is required."
+              },
+              model: {
+                  required: "The Model is required."
+              },
+              model_year: {
+                  required: "The Model Year is required."
+              },
+              vin: {
+                  required: "The Vin is required."
+              },
+              trim: {
+                  required: "The Trim is required."
+              },
+              
+              transmission: {
+                  required: "The Transmission is required."
+              },
+              mileage: {
+                  required: "The Mileage is required."
+              },
+              miles_traveled: {
+                  required: "The Miles Traveled is required."
+              },
+              selling_price: {
+                  required: "The Selling Price is required."
+              },
+              color: {
+                  required: "The Color is required."
+              },
+             
+              mpg_highway: {
+                  required: "The Mpg highway is required."
+              },
+              description: {
+                  required: "The Description is required."
+              },
+              manufacturing_date: {
+                  required: "The Manufacturing Date is required."
+              },
+              displacement: {
+                  required: "The Displacement is required."
+              },
+              
+             
+          }
+      });
+  </script>
 
 <!-- @stop -->

@@ -225,14 +225,39 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/save-car', [SellController::class, 'saveCar'])->name('save-car');
     Route::get('/car-list', [SellController::class, 'carList'])->name('car-list');
      Route::get('/car_view/{id}', [SellController::class, 'viewCar'])->name('car_view');
-    //sell moto
+
+    Route::get('/edit-car-details/{id}', [SellController::class, 'editCarDetails'])->name('edit-car-details');
+
+    Route::post('/delete-inventory', [SellController::class, 'deleteInventory'])->name('delete-inventory');
+
+    Route::get('/moto-list', [SellController::class, 'motoList'])->name('moto-list');
     Route::get('/add-moto', [SellController::class, 'addMoto'])->name('add-moto');
+
+    Route::post('/save-moto', [SellController::class, 'saveMoto'])->name('save-moto');
+     Route::get('/moto/view/{id}', [SellController::class, 'viewMoto'])->name('view-moto');
+    //sell moto
 
     //sell power equipment
     Route::get('/add-power-equipment', [SellController::class, 'addPowerEquipment'])->name('add-power-equipment');
 
+    Route::post('/save-power-equipment', [SellController::class, 'savePowerEquipment'])->name('save-power-equipment');
+
+    Route::get('/power-equipment-list', [SellController::class, 'powerEquipments'])->name('power-equipment-list');
+
+    Route::get('/view-power-equipment/{id}', [SellController::class, 'viewPowerEquipment'])->name('view-power-equipment');
+
     //sell auto moto
-    Route::get('/add-auto-moto', [SellController::class, 'addAutoMoto'])->name('add-auto-moto');
+    Route::get('/auto-and-moto-part-list', [SellController::class, 'autoAndMotoParts'])->name('auto-and-moto-part-list');
+
+    Route::get('/add-auto-and-moto-part', [SellController::class, 'addAutoAndMotoPart'])->name('add-auto-and-moto-part');
+
+    Route::post('/save-auto-and-moto-part', [SellController::class, 'saveAutoAndMotoPart'])->name('save-auto-and-moto-part');
+
+    Route::get('/view-auto-and-moto-part/{id}', [SellController::class, 'viewAutoAndMotoPart'])->name('view-auto-and-moto-part');
+
+
+
+
     // Misc Data Management
     Route::group(['prefix' => 'misc'], function () {
       Route::get('/check_if_exists', [MiscController::class, 'checkIfExists'])->name('check_if_exists');

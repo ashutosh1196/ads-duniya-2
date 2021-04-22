@@ -354,38 +354,38 @@ return [
                 ],
                 [
                     'text' => 'Model',
-                    'icon' => 'fas fa-fw fa-graduation-cap',
+                    'icon' => 'fas fa-fw fa-cog',
                     'url'  => 'admin_panel/model-list',
                     'active' => ['admin_panel/vehicle/model_vehicle*'],
                 ],
                 [
                     'text' => 'Sell',
-                    'icon' => 'fas fa-ticket-alt',
+                    'icon' => 'fas fa-ad',
                     'url'  => '#',
                     'submenu' => [
 
                         [
                             'text' => 'Cars',
-                            'icon' => 'fas fa-fw fa-user',
+                            'icon' => 'fas fa-fw fa-car',
                             'url'  => 'admin_panel/car-list',
                             'active' => ['admin_panel/sells/car*'],
                         ],
                         [
                             'text' => 'Motos',
-                            'icon' => 'fas fa-envelope',
-                            'url'  => 'admin_panel/add-moto',
+                            'icon' => 'fas fa-motorcycle',
+                            'url'  => 'admin_panel/moto-list',
                             'active' => ['admin_panel/sells/moto*'],
                         ],
                         [
                             'text' => 'Power Equipment',
-                            'icon' => 'fas fa-comments',
-                            'url'  => 'admin_panel/add-power-equipment',
+                            'icon' => 'fas fa-cogs',
+                            'url'  => 'admin_panel/power-equipment-list',
                             'active' => ['admin_panel/sells/power_equipment*'],
                         ],
                         [
                             'text' => 'Auto & Moto Parts',
-                            'icon' => 'fas fa-ticket-alt',
-                            'url'  => 'admin_panel/add-auto-moto',
+                            'icon' => 'fas fa-cog',
+                            'url'  => 'admin_panel/auto-and-moto-part-list',
                             'active' => ['admin_panel/sells/auto_moto_parts*'],
                         ],
 
