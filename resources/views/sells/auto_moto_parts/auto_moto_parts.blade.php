@@ -369,7 +369,7 @@
         });
         $.ajax({
            type:'POST',
-           url:"{{route('get-brand')}}",
+           url:"{{route('get-brands')}}",
            data :{
             type : type,
            },

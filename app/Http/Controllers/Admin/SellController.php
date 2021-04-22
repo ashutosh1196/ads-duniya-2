@@ -554,4 +554,11 @@ class SellController extends Controller
         return view('sells.auto_moto_parts.view')->with(['auto_and_moto_part'=>$auto_and_moto_part]);
     }
 
+    public function getBrands(Request $request){
+       $models = MdBrand::where('brand_for',$request->type)->get();
+       $res['status'] = true;
+       $res['data'] = $models;
+       return $res;
+    }
+
 }

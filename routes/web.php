@@ -203,6 +203,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // make and model
     Route::post('get-brand',[VehicleController::class, 'getMake'])->name('get-brand');
+    Route::post('get-brands',[SellController::class, 'getBrands'])->name('get-brands');
     Route::get('/make-list', [VehicleController::class, 'makeList'])->name('make-list');
     Route::get('/add-make', [VehicleController::class, 'addMake'])->name('add-make');
     Route::post('/save-make', [VehicleController::class, 'saveMake'])->name('save-make-vehicle');
