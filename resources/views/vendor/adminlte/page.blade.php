@@ -441,6 +441,14 @@
           text-align: center;
           cursor: pointer;
         }
+        .delete_image {
+          display: block;
+          background: #444;
+          border: 1px solid black;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+        }
         video {
           border: 1px solid black;
           display: block;
@@ -467,6 +475,17 @@
             position: relative;
         }
         .pip span.remove {
+            height: 18px;
+            width: 18px;
+            background-color: #dc3545;
+            border: none;
+            font-size: 12px;
+            border-radius: 100px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+        }
+        .pip span.delete_image {
             height: 18px;
             width: 18px;
             background-color: #dc3545;

@@ -784,7 +784,7 @@
 
                       <input id="file-input" style="display:none" type="file" accept="video/*" class="form-control col-md-6" name="video">
                       <br>
-                      <video id="video" style="display:none;" width="300" height="300" controls class="form-control"></video>
+                      <video id="video" style="display:none;height:auto;" width="300" height="300" controls class="form-control"></video>
 
                     
                     </div>
@@ -1151,6 +1151,7 @@
    const videoSource = document.createElement('source');
    
    input.addEventListener('change', function() {
+    
      $('#video').css('display','block');
      const files = this.files || [];
    

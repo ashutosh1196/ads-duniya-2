@@ -28,7 +28,7 @@
               </div>
 
 
-              <form action="{{ route('save-car') }}" method="post" enctype="multipart/form-data" id="add_car_details_form">
+              <form action="{{ route('update-car-details') }}" method="post" enctype="multipart/form-data" id="add_car_details_form">
                 @csrf
 
                 <div class="form-group">
@@ -62,6 +62,7 @@
 
                   <input type="hidden" name="type" value="0">
                   <input type="hidden" name="vehicle_type" value="0">
+                  <input type="hidden" name="id" value="{{$inventory->id}}">
                   
                   
 
@@ -709,22 +710,23 @@
 
                 </div>
 
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
-                <div class="form-group">
-                  <label>Vehicle Images</label><br><br>
-                  @foreach($inventory->images as $image)
-                  <!-- <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="150" width="auto" /> -->
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                  <div class="form-group">
+                    <label>Images</label>
+                    <br><br>
+                    @foreach($inventory->images as $image)
+                    <!-- <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="150" width="auto" /> -->
 
 
-                  <span class="pip">
-                    <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="100px" width="100px" class="imageThumb">
-                    <br>
-                    <span class="remove delete_image">X</span>
-                  </span>
+                    <span class="pip">
+                      <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="100px" width="100px" class="imageThumb">
+                      <br>
+                      <span class="delete_image" data-id="{{$image->id}}" data-name="{{$image->file}}">X</span>
+                    </span>
 
-                  @endforeach
+                    @endforeach
+                  </div>
                 </div>
-              </div>
 
 
                 <br>
@@ -750,9 +752,11 @@
 
                       <input id="file-input" style="display:none" type="file" accept="video/*" class="form-control col-md-6" name="video">
                       <br>
-                      <video id="video" style="display:none;" width="300" height="300" controls class="form-control"></video>
-
-                    
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                        <div class="form-group">
+                          <video id="video_preview" style="display:none;height:auto;" width="300" height="300" controls class="form-control"></video>
+                        </div>
+                      </div>  
                     </div>
                   </div>
 
@@ -760,7 +764,7 @@
                   @if($inventory->video)
                   <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                     <div class="form-group">
-                      <label>Vehicle Video</label><br><br>
+                      <!-- <label>Vehicle Video</label><br><br> -->
                       <video id="video" width="300" height="300" src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$inventory->video->file}}" style="height:auto" controls class="form-control"></video>
                       
                     </div>
@@ -776,7 +780,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Video url</label>
-                      <input type="text" class="form-control" name="video_url" id="video_url" placeholder="Ex: http(s)://centrolmotors.com OR http(s)://www.centrolmotors.com">
+                      <input type="text" class="form-control" value="{{@$inventory->video_url->file}}" name="video_url" id="video_url">
                     
                     </div>
                   </div>
@@ -795,10 +799,7 @@
     </section>
 @endsection
 @section('css')
-<!-- <style>
-   .information_fields { margin-bottom: 30px; }
-   .address_fields { margin-top: 30px; }
-</style> -->
+
 
 <style type="text/css">
 
@@ -983,7 +984,16 @@
    
     $(document).on('click','#submit_btn',function(){
       if($('#interior_color').val()!="" && $('#interior_color').val()!=null){
-        if(file_base64_array.length<1){
+
+        var image_counter = 0;
+        $('.delete_image').each(function(){
+          image_counter = image_counter+1;
+        })
+        console.log(image_counter);
+        // return false;
+
+
+        if(file_base64_array.length<1 && !image_counter){
           $('#image_error').css('display','block');
           return false;
         }else{
@@ -1127,8 +1137,9 @@
    const input = document.getElementById('file-input');
    const video = document.getElementById('video');
    const videoSource = document.createElement('source');
-   
+   if(input)
    input.addEventListener('change', function() {
+     
      $('#video').css('display','block');
      const files = this.files || [];
    
@@ -1168,7 +1179,20 @@
    
    
    $(document).on('change','#file-input',function(){
-    // check file type
+    
+    // video preview
+    console.log('hello i am here-----------');
+    $('#video').css('display','none');
+
+    var fileInput = document.getElementById('file-input');
+    var fileUrl = window.URL.createObjectURL(fileInput.files[0]);
+    $('#video_preview').css('display','block');
+    $("#video_preview").attr("src", fileUrl);
+    
+    // video preview
+
+
+
     var ext = $(this).val().split('.').pop().toLowerCase();
     if($.inArray(ext, ['mp4','mov','webm']) == -1) {
        $('#video').css('display','none');
@@ -1178,7 +1202,6 @@
        return false;
     }
     var a=(this.files[0].size);
-    // alert(a/(1024*1024));
     if(a/(1024*1024) > 3) {
         $('#video').css('display','none');
         $('#file-input').val('');
@@ -1235,4 +1258,80 @@
     $('#check_all').prop('checked',false);
    })
 </script>
-<!-- @stop -->
+
+<!-- on load get models -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    var brand_id = $('#vehicle_make').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+       type:'POST',
+       url:"{{route('get-model')}}",
+       data :{
+        brand_id : brand_id,
+       },
+       success:function(response) {
+          console.log('success---------');
+          var html = "";
+          var select = "";
+          $.each(response.data,function(ind,val){
+            if(val.id=="{{$inventory->model_id}}"){
+              select = "selected";
+            }else{
+              select = "";
+            }
+            html = html + '<option value="'+val.id+'" '+select+'>'+val.model_name_en+'</option>'
+          })
+          $('#vehicle_model').html(html);
+       }
+    });
+
+  })
+</script>
+<!-- on load get models -->
+
+<!-- delete image -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">
+  $(document).on('click','.delete_image',function(){
+    var image_id = $(this).attr('data-id');
+    var image_name = $(this).attr('data-name');
+    console.log($(this).attr('data-name'));
+    var obj = $(this).parent();
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure you want to delete the image?",
+      type: "warning",
+      showCancelButton: true,
+    }, function(willDelete) {
+      if (willDelete) {
+        obj.remove();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+           type:'POST',
+           url:"{{route('remove-image')}}",
+           data :{
+            image_id : image_id,
+            image_name : image_name,
+           },
+           success:function(response) {
+              console.log('success---------');
+           }
+        });
+      } 
+    });
+
+
+  })
+</script>
+<!-- delete image -->

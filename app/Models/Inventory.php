@@ -31,4 +31,8 @@ class Inventory extends Model
         return $this->hasOne(InventoryFile::class)->where('media_type',1);
     }
 
+    public function video_url(){
+        return $this->hasOne(InventoryFile::class)->where('media_type',2);
+    }
+
 }

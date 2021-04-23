@@ -46,7 +46,7 @@
                     <td>
                     <a class="action-button" title="View" href="{{url('admin_panel/view-auto-and-moto-part').'/'.$list->id}}"><i class="text-info fa fa-eye"></i></a>
 
-                    <a class="action-button" title="Edit" href="{{url('admin_panel/edit-car-details').'/'.$list->id}}"><i class="text-warning fa fa-edit"></i></a>
+                    <a class="action-button" title="Edit" href="{{url('admin_panel/edit-auto-and-moto-part').'/'.$list->id}}"><i class="text-warning fa fa-edit"></i></a>
 
                      <a class="action-button delete-button" title="Delete" href="Javascript:void(0)" data-id="{{$list->id}}"><i class="text-danger fa fa-trash-alt"></i></a>
                    </td>

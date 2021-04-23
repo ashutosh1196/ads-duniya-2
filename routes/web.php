@@ -229,6 +229,12 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/edit-car-details/{id}', [SellController::class, 'editCarDetails'])->name('edit-car-details');
 
+    Route::get('/edit-moto-details/{id}', [SellController::class, 'editMotoDetails'])->name('edit-moto-details');
+
+    Route::get('/edit-power-equipment-details/{id}', [SellController::class, 'editPowerEquipmentDetails'])->name('edit-power-equipment-details');
+
+    Route::get('/edit-auto-and-moto-part/{id}', [SellController::class, 'editAutoAndMotoPart'])->name('edit-auto-and-moto-part');
+
     Route::post('/delete-inventory', [SellController::class, 'deleteInventory'])->name('delete-inventory');
 
     Route::get('/moto-list', [SellController::class, 'motoList'])->name('moto-list');
@@ -256,7 +262,15 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/view-auto-and-moto-part/{id}', [SellController::class, 'viewAutoAndMotoPart'])->name('view-auto-and-moto-part');
 
+    Route::post('/remove-image',[SellController::class,'removeImage'])->name('remove-image');
 
+    Route::post('/update-car-details',[SellController::class,'updateCarDetails'])->name('update-car-details');
+
+    Route::post('/update-moto-details',[SellController::class,'updateMotoDetails'])->name('update-moto-details');
+
+    Route::post('/update-power-equipment',[SellController::class,'updatePowerEquipmentDetails'])->name('update-power-equipment');
+
+    Route::post('/update-auto-and-moto-part',[SellController::class,'updateAutoAndMotoPart'])->name('update-auto-and-moto-part');
 
 
     // Misc Data Management
