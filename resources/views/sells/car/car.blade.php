@@ -731,7 +731,7 @@
                
 
                 <div class="form-group mt-4">
-                  <h5>Vehicle Images</h5>
+                  <h5>Vehicle Exterior Images</h5>
                 </div>
                 <hr>
                 
@@ -739,10 +739,10 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Upload your images<span class="required">*</span></label>
-                        <!-- <div class="alert alert-warning" role="alert">
-                          Note: you can upload multiple images selecting one at a time.
-                        </div>  -->  
+                      <label>Upload images<span class="required">*</span></label>
+                        <div class="alert alert-warning" role="alert">
+                          Note: Please upload multiple images of exterior view from every angle and choose them to upload in respective order.
+                        </div>  
                         <div class="alert alert-danger" role="alert" id="image_error" style="display:none">
                           You must select an image
                         </div> 
@@ -751,15 +751,48 @@
                         <button class="btn btn-info" type="button" id="choose_image"><i class="fa fa-plus"></i></button>
                         <input type="file" style="display:none" class="form-control col-md-6" id="files" name="files[]"/>
                         <input type="hidden" class="form-control" id="image_array" name="image_array"/>
-                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg png jpeg gif files are allowed to upload">
+                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg, png, jpeg, gif and webp files are allowed to upload">
                           <i class="fa fa-question-circle"></i>
                         </button>                        
                       </div>
                     
                     </div>
                   </div>
-
                 </div>
+
+
+                <!-- upload panorama image -->
+                <br>
+                <div class="form-group mt-4">
+                   <h5>Vehicle Interior Image</h5>
+                </div>
+                <hr>
+                <div class="row upload_images">
+                   <div class="col-md-12">
+                      <div class="form-group">
+                         <label>Upload image<span class="required">*</span></label>
+                         <div class="alert alert-warning" role="alert">
+                            Note: Please upload panorama image of interior view of the car.
+                            <br>
+                            See an example of Panorama image: <a href="https://server3.rvtechnologies.in/Test/Central-Motors/public/storage/inventory_files/interior_panorama/car4.jpeg" style="color:blue;text-decoration:underline;">check here</a>
+                            </div>   
+                         <div class="alert alert-danger" role="alert" id="panorama_error" style="display:none">
+                            You must select an image
+                         </div>
+                         <div class="image_wrapper">
+                            <button class="btn btn-info" type="button" id="choose_panorama"><i class="fa fa-plus"></i></button>
+                            <input type="file" style="display:none" class="form-control col-md-6" id="panorama_file" name="panorama_file"/>
+                           
+                            <input type="hidden" class="form-control" id="panorama_array" name="panorama_array"/>
+
+                            <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg, png, jpeg, gif and webp files are allowed to upload">
+                            <i class="fa fa-question-circle"></i>
+                            </button>                        
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- upload panorama image -->
 
                 <br>
                 <div class="form-group">
@@ -823,7 +856,10 @@
 </style> -->
 
 <style type="text/css">
-
+  .alert-warning {
+    border-color: none !important;
+    background-color: none !important;
+  }
 </style>
 
 @stop
@@ -945,12 +981,13 @@
 <script type="text/javascript">
    $(document).ready(function() {
     var file_base64_array = [];
+    var panorama_base64 = [];
     if (window.File && window.FileList && window.FileReader) {
       $("#files").on("change", function(e) {
    
         // check file type
         var ext = $(this).val().split('.').pop().toLowerCase();
-        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg','webp']) == -1) {
            $('#image_error').text('Invalid file format.');
            $('#image_error').css('display','block');
            return false;
@@ -998,6 +1035,60 @@
         }
    
       });
+
+
+      // for panorama file
+      $("#panorama_file").on("change", function(e) { 
+        var ext = $(this).val().split('.').pop().toLowerCase();
+        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg','webp']) == -1) {
+           $('#panorama_error').text('Invalid file format.');
+           $('#panorama_error').css('display','block');
+           return false;
+        }
+        var a=(this.files[0].size);
+        if(a/(1024*1024) > 5) {
+            $('#panorama_error').text('File size can not be greater than 5mb.');
+            $('#panorama_error').css('display','block');
+            return false;
+        };
+        $('#panorama_error').text('You must select an image.');
+        $('#panorama_error').css('display','none');
+        var files = e.target.files,
+        filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            // panorama_base64.push(e.target.result);
+            panorama_base64[0] = e.target.result;
+            console.log(panorama_base64.length);
+            $('#panorama_array').val(panorama_base64);
+            
+            $('.pip2').remove();
+
+            $("<span class=\"pip2\" file=\"" + e.target.result + "\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">X</span>" +
+              "</span>").insertAfter("#panorama_file");
+            $(".remove").click(function(){
+              console.log('clicked-2222--');
+              console.log(panorama_base64.length);
+              const index = panorama_base64.indexOf($(this).parent().attr('file'));
+              if (index > -1) {
+                panorama_base64.splice(index, 1);
+              }
+              console.log(panorama_base64.length);
+              $('#panorama_array').val(panorama_base64);
+              $(this).parent(".pip2").remove();
+            });
+          });
+          fileReader.readAsDataURL(f);
+        }
+      });
+      // for panorama file
+
+
     } else {
       alert("Your browser doesn't support to File API")
     }
@@ -1012,6 +1103,15 @@
           $('#image_error').css('display','none');
    
         }
+
+        if(panorama_base64.length<1){
+          $('#panorama_error').css('display','block');
+          $('#panorama_file').focus();
+          return false;
+        }else{
+          $('#panorama_error').css('display','none');
+        }
+
       }
    
    
@@ -1189,6 +1289,9 @@
     $('#files').click();
    })
    
+   $(document).on('click','#choose_panorama', function(){
+    $('#panorama_file').click();
+   })
    
    $(document).on('change','#file-input',function(){
     // check file type

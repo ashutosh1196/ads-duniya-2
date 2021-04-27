@@ -688,10 +688,10 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Upload your images<span class="required">*</span></label>
-                        <!-- <div class="alert alert-warning" role="alert">
-                          Note: you can upload multiple images selecting one at a time.
-                        </div>  -->  
+                      <label>Upload images<span class="required">*</span></label>
+                        <div class="note" role="alert">
+                          Note: Please upload multiple images of exterior view from every angle and choose them to upload in respective order.
+                        </div> 
                         <div class="alert alert-danger" role="alert" id="image_error" style="display:none">
                           You must select an image
                         </div> 
@@ -700,7 +700,7 @@
                         <button class="btn btn-info" type="button" id="choose_image"><i class="fa fa-plus"></i></button>
                         <input type="file" style="display:none" class="form-control col-md-6" id="files" name="files[]"/>
                         <input type="hidden" class="form-control" id="image_array" name="image_array"/>
-                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg png jpeg gif files are allowed to upload">
+                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg, png, jpeg, gif and webp files are allowed to upload">
                           <i class="fa fa-question-circle"></i>
                         </button>                        
                       </div>
@@ -715,9 +715,7 @@
                     <label>Images</label>
                     <br><br>
                     @foreach($inventory->images as $image)
-                    <!-- <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="150" width="auto" /> -->
-
-
+                    
                     <span class="pip">
                       <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'/'.$image->file}}" height="100px" width="100px" class="imageThumb">
                       <br>
@@ -727,6 +725,53 @@
                     @endforeach
                   </div>
                 </div>
+
+                <!-- interior image -->
+
+                <div class="form-group mt-4">
+                   <h5>Vehicle Interior Image</h5>
+                </div>
+                <hr>
+                <div class="row upload_images">
+                   <div class="col-md-12">
+                      <div class="form-group">
+                         <label>Upload image<span class="required">*</span></label>
+                         <div class="note" role="alert">
+                            Note: Please upload panorama image of interior view of the car.
+                            <br>
+                            See an example of Panorama image: <a href="https://server3.rvtechnologies.in/Test/Central-Motors/public/storage/inventory_files/interior_panorama/car4.jpeg" style="color:blue;text-decoration:underline;">check here</a>
+                            </div>   
+                         <div class="alert alert-danger" role="alert" id="panorama_error" style="display:none">
+                            You must select an image
+                         </div>
+                         <div class="image_wrapper">
+                            <button class="btn btn-info" type="button" id="choose_panorama"><i class="fa fa-plus"></i></button>
+                            <input type="file" style="display:none" class="form-control col-md-6" id="panorama_file" name="panorama_file"/>
+                           
+                            <input type="hidden" class="form-control" id="panorama_array" name="panorama_array"/>
+
+                            <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Upload max 2MB file. Only jpg, png, jpeg, gif and webp files are allowed to upload">
+                            <i class="fa fa-question-circle"></i>
+                            </button>                        
+                         </div>
+                      </div>
+                   </div>
+                </div>
+
+                @if($inventory->interior_image)
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
+                  <div class="form-group">
+                    <label>Interior Image</label>
+                    <br><br>
+                    <span class="pip2">
+                      <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/interior_panorama/'.'/'.@$inventory->interior_image->file}}" height="100px" width="100px" class="imageThumb">
+                      <br>
+                      <span class="delete_image2" data-id="{{@$inventory->interior_image->id}}" data-name="{{@$inventory->interior_image->file}}">X</span>
+                    </span>  
+                  </div>
+                </div>
+                @endif
+                <!-- interior image -->
 
 
                 <br>
@@ -802,7 +847,11 @@
 
 
 <style type="text/css">
-
+  .note{
+    background-color: bisque;
+    padding: 5px 10px;
+    margin: 10px 0px;
+  }
 </style>
 
 @stop
@@ -924,18 +973,16 @@
 <script type="text/javascript">
    $(document).ready(function() {
     var file_base64_array = [];
+    var panorama_base64 = [];
     if (window.File && window.FileList && window.FileReader) {
       $("#files").on("change", function(e) {
-   
-        // check file type
         var ext = $(this).val().split('.').pop().toLowerCase();
-        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg','webp']) == -1) {
            $('#image_error').text('Invalid file format.');
            $('#image_error').css('display','block');
            return false;
         }
         var a=(this.files[0].size);
-        // alert(a/(1024*1024));
         if(a/(1024*1024) > 2) {
             $('#image_error').text('File size can not be greater than 2mb.');
             $('#image_error').css('display','block');
@@ -977,6 +1024,61 @@
         }
    
       });
+
+
+      // interior image
+      $("#panorama_file").on("change", function(e) {
+        var ext = $(this).val().split('.').pop().toLowerCase();
+        if(this.files[0] && $.inArray(ext, ['gif','png','jpg','jpeg','webp']) == -1) {
+           $('#panorama_error').text('Invalid file format.');
+           $('#panorama_error').css('display','block');
+           return false;
+        }
+        var a=(this.files[0].size);
+        if(a/(1024*1024) > 5) {
+            $('#panorama_error').text('File size can not be greater than 5mb.');
+            $('#panorama_error').css('display','block');
+            return false;
+        };
+        // check file type
+        $('#panorama_error').text('You must select an image.');
+        $('#panorama_error').css('display','none');
+        var files = e.target.files,
+        filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            panorama_base64[0] = e.target.result;
+            // console.log(file_base64_array);
+            $('#panorama_array').val(panorama_base64);
+            $('.pip2').remove();  
+
+            $("<span class=\"pip2\" file=\"" + e.target.result + "\">" +
+              "<img height=\"100\" width=\"100\" class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">X</span>" +
+              "</span>").insertAfter("#panorama_file");
+            $(".remove").click(function(){
+              console.log('clicked---');
+              console.log(panorama_base64.length);
+              const index = panorama_base64.indexOf($(this).parent().attr('file'));
+              if (index > -1) {
+                panorama_base64.splice(index, 1);
+              }
+              console.log(panorama_base64.length);
+              $('#panorama_array').val(panorama_base64);
+              $(this).parent(".pip2").remove();
+            });
+            
+          });
+          fileReader.readAsDataURL(f);
+        }
+   
+      });
+      // interior image
+
+
     } else {
       alert("Your browser doesn't support to File API")
     }
@@ -992,7 +1094,6 @@
         console.log(image_counter);
         // return false;
 
-
         if(file_base64_array.length<1 && !image_counter){
           $('#image_error').css('display','block');
           return false;
@@ -1000,6 +1101,21 @@
           $('#image_error').css('display','none');
    
         }
+
+        var counter2 = 0;
+        $('.delete_image2').each(function(){
+          counter2 = counter2+1;
+        })
+        console.log(counter2);
+
+        if(panorama_base64.length<1 && !counter2){
+          $('#panorama_error').css('display','block');
+          $('#panorama_file').focus();
+          return false;
+        }else{
+          $('#panorama_error').css('display','none');
+        }
+
       }
    
    
@@ -1176,6 +1292,10 @@
    $(document).on('click','#choose_image', function(){
     $('#files').click();
    })
+
+   $(document).on('click','#choose_panorama', function(){
+    $('#panorama_file').click();
+   })
    
    
    $(document).on('change','#file-input',function(){
@@ -1330,8 +1450,41 @@
         });
       } 
     });
-
-
   })
+
+
+  $(document).on('click','.delete_image2',function(){
+    var image_id = $(this).attr('data-id');
+    var image_name = $(this).attr('data-name');
+    console.log($(this).attr('data-name'));
+    var obj = $(this).parent();
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure you want to delete the image?",
+      type: "warning",
+      showCancelButton: true,
+    }, function(willDelete) {
+      if (willDelete) {
+        obj.remove();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+           type:'POST',
+           url:"{{route('remove-image')}}",
+           data :{
+            image_id : image_id,
+            image_name : image_name,
+           },
+           success:function(response) {
+              console.log('success---------');
+           }
+        });
+      } 
+    });
+  })
+
 </script>
 <!-- delete image -->

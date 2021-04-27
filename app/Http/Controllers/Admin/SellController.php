@@ -284,6 +284,33 @@ class SellController extends Controller
 		    	}
 	    	}
 
+            // panorama file
+            if($request->panorama_array){
+                $array = explode('data:image', $request->panorama_array);
+                $folderPath = $_SERVER['DOCUMENT_ROOT']."/".env('FRONT_END_PROJECT_NAME')."/public/storage/inventory_files/interior_panorama/";
+                foreach ($array as $arr) {
+                    if($arr!='' && $arr!=null){
+                        $explodes = explode('base64,', $arr);
+                        $base_64 = $explodes[1];
+                        $extension = explode('/', $explodes[0])[1];
+                        $image_type = explode(';', $extension)[0];
+                        $image_base64 = base64_decode($base_64);
+                        $file = $folderPath . uniqid() . '.'.$image_type;
+                        file_put_contents($file, $image_base64);
+                        // echo $folderPath."<br>".$file."<br>".explode($folderPath, $file)[1];
+                        // die;
+                        $inventory_file = new InventoryFile;
+                        $inventory_file->file = explode($folderPath, $file)[1];
+                        $inventory_file->inventory_id = $inventory->id;
+                        $inventory_file->inventory_type = 0;
+                        $inventory_file->media_type = 0;
+                        $inventory_file->is_interior = 1;
+                        $inventory_file->save();
+                    }
+                }
+            }
+            // panorama file
+
              // video upload
             if($request->has('video')){
                 $file = $request->file('video');
@@ -321,7 +348,7 @@ class SellController extends Controller
 	}
 
 	public function carList() {
-		 $carList = Inventory::orderByDesc('id')->where('type',0)->get();
+		 $carList = Inventory::orderBy('created_at','DESC')->where('type',0)->get();
 		 return view('sells/car/car_list')->with('carList',$carList);
 	}
 
@@ -336,7 +363,7 @@ class SellController extends Controller
     }
 
 	public function viewCar($id) {
-		$carList = Inventory::where('id', $id)->with('images','video','video_url')->first();
+		$carList = Inventory::where('id', $id)->with('images','video','video_url','interior_image')->first();
 		return view('sells/car/view_car', [ 'carList' => $carList ]);
 	}
 
@@ -379,7 +406,7 @@ class SellController extends Controller
         $keys = MdDropdown::where('type',2)->where('belongs_to','keys')->get();
         $mpg_highway = MdDropdown::where('type',2)->where('belongs_to','mpg_highway')->get();
         $brands = MdBrand::where('brand_for',0)->get();
-        $inventory = Inventory::with('images','video','video_url')->find($id);
+        $inventory = Inventory::with('images','video','video_url','interior_image')->find($id);
         return view('sells/car/edit_car')->with(['inventory'=>$inventory,'make'=>$brands,'fuel_types'=>$fuel_types,'transmissions'=>$transmissions,'extra_features'=>$extra_features,'conditions'=>$conditions,'accidents'=>$accidents,'flood_damages'=>$flood_damages,'frame_damages'=>$frame_damages,'mechanical_issues'=>$mechanical_issues,'lights_warning'=>$lights_warning,'paint_or_body_work'=>$paint_or_body_work,'interior_part_broken'=>$interior_part_broken,'interior_tear_or_strain'=>$interior_tear_or_strain,'tyre_replacable'=>$tyre_replacable,'aftermarket_modification'=>$aftermarket_modification,'odometer_broken'=>$odometer_broken,'keys'=>$keys,'mpg_highway'=>$mpg_highway]);
     }
 
@@ -702,6 +729,46 @@ class SellController extends Controller
                     }
                 }
             }
+
+            // panorama file
+            if($request->panorama_array){
+                $array = explode('data:image', $request->panorama_array);
+                $folderPath = $_SERVER['DOCUMENT_ROOT']."/".env('FRONT_END_PROJECT_NAME')."/public/storage/inventory_files/interior_panorama/";
+
+                // unlink
+                $interior_file = InventoryFile::where('inventory_id',$request->id)->where('media_type',0)->where('is_interior',1)->first();
+                if($interior_file){
+                    unlink($_SERVER['DOCUMENT_ROOT']."/".env('FRONT_END_PROJECT_NAME')."/public/storage/inventory_files/interior_panorama/".$interior_file->file);
+                }
+                // unlink
+
+                foreach ($array as $arr) {
+                    if($arr!='' && $arr!=null){
+                        $explodes = explode('base64,', $arr);
+                        $base_64 = $explodes[1];
+                        $extension = explode('/', $explodes[0])[1];
+                        $image_type = explode(';', $extension)[0];
+                        $image_base64 = base64_decode($base_64);
+                        $file = $folderPath . uniqid() . '.'.$image_type;
+                        file_put_contents($file, $image_base64);
+                        // echo $folderPath."<br>".$file."<br>".explode($folderPath, $file)[1];
+                        // die;
+                        if($interior_file){
+                            $interior_file->file = explode($folderPath, $file)[1];
+                            $interior_file->save();
+                        }else{
+                            $inventory_file = new InventoryFile;
+                            $inventory_file->file = explode($folderPath, $file)[1];
+                            $inventory_file->inventory_id = $inventory->id;
+                            $inventory_file->inventory_type = 0;
+                            $inventory_file->media_type = 0;
+                            $inventory_file->is_interior = 1;
+                            $inventory_file->save();
+                        }
+                    }
+                }
+            }
+            // panorama file
 
              // video upload
             if($request->has('video')){

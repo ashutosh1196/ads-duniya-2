@@ -433,6 +433,13 @@
             width: 80px;
             height: 100px;
         }
+        .pip2 {
+            display: inline-block;
+            margin: 0px 0px 0 10px;
+            position: relative;
+            width: 80px;
+            height: 100px;
+        }
         .remove {
           display: block;
           background: #444;
@@ -449,11 +456,31 @@
           text-align: center;
           cursor: pointer;
         }
+        .delete_image2 {
+          display: block;
+          background: #444;
+          border: 1px solid black;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+        }
         video {
           border: 1px solid black;
           display: block;
         }
         .upload_images button#choose_image {
+            background-color: #f6f6f6;
+            border: none;
+            height: 100px;
+            padding: 35px;
+            width: 80px;
+            outline-style: none;
+            box-shadow: none;
+            border: 1px solid #1d2637;
+            border-radius: 10px;
+            margin: 0;
+        }
+        .upload_images button#choose_panorama {
             background-color: #f6f6f6;
             border: none;
             height: 100px;
@@ -485,7 +512,51 @@
             top: -7px;
             right: -5px;
         }
+        .pip2 span.remove {
+            height: 18px;
+            width: 18px;
+            background-color: #dc3545;
+            border: none;
+            font-size: 12px;
+            border-radius: 100px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+        }
         .pip span.delete_image {
+            height: 18px;
+            width: 18px;
+            background-color: #dc3545;
+            border: none;
+            font-size: 12px;
+            border-radius: 100px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+        }
+        .pip2 span.delete_image {
+            height: 18px;
+            width: 18px;
+            background-color: #dc3545;
+            border: none;
+            font-size: 12px;
+            border-radius: 100px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+        }
+        .pip span.delete_image2 {
+            height: 18px;
+            width: 18px;
+            background-color: #dc3545;
+            border: none;
+            font-size: 12px;
+            border-radius: 100px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+        }
+        .pip2 span.delete_image2 {
             height: 18px;
             width: 18px;
             background-color: #dc3545;

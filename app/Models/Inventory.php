@@ -24,7 +24,11 @@ class Inventory extends Model
     }
 
     public function images(){
-        return $this->hasMany(InventoryFile::class)->where('media_type',0);
+        return $this->hasMany(InventoryFile::class)->where('media_type',0)->where('is_interior',0);
+    }
+
+    public function interior_image(){
+        return $this->hasOne(InventoryFile::class)->where('media_type',0)->where('is_interior',1);
     }
 
     public function video(){

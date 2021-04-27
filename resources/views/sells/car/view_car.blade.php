@@ -439,7 +439,7 @@
                 </div>
               </div>
               
-               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
                 <div class="form-group">
                   <label>Vehicle Images</label><br><br>
                   @foreach($carList->images as $image)
@@ -447,6 +447,19 @@
                   @endforeach
                 </div>
               </div>
+
+              <!-- interior image -->
+              @if($carList->interior_image)
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                <div class="form-group">
+                  <label>Vehicle Interior Image</label><br><br>
+                  
+                  <img src="{{env('APP_URL').'/'.env('FRONT_END_PROJECT_NAME').'/public/storage/inventory_files/'.'interior_panorama/'.@$carList->interior_image->file}}" height="150" width="auto" />
+                  
+                </div>
+              </div>
+              @endif
+              <!-- interior image -->
 
               @if($carList->video)
               <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">

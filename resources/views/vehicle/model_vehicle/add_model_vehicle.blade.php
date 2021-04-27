@@ -93,7 +93,8 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="type">Type<span class="text-danger"> *</span></label>
-                        <select name="type" class="form-control" id="type">
+                        <select name="type" class="form-control" id="type" required="">
+                          <option value="" selected="" disabled="">Select Type</option>
                           @foreach($type as $data)
                           <option value="{{$data->value}}">{{$data->name_en}}</option>
                           @endforeach
