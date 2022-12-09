@@ -30,7 +30,6 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
 
-    'title' => 'Which Vocation',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -44,7 +43,7 @@ return [
     'view_ticket' => 'View Ticket',
     'regards' => 'Regards',
     'team' => 'Team',
-    'title' => 'Which Vocation',
+    'title' => 'Ads Duniya',
 
     /*
     |--------------------------------------------------------------------------
@@ -215,7 +214,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin_panel/dashboard',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -252,323 +251,125 @@ return [
     */
 
     'menu' => [
-        /* [
-            'text'   => 'search',
-            'search' => true,
-            'topnav' => true,
-        ], */
         [
             'text' => 'dashboard',
-            'url'  => 'admin_panel/dashboard',
+            'url'  => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
-        /* ['header' => 'profile'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin_panel/admin_profile',
-            'icon' => 'fas fa-fw fa-user',
-            'active' => ['admin_panel/admin_profile*'],
-        ], */
+        
         ['header' => 'management'],
         
-              
-        //         [
-        //             'text' => 'credits_history',
-        //             'icon' => 'fas fa-fw fa-money-check-alt',
-        //             'url'  => 'admin_panel/credits_history/list',
-        //             'active' => ['admin_panel/credits_history*'],
-        //             'can' => ['view_credits_history'],
-        //         ],
-        //         [
-        //             'text' => 'payment_transactions',
-        //             'icon' => 'fab fa-fw fa-cc-stripe',
-        //             'url'  => 'admin_panel/payment_transactions/list',
-        //             'active' => ['admin_panel/payment_transactions*'],
-        //             'can' => ['view_payment_transaction'],
-        //         ],
-        //     ],
-        // ],
-        // [
-        //     'text' => 'content_management',
-        //     'icon' => 'fas fa-fw fa-edit',
-        //     'url'  => '#',
-        //     'can' => ['manage_cms'],
-        //     'submenu' => [
-        //         [
-        //             'text' => 'website',
-        //             'icon' => 'fas fa-fw fa-laptop',
-        //             'url'  => 'admin_panel/content/website/list',
-        //             'active' => ['admin_panel/content/website*'],
-        //             'can' => ['manage_website_pages'],
-        //         ],
-        //         [
-        //             'text' => 'mobile',
-        //             'icon' => 'fas fa-fw fa-mobile',
-        //             'url'  => 'admin_panel/content/mobile/list',
-        //             'active' => ['admin_panel/content/mobile*'],
-        //             'can' => ['manage_mobile_pages'],
-        //         ],
-        //     ],
-        // ],
-        // [
-        //     'text' => "Users' Feedback",
-        //     'icon' => 'fas fa-ticket-alt',
-        //     'url'  => '#',
-        //     'active' => ['admin_panel/tickets*'],
-        //     'can' => ['manage_tickets'],
-        //     'submenu' => [
-        //         [
-        //             'text' => 'tickets',
-        //             'icon' => 'fas fa-ticket-alt',
-        //             'url'  => 'admin_panel/tickets/list',
-        //             'can' => ['manage_tickets'],
-        //             'active' => ['admin_panel/tickets*'],
-        //         ],
-        //         [
-        //             'text' => 'feedbacks',
-        //             'icon' => 'fas fa-comments',
-        //             'url'  => 'admin_panel/feedbacks/list',
-        //             'active' => ['admin_panel/feedbacks*'],
-        //             'can' => ['view_feedback'],
-        //         ],
-        //         [
-        //             'text' => 'contact_us',
-        //             'icon' => 'fas fa-envelope',
-        //             'url'  => 'admin_panel/contact_us/list',
-        //             'active' => ['admin_panel/contact_us*'],
-        //             'can' => ['view_contact_us'],
-        //         ],
-        //     ]
-        // ],
         [
-            'text' => 'misc_data_management',
-            'icon' => 'fas fa-fw fa-info-circle',
+            'text' => 'Bank Management',
+            'icon' => 'fas fa-fw fa-landmark',
             'url'  => '#',
-            //'can' => ['manage_misc_data'],
             'submenu' => [
                 [
-                    'text' => 'Make',
-                    'icon' => 'fas fa-fw fa-industry',
-                    'url'  => 'admin_panel/make-list',
-                    'active' => ['admin_panel/vehicle/make_vehicle*'],
+                    'text' => 'Banks',
+                    'icon' => 'fas fa-landmark',
+                    'url'  => 'banks/list',
+                    'active' => ['banks*'],
                 ],
+            ],
+        ],      
+        
+        [
+            'text' => 'Account Management',
+            'icon' => 'fas fa-fw fa-coins',
+            'url'  => '#',
+            'submenu' => [
                 [
-                    'text' => 'Model',
-                    'icon' => 'fas fa-fw fa-cog',
-                    'url'  => 'admin_panel/model-list',
-                    'active' => ['admin_panel/vehicle/model_vehicle*'],
+                    'text' => 'Saving Accounts',
+                    'icon' => 'fas fa-fw fa-save',
+                    'url'  => 'saving-accounts/list',
+                    'active' => ['saving-accounts*'],
                 ],
-                [
-                    'text' => 'Sell',
-                    'icon' => 'fas fa-ad',
-                    'url'  => '#',
-                    'submenu' => [
-
-                        [
-                            'text' => 'Cars',
-                            'icon' => 'fas fa-fw fa-car',
-                            'url'  => 'admin_panel/car-list',
-                            'active' => ['admin_panel/sells/car*'],
-                        ],
-                        [
-                            'text' => 'Motos',
-                            'icon' => 'fas fa-motorcycle',
-                            'url'  => 'admin_panel/moto-list',
-                            'active' => ['admin_panel/sells/moto*'],
-                        ],
-                        [
-                            'text' => 'Power Equipment',
-                            'icon' => 'fas fa-cogs',
-                            'url'  => 'admin_panel/power-equipment-list',
-                            'active' => ['admin_panel/sells/power_equipment*'],
-                        ],
-                        [
-                            'text' => 'Auto & Moto Parts',
-                            'icon' => 'fas fa-cog',
-                            'url'  => 'admin_panel/auto-and-moto-part-list',
-                            'active' => ['admin_panel/sells/auto_moto_parts*'],
-                        ],
-
-
-                    ],
-                ],
-                // [
-                //     'text' => 'job_industries',
-                //     'icon' => 'fas fa-fw fa-industry',
-                //     'url'  => 'admin_panel/misc/job_industries/list',
-                //     'active' => ['admin_panel/misc/job_industries*'],
-                //     'can' => ['manage_job_industry'],
-                // ],
-                // [
-                //     'text' => 'job_qualifications',
-                //     'icon' => 'fas fa-fw fa-graduation-cap',
-                //     'url'  => 'admin_panel/misc/job_qualifications/list',
-                //     'active' => ['admin_panel/misc/job_qualifications*'],
-                //     'can' => ['manage_job_qualifications'],
-                // ],
-                /* [
-                    'text' => 'job_functions',
-                    'icon' => 'fas fa-fw fa-tasks',
-                    'url'  => 'admin_panel/misc/job_functions/list',
-                    'active' => ['admin_panel/misc/job_functions*'],
-                ], */
-                // [
-                //     'text' => 'job_locations',
-                //     'icon' => 'fas fa-fw fa-map-marker',
-                //     'url'  => 'admin_panel/misc/job_locations/list',
-                //     'active' => ['admin_panel/misc/job_locations*'],
-                //     'can' => ['manage_job_location'],
-                // ],
-                // [
-                //     'text' => 'skills',
-                //     'icon' => 'fas fa-fw fa-brain',
-                //     'url'  => 'admin_panel/misc/skills/list',
-                //     'active' => ['admin_panel/misc/skills*'],
-                //     'can' => ['manage_skills'],
-                // ],
-                // [
-                //     'text' => 'cities',
-                //     'icon' => 'fas fa-city',
-                //     'url'  => 'admin_panel/misc/cities/list',
-                //     'active' => ['admin_panel/misc/cities*'],
-                //     'can' => ['manage_cities'],
-                // ],
-                // [
-                //     'text' => 'counties',
-                //     'icon' => 'fas fa-flag',
-                //     'url'  => 'admin_panel/misc/counties/list',
-                //     'active' => ['admin_panel/misc/counties*'],
-                //     'can' => ['manage_counties'],
-                // ],
             ],
         ],
-        // [
-        //     'text' => 'access_control',
-        //     'icon'    => 'fas fa-fw fa-cogs',
-        //     'url'  => '#',
-        //     'active' => ['admin_panel/roles*'],
-        //     'can' => 'manage_access_control',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'roles',
-        //             'icon'    => 'fas fa-fw fa-users',
-        //             'url'  => 'admin_panel/roles/list',
-        //             'active' => ['admin_panel/roles/list*', 'admin_panel/roles/add*', 'admin_panel/roles/edit*', 'admin_panel/roles/view*'],
-        //             'can' => 'manage_roles',
-        //         ],
-        //         [
-        //             'text' => 'permissions',
-        //             'icon'    => 'fas fa-key',
-        //             'url'  => 'admin_panel/roles/role_permissions',
-        //             'active' => ['admin_panel/roles/role_permissions*'],
-        //             'can' => 'add_permissions',
-        //         ]
-        //     ],
-        // ],
-        // [
-        //     'key' => 'admin_recylce_bin',
-        //     'text' => 'recylce_bin',
-        //     'icon' => 'far fa-trash-alt',
-        //     'url'  => '#',
-        //     'active' => ['admin_panel/recycle_bin*'],
-        //     'can' => ['manage_recycle_bin'],
-        //     'submenu' => [
-        //         [
-        //             'text' => 'customers',
-        //             'icon' => 'fas fa-fw fa-building',
-        //             'url'  => 'admin_panel/recycle_bin/customers/deleted',
-        //             'can' => 'restore_customers',
-        //         ],
-        //         [
-        //             'text' => 'jobseekers',
-        //             'icon' => 'fas fa-fw fa-briefcase',
-        //             'url'  => 'admin_panel/recycle_bin/jobseekers/deleted',
-        //             'can' => 'restore_jobseekers',
-        //         ],
-        //         [
-        //             'text' => 'recruiters',
-        //             'icon' => 'fas fa-fw fa-user-tie',
-        //             'url'  => 'admin_panel/recycle_bin/recruiters/deleted',
-        //             'can' => 'restore_recruiters',
-        //         ],
-        //         [
-        //             'text' => 'admins',
-        //             'icon' => 'fas fa-fw fa-universal-access',
-        //             'url'  => 'admin_panel/recycle_bin/admins/deleted',
-        //             'can' => 'restore_admins',
-        //         ],
-        //         [
-        //             'text' => 'jobs',
-        //             'icon' => 'fas fa-fw fa-briefcase',
-        //             'url'  => 'admin_panel/recycle_bin/jobs/deleted',
-        //             'can' => 'restore_jobs',
-        //         ],
-        //         [
-        //             'text' => 'job_industries',
-        //             'icon' => 'fas fa-fw fa-industry',
-        //             'url'  => 'admin_panel/recycle_bin/job_industries/deleted',
-        //             'can' => 'restore_job_industries',
-        //         ],
-        //         [
-        //             'text' => 'job_qualifications',
-        //             'icon' => 'fas fa-fw fa-graduation-cap',
-        //             'url'  => 'admin_panel/recycle_bin/job_qualifications/deleted',
-        //             'can' => 'restore_job_qualifications',
-        //         ],
-        //         /* [
-        //             'text' => 'job_functions',
-        //             'icon' => 'fas fa-fw fa-tasks',
-        //             'url'  => 'admin_panel/recycle_bin/job_functions/deleted',
-        //         ], */
-        //         [
-        //             'text' => 'job_locations',
-        //             'icon' => 'fas fa-fw fa-map-marker',
-        //             'url'  => 'admin_panel/recycle_bin/job_locations/deleted',
-        //             'can' => 'restore_job_locations',
-        //         ],
-        //         [
-        //             'text' => 'skills',
-        //             'icon' => 'fas fa-fw fa-brain',
-        //             'url'  => 'admin_panel/recycle_bin/skills/deleted',
-        //             'can' => 'restore_skills',
-        //         ],
-        //         [
-        //             'text' => 'cities',
-        //             'icon' => 'fas fa-city',
-        //             'url'  => 'admin_panel/recycle_bin/cities/deleted',
-        //             'can' => 'restore_cities',
-        //         ],
-        //         [
-        //             'text' => 'counties',
-        //             'icon' => 'fas fa-flag',
-        //             'url'  => 'admin_panel/recycle_bin/counties/deleted',
-        //             'can' => 'restore_counties',
-        //         ],
-        //         [
-        //             'text' => 'roles',
-        //             'icon' => 'fas fa-users',
-        //             'url'  => 'admin_panel/recycle_bin/roles/deleted',
-        //             'can' => 'restore_roles',
-        //         ],
-        //         /* [
-        //             'text' => 'website_pages',
-        //             'icon' => 'fas fa-desktop',
-        //             'url'  => 'admin_panel/recycle_bin/website/deleted',
-        //             'can' => 'restore_website_page',
-        //         ],
-        //         [
-        //             'text' => 'mobile_pages',
-        //             'icon' => 'fas fa-mobile',
-        //             'url'  => 'admin_panel/recycle_bin/mobile/deleted',
-        //             'can' => 'restore_mobile_page',
-        //         ], */
-        //     ],
-        // ],
-        /* [
-            'text' => 'logout',
-            'icon'    => 'fas fa-fw fa-sign-out-alt',
-            'url'  => '#'
-        ], */
+
+        [
+            'text' => 'Loan Management',
+            'icon' => 'fas fa-fw fa-coins',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Loans',
+                    'icon' => 'fas fa-fw fa-coins',
+                    'url'  => 'loans/list',
+                    'active' => ['loans*'],
+                ],
+                
+            ],
+        ],
+
+        [
+            'text' => 'Credit Card Management',
+            'icon' => 'fas fa-fw fa-credit-card',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Credit Card Types',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                    'url'  => 'credit-card-types/list',
+                    'active' => ['credit-card-types*'],
+                ], 
+                [
+                    'text' => 'Credit Cards',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                    'url'  => 'credit-cards/list',
+                    'active' => ['credit-cards*'],
+                ],            
+            ],
+        ],
+
+        [
+            'text' => 'Investment Management',
+            'icon' => 'fas fa-fw fa-hand-holding-usd',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Demat',
+                    'icon' => 'fas fa-fw fa-hand-holding-usd',
+                    'url'  => 'demat/list',
+                    'active' => ['demat*'],
+                ], 
+                [
+                    'text' => 'Mutual Funds',
+                    'icon' => 'fas fa-fw fa-hand-holding-usd',
+                    'url'  => 'mutual-funds/list',
+                    'active' => ['mutual-funds*'],
+                ],            
+            ],
+        ],
+
+        [
+            'text' => 'Blogs Management',
+            'icon' => 'fas fa-fw fa-blog',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Blogs',
+                    'icon' => 'fas fa-fw fa-blog',
+                    'url'  => 'blogs/list',
+                    'active' => ['blogs*'],
+                ],           
+            ],
+        ],
+
+        [
+            'text' => 'Why Choose Us',
+            'icon' => 'fas fa-fw fa-blog',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Why Choose Us',
+                    'icon' => 'fas fa-fw fa-blog',
+                    'url'  => 'choose-us/list',
+                    'active' => ['choose-us*'],
+                ],           
+            ],
+        ],
+        
     ],
 
     /*

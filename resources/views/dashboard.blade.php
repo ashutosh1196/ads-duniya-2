@@ -9,137 +9,137 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-       <!--  <div class="row">
+  <div class="container-fluid">
+    <div class="row">
 
-          @can('manage_whitelisted_customers')
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12">
-              <div class="small-box customer">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/customer.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/people-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>{{ __('adminlte::adminlte.customers') }}</p>
-                    <h3>{{ $customersCount }}</h3>
-                  </div>
-                </div>
-                <a href="{{ route('whitelisted_customers') }}" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/office/80/null/merchant-account.png"/>
+              </div>
+              <div class="right">
+                <p>Banks</p>
+                <h3>{{$bank_counts}}</h3>
               </div>
             </div>
-          @endcan
+            <a href="{{route('banks')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-          @can('manage_jobseekers')
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12">
-              <div class="small-box jobseeker">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/jobseeker.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/jobseeker-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>{{ __('adminlte::adminlte.jobseekers') }}</p>
-                    <h3>{{ $jobseekersCount }}</h3>
-                  </div>
-                </div>
-                <a href="{{ route('jobseekers_list') }}" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/null/external-savings-banking-flaticons-flat-flat-icons.png"/>
+              </div>
+              <div class="right">
+                <p>Saving Accounts</p>
+                <h3>{{$saving_account_counts}}</h3>
               </div>
             </div>
-          @endcan
+            <a href="{{route('saving-accounts')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-          @can('manage_recruiters')
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12">
-              <div class="small-box">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/recruiter-3.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/recruiter-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>{{ __('adminlte::adminlte.recruiters') }}</p>
-                    <h3>{{ $recruitersCount }}</h3>
-                  </div>
-                </div>
-                <a href="{{ route('recruiters_list') }}" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/null/external-Loan-online-payments-smashingstocks-flat-smashing-stocks.png"/>
+              </div>
+              <div class="right">
+                <p>Loans</p>
+                <h3>{{$loan_info_counts}}</h3>
               </div>
             </div>
-          @endcan
+            <a href="{{route('loans')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-          @can('manage_admins')
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12">
-              <div class="small-box admin">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/admin.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/user-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>{{ __('adminlte::adminlte.admins') }}</p>
-                    <h3>{{ $adminsCount }}</h3>
-                  </div>
-                </div>
-                <a href="{{ route('admins_list') }}" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-credit-card-travel-agency-flaticons-lineal-color-flat-icons.png"/>
+              </div>
+              <div class="right">
+                <p>Credit Card</p>
+                <h3>{{$credit_card_counts}}</h3>
               </div>
             </div>
-          @endcan
+            <a href="{{route('credit-cards')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-          @can('manage_job')
-            <div class="col-md-3 col-lg-3 col-xl-3 col-6">
-              <div class="small-box job-posted">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/job-posted.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/job-posted-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>{{ __('adminlte::adminlte.jobs') }}</p>
-                    <h3>{{ isset($jobsCount) ? $jobsCount : 0 }}</h3>
-                  </div>
-                </div>
-                <a href="{{ route('jobs_list') }}" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/external-tone-royyan-wijaya/64/null/external-acountant-banking-illustration-tone-royyan-wijaya-17.png"/>
+              </div>
+              <div class="right">
+                <p>Demat Accounts</p>
+                <h3>{{$demats_count}}</h3>
               </div>
             </div>
-          @endcan
+            <a href="{{route('demats')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-            <div class="col-md-3 col-lg-3 col-xl-3 col-6">
-              <div class="small-box job-applied">
-                <div class="inner">
-                  <div class="left">
-                    <img src="{{ asset('') }}images/job-applied.svg" class="on-hover" alt="">
-                    <img src="{{ asset('') }}images/job-applied-2.svg" alt="">
-                  </div>
-                  <div class="right">
-                    <p>Job(s) Applied</p>
-                    <h3>0</h3>
-                  </div>
-                </div>
-                <a href="#" class="small-box-footer">
-                <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
-                <img src="{{ asset('') }}images/next-2.svg" alt="">
-                More Info</a>
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/arcade/64/null/money-bag.png"/>
               </div>
-            </div> -->
+              <div class="right">
+                <p>Mutual Funds</p>
+                <h3>{{$mutual_funds_count}}</h3>
+              </div>
+            </div>
+            <a href="{{route('mutual-funds')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
 
-        </div> 
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <div class="col-md-3 col-lg-3 col-xl-3 col-12">
+          <div class="small-box customer">
+            <div class="inner">
+              <div class="left">
+                <img src="https://img.icons8.com/nolan/96/google-blog-search.png"/>
+              </div>
+              <div class="right">
+                <p>Blogs</p>
+                <h3>{{$blogs_count}}</h3>
+              </div>
+            </div>
+            <a href="{{route('blogs')}}" class="small-box-footer">
+            <img src="{{ asset('') }}images/next.svg" class="on-hover" alt="">
+            <img src="{{ asset('') }}images/next-2.svg" alt="">
+            More Info</a>
+          </div>
+        </div>
+
+    </div> 
+  </div>
+</section>
+<!-- /.content -->
 @endsection

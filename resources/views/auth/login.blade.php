@@ -20,14 +20,12 @@
 
 
 @section('auth_body')
-    <div class="login_wrap">
-        <div class="left">
-            <img src="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/login-4.jpg" class="on-hover" alt="">
-        </div>
+    <div class="login_wrap" style="padding:100px 0px;">
+        
         <div class="right">
         <div class="login-logo-inner">
-            <a href="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/admin_panel/dashboard">
-                <img src="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/images/logo.svg" height="50">
+            <a href="#">
+                <img src="{{asset('images/ads_duniya.png')}}" height="50">
                 <b></b>
             </a>
             </div>
@@ -71,12 +69,6 @@
 
                     {{-- Login field --}}
                     <div class="row">
-<!--                         <div class="col-12">
-                            <div class="icheck-primary">
-                                <input type="checkbox" name="remember" id="remember">
-                                <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
-                            </div>
-                        </div> -->
                         <div class="col-12">
                             <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                                 <span class="fas fa-sign-in-alt"></span>
@@ -86,18 +78,7 @@
                     </div>
 
                 </form>
-                <!-- <div class="card-footer-inner d-flex justify-content-between">                 
-                <p class="my-0">
-                    <a href="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/password/reset">
-                        Forgot Password?
-                    </a>
-                </p>
-                <p class="my-0">
-                    <a href="http://server3.rvtechnologies.in/which-vocation/Amrik-which-vocation-admin/public/register">
-                        Register
-                    </a>
-                </p>
-             </div> -->
+                
         </div>
     </div>
 @stop

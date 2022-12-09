@@ -60,7 +60,7 @@
         /*added later for sell form*/
         /*-- Global Css--*/
         .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a{
-          background-color: #2d8427;
+          background-color: #2293ef;
           color:white;
         }
         label{

@@ -4,62 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Recruiter;
 use App\Models\Admin;
 use App\Models\Page;
 use App\Models\Role;
-use App\Models\Organization;
-use App\Models\UserSocialLogin;
-use App\Models\Job;
 use Auth;
 use Hash;
+use App\Models\Bank;
+use App\Models\SavingAccount;
+use App\Models\Loan;
+use App\Models\CreditCard;
+use App\Models\Demat;
+use App\Models\MutualFund;
+use App\Models\Blog;
 
 class AdminController extends Controller
 {
-	/**
-	 * This function is used to Show Admin Dashboard
-	*/
-	public function dashboard(Request $request) {
-		$jobseekers = User::all();
-		$jobseekersCount = count($jobseekers);
-		$customers = Organization::where('is_whitelisted', 1)->get();
-		$recruitersList = [];
-		$allRecruiters = Recruiter::all();
-		$allCustomers = Organization::all();
-		for ($i=0; $i < count($allRecruiters); $i++) {
-			for ($j=0; $j < count($allCustomers); $j++) {
-				if($allCustomers[$j]->is_whitelisted == '1') {
-					array_push($recruitersList, $allRecruiters[$i]);
-				}
-			}
-		}
-		$recruitersCount = count($recruitersList);
-		$customers = Organization::where('is_whitelisted', 1)->get();
-		$customersCount = count($customers);
-		$admins = Admin::where('role_id', '!=', 1)->where('id', '!=', Auth::id())->get();
-		$adminsCount = count($admins);
-		$jobs = Job::all();
-		$jobsCount = count($jobs);
-		return view('dashboard', [
-			'jobseekersCount' => $jobseekersCount,
-			'recruitersCount' => $recruitersCount,
-			'customersCount' => $customersCount,
-			'adminsCount' => $adminsCount,
-			'jobsCount' => $jobsCount,
+	public function dashboard() {
+		$bank_counts = Bank::where('status',Bank::ACTIVE)->count();
+		$saving_account_counts = SavingAccount::count();
+		$loan_info_counts = Loan::count();
+		$credit_card_counts = CreditCard::count();
+		$demats_count = Demat::count();
+		$mutual_funds_count = MutualFund::count();
+		$blogs_count = Blog::count();
+		return view('dashboard')->with([
+			'bank_counts' => $bank_counts,
+			'saving_account_counts' => $saving_account_counts,
+			'loan_info_counts' => $loan_info_counts,
+			'credit_card_counts' => $credit_card_counts,
+			'demats_count' => $demats_count,
+			'mutual_funds_count' => $mutual_funds_count,
+			'blogs_count' => $blogs_count,
 		]);
 	}
 
-	/**
-	 * This function is used to Show Admin Profile
-	*/
+	// -----------------------------------------------------------
+
 	public function adminProfile(Request $request) {
 		$userDetails = Admin::findOrFail(Auth::id());
 		return view('admin_profile')->with('userDetails', $userDetails );
 	}
 
-	/**
-	 * This function is used to Update Admin Profile
-	*/
 	public function updateProfile(Request $request) {
 		$validatedData = $request->validate([
 			'name' => 'required',

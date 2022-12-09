@@ -111,6 +111,10 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+    <!-- <script type="text/javascript">
+        $('.nav-item').addClass('menu-open');
+    </script> -->
+
 </body>
 
 </html>

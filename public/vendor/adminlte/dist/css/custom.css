@@ -74,7 +74,7 @@
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a.active:hover,
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a.active:hover p,
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a.active:hover i {
-    background-color: #2d8427;
+    background-color: #2293ef;
     color: #ffffff;
 }
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a.active~ul li a.active,
@@ -92,7 +92,7 @@ body .nav-pills .nav-link {
     color: #343d49;
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link {
-    background-color: #2d8427;
+    background-color: #2293ef;
     color: #ffffff;
 }
 .sidebar-dark-primary .sidebar .nav-sidebar li.nav-item.has-treeview.menu-open a.nav-link:hover p,
@@ -107,7 +107,7 @@ body .nav-pills .nav-link {
 }
 
 .sidebar-mini .wrapper .main-sidebar ul.nav-pills li.has-treeview a:hover {
-    background-color: #2d8427;
+    background-color: #2293ef;
 }
 .sidebar ul.nav li.nav-item.has-treeview a:hover i,
 .sidebar ul.nav li.nav-item.has-treeview a:hover p {
@@ -194,7 +194,7 @@ section.content .small-box .inner {
     align-items: center;
 }
 section.content .small-box:hover {
-    background-color: #2d8427;
+    background-color: #2293ef;
 }
 section.content .small-box:hover .inner h3 {
     color: #ffffff;
@@ -251,7 +251,7 @@ section.content .small-box:hover a.small-box-footer img {
     font-size: 14px;
 }
 .wrapper .navbar-light ul a.dropdown-toggle:hover {
-    background-color: #2d8427;
+    background-color: #2293ef;
     color: #ffffff;
 }
 .sidebar-mini .wrapper .navbar-light li.user-footer a.btn {
@@ -363,8 +363,8 @@ section.content .small-box:hover a.small-box-footer img {
     /*border-radius: 2px;*/
 }
 .card-body a.btn-success {
-    background-color: #2d8427;
-    border-color: #2d8427;
+    background-color: #2293ef;
+    border-color: #2293ef;
     margin-bottom: 16px;
     font-size: 13px;
     padding: 8px 16px;
@@ -449,8 +449,8 @@ body.sidebar-mini .sweet-alert p {
     font-size: 14px;
 }
 body.sidebar-mini .sweet-alert .sa-confirm-button-container button.confirm {
-    background-color: #2d8427 !important;
-    box-shadow: #2d8427 0px 0px 2px, rgb(0 0 0 / 5%) 0px 0px 0px 1px inset !important;
+    background-color: #2293ef !important;
+    box-shadow: #2293ef 0px 0px 2px, rgb(0 0 0 / 5%) 0px 0px 0px 1px inset !important;
     font-size: 12px;
 }
 body.sidebar-mini .sweet-alert button.cancel {
@@ -491,8 +491,8 @@ body.sidebar-mini .sa-button-container {
     font-size: 14px;
 }
 .content-wrapper .card-footer button {
-    background-color: #2d8427;
-    border: 1px solid #2d8427;
+    background-color: #2293ef;
+    border: 1px solid #2293ef;
     font-size: 14px;
     padding: 8px 30px;
     margin: 0 auto;
@@ -531,9 +531,9 @@ body.sidebar-mini .sa-button-container {
     width: 20px;
     padding: 0;
     border-radius: 100px;
-    background-color: #2d8427;
+    background-color: #2293ef;
     position: relative;
-    border: 1px solid #2d8427;
+    border: 1px solid #2293ef;
 }
 .radio_wrap .radio_wrap_inner input[type="radio"]:checked~label:after {
     content: "";
@@ -573,15 +573,15 @@ body.login-page {
     hyphens: 700px;
 }
 body.login-page .login-box button {
-    background-color: #2d8427;
-    border: 1px solid #2d8427;
+    background-color: #2293ef;
+    border: 1px solid #2293ef;
     border-radius: 5px;
     font-size: 14px;
     padding: 6px 20px;
 }
 body.login-page .login-box button.btn-primary:active {
-    background-color: #2d8427;
-    border: 1px solid #2d8427;
+    background-color: #2293ef;
+    border: 1px solid #2293ef;
 }
 body.login-page {
     background-color: #f6f7fb;
@@ -608,7 +608,7 @@ body.login-page {
 }
 body.login-page .login-box {
     width: 800px;
-    border-top: 3px solid #2d8427;
+    border-top: 3px solid #2293ef;
 }
 .card-header-heading h3 {
     padding-bottom: 40px;
@@ -656,8 +656,8 @@ body.login-page .login-box button span {
     display: none;
 }
 .content-wrapper .card .card-header a, .header_info a {
-    background-color: #2d8427;
-    border: 1px solid #2d8427;
+    background-color: #2293ef;
+    border: 1px solid #2293ef;
     padding: 8px 20px;
     text-decoration: auto;
     font-size: 13px;
@@ -823,7 +823,7 @@ body.login-page .login-box button span {
     left: 20px;
     transform: translateY(-50%);
     font-family: "Font Awesome 5 Free";
-    color: #2d8427;
+    color: #2293ef;
     font-size: 20px;
 }
 .message_reply .upload-file:after{
@@ -856,8 +856,8 @@ body.login-page .login-box button span {
     margin: 35px auto 10px;
     padding: 10px 30px;
     font-size: 13px;
-    background-color: #2d8427;
-    border-color: #2d8427;
+    background-color: #2293ef;
+    border-color: #2293ef;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -967,12 +967,12 @@ form .card-body {
 .custom-check input:checked~span {
     height: 20px;
     width: 20px;
-    background-color: #2d8427;
-    border-color: #2d8427;
+    background-color: #2293ef;
+    border-color: #2293ef;
 }
 .completed_job_wrap .custom-check input.is_complete_update:checked~span:before,
 .custom-check input:checked~span:before {
-    background-color: #2d8427;
+    background-color: #2293ef;
     left: 7px;
     top: 2px;
     width: 6px;
@@ -1327,7 +1327,7 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2d8427;
+    background-color: #2293ef;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -1335,7 +1335,7 @@ span.select2 span.selection .select2-selection--multiple span textarea.select2-s
     border-radius: 100px;
 }
 .form-group.is_featured_group input:checked + .slider {
-    background-color: #2d8427;
+    background-color: #2293ef;
 }
 .form-group.is_featured_group .slider:before {
     position: absolute;
@@ -1595,8 +1595,8 @@ div#custom-tabs-one-tabContent form.form_wrap .title h5,
 #logo-cropper-modal .modal-dialog .modal-content .modal-footer button{
    padding: 5px 20px;
    font-size: 12px;
-   background-color: #2d8427;
-   border-color: #2d8427;
+   background-color: #2293ef;
+   border-color: #2293ef;
 }
 #cropper-modal .modal-dialog .modal-content .modal-footer button:first-child,
 #logo-cropper-modal .modal-dialog .modal-content .modal-footer button:first-child{
@@ -1675,7 +1675,7 @@ form.form_wrap.customers-management-view div#preview-cropped-image {
     margin: 0;
 }
 .profile-image .progress .progress-bar.progress-bar-striped.progress-bar-animated {
-    background-color: #2d8427;
+    background-color: #2293ef;
     padding: 0px 2px;
 }
 .edit_job_upload_picture div#preview-cropped-image {
@@ -1884,8 +1884,8 @@ span.select2 span.selection span.select2-selection {
     padding: 15px 12px;
 }
 #job_alert_form button.submit-job-alert {
-    background-color: #2d8427;
-    border: 1px solid #2d8427;
+    background-color: #2293ef;
+    border: 1px solid #2293ef;
     color: #ffffff;
     padding: 12px 40px 30px;
     text-transform: capitalize;
@@ -1937,7 +1937,7 @@ span.select2 span.selection span.select2-selection {
     top: 0px;
 }
 .form-group.radio input:checked + .slider, input:checked~#is_featured-error~.slider {
-    background-color: #2d8427;
+    background-color: #2293ef;
 }
 .form-group.radio .slider.round {
     border-radius: 100px;
