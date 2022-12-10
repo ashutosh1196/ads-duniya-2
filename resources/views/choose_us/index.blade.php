@@ -34,7 +34,7 @@
                   <tr>
                     <td style="display:none"></td>
                     <td>{{$item->title}}</td>
-                    <td>{{$item->description}}</td>
+                    <td>{!! $item->description !!}</td>
                     
                     <td>
                         <a class="action-button" title="Edit" href="{{route('choose-us.edit',$item->id)}}"><i class="text-warning fa fa-edit"></i></a>

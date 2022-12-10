@@ -38,7 +38,7 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label for="name">Description<span class="text-danger"> *</span></label>
-                      <input type="text" name="description" value="{{$choose_us->description}}" class="form-control" id="description" maxlength="100">
+                      <textarea id="description" name="description">{{$choose_us->description}}</textarea>
                       
                     </div>
                   </div>
@@ -64,7 +64,7 @@
   <script>
     $(document).ready(function() {
       
-      CKEDITOR.replace( 'content', {
+      CKEDITOR.replace( 'description', {
         customConfig : 'config.js',
         toolbar : 'simple'
       })
