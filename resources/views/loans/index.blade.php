@@ -37,7 +37,7 @@
                   @foreach($loans as $loan)
                   <tr>
                     <td style="display:none"></td>
-                    <td>{{$loan->bank->name}}</td>
+                    <td>{{@$loan->bank->name}}</td>
                     <td>{{$loan->name}}</td>
                     <td>{{ucfirst($loan->type)}}</td>
                     <td>{{$loan->interest_rate}}</td>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AddEdit Credit Card')
+@section('title', 'Edit Credit Card')
 
 @section('content_header')
 @stop
@@ -79,6 +79,17 @@
                     <div class="form-group">
                       <label for="apply_url">Apply Url<span class="text-danger"> *</span></label>
                       <input type="text" value="{{$credit_card->apply_url}}" name="apply_url" class="form-control" id="apply_url" maxlength="100">
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="apply_url">Set as trending<span class="text-danger"> *</span></label>
+                      <select class="form-control" name="trending">
+                        <option value="0" @if($credit_card->is_trending==0) selected @endif>NO</option>
+                        <option value="1" @if($credit_card->is_trending==1) selected @endif>YES</option>
+                      </select>
                       
                     </div>
                   </div>

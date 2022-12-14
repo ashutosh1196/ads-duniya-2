@@ -62,6 +62,7 @@ class AccountController extends Controller
             $saving_account->interest_rate = $request->interest_rate;
             $saving_account->apply_url = $request->apply_url;
             $saving_account->details = $request->content;
+            $saving_account->is_trending = $request->trending;
 
             $saving_account->save();
 
@@ -146,6 +147,7 @@ class AccountController extends Controller
             $loan->tenure_range = $request->tenure_range;
             $loan->apply_url = $request->apply_url;
             $loan->details = $request->content;
+            $loan->is_trending = $request->trending;
 
             $loan->save();
 

@@ -36,7 +36,7 @@
                   @foreach($saving_accounts as $saving_account)
                   <tr>
                     <td style="display:none"></td>
-                    <td>{{$saving_account->bank->name}}</td>
+                    <td>{{@$saving_account->bank->name}}</td>
                     <td>{{$saving_account->name}}</td>
                     <td>{{$saving_account->opening_charge}}</td>
                     <td>{{$saving_account->minimum_balance}}</td>

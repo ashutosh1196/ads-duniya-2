@@ -369,7 +369,26 @@ return [
                 ],           
             ],
         ],
-        
+
+        [
+            'text' => 'Auto Management',
+            'icon' => 'fas fa-fw fa-cogs',
+            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Seller',
+                    'icon' => 'fas fa-fw fa-blog',
+                    'url'  => 'auto-seller/list',
+                    'active' => ['auto-seller*'],
+                ],
+                [
+                    'text' => 'Auto Info',
+                    'icon' => 'fas fa-fw fa-blog',
+                    'url'  => 'auto/list',
+                    'active' => ['auto/*'],
+                ],           
+            ],
+        ],
     ],
 
     /*

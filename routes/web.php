@@ -9,6 +9,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CreditCardController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AutoController;
 
 
 Route::get('/', function () {
@@ -96,6 +97,24 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/list', [BlogController::class, 'chooseUs'])->name('choose-us');
     Route::get('/edit/{id}', [BlogController::class, 'editChooseUs'])->name('choose-us.edit');
     Route::post('/update', [BlogController::class, 'updateChooseUs'])->name('choose-us.update');
+  });
+
+  Route::group(['prefix' => 'auto-seller'], function () {
+    Route::get('/list', [AutoController::class, 'autoSeller'])->name('auto-seller.list');
+    Route::get('/add', [AutoController::class, 'addAutoSeller'])->name('auto-seller.add');
+    Route::get('/edit/{id}', [AutoController::class, 'editAutoSeller'])->name('auto-seller.edit');
+    Route::post('/save', [AutoController::class, 'saveAutoSeller'])->name('auto-seller.save');
+    Route::post('/update', [AutoController::class, 'updateAutoSeller'])->name('auto-seller.update');
+    Route::post('/delete', [AutoController::class, 'deleteAutoSeller'])->name('auto-seller.delete');
+  });
+
+  Route::group(['prefix' => 'auto'], function () {
+    Route::get('/list', [AutoController::class, 'auto'])->name('auto.list');
+    Route::get('/add', [AutoController::class, 'addAuto'])->name('auto.add');
+    Route::get('/edit/{id}', [AutoController::class, 'editAuto'])->name('auto.edit');
+    Route::post('/save', [AutoController::class, 'saveAuto'])->name('auto.save');
+    Route::post('/update', [AutoController::class, 'updateAuto'])->name('auto.update');
+    Route::post('/delete', [AutoController::class, 'deleteAuto'])->name('auto.delete');
   });
 
 });

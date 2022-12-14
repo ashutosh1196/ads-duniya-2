@@ -146,6 +146,7 @@ class CreditCardController extends Controller
             $credit_card->details = $request->content;
             $credit_card->apply_url = $request->apply_url;
             $credit_card->status = $request->status;
+            $credit_card->is_trending = $request->trending;
 
             if ($request->file("image")) {
                 

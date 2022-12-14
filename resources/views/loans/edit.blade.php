@@ -95,6 +95,17 @@
 
                   <div class="col-12">
                     <div class="form-group">
+                      <label for="apply_url">Set as trending<span class="text-danger"> *</span></label>
+                      <select class="form-control" name="trending">
+                        <option value="0" @if($loan->is_trending==0) selected @endif>NO</option>
+                        <option value="1" @if($loan->is_trending==1) selected @endif>YES</option>
+                      </select>
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
                       <label for="name">More Details<span class="text-danger"> *</span></label>
                       <textarea id="content" name="content">{{$loan->details}}</textarea>
                       

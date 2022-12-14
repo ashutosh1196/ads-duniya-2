@@ -1,0 +1,28 @@
+ip = 217.21.85.134
+port = 65002
+username = u371956625
+pass = adsDuniya@2022$
+
+ssh -p 65002 u371956625@217.21.85.134
+
+
+https://auth-db906.hstgr.io/index.php?db=u371956625_ads_web
+db name = u371956625_ads_web
+username = u371956625_adsDuniya2022
+ads_Duniya_@2022$$
+
+
+https://github.com/ashutosh1196/ads-duniya.git
+ssh -T https://github.com/ashutosh1196/ads-duniya.git
+
+
+git config --global user.email "ashutosh11nov96@gmail.com"
+git config --global user.name "ashutosh1196"
+
+
+https://github.com/ashutosh1196/ads-duniya-2.git
+git remote set-url origin https://github.com/ashutosh1196/ads-duniya-2.git
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUwYyi7PkzIYEMc9+fZu7yQZwF1l5JdUPE9/NuKHYy1qoz227aQxioRqLg0zb/a1Y9CLFpQZYMRpX83w+2JGeVZQG/kWpJZqI9C2OsLAlSh6YJysEVt7pD1jBfAGd6IX4mAxrOw0aun45wf6/JKlO/elrusDc8CrbZcqxKqEDF2HwWhytIp9moFG/S9AYhfo+O7cSgvYxxwKtlU4U7N5V4Lg8DbaLKNW6XcoTehmYT4asAT8DBrEG+q3x8syn6nY2V5wpDgHsh2i+DA1LJy7TUKJUd/Kk5nE49U86l5ynP1fNNUZOfYyA9qGCYTCrgrZepRGYTWSnZDTf2dtBiEUlt stranger@stranger-Aspire-5733Z
+
+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   personal access token
